@@ -1,0 +1,71 @@
+% !TeX TS-program = lualatex
+\documentclass[landscape,twoside=false,DIV=14]{scrartcl}
+\usepackage{multirow}
+
+\include{latex_setup.tex}
+\KOMAoptions{paper=a3}
+\renewcommand\pagemark{}  % remove page numbers
+\usepackage{tikz}
+\usetikzlibrary {graphs,graphdrawing} \usegdlibrary {trees,force,layered} 
+
+\begin{document}
+\section*{First Year}
+\tikz \graph [sweep crossing minimization,minimum height layer assignment,layered layout, nodes={draw,rounded corners}, level distance=15mm,grow=up] {
+  References and Objects [olive] -> Objects and Classes [olive] -> this keyword [olive] -> Constructors and new keyword[olive] -> Static Methods [olive] -> Object Lifecycle [olive] -> Object Composition [olive] ->  Java Proficiency [olive],
+  Sequencing [red] -> Variables [red] -> Conditions [red] -> Loops [red] -> Functions [red],
+  Functions -> Overloading [olive],
+  Functions -> Values vs Expressions [red],
+  Algebra [green] -> Values vs Expressions -> new Keyword [red] -> Reference Semantics [red] -> Structured Data [red] -> References and Objects [red],
+  Boolean Logic -> Conditions,
+  Reference Semantics [red] -> Arrays [red] -> Array Manipulation [olive] -> Searching and Sorting [olive],
+  Searching and Sorting [olive] -> Algorithm Comparisons [olive],
+  Constructors and new keyword -> The Object Class [olive] -> Java Proficiency [olive],
+  Overloading -> Constructors and new keyword, % wish I could add this but layout is not dealing with it well
+  Boolean Logic -> First Order Logic -> Quantifiers -> Math Literacy,
+  Math Functions -> Recurrence Relations -> Math Literacy,
+  Math Sequences -> Math Literacy,
+  File Systems [green] -> Sequencing,
+  Algebra -> Boolean Logic,
+  Objects and Classes -> Code Runners [olive] -> Unit Testing [olive] -> Java Proficiency,
+  Compiling and Running [red] -> Sequencing,
+  File Systems -> Tables -> Relational Data  -> Joins -> Relational Queries -> Data Literacy,
+  Proof by Substitution -> Proof by Induction -> Math Literacy,
+  Broadcast Networking -> Certificate Encryption -> Cyber Literacy,
+};
+\newpage
+\section*{Second Year}\hspace{-5em}
+\tikz \graph [layered layout, nodes={draw,rounded corners}, level distance=15mm, grow=up] {
+  Java Proficiency[olive] -> { Recursive Data -> {
+                                Recursion -> Iteration Recursion Iso -> Invariants -> {
+                                    Recurrence Relations -> Divide and Conquer -> {
+                                        Sorting -> {Merge Sort, Quick Sort, Radix Sort}, Dynamic Programming -> Advanced Programming [red]
+                                    }, 
+                                    Iteration Recursion Iso -> Binary Tree,
+                                    Binary Tree -> Binary Search Tree,
+                                    Binary Tree -> Graphs,
+                                    Binary Tree -> {
+                                        Binary Search Tree -> {
+                                            Priority Queue and Heaps [gray] -> Abstract Data Types [red]
+                                        }, 
+                                        Binary Tree -> COMP3000 [red],
+                                        Graphs [gray] -> {Graph Traversal [gray],
+                                              Graph Applications [gray]
+                                        } -> COMP3010 [red]
+                                        },
+                                        Loop Invariants -> Big oh -> Computability [gray] -> COMP3010 [red], 
+                                        Invariants 
+                                }
+                                },
+            Tables [gray] -> Hash Tables [gray] -> Hash Functions [gray] -> Collision Resolution [gray] -> HPC [red],
+           },
+           Math Literacy [olive] -> Invariants,
+           Java Proficiency -> Inheritance -> Overriding -> Generics -> Lambdas -> Late Binding -> Actors,
+           Late Binding -> Semaphores,
+           Lambdas -> Paralellism,
+           Java Proficiency -> Pointers and Allocation -> Memory Mapping -> Scheduling,
+           Algorithm Comparison [olive] -> Invariants,
+           Recursion Intro [olive] -> Recursion,
+};
+\newpage
+\end{document}
+

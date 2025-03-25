@@ -1,0 +1,41 @@
+\item 
+    Here is an implementation of Binary Search that unfortunately your friend did in a hurry and so didn't have time to test it. It does assume that the input array A is sorted and that the key is an item which might (or might not) be an item occurring in it.
+    
+    \begin{enumerate}
+    \item In the case that key does appear in A, the integer returned should be the smallest index such that A[index] == key.
+    
+    \item In the case that key does not appear in A then the smallest index should be returned such that everything to the left of index is strictly less than key, and everything to the right is at least key. (Note this is a neat way of saying the same thing as 1 in the case that key is in A ....)
+    \end{enumerate}
+    
+    
+    For this exercise you are asked to perform a code review to help your friend improve the design. Concentrate in particular on the coding style, use of variables, comments (or lack thereof), correctness and performance. If you think there might be circumstances under which the program does not compute the right answer then provide an example and try to point to the place in the code that causes the problem. (Hint: consider the cases below.) Write a few tests to highlight problems you find.
+    
+    In your answer point out the problems and places for improvement. (Be polite but firm!) 
+    Show me the tests that you used to find the problems, and make sure that in the corrected code they now work.
+    
+    
+    
+    \begin{verbatim}
+        static int binarySearch(char A[], char key) {
+        int f= 0;
+        int l= A.length;
+         
+        while(f < l) {
+          int mid= (l-f)/2;
+          int x= A[mid];
+          if (x == key) return mid;
+          if (x < key) f= mid;
+          else l= mid;
+        }
+         
+        return f;
+        }
+    \end{verbatim}
+    \begin{itemize}
+    \item when A is empty
+    \item when it's non-empty, and everywhere less than key
+    \item non-empty and everywhere more than key
+    \item non-empty and key is not there but would fit somewhere inside
+    \item key is there exactly once
+    \item key is there more than once
+    \end{itemize}

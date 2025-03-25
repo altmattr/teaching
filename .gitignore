@@ -1,0 +1,10 @@
+*.aux
+*.log
+*.out
+*.fls
+*.dvi
+*.synctex.gz
+*.fdb_latexmk
+**/build/*.pdf
+**/.DS_Store
+COMP2010*/archive/*

@@ -1,0 +1,16 @@
+{\scriptsize
+\begin{tabular}{llll}
+    \hline 
+    \textbf{description} & \textbf{iterative} & \textbf{recursive} & \textbf{Big Oh} \\
+    \hline
+    No loop & $T(n) = c_1$ &  & $O(1)$ \\
+    Normal loop & $T(n) = c_1 + c_2*n$  & $T(n) = C_1 + C_2*T(n-1)$ & $O(n)$ \\
+    Doubled Halving & & $T(n) = T(n/2) + T(n/2)$ & $O(n) $ \\
+    Nested loop & $T(n) = n*n$ & $T(n) = c_1 + c_2*T(n-1)*T(n-1)$ & $O(n^2)$ \\
+    Halving loop & $T(n) = n + n/2 + n/4 + \ldots + 1$ & $T(n) = C_1 + T(n/2) + T(n)$ & $O(\log{n})$ \\
+    Work on both half & $T(n) = 2*(n + n/2 + \ldots + 1)$ & $T(n) = C_1 + T(n) + 2*T(n/2)$ & $O(n \log{n})$ \\
+    Recursion on two  & & $T(n,m) = T(n-1, m) + T(n, m-1)$ & $O(2^{max(n,m)})$ \\
+    Fill in a 2d table & $T(n) = n*m$ & $T(n,m) = n*T(m)$ & $O(n \times m)$ \\
+\end{tabular}
+}
+  

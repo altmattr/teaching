@@ -1,0 +1,14 @@
+{
+	"name": "comp 2010",
+	"image": "ubuntu",
+	"postCreateCommand": "bash '.devcontainer/install.sh'",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"James-Yu.latex-workshop",
+				"vscjava.vscode-java-pack",
+				"ltex-plus.vscode-ltex-plus"
+			]
+		}
+	}
+}

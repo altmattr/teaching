@@ -1,0 +1,137 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\include{latex_setup.tex}
+\usepackage{amssymb}
+
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily}
+
+\title{\color{redish} \vspace{-2em}Assignment One: The last datatype on earth}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-2em}
+\begin{abstract}
+    A villain has come to Java city and they have wiped out all the integers!  They also wiped out all the value types (\lstinline{boolean}, \lstinline{float}, \lstinline{double}, \lstinline{byte}, etc).  They've promised to come after the java standard library and any reference types next.
+\end{abstract}
+
+\begin{wrapfigure}{r}{0.45\textwidth} %this figure will be at the right
+  \centering
+  \includegraphics[width=0.45\textwidth]{villain.jpeg}
+\end{wrapfigure}
+
+\section{Introduction}
+Your task is to start rebuilding civilisation by creating a \lstinline{Church} class which can work just like the integers we lost.  It should have the following functionality:
+\begin{itemize}
+  \item The integer zero is represented as \verb|null|.
+  \item You can make a \lstinline{Church} representing one
+  \item You can make a \verb|Church| from any other Church.  It will represent the number one more than the \verb|Church| it was built from.
+  \item You can perform simple arithmetic (add, subtract, and multiply) with \lstinline{Church} objects.
+\end{itemize}
+
+\section{Starting Point}
+Your trusty side-kick Graal has created a class with the right method signatures to get you started. Graal also creates a test file which tests the basics of the \verb+Church+ data type/class. You will find these in the \lstinline{Graal.zip} file on iLearn.\footnote{Thanks to Microsoft CoPilot for our imagery.}
+
+
+\section{Your task}
+Complete the \lstinline{Church} class so that it passes all the tests written by Graal and matches the specification given below.  To avoid being vaporised by the villain \emph{you must not}:
+\begin{itemize}
+\item Import any libraries
+\item Use any integers, doubles, floats, boolean, or any other types at all.
+\item Use \verb+String+s.
+\item Use any other classes or types at all.
+\end{itemize}
+You have access to all the control flow, the \lstinline{Church} class, and nulls.
+
+\section{Specifications}
+
+Rules
+\begin{itemize}
+ \item Minimum JDK version: JDK 8
+ \item You must attempt the methods in \lstinline{src/Church.java}
+ \item You must pass the tests provided in \lstinline{src/tests/ChurchTest.java}
+ \item You should not hard-code your implementations to these tests cases,
+additional test cases will be used for marking that are trivial for a
+valid implementation.
+ \item You may add your own tests to these files, noting that test files are
+not submitted
+\end{itemize}
+
+The \lstinline{Church} class must implement the following methods (Graal has created the method signatures for you).
+\begin{description}
+\item [constructors] There should be two constructors.  One takes no arguments and sets up the object to represent the number one.  The other takes a \emph{smaller} \lstinline{Church} and represents the number one larger than the smaller \lstinline{Church}.
+\item [equals] Graal has created an equals to override the built-in one and work with tests, but it needs you to complete the more specific \verb|public boolean spec_equals(Church o)| version to work properly.  I can tell you that basically none of your tests will pass without this method so make it your priority.  Graal snuck the last few \verb+boolean+s they could scrounge up just for this purpose.  We have chosen to risk it with these in our test file.  We will destroy the test file if it gets detected.
+\item [incr] Returns a \verb|Church| which represents the number one larger than \verb|this|.
+\item [decr]  returns a \verb|Church| which represents the number one smaller than \verb|this|.  If the number already represented 1, then it goes to zero (\verb+null+).  You can't decrement zero,  attempting to do so should give a null pointer exception.
+\item [plus] A method which takes one argument, the \lstinline{other} \lstinline{Church} which is added to \lstinline{this} \lstinline{Church}. returns a \verb|Church| which represents the number resulting from the addition.
+\item [minus] A method which takes one argument - the \lstinline{other} \lstinline{Church} - which is subtracted from \lstinline{this} \lstinline{Church}. Returns a \verb|Church| which represents the number resulting from the subtraction.  If the second number is greater than or equal the first (i.e. the result should be zero or negative), the result should be zero (i.e. \verb+null+).
+\item [mult]A method which takes one argument, the \lstinline{other} \lstinline{Church} which is multiplied to \lstinline{this} \lstinline{Church}. Returns a \verb|Church| which represents the number resulting from the multiplication.
+\end{description}
+
+Submission requirements
+\begin{itemize}
+  \item You must submit ONLY your \lstinline{Church.java} file to the ilearn assignment 1 submission box.
+  \item Do not rename the submitted file, it must be named \lstinline{Church.java} as provided in the starting template.
+  \item Your \lstinline{Church.java} file must compile. If you see any compilation errors prior to submission, you must fix them. These will show:
+  \item You must NOT make use of any Java standard library packages, classes, or objects. You cannot create equivalents either.
+  \item You must not be at risk of vapourisation by the villain.
+\end{itemize}
+Recommendation: Once you have submitted, redownload your submitted file
+and ensure it is the file you intended to submit. It is worth double-checking by re-running it against the tests and checking if the result is as you expect
+
+\section{Hints}
+This assignment tests  your understanding of, and ability to code, \emph{recursive data types} like the linked list we looked at in lectures.  Your solution \emph{will need to be a recursive data type very much like that linked list}.  You may need to use some imagination to see the similarity, but when you see it, all will be revealed\footnote{The ability to find \emph{isomorphisms} is your superpower, use it to save Java city}.
+
+\begin{wrapfigure}{l}{0.35\textwidth} %this figure will be at the right
+  \centering
+  \includegraphics[width=0.35\textwidth]{graal.jpg}
+\end{wrapfigure}
+
+
+\subsection{Still don't get it?}
+There will be a discussion in the lecture in week 3.  You should watch (and rewatch) that discussion.  You should discuss the discussion with your classmates and your tutor.  You should write out your understanding of the discussion.  If you are still confused after going through these steps, email Matt with a copy of what you wrote up and he will organise a chat to help.
+
+\subsection{Tips}
+You will find the work easier if you write a \verb+toString()+ method for your \verb+Church+ class.  However, this involves using \verb+String+s which is not allowed!  \emph{If} you want to go down this route to help you during your development, be sure to triple check you have removed any sign of \verb+String+s before you submit your code or your grades could get vapourised.
+
+\section{Bonus}
+Get extra chances at the lecture prize draw by posting your thoughts regarding why Graal has called the class \lstinline{Church} to the unit Forum.  There are also extra chances up for grabs for coming up with a good name for our villain or for ourselves (the hero).
+
+\section{Grading}
+Your submitted file will be run against a test program consisting of the tests Graal delivered to you and an additional 6 tests.  Passing each test is worth marks according to the following table.  Note, you will not be given the test script for the additional tests but can guess what they do from the names
+
+\begin{tabular}{lcl}
+  \textbf{test name} & \textbf{provided by Graal} & \textbf{value} \\
+  \hline
+  testEqualsDirectly & $\checkmark$ & 5 \\
+  testEqualsIndirectly & & 5 \\
+  testIncr & $\checkmark$ & 5 \\
+  testIncrTwo & & 5 \\
+  testDecr & $\checkmark$ & 5 \\
+  testDecrTwo & & 5 \\
+  testPlus & $\checkmark$ & 5 \\
+  testPlusTwo & & 5 \\
+  testMinus & $\checkmark$ & 5 \\
+  testMinusTwo & & 5 \\
+  testMult & $\checkmark$ & 5 \\
+  testMultViaEverything & & 10 \\
+  \hline
+  \hline
+  total & & 65 \\
+  \hline
+\end{tabular}
+\vspace{2em}
+
+The following penalties will apply on top of that rubric:
+
+\begin{tabular}{ll}
+\textbf{error} & \textbf{penalty} \\
+\hline
+Use of value type & -30 \\
+Use of String & -30 \\
+Failure to compile & -65 \\
+Importing anything & -20 \\
+Risk of vapourisation & -30 \\
+Submitting a solution generated by someone or something else & -65 \\
+\end{tabular}
+\end{document}
+

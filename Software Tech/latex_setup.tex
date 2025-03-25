@@ -1,0 +1,71 @@
+\usepackage[sfdefault]{FiraSans}
+\usepackage{inconsolata}
+\usepackage{scrlayer-scrpage}
+\renewcommand{\titlepagestyle}{scrheadings}
+\usepackage{graphicx}
+\usepackage{blindtext}
+\usepackage{wrapfig}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage[many]{tcolorbox}
+
+\usepackage{xcolor,sectsty}
+\definecolor{blackish}{RGB}{56,58,54}
+\definecolor{redish}{RGB}{109,41,49}
+\definecolor{red}{RGB}{152,41,50}
+\definecolor{orangeish}{RGB}{188,71,0}
+\definecolor{blueish}{RGB}{25,33,39}
+\subsubsectionfont{\color{blackish}}
+\subsectionfont{\color{blackish}}
+\sectionfont{\color{blackish}}
+
+\rohead{\color{red} Software Engineering: Threshold Concept Map}
+
+
+\usepackage{enumitem}
+
+\setkomafont{author}{\sffamily \small}
+\setkomafont{date}{\sffamily \small}
+
+\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\texttt}
+
+\lstset{basicstyle=\ttfamily}
+
+
+\date{}
+
+\newtcolorbox{note}[1][]{
+  title=Note,
+  width=\textwidth,
+  fonttitle=\bfseries,
+  breakable,
+  fonttitle=\bfseries\color{black},
+  colframe=orangeish!80,
+  colback=orangeish!2
+  #1}
+
+\newtcolorbox{hint}[1][]{
+    title=Hint,
+    width=\textwidth,
+    fonttitle=\bfseries,
+    breakable,
+    fonttitle=\bfseries\color{white},
+    colframe=blueish!80,
+    colback=blueish!2
+    #1}
+
+\newtcolorbox{todo}[1][]{
+  title=!! TODO !!,
+  width=\textwidth,
+  fonttitle=\bfseries,
+  breakable,
+  fonttitle=\bfseries\color{white},
+  colframe=red!80,
+  colback=red!2
+  #1}
+  
+  

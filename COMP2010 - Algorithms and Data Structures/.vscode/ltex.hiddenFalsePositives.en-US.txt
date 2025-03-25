@@ -1,0 +1,1 @@
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QQuestions that ask about linked lists are asking about the concept of linked lists we spoke about in the lecture and which we implemented in our |LinkedList| class.\\E$"}

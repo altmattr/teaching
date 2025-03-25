@@ -1,0 +1,680 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\include{../latex_setup.tex}
+\title{\color{redish} \vspace{-2em}Week 2 Notes: Correctness and performance of programs}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-2em}
+
+\begin{abstract}
+{\bf Summary:}  
+This week we'll be concentrating on correctness of programs; we'll look at using pre- and post-conditions and loop invariants for capturing key correctness criteria. We'll reflect on how these are related to the JUnit tests that you write.
+
+We'll also have a look at performance of programs, covering some of the important theoretical concepts in the study of complexity analysis. We'll  reflect on how they relate to the experimental performance of the algorithms you write.
+\end{abstract}
+
+\begin{itemize}
+\item[$\cdot$] {\bf Book reference}: Drozdek  chapter 2, section 2.1-- 2.2;
+\item[$\cdot$] {\bf Resources}:  Week 2 Code Bundle.
+
+\subsection*{Correctness of programs}
+
+A program \emph{invariant} is a relationship between the program variables \emph{which does not change}. 
+An invariant is used to establish the correctness of loops. A program \emph{variant} is a function of the program variables which does change. It is used to establish that your loop terminates. Loops are said to be partially correct if the invariant establishes that provided they do terminate then the correct values are computed; loops are said to be totally correct of they are partially correct and they terminate.
+
+%\subsubsection*{The dishwasher problem: invariants in everyday life}
+%This section poses a small everyday problem illustrating how to use invariants in logical thinking; the latter is  crucial for good algorithm design!
+%
+%\begin{quotation}
+%In  a busy household dishes are periodically added to the dishwasher until it fills up, at which point it can be   switched on to clean the dishes inside.  After cleaning the dishes should be removed ready  for a new load.
+%
+%The social dynamics of the household environment mean that the dishwasher is rarely completely emptied after it has been through its washing cycle, so that  sometimes dirty dishes are added when some clean dishes are still inside.   This can happen frequently if the person emptying the dishwasher is interrupted in their task.  Separating the dirty dishes from the clean ones is not an easy task, and if this happens the whole load has to be rewashed.
+%
+%
+%\bigskip
+%
+%Is there a foolproof protocol which ensures that dishes never become mixed up? You are not allowed to inspect all the dishes (see below what you are allowed to do). How would you prove that your protocol is correct? 
+%\end{quotation} 
+%
+%This is a classic example of a ``distributed system" where the overall tasks are made up of ``atomic" subtasks, carried out independently by a number of agents. Other examples of distributed systems include e.g. internet protocols, and hybrid systems (cars, trains etc.). Distributed systems are notoriously difficult to get right because the independent agent behaviour can interfere with each other leading to annoying results (as in the dishwasher example).
+%
+%The dishwasher atomic actions are the following:
+%
+%\begin{itemize}
+%\item [$\cdot$] Add a dirty dish (if there is room and the dishwasher is off);
+%\item [$\cdot$] Remove any dish (if there is one inside and the dishwasher is off);
+%\item [$\cdot$] Switch the dishwasher on;
+%\item [$\cdot$] Add dishwasher detergent (if the dispenser is empty and the dishwasher is off);
+%\item [$\cdot$] Check to see whether the dishwasher is on;
+%\item [$\cdot$] Check to see whether the dispenser is empty;
+%\item [$\cdot$] Check to see whether the dishwasher is full or empty.
+%\end{itemize}
+%
+%{\bf Problem:} Design a small algorithm which consists of the above actions so that the clean and dirty dishes never get mixed up. 
+%
+%[Hint: Make that an invariant property and decide which action can break the invariant and what special conditions to impose to ensure this cannot happen.]
+%
+%% Answer: The invariant can only be broken by adding a dish, so ensure that dishes are added only when dirty ones are there. Use the dispenser to toggle when you can add a dish: if the dispenser is full then dishes can be added, if it is empty then dishes can only be removed.
+%
+%%\begin{itemize}
+%%\item [$\cdot$]  If dishwasher is full, switch on.
+%%\item [$\cdot$]  If dishwasher is empty and dispenser is empty, add detergent.
+%%\item [$\cdot$] If dishwasher is off and not full, and the dispenser is full, add a dirty dish.
+%%\item [$\cdot$]  If the dishwasher is off and the dispenser is not empty and the dispenser is empty, remove a dish.
+%%\end{itemize}
+
+\subsection*{Simple invariants for loops}
+
+In your programming the same ideas apply.
+
+\begin{verbatim}
+int i=0;  
+int sum=0;
+while ( i < N ) {
+   i= i+1;
+  sum= sum + i;
+}
+\end{verbatim}
+
+Trace through the algorithm and tabulate $i$, {\tt sum} and $\sum_{0\leq j \leq i} j$ to  show that ${\tt sum} == \sum_{0\leq j \leq i} j$ is indeed an invariant. 
+
+
+\subsection*{Using your invariants}
+
+Once you've found a program invariant, to use it to
+check that your program is correct, you need to do three things.
+
+\begin{enumerate}
+\item Check that the invariant is true for the initialisation of the variables (just before the first iteration);
+
+\item Check that if the invariant holds, and the loop guard holds (ie another iteration is possible), then the invariant is still true after the iteration;
+
+\item Check that if the guard is false then the invariant implies (eg is the same as) the post condition.
+\end{enumerate}
+
+\subsubsection*{Computing $x^N$}
+
+We'll look at two implementations of raising to the power problem. The first is easy to understand but slow, the second is harder to understand but fast. We'll apply some invariant reasoning to ensure we get it right.
+
+Given $x$ and $N$, compute $x$ raised to the power of $N$.
+
+\begin{itemize}
+  \item[$\cdot$] if $x = 2$ and $N= 3$, output $8$
+   \item[$\cdot$]      if $x= 10$ and $N= 5$, output $100000$
+\end{itemize}
+
+\begin{verbatim}
+// POST: output x^N
+int power (int x, int N) {
+  int answer= 1;
+  for (int i= 0; i < N; i++)
+    answer= answer*x
+  return answer;
+}
+\end{verbatim}
+
+Complexity $O(N)$.
+
+There's a much faster way to do this, but care must be taken to get it right. Consider the following rules.
+
+\begin{itemize}
+  \item[Rule 1: ] If $N$ is even then $x^N = x^{N/2} \times x^{N/2}$.
+
+   \item[Rule 2: ] If $N$ is odd then $x^N = x^{N-1} \times x$.
+\end{itemize}
+
+To use this let $a$ and $b$ be variables which record whether we are
+using Rule 1 (on $a$) or Rule 2 (on $b$).   In general we need to make sure that $a, b$ satisfy the following equation $a^n \times b = x^N$, and we'll write a program to make sure that this becomes a loop invariant!
+
+\begin{verbatim}
+// PRE: x > 0; N >= 0
+// POST: returns x^N
+int fastPower (int x, int N) {
+     int a= x; int b= 1; int n= N;
+     while (n > 0) {
+       if (n%2 == 0) {a= a*a; n= n/2;}
+       else  {b= a*b; n= n-1;}
+     }
+     return b;
+}
+\end{verbatim}
+
+Complexity: $O(log N)$.
+
+\subsubsection*{Correctness of {\tt fastPower}}
+
+How do we know this is right? Assuming that $a^n \times b = x^N$ is a program invariant, what we want to check is that if it is true before we enter the loop for the first time, then we just need to check that it implies the post condition on termination.
+
+It is true initially, because we let $a=x$, $b=1$ and $n=N$, and check that $x^N = a^n\times b = x^N \times 1$ is true (which is is since  $x^N \times 1= x^N$). On termination we observe that $n=0$, and the invariant in this case reduces to $x^N = a^0 \times b = 1\times b= b $. Thus on termination we know that $b= x^N$ which is the correct value to return to satisfy the postcondition.  
+
+
+\subsection*{Using variants} 
+A variant is an integer valued function of the program variables, that should either always increase, or always decrease after each complete iteration. If it is a decreasing variant, it should never decrease below zero; if it is an increasing variant then there should be a point beyond which it cannot increase. If exactly one of these properties hold of your variants then your program is guaranteed to terminate. If you find that your chosen variant does not always decrease then your program might go into an infinite loop. 
+
+
+
+
+\subsection*{Correctness and JUnit testing}
+
+The problem of testing is that even if your programs pass all the tests you write, it doesn't mean that they work in all cases! The pre- and postconditions for your methods should try to cover all cases and actually should be considered as the specification of what the implementation is trying to live up to. Where such specifications are available you can improve your tests by trying to make them match up with representative cases described by the specification.
+
+For example in {\tt fastPower} the pre-condition {\tt  x >= 0; N >= 0} has infinitely possible representations and we can't test them all.  But only really four of them are representative: the various combinations of  {\tt x == 0}, {\tt x > 0} and  {\tt N == 0}, {\tt N > 0}; in particular the cases where {\tt x} or {\tt N} are somewhat special and these are the places where we frequently find errors in programs.
+
+Does the given implementation of {\tt fastPower} do the right thing in all cases?
+
+\subsection*{Theory of time complexity}
+
+How fast a particular algorithm runs on a computer depends on things like the clock speed of the computer, how big the input is, and the design of the algorithm.  
+
+Time complexity is the measurement of efficiency of a particular implementation of a problem, independent of the clock speed and input.  (As you have seen from your own experimental performance testing, it is not easy to get an accurate measurement.)
+
+We use ÒBig OhÓ notation to give a quantitative indication of the efficiency of a program relative to the size of the input.  We use worst-case analysis as a way to compare  different implementations of the same problem: thus we only compare them for their respective ÒworstÓ (ie slowest) inputs, and only for very large values.
+
+Big Oh notation is used to estimate the gross features of the growth of time complexity relative to the input size. The most common patterns are:
+
+\begin{itemize}
+\item [$\cdot$]  \emph{linear time}  -- $O(n)$ 
+
+Examples: Simple linear searches e.g. in arrays or lists; comparison of list-like structures.
+
+\item [$\cdot$]   \emph{quadratic time}  -- $O(n^2)$
+
+Examples: Simple sorting e.g. Bubble sort, selection sort, but also quick sort.
+
+\item [$\cdot$]  \emph{logarithmic time}  -- $O(\log n)$
+
+Examples include searching on sorted structures, e.g. Binary search on a sorted array.
+
+\item [$\cdot$]  \emph{exponential time}  -- $O(2^n)$
+
+Many of the most difficult problems are exponential which means that for large input values the computing time becomes infeasible. Digital security relies on the existence of such problems.
+
+\item [$\cdot$]  \emph{n-log n time}  -- $O(n\log n)$
+
+Examples include some of the faster sorts, such as merge sort (but not quick sort!).
+\end{itemize}
+
+\subsection*{Big ``Oh" arithmetic} 
+Let $f(n), g(n)$ be integer-valued functions.
+
+Define $O(f(n)) \ll O(g(n))$ if there are constants $k\geq 0$ and $N\geq 0$ such that for all $n \geq N$,   we have $k*g(n) \geq  f(n)$.
+
+In this definition we don't care about the actual value of the constants. That is because for very large $N$ the value of $f(N)$ in  comparison with $g(n)$ will be determined by their dominating terms. So:
+
+$$ O(\log n) \ll  O( n) \ll  O(n\log n) \ll O(n^2) \ll O(2^n) $$
+
+The following will help you figure out $O(f(n))$ for a given function $f(n)$.
+
+\begin{itemize}
+\item [$\cdot$] Constants are all equivalent to $O(1)$
+
+\item [$\cdot$] If  $O(f(n)) \ll O(g(n))$ then $O(f(n) + g(n)) = O(g(n)$
+
+\item [$\cdot$] Multiplication is easy:   $O(f(n) \times g(n)) = O(f(n)) \times O(g(n))$
+
+\item [$\cdot$] Constants donÕt matter:   $O(k\times f(n)+c) = O(f(n))$
+
+\item [$\cdot$] The largest growing term is
+the only one that matters. So for example,   $O(n\times n + log(n)) = O(n\times n)$
+\end{itemize} 
+
+\subsection*{Computing big Oh}
+Decide which are the most expensive operations.
+Compute approximately how many times they are used in your implementation.
+
+The following patterns will help you. In these examples we assume that the array lookups are the most expensive.
+
+\subsubsection*{Linear time}
+
+Notice that the distance to finishing is reduced by a constant amount, with possibly only a constant number of inner iterations, at each outer iteration.
+\begin{itemize}
+\item [$\cdot$] {\tt for(int i=0; i < n; i++) { x=  A[i];}}
+
+\item [$\cdot$] {\tt for(int i=n; i > 0; i--) { x=  A[i]; }}
+
+\item [$\cdot$] {\tt for (int i=0; i < n ; i= i+2) { x=  A[i]; }}
+
+\item [$\cdot$] \begin{verbatim}
+ for (int i= 0; i < n ; i++) 
+   for (int j= 0; j < 2  ; j++) {x=  A[i][j];} 
+    \end{verbatim}
+
+\item [$\cdot$]\begin{verbatim}
+ for (int i=1; i < n ; i=2*i)
+   for (int j=i; j < 2*i; j++) {x=  A[i][j];}
+ \end{verbatim}
+\end{itemize}
+
+
+\subsubsection*{Log time}
+
+Notice that the distance to finishing is reduced by approximately halved each time; in the case of a nested loop there are only a
+constant number of inner iterations at each outer iteration.
+
+\begin{itemize}
+\item [$\cdot$] {\tt for(int i=1; i < n; i=2*i) { x= A[i]; }}
+
+\item [$\cdot$] {\tt for(int i=n; i > 0; i=i/2) { x=  A[i]; }}
+
+\item [$\cdot$] {\tt for (int i=1; i < n ; i= 3*i) { x=  A[i]; }}
+
+\item [$\cdot$] \begin{verbatim}
+ for (int i= 1; i < n ; i=i*2) 
+   for (int j= 0; j < 2  ; j++) {x=  A[i][j];} 
+ \end{verbatim}
+\end{itemize}
+
+\subsubsection*{Quadratic time}
+
+There are normally nested iterations, with the number of inner iterations determined proportional to the number of outer iterations that have occurred.
+
+\begin{itemize}
+\item [$\cdot$] {\tt for(int i=1; i < n*n; i++) { x= A[i]; }}
+
+\item [$\cdot$] \begin{verbatim}
+ for (int i= 1; i < n ; i++) 
+   for (int j= 0; j < n  ; j++) { x=  A[i]; }
+ \end{verbatim}
+
+\item [$\cdot$] \begin{verbatim}
+for (int i= 0; i < n ; i++) 
+   for (int j= 0; j < i  ; j++) { x=  A[i]; }
+ \end{verbatim}
+ 
+\item [$\cdot$]\begin{verbatim}
+ for (int i=n; i > 0 ; i--) 
+     for (int j= i; j > 0  ; j--) { x=  A[i]; }
+ \end{verbatim}
+\end{itemize}
+
+\subsubsection*{N log N time}
+
+A combination of halving the distance to finishing and doing n inner iterations each outer iteration.  (Or the other way about!)
+
+
+\begin{itemize}
+\item [$\cdot$]\begin{verbatim}
+for (int i= 0; i < n ; i++) 
+   for (int j= 1; j < n  ; j=2*j) { x=  A[i][j]; }
+ \end{verbatim}
+
+\item [$\cdot$]\begin{verbatim}
+for (int i= 1; i < n ; i=2*i) 
+   for (int j= 0; j < n  ; j++) { x=  A[i][j]; }
+ \end{verbatim}
+ 
+\item [$\cdot$]\begin{verbatim}
+for (int i=1; i < n ; i=2*i) 
+     for (int j= i; j < n  ; j++) { x=  A[i][j]; }
+ \end{verbatim}
+
+\end{itemize}
+
+\end{itemize}
+
+\subsection*{Case study: Breaking RSA cryptography}
+In the news recently some research analysing some of the practical problems involved in generating keys for RSA public key encryption. We will look at how the researchers managed to break thousands of private keys using some of the simple techniques of the sort that you have seen before.
+
+The idea is to use the greatest common divisor, which has faster complexity than exponential, because of Euclid's algorithm.
+
+ \begin{verbatim}
+	int gcdIterative (int M, int N) {
+		// POST: Returns the greatest common divisor of M and N
+		int n= N; int m= M;
+		while (m!=n) {
+		 if (m > n) m= m-n;
+		 else n= n-m;
+		}
+		return n;
+	}
+\end{verbatim}
+
+This is correct because of the invariant: $\textit{gcd}(m, n) = \textit{gcd}(M, N)$.
+This is $O(N + M)$.
+
+
+% In lectures pose the problem and set is as a special exercise.
+\subsubsection*{Case study: VLSI chips design}
+As we have seen, invariants are particularly good for intricate algorithms which have been introduced to improve performance.  Consider the following problem.
+
+\begin{quotation}
+A VLSI chip manufacturer has $n$ supposedly identical VLSI chips that are potentially capable of testing each other. His test jig accommodates two chips at a time, and the result is either that they are the same, or that they are different. 
+
+We have been hired to design an algorithm to distinguish {\bf good} chips from {\bf bad} ones, using as few comparisons as possible --- this is because the test jig is slow, and the manufacturer wishes to speed up overall development. The trouble with {\bf bad} ones is that they might test the same OR different. However all {\bf good}  do test the same (as each other),  and all{\bf bad} test different from all {\bf good} . Because of the manufacturing process we know that more than half of the manufactured chips fall into the ``good" category. 
+\end{quotation}
+
+A ``brute force" solution to this problem takes each pair of chips and tests them against all the others, selecting those which test ``same" for more than half. This involves $O(n^2)$ comparisons. 
+
+We can do much better -- in fact solving the problem in $O(n)$ comparisons-- by thinking harder.
+
+ Let $S$ be the complete set of chips to test; Let $C$ be a subset of $S$. We want to ensure that all items in $C$ are the same as each other (i.e. are either all good OR all bad). 
+
+Observe that  if $C=S$ then because we know that $S$ has more than half of the ``good" transistors, and that $C$ contains transistors that are the same as each other that in this case $S$ can only contain good chips.
+
+
+Here are the steps in the pseudocode; we use the invariant  to  check that it works.
+
+\begin{enumerate}
+
+\item If $C$ is empty, then add any element of $S$ to it --- we know that any chip is the same as itself. 
+
+\item If $C$ is not empty, then select some element $c$ from $C$
+and some element $s$ from $S\backslash C$, and test them in the test jig.
+
+\item If $s=c$ then add $s$ to $C$;
+
+\item If $s !=c$ then ÒremoveÓ both $s$ (from $S$) and $c$ (from $C$).
+
+\item Repeat from step 2.
+\end{enumerate}
+
+The \emph{invariant} for this program is that there are always at least $|S|/2+1$ good chips in $S$  and, all chips in $C$ are the same as eachother (i.e. are either all good or all bad). (The first condition implies that $S$ is nonempty: why?)
+
+The \emph{variant} is the size of $S\backslash C$ (i.e. $|S\backslash C|$).
+
+We will discuss these ideas with respect to other examples in lectures, including those found in the sample programs for week 2.
+
+%.......................
+
+%Raise to the power: fast and slow.
+
+
+
+
+\end{document}
+
+\section*{Exercises}
+
+Please note that there are many exercises for you to look at if you wish. We will direct you to particular exercises to complete for the submission in iLearn (submission assessment) and for participation in the workshop. These exercises are designed to help you engage in the material and will be the basis for subsequent written assessments including the test later in the semester and the final written examination.
+
+Submission exercises will be marked {\bf Submission}.
+
+\begin{enumerate}
+
+\item {\bf Submission}: Please submit the solution to this exercise in iLearn by the due date.
+
+This question is about the linked list classes {\tt SLLNode} and {\tt SLList} discussed in lectures last week. 
+
+\begin{enumerate}
+\item Consider the following specification for a program {\tt deleteLast} inside of the class {\tt SLList}.
+
+\begin{verbatim}
+void deleteLast() 
+// Postcondition: Removes the very last node from the list 
+//  (leaving all other nodes in the list).
+\end{verbatim}
+
+Given the following ``before execution'' diagrams, sketch the corresponding  ``after execution'' diagrams, i.e. assuming the three initial configurations for the input list, what are the corresponding configurations after executing {\tt deleteLast}.
+
+ \begin{center}
+\includegraphics[height=15em]{listDiagrams}
+\end{center}
+
+\item Now fill in the gaps indicated by {\tt ???} to complete the implementation of {\tt deleteLast}.
+
+\begin{verbatim}
+void deleteLast()  {
+  if (head!= null) { // The list has no nodes
+    if (head.next==null) { // The list has one node
+         head= ???
+     }
+     else { // The list has at least two nodes
+        SLLNode temp= ??? // search for the next but last node....
+        while(temp.next.next!=null) {
+            temp= ???
+         } // Hint: what node does temp point to now?
+         temp.next= ???
+   }
+  }
+}
+\end{verbatim}
+\end{enumerate}
+
+\item In the {\tt SLList} class, change the program  {\tt find} so that it returns the reference of the element found if it is in the list, rather than the {\tt info} of the element.
+
+\item
+Recall the {\tt SLLNode} class discussed in the week 1 lectures. Consider using this to implement a {\tt SLLStack} and {\tt SLLQueue} data structures, where {\tt SLLStack} represents a stack and {\tt SLLQueue} represents a queue. Both were discussed briefly in lectures and you can look at more information at \url{https://en.wikipedia.org/wiki/Stack_(abstract_data_type)} and \url{https://en.wikipedia.org/wiki/Queue_(abstract_data_type)}.
+
+A basic set up for each is as follows:
+
+\begin{verbatim}
+class SLLStack {
+  SLLNode top= null; // Records the top element of the stack
+  SLLStack () { // Default constructor
+  }
+  
+  void sPush(Object x) { ... } // Creates a SLLNode containing
+                                    //  x and adds it to the top of the stack
+  Object sPop() {...} // Removes the top node (if it exists) of the stack 
+                        // and returns the value (of the removed node)
+}
+
+class SLLQueue {
+  SLLNode tail= null; // Records the last element (tail) of the queue
+  SLLQueue () { // Default constructor
+  }
+  
+  void qPush(Object x) { ... } // Creates a SLLNode containing 
+                                    // x and joins it to the tail of the queue
+  Object qPop() {...} // Removes the head node (if it exists) of the 
+                        // queue and returns the value (of the removed node)
+}
+\end{verbatim}
+
+\begin{enumerate}
+\item Draw (successive) diagrams of a stack after each call of {\tt sPop, sPush}. Indicate where the pointer {\tt top} is after each method call.
+\begin{verbatim}
+SLLStack myStack= new SLLStack();
+myStack.sPush(1);
+myStack.sPush(2);
+myStack.sPush(3);
+int x= myStack.sPop();
+\end{verbatim}
+
+\item Draw (successive) diagrams of a stack after each call of {\tt qPop, qPush}. Indicate where the pointer {\tt tail} is after each method call.
+\begin{verbatim}
+SLLQueue myQueue=  new SLLQueue();
+myQueue.qPush(1);
+myQueue.qPush(2);
+myQueue.qPush(3);
+int x= myQueue.qPop();
+\end{verbatim}
+
+\item Consider implementing the {\tt qPop} method \emph{using the given specification} of the {\tt SLLQueue} class given. Write down a problem with the given specification that could cause performance issues in large queues. Is there any improvement to the given design which would mitigate the problem you have identified? Justify your answer.
+
+[Note: You do not need to provide an implementation.]
+\end{enumerate}
+
+\item 
+In this activity you must work collaboratively with a friend to develop correct code for the programming tasks set out below. They are related to the linked list class discussed in lectures.
+
+One person must take on the role of programmer, and the other the  role of tester. %Swap roles so that everyone gains the experience both as a tester and a programmer.
+
+In the role of programmer you must look at the specification and write a method in the linked list class that implements it. In the role of tester, without writing the code (!) you must write a set of JUnit tests that a correctly-written program would pass.
+
+Make sure that the testers and programmers do not  collaborate whilst writing the code and tests, but when both teams are done try out the tests on the code. Look at eachother's work and comment, wrt the following questions: Did the code pass the tester's tests? Did the tests cover all the main cases? To help with writing the tests (and writing the code!) try to draw ``before'' and ``after'' diagrams to help you figure out the various cases you must cover.
+
+\begin{itemize}
+%\item  Write a program that takes two linked lists (l1 and l2) and interleaves them so that the returned list is the first node from l1, followed by the first node from l2, then the second node from l1 followed by the second node from l2 etc. If any nodes are left after the interleaving then they should be appended.
+%
+%{\tt public SLList interleave (SLList l1, SLList l2);}
+
+\item Write a program that takes a linked list l1 of integers, and an integer x and removes all the instances of x from the list, leaving the remaining nodes connected in the same relative order as they were before.
+
+
+{\tt public SLList removeALL (SLList l1, int x);}
+\end{itemize}
+
+
+%What to submit:
+%
+%Submit the code and tests written in the group exercise  along with short answers to the above questions.   Please include comments describing your design and the and tests.
+%
+%You may submit either the tests or the code depending on which role you took. 
+%
+%If you cannot make it to class and therefore are working on your own, please submit solutions for one of the programs and write both the code and tests for your choice.
+
+\item How much does the ice in a hockey rink weigh? 
+
+For this question, getting exactly the right answer is not the point (although it's good when it's in the ``ball park").
+Questions like these help you to practise thinking about a problem and to define the assumptions that need to be
+made to give a reasonable answer. In your group, discuss some assumptions you can make to enable you
+to do a ``back of the envelope" calculation. In your solution list the assumptions that you made in order to
+come up with your answer.
+
+Note also that in ``real life" most problems are ill defined (such as this one) and to be a good problem
+solver and critical thinker, you need to be able to formulate the problem in a way that gives something of
+a meaningful (if not always useful!) answer.
+
+
+\item 
+Here is an implementation of Binary Search that unfortunately Annabelle did in a hurry and so didn't have time to test it. It does assume that the input array A is sorted and that the key is an item which might (or might not) be an item occurring in it.
+
+\begin{enumerate}
+\item In the case that key does appear in A, the integer returned should be the smallest index such that A[index] == key.
+
+\item In the case that key does not appear in A then the smallest index should be returned such that everything to the left of index is strictly less than key, and everything to the right is at least key. (Note this is a neat way of saying the same thing as 1 in the case that key is in A ....)
+\end{enumerate}
+
+
+For this exercise you are asked to perform a code review to help Annabelle improve her design. Concentrate in particular on the coding style, use of variables, comments (or lack thereof), correctness and performance. If you think there might be circumstances under which the program does not compute the right answer then provide an example and try to point to the place in the code that causes the problem. (Hint: consider the cases below.) Write a few tests to highlight problems you find.
+
+In your answer point out the problems and places for improvement. (Be polite but firm!) 
+Show me the tests that you used to find the problems, and make sure that in the corrected code they now work.
+
+
+
+\begin{verbatim}
+    static int binarySearch(char A[], char key) {
+    int f= 0;
+    int l= A.length;
+     
+    while(f < l) {
+      int mid= (l-f)/2;
+      int x= A[mid];
+      if (x == key) return mid;
+      if (x < key) f= mid;
+      else l= mid;
+    }
+     
+    return f;
+    }
+\end{verbatim}
+\begin{itemize}
+\item when A is empty
+\item when it's non-empty, and everywhere less than key
+\item non-empty and everywhere more than key
+\item non-empty and key is not there but would fit somewhere inside
+\item key is there exactly once
+\item key is there more than once
+\end{itemize}
+
+For an extra challenge, once you've cleaned up Annabelle's code, can you find an invariant for the loop
+which would help convince her that you've cleaned it up correctly?
+
+
+\item  You have been asked to implement the software for a large company's employee database. The database should store the employees' names, employee id's, their roles, salaries, holiday allowances etc. The company has a huge number of employees but a low turnover (employees rarely join or leave). However on a day-to-day basis a large number of employee records need to be looked up, checked and revised. 
+
+Discuss the sequential data structure that you would choose to ensure that the average processing time over a month is as low as possible. 
+
+When you have decided how the data structure should be arranged, think about the resources you need for adding, deleting and looking up an item. State which operations (out of adding/deleting/looking up) take the most or least time, suggesting a Big Oh estimate for each relative to the arrangement of data you have selected.
+
+
+\item Work out the big Oh equivalent of the following functions.
+
+\begin{enumerate}
+\item $x^2 + 100x$
+\item $x\times (4x + 20)$
+
+\item $400$
+
+\item $x^2 + \log x + 11$
+\end{enumerate}
+
+\item Consider the following small program:
+ 
+ \begin{verbatim}      
+       int SumBetween (int X, int Y)
+       //  pre  :  X <= Y
+       //  post : returns the sum X + (X+1) + ... + Y
+       
+       {
+          int sum = 0;
+          for (int i=X; i!=Y+1; i++)
+             sum += i;
+       }
+    \end{verbatim}
+    
+\begin{enumerate}
+\item    State the loop invariant. (Hint: Use the example for summing the numbers between 0 and N  discussed in lectures.)
+ \item   Show that the loop invariant is established by the initialization.
+  \item  Verify that the loop invariant is preserved by each iteration of the loop.
+  \item  Show that the loop invariant and the termination condition imply the post-condition. 
+  \item Assuming that addition is the most expensive operation, what is the complexity in big oh notation of this program?
+\end{enumerate}
+
+\item Consider the code for binary search given in this week's activities. Study the specification for this method so that you understand exactly what it is supposed to achieve. 
+
+Write some JUnit tests so that if the binary search were correct, the code would pass your tests. In fact the code given contains (at least) three errors (that I know about).  Try to make your tests uncover the problems.
+
+Hard: Write an invariant for the recursive method which if satisfied would prove that the program is correct. Try to make it help you detect how to correct the program.
+
+[Note: This question is about writing tests to match the specification; when you report that you have found an error, you must state how your JUnit test detected the error.]
+
+
+\item Consider the implementation below for Insertion Sort, which sorts an array into descending order.
+\begin{enumerate}
+\item Trace the algorithm for the array {\tt A = \{2,1,5,0,6\}}, and {\tt n=5}; make sure you keep track of the array after each inner and outer iteration. In your trace, draw a rectangle around the array after each complete iteration of the OUTER loop (see (++) in the code). 
+
+\item Verify that the array portion {\tt A[0..j-1]} is sorted after each complete iteration of the outer loop, i.e. underline that portion of the array and check that it is sorted.  (Note that {\tt A[0..j-1]} means ``the portion of the array between, and including, indices {\tt 0} and {\tt j-1}.) 
+
+
+\item Now check that the invariant for the outer loop is established (made to be true) by the initialisation of the variable j; i.e. substitute the initial values of the relevant variables into the invariant statement and observe that it is true.
+
+\item Finally deduce that the postcondition is satisfied after the outer loop has terminated. 
+
+[Hint: what is the value of {\tt j} on termination? Substitute into the invariant.]
+
+\end{enumerate}
+
+\begin{verbatim}
+void insertion_sort(int array[], int n)  
+ // PRE: n is the length of array
+ // POST: array is sorted
+{
+     int i, j, key;
+       for(j = 1; j < n; j++)    //Notice starting with 1 (not 0)
+     // Invariant for the outer loop: array[0..j-1] is sorted, descending order
+       {
+           key = array[j];
+           for(i = j - 1; (i >= 0) && (array[i] < key); i--)
+           {     //Move smaller values up one position
+              array[i+1] = array[i];
+            }
+           array[i+1] = key;    //Insert key into proper position (++)
+       }
+      return;
+}
+\end{verbatim}  
+       
+
+\item One of the tricks to designing algorithms is to reuse strategies from similar problems. 
+The following question concerns an application of binary search to a different problem. The reason we can use binary search is because the problem can be thought of as searching an ordered array of integers, even though we don't actually implement the array.
+
+ The integer square root of an integer $n$ is defined to be the integer $m$ such that $m^2 \leq n < (m+1)^2$. 
+
+Use a binary search strategy to write a function to find the integer square root. 
+
+[Hint: Consider the sorted array {\tt [0, 1, 2, ...., n]}, and look for the element that matches the rule for being  integer square root.]
+
+\item Recall the pseudocode from lectures for identifying a good VLSI chip. The idea can be reused to finding the majority item in a list, where the majority is defined by the element in a list of size $n$ which occurs at least $n/2+1$ times. Write a linear-time program to find the majority element in an array. What is the invariant of your loop?  What is the variant of your loop? Explain why your design has linear time performance.
+
+Write JUnit tests to check your program.
+
+\item A celebrity is someone that everyone knows, but who knows no one. Find an efficient algorithm for determining whether or not a group of n people contains a celebrity, based on asking questions of the form ``Excuse me x, do you know y?" What is the time complexity of your solution?
+
+[Hint: what can you can conclude about the celebrity-ness of x or y if x answers "yes"; what can you conclude if he says "no".]  
+
+\end{enumerate}
+
+\end{document}

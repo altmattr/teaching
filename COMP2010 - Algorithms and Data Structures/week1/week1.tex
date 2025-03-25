@@ -1,0 +1,361 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+\usepackage[sfdefault]{FiraSans}
+\usepackage{inconsolata}
+\usepackage{scrlayer-scrpage}
+\renewcommand{\titlepagestyle}{scrheadings}
+\usepackage{graphicx}
+\usepackage{blindtext}
+\usepackage{wrapfig}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+
+\usepackage{xcolor,sectsty}
+\definecolor{blackish}{RGB}{56,58,54}
+\definecolor{redish}{RGB}{109,41,49}
+\definecolor{red}{RGB}{152,41,50}
+\subsubsectionfont{\color{blackish}}
+\subsectionfont{\color{blackish}}
+\sectionfont{\color{blackish}}
+
+\rohead{\color{red} COMP2010 Algorithms and Data Structures}
+
+
+\usepackage{enumitem}
+
+\setkomafont{author}{\sffamily \small}
+\setkomafont{date}{\sffamily \small}
+\title{\color{redish} \vspace{-2em}Week 1 Notes: Recap, and an overview of what's to come}
+
+\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\texttt}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-2em}%\input{proposal.inc}
+
+\begin{abstract}
+{\bf Summary:}  
+A recap of simple Java, and what you need to get started. Looking over some basic data structures (Linked lists) and algorithmic implementation (recursion). A discussion of why we care about the theory of algorithms and how to use this knowledge in the design and implementation of large resource-intensive applications.
+\end{abstract}
+
+\begin{itemize}
+\item[$\cdot$] {\bf Book reference}: Chapters 5 \& 6 - Data Structures and Algorithms in Java, 2nd Edition by Robert Lafore;
+\item[$\cdot$] {\bf Resources}:  Program bundle containing sample programs discussed in lectures.
+
+\item[$\cdot$] {\bf Practical and tutorial exercises}:   {\bf NO mixed classes in Week 1}. 
+
+
+\item[$\cdot$] {\bf What you need to submit by Sunday midnight end of Week 1}:  There is {\bf nothing to hand in this week}. Do make sure however that
+you are up to speed with your practical programming in Java using VSCode.  If you are in doubt, please try some of the small programming exercises at the end of these notes and contact your tutor (during week 2) or attend the Drop-in Centre if you had technical difficulty completing them.
+\end{itemize}
+
+
+\subsection*{Quick revision of Java (also for people who studied C++)}
+
+Although different programming languages appear to be very different, they often share some basic core principles. C++ and Java for example share some basic structure (and even syntax), so if you are already familiar with one of them (eg  C++ that you learned in previous years) it's worthwhile reviewing what those core principles are: it will make learning the new language (i.e. Java) much simpler!
+
+
+
+\vspace{0.5cm}
+
+Two of the key ideas to remember when programming in Java is that first, whenever you write a program, you will be required to create a class; second is that all variables (apart from basic types) 
+are actually references, and so a bit like C++'s ``pointer" variables.  This means in method calls, for example, the variables are passed by value (it's just that the value is a reference to memory where the object is located). 
+
+These ideas are actually present in C++, the only difference is that \emph{in Java they are fundamental}. Once you have understood these concepts and their implications however, many of the basic programming features in C++ transfer quite simply to Java.
+
+The table below sets out a crib for some of these core principles shared by both Java and C++. For both C++ and Java, the basic libraries and examples of syntax are given. The first tutorial exercises (for completion by the end of Week 2) will reinforce these core language principles so that, if this is your first time programming Java, you should be able to use what you already know to help your learning.
+
+\begin{figure}
+
+\noindent\makebox[\textwidth]{%
+\begin{tabularx}{\textwidth}{|c|X|X|}
+%\begin{tabular}{| c || c | c |}
+\hline
+
+Language feature & C++ & Java \\
+\hline\hline
+
+``main" program & \begin{tabular}{l} standalone method:\\ {\tt int main() \{ .. \}} \end{tabular}& \begin{tabular}{l}method as part of a user-defined class \\ {\tt public static  void main() \{.. \}}\end{tabular} \\
+\hline
+
+Output & {\tt cout << "a string" << endl;} & {\tt System.out.println("a string" + '$\backslash$n');}\\
+
+\hline
+
+
+Simple variables & {\tt int x= 0; char ch= 'a';} & {\tt int x= 0; char ch= 'a';} \\
+
+\hline
+
+for-loops & {\tt for(int i= 0; i< 3; i++) \{x=x+i;\}} &  {\tt for(int i= 0; i< 3; i++) \{x=x+i;\}}\\
+
+\hline
+
+strings: use & \begin{tabular}{l} Must include a library: \\{\tt $\#$include<string>}\end{tabular} & \begin{tabular}{l}  Library: \\{\tt import java.lang.String;} \end{tabular}\\
+
+\hline 
+
+strings: declaration & {\tt string x;  x= "abc";} & \begin{tabular}{l}  {\tt String x= new String; x= "abc";}\\ OR,\\ {\tt String x;  x= "abc";}  \end{tabular}\\
+
+\hline
+
+Arrays: declaration & {\tt int myArray[3]; } & {\tt int myArray[]= new int[3];}\\
+
+
+\hline
+
+Arrays: declaration & {\tt String mySarray[3]; } & {\tt String mySarray[]= new String[3];}\\
+
+
+\hline
+
+Arrays: use & {\tt myArray[0]= 1; } & {\tt myArray[0]= 1;}\\
+
+\hline
+
+Arrays: use & {\tt mySarray[0]= "hello"; } & {\tt mySarray[0]= "hello";}\\
+
+\hline
+
+
+Input/output & \begin{tabular}{l} Must include a library: \\{\tt $\#$include<iostream>}\end{tabular} & \begin{tabular}{l} Library: \\{\tt import java.io.*;} \end{tabular}\\
+\hline
+
+Conditional & \begin{tabular}{l} {\tt if (Cond) x= 0;}\\ {\tt else x=1;} \end{tabular} &  \begin{tabular}{l} {\tt if (Cond) x= 0;}\\ {\tt else x=1;} \end{tabular} \\
+
+\hline
+
+Switch & \begin{tabular}{l} {\tt switch ( Cond ) \{ } \\ {\tt   \hspace{0.1cm} case label1 :  x= 0; break;  } \\ {\tt  \hspace{0.1cm}... } \\ {\tt  \hspace{0.1cm} default: x= 200; break;} \\ {\} } \end{tabular} &  \begin{tabular}{l} {\tt switch ( Cond ) \{ } \\ {\tt    \hspace{0.1cm} case label1 :  x= 0;  break;  } \\ {\tt  \hspace{0.1cm} ... } \\ {\tt  \hspace{0.1cm} default: x= 200;  break;} \\ {\} } \end{tabular}\\
+\hline\hline
+
+Method calls & \begin{tabular}{l}  Call-by-reference or \\ call-by-value \end{tabular} & \begin{tabular}{l} All method calls are\\  call-by-value \end{tabular}\\
+
+\hline
+
+By-value: basic &  {\tt void f(int x) \{ x=x+1; \} } &   {\tt void f(int x) \{ x=x+1; \} }\\
+
+\hline
+
+By-reference: basic &  {\tt void f(int \&x) \{ x=x+1; \} } &  We cannot translate this. \\
+
+\hline
+
+Parameters: arrays &  {\tt void g(int[]  x) \{ x[0]=2; \} } &     {\tt void g(int[]  x) \{ x[0]=2; \} } \\
+
+\hline
+
+Parameters: objects &{\tt \begin{tabular}{l}  void h(MyObject \&x)\{ \\ ... "update x" ... \\ \}  \end{tabular}}&  {\tt \begin{tabular}{l}  void h(MyObject x)\{ \\ ... "update x" ... \\ \}  \end{tabular}}   \\
+
+\hline\hline
+
+  
+ Classes &  Data and methods  &  Data and methods\\
+ 
+ \hline
+
+ Declaration & {\tt public} or {\tt private} & \begin{tabular}{l} A range, including {\tt static}\\ Consult Jia 4.4 \end{tabular} \\ 
+ 
+ \hline
+ Constructors & Default and user-defined &   Default and user-defined \\
+ 
+ \hline 
+ 
+\begin{tabular}{l} Constructors:\\
+ Implementation
+ \end{tabular} &   {\tt \begin{tabular}{l} myClass::myClass(params) \{\\ "Implementation"\\ \} \end{tabular} } & {\tt \begin{tabular}{l} myClass(params) \{\\ "Implementation"\\ \} \end{tabular} } \\
+
+ \hline
+ Methods: Declaration & {\tt void myMethod (params); } & {\tt void myMethod (params); }\\
+ \hline
+ Methods: Implementation & {\tt \begin{tabular}{l} void myClass::myMethod(params) \{ \\ "Implementation..."\\ \} \end{tabular} } & {\tt  \begin{tabular}{l} void myMethod(params)\{ \\ "Implementation..."\\ \} \end{tabular} }\\
+  
+\hline
+
+%\end{tabular}
+
+\end{tabularx}}
+
+\caption{A ``one page" crib sheet comparing C++ and Java}
+
+\end{figure}
+
+%http://www.yoda.arachsys.com/java/passing.html
+
+
+\subsection*{Linked lists}
+In this week's resources you'll find a zip file containing the material we will be using for this week's lectures, tutorials and practicals. Download it and open in Visual Studio Code. In it you will find {\tt SingleLinks.java}, {\tt LinkedTests.java} and {\tt StopWatch.java}. In this section we discuss {\tt LinkedTests.java}, with the other files discussed below.
+
+\subsubsection*{Concepts}
+A Linked list is a list-like data structure useful for storing a whole set of information.  Arrays are simple and easy to use because of the ``indirect addressing". But this convenience comes with the price of inflexibility: arrays are static, cannot be extended or reduced in size and data cannot easily be inserted or removed from the middle of an array. However, it's nice to be able to write something like;
+\begin{verbatim}
+       for(int i=0; i< N; i++) 
+           A[i]= SOMETHING;
+\end{verbatim}
+and this pattern is familiar with array-based programming.
+
+
+Linked lists don't have the inflexibility problem, but there is an overhead on the programmer to keep track of its necessary \emph{direct} addressing, and we can't use the above pattern directly. (However in the Java Library you'll find an ``iterator" class which does indeed allow us to use something that's almost like it!)
+
+Below we'll be programming with a special linked list class based on the one used in the standard text for this course. This is so that you can understand exactly what is involved in using linked lists, so that when later if you need to use the standard library class you'll have the understanding to  enable to get the best out of it in your programming.
+
+\subsubsection*{Basics}
+
+A linked list is made up of a sequence of \emph{nodes}, where a node contains two pieces of information: (a) the data item to be stored in the linked list, and (b) the address of the next item in the list. To make all of this work out there has to be an explicit way to say ``this is the last node of the list"; remember also that the first node in the list is (normally) the only way to access any of the other nodes in the linked list.
+
+
+
+\subsubsection*{What you need to know how to do for COMP2010}
+Familiarise yourself with the methods  in the class {\tt SingleLinks.java} which is part of this week's lecture bundle.  In it you'll find the definitions for  creating  a list node which is the basic building block; you'll also find how these nodes are put together to make a list.  Make sure you know how to do the following.
+\begin{itemize}
+\item[$\cdot$] Create an empty list;
+\item[$\cdot$]  Add an item to the list;
+\item[$\cdot$]  Insert an item or items into the list;
+\item[$\cdot$]  Access any item in the list;
+\item[$\cdot$]  Delete nodes from the list.
+\end{itemize}
+
+Looking further ahead, we'll be considering data structures implemented using linked lists and, in particular, whether the design of implementations have an impact on the performance and  
+
+
+\subsubsection*{Other implementations of linked lists}
+The linked list concept can be implemented in a number of different ways, each having its own advantages and disadvantages. The trick is knowing what those are and choosing whichever implementation most suits your purposes. Eg if an application needs to add items to the top of a list but remove them from the end of the list a different implementation than the one given in {\tt SingleLinks} would be more appropriate.
+
+\begin{itemize}
+\item[$\cdot$] The implementation of  {\tt SingleLinks.java} uses an arrangement whereby each node only has a single pointer to the next node. A list then just links these nodes together, with the address of the first node accessible in the linked list. This arrangement can handle dynamic list operations, but one drawback is that accessing any particular node in the list other than the top node requires following each node along the chain until the correct node is reached.
+
+Such an arrangement  would be suitable for implementing stacks.
+
+\item[$\cdot$] An embellishment of  {\tt SingleLinks.java}  would be to add an additional field which records the location of the last node in the list. This information would be useful in the case that the last node is frequently accessed.
+
+Such an arrangement  might be suitable for implementing queues.
+
+\item[$\cdot$]  Another variation is a doubly linked list. This time it is an embellishment of the node which determines the variation, where the list is defined as linking the double nodes together.
+
+This is advantageous for applications that need both forward and backwards traversing of the list (think of programming a text editor for example). There is however a space overhead in saving an extra link for each node.
+\end{itemize}
+
+
+Note that the basic concepts for linked lists are assumed. These notes are for revision. 
+\subsection*{Recursion}
+
+Recursion is used when the definition of a method actually refers to itself. The apparent circularity of this is avoided provided that you follow these rules when you define your methods.
+
+\begin{enumerate}
+\item Ensure there is a base case. 
+
+The circularity is avoided provided at some point the recursive calls stop and something appropriate is returned or computed by your function. This is called the base case; when your method is called on the base case then the result should be returned without having the need to call on the method.
+
+\item Ensure that recursive calls are made to ``strictly smaller" instances of the input values.
+
+Again this contributes to ruling out the circularity. If you always ensure that the recursive call is made on strictly smaller (in an appropriate sense) input value so that it is ``closer to" the base case, then the recursion cannot continue indefinitely since at some point the base case will be reached.
+
+\item Ensure that the result of the recursive call is used to create the solution to the original problem.
+
+When implementing your method, make sure that the result of the recursive call is used to solve the problem you first started. 
+\end{enumerate}
+
+A typical example of recursion is given by the Fibonacci numbers, whose mathematical definition is
+
+\[
+\textit{fib}(n)= \textit{fib}(n-1) + \textit{fib}(n-2)~,
+\]
+when $n>=2$. There are actually two base cases: $\textit{fib}(0)=\textit{fib}(1)=1$. Notice how each of the rules above is obeyed by this definition. Of course this can be implemented straightaway, but it isn't the best way to organise things if time or space is an issue. We'll discuss the reasons why later in the course when we look at Dynamic Programming.
+
+\subsubsection*{Pictorial representation of Recursion and the Fibonacci series}
+
+Below \footnote{Taken from {\tt  www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibnat.html}} is an (ideal) image of a sneezewort plant which has been observed to follow this rule when putting out new growth: 
+
+\begin{quotation}
+Each branch much first grow for two months before it is hardy enough to support new growth. At the two month point it grows a new branch, but then puts out a new branch every month after that. Each new branch follows the two month rule first, and ever after puts out a new branch.
+
+Assuming that growth rate is uniform, observe that the number of branches at the cross section of 1 month, 2 months etc. form a Fibonacci sequence.
+\end{quotation}
+
+\begin{center}
+\includegraphics[height=15em]{sneezewort.pdf}
+\end{center}
+
+Observe that the image depicted has a recursive shape: the growth after 7 months is made up of a growth of 6 months combined with a growth of 5 months.
+
+
+\subsection*{JUnit for correctness testing of your programs}
+
+JUnit testing is a way to test key properties of the classes that you implement; it should be used in addition to other kinds of testing.   You need to have the JUnit library installed in VSCode, as well as linked to your Java project.  Try this video \url{https://youtu.be/60yrTfVdFwo} if you are having trouble.
+
+Like any kind of testing, how well it tests the programs is determined by the quality of the test.  You will be writing your own JUnit tests to test the methods that you implement. To get the most use out of the exercise think carefully about what the method is required to  achieve, and then formulate a (set of) representative tests that you think will validate its requirements. You will probably need to think up several tests for each method because for complex data structures there are a number of special cases. In the case of lists for example, methods usually behave specially in the case of empty lists, lists with a single item, and where the processing occurs at the beginning, middle or end of the list.
+
+Study the examples given in  {\tt LinkedTests} to see examples of JUnit tests for the class {\tt SLList}.
+
+\subsection*{Performance testing your programs}
+
+We have provided for you a class called {\tt StopWatch} which you can use to test the timing of your programs. It contains methods {\tt start} and {\tt stop} which you use to surround the code whose performance you want to investigate and a method {\tt getElapsedTimeSecs} which returns the difference between the most recent start and stop of the stopwatch object.
+
+To use the class {\tt StopWatch} you must declare an instance of the {\tt StopWatch} class in your program. We'll show you examples in the lectures.
+
+\subsubsection*{Tips for experimental performance testing your code}
+
+Note that testing code in this way can only be regarded as an indication of the performance. That is because  your computer will be carrying out other tasks unrelated to your Java project and those will have an effect on the results from your testing. However performance testing does give you an idea about how your algorithms are performing for large datasets.
+
+
+
+\begin{itemize}
+\item[$\cdot$] For methods which do have to do very much this type of testing will almost always report an elapsed time of $0$ or $1$ seconds.
+
+\item[$\cdot$]  If you believe that your method depends on the size of various input, formulate a \emph{hypothesis} and create an experiment to test it.
+
+\item[$\cdot$]  If your method relies on the input of parameters whose instances have a measurable size, and you want to test to see the dependency on the method and the size of the input parameter, use a loop to create a new instance of the method, of increasing size, call the method, using the stop watch. You can then build up a set of performance tests for ech side of input and graph your results.
+
+\item[$\cdot$]  Sometimes it is difficult to obtain test data because programs run too fast. Sometimes you can use the delay feature in Java to slow down your program at points where you have decided is the most expensive operation. We'll see some examples of that next week when we look at time complexity. Be careful how you draw conclusions, remembering that this should give an indication only of the time it takes to run your program!
+\end{itemize}
+
+\section{Exercises}
+
+We'll be releasing lecture bundles as zipped archive files. To install these files inside of VSCode do the following:
+
+\begin{itemize}
+\item[$\cdot$] Download and Unzip the source code bundle 
+\item[$\cdot$] Copy it under your \texttt{src} folder in VSCode
+\end{itemize}
+
+\begin{enumerate}
+\item List the advantages and disadvantages of arrays, and explain how  linked lists overcome the disadvantages. Are there any disadvantages to linked lists? 
+
+\item Use the {\tt StopWatch} class to test experimentally the performance of the \emph{equals} method in the class {\tt SLList}.  Can you draw any conclusions about how the lengths of the input lists affects the performance of \emph{equals}?
+
+\item In the class {\tt SLList} add  a method {\tt putBefore} which takes two objects and $p$ and $q$, creates a node containing the information $p$ and inserts it in a list directly before the first occurrence of a node containing information $q$, or at the beginning of the list if no such item $q$ exists. 
+
+\begin{verbatim}
+public void putBefore(Object p, Object q);
+// POST: inserts a node containing p immediately before the first 
+//  occurrence of q, or at the beginning ifq is not in the list.
+\end{verbatim}
+
+\item  In the class {\tt SLList} add a new constructor which takes as an input an array and creates a linked list where the order in the linked list is the same as order of elements in the input array.
+
+\begin{verbatim}
+ public SLList(Object[]  A);
+ // PRE:  A is an array
+ // POST: constructs an instance of an SLList whose nodes  
+ //   comprise the elements A[i], and in the same order as A.
+\end{verbatim}
+
+ Write a JUnit test to validate your method, and investigate its performance using the {\tt StopWatch} class.  What conclusions can you draw about the performance of your method and the length of the input array?
+
+\item Write a recursive algorithms for to implement the following. What are the preconditions and post conditions of your methods? Write  JUnit tests to check your programs.
+\begin{enumerate}
+\item Given a character and a string, check to see whether it occurs in the string.
+\item Given character and a string, count the number of times it occurs in the string.
+\item Given a character and a string, remove all  of its occurrences in the string, leaving all the other characters in the same order.
+\item Given a string, reverse it.
+\end{enumerate}
+
+\item Write a recursive method that uses only addition, subtraction and comparison to multiply two non-negative integers.
+
+[Hint: $a{\times} b = a + a{\times} (b-1)$, when $b>0$.] 
+
+%\item You have been asked to implement the software for a large company's employee database. The database should store the employee's name, employee id, their role, salary, holiday allowances etc. The company has a huge number of employees and a low turnover (employees rarely leave or depart). However on a day-to-day basis a great number of employees need to to looked up in the database.
+
+%Discuss the data structure that you would choose to ensure that the average processing time over a month is as low as possible.
+ 
+\end{enumerate}
+\end{document}

@@ -1,0 +1,84 @@
+% !TeX TS-program = lualatex
+\documentclass[landscape,twoside=false,DIV=14]{scrartcl}
+\usepackage{multirow}
+
+\include{latex_setup.tex}
+\KOMAoptions{pagesize}
+\renewcommand\pagemark{}  % remove page numbers
+\usepackage{tikz}
+
+\begin{document}
+\usetikzlibrary {graphs,graphdrawing} \usegdlibrary {trees,force,layered} 
+\section*{Concept Map}\hspace{-5em}
+\tikz \graph [layered layout, nodes={draw,rounded corners}, level distance=15mm, grow=up] {
+  1010 Java Proficiency[olive] -> { Recursive Data -> {
+                                Recursion -> Iteration Recursion Iso -> Invariants -> {
+                                    Recurrence Relations -> Divide and Conquer -> {
+                                        Sorting -> {Merge Sort, Quick Sort, Radix Sort}, Dynamic Programming -> Advanced Programming [red]
+                                    }, 
+                                    Binary Tree -> {
+                                        Binary Search Tree -> BST code -> {
+                                            Priority Queue [gray] -> Heaps [gray] -> Abstract Data Types [red]
+                                        }, 
+                                        Binary Tree code -> COMP3000 [red],
+                                        Graphs [gray] -> Graph Code [gray] ->   {Graph Traversal [gray],
+                                              Graph Applications [gray]
+                                        } -> COMP3010 [red]
+                                        },
+                                        Loop Invariants -> Big oh -> Computability [gray] -> COMP3010 [red], 
+                                        Invariants 
+                                }
+                                },
+            Tables [gray] -> Hash Tables [gray] -> Hash Functions [gray] -> Collision Resolution [gray] -> HPC [red],
+           },
+           MATHSTAT Talking Maths [olive] -> Invariants,
+};
+\newpage
+\section*{Code Examples}
+\begin{tabular}{llr}
+\textbf{class} & \textbf{method/function} & \textbf{used in} \\ \hline
+LinkedList & char constructor & Recursive Data lecture \\
+                    & two arg constructor & Recursive Data lecture\\
+                    & add & Recursive Data lecture\\
+                    & length/length iterative & Recursion lecture \\
+                    & toString/toString iterative & Recursion lecture \\
+                    & concat/concat iterative & Recursion worksheet \\
+                    & splitAt/splitAt iterative & Recursion worksheet and Loop Invariants worksheet \\
+                    & zipWith/zipWith iterative & Recursion worksheet \\
+LinkedListTests & $*$ & Recursion Worksheet \\
+Week2Parrot & $*$ & Recursive Data Worksheet\\
+$\phi$ & sum & Invariants lecture \\
+ComputingPowers & power & Loop Invariants lecture \\
+       & fastPower & Loop Invariants lecture \\
+$\phi$ & sum variants & Loop Invariants worksheet \\
+       & insertion sort & Loop Invariants worksheet \\
+       & binary search & Loop Invariants worksheet \\
+\end{tabular}
+\newpage
+\section*{Concepts from Pre-Reqs}
+\tikz \graph [sweep crossing minimization,minimum height layer assignment,layered layout, nodes={draw,rounded corners}, level distance=15mm,grow=up] {
+  References and Objects [olive] -> Objects and Classes [olive] -> this keyword [olive] -> Constructors and new keyword[olive] -> Static Methods [olive] -> Object Lifecycle [olive] -> Object Composition [olive] ->  Java Proficiency,
+  Variables [red] -> Conditions [red] -> Loops [red] -> Functions [red],
+  Functions -> Overloading [olive],
+  Functions -> Values vs Expressions [red],
+  Values vs Expressions -> new Keyword [red] -> Reference Semantics [red] -> Structured Data [red] -> References and Objects [red],
+  Reference Semantics [red] -> Arrays [red] -> Array Manipulation [olive] -> Searching and Sorting [olive],
+  Object Composition [olive] -> Linked Lists[olive] -> Recursive Data,
+  this keyword [olive] -> Recursion Intro [olive] -> Recursion,
+  Java Proficiency,
+  Searching and Sorting [olive] -> Algorithm Comparisons [olive] -> Divide and Conquer,
+  Algorithm Comparisons -> Tables,
+  Constructors and new keyword -> The Object Class [olive] -> Java Proficiency,
+  Overloading -> Constructors and new keyword % wish I could add this but layout is not dealing with it well
+};
+\section*{Learning Outcomes}
+\begin{itemize}
+  \item  Demonstrate an understanding of a variety of algorithm design techniques and  how they can improve either efficiency or clarity.
+  \item  Apply strategies for achieving correctness in a range of algorithms.
+  \item  Apply commonly used data structures, including trees, graphs, lists and their variations.
+  \item  Carry-out advanced and broadly based problem solving, particularly when designing and writing programs to meet a given specification.
+  \item  Describe the results of analysing algorithms.
+\end{itemize}
+
+\end{document}
+
