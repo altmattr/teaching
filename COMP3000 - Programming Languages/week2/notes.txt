@@ -1,0 +1,6 @@
+lectures are good but audio is dicey - might have to re-record.
+
+The transcript from last time is actually a good way to go for building the next one I would think.  Just need a setup to use.
+
+  * The concpet of little languages: 45:40 - 1:04:24
+  * The Compiler/Interpreter Pipeline and Compilers vs Interpreters: 1:05:00 - 1:43:00

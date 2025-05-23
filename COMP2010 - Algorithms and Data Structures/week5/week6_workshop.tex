@@ -43,7 +43,7 @@ Consider the following tree
 h    i     j  k 
 \end{verbatim}
             
-For each of inorder, preorder and postorder traversals, state the order of the nodes printed. 
+For each of pre-order, in-order, and post-order traversals, state the order of the nodes printed. 
 
 \section{Tree Traversal: Two from One}
 
@@ -58,8 +58,8 @@ If I give you only the \emph{pre-order} traversal for a tree, you can't uniquely
 I've got a binary tree, but I'm keeping it secret.  I \emph{will} give you clues about it though.  These clues are enough for you to reconstruct the tree yourself.
 \begin{itemize}
 \item It is binary tree of \verb+char+s
-\item The \emph{preorder} traversal is "myaeissmn"
-\item The \emph{inorder} traversal is "easisymmn"
+\item The \emph{ pre-order} traversal is "myaeissmn"
+\item The \emph{in-order} traversal is "easisymmn"
 \item The \emph{post-order} traversal is "essiamynm"
 \end{itemize}
 
@@ -74,9 +74,9 @@ In your binary tree class, write functions for the following tasks.  Be sure to 
 \subsection{Balance}
  Returns the number of nodes on the right side minus the number of nodes on the left side.
 \subsection{Max Element}
- Returns the largest value you can find in the tree.
+ Returns the largest value you can find in the tree.  Don't forget that Java is happy to compare characters with \verb+>, <, and ==+.  When doing so it uses ASCII-order, which is fine for this question.
 \subsection{Generate Random Tree}
-Write a \verb+static+ fucntion which generates random trees according to the following rules:
+Write a \verb+static+ function which generates random trees according to the following rules:
 \begin{enumerate}
     \item The value is randomly chosen from 'a'-'z'.  This code might help
     \begin{lstlisting}
@@ -97,7 +97,7 @@ Try writing an iterative version of \emph{max elements}.  What do you notice?
 \section{Binary Tree: Traversals}
 \begin{description}
     \item[pre-order] "abdheicfgjk"
-    \item[in-order] "hdbieafejgk"
+    \item[in-order] "hdbieafcjgk"
     \item[post-order] "hdiebfjkgca"   
 \end{description}
 
@@ -122,17 +122,17 @@ It is \emph{theoretically possible} to construct multiple different trees which 
 int balance(){
     int left  = (this.left == null)? 0: this.left.size();
     int right = (this.right == null)? 0: this.right.size();
-    return left - right;
+    return right - left;
 }
 
 @Test
 public void testBalance(){
     BinaryTree ex = BinaryTree.exampleTree();
-    assertEquals(ex.balance(), 1);
-    assertEquals(ex.invert().balance(), -1);
+    assertEquals(ex.balance(), -1);
+    assertEquals(ex.invert().balance(), 1);
     ex.addAt('z', "lll");
-    assertEquals(ex.balance(), 2);
-    assertEquals(ex.invert().balance(), -2);
+    assertEquals(ex.balance(), -2);
+    assertEquals(ex.invert().balance(), 2);
 
 }
 \end{lstlisting}
@@ -221,7 +221,7 @@ Create a new class \verb|TernaryTree|, which you have copied from the \verb|Bina
 \item The constructor(s)
 \item size
 \item depth
-\item preorder traversal
+\item  pre-order traversal
 \end{enumerate}
 
 \subsection{Other Orders}
@@ -259,21 +259,21 @@ void addAt(char newval, String path){
 @Test
 public void testAddAt(){
     BinaryTree rootA = new BinaryTree('a', null, null);
-    assertEquals(rootA.preorder(), "a");
+    assertEquals(rootA. pre-order(), "a");
     rootA.addAt('b', "l");
-    assertEquals(rootA.preorder(), "ab");
+    assertEquals(rootA. pre-order(), "ab");
     rootA.addAt('c', "r");
-    assertEquals(rootA.preorder(), "abc");
-    assertEquals(rootA.postorder(), "bca");
+    assertEquals(rootA. pre-order(), "abc");
+    assertEquals(rootA.post-order(), "bca");
     rootA.addAt('d', "ll");
-    assertEquals(rootA.preorder(), "abdc");
-    assertEquals(rootA.postorder(), "dbca");
+    assertEquals(rootA. pre-order(), "abdc");
+    assertEquals(rootA.post-order(), "dbca");
     rootA.addAt('e', "lrl");
-    assertEquals(rootA.preorder(), "abdec");
-    assertEquals(rootA.postorder(), "debca");
+    assertEquals(rootA. pre-order(), "abdec");
+    assertEquals(rootA.post-order(), "debca");
     rootA.addAt('f', "lrl");
-    assertEquals(rootA.preorder(), "abdefc");
-    assertEquals(rootA.postorder(), "dfebca");
+    assertEquals(rootA. pre-order(), "abdefc");
+    assertEquals(rootA.post-order(), "dfebca");
 }
 
 \end{lstlisting}
@@ -310,21 +310,21 @@ void addAtIterative(char newval, String path){
 @Test
 public void testAddAtIterative(){
     BinaryTree rootA = new BinaryTree('a', null, null);
-    assertEquals(rootA.preorder(), "a");
+    assertEquals(rootA. pre-order(), "a");
     rootA.addAtIterative('b', "l");
-    assertEquals(rootA.preorder(), "ab");
+    assertEquals(rootA. pre-order(), "ab");
     rootA.addAtIterative('c', "r");
-    assertEquals(rootA.preorder(), "abc");
-    assertEquals(rootA.postorder(), "bca");
+    assertEquals(rootA. pre-order(), "abc");
+    assertEquals(rootA.post-order(), "bca");
     rootA.addAtIterative('d', "ll");
-    assertEquals(rootA.preorder(), "abdc");
-    assertEquals(rootA.postorder(), "dbca");
+    assertEquals(rootA. pre-order(), "abdc");
+    assertEquals(rootA.post-order(), "dbca");
     rootA.addAtIterative('e', "lrl");
-    assertEquals(rootA.preorder(), "abdec");
-    assertEquals(rootA.postorder(), "debca");
+    assertEquals(rootA. pre-order(), "abdec");
+    assertEquals(rootA.post-order(), "debca");
     rootA.addAtIterative('f', "lrl");
-    assertEquals(rootA.preorder(), "abdefc");
-    assertEquals(rootA.postorder(), "dfebca");
+    assertEquals(rootA. pre-order(), "abdefc");
+    assertEquals(rootA.post-order(), "dfebca");
 }
 
 \end{lstlisting}
@@ -369,10 +369,10 @@ public class TernaryTree {
         return 1 + Math.max(l, Math.max(m,r));
     }
 
-    String preorder(){
-        String l = (left == null)? "": left.preorder();
-        String m = (middle == null)? "": middle.preorder();
-        String r = (right == null)? "": right.preorder();
+    String  pre-order(){
+        String l = (left == null)? "": left. pre-order();
+        String m = (middle == null)? "": middle. pre-order();
+        String r = (right == null)? "": right. pre-order();
         return value + l + m + r;
     }
 
@@ -389,7 +389,7 @@ public class TernaryTree {
                                             );
         assertEquals(ex.size(), 7);
         assertEquals(ex.depth(), 3);
-        assertEquals(ex.preorder(), "Groundspeedgustadditiveperformancebackidle");
+        assertEquals(ex. pre-order(), "Groundspeedgustadditiveperformancebackidle");
     }
     
 }     

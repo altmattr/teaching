@@ -1,0 +1,68 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+\usepackage[sfdefault]{FiraSans}
+\usepackage{scrlayer-scrpage}
+\renewcommand{\titlepagestyle}{scrheadings}
+\usepackage{graphicx}
+\usepackage{blindtext}
+\usepackage{wrapfig}
+
+
+\usepackage{xcolor,sectsty}
+\definecolor{blackish}{RGB}{63,64,63}
+\definecolor{redish}{RGB}{67,37,52}
+\definecolor{greenish}{RGB}{10,135,84}
+\definecolor{purpleish}{RGB}{150,107,157}
+\definecolor{orangeish}{RGB}{255,159,28}
+\definecolor{brownish}{RGB}{186,168,152}
+\definecolor{red}{RGB}{152,41,50}
+\subsectionfont{\color{blackish}}
+\sectionfont{\color{blackish}}
+
+\rohead{\color{greenish} modern java}
+\lohead{\color{greenish} {\huge$\eta$}-education}
+
+
+\usepackage{enumitem}
+
+\setkomafont{author}{\sffamily \small}
+\setkomafont{date}{}
+\date{\vspace{-5em}}
+\title{\color{blackish} \vspace{-1em} Modern Java Course Description}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-1em}
+
+\begin{abstract}
+    Java has come a long way and most programmers learned on a relatively early version.  Modern Java has sophisticated and powerful features that go underutilized because developers are not fully aware of them.  In this course we explore all the post Java 10 features which can improve productivity and code quality.  We compare them to alternatives, ground them in the JVM, and explore when and how to use them best. 
+\end{abstract}
+
+\section{For the team}
+Given the disparate backgrounds of developers, significant differences in understanding can develop which are impediments to productivity.  This course assumes maturity of programming skill but welcomes all-comers from all languages.  We learn the "modern Java way" of doing things which brings everyone, no matter what their background, into the same understanding of how to write good Java code.
+
+\section{For the developer}
+How long has it been since you took a good look at Java?  Are you up to date with the latest JVM performance characteristics?  Are you confident to use new language features like pattern matching, sealed classes, record classes, text blocks, unnamed classes, and type inference?  In this course we look at each and every modern Java feature. In consultation with the students we choose which to dig into and how deep to go so you won't be wasting time on features that don't apply in your domain.
+
+\section{Course Design}
+
+The course is built around \emph{understanding the equivalences between Java features} and developing \emph{the judgment needed to choose when to use them}.  We focus on core language changes, not on library changes but we do take a brief look at some notable additions.
+
+As a team, an existing large code base will be imported into the participant's tooling of choice and we will work through some or all of the following modules:
+\begin{enumerate}
+    \item Setting the foundations.
+    \item JVM changes.
+    \item Type Inference.
+    \item Modern Switch and Pattern Matching.
+    \item Text Blocks and String Templates.
+    \item Record classes and Sealed classes.
+    \item Unnamed classes.
+    \item Graal and modern tooling.
+\end{enumerate}
+Each module includes a theoretical run-down before moving to practical coding exercises that fully explore the feature in question.
+
+By default, the course runs for three half-days online in a rich shared virtual environment.  The course can be run on-premises or in a hybrid mode upon request.
+
+\section{About Us}
+This course is run by Matt Roberts.  Matt has taught programming to over 10,000 people over 20 years as computer science educator.  Matt teaches at Macquarie University and the Institute of Applied Technology.  Matt has provided professional development for companies including Optus, Ghost Automotive, and Microsoft.  Matt is a former Software Engineer who has made code contributions to many open source projects including LiftWeb, Ardupilot, Moodle, Kiama Language Processor, Skink Static Analyser and has published data analysis platforms for psychological research.
+
+\end{document}
+

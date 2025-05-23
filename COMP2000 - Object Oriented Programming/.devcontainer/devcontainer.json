@@ -1,0 +1,13 @@
+{
+	"name": "comp3000",
+	"image": "openjdk:11",
+	"onCreateCommand": "bash .devcontainer/install.sh",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"James-Yu.latex-workshop",
+				"vscjava.vscode-java-pack",
+				"ltex-plus.vscode-ltex-plus"
+			]
+		}
+}

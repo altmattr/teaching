@@ -1,0 +1,284 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\include{latex_setup.tex}
+\usepackage{amssymb}
+
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily}
+
+\renewcommand{\theenumi}{\alph{enumi})}
+
+\title{\color{redish} \vspace{-2em}COMP2010 2025 Final Exam}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-2em}
+
+\part*{Section A}
+\section*{Question 1 (25 Marks)}
+Consider the following definition of a recursive datatype
+\begin{lstlisting}[language=java]
+public class LinkedList {
+    LinkedList next;
+    char value;
+
+    LinkedList(char c){
+        next = null;
+        value = c;
+    }
+
+    LinkedList(char c, LinkedList next){
+        this.next = next;
+        value = c;
+    }
+
+   LinkedList zipWith(LinkedList other){
+        if (next == null){
+            return new LinkedList(this.value, other);
+        } else if (other == null){
+            return this;
+        } else {
+            return new LinkedList(this.value, other.zipWith(this.next));
+        }
+   }
+}
+\end{lstlisting}
+
+\subsection*{Part a (5 marks)}
+Consider the following diagram which represent the result of initializing a \lstinline{LinkedList} object \lstinline{one}.
+
+\vspace{2em}
+\begin{tikzpicture}[node distance=1.5cm, every node/.style={draw, rectangle, minimum size=1cm}, every path/.style={>=stealth, thick}]
+    \node[draw=none] (one) {one};
+    \node[right of=one] (node1) {a};
+    \node[right of=node1] (node2) {b};
+    \node[right of=node2] (node3) {c};
+    \node[right of=node3, draw=none] (null) {null};
+
+    % Arrows between nodes
+    \draw[->] (one.east) -- (node1.west);
+    \draw[->] (node1.east) -- (node2.west);
+    \draw[->] (node2.east) -- (node3.west);
+    \draw[->] (node3.east) -- (null.west);
+\end{tikzpicture}
+
+Draw a diagram showing the result of executing the following code:
+\begin{lstlisting}[language=java]
+    one = new LinkedList('h', one);
+    one = new LinkedList('g', one);
+\end{lstlisting}
+
+\subsection*{Part b (10 marks)}
+Assuming \lstinline{one} and \lstinline{two} begin in the following states, draw the result of 
+\begin{lstlisting}
+    one = one.zipWith(two);
+\end{lstlisting}
+
+\vspace{2em}
+\begin{tikzpicture}[node distance=1.5cm, every node/.style={draw, rectangle, minimum size=1cm}, every path/.style={>=stealth, thick}]
+    \node[draw=none] (one) {one};
+    \node[right of=one] (node1) {a};
+    \node[right of=node1] (node2) {b};
+    \node[right of=node2] (node3) {c};
+    \node[right of=node3, draw=none] (null) {null};
+
+    % Arrows between nodes
+    \draw[->] (one.east) -- (node1.west);
+    \draw[->] (node1.east) -- (node2.west);
+    \draw[->] (node2.east) -- (node3.west);
+    \draw[->] (node3.east) -- (null.west);
+\end{tikzpicture}
+
+\vspace{2em}
+\begin{tikzpicture}[node distance=1.5cm, every node/.style={draw, rectangle, minimum size=1cm}, every path/.style={>=stealth, thick}]
+    \node[draw=none] (one) {two};
+    \node[right of=one] (node1) {x};
+    \node[right of=node1] (node2) {y};
+    \node[right of=node2] (node3) {z};
+    \node[right of=node3, draw=none] (null) {null};
+
+    % Arrows between nodes
+    \draw[->] (one.east) -- (node1.west);
+    \draw[->] (node1.east) -- (node2.west);
+    \draw[->] (node2.east) -- (node3.west);
+    \draw[->] (node3.east) -- (null.west);
+\end{tikzpicture}
+\subsection*{Part c (10 Marks)}
+The following function will generate fresh linked lists, one for each of the outputs of circularly shifting the initial array but all possible values.
+\begin{lstlisting}[language=java]
+LinkedList[] generateAllShifts(char[] a){
+    LinkedList[] result = new LinkedList[a.length];
+    LinkedList first = this;
+    int i = 0;
+    while(i < a.length){
+        result[i] = new LinkedList(first.value);
+        for (int j = 1; j < a.length; j++){
+
+        for (int j = 1; j < a.length; j++){
+            result[i] = new LinkedList(a[(i+j)%a.length], result[i]);
+        }
+    }
+    return result;
+}
+\end{lstlisting}
+Which \emph{three} lists are in the results when the method is run on the following list.  What is the time complexity of this method?
+
+\vspace{2em}
+\begin{tikzpicture}[node distance=1.5cm, every node/.style={draw, rectangle, minimum size=1cm}, every path/.style={>=stealth, thick}]
+    \node[draw=none] (one) {one};
+    \node[right of=one] (node1) {a};
+    \node[right of=node1] (node2) {b};
+    \node[right of=node2] (node3) {c};
+    \node[right of=node3, draw=none] (null) {null};
+
+    % Arrows between nodes
+    \draw[->] (one.east) -- (node1.west);
+    \draw[->] (node1.east) -- (node2.west);
+    \draw[->] (node2.east) -- (node3.west);
+    \draw[->] (node3.east) -- (null.west);
+\end{tikzpicture}
+
+
+\section*{Question 2 (20 Marks)}
+The following question relates to the partitioning algorithm used in quicksort and given below:
+\begin{lstlisting}[language=java]
+int partition(char[] a){
+    char pivot = a[0];
+    int L = 0;
+    int R = 1;
+    while(R <= a.length-1){
+        if (a[R] < pivot){
+            L++;
+            swap(a,L,R);
+            R++;
+        } else {
+            R++;
+        }
+    }
+    swap(a,0,L);
+    return L;
+}
+\end{lstlisting}
+
+\subsection*{Part a (10 marks)}
+What is the worse case time complexity of the partitioning algorithm? Justify your answer.
+
+\subsection*{Part b (10 marks)}
+The \emph{first quartile} of a list of numbers is defined to be the item which appears at position $(N + 1)/4$ (where $N$ is the length of the list) when the list is arranged in increasing sorted order.  Use the function \lstinline|partition| above to compute the first quartile for a list of integers.  You may define and use auxiliary functions, but you must say what they are used for, and you must make sure that your function is more efficient than sorting the whole array. Explain why your algorithm works, and why it \emph{could} be more efficient than sorting the whole array if initially the array contains items that are in random order. (YOU DO NOT NEED TO IMPLEMENT PARTITION.)
+
+\begin{lstlisting}
+int q_one(int A[]);
+//PRE: A is a list of integers;
+//POST: returns the first quartile of the integers in A.
+\end{lstlisting}
+
+\section*{Question 3 (23 Marks)}
+The following question relates the binary search tree below:
+
+\begin{tikzpicture}[every node/.style={circle, draw}, level distance=1.5cm, sibling distance=2cm]
+\node {5}[sibling distance=3cm]
+    child {node {3}[sibling distance=1.5cm]
+        child {node {1}
+          child[missing] {}
+          child {node {2}}
+        }
+        child[missing] {}
+    }
+    child {node {9}[sibling distance=1.5cm]
+        child {node {7}
+            child {node {6}}
+            child {node {8}}
+        }
+        child {node {10}}
+    };
+
+\end{tikzpicture}
+
+Which is implemented with the Binary Search Tree class in Appendix A.
+
+\subsection*{Part a (3 marks)}
+Show the result of inserting the value \lstinline{4} into the tree above.  You must use a diagram to show the result.
+
+\subsection*{Part b (3 marks)}
+Show the result of deleting the value \lstinline{9} from the tree above.  You must use a diagram to show the result.
+
+\subsection*{Part c (7 marks)}
+What is the worst case time complexity of the \lstinline|search| function (with regards to the nubmer of nodes in the tree $n$) on a \emph{balanced} binary search tree? Justify your answer with reference to the code in Appendix A and the definition of a balanced binary search tree.
+
+\subsection*{Part d (10 marks)}
+Write a method \lstinline|inorder_print| which will print (to the console) the values in a binary search tree in increasing order.  You may define and use auxiliary functions, but you must say what they are used for.
+
+\newpage
+\part*{Appendix A}
+{\small
+\begin{lstlisting}[language=java]
+public class BinarySearchTree {
+    int value;
+    BinarySearchTree left;
+    BinarySearchTree right;
+
+    public BinarySearchTree(){}
+
+    BinarySearchTree(int value, BinarySearchTree left, BinarySearchTree right){
+        this.value = value;
+        this.left = left;
+        this.right = right;
+    }
+
+    BinarySearchTree search(char target){
+        if (value == target) return this;
+        if (value > target) return (left == null)? null: left.search(target);
+        if (value < target) return (right == null)? null: right.search(target);
+        return null; // just to make the compiler error go away
+    }
+
+    void insert(int newvalue){
+        if (newvalue <= value){
+            if(left == null)
+                left = new BinarySearchTree(newvalue, null, null);
+            else
+                left.insert(newvalue);
+        } else {
+            if (right == null)
+                right = new BinarySearchTree(newvalue, null, null);
+            else
+                right.insert(newvalue);
+        }
+    }
+
+    BinarySearchTree largest(){
+        if (right == null)
+            return this;
+        else
+            return right.largest();
+    }
+
+    BinarySearchTree remove(int target){
+        if (value > target){
+            if(left != null){
+                left = left.remove(target);
+                return this;
+            }
+        }else if (value < target){
+            if (right != null){
+                right = right.remove(target);
+                return this;
+            }
+        } else if (value == target){
+            if (left == null){
+              return right;
+            } else if (right == null){
+              return left;
+            } else {
+                // find best
+                BinarySearchTree replaceWith = left.largest();
+                BinarySearchTree cleanLeft = left.remove(replaceWith.value);
+                replaceWith.right = right;
+                replaceWith.left  = cleanLeft;
+                return replaceWith;
+            }
+        }
+        return this; // should be superfluous
+    }
+}
+\end{lstlisting}}
+\end{document}
