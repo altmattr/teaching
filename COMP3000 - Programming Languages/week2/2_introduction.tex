@@ -7,19 +7,25 @@
 {\color{blackish}\maketitle}\vspace{-7em}
 
 \begin{abstract}
+  This week we begin our journey with programming languages, reading the introduction of our text book.
 \end{abstract}
 
 \section*{Topics}
 \begin{description}
-\item[The concept of little languages (CLL)]  What is a little language?  Why do we care?  What are some examples?
-\item[The Compiler/Interpreter Pipeline (CIP)]  What is the compiler/interpreter pipeline?  What are the parts of a compiler?  What are the parts of an interpreter?  How do they differ?
-\item[Compilers vs Interpreters (CVI)]  What is the difference between a compiler and an interpreter?  What are some examples of each?
+\item[The concept of little languages]  What is a little language?  Why do we care?  What are some examples?
+\item[The Compiler/Interpreter Pipeline]  What is the compiler/interpreter pipeline?  What are the parts of a compiler?  What are the parts of an interpreter?  How do they differ?
+\item[Compilers vs Interpreters]  What is the difference between a compiler and an interpreter?  What are some examples of each?
 \end{description}
 \section*{Preparation}
 \begin{itemize}
 \item Read the text chapters 1 and 2
-\item Watch the three lectures, "The concept of little languages", "The compiler interpreter pipeline", and "Compilers vs Interpreters".
-\item Complete the RAT individually and bring your answers to class.
+\item Watch the three lectures: 
+\begin{enumerate}
+\item The concept of little languages
+\item The compiler interpreter pipeline
+\item Compilers vs Interpreters.
+\end{enumerate}
+\item Complete the RAT individually \emph{and} bring your answers to class.
 \end{itemize}
 
 \section*{Definitions to help while preparing}
@@ -32,10 +38,9 @@
 
 \newpage
 \part*{RAT 2 \hspace{6em} {\small INDICATE YOUR RESPONSE TO EACH QUESTION}}
-%\renewcommand{\labelenumii}{\alph{enumii}) $\fbox{$\phantom{x}$}$}
-\renewcommand{\labelenumii}{\alph{enumii}) $\square$}
+\RAT
 \begin{enumerate}
-\item \textbf{CVI: Which of these characteristics would make a language implementation \emph{certainly} a compiler:}
+\item \textbf{Which of these characteristics would make a language implementation \emph{certainly} a compiler:}
 \begin{enumerate}
   \item code generation \tick
   \item scanning
@@ -44,7 +49,7 @@
   \item static analysis
 \end{enumerate}
 
-\item \textbf{CIP: Which of the following is a synonym for \emph{lexing}:}
+\item \textbf{Which of the following is a synonym for \emph{lexing}:}
 \begin{enumerate}
   \item parsing
   \item scanning \tick
@@ -54,7 +59,7 @@
   \item static analysis
 \end{enumerate}
 
-\item \textbf{CIP: At which point does the language's characteristics start to come into play?}
+\item \textbf{At which point does the language's semantics start to come into play?}
 \begin{enumerate}
   \item parsing
   \item scanning
@@ -63,7 +68,7 @@
   \item static analysis \tick
 \end{enumerate}
 
-\item \textbf{CIP: Which of the following are optimisations a compiler/interpreter might do?}
+\item \textbf{Which of the following are optimisations a compiler/interpreter might do?}
 \begin{enumerate}
   \item change \lstinline|"five"| to \lstinline|5|
   \item change \lstinline|5 + 5| to \lstinline|10| \tick
@@ -73,7 +78,7 @@
   \item convert from an $O(n^2)$ algorithm to an $O(n)$ algorithm.
 \end{enumerate}
 
-\item \textbf{CIP: Two of the following phases can't easily co-exist in a single compiler/interpreter.  Which two?}
+\item \textbf{Two of the following phases can't easily co-exist in a single compiler/interpreter.  Which two?}
 \begin{enumerate}
   \item code generation \tick
   \item scanning
@@ -126,23 +131,23 @@ I found variables in the form of capture groups which you can use again later.  
 On balance, I think regular expressions are not complete.  If I ask the internet for an answer I find out some variants of regular expressions are complete and others are not - which matches with my vibe from my investigation.
 \newpage
 \part*{Self Study Exercises}
-\section*{ALL: Text Exercises}
+\section*{Text Exercises}
 Complete challenge 1 and 2 from  Chapter 1 of the text.
 
-\section*{CLL: Pick a Little Language}
+\section*{Pick a Little Language}
 Find a "little language" you have used somewhere.
 
 \subsection*{Solution}
   The command language in minecraft is \emph{almost} a little language but it does not include any control flow so perhaps that is being generous?  Though redstone can get you control flow.  Little languages are often very restricted and rely on machinery from elsewhere to do the hard work, so I think it counts in the end.  More likely you will have used BASH, which is the little language you use whenever you do something in the command line.  It has heaps of features you never thought to use.
 
-  \section*{CIP: Counting Branches}
+  \section*{Counting Branches}
 Imagine the following diagram of programming language implementation options is \emph{sound} and \emph{complete}.  We want to create a compiler/interpreter to convert our "source" language into one of our target languages (x86 or ARM).
   
 \includegraphics[width=0.5\textwidth]{2_paths.jpeg}
 
 How many different possible implementations are there? (Hint, this is a COMP2010 question)
 
-\section*{CIP: Compiler Parts}
+\section*{Compiler Parts}
 \begin{minipage}[t]{0.4\textwidth}
 Match these compiler parts 
 \begin{itemize}
@@ -173,7 +178,7 @@ with a description of what they do:
   \item[optimisation] remove redundancy and do early computation
   \item[code generation] output machine code
 \end{description}
-\section*{CVI: Language Classification}
+\section*{Language Classification}
   Discuss which of the following are compilers and which are interpreters:
   \begin{itemize}
     \renewcommand{\labelitemi}{$\square$}
@@ -186,13 +191,13 @@ with a description of what they do:
 \subsection*{Solution}
 Key to this question is that these are languages, and we can't answer for languages. We can only answer for particular language implementations! However, most languages come with standard implementations \emph{or} the implementations all use the same general approach. For Java and Processing and C, all implementations are compilers (though processing is a "transpiler"). For JavaScript, there are \emph{both} compiled and interpreted implementations.
 
-\section*{CVI: Compiler or Interpreter?}
+\section*{Compiler or Interpreter?}
 In your own words, give \emph{a single sentence} that describes \emph{the most important} distinction between compilers and interpreters.
 
 \subsection*{Solution}
 Compilers will output code, probably in a lower-level language, while interpreters will execute the code directly.
 
-\section*{CLL: Regex}
+\section*{Regex}
   Write a regular expressions that will work over the following text to extract:
   \begin{itemize}
     \item every instance of "the the" and "teh" (common errors)
@@ -235,7 +240,7 @@ Compilers will output code, probably in a lower-level language, while interprete
 
 
 
-\section*{CIP: Exits}
+\section*{Exits}
   There are multiple end-points for the paths over the crafting interpreters mountain, what are they?
 \subsection*{Solution}
     \begin{itemize}
@@ -245,7 +250,7 @@ Compilers will output code, probably in a lower-level language, while interprete
     \end{itemize}
 
 
-\section*{CIP: Combining Optimisations}
+\section*{Combining Optimisations}
   There is an optimisation called \emph{constant propagation} which notices if a variable never changes and replaces all instances of that variable with the value it will always have. The textbook talked about \emph{constant folding}. Can you think of a program (in whatever language you like) where \emph{constant propagation} might open up new opportunities to do \emph{constant folding}?
 \subsection*{Solution}
   Here is mine (in Ruby):
@@ -262,7 +267,7 @@ Compilers will output code, probably in a lower-level language, while interprete
   puts 25
   \end{verbatim}
 
-\section*{CIP: Tree Walker}
+\section*{Tree Walker}
 Which of the following phases would be left out of a "tree walk interpreter"?
 \begin{itemize}
     \item scanner
@@ -273,7 +278,7 @@ Which of the following phases would be left out of a "tree walk interpreter"?
 \subsection*{Solution}
 Code generation and runtime would be left out of a tree walker.  The tree walker is a kind of interpreter that does not generate code, it just walks the tree and executes the code as it goes.  The scanner and parser are still needed to get the tree in the first place.
 
-section*{The compiler interpreter pipeline: Transpiler}
+section*{Transpiler}
 Which of the following phases would be left out of a "transpiler"?
 \begin{itemize}
     \item scanner
@@ -284,18 +289,18 @@ Which of the following phases would be left out of a "transpiler"?
 \subsection*{Solution}
 Runtime would be left out of a transpiler.  A transpiler still generates code, it just generates it in another high-level language.
 
-\section*{CVI: Hypothetical}
+\section*{Hypothetical}
   If I told you I had a program which did a "quick and dirty" conversion from BASH script to Ruby, would you think it was a compiler or an interpreter?  Justify your choice.
   \subsection*{Solution}
   This would have to be a compiler! It \emph{sounds like} an interpreter because it is "quick and dirty, " but it doesn't actually run any code! It takes code in a source language and converts it to another language. It just so happens the "other" language is commonly used as a source language. Even the assembly code you are used to generating in a compiler is actually run through an interpreter in the end (really, it is true), so having Ruby as a target language is not so strange after all.
 
-\section*{CVI: Real Interpreter}
+\section*{Real Interpreter}
 What is a programming language implementation you know of that \emph{certainly} is an interpreter rather than a compiler?
 
   \subsection*{Solution}
   The text identifies early versions of Ruby. I will nominate \texttt{sed}, which performs stream editing on Unix. \texttt{sed} has a configuration language that qualifies as a domain-specific language for making changes to a text file.
 
-\section*{CVI: Why not Langauge?}
+\section*{Why not Langauge?}
 In your own words, explain why is is not meaningful to ask if a language is compiled or interpreted.
 
 \subsection*{Solution}
@@ -303,5 +308,5 @@ A language is a set of rules for writing programs.  A program is a set of instru
 
 However, all the implementations of a particular language are usually similar, so it is common to talk about a language as if it is a single thing.  This is not strictly correct, but it is a useful simplification.  It is also common to talk about the "compiler" or "interpreter" of a language as if it is a single thing, even though there are many different implementations of each.
 
-Languages where all implementaions are interpreters are Ruby, BASH, and R.  Languages where all implementations are compilers are Java, C, and Processing.  Languages where there are both interpreters and compilers are JavaScript and Python\footnote{As long as we include CPython as real python, which is disputed}.
+Languages where all implementations are interpreters are Ruby, BASH, and R.  Languages where all implementations are compilers are Java, C, and Processing.  Languages where there are both interpreters and compilers are JavaScript and Python\footnote{As long as we include CPython as real python, which is disputed}.
 \end{document}

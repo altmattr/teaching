@@ -1,0 +1,8 @@
+VAR var null
+IDENTIFIER x null
+EQUAL = null
+READ read null
+PRINT print null
+IDENTIFIER x null
+SEMICOLON ; null
+EOF  null

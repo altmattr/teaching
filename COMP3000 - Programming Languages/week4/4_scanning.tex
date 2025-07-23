@@ -1,0 +1,531 @@
+\documentclass[twoside=false, DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\title{\color{redish} \vspace{-1em}COMP3000 Week 4: Scanning}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\begin{abstract}
+\end{abstract}
+
+\section*{Topics}
+\begin{enumerate}
+\item Lox machinery
+\item Scanning Theory
+\item The Lox Scanner
+\end{enumerate}
+
+\section*{Preparation}
+\begin{itemize}
+\item Read the text chapters 4
+\item Watch lectures, X
+\item Complete the RAT individually and bring your answers to class.
+\item Ensure you have a working lox implementation on your own computer (or in your lab computer login) \emph{before} class.
+\end{itemize}
+
+\newpage
+\part*{RAT 4 \hspace{6em} {\small ANSWER ON iLearn}}
+%\renewcommand{\labelenumii}{\alph{enumii}) $\fbox{$\phantom{x}$}$}
+\renewcommand{\labelenumii}{\alph{enumii}) $\square$}
+\begin{enumerate}
+\item \textbf{question}
+\begin{enumerate}
+  \item answer \tick
+  \item distractor
+  \item distractor
+  \item distractor
+  \item distractor
+\end{enumerate}
+
+\item \textbf{How much lookahead}
+How much lookahead is needed if our scanner is concerned with only the following tokens: ")" (right parens), "(" (left parens), "\{" (left curly), and "\}" (right curly). I.e. these are the only 4 tokens that might validly appear in a program.
+\begin{enumerate}
+    \item[\tick] 0
+    \item 1
+    \item 2
+    \item 3
+\end{enumerate}
+
+\begin{todo}
+need a lot more of these go get the RAT done
+\end{todo}
+\end{enumerate}
+
+\newpage
+\part*{Application Exercise}
+
+Our first task this week is to make sure every group member has a working Lox scanner.  All the code we need is in the textbook.  You will work together as a team to fix any issues that any group members have until \emph{everyone} has a working scanner.  
+
+Once you have that working, come up with a \emph{development cycle} for working on Lox extensions.  This semester we will be adding extra features to Lox to the Lox code-base in the textbook, so you will spend lots of time working on that code base.  An important part of working on a code-base in a team is to have a development cycle that everyone agrees on.  This is not a formal process, but it is important that you all agree on how you will work together.
+
+Note: This is not to do with \emph{teamwork} in the way you might think.  This is about making sure that, as each individual does work on their own computer, they can communicate with others in the team because the whole team is working the same way.  Your aim is \emph{to find a shared point of view and to codify it}.
+
+You are probably used to a development cycle that looks like this:
+\begin{enumerate}
+  \item Have source code and test code.
+  \item Test code is written in JUnit
+  \item If the tests are green, your code is working.
+\end{enumerate}
+That won't be enough for compiler/interpreter development.  Think about answers to the following questions to help you come up with a development cycle that will work for you:
+\begin{enumerate}
+  \item What is the i
+\end{enumerate}
+\subsection*{Discussion}
+At the end of class, share your development cycle with the rest of the class.  Listen carefully to the other groups, some will have had better ideas than you.  The class should vote on which sounds most sensible.  The teacher will also tell you which one they think is best.  
+
+\newpage
+\part*{Application Exercise Notes and Solutions}
+I decided to focus on what might be called "system tests".  I write an input file (which is a lox program) and then I add another file which has the output I expect from compiling that program.  I can use file extensions to indicate the output of different compiler phases.  For example, for this week I have input files with the extension `.lox` and output files with the extension `.scan`.  The `.scan` files contain the output of the scanner.  I can then run my scanner on the input file and compare the output to the expected output.  If they match, I know my scanner is working correctly.  I can also share the input and output files with my team members so they can run the same tests on their scanners.  This way we can all be sure that our scanners are working correctly.
+\newpage
+\part*{Self Study Exercises}
+\section*{exercise}
+flobadob
+
+\subsection*{Solution}
+dibdob
+
+
+\section*{Lookahead}
+Lox needs just 2 "lookahead". What part of the syntax is that lookahead needed for?
+
+\subsection*{Solution}
+Single lookahead is needed in lots of places. Strings look ahead to know they stop on \lstinline|`"|. Identifiers look ahead to see if the next character is still part of the identifier. Just about every multi-character token needs to look ahead at least one to know whether it continues to advance or if it stops and returns a value. For decimals, we need to look two ahead because when we see a period one in front, we need to look ahead \emph{again} to decide if we advance or stop.
+
+
+\section*{Triple Lookahead}
+Can you think of a syntax that would need more than two lookahead? Ruby might give you inspiration.
+
+\subsection*{Solution}
+String in Ruby will need more lookahead. Ruby supports strings that begin/end with single inverted commas, which require one lookahead. However, it also supports triple-quoted strings, and to determine when you have one of these rather than a single-quoted string, you would need to lookahead twice more.
+
+
+\section*{switch to a single peek method}
+  As suggested in the text, switch to a single \lstinline|peek| method that will peek however far ahead you ask it to.
+
+\subsection*{Solution}
+We also need to adjust \lstinline|isAtEnd| to have the same parameterisation if this is to be consistent. Note that I don't want to change too much of the code so I overload \lstinline|isAtEnd| to keep the no-parameter version but have it call a parameterised version.
+
+\begin{lstlisting}
+  // old version commented out
+  // private boolean isAtEnd() {
+  //   return current >= source.length();
+  // }
+  // new version
+  private boolean isAtEnd(){return isAtEnd(0);}
+  private boolean isAtEnd(int howFar){
+    return current + howFar >= source.length();
+  }  
+\end{lstlisting}
+and here are the changes to \lstinline|peek| and \lstinline|peekNext| I do the same overriding trick so I can keep the old version working.
+\begin{lstlisting}
+    // // private char peek() {
+  // //   if (isAtEnd()) return '\0';
+  // //   return source.charAt(current);
+  // // }
+
+  // private char peekNext() {
+  //   if (current + 1 >= source.length()) return '\0';
+  //   return source.charAt(current + 1);
+  // } 
+  private char peek(int howFar){
+    if (isAtEnd(howFar)) return '\0';
+    return source.charAt(current + howFar);
+  }
+\end{lstlisting}
+  Of course, I also need to find all the calls to \lstinline|peekNext| and adjust them to \lstinline|peek(1)|.
+
+\section*{Input to go with Read}
+  Lox only has `print` but it sure would be nice to get input from the user.  Add a `read` operation.  This includes adding a token for it, having that token identified as a keyword, then creating a test file with a test output to prove it worked.
+\subsection*{Solution}
+ My test file looks like
+
+\lstinputlisting{read.lox}
+
+and it will scan just fine with no changes but that will give me the following output
+ 
+\begin{lstlisting}
+  VAR var null
+  IDENTIFIER x null
+  EQUAL = null
+  IDENTIFIER read null
+  PRINT print null
+  IDENTIFIER x null
+  SEMICOLON ; null
+  EOF  null
+\end{lstlisting}
+
+That's not what I want because the `read` has been scanned as an identifier instead of a keyword.  I've had to add `READ` to `TokenType.java` and add `    keywords.put("read",   READ);` to the static block in `Scanner.java`.  When I do that, I get what I really want
+
+\lstinputlisting{read.scan}
+
+\section*{better hash}
+If you understand how the \lstinline|identifier| function works \emph{and} you know about \lstinline|getOrDefault| \url{https://docs.oracle.com/javase/8/docs/api/java/util/Map.html#getOrDefault-java.lang.Object-V-} then you can shrink the `identifier` function to just 3 lines.  Do it.
+
+\subsection*{Solution}
+New version with old version commented out for clarity
+\begin{lstlisting}
+  private void identifier() {
+    while (isAlphaNumeric(peek())) advance();
+    String text = source.substring(start, current);
+    addToken(keywords.getOrDefault(text, IDENTIFIER));
+  }
+\end{lstlisting}
+
+I can't think of a reason \emph{not} to use \lstinline|getOrDefault| except that perhaps Nystrom wanted to keep to an even earlier version of Java. \lstinline|getOrDefault| was introduced in Java 8.
+
+\section*{Scan Octal Numbers}
+Write a code for Lox that can scan \emph{oct numbers}. Oct numbers start with a "o" and can include any digit from 0 to 7. You should assume the presence of the following functions which work exactly as they do in the text. Oct numbers never have a fractional part.
+
+\subsection*{Solution}
+\begin{lstlisting}
+bool isOctalDigit(); // returns true for 0 - 7 only
+char advance();
+char peek();
+char peekNext();
+Double octConv(String s); // converts the octal string s to a double.
+\end{lstlisting}
+
+You may also assume the main scanning method is given below. Your answer should explain what code you add here and give complete definitions of any functions you choose to use.
+
+\begin{lstlisting}
+private void scanToken() {
+  char c = advance();
+  switch (c) {
+    case '(': addToken(LEFT_PAREN); break;
+    case ')': addToken(RIGHT_PAREN); break;
+    case '{': addToken(LEFT_BRACE); break;
+    case '}': addToken(RIGHT_BRACE); break;
+    case ',': addToken(COMMA); break;
+    case '.': addToken(DOT); break;
+    case '-': addToken(MINUS); break;
+    case '+': addToken(PLUS); break;
+    case ';': addToken(SEMICOLON); break;
+    case '*': addToken(STAR); break; 
+    case '!':
+      addToken(match('=') ? BANG_EQUAL : BANG);
+      break;
+    case '=':
+      addToken(match('=') ? EQUAL_EQUAL : EQUAL);
+      break;
+    case '<':
+      addToken(match('=') ? LESS_EQUAL : LESS);
+      break;
+    case '>':
+      addToken(match('=') ? GREATER_EQUAL : GREATER);
+      break;
+    case '/':
+      if (match('/')) {
+        // A comment goes until the end of the line.
+        while (peek() != '\n' && !isAtEnd()) advance();
+      } else {
+        addToken(SLASH);
+      }
+      break;
+    // ignore whitespace
+    case ' ':
+    case '\r':
+    case '\t':
+      break;
+    case '\n':
+      line++;
+      break;
+    // string literals
+    case '"': string(); break;
+    default : 
+      if (isDigit(c)){
+        number();
+      } else if (isAlpha(c)) {
+        identifier();
+      } else {
+        MLox.error(line, "Unexpected character.");
+      }
+      break;
+  }
+}
+\end{lstlisting}
+
+\subsection*{Solution}
+
+This one is a little tricky.  When we see an "o", it might be an identifier, or it might be an octal number.  We can add a little lookahead to help us decide.
+
+\begin{lstlisting}
+  } else if (isAlpha(c)){
+    if (c == "o" && isOctDigit(peek())){
+      octal()
+    } else {
+      identifier();
+    }
+  }   
+\end{lstlisting}
+
+and define \lstinline|octal| as
+
+\begin{lstlisting}
+  private void octal(){
+    while (isOctDigit(peek())) advance();
+    addToken(NUMBER, octConv(source.substring(start, current)));
+\end{lstlisting}
+
+Here is a test file you can try it out with
+
+\lstinputlisting{oct.lox}
+
+\section*{New Type of Comments}
+Write a scanner that will support new types of comments.  These comments should start with \lstinline|`#`| and proceed to the end of the line only.
+
+We have populated the answer box with an empty scanner (`QScanner`) which inherits from the lox scanner described in the text.  The test code uses this scanner.  Override whatever methods you need to achieve the desired result
+
+\begin{lstlisting}
+import static com.craftinginterpreters.lox.TokenType.*; // [static-import]
+
+  class QScanner  extends Scanner{
+    public QScanner(String source) {
+      super(source);
+    }
+
+    public void scanToken() {
+      char c = advance();
+      switch (c) {
+        case '(': addToken(LEFT_PAREN); break;
+        case ')': addToken(RIGHT_PAREN); break;
+        case '{': addToken(LEFT_BRACE); break;
+        case '}': addToken(RIGHT_BRACE); break;
+        case ',': addToken(COMMA); break;
+        case '.': addToken(DOT); break;
+        case '-': addToken(MINUS); break;
+        case '+': addToken(PLUS); break;
+        case ';': addToken(SEMICOLON); break;
+        case '*': addToken(STAR); break; // [slash]
+        case '!':
+          addToken(match('=') ? BANG_EQUAL : BANG);
+          break;
+        case '=':
+          addToken(match('=') ? EQUAL_EQUAL : EQUAL);
+          break;
+        case '<':
+          addToken(match('=') ? LESS_EQUAL : LESS);
+          break;
+        case '>':
+          addToken(match('=') ? GREATER_EQUAL : GREATER);
+          break;
+        case '/':
+          if (match('/')) {
+            // A comment goes until the end of the line.
+            while (peek() != '\n' && !isAtEnd()) advance();
+          } else {
+            addToken(SLASH);
+          }
+          break;
+        case ' ':
+        case '\r':
+        case '\t':
+          // Ignore whitespace.
+          break;
+
+        case '\n':
+          line++;
+          break;
+        case '"': string(); break;
+        default:
+          if (isDigit(c)) {
+            number();
+          } else if (isAlpha(c)) {
+            identifier();
+          } else {
+            Lox.error(line, "Unexpected character.");
+          }
+          break;
+      }
+    }
+  }
+\end{lstlisting}  
+\subsection*{Solution}
+\begin{lstlisting}
+  import static com.craftinginterpreters.lox.TokenType.*; // [static-import]
+
+  class QScanner  extends Scanner{
+    public QScanner(String source) {
+      super(source);
+    }
+
+    public void scanToken() {
+      char c = advance();
+      switch (c) {
+        case '#': while(peek() != '\n' && !isAtEnd()) advance(); break;
+        case '(': addToken(LEFT_PAREN); break;
+        case ')': addToken(RIGHT_PAREN); break;
+        case '{': addToken(LEFT_BRACE); break;
+        case '}': addToken(RIGHT_BRACE); break;
+        case ',': addToken(COMMA); break;
+        case '.': addToken(DOT); break;
+        case '-': 
+            if (match('-')) {
+                while (peek() != '\n' && isAtEnd()) advance();
+            } else {
+                addToken(MINUS);
+            }
+            break;
+        case '+': addToken(PLUS); break;
+        case ';': addToken(SEMICOLON); break;
+        case '*': addToken(STAR); break; // [slash]
+        case '!':
+          addToken(match('=') ? BANG_EQUAL : BANG);
+          break;
+        case '=':
+          addToken(match('=') ? EQUAL_EQUAL : EQUAL);
+          break;
+        case '<':
+          addToken(match('=') ? LESS_EQUAL : LESS);
+          break;
+        case '>':
+          addToken(match('=') ? GREATER_EQUAL : GREATER);
+          break;
+        case '/':
+          if (match('/')) {
+            // A comment goes until the end of the line.
+            while (peek() != '\n' && !isAtEnd()) advance();
+          } else {
+            addToken(SLASH);
+          }
+          break;
+        case ' ':
+        case '\r':
+        case '\t':
+          // Ignore whitespace.
+          break;
+
+        case '\n':
+          line++;
+          break;
+        case '"': string(); break;
+        default:
+          if (isDigit(c)) {
+            number();
+          } else if (isAlpha(c)) {
+            identifier();
+          } else {
+            Lox.error(line, "Unexpected character.");
+          }
+          break;
+      }
+    }
+  }
+\end{lstlisting}
+And here are some example tests to go with it.  The output is the expected output of the scanner when it scans the input program.  The first column is the token type, the second column is the lexeme (the text that was scanned) and the third column is the value of the token (if any).
+\begin{lstlisting}
+  - Lox.scan(new QScanner("print \"hi\";"), false): |
+      PRINT print null
+      STRING "hi" hi
+      SEMICOLON ; null
+      EOF  null
+  - Lox.scan(new QScanner("print \"hi\";#commend"), false): |
+      PRINT print null
+      STRING "hi" hi
+      SEMICOLON ; null
+      EOF  null
+  - Lox.scan(new QScanner("print 5;"), false): |
+      PRINT print null
+      NUMBER 5 5.0
+      SEMICOLON ; null
+      EOF  null
+  - Lox.scan(new QScanner("#commend\nprint 5;"), false): |
+      PRINT print null
+      NUMBER 5 5.0
+      SEMICOLON ; null
+      EOF  null
+\end{lstlisting}
+
+\section*{Hex Numbers}
+Write a code for lox that can scan \emph{hex numbers}.  Hex numbers start with a \lstinline|"#"| and can include any digit or any letter from "A", "B", "C", "D", "E", "F" (capitals only).  You should assume the presence of the following functions which work exactly as they do in the text.  Hex numbers never have a fractional part.
+\begin{lstlisting}
+  bool isDigit();
+  char advance();
+  char peek();
+  char peekNext();
+  Double hexConv(String s); // converts the hex string s to a double.
+\end{lstlisting}  
+You may also assume the main scanning method is given below.  Your answer should explain what code you add here and give complete definitions of any functions you choose to use.
+\begin{lstlisting}
+    private void scanToken() {
+    char c = advance();
+    switch (c) {
+      case '(': addToken(LEFT_PAREN); break;
+      case ')': addToken(RIGHT_PAREN); break;
+      case '{': addToken(LEFT_BRACE); break;
+      case '}': addToken(RIGHT_BRACE); break;
+      case ',': addToken(COMMA); break;
+      case '.': addToken(DOT); break;
+      case '-': addToken(MINUS); break;
+      case '+': addToken(PLUS); break;
+      case ';': addToken(SEMICOLON); break;
+      case '*': addToken(STAR); break; 
+      case '!':
+        addToken(match('=') ? BANG_EQUAL : BANG);
+        break;
+      case '=':
+        addToken(match('=') ? EQUAL_EQUAL : EQUAL);
+        break;
+      case '<':
+        addToken(match('=') ? LESS_EQUAL : LESS);
+        break;
+      case '>':
+        addToken(match('=') ? GREATER_EQUAL : GREATER);
+        break;
+      case '/':
+        if (match('/')) {
+          // A comment goes until the end of the line.
+          while (peek() != '\n' && !isAtEnd()) advance();
+        } else {
+          addToken(SLASH);
+        }
+        break;
+      // ignore whitespace
+      case ' ':
+      case '\r':
+      case '\t':
+        break;
+      case '\n':
+        line++;
+        break;
+      // string literals
+      case '"': string(); break;
+      default : 
+        if (isDigit(c)){
+          number();
+        } else if (isAlpha(c)) {
+          identifier();
+        } else {
+          MLox.error(line, "Unexpected character.");
+        }
+        break;
+    }
+  }
+  
+\end{lstlisting}
+\subsection*{Solution}
+  We need to add a new alternative in the default case after the
+\begin{lstlisting}
+  } else if (isAlpha(c)){
+  </pre>
+  branch.  We add
+  <pre>
+  } else if (c == '#'){
+    hex();
+  }
+\end{lstlisting}  
+
+and define `hex` as
+
+\begin{lstlisting}
+  private void hex(){
+    char c = peek();
+    while(isDigit(c) || c == "A" || c == "B" || c == "C" || c == "D" || c == "F"){
+      advance();
+      c = peek();
+    }
+    addToken(NUMBER, hexConv(source.substring(start, current)));
+\end{lstlisting}
+
+
+\end{document}

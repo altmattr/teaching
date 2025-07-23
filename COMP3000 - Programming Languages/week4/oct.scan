@@ -1,0 +1,11 @@
+VAR var null
+IDENTIFIER x null
+EQUAL = null
+NUMBER 3 3.0
+PLUS + null
+NUMBER o34 28
+SEMICOLON ; null
+PRINT print null
+IDENTIFIER x null
+SEMICOLON ; null
+EOF  null
