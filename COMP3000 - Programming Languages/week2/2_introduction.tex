@@ -18,14 +18,14 @@
 \end{description}
 \section*{Preparation}
 \begin{itemize}
-\item Read the text chapters 1 and 2
-\item Watch the three lectures: 
+\item Read the chapters 1 and 2 of "Crafting Interpreters".
+\item Watch the four lectures on echo360: 
 \begin{enumerate}
+\item Intro to book and how to use
 \item The concept of little languages
 \item The compiler interpreter pipeline
 \item Compilers vs Interpreters.
 \end{enumerate}
-\item Complete the RAT individually \emph{and} bring your answers to class.
 \end{itemize}
 
 \section*{Definitions to help while preparing}
@@ -35,58 +35,6 @@
 \item[complete]: If you follow these rules, you won't miss anything.
 \item[stream]: Like an array or Vector but it arrives over time, not all at once.  \emph{Files} are commonly treated as streams because it takes time to get them from the hard drive and they might be much bigger than your memory.
 \end{description}
-
-\newpage
-\part*{RAT 2 \hspace{6em} {\small INDICATE YOUR RESPONSE TO EACH QUESTION}}
-\RAT
-\begin{enumerate}
-\item \textbf{Which of these characteristics would make a language implementation \emph{certainly} a compiler:}
-\begin{enumerate}
-  \item code generation \tick
-  \item scanning
-  \item parsing
-  \item interpretation
-  \item static analysis
-\end{enumerate}
-
-\item \textbf{Which of the following is a synonym for \emph{lexing}:}
-\begin{enumerate}
-  \item parsing
-  \item scanning \tick
-  \item luthering
-  \item code generation
-  \item interpretation
-  \item static analysis
-\end{enumerate}
-
-\item \textbf{At which point does the language's semantics start to come into play?}
-\begin{enumerate}
-  \item parsing
-  \item scanning
-  \item code generation
-  \item interpretation
-  \item static analysis \tick
-\end{enumerate}
-
-\item \textbf{Which of the following are optimisations a compiler/interpreter might do?}
-\begin{enumerate}
-  \item change \lstinline|"five"| to \lstinline|5|
-  \item change \lstinline|5 + 5| to \lstinline|10| \tick
-  \item change \lstinline|5 + 5| to \lstinline|10 + 0|
-  \item strip \lstinline|if true| from a block of code \tick
-  \item remove a loop that executes zero times \tick
-  \item convert from an $O(n^2)$ algorithm to an $O(n)$ algorithm.
-\end{enumerate}
-
-\item \textbf{Two of the following phases can't easily co-exist in a single compiler/interpreter.  Which two?}
-\begin{enumerate}
-  \item code generation \tick
-  \item scanning
-  \item parsing
-  \item interpretation \tick
-  \item static analysis
-\end{enumerate}
-\end{enumerate}
 
 \newpage
 \part*{Application Exercise}
@@ -113,22 +61,6 @@ A language is "complete" if it can express all possible computations.  All compl
   \item \textbf{Variables, Functions}: A language with variables and functions is probably complete.  This is the "Church" view of completeness and corresponds to a computational calculus\footnote{This dual nature of computing is one of the most fascinating aspects of programming language theory.  Some fundamental truths of the universe are hidden within it}.
 \end{itemize}
 
-\newpage
-\part*{Application Exercise Notes and Solutions}
-I wanted to find all the first words used by each Seinfeld character in the scene.  I loaded up all the script from the episode "The Non-Fat Yoghurt".
-
-To get all the first words used by Kramer I used the regex \verb|Kramer\s*([A-z]*)| which got me these words: So, Yeah, Yeah, Well, Yeah, Yes, Hey, Yow, Well, I, Yeah, I, No, Well, You, You, Oh, What, Hey, Giddy, Well, It, Hey, Hello, Ooh, Well, Why, I, Where, Yeah, I, Well, Well, Hey, Well, No
-You, He, Yeah, He, Yeow, Okay
-Mine, Yeah.
-
-I did the same for George and got these words: Fantastic, Good, Very, See, Oh, Okay, What, No, Oh, This, Hey, Yeah, Uh, Oh, Yeah, Uh, Yeah, He, All, No, What, Hey, yesterday, Oh, Nothing, Yeah, Well, with, You, All, Oh, Oh, Yeah, So, And, I, Oh, Oh, Why, So, Already, All, Yeah, The, Please, Yes, Uh, Hmm, Well, How, Faking, Now, Fine, Name, I, Phew
-
-Which I thought was quite interesting.  You can see that good script writing means even the very first words of a character are carefully chosen to give you a sense of their character.  
-
-\subsection*{On Completeness}
-I found variables in the form of capture groups which you can use again later.  I found loops in the form of \verb|*| and \verb|+| but I am not convinced on conditions.  The \verb|?| operator certainly looks like a condition but it can't change the flow of computation, so I am unsure.  I didn't find anything that looked like a function.
-
-On balance, I think regular expressions are not complete.  If I ask the internet for an answer I find out some variants of regular expressions are complete and others are not - which matches with my vibe from my investigation.
 \newpage
 \part*{Self Study Exercises}
 \section*{Text Exercises}

@@ -27,12 +27,6 @@
 \lohead{\color{red} COMP3000 Programming Languages}
 \rohead{\includegraphics[width=0.5cm]{../logo.jpg}}
 
-\newcommand{\tick}{\ensuremath{\checkmark}} 
-%\newcommand{\tick}{} 
-\newcommand{\RAT}{\renewcommand{\labelenumii}{\alph{enumii}) $\square$}}
-
-%\usepackage{enumitem}
-
 \setkomafont{author}{\sffamily \small}
 \setkomafont{date}{\sffamily \small}
 
@@ -43,6 +37,15 @@
 
 
 \date{}
+\newtcolorbox{aside}[1][]{
+  title=Aside,
+  width=0.3\textwidth,
+  fonttitle=\bfseries,
+  breakable,
+  fonttitle=\bfseries\color{black},
+  colframe=blueish!80,
+  colback=blueish!2
+  #1}
 
 \newtcolorbox{note}[1][]{
   title=Note,

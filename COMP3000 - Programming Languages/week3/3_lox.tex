@@ -13,6 +13,7 @@ By the end of this week you should:
 \begin{itemize}
     \item Be able to program in Lox
     \item Understand some basic Lox design decisions
+    \item Have a wider view or programming language design options.
 \end{itemize}
 \end{abstract}
 
@@ -26,80 +27,26 @@ By the end of this week you should:
 
 \section*{Preparation}
 \begin{itemize}
-\item Read the text chapters 3
-\item Watch lox lectures:
+\item Read chapter 3 of "Crafting Interpreters" (the Lox book).
+\item Watch lox lectures on echo360:
   \begin{itemize}
   \item High level features, types, expressions, and statements.
   \item Functions and OO features
   \item Lox live coding session
   \end{itemize}
-\item Complete the RAT individually \emph{and} bring your answers to class.
+\item Complete the iRAT on iLearn.
 \item Ensure you have a working lox implementation on your computer.
 \item Experiment with lox programs.
 \end{itemize}
 
-\newpage
-\part*{RAT  \hspace{6em} {\small ANSWER ON ILEARN}}
-%\renewcommand{\labelenumii}{\alph{enumii}) $\fbox{$\phantom{x}$}$}
-\renewcommand{\labelenumii}{\alph{enumii}) $\square$}
-\begin{enumerate}
-
-\item \textbf{output of program}
-What will be the output of the following lox program
-\begin{lstlisting}
->    var foo = 4;
->    fun simple(){
->        foo = 6;
->    }
->    simple();
->    print foo;
-\end{lstlisting}
-\begin{enumerate}
-    \item \tick 6
-    \item 4
-    \item compile error due to missing semi-colon
-    \item compile error due to wrong keyword
-  \end{enumerate}
-  
-  \item \textbf{Binary Operators}
-"binary" operators are so-called because:
-\begin{enumerate}
-    \item \tick They have two arguments
-    \item They work on binary data
-    \item They generate binary data
-    \item They do arithmetic operations
-\end{enumerate}
-
-\item \textbf{Infix Operators}
-"infix" operators belong where?
-\begin{enumerate}
-    \item \tick between the arguments
-    \item infix the arguments
-    \item within the one argument
-    \item after the arguments
-\end{enumerate}
-
-\item \textbf{Statement vs Expression}
-Match the language feature with its job:
-\begin{enumerate}
-    \item statement $->$ produce an effect
-    \item expression $->$ produce a value
-\end{enumerate}
-
-\item \textbf{OO Language Design}
-Which of the following approaches to OO language design did the textbook author choose for Lox? :
-\begin{enumerate}
-    \item \tick  classes
-    \item \tick  prototypes
-    \item objects
-    \item sharing
-    \item inheritance
-\end{enumerate}
-  
-\end{enumerate}
 
 \newpage
 \part*{Application Exercise}
+
+\begin{wrapfigure}{R}{0.33\textwidth}\begin{aside}
+  The idea that one program might generate another program is powerful but a little strange.  Be sure you have your head around this idea before you begin. If the \emph{only} thing you get from this class is an intuition for generating programs from other programs, you will still have made a bit step forward in your understanding of programming languages.  This concept is key and will come up again very soon.  If you don't get it now, you will struggle later.
+\end{aside}\end{wrapfigure}
+
 
 A fun little language is logo (aka "turtle graphics").  It is a language designed for kids to learn programming.  It has a very simple syntax and a very simple set of commands.  The idea is that you can use it to draw pictures on the screen.  Check out the language this online implementations:
 \begin{itemize}
@@ -129,9 +76,7 @@ Once you have achieved this, try to write a lox program which generates this ver
 
 \includegraphics{second.jpg}
 
-Once you have this done, go have some fun with logo and with generating logo programs.  If you have time to come up with a really fun generated program, please share it with the class.
-
-\newpage
+Once you have this done, go have some fun with logo and with generating logo programs.  If you have time to come up with a really fun generated program, please share the lox program that generated it with the class.
 
 \newpage
 \part*{Application Exercise Notes and Solutions}

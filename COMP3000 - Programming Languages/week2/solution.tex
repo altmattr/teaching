@@ -1,0 +1,24 @@
+\documentclass[twoside=false, DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\title{\color{redish} \vspace{-1em}COMP3000 Week 2: Application Exercise Notes and Solutions}
+
+\begin{document}
+{\color{blackish}\maketitle}
+\
+I wanted to find all the first words used by each Seinfeld character in the scene.  I loaded up all the script from the episode "The Non-Fat Yoghurt".
+
+To get all the first words used by Kramer I used the regex \verb|Kramer\s*([A-z]*)| which got me these words: So, Yeah, Yeah, Well, Yeah, Yes, Hey, Yow, Well, I, Yeah, I, No, Well, You, You, Oh, What, Hey, Giddy, Well, It, Hey, Hello, Ooh, Well, Why, I, Where, Yeah, I, Well, Well, Hey, Well, No
+You, He, Yeah, He, Yeow, Okay
+Mine, Yeah.
+
+I did the same for George and got these words: Fantastic, Good, Very, See, Oh, Okay, What, No, Oh, This, Hey, Yeah, Uh, Oh, Yeah, Uh, Yeah, He, All, No, What, Hey, yesterday, Oh, Nothing, Yeah, Well, with, You, All, Oh, Oh, Yeah, So, And, I, Oh, Oh, Why, So, Already, All, Yeah, The, Please, Yes, Uh, Hmm, Well, How, Faking, Now, Fine, Name, I, Phew
+
+Which I thought was quite interesting.  You can see that good script writing means even the very first words of a character are carefully chosen to give you a sense of their character.  
+
+\subsection*{On Completeness}
+I found variables in the form of capture groups which you can use again later.  I found loops in the form of \verb|*| and \verb|+| but I am not convinced on conditions.  The \verb|?| operator certainly looks like a condition but it can't change the flow of computation, so I am unsure.  I didn't find anything that looked like a function.
+
+On balance, I think regular expressions are not complete.  If I ask the internet for an answer I find out some variants of regular expressions are complete and others are not - which matches with my vibe from my investigation.
+
+\end{document}

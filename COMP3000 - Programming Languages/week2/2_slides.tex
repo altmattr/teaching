@@ -1,59 +1,55 @@
-\documentclass[11pt]{beamer}
+\documentclass[
+paper=160mm:90mm, % The same paper size as used in the beamer class
+paper=landscape,
+fontsize=11pt, % Font size
+pagesize, % Write page size to dvi or pdf
+parskip=half-, % Paragraphs separated by half a line
+]{scrartcl} % KOMA script (article)
+
+\usepackage[ % Page margins settings
+includeheadfoot,
+top=3.5mm,
+bottom=3.5mm,
+left=5.5mm,
+right=5.5mm,
+headsep=6.5mm,
+footskip=8.5mm
+]{geometry}
+
+\linespread{1.12} 
+
 \input{../latex_setup.tex}
-\setbeamertemplate{frametitle}{
-    \begin{center}
-        \insertframetitle
-    \end{center}
-}
-\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
-\setbeamercolor{frametitle}{fg=red}
+
+\title{\color{redish} \vspace{-1em}COMP3000 Week 2: In-class Slides}
 \begin{document}
 
-\begin{frame}
-\frametitle{Week 2: Introduction}
-This is the beginning of the slides
-\end{frame}
+{\color{blackish}\maketitle}
 
-\begin{frame}
-\frametitle{compilers vs interpreters: Which of these characterstics would make a language implementation certainly a compiler?}
+
+\newpage\section*{compilers vs interpreters: Which of these characterstics would make a language implementation certainly a compiler?}
 It is \emph{code generation}.  If you are generating code in a lower-level language, just about everyone will agree you are a compiler.
-\end{frame}
 
-\begin{frame}
-\frametitle{The compiler interpreter pipeline: Which of the following is a synonym for lexing?}
+\section{The compiler interpreter pipeline: Which of the following is a synonym for lexing?}
 \emph{Scanning}.
 
 It is the very first step in the compiler pipeline. It is the process of taking a stream of characters and turning it into a stream of tokens. The tokens are the basic building blocks of the language. They are the things that the parser will use to build the parse tree.
-\end{frame}
 
-\begin{frame}
-\frametitle{Compiler Interpreter Pipeline: At which point does the language's characteristics start to come into play?}
+\section{Compiler Interpreter Pipeline: At which point does the language's characteristics start to come into play?}
 \emph{Static Analysis}
 
 This is the point at which all the "fun" things occur, all the things you think of when you think of your compiler.  It is when type checking, name checking, and parameter checking all occur.  These are the areas where languages tend to differ more.  Most languages these days mostly use very similar tokens so scanning and parsing are fairly similar accross the board - except the fun languages like Haskell and Lisp.
-\end{frame}
 
-
-\begin{frame}[fragile=singleslide]
-\frametitle{Compilers Interpreter Pipeline: Which of the following are optimisations a compiler/interpreter might do?}
+\section{Compilers Interpreter Pipeline: Which of the following are optimisations a compiler/interpreter might do?}
 A compiler/interpreter would never change \verb|"five"| to \verb|5| because that would change the meaning of the program.  A compiler/interpreter would never change \verb|5 + 5| to \verb|10 + 0| because that would not speed up the program.  A compiler/interpreter could not convert from $O(n^2)$ to $O(n)$ because that process is beyond its abilities.
 
 The others are things a compiler/interpreter might do.
-\end{frame}
 
-\begin{frame}
-    \frametitle{continued...}
+\section{continued...}
 Note, it \emph{is} possible for compilers to convert $O(n)$ code to $O(1)$ code in the case of hardware paralellisation.  The compiler can take advantage of the fact that the hardware is capable of doing multiple things at once allowing the programmer not to think about it and get free speedups on certain hardware.
     
-\end{frame}
-
-\begin{frame}
-\frametitle{Compiler Interpreter Pipeline: Which of the following phases can't easily co-exist in a single compiler/interpreter?}
+\section{Compiler Interpreter Pipeline: Which of the following phases can't easily co-exist in a single compiler/interpreter?}
 \emph{code generation} and \emph{interpretation}.  You generally pick one or the other.  It is possible to think of ways to have both (a JIT compiler is one of these) but its not so common.
-\end{frame}
 
-\begin{frame}
-\frametitle{Application Exercise}
+\section{Application Exercise}
 Please collect all the best regular expressions with a brief description of what they do.  We will post them to iLearn at the end of the week.
-\end{frame}
 \end{document}
