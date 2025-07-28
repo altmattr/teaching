@@ -1,0 +1,54 @@
+// question: 0  name: Switch category to $course$/top/RATS
+$CATEGORY: $course$/top/RATS
+
+
+// question: 0  name: Switch category to $course$/top/RATS/RAT 3
+$CATEGORY: $course$/top/RATS/RAT 3
+
+
+// question: 122384328  name: statements vs expressions
+::statements vs expressions::[html]<p>Match the language feature with its job</p>{
+	=<p>statements</p> -> produce an effect
+	=<p>expressions</p> -> produce a value
+	=<p>variable</p> -> represent a value
+	=<p>function</p> -> represent a value or an effect or both or neither
+}
+
+
+// question: 122384326  name: binary operators
+::binary operators::[html]<p>Binary operators are so-called because\:</p>{
+	=<p>They have two arguments</p>
+	~<p>They work on binary data</p>
+	~<p>They generate binary data</p>
+	~<p>They do arithmetic operations</p>
+}
+
+
+// question: 122384327  name: infix
+::infix::[html]<p>"Infix" operators belong where?</p>{
+	=<p>between the arguments</p>
+	~<p>between the operators</p>
+	~<p>infix the arguments</p>
+	~<p>within one argument</p>#<p>within one operator</p>
+}
+
+
+// question: 122384329  name: OO
+::OO::[html]<p>Which of the following OO approaches does <em>Java</em> use?</p>{
+	=<p>class-based inheritance</p>
+	~<p>prototype-based inheritance</p>
+	~<p>struct-based inheritance</p>
+	~<p>object-based inheritance</p>
+	~<p>no inheritance</p>
+}
+
+
+// question: 122384325  name: simple output
+::simple output::[html]<p>What will be the output of the following lox program?</p>\n<pre>var foo \= 4;\nfun simple() \{\n  foo \= 6;\n\}\nsimple();\nprint foo;\n</pre>{
+	=<p>6</p>
+	~<p>4</p>
+	~<p>compile error due to missing semi-colon</p>
+	~<p>compile error due to wrong keyword</p>
+}
+
+

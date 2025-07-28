@@ -1,0 +1,67 @@
+// question: 0  name: Switch category to $course$/top/RATS/RAT 1
+$CATEGORY: $course$/top/RATS/RAT 1
+
+
+// question: 122394799  name: TBL 01
+::TBL 01::[html]<p>Which of the following shows the correct order of phases in the Team-Based Learning process?</p>{
+	~<p>Clarification Session &gt; Application Task &gt; IRAT &gt; TRAT &gt; Preparation​</p>
+	~<p>Preparation &gt; Clarification Session &gt; Application Task &gt; IRAT &gt; TRAT​</p>
+	=<p>Preparation &gt; IRAT &gt; TRAT &gt; Clarification Session &gt; Application Task​</p>
+	~<p>IRAT &gt; Preparation &gt; TRAT &gt; Application Task &gt; Clarification Session​</p>
+}
+
+
+// question: 122382366  name: TBL 02
+::TBL 02::[html]<p>What is the main purpose of the Individual Readiness Assurance Test (iRAT)?</p>{
+	~<p>To test your ability to memorize facts from lectures​</p>
+	=<p>To ensure you have completed the pre-class preparation and understand key concepts​</p>
+	~<p>To determine which team you’ll be placed into​</p>
+	~<p>To practice answering exam-style questions​</p>
+}
+
+
+// question: 122382367  name: TBL 03
+::TBL 03::[html]<p>During the Team Readiness Assurance Test (tRAT), what is expected of students?​</p>{
+	~<p>Each student completes the quiz independently again​</p>
+	~<p>The team assigns one person to answer for the group​</p>
+	=<p>Students discuss each question as a team and reach a consensus before submitting their answer to each question​</p>
+	~<p>The team submits the same answers from the IRAT without discussion​</p>
+}
+
+
+// question: 122382368  name: TBL 04
+::TBL 04::[html]<p>What should you expect during the clarification session in Team-Based Learning?​</p>{
+	~<p>Your instructor will reteach the entire pre-class content in a lecture format​</p>
+	~<p>Only teams that failed the quiz will participate, teams that pass will move on​</p>
+	~<p>You will retake the quiz individually for a second attempt​</p>
+	=<p>Teams that answered correctly may be asked to explain their thinking to help other teams</p>
+}
+
+
+// question: 122382369  name: TBL 05
+::TBL 05::[html]<p>What is the main purpose of the Application Task in Team-Based Learning?​</p>{
+	~<p>To give each student the chance to revise their quiz answers​</p>
+	=<p>Having been primed in iRAT/tRAT, students now apply knowledge and concepts to a realistic problem that requires team collaboration and decision-making​</p>
+	~<p>Having been primed in iRAT/tRAT, students now work to address the questions they got wrong and prove they have taken steps to fill knowledge gaps ​</p>
+	~<p>To reflect and evaluate the performance of their team and preparation​</p>
+}
+
+
+// question: 122382370  name: TBL 06
+::TBL 06::[html]<p>Which of the following is a common challenge students may experience in Team-Based Learning, especially in the early weeks? </p>{
+	=<p>Struggling to adapt to working closely with the same team over time​</p>
+	~<p>Feeling bored because most of the work is done individually​</p>
+	~<p>Being unsure when to submit their weekly lab report​</p>
+	~<p>Having enough lecture content to revise for the final exam​</p>
+}
+
+
+// question: 122382372  name: TBL 07
+::TBL 07::[html]<p>How often will we be doing TBL activities in this course?​</p>{
+	~<p>In class in weeks 1, 3, 5, 7 and 9​</p>
+	~<p>Never after this first session​</p>
+	~<p>Every week until Session 2 recess​</p>
+	=<p>Every week in our classes​</p>
+}
+
+

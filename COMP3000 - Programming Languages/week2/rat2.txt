@@ -1,0 +1,73 @@
+
+// question: 0  name: Switch category to $course$/top/RATS/RAT 2
+$CATEGORY: $course$/top/RATS/RAT 2
+
+
+// question: 121200746  name: compiler_parts
+::compiler_parts::[markdown]Match these compiler parts with a description of what they do{
+	=scanner -> takes in the linear stream of characters and chunks them together into a series
+	=parser -> takes the flat sequence of tokens and builds a tree structure that mirrors the nested nature of the grammar
+	=static analysis -> get a high-level view of what the code is doing
+	=optimization -> remove redundancy and do early computation
+	=code generation -> output machine code
+}
+
+
+// question: 122384297  name: certainly compiler
+::certainly compiler::[html]<p>Which of these characteristics would make a language implementation <em>certainly</em> a compiler\:</p>{
+	=<p>code generation</p>
+	~<p>scanning</p>
+	~<p>parsing</p>
+	~<p>interpretation</p>
+	~<p>static analysis</p>
+}
+
+
+// question: 122384305  name: conflict
+::conflict::[html]<p>Two of the following phases can't easily co-exist in a single compiler/interpreter. Which two?</p>{
+	~%50%<p>code generation</p>
+	~<p>scanning</p>
+	~<p>parsing</p>
+	~%50%<p>interpretation</p>
+	~<p>static analysis</p>
+}
+
+
+// question: 122384303  name: optimisation
+::optimisation::[html]<p>Which of the following are optimisations a compiler/interpreter might do?  Note, there could be more than one correct answer.</p>{
+	~<p>change "five" to 5</p>
+	~%33.33333%<p>change 5 + 5 to 10</p>
+	~<p>change 5+5 to 10+0</p>
+	~%33.33333%<p>strip "if true" from a block of code</p>
+	~%33.33333%<p>remove a loop that executes 0 times.</p>
+	~<p>convert an "order n squared" algorithm to an "order n" algorithm.</p>
+}
+
+
+// question: 121200745  name: real_compiler
+::real_compiler::[markdown]Which of these characteristics would make a language implementation _certainly_ a compiler{
+	=code generation
+	~scanning
+	~parsing
+	~interpretation
+}
+
+
+// question: 122384299  name: synonym lexing
+::synonym lexing::[html]<p>Which of the following is a synonym for <em>lexing</em></p>{
+	~<p>parsing</p>
+	=<p>scanning</p>
+	~<p>luthering</p>
+	~<p>code generation</p>
+	~<p>code generation</p>
+	~<p>interpretation</p>
+	~<p>static analysis</p>
+}
+
+
+// question: 121200715  name: counting_branches
+::counting_branches::[html]<p>Imagine the following diagram of programming language implementation options is <em>sound</em> and <em>complete</em>. We want to create a compiler/interpreter to convert our "source" language into one of out target languages (x86 or ARM).</p>\n<p>\n  </p>\n<p><img src\="@@PLUGINFILE@@/1_paths.jpeg" alt\="f" class\="img-fluid atto_image_button_text-bottom" width\="2233" height\="884"><br></p><p>How many different possible implementations are there? (Hint, this is a COMP2010 question)</p>{
+	=%100%8#
+}
+
+
