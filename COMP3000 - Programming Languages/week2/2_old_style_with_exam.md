@@ -19,6 +19,46 @@ Match these compiler parts with a description of what they do{
     =code generation -> output machine code
 }
 
+### interpreter purpose
+What is the primary purpose of an interpreter? {
+    ~To translate source code into machine code for execution.
+    =To execute source code directly without requiring a compilation step.
+    ~To optimize code for faster execution on hardware.
+    ~To store and manage program variables and memory.
+}
+
+### key difference
+Which of the following is a key difference between an interpreter and a compiler? {
+    =A compiler converts code into an executable format, while an interpreter executes code directly.
+    ~A compiler only works with high-level languages, while an interpreter works with both low-level and high-level languages.
+    ~An interpreter performs code optimization, while a compiler skips optimization.
+    ~An interpreter creates object files, while a compiler does not.
+}
+
+### first phase
+What is the earliest phase of most interpreters out of these listed? {
+    ~Parsing the syntax tree.
+    ~Converting tokens into machine instructions.
+    =Breaking the source code into tokens.
+    ~Evaluating expressions in the source code.
+}
+
+### trade offs
+What is one of the trade-offs of using an interpreter instead of a compiler? {
+    ~Interpreted programs tend to run faster than compiled programs.
+    ~Interpreters are more complex to build than compilers.
+    =Interpreted programs run more slowly because execution happens in real time.
+    ~Interpreters can only work with statically-typed languages.
+}
+
+### typically interpreted
+Which of the following is an example of a language _typically_ but not _always_ interpreted? {
+    ~C
+    =JavaScript
+    ~C++
+    ~Rust
+}
+
 ### ordering
 
 Which of the following is the correct ordering for compiler phases{
@@ -105,7 +145,7 @@ Which of the following phases would be left out of a "tree walk interpreter"? _w
 ## SSE
 ### counting branches html
 <p>Imagine the following diagram of programming language implementation options is <em>sound</em> and <em>complete</em>.  We want to create a compiler/interpreter to convert our "source" language into one of out target languages (x86 or ARM).</p>  
-<p><img src="1_paths.jpeg"/></p>
+<p><img src="week2/1_paths.jpeg"/></p>
 <p>How many different possible implementations are there? (Hint, this is a COMP2010 question)</p>{=8}
 
 ### exits <essay>

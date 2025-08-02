@@ -1,3 +1,29 @@
+input is a set of md files
+output is
+  * a set of files that generate a moodle question bank
+    - a set of .gift files
+    - a set of .xml files
+  * a set of latex files that have each item nicely typeset
+
+Item types are:
+  * text with heading
+  * question and solution, types are:
+    - multiple choice in gift format
+    - matching in gift format
+    - essay type in yaml format
+
+
+# Organisation
+
+level is directory
+  * sublevel is L1 heading in the file
+    - venue is the L2 heading in the file.
+      + L3 heading is the title for that item
+
+I _always_ use levels, one for each week of the course.  I use sublevels to break it into learning outcomes but often include an "overall" sublevel as well.
+
+One year I used venues for the different types of exams, another year they were the different types of questions.
+
 # How to run
 
     > ruby split_out.rb; ruby xml_from_yaml.rb; ruby fill_imgs.rb
