@@ -8,6 +8,9 @@ import pandoc
 
 top_matter = "abstract"
 
+name_conversion = {"FAT": "Application Exercise",
+                   "SSE": "Self Study Exercises"}
+
 def split_at_regex_and_put_in_dictionary(input_string, regex):
     parts = re.split(re.compile(regex, re.MULTILINE), input_string)
     key = top_matter
@@ -67,7 +70,7 @@ def yaml_to_tex(item, item_parsed, isTex=False):
     else:
         question = item_parsed.get('question', '')
         answer = item_parsed.get('answer', '')
-    return f"\\section{{{item}}}\n\n{question}\n\n\\subsection*{{Answer}}\n\n{answer}\n\n"
+    return f"\\section*{{{item}}}\n\n{question}\n\n\\subsection*{{Answer}}\n\n{answer}\n\n"
 
 def yaml_to_xml(item, item_parsed, isTex=False):
     if isTex:
@@ -154,13 +157,17 @@ if __name__ == "__main__":
                 # venue has the following files:
                 #  * topic_venue.tex
                 #  * topic_venue.md
-                clean_venue = re.sub(r"<.*>", "", re.sub(r"[^a-zA-Z0-9_]", "", venue))
+                cleanish_venue = re.sub(r"<.*>", "", re.sub(r"[^a-zA-Z0-9_]", "", venue)).strip()
+                clean_venue = re.sub(r"<.*>", "", re.sub(r"[^a-zA-Z0-9_]", "", venue)).strip()
+                print(f"  processing venue: {clean_venue}")
+                if clean_venue in name_conversion:
+                    clean_venue = name_conversion[clean_venue]
                 if not venue == top_matter:
                     all_tex.write(f"\\newpage\n\\part*{{{clean_venue}}}\n")
                 print(f"  processing venue: {clean_venue}")
                 with (
-                    open_file(f"build/{topic}/{clean_venue}.tex") as venue_tex,
-                    open_file(f"build/{topic}/{clean_venue}.md") as venue_md
+                    open_file(f"build/{topic}/{cleanish_venue}.tex") as venue_tex,
+                    open_file(f"build/{topic}/{cleanish_venue}.md") as venue_md
                 ):
                   tex_topmatter(venue_tex, clean_topic.replace("_", " ") +r" $\rightarrow$ " + clean_venue)
                   for (item, item_data) in venue_data.items():
@@ -170,7 +177,7 @@ if __name__ == "__main__":
                       question, rest = re.split(r"(?<!\\){", item_data)
                       answers = re.findall(r"([=~].*)", rest)
                       # write all the files
-                      gift.write(f"$CATEGORY: {clean_topic}/{clean_venue}\n\n")  # will get more than I need, but also won't get the surplus ones, so it is a win in my book
+                      gift.write(f"\n\n$CATEGORY: {clean_topic}/{clean_venue}\n\n")  # will get more than I need, but also won't get the surplus ones, so it is a win in my book
                       # TODO: write gift files to xml as well - then you can turf the gift format entirely
                       gift.write(gift_to_gift(clean_item,question,answers))
                       all_tex.write(gift_to_tex(clean_item, question, answers))
@@ -187,8 +194,11 @@ if __name__ == "__main__":
                       venue_tex.write(yaml_to_tex(clean_item, item_parsed, isTex))
                       all_md.write(yaml_to_md(clean_item, item_parsed, isTex))
                       venue_md.write(yaml_to_md(clean_item, item_parsed, isTex))
+                    else:
+                      all_md.write(f"## {clean_item}\n\n{item_data}\n\n")
+                      venue_md.write(f"# {clean_item}\n\n{item_data}\n\n")
                   tex_bottommatter(venue_tex)
-                os.system(f"latexmk -pdf -interaction=nonstopmode -output-directory=build/{topic} build/{topic}/{clean_venue}.tex")
+                os.system(f"latexmk -pdf -interaction=nonstopmode -output-directory=build/{topic} build/{topic}/{cleanish_venue}.tex > /dev/null")
               tex_bottommatter(all_tex)
               xml.write("</quiz>")
-        os.system(f"latexmk -pdf -interaction=nonstopmode -output-directory=build/{topic} build/{topic}/{topic}_all.tex")
+        os.system(f"latexmk -pdf -interaction=nonstopmode -output-directory=build/{topic} build/{topic}/{topic}_all.tex > /dev/null")

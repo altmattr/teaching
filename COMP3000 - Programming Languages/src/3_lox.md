@@ -1,16 +1,22 @@
   
 ##  WEEK OVERVIEW
 
-This week we turn our focus to the Lox programming language, which we will implement over the rest of the semester.  We also do a whistle-stop tour of Ruby, the first if our LoFNs
+This week we turn our focus to the Lox programming language, which we will implement over the rest of the semester. 
 
 ## GOALS
 
 By the end of this week you should:
+  * Be able to program in Lox
+  * Understand some basic Lox design decisions
 
-    Be able to program in Lox
-    Understand some basic Lox design decisions
-    Have a high-level understanding of Ruby
-    Understand some Ruby design decisions
+## Preparation
+  * Read chapter 3 of "Crafting Interpreters" (the Lox book).
+  * Watch lox lectures on echo360:
+    - High level features, types, expressions, and statements.
+    - Functions and OO features
+    - Lox live coding session
+  * Ensure you have a working lox implementation on your computer.
+  * Experiment with lox programs.
 
 ## Glossary
 
@@ -44,21 +50,21 @@ question: |
 
     A fun little language is logo (aka "turtle graphics").  It is a language designed for kids to learn programming.  It has a very simple syntax and a very simple set of commands.  The idea is that you can use it to draw pictures on the screen.  Check out the language this online implementations:
     \begin{itemize}
-    \item \url{https://www.calormen.com/jslogo/}
+      \item \url{https://www.calormen.com/jslogo/}
     \end{itemize}
     In this task we will write a lox program which generates logo programs!  To make it interesting, we need to restrict ourselves to using \emph{only} the following logo commands:
     \begin{enumerate}
-    \item \lstinline|clearscreen|: clear the screen
-    \item \lstinline|fd n|: move the turtle forward n units
-    \item \lstinline|rt n|: turn the turtle right n degrees
-    \item \lstinline|pu|: lift the pen up
-    \item \lstinline|pd|: put the pen down
+      \item \lstinline|clearscreen|: clear the screen
+      \item \lstinline|fd n|: move the turtle forward n units
+      \item \lstinline|rt n|: turn the turtle right n degrees
+      \item \lstinline|pu|: lift the pen up
+      \item \lstinline|pd|: put the pen down
     \end{enumerate}
 
     At the end of class you will share (for either the first task, or your second task) the following:
     \begin{enumerate}
-    \item The turtle program that was generated
-    \item The lox program that generated it.
+      \item The turtle program that was generated
+      \item The lox program that generated it.
     \end{enumerate}
 
 
@@ -72,8 +78,70 @@ question: |
 
     Once you have this done, go have some fun with logo and with generating logo programs.  If you have time to come up with a really fun generated program, please share the lox program that generated it with the class.
     \newpage
-answer:
-    Discussion released later
+answer: |
+    I'm going to start with a lox program that outputs the string "fd 10" which is the logo program for going forward 10 units.
+    \begin{lstlisting}
+    print "fd 10"
+    \end{lstlisting}
+
+    Ok, that was simple.  The program for the star is
+    \begin{lstlisting}
+    fd 100
+    rt 144
+    fd 100
+    rt 144
+    fd 100
+    rt 144
+    fd 100
+    rt 144
+    fd 100
+    \end{lstlisting}
+
+    So the following lox program will generate this program, but in an unsatisfactory way
+    \begin{lstlisting}
+    print "fd 100";
+    print "rt 144";
+    print "fd 100";
+    print "rt 144";
+    print "fd 100";
+    print "rt 144";
+    print "fd 100";
+    print "rt 144";
+    print "fd 100";
+    \end{lstlisting}
+
+    But we can do way better than that because lox can do the looping for you
+
+    \begin{lstlisting}
+    for (var i = 1; i < 5; i = i + 1) {
+      print "fd 100";
+      print "rt 144";
+    }
+    \end{lstlisting}
+    
+    That version spits out an extra right turn, but that doesn't break the image.   I could get tricker to remove it if I wanted.  To do the dotted line version, I need another "pen up/pen down" look during the `fd 100`.
+
+    \begin{lstlisting}
+    for (var i = 0; i < 5; i = i + 1) {
+        for (var j = 0; j < 100; j = j + 20) {
+            print "pd";
+            print "fd 10";
+            print "pu";
+            print "fd 10";
+        }
+        print "rt 144";
+    }    
+    \end{lstlisting}
+
+    Testing all this requires a lox implementation, which was given in iLearn.  I stored my lox program for this in `lox/turtle` and I can run lox programs with this command (I also put my `lox.jar` in that same place).  The output program is really long, so I couldn't easily grab it from my console output. Instead I sent the output to a file that I could copy from later.
+
+    \begin{lstlisting}
+    java -jar lox/lox.jar lox/turtle/main.lox > lox/turtle/main.out
+    \end{lstlisting}
+
+    I then have to take the output from that and pop it in the turtle graphics program to see the output, but it works!
+
+    \includegraphics[width=0.5\textwidth]{src/3_dotted.png}
 
 # RAT
 
@@ -93,6 +161,38 @@ What will be the output of the following lox program
     ~compile error due to missing semi colon
     ~compile error due to wrong keyword
 }
+
+## binary <gift>
+"binary" operators are so-called because{
+    =They have two arguments
+    ~They work on binary data
+    ~They generate binary data
+    ~They do arithmetic operations
+}
+
+## infix <gift>
+"infix" operators belong where?{
+    =between the arguments
+    ~infix the arguments
+    ~within the one argument
+    ~after the arguments
+}
+
+## statement vs expression <gift>
+Match the language feature with its job{
+    =statement -> produce an effect
+    =expression -> produce a value
+}
+
+## types of inheritance <gift>
+Which of the following approaches to OO language design did the text book author choose for Lox? _Note you may recieve negative marks for picking a wrong option_.{
+  =50%classes
+  =50%prototyps
+  ~-33%objects
+  ~-33%sharing
+  ~-33%inheritance
+}
+
 
 # SSE
 
@@ -136,84 +236,72 @@ answer:
     _reference counting_ and _tracing_
 
 
-# RAT
-
-## binary <gift>
-"binary" operators are so-called because{
-    =They have two arguments
-    ~They work on binary data
-    ~They generate binary data
-    ~They do arithmetic operations
-}
-
-## infix <gift>
-"infix" operators belong where?{
-    =between the arguments
-    ~infix the arguments
-    ~within the one argument
-    ~after the arguments
-}
-
-## statement vs expression <gift>
-Match the language feature with its job{
-    =statement -> produce an effect
-    =expression -> produce a value
-}
-
-# SSE
-
-## from book lox prog <essay>
-question:
-    Write some sample Lox programs and run them (you can use the implementations of Lox in my repository). Try to come up with edge case behavior I didn’t specify here. Does it do what you expect? Why or why not?
-answer:
-    still to do
-
 ## square <essay>
 question:
     Write a lox program to print the first 50 square numbers.
-answer:
-    still to do
-
-## prime <essay>
-question:
-    Write a lox program to print the first 50 prime numbers.
-answer:
-    still to do
+answer: |
+    `````
+    for (var i = 0; i < 50; i = i + 1){
+        print (i * i);
+    }
+    `````
 
 ## print to console <essay>
 question: |
     Write a lox program which draws a triangle to the console.  The first line must be
-    <pre>
+    `````
     |    var size = 6
-    </pre>
+    `````
     and the `size` variable must be used to determine the number of characters on the longest side.  For example, `size` of 6 prints out
-    <pre>
+    `````
     |    ******
     |    *****
     |    ****
     |    ***
     |    **
     |    *
-    </pre>
-answer:
-    still to do
+    `````
+answer: |
+    This is not as easy as we would like to think.  Lox has no way to print a string without printing a newline right after it!  This is one example where having a tiny run-time (or none at all) is a problem.  In this case though we can get around it by building up the string before printing the whole line.
+    `````
+    var size = 6;
 
+    fun line(len){
+        if (len == 0){
+            return "";
+        } else {
+            return ("*" + line(len-1));
+        }
+    }
 
-# SSE
+    for(var i = size; i > 0; i = i -1){
+        print(line(i));
+    }
+    `````
 
 ## from book tiny <essay>
 question:
     Lox is a pretty tiny language. What features do you think it is missing that would make it annoying to use for real programs? (Aside from the standard library, of course.)
 answer:
-    still to do
+    I actually really like tiny languages.  There are less things to remember.  That said, I love switch statements and Lox has none, so I would have to do big long `if` statements with lots of `else if` and I really don't like that.  The functional features help a lot though, without them I think I would have much more to complain about.
 
-## square
-Write a lox program to print the first 50 square numbers that uses no loops at all.{}
+## square recursion <essay>
+question: |
+    Write a lox program to print the first 50 square numbers that uses no loops at all.
+answer: |
+    `````
+    fun square(i){
+        if (i > 50){
+            return;
+        }
+        print(i * i);
+        square(i+1);
+    }
 
-## prime
-Write a lox program to print the first 50 prime numbers that uses no loops at all.{}
+    square(0);
+    `````
 
-## function <essay>
+## triple <essay>
 question: 
   Write a lox function `foo` which will take in a parameter and return triple that value
 answer: |
@@ -236,61 +324,62 @@ answer: |
       return (char + repeat(char, times-1));
   }
   `````
-## simple function <essay>
+## double <essay>
 question:
     Write a lox function which takes in a number and returns double that number
-answer:
-    <pre>
+answer: |
+    `````
     fun double(a) {
         return a + a;
     }
-    </pre>
-    I was tricky and used `+`. in little languages like lox, never assume the operator you want is there (though `*` is there :) )
+    `````
+    I was tricky and used `+`. in little languages like lox, never assume the operator you want is there (though `*` is there :) 
 
-## print to console <essay>
+## triangle recursion <essay>
 question: |
     Write a lox program which draws a triangle to the console without using any loops!  The first line must be
-    <pre>
+    `````
     |    var size = 6
-    </pre>
+    `````
     and the `size` variable must be used to determine the number of characters on the longest side.  For example, `size` of 6 prints out
-    <pre>
+    `````
     |    ******
     |    *****
     |    ****
     |    ***
     |    **
     |    *
-    </pre>
+    `````
     Tip: recursion is your friend
-answer:
-    still to do
+answer: |
+    ```
+    var size = 6;
 
+    fun line(len){
+        if (len == 0){
+            return "";
+        } else {
+            return ("*" + line(len-1));
+        }
+    }
 
-# RAT
-## types of inheritance <gift>
-Which of the following approaches to OO language design did the text book author choose for Lox? _Note you may recieve negative marks for picking a wrong option_.{
-  =50%classes
-  =50%prototyps
-  ~-33%objects
-  ~-33%sharing
-  ~-33%inheritance
-}
+    fun tri(width){
+        if (width == 0){
+            return;
+        } else {
+            print(line(width));
+            tri(width-1);
+        }
+    }
 
-# SSE
-
-## from book informal <essay>
-question:
-    This informal introduction leaves a lot unspecified. List several open questions you have about the language’s syntax and semantics. What do you think the answers should be?
-answer:
-    still to do
-
+    tri(size);
+    ```
 
 ## your reason <essay>
 question: |
     Give _your reason_ for wanting to have OO in your language.  If you hate OO, put yourself in someone else's shoes and think of _their_ reason.  OO is good enough that you can come up with _something!_.
-answer:
-    still to do
+answer: |
+    It is just much easier to think of functions being _attached_ to the data they work on.  It is a form of intellectual discipline that pays off after a while.  When the program is small though, you probably don't need that discipline and thus people tend not to feel the need for OO in scripting languages.
 
 # Exam
 

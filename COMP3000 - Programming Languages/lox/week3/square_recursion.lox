@@ -1,0 +1,9 @@
+fun square(i){
+  if (i > 50){
+    return;
+  }
+  print(i * i);
+  square(i+1);
+}
+
+square(0);

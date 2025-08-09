@@ -1,0 +1,20 @@
+var size = 6;
+
+fun line(len){
+    if (len == 0){
+        return "";
+    } else {
+        return ("*" + line(len-1));
+    }
+}
+
+fun tri(width){
+    if (width == 0){
+        return;
+    } else {
+        print(line(width));
+        tri(width-1);
+    }
+}
+
+tri(size);
