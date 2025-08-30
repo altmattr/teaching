@@ -18,70 +18,140 @@ By the end of this week you should:
     - scanning part 2
     - making changes to a scanner
   * Ensure you have started your own Lox interpreter.  I.e. not the one you were using last week (which will be complete), but one that follows along with the book.
+  * Re-read the unit preamble, where we explain the EPIC learning style and how it applied to COMP3000.
 
 # FAT
 
-## Development Cycle <tex-essay>
+## Thinking about water flows <tex-essay>
 question: |
-  Our first task this week is to make sure every group member has a working Lox scanner.  All the code we need is in the textbook.  You will work together as a team to fix any issues that any group members have until \emph{everyone} has a working scanner.  
+  Over the remainder of semester, we will be creating a programming language to \emph{model} and \emph{simulate} water flows in rivers.  This main task will scaffold your application exercises and your assignment submissions.
 
-  Once you have that working, come up with a \emph{development cycle} for working on Lox extensions.  This semester we will be adding extra features to the Lox code-base in the textbook, so you will spend lots of time working on that code base.  An important part of working on a code-base in a team is to have a development cycle that everyone agrees on.  This is not a formal process, but it is important that you all agree on how you will work together.
+  Modelling rivers involves taking rainfall data and simulating what water levels will result from that rainfall over a period of time.  This type of modelling is vital to environmental management and public safety. Floods can be predicted and mitigation methods can be designed.  It also allows water managers to experiment with different dam strategies to maximise safety.
 
-  Note: This is not to do with \emph{teamwork} in the way you might think.  This is about making sure that, as each individual does work on their own computer, they can communicate with others in the team because the whole team is working the same way.  Your aim is \emph{to find a shared point of view and to codify it}.
+  River system modelling is normally done with simulation software but it could be done better if it was done with a \emph{custom programming language} instead.  COMP3000 2025 students will use what they are learning to create just such a language.
 
-  As semester goes on, the work you are doing in your teams is going to directly contribute to your assignment submission. You need a way to be a part of that team that allows you to make use of the work \emph{without copy-pasting just before the due date} since that will get you sanctioned!
+  \begin{note}
+  Over semester your team will make the best river modelling language you can.  You are not being pushed towards a certain solution, you are exploring possibilities.  The textbook will help you implement the language you come up with, but your general knowledge and imagination will guide the language.  If you need to ask "domain questions" of an expert in the domain, ask your class teacher or post in the forums.  We've chosen this problem because you all know how water and rivers work in at least some way.
+  \end{note}
 
-  You are probably used to a development cycle that looks like this:
+  Solving this problem is \emph{a real contribution to the science of waterflow management}.  Your team is taking on a real-world problem, you will need to bring your A-game.
+
+  \subsubsection*{Co-Design}
+  As students work through their workshops, unit staff will adjust future work to account for the directions students are taking and their choices.  In this way the course is \emph{co=designed} with each cohort of students.
+
+  \subsubsection*{A guide}
+  \begin{figure}
+  \includegraphics[width=0.588\textwidth]{src/6_simplified_act.jpg}
+  \includegraphics[width=0.512\textwidth]{src/6_situated_act.jpg}
+  \caption{An example watershed.  On the left is a stylised map and on the right is all the draining rivers and dams on a map to help situate the watershed.}
+  \label{fig:act_watershed}
+  \end{figure}
+
+  I have done this task already to prove (to myself) it is a good idea.  I will give you a little tour of \emph{my} solution to help guide you on your way.  My solution is a programming language based on Lox (I called it "mattlock").  I added a few new features (beyond what is covered in the text book) to support modelling water flows.  When I execute a program in this language it computes all the waterflows in every river for me.  You will be familiar with programs that only output the things you told it to print, but why be so constrained?  In my case I made the output of the program \emph{the final state of all the variables in the program, all wrapped up in a table} and that ended up being just what I needed!  I created different programs written in that language to model different river systems.  I have so far done the Canberra river system (which is in Figure \ref{fig:act_watershed}), the full ACT river system, the Lane Cove River system to Chatswood, and the Berowra River system all the way to Marramarra creek (that is a long program but really shows off how much you can say when you have the right notation to do it in). Thus my repository of mattlock programs is:
+  \begin{itemize}
+  \item \verb+canberra.mattlock+ (40 lines of mattlock code)
+  \item \verb+act.mattlock+ (50 lines of mattlock code)
+  \item \verb|lane_cove.mattlock| (180 lines of mattlock code)
+  \item \verb|berowra.mattlock| (473 lines of mattlock code)
+  \end{itemize}
+
+  And here is an example run of one of my water modelling programs.  The river system it is simulating is shown in Figure \ref{fig:act_watershed}.
+  \begin{lstlisting}[basicstyle=\footnotesize\ttfamily]
+  > java mattlock.Lox canberra.mattlock
+  This system assumes that the rainfall all over the river system is the same and can 
+  be described with one number per day.
+  
+  Rainfall (mm) per day:
+  ----------------------
+              0    1    2    3    4    5    6    7    8    9    10   11
+  rainfall  11.4  0.0  0.4  0.0  0.0  2.0  0.2  0.2  0.2  0.0  0.0  8.3
+
+  Running the model computes the flow in each watershed on each day.
+
+  Flows (L/second)
+  ----------------
+                    0     1     2    3    4     5      6     7     8    9    10      11 
+  upper_molo     57.00   0.0  2.00  0.0  0.0  10.0   1.00  1.00  1.00  0.0  0.0   41.50 
+  googong       114.00   0.0  4.00  0.0  0.0  20.0   2.00  2.00  2.00  0.0  0.0   83.00 
+  quean          31.40  20.0  0.40  0.0  0.0  22.0  20.20  0.20  0.20  0.0  0.0   28.30 
+  jerra          22.80   0.0  0.80  0.0  0.0   4.0   0.40  0.40  0.40  0.0  0.0   16.60 
+  central_molo  145.40  20.0  4.40  0.0  0.0  42.0  22.20  2.20  2.20  0.0  0.0  111.30 
+  lower_molo      9.12   0.0  0.32  0.0  0.0   1.6   0.16  0.16  0.16  0.0  0.0    6.64 
+  \end{lstlisting}
+
+  I can't show you my programming language - I want each team to be creative and come up with new exciting ideas - but I can give a little hint.  In the Canberra river system, central molongolo is made up of all the water coming from upper molongolo, all the water from queanbeyan, all the water from jerrabomberra, and the water that fell over that area.  I represent this in my program as
+  \begin{lstlisting}
+  central_molo = upper_molo + quean + jerra + central_molo_rainfall
+  \end{lstlisting}
+  but I have put some magic into that \verb+central_molo_rainfall+ variable.  It is \emph{not} just a number, it somehow captures the way rain makes its way into a creek in the days after the rainfall event.  It is a simple solution with powerful effects\footnote{\emph{This} is super-power of programming based solutions to this problem}.
+
+
+  \subsubsection*{Your team's task}
+
+  This week I want you to:
+  \begin{itemize}
+  \item Brainstorm how this whole process even works.  
+  \item Brainstorm what sort of forms that \verb+central_molo_rainfall+ could take.
+  \end{itemize}
+
+  The second task might require you to think about any special \emph{literals} we might need.  Recall that a literal is a way of writing a value in your language which communicates its type and its value.  Numbers, strings, and True/False are literals you will be familiar with.  When creating our own language for a particular domain, there may be domain concepts that need added to the language as literals.  Note that this week's class will involve lots of brainstorming, head-scratching, exploration, and inspiration.  You might choose to make additions to your scanner based on what you decide, but that is a secondary concern.
+  
+  \subsubsection*{Water flows}
+  When it rains, water flows into the local creek/river.  It hits the ground and, over time, goes down under gravity.  It doesn't happen instantaneously and water may still be flowing into a creek/river up to 10 days after a rainfall event. 
+
+  I will add a few simplifying assumptions to help:
   \begin{enumerate}
-    \item Have source code and test code.
-    \item Test code is written in JUnit
-    \item If the tests are green, your code is working.
+  \item The rainfall across a whole \emph{catchment} can be described with one number (in mm).
+  \item The flow out of one creek is exactly the flow into the next creek.
+  \item All water that gets into a creek/river will also flow out of it.
+  \item All water that falls from the sky will (within 10 days) make its way into the creek/river.
+  \item Each catchment has one creek/river which drains it.
   \end{enumerate}
-  That won't be enough for compiler/interpreter development.  Think about answers to the following questions to help you come up with a development cycle that will work for you:
-  \begin{enumerate}
-    \item Think critically about the relative importance of testing individual methods (unit tests) vs testing the whole system (system tests).
-    \item What is the output of the program you are testing?  Is this a nice form to help testing?
-    \item What are the inputs to the program you are testing?  Can you link inputs to outputs in an easy way?
-    \item Should you use testing machinery from JUnit or make your own?
-    \item Don't neglect how you will be sharing these files between each other.  You will probably use git, are you sure you all know how that will work and can get the files when you need them?
-    \item How much can you achieve just with smart use of file and folders?
-  \end{enumerate}
-  \subsection*{Discussion}
-  At the end of class, share your development cycle with the rest of the class.  Listen carefully to the other groups, some will have had better ideas than you.  The class should vote on which sounds most sensible.  The teacher will also tell you which one they think is best.  
-
   \newpage
+
 answer: |
   \begin{note}
-  This "answer" is only a suggestion, there are many possible correct approaches.
+  This "answer" is only a suggestion, there are many possible correct approaches.  I've even discussed a different suggestion in a video posted to iLearn.
   \end{note}
-  I decided to focus on what might be called "system tests".  I might turn to unit tests when I have a particularly troublesome thing to debug.
+
+  If the water flows over 10 days, I need 10 numbers between 0 and 1 representing the percentage that gets into the creek that day.  Lot of languages have literal forms that can do that:
+  \begin{description}
+  \item[arrays] \verb|{0.2, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.0}|
+  \item[lists] \verb|[0.2, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.0]|
+  \item[dictionaries] \verb|[1: 0.2, 2: 0.1, 3: 0.1, 4: 0.1, 5: 0.1, 6: 0.1, 7: 0.1, 8: 0.1, 9: 0.1, 10: 0.0]|
+  \end{description}
+  Any of these would work.  Because lox already uses curly braces but does not use square brackets, I think list syntax works best for me (dictionaries are just longer than they need to be).  Even then, this literal form is quite long, I wish I could have something shorter. I'm used to nice short literals!
+  \subsubsection*{Even better}
+  If fact the 10 numbers will probably follow a fairly standard distribution, like normal, chi-squared, F, etc
+
+  \includegraphics{src/5_distros.jpg}
   
-  For each test, I write an input file (which is a lox program) and then I add another file which has the output I expect from compiling that program.  I can use file extensions to indicate the output of different compiler phases.  For example, for this week I have input files with the extension \verb|.lox| and output files with the extension \verb|.scan|.  The \verb|.scan| files contain the output of the scanner.  I can then run my scanner on the input file and compare the output to the expected output.  If they match, I know my scanner is working correctly.  If I just use files, I can also share the input and output files with my team members via git so they can run the same tests on their scanners.  This way we can all be sure that our scanners are working correctly.  As later phases of the interpreter are added, I might make new output files for the different phases.
+  I think it might be better to pick one of those and have a literal to describe \emph{that}.  I'm going with a log-normal distribution because it "looks right to me".  A log-normal distribution is fully described by two numbers, the mean $\mu$ and the standard deviation $\sigma$ so I need a literal form to hold two numbers.  While there are some that exist in other languages, I think I will make up my own.
+  $$
+  lognorm[\mu,\sigma]
+  $$
+  for example \verb|lognorm[3,2]| would be a distribution where most of the rain drains on the third day.
 
-  \subsection*{Controlling Phases}
-  The Lox interpreter we are building will always run \emph{all} the defined phases.  We only have the scanning phase for now, but later we will add more.  I quite like being able to see \emph{all the phase outputs} so I have adjusted my own Lox interpreter to save the result of each phase to a file so I can compare them to what I expect and test as needed.  There are some issues to deal with here, all around organisation.  Here are all the files I need to track in my approach:
-  \begin{enumerate}
-  \item The input test files (\verb|.lox|)
-  \item The expected output for each phase:
-  \begin{enumerate}
-  \item the expected scanner output (\verb|.scan|)
-  \item the expected parser output (\verb|.parse|)
-  \item the expected interpretation output (\verb|.out|)
-  \end{enumerate}
-  \item The actual output for each phase:
-  \begin{enumerate}
-  \item the actual scanner output (\verb|.scan|)
-  \item the actual parser output (\verb|.parse|)
-  \item the actual interpretation output (\verb|.out|)
-  \end{enumerate}
-  \end{enumerate}
-  
-  I need a good way to organise these so my tests can run and I can easily look around them during debugging. I've chosen a little hierarchy for each test.  For every \verb|.lox| file I have, I have two folders \verb|expected| and \verb|actual|.  If I have test output for that file it goes in \verb|expected| and I can write a little script that compares all the expecteds to actuals.
+  Note, I've used square brackets because I want to make it as simple as possible for my scanner to know that it is not a function call (which we will learn to scan later).
 
-  To make this work perfectly, I just need to adjust my Lox interpreter so it generates the \verb|actual| files while interpreting.
+  Then I changed my mind and went with a symbol between two numbers.  A squiggle kind of looks like a distribution plot
+  \begin{lstlisting}
+  2 ~ 3
+  \end{lstlisting}
+  is the log normal distribution with a mean of 2 and standard deviation of 3.
 
-  \subsection*{Faking Unit Tests}
-  If the system test is a very simple program which only has one feature, it works a bit like a unit test!  I have found this completely sufficient for my purposes so I don't even have JUnit imported in my project.  I'm a bit of an outlier though.  I tend to do a bit of \href{https://en.wiktionary.org/wiki/yak_shaving#/media/File:Yak_shaving.jpg}{Yak shaving} just for fun.
+  I really like this form, so I am going with it.
+
+  \subsubsection*{Scanner changes}
+  I need to make my scanner accept this literal.  Recall that scanners only deal with tokens.  What new token(s) have I introduced?  Just one!  The \verb|~| is my only new token.  Here are the changes that are needed:
+  \begin{itemize}
+  \item Add a new \verb+TokenType+ for \verb|DISTRO|.  I could use \verb|SQUIGGLE| or \verb|TILDE| just as well, it is up to me.
+  \item Adjust \verb|Scanner| method \verb|scanToken| to add a new case \verb|    case '~': addToken(DISTRO); break; |
+  \end{itemize}
+
+  \begin{note}
+  There is a general software engineering principal that pops up here.  I put \emph{meaning} into my token by calling it \verb|DISTRO| rather than \verb|TILDE|.  Was this the right choice?  Overall, it is a 50/50 decision I would say but since I am adding to an existing codebase I should match what happens there.  If we look at the existing token types, the non-meaning option is being used.  For example \verb|SLASH| not \verb|DIVIDE| and \verb|STAR| not \verb|MULTIPLY| so I think, on balance, \verb|TILDE| is better in this case.  Choosing \verb|DISTRO| won't break anything at all, it just creates a tiny inconsistency in the codebase.  These are harmless on their own but tend to accumulate and grow and so programmers spend quite a lot of time thinking about these things.
+  \end{note}
 
 # RAT
 
@@ -103,10 +173,10 @@ What is the primary purpose of the scanner (lexical analyzer) in a compiler or i
 
 ## token examples <gift>
 Which of the following is an example of a token in the scanning process? {
-    =A variable name like `x`.
+    =A variable name like `3x`.
     ~A syntax error found in the source code.
-    ~An optimization rule applied during compilation.
-    ~The entire source code as a string.
+    ~A function call like `foo(5)`.
+    ~A computation like `x + 3`.
 }
 
 ## scanning errors <gift>
@@ -401,11 +471,13 @@ answer: |
 
 # Exam
 
-## Add another type of comment <scanner>
+## Add another type of comment <essay>
 question: |
   Write a scanner that will support new types of comments.  These comments should start with `#` and proceed to the end of the line only.
   We have populated the answer box with an empty scanner (`QScanner`) which inherits from the lox scanner described in the text.  The test code uses this scanner.  Override whatever methods you need to achieve the desired result
-answer_template: |
+  
+  Here is a template to get you started
+  `````
   import static com.craftinginterpreters.lox.TokenType.*; // [static-import]
 
   class QScanner  extends Scanner{
@@ -468,8 +540,10 @@ answer_template: |
       }
     }
   }
+  `````
 answer: |
-  import static com.craftinginterpreters.lox.TokenType.*; // [static-import]
+  `````
+  import static com.craftinginterpreters.lox.TokenType.*; 
 
   class QScanner  extends Scanner{
     public QScanner(String source) {
@@ -538,31 +612,10 @@ answer: |
       }
     }
   }
-tests:
-  - Lox.scan(new QScanner("print \"hi\";"), false): |
-      PRINT print null
-      STRING "hi" hi
-      SEMICOLON ; null
-      EOF  null
-  - Lox.scan(new QScanner("print \"hi\";#commend"), false): |
-      PRINT print null
-      STRING "hi" hi
-      SEMICOLON ; null
-      EOF  null
-  - Lox.scan(new QScanner("print 5;"), false): |
-      PRINT print null
-      NUMBER 5 5.0
-      SEMICOLON ; null
-      EOF  null
-  - Lox.scan(new QScanner("#commend\nprint 5;"), false): |
-      PRINT print null
-      NUMBER 5 5.0
-      SEMICOLON ; null
-      EOF  null
+  `````
 
-## write a coffee parser <scanner>
-question: |
-  Write a scanner for scanning coffee orders into tokens.  Your can assume a CoffeeToken enum has been defined for you with the following tokens:
+## write a coffee parser <gift>
+Imagine you are writing a scanner for scanning coffee orders into tokens.  Your can assume a CoffeeToken enum has been defined for you with the following tokens:
     * SKIM ('s')
     * OAT ('o')
     * SOY ('y')
@@ -574,14 +627,36 @@ question: |
     * SUGAR ('-')
     * NUMBER
     * SHOT ('*')
-  For most tokens, a single character (given above) is used to encode them in the coffee language. but shot and sugar might be followed by a number which can be any number up to 9.  Write a scanner to for the coffee langauge.  Some example orders and their token stream are:
-    * "sf" `SKIM FLATWHITE`
-    * "ol*3` `OAT LATTE SHOT 3`
-    * "yp-2~ `SOY PICCOLO SUGAR 2`
-answer_template: |
-  still to do
-answer: |
-  still do to
-tests:
-  - none: none
+For most tokens, a single character (given above) is used to encode them in the coffee language. but shot and sugar might be followed by a number which can be any number up to 9.  Some example orders and their token stream are:
+    * `sf` `SKIM FLATWHITE`
+    * `ol*3` `OAT LATTE SHOT 3`
+    * `yp-2` `SOY PICCOLO SUGAR 2`
+If you were writing a scanner for coffee orders, how much _lookahead_ would the scanner need?{
+  =0
+  ~1
+  ~2
+  ~3
+}
 
+## scanner purpose <gift>
+Which of the following best describes the primary purpose of a scanner in the context of an interpreter? {
+    ~ To evaluate expressions in the source code.
+    = To convert the source code into a sequence of tokens.
+    ~ To parse the tokens into an abstract syntax tree (AST).
+    ~ To optimize the source code for performance.
+}
+
+## scanner strategy <gift>
+What is the most common strategy used by a scanner to handle multi-character tokens, such as identifiers or string literals? {
+    = Reading the source code character by character in a single pass and grouping characters into tokens based on matching patterns.
+    ~ Using a predefined dictionary to directly map substrings of the source code to tokens.
+    ~ Performing a binary search on the source code to identify tokens.
+    ~ Applying a brute-force algorithm to test all possible token combinations.
+}
+
+## edge cases in scanners <gift>
+When designing a scanner, which of the following edge cases is typically the hardest to handle? {
+    = Nested comments in languages that support them.
+    ~ Single-character tokens like `+` or `-`.
+    ~ White spaces between tokens.
+}

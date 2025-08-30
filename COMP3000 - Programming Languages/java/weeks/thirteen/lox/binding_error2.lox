@@ -1,0 +1,25 @@
+var char = "*";
+
+fun printLine(width){
+    var res = "";
+    while(width > 0){
+        res = res + char;
+        width = width - 1;
+    }
+    print(res);
+}
+
+fun printSquare(width){
+    var char = "&";
+    var height = width;
+    while (height > 0){
+        printLine(width);
+        height = height - 1;
+    }
+}
+
+printLine(3);
+char = "%";
+printLine(4);
+
+printSquare(5);

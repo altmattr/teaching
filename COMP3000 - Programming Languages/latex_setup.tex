@@ -12,6 +12,7 @@
 \usepackage{listings}
 \usepackage{tikz}
 \usepackage{amsmath}
+\usepackage{pdflscape}
 \usepackage[many]{tcolorbox}
 
 \usepackage{xcolor,sectsty}
@@ -39,6 +40,16 @@
 \date{}
 \newtcolorbox{aside}[1][]{
   title=Aside,
+  width=0.3\textwidth,
+  fonttitle=\bfseries,
+  breakable,
+  fonttitle=\bfseries\color{black},
+  colframe=blueish!80,
+  colback=blueish!2
+  #1}
+
+\newtcolorbox{goodtoknow}[1][]{
+  title=Good to know,
   width=0.3\textwidth,
   fonttitle=\bfseries,
   breakable,

@@ -1,0 +1,5 @@
+var upper_molo = (5~4)@3;
+var lower_molo = upper_molo + (3~2)@5;
+var quean = (0~0.4)@5;
+
+print(quean);

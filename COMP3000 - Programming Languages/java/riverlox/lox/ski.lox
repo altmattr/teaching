@@ -1,0 +1,23 @@
+fun i(x){
+    return x;
+}
+
+fun k(x){
+    fun k2(y){
+        return x;
+    }
+    return k2;
+}
+
+fun s(x){
+    fun s2(y){
+        fun s3(z){
+            return x(z)(y(z));
+        }
+        return s3;
+    }
+    return s2;
+}
+
+print(k("a")("b"));
+print(s(k)(i)("a"));

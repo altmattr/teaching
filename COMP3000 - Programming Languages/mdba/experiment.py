@@ -1,7 +1,18 @@
 import numpy
 import matplotlib.pyplot as plt
+import pandas
 
-rainfall     = numpy.array([11.4,0,0.4,0,0,2,0.2,0.2,0.2,0,0,0,3,3.8,13.2,0,0,0,0.2,0,0,0,2.6])
+class Watershed:
+    def __init__(mean, spread, size):
+        self.mean = mean
+        self.spread = spread
+        self.size = size
+
+# running the model amounts to computing the flow in each watershed on each day.
+
+# in this version the rain which falls just flushes through the system straight away.
+
+rainfall     = numpy.array([11.4,0,0.4,0,0,2,0.2,0.2,0.2,0,0,8.3,2.1])
 
 upper_molo   = 5*rainfall # what would it look like to slow the rainfall?
 googong      = 10*rainfall
@@ -44,8 +55,18 @@ def burley(history):
     return res, summ
 
 lower_molo = burley(central_molo)[0] + 0.8*rainfall
-print(lower_molo)
-print(burley(central_molo)[1])
+
+systems = [upper_molo, googong, lower_quean, jerra, central_molo, lower_molo]
+table = pandas.DataFrame(systems, index=["upper_molo", "googong", "lower_quean", "jerra", "central_molo", "lower_molo"])
+rainfall_table = pandas.DataFrame([rainfall], index=["rainfall"])
+
+print("This system assumes that the rainfall all over the river system is the same and can be described with one number per day.")
+print("Rainfall (mm) per day:")
+print(rainfall_table)
+print("")
+print("Running the model computes the flow in each watershed on each day. (in L/second)")
+print(table)
+
 fig, (ax1, ax2) = plt.subplots(2)
 ax1.plot(numpy.linspace(0,1, len(rainfall)), lower_molo, label="lower molo", scaley=(0,150))
 ax1.plot(numpy.linspace(0,1, len(rainfall)), central_molo, label="central molo",scaley=(0,150))

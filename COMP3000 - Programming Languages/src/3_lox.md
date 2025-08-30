@@ -43,9 +43,9 @@ By the end of this week you should:
 # FAT 
 ## Turtle Graphics <tex-essay>
 question: |
-    \begin{wrapfigure}{R}{0.33\textwidth}\begin{aside}
-    The idea that one program might generate another program is powerful but a little strange.  Be sure you have your head around this idea before you begin. If the \emph{only} thing you get from this class is an intuition for generating programs from other programs, you will still have made a bit step forward in your understanding of programming languages.  This concept is key and will come up again very soon.  If you don't get it now, you will struggle later.
-    \end{aside}\end{wrapfigure}
+    \begin{wrapfigure}{R}{0.33\textwidth}\begin{goodtoknow}
+    The idea that one program might generate another program is powerful but a little strange.  Be sure you have your head around this idea before you begin. If the \emph{only} thing you get from this class is an intuition for generating programs from other programs, you will still have made a bit step forward in your understanding of programming languages.  \textbf{This concept is key and will come up again very soon.  If you don't get it now, you will struggle later.}
+    \end{goodtoknow}\end{wrapfigure}
 
 
     A fun little language is logo (aka "turtle graphics").  It is a language designed for kids to learn programming.  It has a very simple syntax and a very simple set of commands.  The idea is that you can use it to draw pictures on the screen.  Check out the language this online implementations:

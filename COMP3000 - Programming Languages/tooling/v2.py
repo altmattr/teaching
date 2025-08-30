@@ -5,10 +5,12 @@ import os
 from pathlib import Path
 import yaml
 import pandoc
+import base64
 
 top_matter = "abstract"
 
 name_conversion = {"FAT": "Application Exercise",
+                   "Fat": "Application Exercise",
                    "SSE": "Self Study Exercises"}
 
 def split_at_regex_and_put_in_dictionary(input_string, regex):
@@ -51,22 +53,44 @@ def grab_the_data():
         topics[Path(file).stem] = data
     return topics
 
+def inline_images(text):
+    def lam(image):
+        encoded_string = ""
+        with open("src/" + image, "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read()).decode("utf-8")
+        return encoded_string
+    for image in re.findall(r'<img\s+(width=["\']([^"\']+)["\'])?\s*src=["\']([^"\']+)["\'][^>]*>', text):
+        with open("src/" + image, "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read()).decode("utf-8")
+        print(f"Found image: {image}: {encoded_string[:10]}...")
+    return re.sub(r'<img\s+src=["\']([^"\']+)["\'][^>]*>', 
+                        lambda m: f"![embedded image](data:image/png;base64,{lam(m.group(3))})", 
+                        text)
+
+def perc2width(text):
+    return re.sub(r'(\d+)%', lambda m: str(float(m.group(1))/100)+"\\textwidth", text) if text else "0.5\\textwidth"
+
+def tex_images(text):        
+    return re.sub(r'<img\s+(width=["\']([^"\']+)["\'])?\s*src=["\']([^"\']+)["\'][^>]*>', 
+                  lambda m: "\n\n\\" + "includegraphics[width="+perc2width(m.group(2)) + "]{src/" + m.group(3) + "}\n\n", 
+                  text)
+
 def gift_to_gift(item,question, answers):
-    return f"::{item}::[markdown]\n{question}{{\n" + "\n".join(answers) + "\n}\n"
+    return f"::{item}::[markdown]\n{inline_images(question)}{{\n" + "\n".join([inline_images(answer) for answer in answers]) + "\n}\n"
 
 def gift_to_tex(item, question, answers):
-    question = pandoc.write(pandoc.read(question, format='markdown'), format='latex')
+    question2 = pandoc.write(pandoc.read(question, format='markdown'), format='latex')
     answers = [pandoc.write(pandoc.read(answer, format='markdown'), format='latex') for answer in answers]
-    return f"\\section{{{item}}}\n\\begin{{enumerate}}\n\\item" + "\n\\item".join(answers) + "\n\\end{enumerate}\n\n"
+    return f"\\section{{{item}}}\n"+question2+"\n\\begin{{enumerate}}\n\\item" + "\n\\item".join(answers) + "\n\\end{enumerate}\n\n"
 
 def gift_to_md(item, question, answers):
-    return f"## {item}\n\n{question}\n\n  *" + "\n  *".join(answers) + "\n\n"
+    return f"## {item}\n\n{inline_images(question)}\n\n  *" + "\n  *".join(answers) + "\n\n"
 
 def yaml_to_tex(item, item_parsed, isTex=False):
     if not isTex:
         item     = pandoc.write(pandoc.read(item,                            format='markdown'), format="latex")
-        question = pandoc.write(pandoc.read(item_parsed.get('question', ''), format='markdown'), format="latex")
-        answer   = pandoc.write(pandoc.read(item_parsed.get('answer', ''  ), format='markdown'), format="latex")
+        question = pandoc.write(pandoc.read(tex_images(item_parsed.get('question', '')), format='markdown'), format="latex")
+        answer   = pandoc.write(pandoc.read(tex_images(item_parsed.get('answer', ''  )), format='markdown'), format="latex")
     else:
         question = item_parsed.get('question', '')
         answer = item_parsed.get('answer', '')
