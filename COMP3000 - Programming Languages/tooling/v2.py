@@ -59,12 +59,14 @@ def inline_images(text):
         with open("src/" + image, "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read()).decode("utf-8")
         return encoded_string
-    for image in re.findall(r'<img\s+(width=["\']([^"\']+)["\'])?\s*src=["\']([^"\']+)["\'][^>]*>', text):
+    for res in re.findall(r'<img\s+(width=["\']([^"\']+)["\'])?\s*src=["\']([^"\']+)["\'][^>]*>', text):
+        print(res)
+        (full, width, image) = res
         with open("src/" + image, "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read()).decode("utf-8")
         print(f"Found image: {image}: {encoded_string[:10]}...")
     return re.sub(r'<img\s+src=["\']([^"\']+)["\'][^>]*>', 
-                        lambda m: f"![embedded image](data:image/png;base64,{lam(m.group(3))})", 
+                        lambda m: f"![embedded image](data:image/png;base64,{lam(m.group(1))})", 
                         text)
 
 def perc2width(text):

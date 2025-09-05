@@ -32,7 +32,7 @@ question: |
     \item and a document explaining your language and parser.
     \end{itemize}
 
-    The document is your chance to explain your decisions and implementation to your marker, writing a good one will help your marker give you grades for the other files as well.  For example, you marker won't know how to compile your parser unless you tell them so you can't get parser marks unless you clearly describe that in your document.  If your intention is not clear from the documents you submit, you won't be allocated grades, even for work that is ultimately correct.  It is your responsibility to communicate clearly everything your marker needs in your submission.  You marker will be one of the class teachers, so you can assume they are familiar with anything from class.
+    The document is your chance to explain your decisions and implementation to your marker, writing a good one will help your marker give you grades for the other files as well.  For example, your marker won't know how to compile your parser unless you tell them so you can't get parser marks unless you clearly describe that in your document.  If your intention is not clear from the documents you submit, you won't be allocated grades, even for work that is ultimately correct.  It is your responsibility to communicate clearly everything your marker needs in your submission.  Your marker will be one of the class teachers, so you can assume they are familiar with anything from class.
 
     \begin{note}
     There is ambiguity left in this description by design.  You are aiming to make \emph{the best possible domain specific language for waterflows} but we clarify a great deal to support grading your work.  Imagination is needed to complete this task and experimentation is strongly encouraged.
@@ -75,7 +75,7 @@ question: |
 
     Figure \ref{fig:act_watershed} shows a river system situated near Canberra.   The following statements are true of this river system:
     \begin{itemize}
-    \item The root rivers in this system are googong, jerrabombarra, and uppper molongolo.  
+    \item The root rivers in this system are googong, jerrabombarra, and upper molongolo.  
     \item Googong drains to dam 1
     \item Dam 1 drains to queanbeyan
     \item Central molongolo is the combination of queanbeyan, upper molongolo, and jerrabombarra
@@ -84,7 +84,7 @@ question: |
     \item The output of the entire river system is the output of lower molongolo
     \end{itemize}
 
-    We make the following simpliying assumptions:
+    We make the following simplifying assumptions:
     \begin{enumerate}
     \item The rainfall across a whole \emph{river system} can be described with one number (in mm).
     \item The rainfall across the whole river system is provided at run time by "magic".  I.e. we can just assume for now that such a number exists and can be accessed.
@@ -97,7 +97,7 @@ question: |
     \end{enumerate}
 
     \subsubsection*{Use of Generative AI}
-    An ability to use Generative AI is not a learning outcome of this course but GenAI is a tool you may choose to use along your journey.  If your submission is primarily AI generated, you will likely find yourself in the bottom of each rubric item.  Lox and Nystrom's notation are not well represented in AI training sets and Gen AIs are generally bad at language design.  We value, and give grades for, your contribution to the solution since it is you (not the GenAI vendor) whos is earning the grade.
+    An ability to use Generative AI is not a learning outcome of this course but GenAI is a tool you may choose to use along your journey.  If your submission is primarily AI generated, you will likely find yourself in the bottom of each rubric item.  Lox and Nystrom's notation are not well represented in AI training sets and Gen AIs are generally bad at language design.  We value, and give grades for, your contribution to the solution since it is you (not the GenAI vendor) who is earning the grade.
 
     \begin{note}
     You are free to use any and everything from your team's work on this task.  You may not use other team's work directly or solicit for solutions.  These remain contraventions of academic integrity.  The work of the team belongs to all team members, so they can submit that without contravening academic integrity.  However, this is your own submission.  You can, and should, improve upon your team's work as much as possible.  We have included a "similarity/creativity" score in the rubric so we can reward solutions that go beyond what was done in class.  Note that \emph{the document must be your own work}.  It can heavily reference the team's work, but you should write it from scratch yourself.
@@ -110,13 +110,13 @@ question: |
     \textbf{Rubric item} & Fail (0) & Pass (50) & Credit (70) & Distinction (100) \\
     \hline
     Complete Table A (20\%) & None answers accurately & 2 or more answered accurately & 6 or more answered accurately & All answered accurately \\ \hline
-    Grammar given in the document in Nystrom's notation (20\%) & No grammar or substantially broken grammar in the document & A grammar with small errors & A grammar that can model rivers systems & A grammer that can model river systems and an explanation of how each example program parses according the grammar \\ \hline
+    Grammar given in the document in Nystrom's notation (20\%) & No grammar or substantially broken grammar in the document & A grammar with small errors & A grammar that can model rivers systems & A grammar that can model river systems and an explanation of how each example program parses according the grammar \\ \hline
     Three example programs (20\%) & No program or the programs don't model river system correctly & Three programs of some form & \emph{pass} and the example programs all match the given grammar & \emph{credit} and the Lox-like parser can actually parse the programs \\ \hline
-    Parser written in Java based on Lox codebase (20\%) & None or not in Java & Code is based on the Lox from chapter 5 of text & Code is based on the Lox from chapter 5 and your additions fit with the style & If there is any improvement to the Chapter 5 Lox code with an explanation in the document, you will get this grade. \\ \hline
+    Parser written in Java based on Lox codebase (20\%) & None or not in Java & Code is based on the Lox from chapter 6 of text & Code is based on the Lox from chapter 6 and your additions fit with the style & If there is any improvement to the Chapter 6 Lox code with an explanation in the document, you will get this grade. \\ \hline
     Uniquness and Creativity (20\%) & A direct submission of in-class work & minor modifications to in-class work & substantial improvement on in-class work & a unique submission showing creativity \\
     \hline
     \end{tabular}
-    \subsubsection*{Examples for Similarity Rubric}
+    \subsubsection*{Examples for Uniqueness Rubric}
     Below I give total contribution tot he final assignment grade for certain scenarios:
     \begin{description}
     \item[0\%] You have been working with your team all semester and you take the solutions your team came up with, add \emph{your own} document and submit it as-is.
@@ -137,7 +137,7 @@ question: |
 
     You will need to consider if there is any ambiguity in your grammar.  If there is, you need to adjust your grammar to remove it.
 
-    With that done you should implement it.  _Implementing_ it means replicating chapter 5 of the "Crafting Interpreters" text for your language insted of Lox.  Your language should pretty much just be Lox with an extra literal and maybe an extra operation so for most of you that will mean taking the code from the text book and adjusting it to work for your waterflow language instead.
+    With that done you should implement it.  _Implementing_ it means replicating chapter 6 of the "Crafting Interpreters" text for your language insted of Lox.  Your language should pretty much just be Lox with an extra literal and maybe an extra operation so for most of you that will mean taking the code from the text book and adjusting it to work for your waterflow language instead.
 
     The description of the application exercise is nice and short this week, but it is quite a lot of work.  It is work that builds on the assumption that at least one person in your team is up to date with:
 
