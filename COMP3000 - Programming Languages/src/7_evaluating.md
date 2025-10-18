@@ -72,13 +72,13 @@ Consider the following description of an assignment one submission: "The student
 
 ## Evaluating expressions <tex-essay>
 question: |
-    At this point, from earlier weeks, you should have some example expressions in your water flow languages.  My expression for the Canberra area looks like:
+    At this point, from earlier weeks, you should have some example expressions in your water flow languages.  My expression for the Devlin's creek looks like:
 
     \begin{lstlisting}
-    (3~4)@4+ (1~1)@10 + (1~0)@1 + (5~5)@2 + (4~5)@2 + (2~2)@3 + (1~0)@7 + (2~2)@2
+    4R + (2.2R + 8R + (1.2R + 6R))
     \end{lstlisting}
     
-    It is quite unlikely you came up with the same language, so it probably makes little sense, but you should be able to break that example into an abstract syntax tree which is pretty accurate just based on what we have seen so far\footnote{And I encourage you to try, just for fun.}
+    It is quite unlikely you came up with the same language but you should be able to break that example into an abstract syntax tree which is pretty accurate just based on what we have seen so far\footnote{And I encourage you to try, just for fun.}
 
     Your team's task this week is to write your Tree Walking Evaluator for \emph{your} team's expression language from last week.  You should feel free to make any adjustments to your expression language along the way - nothing is set in stone!
 

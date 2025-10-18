@@ -16,6 +16,13 @@ import static variants.w6_plus_complex.TokenType.*;
  * primary        → NUMBER | STRING | "true" | "false" | "nil" 
  *                | "(" expression ")" ;
  */
+
+ /**
+  * expression -> mini_term (op mini_term)*;
+  * op -> PLUS | LEFT_ARROW;
+  * mini_term  -> flow | "(" expression ")" ;
+  * flow -> "[" NUMBER "~" NUMBER "]" "@" NUMBER;
+  */
 class Parser {
   private static class ParseError extends RuntimeException {}
   private final List<Token> tokens;
@@ -34,7 +41,36 @@ class Parser {
   }
 
   private Expr expression(){
-      return equality();
+      Expr expr = mini_term();
+      while(match(PLUS, LEFT_ARROW)){
+          Token operator = previous();
+          Expr right = mini_term();
+          expr = new Expr.Binary(expr, operator, right);
+      }
+      return expr;
+  }
+
+  private Expr mini_term(){
+      if (match(LEFT_PAREN)){
+          Expr expr = expression();
+          consume(RIGHT_PAREN, "Expect ')' after expression.");
+          return new Expr.Grouping(expr);
+      } else {
+          return flow();
+      }
+  }
+
+  private Expr flow(){
+      if (match(LEFT_SQUARE)){
+          Object mean = consume(NUMBER, "Expect mean after '['.").literal;
+          consume(TILDE, "Expect '~' after mean.");
+          Object variance = consume(NUMBER, "Expect variance after '~'.").literal;
+          consume(RIGHT_SQUARE, "Expect ']' after variance.");
+          consume(AT, "Expect '@' after ']'.");
+          Object magnitude = consume(NUMBER, "Expect magnitude after '@'.").literal;
+          return (new Expr.Flow(mean, variance, magnitude));
+      }
+      throw error(peek(), "Expect flow expression.");
   }
 
   // equality       → comparison ( ( "!=" | "==" ) comparison )* ;

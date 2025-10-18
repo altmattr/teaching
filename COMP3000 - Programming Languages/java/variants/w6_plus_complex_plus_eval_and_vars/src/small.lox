@@ -1,0 +1,3 @@
+var joes = [1 ~ 1]@4;
+var mahers = [3 ~ 2]@4;
+var result = joes + mahers;

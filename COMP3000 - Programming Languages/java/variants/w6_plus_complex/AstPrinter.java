@@ -23,6 +23,12 @@ class AstPrinter implements Expr.Visitor<String> {
   }
 
   @Override
+  public String visitFlowExpr(Expr.Flow expr) {
+    if (expr.mean == null && expr.variance == null && expr.magnitude == null) return "broken flow was parsed";
+    return "[" + expr.mean.toString() + "~" + expr.variance.toString() + "]@" + expr.magnitude.toString();
+  }
+
+  @Override
   public String visitUnaryExpr(Expr.Unary expr) {
     return parenthesize(expr.operator.lexeme, expr.right);
   }

@@ -7,6 +7,7 @@ abstract class Expr {
     R visitBinaryExpr(Binary expr);
     R visitGroupingExpr(Grouping expr);
     R visitLiteralExpr(Literal expr);
+    R visitFlowExpr(Flow expr);
     R visitUnaryExpr(Unary expr);
   }
   static class Binary extends Expr {
@@ -48,6 +49,22 @@ abstract class Expr {
     }
 
     final Object value;
+  }
+  static class Flow extends Expr {
+    Flow(Object mean, Object variance, Object magnitude) {
+      this.mean = mean;
+      this.variance = variance;
+      this.magnitude = magnitude;
+    }
+
+    @Override
+    <R> R accept(Visitor<R> visitor) {
+      return visitor.visitFlowExpr(this);
+    }
+
+    final Object mean;
+    final Object variance;
+    final Object magnitude;
   }
   static class Unary extends Expr {
     Unary(Token operator, Expr right) {

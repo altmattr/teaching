@@ -1,4 +1,4 @@
-package variants.w6_plus_complex;
+package variants.w6_plus_complex_plus_eval_and_vars;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,9 +7,12 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
 
 public class Lox {
   static boolean hadError = false;
+  static boolean hadRuntimeError = false;
+
 
   public static void main(String[] args) throws IOException {
     if (args.length > 1) {
@@ -48,9 +51,15 @@ public class Lox {
     System.out.println("-- tokens --");
     System.out.println(tokens);
     Parser parser = new Parser(tokens);
-    Expr expression = parser.parse();
+    List<Stmt> program = parser.parse();
     if (hadError) return;
-    System.out.println(new AstPrinter().print(expression));
+    System.out.println("-- AST --");
+    System.out.println(new AstPrinter().print(program));
+    Map<String, Flow> result = new Interpreter().interpret(program);
+    System.out.println("-- Result --");
+    for (String var: result.keySet()){
+      System.out.println(String.format("%1$20s", var) + ": " + result.get(var));
+    }
   }
 
   public static void scan(String source, Scanner scanner){
@@ -68,6 +77,13 @@ public class Lox {
       report(token.line, " at '" + token.lexeme + "'", message);
     }
   }
+
+  static void runtimeError(RuntimeError error) {
+    System.err.println(error.getMessage() +
+        "\n[line " + error.token.line + "]");
+    hadRuntimeError = true;
+  }
+
 
   private static void report(int line, String where,
                              String message) {

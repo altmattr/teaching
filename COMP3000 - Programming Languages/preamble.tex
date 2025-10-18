@@ -62,5 +62,138 @@ This unit of study is also a \emph{content-heavy} unit with many complex concept
 \hline
 \end{tabular}
 
+\newpage
+
+\section*{2025 Mid-Semester Review}
+
+A note for the reader.  The COMP3000 teaching team takes an approach to teaching which is \emph{not necessarily} a natural fit for certain approaches to EPIC.  In particular, we have never had good experiences with so-called "minimal instruction" approaches, nor been convinced by the research which attempts to support that approach.  We are constructivists who believe a teacher's job is a) to know the field so deeply and b) be experienced with students so that c) they can guide students from where they currently are on the right path for them to where they need to be.  We insist the teacher remains a lynchpin of the students learning experience even when moving to more student-led approaches or open-ended problems.  We note this because that approach colours our experience of EPIC and TBL and will surely come through in this review.  We hope those who don't share this view can still find value in our experience.
+
+\begin{figure}
+\begin{minipage}{0.4\textwidth}
+\begin{tabular}{|l|l|l|}
+  \hline
+  week & tue 9am & tue 11 am \\ \hline
+  2 & 26 & 29 \\
+  3 & 19 & 22 \\
+  4 & 22 & 23 \\
+  5 & 19 & 21 \\
+  6 & 18 & 18 \\
+  7 & 14 & 20 \\
+  8 & 12 & 19 \\
+  9 & 15 & 21 \\
+  10 & 11 & 17 \\
+  \hline
+\end{tabular}
+\end{minipage}
+\begin{minipage}{0.75\textwidth}
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.7\textwidth,
+    height=0.5\textwidth,
+    xlabel={Week},
+    ylabel={Attendance},
+    xtick={2,3,4,5,6,7,8,9,10},
+    ymin=0, ymax=30,
+    legend pos=south west,
+    grid=major,
+    title={Attendance by Week and Class Time}
+]
+\addplot+[mark=*, thick, color=blue] coordinates {
+    (2,26) (3,19) (4,22) (5,19) (6,18) (7,14) (8,12) (9,15) (10,11)
+};
+\addlegendentry{Tue 9am}
+
+\addplot+[mark=square*, thick, color=red] coordinates {
+    (2,29) (3,22) (4,23) (5,21) (6,18) (7,20) (8,19) (9,21) (10,17)
+};
+\addlegendentry{Tue 11am}
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\caption{Attendance trends for two classes of COMP3000 in 2025}
+\label{fig:attendance}
+\end{figure}
+At week 7 of semester we have (anecdotally) observed the following things:
+\begin{description}
+\item[The classroom experience is more positive than usual].  Attendance and engagement remain high enough to make the classroom a vibrant learning environment.  Class teachers are enjoying the experiece of TBL and we have had no negative feedback from students.
+\item[Attendance is higher than expected*]  With the mandate against weekly grading, which was previously used in COMP3000 primarily to motivate attendance, we were concerned that attendance would drop.  We estimated we would end up around 30\% attendance but we are seeing closer to 60\% attendance at this stage and it is holding steady\footnote{We have put the asterix on this point because attendance has dropped in week 7.  We hope this is due to 3AM assessment season which means students have an assessment due around week 8 in most of their units.} as you can see in Figure \ref{fig:attendance}
+\item[RATs are \emph{more} than preparation]  As we prepared for TBL we expected RATs would get students warmed-up and motivate them to do the pre-class preparation.  What we did not predict ist he extent to which RATs would be a significant learning experience in their own right.  Students are learning from each other and from the class teachers during RATs and everyone seems to be enjoying the experience.  One result of this is that more time is being spent on RATs than we planned.
+\item[The demands on class teachers are substantially greater than usual] Previously, class teachers would spend most of their time answering relatively easy questions about the content.  This semester the discussions are going of on tangents and hitting subtle edge cases which require more skill and experience to handle well.  In one class I attended there was a discussion about what a global variable really means.  Only an experienced reader in programming languages can really answer that question.  The ability to do that discussion justice is beyond the ability of people who don't have a research masters or PhD in programming languages.  This is overall \emph{a good thing} since it means class is more engaging and more interesting, but it does need noting.  We see it as a tradeoff between precision and engagement and consider the tradeoff worth it.  Indeed we think that tradeoff is perhaps built into the spirit of EPIC.
+\item[The teaching team needs more preparation time than usual] We have an extremely experienced and capable teaching team this semester and we are using 2 hours per teacher per week for preparation and could make good use of another hour per week.  At this point it looks like two hours per teacher per week is the minimum preparation time needed in EPIC3000.
+\item[Directing students along a real world project is hard work]  The approach we have taken in EPIC3000 is to tackle a real-world problem within the context of the learning outcomes.  We sketched this out at the start of semester in a way we knew would work with some amount of work, but the devlish details are taking a lot of time and all our skill/experience to work through.  I've adopted the term "co-design" as we have had to constantly adjust each week's class content to account for the directions students are taking, their choices, and their misconceptions.  Getting ahead of the students and finding which parts of the domain will derail their learning is hard work and requires exploring all the possible paths students might take.  Then we need to communicate that to the full teaching team.  With experienced staff teaching the same course year-in and year-out this will get easier, but it seems likely we will need to change domains every couple of years which will reset the clock on that experience.  One way to protect against this is to ensure class teachers are doing 3 or more classes per week.
+\item[Our worst worries have \emph{not} been realised]  Two concerns we had before begning were that a) attendance would quickly drop off and b) the highly interactive style would disadvantage introverted and neurodiverse students.  So far neither of these concerns have been realised.  We \emph{do note} that both (i.e. all) of our autistic-presenting students are struggling badly.  We are supporting them as we can and two students is not a trend, but it is worth keeping an eye on.
+\item[We can't keep doing application exercises during assessment season] As soon as the assignment specification was relesed, students wanted to work on that in class.  the RATs still ran but once students had the floor they were focussed on the upcomming assignment.  Combined with 3AM assessment season and the drop off in attendance, we have decided to stop trying to do normal application exercises in class and instead focus on the assignment.  We will attempt to create later application exercises that encompass more than one week's work to start catching up.
+\end{description}
+
+\begin{figure}
+\begin{minipage}{0.4\textwidth}
+\begin{tabular}{|l|l|l|}
+  \hline
+  response & engaging & stressful \\ \hline
+  much less & 5 & 4 \\
+  a little less & 13 & 17 \\
+  equally & 31 & 36 \\
+  slightly more & 37 & 42 \\
+  much more & 30 & 17 \\
+  \hline
+\end{tabular}
+\end{minipage}
+\begin{minipage}{0.75\textwidth}
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.7\textwidth,
+    height=0.4\textwidth,
+    xlabel={scale (1=much less, 5=much more)},
+    ylabel={count},
+    xtick={0,1,2,3,4,5},
+    ymin=0, ymax=45,
+    legend pos=north west,
+    grid=major,
+    title={Comparison to "average" MQ unit}
+]
+\addplot+[mark=*, thick, color=blue] coordinates {
+    (1,5) (2,13) (3,31) (4,37) (5,30)
+};
+\addlegendentry{Engagement}
+
+\addplot+[mark=square*, thick, color=red] coordinates {
+    (1,4) (2,17) (3,36) (4,42) (5,17)
+};
+\addlegendentry{Stress}
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\caption{Student perspectives in week 8 of semester}
+\label{fig:student_perspectives}
+\end{figure}
+The downsides we have observed which are related more to the EPIC aspects of the course are:
+\begin{description}
+\item[Real world domains are complex and hard to learn]  The domain of water flow modelling seemed like a simple one but it is taking a great deal of the student's cognitive load to work within it.  This extra cognitive load is an impediment to other learning.  It may still be a win overall, but the load is very substantial.  I would estimate 50\% of student cognitive load is going into learning the domain and only 50\% into learning the programming languages content.  One teacher remarked "I do find myself talking about evaporation and rainfall more than I imagined I would in this unit"
+\item[Students head on the wrong path and need redirecting] This is not a surprise, but I think neglected sometimes when teaching unit that reward exploration and creativity.  Giving students freedom to explore and a real-world problem to solve results in many teams going into dead ends early on.  Recovering from these dead ends is harder the longer they persist.
+\item[Constant co-design is expensive and requires highly skilled staff]    We have found unit staff need to be constantly on the lookout for teams heading off in the wrong direction and need to intervene early and often to get them back on track.  The widely used term "co-design" is quite appropriate for what we have found ourselves doing in support of our students.  Getting the balance between freedom to explore and avoidance of dead ends is the main task class teachers have found themselves taking on during class time and the main use of senior staff time during semester.  We have tackled this by providing written and recorded guidance each week on the common approaches students are taking and the pitfalls they are encountering.  We are also publishing a "ground truth" solution each week which students can go to if their own approach is failing.   We are working hard to ensure the communication is two-way so that interesting student ideas get given airtime as well.
+\item[Making a submission from application exercises is key]  Class teachers report that students probably would not be engaging in the class exercises if they were not expecting to be assessed on them.  We have found a  way that matched 3AM and without it I think we would have lost too many students to vagrancy. 
+\item[We can't ensure broad coverage of the material].  Any real world domain will de-emphasise some aspect of the material and over-emphasise others.  We have done a good job finding a domain which covers most of the material well but he negative effect is still noticable.
+\end{description}
+
+The upsides we have observed which are related more to the EPIC aspects of the course are:
+\begin{description}
+  \item[Students are more engaged than usual]  The domain problem is interesting in itself and giving students something to get into even if programming languages bores them.
+  \item[Top students are thriving]  The best students are finding lots of interesting directions to explore and are enjoying the freedom to do so.  We note that the co-design aspect is key to supporting this.  Without such close interactions with unit staff on the matters of substance, these students would instead be frustrated that they have ideas their teammates don't share and that they can't explore them.
+  \item[Unit staff are more engaged than usual]  The unit staff are also enjoying having a real-world problem to think through.  Again, the fact that each is effectively an extra team member to a number of teams via the co-design approach is key to this.  They get right into the "weeds" of the problem which is where all the fun is.
+\end{description}
+
+\subsubsection*{Student Perspectives}
+We did a quick survey of students in week 8.  We asked students to rate on a scale of 1 (much less) to 5 (much more) how engaging and stressful this unit is compared to their "average" MQ unit.  The results are shown in figure \ref{fig:student_perspectives}.  Note that only students who attended class were involved.
+
+Students find the unit both more engaging and more stressful.  The engagement increase is greater than the stress increase and our observations are that the stress is "productive" stress in most ways.  However, we think teachers planning to go down this path should be coognisant of the extra stress and be prepared to help students manage it.
+
+
+\subsubsection*{Observer Perspectives}
+A senior learning designer observed a class in week 4 and had the following to say
+\begin{quote}
+Impressive insights go here
+\end{quote}
+
+
 \end{document}
 

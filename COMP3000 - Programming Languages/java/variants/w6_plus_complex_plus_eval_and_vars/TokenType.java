@@ -1,18 +1,17 @@
-package variants.w6_plus_simple;
+package variants.w6_plus_complex_plus_eval_and_vars;
 
 enum TokenType {
   // Single-character tokens.
-  LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE,
-  COMMA, DOT, MINUS, PLUS, SEMICOLON, SLASH, STAR,
+  LEFT_PAREN, RIGHT_PAREN, LEFT_SQUARE, RIGHT_SQUARE, LEFT_BRACE, RIGHT_BRACE,
+  COMMA, DOT, MINUS, PLUS, SEMICOLON, SLASH, STAR, AT, TILDE,
 
   // One or two character tokens.
   BANG, BANG_EQUAL,
   EQUAL, EQUAL_EQUAL,
   GREATER, GREATER_EQUAL,
-  LESS, LESS_EQUAL, ROCKET,
-
+  LESS, LESS_EQUAL, ROCKET, LEFT_ARROW,
   // Literals.
-  IDENTIFIER, STRING, NUMBER, FLOW,
+  IDENTIFIER, STRING, NUMBER,
 
   // Keywords.
   AND, CLASS, ELSE, FALSE, FUN, FOR, IF, NIL, OR,

@@ -1,6 +1,6 @@
-package variants.w6_plus_simple;
+package variants.w6_plus_complex_plus_eval_and_vars;
 
-import static variants.w6_plus_simple.TokenType.*;
+import static variants.w6_plus_complex_plus_eval_and_vars.TokenType.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -63,6 +63,8 @@ class Scanner {
     switch (c) {
       case '(': addToken(LEFT_PAREN); break;
       case ')': addToken(RIGHT_PAREN); break;
+      case '[': addToken(LEFT_SQUARE); break;
+      case ']': addToken(RIGHT_SQUARE); break;
       case '{': addToken(LEFT_BRACE); break;
       case '}': addToken(RIGHT_BRACE); break;
       case ',': addToken(COMMA); break;
@@ -71,6 +73,8 @@ class Scanner {
       case '+': addToken(PLUS); break;
       case ';': addToken(SEMICOLON); break;
       case '*': addToken(STAR); break; 
+      case '@': addToken(AT); break; 
+      case '~': addToken(TILDE); break; 
       case '!':
         addToken(match('=') ? BANG_EQUAL : BANG);
         break;
@@ -78,7 +82,7 @@ class Scanner {
         addToken(match('=') ? EQUAL_EQUAL : EQUAL);
         break;
       case '<':
-        addToken(match('=') ? LESS_EQUAL : LESS);
+        addToken(match('=') ? LESS_EQUAL :  match('-') ? LEFT_ARROW: LESS);
         break;
       case '>':
         addToken(match('=') ? GREATER_EQUAL : GREATER);
@@ -186,13 +190,6 @@ class Scanner {
       advance();
 
       while (isDigit(peek())) advance();
-    }
-
-    if (peek() == 'R'){
-      advance();
-      addToken(FLOW,
-        Double.parseDouble(source.substring(start, current-1)));
-      return;
     }
 
     addToken(NUMBER,

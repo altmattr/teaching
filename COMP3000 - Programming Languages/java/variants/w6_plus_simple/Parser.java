@@ -16,6 +16,12 @@ import static variants.w6_plus_simple.TokenType.*;
  * primary        → NUMBER | STRING | "true" | "false" | "nil" 
  *                | "(" expression ")" ;
  */
+
+ /**
+  * expression -> mini_term (op mini_term)*;
+  * op -> PLUS;
+  * mini_term -> FLOW | "(" expression ")";
+  */
 class Parser {
   private static class ParseError extends RuntimeException {}
   private final List<Token> tokens;
@@ -34,7 +40,26 @@ class Parser {
   }
 
   private Expr expression(){
-      return equality();
+      Expr expr = mini_term();
+      while(match(PLUS)){
+          Token operator = previous();
+          Expr right = mini_term();
+          expr = new Expr.Binary(expr, operator, right);
+      }
+      return expr;
+  }
+
+  private Expr mini_term(){
+      if (match(FLOW)){
+          return new Expr.Flow(previous().literal);
+      } else {
+          if (match(LEFT_PAREN)){
+              Expr expr = expression();
+              consume(RIGHT_PAREN, "Expect ')' after expression.");
+              return new Expr.Grouping(expr);
+          }
+      }
+      throw error(peek(), "Expect expression.");
   }
 
   // equality       → comparison ( ( "!=" | "==" ) comparison )* ;

@@ -65,8 +65,8 @@ def inline_images(text):
         with open("src/" + image, "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read()).decode("utf-8")
         print(f"Found image: {image}: {encoded_string[:10]}...")
-    return re.sub(r'<img\s+src=["\']([^"\']+)["\'][^>]*>', 
-                        lambda m: f"![embedded image](data:image/png;base64,{lam(m.group(1))})", 
+    return re.sub(r'<img\s+(width=["\']([^"\']+)["\'])?\s*src=["\']([^"\']+)["\'][^>]*>', 
+                        lambda m: f"![embedded image](data:image/png;base64,{lam(m.group(3))})", 
                         text)
 
 def perc2width(text):
@@ -78,6 +78,7 @@ def tex_images(text):
                   text)
 
 def gift_to_gift(item,question, answers):
+    print(f"gift_to_gift: {item}, {question[:10]}..., {[a[:10] for a in answers]}...")
     return f"::{item}::[markdown]\n{inline_images(question)}{{\n" + "\n".join([inline_images(answer) for answer in answers]) + "\n}\n"
 
 def gift_to_tex(item, question, answers):
@@ -200,6 +201,8 @@ if __name__ == "__main__":
                     item_type = re.search(r"<(.*)>", item).group(1) if re.search(r"<(.*)>", item) else "nil"
                     clean_item = re.sub(r"[^a-zA-Z0-9_ ]", "", re.sub(r"<.*>", "", item)).strip()
                     if item_type == "gift":
+                      print("this item data is")
+                      print(item_data)
                       question, rest = re.split(r"(?<!\\){", item_data)
                       answers = re.findall(r"([=~].*)", rest)
                       # write all the files

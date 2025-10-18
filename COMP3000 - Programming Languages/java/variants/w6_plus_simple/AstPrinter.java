@@ -23,6 +23,12 @@ class AstPrinter implements Expr.Visitor<String> {
   }
 
   @Override
+  public String visitFlowExpr(Expr.Flow expr) {
+    if (expr.value == null) return "nil";
+    return expr.value.toString() + "R";
+  }
+
+  @Override
   public String visitUnaryExpr(Expr.Unary expr) {
     return parenthesize(expr.operator.lexeme, expr.right);
   }

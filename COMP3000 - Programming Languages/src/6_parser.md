@@ -159,7 +159,137 @@ question: |
     \newpage
 
 answer: |
-    Wait until next week
+    I am going to do \emph{two} versions of my language so you can see possible approaches.  I will do two of the versions from my solutions last week. I will do the \verb|4R + 2.2R| language which assumes all rain flows out the river on the one day (lets call it "simple-river") and the \verb|[2 ~ 1]@4 <- ([2 ~ 2]@2.2 + [1 ~ 0]@4)| language which models rain taking time to get into the river and includes the direction of water flow (lets call it "complex-river").  For this week we don't even really need to understand the meaning of those forms, we only need to parse them.
+
+    \subsubsection*{Simple-River}
+    Simple-river has a single new token which my scanner must be scanning for me.  In my solution it scanned it into a \verb|FLOW| token, which is separate from a \verb|NUMBER| token.  The only other tokens I need are \verb|PLUS|, \verb|LEFT-PAREN|, and \verb|RIGHT-PAREN|
+
+    \begin{note}
+    Since I am working from chapter 6 lox, it is simplest for me just to leave the rest of the scanner untouched, I will probably use those tokens later
+    \end{note}
+
+    The grammar for simple-river is very small and looks like this
+
+    \begin{verbatim}
+    expression -> mini_term (PLUS mini_term)*;
+    mini_term -> FLOW | "(" expression ")";
+    \end{verbatim}
+
+    That is \emph{all I need} to parse my example programs!  Ignoring the changes in the scanner (you can see the accompanying video for those), I only need to have the right methods in my parser to express these two forms.  I have taken the full chapter 6 parser and simply redifined the top function \verb+expression+ and added one for my special mini terms (just to allow me to keep the \verb|term| function that is already there in case I want to use it later)
+
+    \begin{verbatim}
+    private Expr expression(){
+      Expr expr = mini_term();
+      while(match(PLUS)){
+          Token operator = previous();
+          Expr right = mini_term();
+          expr = new Expr.Binary(expr, operator, right);
+      }
+      return expr;
+    }
+
+    private Expr mini_term(){
+      if (match(FLOW)){
+          return new Expr.Flow(previous().literal);
+      } else {
+          if (match(LEFT_PAREN)){
+              Expr expr = expression();
+              consume(RIGHT_PAREN, "Expect ')' after expression.");
+              return new Expr.Grouping(expr);
+          }
+      }
+      throw error(peek(), "Expect expression.");
+    }
+    \end{verbatim}
+
+    \subsubsection*{Complex-River}
+    Expressions in complex river are more complex, but the bulk of the work is done in the scanner (you can see that done in the accompanying vid).  The example expression above
+
+    \begin{verbatim}
+    [2 ~ 1]@4 <- ([2 ~ 2]@2.2 + [1 ~ 0]@4)
+    \end{verbatim}
+
+    scans as
+
+    \begin{verbatim}
+    [LEFT_SQUARE, NUMBER, TILDE, NUMBER, RIGHT_SQUARE, AT, NUMBER, LEFT_ARROW, LEFT_PAREN...
+    \end{verbatim}
+    
+    The grammar to describe complex-river is very much like simple-river but requires a new non-terminal for flows since they are too complex to be grabbed by the scanner.
+
+    \begin{verbatim}
+    expression = mini_term (op mini_term)*;
+    op = PLUS | LEFT_ARROW;
+    mini_term = flow | "(" expression ")";
+    flow = "[" NUMBER "~" NUMBER "]" "@" NUMBER;
+    \end{verbatim}
+
+    The Java code to parse this is 
+
+    \begin{verbatim}
+    private Expr expression(){
+      Expr expr = mini_term();
+      while(match(PLUS, LEFT_ARROW)){
+          Token operator = previous();
+          Expr right = mini_term();
+          expr = new Expr.Binary(expr, operator, right);
+      }
+      return expr;
+    }
+
+    private Expr mini_term(){
+      if (match(LEFT_PAREN)){
+          Expr expr = expression();
+          consume(RIGHT_PAREN, "Expect ')' after expression.");
+          return new Expr.Grouping(expr);
+      } else {
+          return flow();
+      }
+    }
+
+    private Expr flow(){
+      if (match(LEFT_SQUARE)){
+          Object mean = consume(NUMBER, "Expect mean after '['.").literal;
+          consume(TILDE, "Expect '~' after mean.");
+          Object variance = consume(NUMBER, "Expect variance after '~'.").literal;
+          consume(RIGHT_SQUARE, "Expect ']' after variance.");
+          consume(AT, "Expect '@' after ']'.");
+          Object magnitude = consume(NUMBER, "Expect magnitude after '@'.").literal;
+          return (new Expr.Flow(mean, variance, magnitude));
+      }
+      throw error(peek(), "Expect flow expression.");
+    }
+    \end{verbatim}
+
+    Note here that I had to create a whole new AST node to store \verb+FLOW+s.  They don't fit with \verb|Binary| or \verb+Literal+ or any of the AST nodes I already had.  Here is the part of \verb+AstGenerator.java+ I had to modify to achieve this\footnote{and don't forget to recompile and re-run the generator!}
+
+    \begin{verbatim}
+        
+    defineAst(outputDir, "Expr", Arrays.asList(
+      "Binary   : Expr left, Token operator, Expr right",
+      "Grouping : Expr expression",
+      "Literal  : Object value",
+      "Flow     : Object mean, Object variance, Object magnitude",
+      "Unary    : Token operator, Expr right"
+    ));
+    \end{verbatim}
+
+    and I added a new visitor to the ASTPrinter as required.
+
+    \begin{verbatim}
+    @Override
+    public String visitFlowExpr(Expr.Flow expr) {
+        if (expr.mean == null
+        && expr.variance == null 
+        && expr.magnitude == null) return "broken flow was parsed"; // super hacky :)
+        return "[" + expr.mean.toString() + 
+            "~" + expr.variance.toString() + 
+            "]@" + expr.magnitude.toString();
+    }
+    \end{verbatim}
+
+
+
 
 
 # RAT

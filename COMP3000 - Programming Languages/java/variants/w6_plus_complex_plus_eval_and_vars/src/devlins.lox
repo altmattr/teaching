@@ -1,0 +1,9 @@
+var upper_joes_creek  = [1   ~ 1]@4;
+var mahers_creek      = [1.5 ~ 0]@1;
+var lower_joes_creek  = [1   ~ 0]@2;
+var joes_creek        = lower_joes_creek <- (upper_joes_creek + mahers_creek);
+
+var upper_devlins_creek = [3 ~ 2]@8;
+var lower_devlins_creek = [3 ~ 2]@4;
+
+var devlins_creek = lower_devlins_creek <- (upper_devlins_creek + joes_creek);
