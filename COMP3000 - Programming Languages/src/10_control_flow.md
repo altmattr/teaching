@@ -131,23 +131,7 @@ answer: |
 
 ## Disallow single line <essay>
 question: |
-    Get your Lox compiler up to date so that is can interpret conditional statements.  To be convinced you have it working, show that it works on this Lox program
-    ```
-    var x = 5;
-    var y = 10;
-
-    x = x + 7;
-
-    if (x > y) print("addition works");
-    if (x <y) print ("addition is broken");
-    else print("addition still works");
-    if (x == y and x > y){
-        print("something has gone horribly wrong");
-    } else {
-        print("don't worry, all is in order");
-    }
-    ```
-    Make a copy of this interpreter and adjust this copy so that _single line if statements without braces are not allowed_.  I.e. the following program would not be allowed
+    Adjust the interpreter so that _single line if statements without braces are not allowed_.  I.e. the following program would not be allowed
     ```
     var x = 5;
     if (x > 3)
@@ -160,15 +144,79 @@ question: |
       print("x is big");
     }
     ```
-    Part of your job in completing this task is to have a good development setup for managing these versions.
 answer: |
-    still to do
+    I've got the following program in my set of lox program
+    `````
+    fun fib(n) {
+        if (n <= 1) return n;
+        return fib(n - 2) + fib(n - 1);
+    }
+
+    for (var i = 0; i < 20; i = i + 1) {
+        print fib(i);
+    }
+    `````
+    which gives the following output
+    `````
+    0
+    1
+    1
+    2
+    3
+    5
+    8
+    13
+    21
+    34
+    55
+    89
+    144
+    233
+    377
+    610
+    987
+    1597
+    2584
+    4181
+    `````
+    The example program has one of the single-line ifs, so it is going to be the example program which I want to exclude.  I will write a "better" version which should pass
+    `````
+    fun fib(n) {
+        if (n <= 1){
+            return n;
+        }
+        return fib(n - 2) + fib(n - 1);
+    }
+
+    for (var i = 0; i < 20; i = i + 1) {
+        print fib(i);
+    }
+    `````
+    The only change I needed to make was to update my if parser, my new version is
+    `````
+    Stmt ifStatement() {
+        consume(LEFT_PAREN, "Expect '(' after 'if'.");
+        Expr condition = expression();
+        consume(RIGHT_PAREN, "Expect ')' after if condition."); 
+        consume(LEFT_BRACE, "Expect '{' before if body.");
+
+        Stmt thenBranch = new Stmt.Block(block());
+        Stmt elseBranch = null;
+        if (match(ELSE)) {
+            consume(LEFT_BRACE, "Expect '{' before if body.");
+            elseBranch = new Stmt.Block(block());
+        }
+
+        return new Stmt.If(condition, thenBranch, elseBranch);
+    }
+    `````
+
 
 ## prove the opening parenthesis is not necessary <essay>
 question: |
     Nystrom claims that the opening parenthesis in `if (condition){` is not necessary.  By this he means that in the existing grammar it is necessary, but it is possible to create a different grammar where it is not and that grammar will be parsable with no difficulty.  Explain why with reference to how the parser is operating.  Write some exaple Lox programs in this style.  Do you like them?  Why or why not?
 answer: |
-    still to do.
+    I can argue this just from the existence of the keyword `if`.  Since the condition always immediately follows the `if` we do not need the `(` to announce it.  We do, however, still need the `0` to announce the end of it because we might have a single-line if and there would be nothing else to tell us where that starts.
 
 ## or production <essay>
 question: |
@@ -190,7 +238,35 @@ answer: |
 question: |
     We are going to add a new type of loop to Lox.  The loop is a "do-until" loop with the following characteristics.  The grammar for a do-until statement is `doUntil -> "do" " statement "until" (" expression ")";`.  The loop always executes once, then repeats as long as the expression is false.  Explain, with details, how you would implement this in your Lox interpreter as _syntactic sugar_.  Provide enough detail that the reader could interpret your instructions to add a "do until" loop to their own Lox interpreter.
 answer: |
-    still to do
+    Here is my template for do-until
+    `````
+    do {
+        statements
+    } until (condition)
+    `````
+    which is the same as
+    `````
+    statements
+    while (condition){
+        statements
+    }
+    `````
+    In Lox we do our syntactic sugar by parsing the first form into the AST for the second form, which for me looks like
+    `````
+    Stmt forStatement(){
+        Stmt body = statement();
+        consume(UNTIL, "expect until after do block")
+
+        consume(LEFT_PAREN, "Expect '(' after 'until'.");
+        Expr condition = expression();
+        consume(RIGHT_PAREN, "Expect ) after condition");
+        return new Stmt.Block(
+            Arrays.asList(
+                statement,
+                new Stmt.While(condition, statement)));
+    }
+    `````
+    This one turned out quite a bit simpler than the for loop did, it is a very natural fit for syntactic sugar.
 
 # Exams
 ## Which new grammar b <gift>

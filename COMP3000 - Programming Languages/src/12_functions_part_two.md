@@ -12,13 +12,32 @@ By the end of this week you should:
 
 ## Preparation
 
-Watch the echo360 videos:
+ * Read the remaining material in chapter 10 of "Crafting Interpreters"
+ * Watch the echo360 videos:
   * parsing function definitions
   * how functions behave in the interpreter
   * tracing function calls
   * closures
 
 # RAT
+
+## Function Definition Interpretation <gift>
+What happens to a function definition when the interpreter visits it in "Crafting Interpreters"?  
+{
+~ The function body is immediately executed and its result is stored in the environment.  
+~ The function's parameters are evaluated and stored in a temporary memory space.  
+= The function is wrapped in a Function object and stored in the current environment.  
+~ The function is discarded unless it is directly invoked in the same scope.  
+}
+
+## Returning from a Function <gift>
+When the interpreter encounters a `return` statement without a value, what does it return?  
+{
+~ An error is thrown because a value is required.  
+= nil  
+~ The last evaluated expression in the function body.  
+~ true  
+}
 
 ## what type of value a <gift>
 What type of value is being returned by the `return` statement in the following code
@@ -49,7 +68,7 @@ What values can be returned with the `return` keyword in Lox?{
 
 ## output of closure <gift>
 What is the output of the following lox code?
-`````
+<pre>
 var i = 0;
 fun makeCounter()\{
     var x = 0;
@@ -64,7 +83,7 @@ var c = makeCounter();
 c();
 c();
 print(c());
-`````
+</pre>
 {
   ~0
   ~1
@@ -75,9 +94,9 @@ print(c());
   =6
 }
 
-## output of closure <gift>
+## output of closure df<gift>
 What is the output of the following lox code?
-`````
+<pre>
 fun i(x)\{
     return x;
 \}
@@ -97,7 +116,7 @@ fun s(x)\{
     return s2;
 \}
 print(s(k)(i)(k("a")("b")));
-`````
+</pre>
 {
   =a
   ~b
@@ -110,9 +129,9 @@ print(s(k)(i)(k("a")("b")));
 # FAT
 
 ## assignment <essay>
-question:|
+question: |
   Work in your team on your assignment
-answer:|
+answer: |
   none
 
 # SSE
@@ -120,8 +139,8 @@ answer:|
 ## block not statement? <essay>
 question: |
     When we wrote the grammar for conditions and loops, the body was a `statement`, but here it is a `block`.  Why?  What would happen if it was done the other way?  Get your code base up to date and try out a grammar that uses `statement` instead.
-answser: |
-    Using `statement` supports single-statement bodies without curly braces. Who ever heard of a single-statement function without parenthesis?  Well Scala does, and other expression based languages.  You just are not used to it.
+answer: |
+    Using `statement` supports single-statement bodies without curly braces. Who ever heard of a single-statement function without parenthesis?  Well Scala does, and other expression based languages.  You just are not used to it.  It makes it harder to find the end of the function block and you do need to be careful, but I really like it.
 
 ## understanding the LoxCallable call for function <essay>
 question: |
@@ -146,7 +165,7 @@ answer: |
 
 ## call stack <essay>
 question: |
-    There is a single return statement in the following code and it will only be evaluated once in the course of the program.  What is the state of the Java call stack just prior to the return being interpreted?
+    There is a single return statement in the following code and it will only be evaluated once in the course of the program.  What is the state of the _Java_ call stack just prior to the return being interpreted?
     `````
     fun foo(fst, snd){
       bar(snd, fst);
@@ -220,9 +239,18 @@ answer: |
       * When a function call causes a function decleration, I show explicitly (in orange) the "closure" attached to that function declaration.
       * Because everything is staring from a single function call, everything is nested and all the old environments stay relevant.
 
-    <img src="12_closure.jpeg"/>
+    <img width="100%" src="12_closure.jpeg"/>
 
 # Exam
+
+## Closure Behavior <gift>
+When a function is defined inside another function, what behavior does the interpreter implement to handle the inner function?  
+{
+~ The inner function operates in isolation, discarding the enclosing scope's environment.  
+~ The inner function explicitly copies all variables from the enclosing scope into its local scope.  
+~ The inner function cannot access variables from the enclosing scope.
+= The inner function captures the outer function's environment, creating a closure.  
+}
 
 ## what type of value b <gift>
 What kind of value is being returned by the `return` statement in the following code
@@ -242,7 +270,7 @@ fun foo()\{
   ~string
 }
 
-## output of closure <gift>
+## output of closure reuui <gift>
 What is the output of the following lox code?
 <pre>
 var i = 0;
@@ -270,7 +298,7 @@ print(c());
   ~6
 }
 
-## output of closure 2 <gift>
+## output of closure 2 7809 <gift>
 What is the output of the following lox code?
 <pre>
 var i = 0;
@@ -328,4 +356,13 @@ print(s(k)(i)(k("a")("b")));
   ~a b
   ~ba
   ~b a
+}
+
+## Function Evaluation and Environment <gift>
+What happens to the environment when a function is called in the interpreter?  
+{
+= A new environment is created with the function's parameters bound to the argument values.  
+~ The current environment is reused, and the parameters are overwritten with the argument values.  
+~ The caller's environment is copied into a new frame and used for execution.  
+~ No environment changes occur; variables are resolved globally.  
 }

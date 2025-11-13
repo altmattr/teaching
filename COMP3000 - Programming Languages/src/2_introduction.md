@@ -83,37 +83,38 @@ answer: |
 
 ## Compiler Parts <tex-essay>
 question: |
-\begin{minipage}[t]{0.4\textwidth}
-Match these compiler parts 
-\begin{itemize}
-  \item code generation 
-  \item parser 
-  \item scanner
-  \item optimization
-  \item static analysis
-\end{itemize}
-\end{minipage}
-\hspace{2em}
-\begin{minipage}[t]{0.4\textwidth}
-with a description of what they do:
-\begin{itemize}
-  \item takes in the linear stream of characters and chunks them together into a series
-  \item takes the flat sequence of tokens and builds a tree structure that mirrors the nested nature of the grammar
-  \item get a high-level view of what the code is doing
-  \item remove redundancy and do early computation
-  \item output machine code
-\end{itemize}
-\end{minipage}
+  \begin{minipage}[t]{0.4\textwidth}
+  Match these compiler parts 
+  \begin{itemize}
+    \item code generation 
+    \item parser 
+    \item scanner
+    \item optimization
+    \item static analysis
+  \end{itemize}
+  \end{minipage}
+  \hspace{2em}
+  \begin{minipage}[t]{0.4\textwidth}
+  with a description of what they do:
+  \begin{itemize}
+    \item takes in the linear stream of characters and chunks them together into a series
+    \item takes the flat sequence of tokens and builds a tree structure that mirrors the nested nature of the grammar
+    \item get a high-level view of what the code is doing
+    \item remove redundancy and do early computation
+    \item output machine code
+  \end{itemize}
+  \end{minipage}
+answer: |
+  \begin{description}
+    \item[scanner] takes in the linear stream of characters and chunks them together into a series
+    \item[parser] takes the flat sequence of tokens and builds a tree structure that mirrors the nested nature of the grammar
+    \item[static analysis] get a high-level view of what the code is doing
+    \item[optimisation] remove redundancy and do early computation
+    \item[code generation] output machine code
+  \end{description}
 
-\section*{Solution}
-\begin{description}
-  \item[scanner] takes in the linear stream of characters and chunks them together into a series
-  \item[parser] takes the flat sequence of tokens and builds a tree structure that mirrors the nested nature of the grammar
-  \item[static analysis] get a high-level view of what the code is doing
-  \item[optimisation] remove redundancy and do early computation
-  \item[code generation] output machine code
-\end{description}
-\section*{Language Classification}
+## Language Classification <tex-essay>
+question: |
   Discuss which of the following are compilers and which are interpreters:
   \begin{itemize}
     \renewcommand{\labelitemi}{$\square$}
@@ -122,17 +123,17 @@ with a description of what they do:
     \item Processing
     \item C
   \end{itemize}
-  
-\subsection*{Solution}
-Key to this question is that these are languages, and we can't answer for languages. We can only answer for particular language implementations! However, most languages come with standard implementations \emph{or} the implementations all use the same general approach. For Java and Processing and C, all implementations are compilers (though processing is a "transpiler"). For JavaScript, there are \emph{both} compiled and interpreted implementations.
+answer: |
+  Key to this question is that these are languages, and we can't answer for languages. We can only answer for particular language implementations! However, most languages come with standard implementations \emph{or} the implementations all use the same general approach. For Java and Processing and C, all implementations are compilers (though processing is a "transpiler"). For JavaScript, there are \emph{both} compiled and interpreted implementations.
 
-\section*{Compiler or Interpreter?}
-In your own words, give \emph{a single sentence} that describes \emph{the most important} distinction between compilers and interpreters.
+## Compiler or Interpreter? <tex-essay>
+question: |
+  In your own words, give \emph{a single sentence} that describes \emph{the most important} distinction between compilers and interpreters.
+answer: |
+  Compilers will output code, probably in a lower-level language, while interpreters will execute the code directly.
 
-\subsection*{Solution}
-Compilers will output code, probably in a lower-level language, while interpreters will execute the code directly.
-
-\section*{Regex}
+## Regex <tex-essay>
+question: |
   Write a regular expressions that will work over the following text to extract:
   \begin{itemize}
     \item every instance of "the the" and "teh" (common errors)
@@ -165,19 +166,18 @@ Compilers will output code, probably in a lower-level language, while interprete
   CAT: You're not following through is what you're doing!  Keep your head
   down and follow through!
   \end{quote}
-\subsection*{Solution}
-\begin{itemize}
+answer: |
+  \begin{itemize}
   \item \lstinline`/(the the|teh)/`
   \item \lstinline`/\S[A-z]*\./`
   \item \lstinline`/^[A-Z]*:/`
   \item \lstinline`/\([\S\s]*\)/gmU`
-\end{itemize}
+  \end{itemize}
 
-
-
-\section*{Exits}
+## Exits <tex-essay>
+question: |
   There are multiple end-points for the paths over the crafting interpreters mountain, what are they?
-\subsection*{Solution}
+answer: |
     \begin{itemize}
       \item High level language
       \item Bytecode
@@ -185,9 +185,10 @@ Compilers will output code, probably in a lower-level language, while interprete
     \end{itemize}
 
 
-\section*{Combining Optimisations}
+## Combining Optimisations <tex-essay>
+question: |
   There is an optimisation called \emph{constant propagation} which notices if a variable never changes and replaces all instances of that variable with the value it will always have. The textbook talked about \emph{constant folding}. Can you think of a program (in whatever language you like) where \emph{constant propagation} might open up new opportunities to do \emph{constant folding}?
-\subsection*{Solution}
+answer: |
   Here is mine (in Ruby):
   \begin{verbatim}
   x = 5  \# x is a constant and never changes
@@ -202,46 +203,58 @@ Compilers will output code, probably in a lower-level language, while interprete
   puts 25
   \end{verbatim}
 
-\section*{Tree Walker}
-Which of the following phases would be left out of a "tree walk interpreter"?
-\begin{itemize}
+## Tree Walker <tex-essay>
+question: |
+  Which of the following phases would be left out of a "tree walk interpreter"?
+  \begin{itemize}
     \item scanner
     \item code generation
     \item runtime
     \item parsing
-\end{itemize}
-\subsection*{Solution}
-Code generation and runtime would be left out of a tree walker.  The tree walker is a kind of interpreter that does not generate code, it just walks the tree and executes the code as it goes.  The scanner and parser are still needed to get the tree in the first place.
+  \end{itemize}
+answer: |
+  Code generation and runtime would be left out of a tree walker.  The tree walker is a kind of interpreter that does not generate code, it just walks the tree and executes the code as it goes.  The scanner and parser are still needed to get the tree in the first place.
 
-section*{Transpiler}
-Which of the following phases would be left out of a "transpiler"?
-\begin{itemize}
+## Transpiler <tex-essay>
+question: |
+  Which of the following phases would be left out of a "transpiler"?
+  \begin{itemize}
     \item scanner
     \item code generation
     \item runtime
     \item parsing
-\end{itemize}
-\subsection*{Solution}
-Runtime would be left out of a transpiler.  A transpiler still generates code, it just generates it in another high-level language.
+  \end{itemize}
+answer: |
+  Runtime would be left out of a transpiler.  A transpiler still generates code, it just generates it in another high-level language.
 
-\section*{Hypothetical}
+## Hypothetical <tex-essay>
+question: |
   If I told you I had a program which did a "quick and dirty" conversion from BASH script to Ruby, would you think it was a compiler or an interpreter?  Justify your choice.
-  \subsection*{Solution}
+answer: |
   This would have to be a compiler! It \emph{sounds like} an interpreter because it is "quick and dirty, " but it doesn't actually run any code! It takes code in a source language and converts it to another language. It just so happens the "other" language is commonly used as a source language. Even the assembly code you are used to generating in a compiler is actually run through an interpreter in the end (really, it is true), so having Ruby as a target language is not so strange after all.
 
-\section*{Real Interpreter}
-What is a programming language implementation you know of that \emph{certainly} is an interpreter rather than a compiler?
-
-  \subsection*{Solution}
+## Real Interpreter <tex-essay>
+question: |
+  What is a programming language implementation you know of that \emph{certainly} is an interpreter rather than a compiler?
+answer: |
   The text identifies early versions of Ruby. I will nominate \texttt{sed}, which performs stream editing on Unix. \texttt{sed} has a configuration language that qualifies as a domain-specific language for making changes to a text file.
 
-\section*{Why not Langauge?}
-In your own words, explain why is is not meaningful to ask if a language is compiled or interpreted.
+## Why not Language? <tex-essay>
+question: |
+  In your own words, explain why is it not meaningful to ask if a language is compiled or interpreted.
+answer: |
+  A language is a set of rules for writing programs.  A program is a set of instructions for a computer to follow.  A compiler or interpreter is a program that takes a program in one language and converts it to another language.  So the question is not meaningful because it is asking about the wrong thing.  It should be asking about the implementation of the language, not the language itself.  
 
-\subsection*{Solution}
-A language is a set of rules for writing programs.  A program is a set of instructions for a computer to follow.  A compiler or interpreter is a program that takes a program in one language and converts it to another language.  So the question is not meaningful because it is asking about the wrong thing.  It should be asking about the implementation of the language, not the language itself.  
+  However, all the implementations of a particular language are usually similar, so it is common to talk about a language as if it is a single thing.  This is not strictly correct, but it is a useful simplification.  It is also common to talk about the "compiler" or "interpreter" of a language as if it is a single thing, even though there are many different implementations of each.
 
-However, all the implementations of a particular language are usually similar, so it is common to talk about a language as if it is a single thing.  This is not strictly correct, but it is a useful simplification.  It is also common to talk about the "compiler" or "interpreter" of a language as if it is a single thing, even though there are many different implementations of each.
+  Languages where all implementations are interpreters are Ruby, BASH, and R.  Languages where all implementations are compilers are Java, C, and Processing.  Languages where there are both interpreters and compilers are JavaScript and Python\footnote{As long as we include CPython as real python, which is disputed}.
 
-Languages where all implementations are interpreters are Ruby, BASH, and R.  Languages where all implementations are compilers are Java, C, and Processing.  Languages where there are both interpreters and compilers are JavaScript and Python\footnote{As long as we include CPython as real python, which is disputed}.
-\end{document}
+# Exam
+
+## compiler or interpreter <gift>
+Which of the following statements is true of a compiler, but not true of an interpreter?{
+  ~ name analysis occurs before running
+  ~ the program is converted to an abstract syntax tree
+  = the program is output in a new form before run
+  ~ the program is run as fast as the machine will allow
+}

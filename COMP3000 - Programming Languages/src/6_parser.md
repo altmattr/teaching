@@ -483,8 +483,8 @@ question: |
     ```
 answer: |
     ```
-    boolean -> boolean ("==" | "!=") factor
-    factor -> factor ("&" | "|") primary
+    boolean -> factor ("==" | "!=") boolean | factor
+    factor -> primary ("&" | "|") factor | primary
     primary -> "TRUE" | "FALSE"
     ```
     Another valid answer is

@@ -194,7 +194,89 @@ print("last line");
     ~"<native fn>"
 }
 
+# Assignment Two
 
+## Evaluation and Dams <tex-essay>
+question: |
+    Your task in this assignment is to add \emph{evaluation} and \emph{dams} to your language.
+
+    \subsubsection*{Evaluation}
+    Assignment one left off with an expression language.  Many of you added statements because it really made sense.  From this starting point you should add evaluation for your expression langauge.  Evaluation means implementing an interpreter which evaluates expressions to some value. The value may be a single number or a sequence of numbers or anything else that makes sense for your language.  You should ensure this value is output in some way so your marker can see it.  We have set two levels of achievement in the rubric depending on the capabilities of your interpreter.  You will almost certainly need to add statements and variables to achieve these things and we have provided an example solution for these in the exemplar.
+    
+    Explanation vids have been provided for each rubric item to show you an example of what this can look like.
+
+    \subsubsection*{Dams}
+    Dams are human controlled flow adjustment mechanisms.  Sometime they allow all the flow through, sometimes they increase the flow, sometimes they stop or reduce the flow.  Your tasks is to add a syntax and evaluation for dams into your langauge.  The rubric specifies what grades will be given for different levels of achievement in this item.
+
+    Explanation vids have been provided for each rubric item to show you an example of what this can look like.
+
+    \subsubsection*{The output of a program}
+    If you take a look at the rubric quiz, you will see examples of how our example solution outputs values after a program runs.  You have some flexibility here but we suggest the following:
+    \begin{enumerate}
+    \item either your language includes a print statement \emph{and} your example programs use it, or
+    \item your interpreter outputs something by default that will help your marker.
+    \end{enumerate}
+    In my example solution I output the value of every variable at the end of the program, this proved very helpful in debugging and showing off what my example programs were doing.  It would not work for large programs, but we don't need large programs for this submission.
+
+    \subsubsection*{The input to the program}
+    My example language does the computation assuming 1mm of rainfall.  You are free to do what works for you but be sure to communicate clearly to your marker for each example program.  Good options are:
+    \begin{itemize}
+    \item The language has a statement that sets the rainfall for the program execution
+    \item The rainfall is given as an argument to the program running script
+    \item The interpreter has some default rainfall built-in.  This is what mine did with a default of 1mm.
+    \end{enumerate}
+
+
+
+    \subsubsection*{Starting Point}
+    We recommend you build your assignment submission from your team's work or from your own work that you have been doing in workshops.  If you worry that is not a good starting point or you struggled in assignment one, you can start from our published solution which is provided on iLearn (which we will call the exemplar).  This exemplar is a reasonable answer to assignment one which you are free to build off.
+
+    \subsubsection*{The Structure of your submission}
+    You will submit two things - both of which are iLearn items available in the "Assessemnts" section:
+    \begin{itemize}
+    \item A zip file containing your interpreter and example programs\\ (url is \verb+https://ilearn.mq.edu.au/mod/assign/view.php?id=8940558)
+    \item A completed quiz with instructions for your marker\\ (url is  \verb+https://ilearn.mq.edu.au/mod/quiz/view.php?id=8997793+)
+    \end{itemize}
+
+    You should structure your zip in the same way as the exemplar zip is structured.  That is there should be two directories, one for the code in your language (in the exemplar this directory is  called \verb+lox+) and one for the java source (in the exemplar this directory called \verb+exemplar+ because that is the package name).  See figure \ref{fig:example}.  As well, please include a compile script and a run script which show how to compile and run your program.  If possible, these should be scripts which can be run by your marker - the scripts in the exemplar will guide you and should work on most operating systems.  If you must diverge from this setup, you can put build and run instructions in \emph{each} of your answers in the quiz.
+
+    \begin{figure}
+    \includegraphics{src/11_example.png}
+    \caption{Example zip file structure}
+    \label{fig:example}
+    \end{figure}
+
+    \subsubsection*{A quiz instead of a document}
+    In this submission you will use a quiz, linked from the iLearn page, to explain how your language works.  There is one question for each rubric item and you can use the text box to explain how you meet or achieve that rubric item and give any help your marker might need to compile, run, and understand your language.  Your grades and feedback will be given directly via that quiz.  Each question includes a linked video where we show \emph{our solution in action} as a guide for you in putting together your own solution.  You don't need to follow these but it provides one option you can follow if you like.
+
+    The quiz is your chance to explain your decisions and implementation to your marker, writing clear and concise answers will help your marker award you grades.  For example, your marker won't know how dams work in your language unless you tell them so you can't get dam marks unless you clearly describe that in your quiz answer.  If your intention is not clear from the answers you submit, you won't be awarded grades, even for work that is ultimately correct.  It is your responsibility to communicate clearly everything your marker needs in your quiz answer.  Your marker will be one of the class teachers, so you can assume they are familiar with anything from class.  I.e. there is no need to explain any class concepts.
+
+    We recommend you point your marker to the example program you submitted which demonstrates this rubric item as the simplest way to demonstrate you have achieved it.
+
+    The quiz has no time limit and multiple attempts are allowed so you can update/adjust your answers right up to the due date.
+
+    \subsubsection*{Use of Generative AI}
+    An ability to use Generative AI is not a learning outcome of this course but GenAI is a tool you may choose to use along your journey.  If your submission is primarily AI generated, you will likely find yourself in the bottom of each rubric item.  Lox and Nystrom's notation are not well represented in AI training sets and Gen AIs are generally bad at language design.  We value, and give grades for, your contribution to the solution since it is you (not the GenAI vendor) who is earning the grade.
+
+    \subsubsection*{Rubric}
+    The rubric has a total of 12 marks which are scaled up to the 25\% of the assignment constribution to your final mark.
+
+    \begin{tabular}{p{0.7\textwidth}|r}
+    functionality & max marks for this item \\
+    \hline
+    Your language must be able to interpret an expression which describes simple river flows.  The interpreter must output something when it is finished indicating at least one of the flows in the system.  We recommend outputting all named flows, but you could have a special output expression in which case you will output just that expression. & 2 \\ \hline
+    Your language can model the flow over multiple days and the output of your interpreter shows the predicted flows on all those days.  As with the last item, you may output just one flow, or all named flows, or whatever makes most sense for your language. & 2 \\ \hline
+    Your language has a syntax to support dams.  Dams don't always let all or none of the flow through, they run some "algorithm" to decide how much flow to let through.  Provide example programs demonstrating your dam syntax and your parser can successfully parse those programs.  Your marker may write their own program so please include a full grammar here. & 2 \\ \hline
+    The interpreter can run the dam's algorithm accurately and downstream river flows reflect its behaviour. & 2 \\ \hline
+    The output from a dam can depend on at least two of the following: the flow into the dam, today's rain, the dam level. You may add others if you like. & 2 \\ \hline
+    How well does this language express the underlying concepts.  I.e. have you chosen sensible keywords and syntax structures and have your implemented an interesting language overall.  & 1 \\ \hline
+    Uniqueness and creativity.  You can present your work in the week 13 class to guarantee full marks for this rubric item & 1 \\ \hline
+    \end{tabular}
+    Note the quiz (which you can view any time) does expand upon these rubric descritions to aid in your submission.
+
+    \newpage
+answer: |
+  None provided
 
 # FAT
 
@@ -257,7 +339,7 @@ answer: |
     }
     return ret;
     ```
-    Just like any other return statement, the result of the body is thus `ret`.  But what is `ret`?  It is a function definition - which is something we can cal by adding parenthesis to it!  This is perfect, because that is what we are doing.  It's a bit like the program has now evaluated to
+    Just like any other return statement, the result of the body is thus `ret`.  But what is `ret`?  It is a function definition - which is something we can call by adding parenthesis to it!  This is perfect, because that is exactly what we are doing.  It's a bit like the program has now evaluated to
     ```
     fun ret(){
         return "there";
@@ -312,24 +394,66 @@ answer: |
     1
     1
     ```
-    but the important answer is why?  lets trace the evaluation of `zero(incr)(0)` as an example.  Note that I am making up my own notation for this trace.  Green is the step number, black is the expression, orange is notes on the function call.
+    but the important question is why?  Let's trace the evaluation of `zero(incr)(0)` as an example.  Note that I am making up my own notation for this trace.  Green is the step number, black is the expression, orange is notes on the function call.
     <img width="100%" src="11_zero_trace.jpeg"/>
-
-## up to date <essay>
-question: |
-    To prove you are up to date, make sure your Lox interpreter can run the following program
-    <code src="java/weeks/ten/lox/global_functions.lox"/>
-    Compare your answers to see who has the fastest computer!
-answer: |
-    See the text book
 
 ## add a new global function <essay>
 question: |
     I've been annoyed by this `print` operation all semester.  It always puts a new line and there are heaps of times I don't want one! Add a global function called `printonly` which will print the string it is given without adding a new line.
 answer: |
     I've found a fun way to make a modified interpreter.  I've had to get rid of all the `private` modifiers in my interpreter, but once I do, I can define a modified lox interpreter by subclassing the existing classes.  Here is how I did it in this case
-    <code src="java/weeks/ten/LoxPlusPrintOnly.java"/>
-    Add this to your week 10 package and prove you can make it work too.
+    `````
+    package weeks.ten;
+
+
+    import java.util.List;
+
+    public class LoxPlusPrintOnly extends Lox{
+        public static void main(String[] args){
+            new LoxPlusPrintOnly().run("var x = 0; printonly(x);");
+            new LoxPlusPrintOnly().run("var x = 100; printonly(\"you are \"); printonly(x); print(\" years old!\");");
+        }
+
+        void run(String source){
+            List<Token> tokens = new AdjustedScanner(source).scanTokens();
+            System.out.println("-- tokens --");
+            for(Token t: tokens){
+            System.out.println(t);
+            }
+            List<Stmt> ast = new AdjustedParser(tokens).parse();
+            System.out.println("-- ast --");
+            for(Stmt s: ast){
+            System.out.println(s);
+            }
+            new AdjustedInterpreter().interpret(ast);
+        }
+
+        private class AdjustedScanner extends Scanner{
+            AdjustedScanner(String source){super(source);}
+        }
+        private class AdjustedParser extends Parser{
+            AdjustedParser(List<Token> tokens){super(tokens);}
+        }
+
+        private class AdjustedInterpreter extends Interpreter{
+            AdjustedInterpreter(){
+                super();
+                globals.define("printonly", new LoxCallable(){
+                    @Override
+                    public int arity(){return 1;}
+                    @Override
+                    public Object call(Interpreter interpreter, List<Object> arguments){
+                        System.out.print(stringify(arguments.get(0)));
+                        return null;
+                    }
+                    @Override
+                    public String toString(){return "<native fn>";}
+                });
+            }
+        }
+    }
+    `````
+    Add this to your week 11 package and prove you can make it work too.
 
 
 # Exam
