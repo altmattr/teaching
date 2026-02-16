@@ -47,10 +47,6 @@ jobs:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
       - name: Deploy to Firebase Hosting
-        env:
-          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
         run: |
           set -euxo pipefail
-          echo "$FIREBASE_PROJECT_ID"
-          echo "post change confusion"
           cd prereq-cheq; firebase deploy --only hosting --project "pre-req-cheq" --non-interactive
