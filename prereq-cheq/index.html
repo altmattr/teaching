@@ -9,11 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f6f8fb;
+      --bg: #f4f1ed;
       --panel: #ffffff;
-      --text: #1f2937;
-      --border: #d1d5db;
-      --accent: #0f766e;
+      --text: #1f1f1f;
+      --border: #d6d0c4;
+      --accent: #a6192e;
+      --accent-dark: #76232f;
+      --muted: #5f5a54;
+      --track: #373a36;
     }
 
     * {
@@ -24,7 +27,7 @@
       margin: 0;
       font-family: "Fira Sans", "Segoe UI", sans-serif;
       color: var(--text);
-      background: radial-gradient(circle at top left, #e5f7f4, var(--bg) 45%);
+      background: radial-gradient(circle at top left, #efe3e5, var(--bg) 45%);
       min-height: 100vh;
       overflow: hidden;
     }
@@ -38,7 +41,18 @@
       grid-template-columns: 1fr 1fr;
       gap: 16px;
       padding: 16px;
-      height: 100vh;
+      height: calc(100vh - 56px);
+    }
+
+    .page-title {
+      margin: 0;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent-dark);
     }
 
     .panel {
@@ -68,7 +82,7 @@
       width: 100%;
       border-radius: 8px;
       border: 1px solid var(--border);
-      background: #fbfdff;
+      background: #faf8f5;
       padding: 12px;
       min-height: 84px;
       display: flex;
@@ -78,7 +92,7 @@
     }
 
     .label {
-      color: #6b7280;
+      color: var(--muted);
       font-size: 0.75rem;
       letter-spacing: 0.03em;
       text-transform: uppercase;
@@ -96,7 +110,7 @@
       width: 100%;
       border-radius: 8px;
       border: 1px solid var(--border);
-      background: #fbfdff;
+      background: #faf8f5;
       padding: 10px 12px;
       display: grid;
       gap: 4px;
@@ -124,9 +138,9 @@
     }
 
     .question.locked {
-      color: #6b7280;
-      background: #f3f4f6;
-      border-color: #d1d5db;
+      color: var(--muted);
+      background: #f3efeb;
+      border-color: var(--border);
     }
 
     .question-title {
@@ -158,7 +172,7 @@
     .hint {
       margin-top: 12px;
       font-size: 0.9rem;
-      color: #6b7280;
+      color: var(--muted);
     }
 
     .submit-btn {
@@ -168,13 +182,13 @@
       padding: 10px 12px;
       font-weight: 600;
       color: white;
-      background: #0f766e;
+      background: var(--accent);
       cursor: pointer;
     }
 
     .submit-btn:disabled {
       cursor: not-allowed;
-      background: #9ca3af;
+      background: #9f978f;
     }
 
     .canvas-wrap {
@@ -201,10 +215,10 @@
     }
   </style>
 </head>
-<body>
+  <body>
+  <h1 class="page-title">Pre-Req-Cheq</h1>
   <div class="layout">
     <section class="panel controls">
-      <h1>Pre-Req-Cheq</h1>
       <p>Click a node to load its 10 Java multiple-choice questions.</p>
       <div class="last-node">
         <div class="label">Selected node</div>
@@ -249,6 +263,8 @@
     let selectedChoiceByQuestionId = {};
     const urlParams = new URLSearchParams(window.location.search);
     const uid = urlParams.get('uid') || 'guest';
+    const firebaseDbUrl = urlParams.get('dbUrl') || '';
+    const firebaseDbAuth = urlParams.get('dbAuth') || '';
     const initialTopicParam = urlParams.get('topic') || '';
     const LOCAL_GRADES_KEY = 'prereq_cheq_user_grades_v1';
     uidEl.textContent = uid;
@@ -267,26 +283,22 @@
     }
 
     async function boot() {
+      let baseUserGrades = {};
       try {
         const dbRes = await fetch('./db.json', { cache: 'no-store' });
         if (dbRes.ok) {
           const dbData = await dbRes.json();
-          const baseUserGrades = getUserTopicGrades(dbData, uid);
-          localGradesByUid = loadLocalGradesByUid();
-          const localUserGrades = localGradesByUid[uid] || {};
-          userGradesByTopic = mergeTopicGrades(baseUserGrades, localUserGrades);
-          scoreByTopic = computeScoreByTopic(userGradesByTopic);
+          baseUserGrades = getUserTopicGrades(dbData, uid);
         }
       } catch {
-        localGradesByUid = loadLocalGradesByUid();
-        userGradesByTopic = localGradesByUid[uid] || {};
-        scoreByTopic = {};
+        baseUserGrades = {};
       }
-      if (!Object.keys(userGradesByTopic).length) {
-        localGradesByUid = loadLocalGradesByUid();
-        userGradesByTopic = localGradesByUid[uid] || {};
-        scoreByTopic = computeScoreByTopic(userGradesByTopic);
-      }
+      const remoteUserGrades = await fetchFirebaseUserGrades(uid);
+      localGradesByUid = loadLocalGradesByUid();
+      const localUserGrades = localGradesByUid[uid] || {};
+      userGradesByTopic = mergeTopicGrades(baseUserGrades, remoteUserGrades);
+      userGradesByTopic = mergeTopicGrades(userGradesByTopic, localUserGrades);
+      scoreByTopic = computeScoreByTopic(userGradesByTopic);
 
       try {
         const res = await fetch('./bit_tree.nomnoml', { cache: 'no-store' });
@@ -371,6 +383,43 @@
         localStorage.setItem(LOCAL_GRADES_KEY, JSON.stringify(localGradesByUid));
       } catch {
         // ignore storage failures
+      }
+    }
+
+    function firebaseUserUrl(currentUid) {
+      if (!firebaseDbUrl) return '';
+      const base = firebaseDbUrl.replace(/\/+$/, '');
+      const root = base.endsWith('.json') ? base.slice(0, -5) : base;
+      const userPath = `users/${encodeURIComponent(currentUid)}.json`;
+      const query = firebaseDbAuth ? `?auth=${encodeURIComponent(firebaseDbAuth)}` : '';
+      return `${root}/${userPath}${query}`;
+    }
+
+    async function fetchFirebaseUserGrades(currentUid) {
+      const url = firebaseUserUrl(currentUid);
+      if (!url) return {};
+      try {
+        const res = await fetch(url, { cache: 'no-store' });
+        if (!res.ok) return {};
+        const data = await res.json();
+        return data && typeof data === 'object' ? data : {};
+      } catch {
+        return {};
+      }
+    }
+
+    async function persistFirebaseUserGrades(currentUid, gradesByTopic) {
+      const url = firebaseUserUrl(currentUid);
+      if (!url) return false;
+      try {
+        const res = await fetch(url, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(gradesByTopic)
+        });
+        return res.ok;
+      } catch {
+        return false;
       }
     }
 
@@ -474,7 +523,7 @@
         track.setAttribute('height', String(barHeight));
         track.setAttribute('rx', '2');
         track.setAttribute('ry', '2');
-        track.setAttribute('fill', '#111111');
+        track.setAttribute('fill', 'var(--track)');
         track.setAttribute('stroke', 'none');
         track.setAttribute('pointer-events', 'none');
 
@@ -574,7 +623,7 @@
       submitBtnEl.disabled = !hasUnlocked;
     }
 
-    function submitCurrentTopicAnswers() {
+    async function submitCurrentTopicAnswers() {
       if (!currentTopicKey || !currentQuestions.length) return;
       const topicGrades = { ...(userGradesByTopic[currentTopicKey] || {}) };
       let gradedCount = 0;
@@ -592,7 +641,10 @@
       persistLocalGradesByUid();
       scoreByTopic = computeScoreByTopic(userGradesByTopic);
       nodeScoreEl.textContent = String(scoreForTopicLabel(currentTopicLabel));
-      questionsHintEl.textContent = `Saved ${gradedCount} response(s) for ${currentTopicLabel}.`;
+      const remoteSaved = await persistFirebaseUserGrades(uid, userGradesByTopic);
+      questionsHintEl.textContent = remoteSaved
+        ? `Saved ${gradedCount} response(s) for ${currentTopicLabel} (local + Firebase backup).`
+        : `Saved ${gradedCount} response(s) for ${currentTopicLabel} (local only).`;
       renderQuestions(currentTopicLabel, currentQuestions);
       render();
     }
