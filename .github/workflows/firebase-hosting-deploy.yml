@@ -49,4 +49,7 @@ jobs:
       - name: Deploy to Firebase Hosting
         run: |
           set -euxo pipefail
-          cd prereq-cheq; firebase deploy --only hosting --project "pre-req-cheq" --non-interactive
+          firebase --version
+          firebase projects:list
+          cd prereq-cheq
+          firebase deploy --only hosting --project "pre-req-cheq" --non-interactive
