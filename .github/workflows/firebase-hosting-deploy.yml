@@ -52,4 +52,5 @@ jobs:
         run: |
           set -euxo pipefail
           echo "$FIREBASE_PROJECT_ID"
+          echo "post change confusion"
           cd prereq-cheq; firebase deploy --only hosting --project "pre-req-cheq" --non-interactive
