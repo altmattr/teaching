@@ -1,0 +1,16 @@
+var p = 0;
+var x = clock();
+for(var i = 0; i < 100000; i = i + 1){
+    if ((p / 3) > 10){
+        p = p / 3;
+    }else{
+        for(var j = 0; j < i/10; j = j + 1){
+            p = p + j;
+        }
+    }
+}
+var y = clock();
+print(p);
+print("took");
+print(y-x);
+print("seconds");

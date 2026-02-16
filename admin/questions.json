@@ -1,0 +1,41 @@
+{
+  "questions": {
+    "A": {
+      "question": "What does a directed edge A -> B mean?",
+      "options": [
+        "A and B are unrelated",
+        "The connection has a direction from A to B",
+        "B always has a larger value than A"
+      ],
+      "correct": 1
+    },
+    "B": {
+      "question": "Which structure is this app rendering?",
+      "options": ["Undirected graph", "Tree only", "Directed graph"],
+      "correct": 2
+    },
+    "C": {
+      "question": "In a graph, nodes usually represent:",
+      "options": ["Entities or states", "Only numbers", "Only colors"],
+      "correct": 0
+    },
+    "D": {
+      "question": "What can happen when a node is clicked in this SPA?",
+      "options": [
+        "Its question is displayed for answering",
+        "The app closes immediately",
+        "All edges are deleted"
+      ],
+      "correct": 0
+    },
+    "E": {
+      "question": "A single-page app (SPA) generally:",
+      "options": [
+        "Loads one HTML page and updates UI dynamically",
+        "Reloads the whole site on every click",
+        "Cannot use JavaScript"
+      ],
+      "correct": 0
+    }
+  }
+}

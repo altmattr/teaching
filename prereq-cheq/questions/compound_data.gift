@@ -1,0 +1,69 @@
+::compound_data_01::Which statement best defines compound data in Java? {
+~Java proficiency means reliably designing, implementing, testing, and debugging Java programs.
+=Compound data in Java combines multiple values into one structure, such as objects, arrays, or records.
+~Object identity in Java means whether two references point to the exact same object.
+~Copying a reference in Java creates another pointer to the same object, not a deep copy.
+}
+
+::compound_data_02::Which Java construct is most directly tied to compound data? {
+~The == operator checks identity for object references.
+=Classes and records are core Java constructs for compound data modeling.
+~In Java, object variables hold references; primitives hold values directly.
+~Constructors, factory methods, and builders are common object-creation techniques.
+}
+
+::compound_data_03::Which example best demonstrates compound data in Java code? {
+~println(int) and println(String) are classic overloading examples.
+=A Person class with name and age fields is a basic compound data example.
+~Overloaded constructors allow different initialization parameter sets.
+~String equality with equals() demonstrates value-style comparison.
+}
+
+::compound_data_04::Which is a common mistake when working with compound data? {
+~A common mistake is creating ambiguous overloads that confuse call sites.
+~A common mistake is overusing new inside tight loops when reuse is possible.
+~A common mistake is unsafe casts without instanceof checks.
+=A common mistake is exposing mutable internal fields directly.
+}
+
+::compound_data_05::Which test most directly validates compound data behavior? {
+~A strong test suite covers normal, boundary, and error-path inputs.
+=A good test checks both field initialization and invariants across related fields.
+~A syntax-focused test can compile snippets to confirm declarations are valid.
+~A good test distinguishes identity checks from equality checks.
+}
+
+::compound_data_06::Which performance/maintainability statement about compound data is most accurate? {
+~Long chains may indicate high coupling between classes.
+=Well-designed compound data improves readability more than using parallel primitive arrays.
+~Explicit sequencing improves predictability in imperative code.
+~Choosing mutable vs immutable types affects semantic clarity.
+}
+
+::compound_data_07::Which refactoring most improves code related to compound data? {
+=Refactoring related parameters into a value object reduces long parameter lists.
+~Refactoring with defensive copies can prevent shared-mutable-state bugs.
+~Extracting intermediate variables can simplify complex method-call expressions.
+~Refactoring shared setup into one canonical constructor reduces bugs.
+}
+
+::compound_data_08::Which Java API/keyword detail is most relevant to compound data? {
+~try/finally is often used to enforce cleanup sequence.
+~Copy constructors or clone alternatives are used when independent copies are needed.
+~equals() and hashCode() define value semantics for custom classes.
+=record types provide concise syntax for immutable compound data carriers.
+}
+
+::compound_data_09::Which debugging approach is most useful for compound data problems? {
+=Debuggers are useful for inspecting object graphs and nested field values.
+~Debugging identity issues often involves tracking shared references.
+~Stepping through invoker -> command -> receiver helps debug command flow.
+~Semantic confusion is debugged by tracking assignments and object aliases.
+}
+
+::compound_data_10::Which statement about compound data is true? {
+~Clear mutation boundaries make code easier to reason about.
+~Clear method names make call sites self-documenting.
+~Good overloading keeps method meaning consistent across variants.
+=Compound data should model domain concepts, not just group random values.
+}

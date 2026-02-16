@@ -1,0 +1,1 @@
+java -cp ../ variants.$1.Lox $2

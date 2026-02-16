@@ -1,0 +1,19 @@
+The following code is witten is a language where all arrays act as references (i.e. store pointers to memory).  What is the final value of the variable `a` when the code is run? You should assume all the code is valid in this language and interpret what it might do if you think there is an error.
+`````
+int[] i = {10,9,8,7,6,5,4};
+int[] j = {20,18,16,14,12,10,8};
+int[] k = i;
+i[0] = 1;
+j[0] = 2;
+int l = k[0] + j[0];
+int a = l;
+````` {
+= 3
+~ 21
+~ 30
+~ 12
+}
+
+
+
+

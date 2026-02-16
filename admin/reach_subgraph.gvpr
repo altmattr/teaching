@@ -1,0 +1,35 @@
+BEGIN {
+    if (ARGC < 1) {
+        print("ERROR: You must pass a subgraph name using -a");
+        exit(1);
+    }
+    target_subgraph = ARGV[0];
+}
+
+/* Runs once per graph */
+BEG_G {
+    /* Iterate over all subgraphs in the graph */
+    for (sg = fstsubg($G); sg; sg = nxtsubg(sg)) {
+        if (sg.name == target_subgraph) {
+            /* Mark all nodes inside the subgraph */
+            for (n = fstnode(sg); n; n = nxtnode(n)) {
+                n.mark = 1;
+            }
+        }
+    }
+}
+
+/* Reverse reachability */
+E {
+    if ($.head.mark == 1) {
+        $.tail.mark = 1;
+        $.mark = 1;
+    }
+}
+
+/* Output only marked nodes and edges */
+END {
+    if (N[$.mark == 1]) print($);
+    if (E[$.mark == 1]) print($);
+}
+

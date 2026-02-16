@@ -1,0 +1,14 @@
+var joes = [1 ~ 1]@4;
+var mahers = [3 ~ 2]@4;
+var result = joes + mahers;
+
+fun simple_dam(flow){
+  return flow;
+}
+
+fun blocking_dam(flow){
+    return [1~1]@0;
+}
+
+var complete = simple_dam <- result;
+var blocked_complete = blocking_dam <- result;

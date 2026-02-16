@@ -1,0 +1,3 @@
+javac $1/tool/*.java
+java  -cp ../ variants.$1.tool.GenerateAst $1
+javac -cp ../ $1/*.java

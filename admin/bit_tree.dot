@@ -1,0 +1,156 @@
+digraph all {
+  node [shape=box,style=rounded, fontname="Verdana"]
+  rankdir="BT"
+  compound=true
+
+  subgraph introduction_to_programming{
+    node [color="green", fontcolor="green"]
+    edge [color="green"]
+    "variable\nsemantics"[peripheries=2]
+    commands -> sequencing -> types -> "variable\nsyntax" -> "variable\nsemantics" -> "boolean\nalgebra" -> conditions
+    sequencing -> "control\nflow" -> conditions
+    conditions -> loops -> "nested loops"
+    "variable\nsemantics" -> "function calls" -> "function\ndefinitions"
+    "variable\nsemantics" -> "compound\ndata" -> "reference\nvalue\nsemantics"
+  }
+
+  subgraph foundations_of_programming{
+    node [color="orange", fontcolor="orange"]
+    edge [color="orange"]
+    "overloading" -> "tdd";
+    "object\nidentity"  -> "collections";
+    "object\nidentity"  -> "file io";    
+    "object\nidentity" -> "object\ncreation" -> "new" -> "constructors";
+    "overloading" -> "constructors" -> "this" -> "object\nmodification" -> "reference\nchains" -> "copying\nreferences" -> "java\nproficiency";
+    "file io"
+  }
+
+  "function\ndefinitions" -> "overloading";
+
+  subgraph networking_cloud{
+    "network\nlayers" -> "virtualisation" -> "cloud" -> "cloud\ncompute" -> "scaling";
+  }
+
+  subgraph cluster_software_tech {
+    fontname="Verdana"
+    label="Software Tech";
+
+    subgraph object_oriented_programming{
+      label="COMP2000"
+      node [color="red", fontcolor="red"]
+      edge [color="red"]
+      "version\ncontrol";
+      "late binding"[peripheries=2]
+      "behaviour\nparameterisation"[peripheries=2]
+      "objects and\nclasses" -> "inheritance" -> "generics";
+      "objects and\nclasses" -> exceptions;
+      "objects and\nclasses" -> "late binding" -> "design patterns";
+      "objects and\nclasses" -> "behaviour\nparameterisation" -> lambdas -> streams -> collecting;
+    }
+
+    subgraph systems_programming{
+      "binary hex" -> "c programming";
+      "command\nline\ncompiling" -> "c programming";
+      "c programming" -> "unix file io";
+      "c programming" -> "c memory layout";
+      "c memory layout" -> "memory allocation";
+      "memory allocation" -> "data layouts";
+      "assembly instructions" -> "registers";
+      "memory allocation" -> "addressing modes";
+      "registers" -> "condition codes";
+      "data layouts" -> "memory\nfailure\nmodes";
+      "condition codes" -> "virtual memory";
+  
+    }
+
+    subgraph programming_languages{
+      node [color="burlywood", fontcolor="burlywood"]
+      edge [color="burlywood"]
+      "compilers\nvs\ninterpreters" -> lox -> scanning -> asts -> parsing -> evaluating -> statements -> "control flow" -> functions -> "first class functions";
+    }
+
+    subgraph algorithms_data_structures {
+      node [color="blue", fontcolor="blue"]
+      edge [color="blue"]
+    subgraph recursion {
+      "recursion"[peripheries=2]
+      "recursive data" -> recursion -> lists -> queues -> stacks -> "binary tree";
+      recursion -> "iteration\nrecursion iso" -> Invariants -> "recurrence relations" -> "divide and conquer" -> sorting -> {"merge sort", "quick sort"};
+  "recurrence relations" -> "dynamic\nprogramming" -> "advanced programming";
+    }
+
+      subgraph trees_and_graphs {
+        "binary tree" -> "binary search tree" -> "bst code" -> "priority queue" -> "heaps" -> "abstract data types";
+        "binary tree" -> "binary tree\ncode";
+        "binary tree" -> "graphs" -> "graph code" -> "graph traversal" -> "graph applications";
+      }
+    }
+  }
+
+  "collections" -> lists;
+  "java\nproficiency" -> "c programming";
+  "file io" -> "unix file io";
+  "new" -> "memory allocation";
+
+  subgraph cluster_web_and_mobile {
+    fontname="Verdana"
+    label="Web and Mobile App Development";
+
+    subgraph web_tech {
+      node [color="darkseagreen", fontcolor="darkseagreen"]
+      edge [color="darkseagreen"]
+      HTML -> HTTP;
+      HTML -> CSS;
+      HTML -> JavaScript;
+      HTTP -> "web servers";
+      JavaScript -> DOM;
+      DOM -> "dom events";
+      JavaScript -> "web debugging";
+      HTTP -> forms;
+      "dom events" -> "web components";
+      "dom events" -> "fetch";
+      "usability and accessibility";
+      "web components" -> "full stack";
+      "UML" -> "web components";
+      JavaScript -> "server side\nprogramming";
+      "server side\nprogramming" -> cookies;
+      cookies -> security;
+    }
+
+    subgraph advanced_web_tech{
+      node [color="darkolivegreen4", fontcolor="darkolivegreen4"]
+      edge [color="darkolivegreen4"]
+      "forms";
+      "json apis";
+      "pwa";
+      "web sockets";
+      "cookies" -> "authentication";
+      "full stack" -> "mongoDB";
+      "react"-> "inside react";
+      "project management";
+      "react" -> "testing";
+      "advanced\nsecurity";
+      "!!" -> "gitflows";
+      "!!" -> "docker";
+    }
+    "full stack" -> "forms";
+    "full stack" -> "json apis";
+    "full stack" -> "pwa";
+    "full stack" -> "web sockets";
+
+    "web components" -> "react";
+    "security" -> "advanced\nsecurity";
+  }
+
+  "java\nproficiency" -> JavaScript;
+  "sequencing" -> "version\ncontrol";
+  "reference\nvalue\nsemantics" -> "object\nidentity";
+  "java\nproficiency" -> "recursive data";
+  "java\nproficiency" -> "objects and\nclasses";
+  "binary tree\ncode" -> asts;
+  "java\nproficiency" -> "compilers\nvs\ninterpreters";
+  "java\nproficiency" -> "cloud\ncompute";
+  "this" -> UML;
+  "nested loops" ->  "collections";
+
+}

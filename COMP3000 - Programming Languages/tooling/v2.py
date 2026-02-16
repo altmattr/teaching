@@ -7,6 +7,8 @@ import yaml
 import pandoc
 import base64
 
+# TODO: for some reason the script can't cope with subsection headings not being unique.
+# TODO: YAML errors where you don't have a space before the pipe is not giving a useful error message
 top_matter = "abstract"
 
 name_conversion = {"FAT": "Application Exercise",
@@ -100,6 +102,7 @@ def yaml_to_tex(item, item_parsed, isTex=False):
     return f"\\section*{{{item}}}\n\n{question}\n\n\\subsection*{{Answer}}\n\n{answer}\n\n"
 
 def yaml_to_xml(item, item_parsed, isTex=False):
+    print(f"item_parsed is {item_parsed}")
     if isTex:
         item     = pandoc.write(pandoc.read(item,                            format='latex'), format='markdown')
         question = pandoc.write(pandoc.read(item_parsed.get('question', ''), format='latex'), format='markdown')
@@ -203,8 +206,22 @@ if __name__ == "__main__":
                     if item_type == "gift":
                       print("this item data is")
                       print(item_data)
-                      question, rest = re.split(r"(?<!\\){", item_data)
-                      answers = re.findall(r"([=~].*)", rest)
+                      # clean up the item data ({ and space)
+                      pattern = re.compile(r'`([^`]*)`')
+                      def esc_brace_in_tick(m):
+                        inner = m.group(1)
+                        inner = inner.replace('{', r'\{')   # only escape {
+                        inner = inner.replace('}', r'\}')   # only escape {
+                        inner = inner.replace('=', r'\=') # only escape =
+                        inner = inner.replace('~', r'\~')
+                        inner = re.sub(r'\n', r'\\n', inner)
+                        #inner = inner.replace(" ", "&nbsp;") # replace spaces with &nbsp;
+                        return f'`{inner}`'
+                      item_data = pattern.sub(esc_brace_in_tick, item_data)
+                      print("cleaned item data is")
+                      print(item_data)
+                      question, rest = re.split(r"(?<!\\){", item_data)  # TODO: any { inside a code block should be converted to \{
+                      answers = re.findall(r"(?<!\\)([=~].*)", rest)
                       # write all the files
                       gift.write(f"\n\n$CATEGORY: {clean_topic}/{clean_venue}\n\n")  # will get more than I need, but also won't get the surplus ones, so it is a win in my book
                       # TODO: write gift files to xml as well - then you can turf the gift format entirely

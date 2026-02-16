@@ -1,0 +1,3 @@
+javac tool/*.java
+java  -cp ../../ variants.example_a2.tool.GenerateAst ./
+javac *.java

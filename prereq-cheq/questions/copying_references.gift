@@ -1,0 +1,69 @@
+::copying_references_01::Which statement best defines copying references in Java? {
+~Object identity in Java means whether two references point to the exact same object.
+=Copying a reference in Java creates another pointer to the same object, not a deep copy.
+~The new keyword allocates an object and invokes its constructor.
+~Types in Java classify values and determine valid operations at compile time.
+}
+
+::copying_references_02::Which Java construct is most directly tied to copying references? {
+=Assignment operator = copies references for object types.
+~Statement order in blocks controls sequencing behavior.
+~Constructors, factory methods, and builders are common object-creation techniques.
+~Java has primitive types and reference types.
+}
+
+::copying_references_03::Which example best demonstrates copying references in Java code? {
+~int count = 0; is valid Java variable syntax.
+~Initializing a variable before using it is a basic sequencing example.
+~order.getCustomer().getAddress() is a common chain example.
+=List<String> b = a; makes b and a refer to the same list instance.
+}
+
+::copying_references_04::Which is a common mistake when working with copying references? {
+~A common mistake is exposing mutable internal fields directly.
+=A common mistake is assuming reference assignment duplicates object contents.
+~A common mistake is ignoring returned values when the method is pure.
+~A common mistake is mixing identity checks and value checks.
+}
+
+::copying_references_05::Which test most directly validates copying references behavior? {
+~A useful test confirms constructors chained with this(...) initialize correctly.
+~A test can assert that new instances start with independent state.
+=A useful test mutates one alias and asserts the other alias sees the change.
+~A syntax-focused test can compile snippets to confirm declarations are valid.
+}
+
+::copying_references_06::Which performance/maintainability statement about copying references is most accurate? {
+~Creation strategy can affect readability and memory behavior.
+=Accidental aliasing can cause hard-to-track side effects.
+~Using this clearly can improve readability in fluent APIs.
+~Identity matters for caching, synchronization, and aliasing behavior.
+}
+
+::copying_references_07::Which refactoring most improves code related to copying references? {
+~Refactoring shared setup into one canonical constructor reduces bugs.
+=Refactoring with defensive copies can prevent shared-mutable-state bugs.
+~Refactoring related parameters into a value object reduces long parameter lists.
+~Refactoring to a command map keyed by user input improves extensibility.
+}
+
+::copying_references_08::Which Java API/keyword detail is most relevant to copying references? {
+~var can be used for local variable type inference in modern Java.
+~new can also instantiate arrays, e.g., new int[10].
+~The compiler performs static type checking on Java code.
+=Copy constructors or clone alternatives are used when independent copies are needed.
+}
+
+::copying_references_09::Which debugging approach is most useful for copying references problems? {
+~Semantic bugs appear when collections rely on inconsistent equality rules.
+=Inspecting identity hash codes can help confirm whether references point to the same object.
+~Stepping through invoker -> command -> receiver helps debug command flow.
+~Compiler diagnostics are the primary tool for variable syntax issues.
+}
+
+::copying_references_10::Which statement about copying references is true? {
+~Good method definitions express one responsibility clearly.
+~Readable sequencing reduces accidental order-dependent bugs.
+=Understanding reference copying is central to reasoning about Java object mutation.
+~Good type design makes APIs safer and easier to use correctly.
+}

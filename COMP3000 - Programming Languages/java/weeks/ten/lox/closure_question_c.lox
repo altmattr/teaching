@@ -1,0 +1,15 @@
+var i = 0;
+fun object(i, j, k){
+    var x = i;
+    var y = j;
+    var z = k;
+    fun method(){
+        x = y * z;
+        return x;
+    }
+    return method;
+}
+
+var o = object(1,2,3);
+print(o());
+

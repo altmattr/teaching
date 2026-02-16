@@ -1,4 +1,5 @@
 \usepackage{arev} % order matters, putting this above allows FiraSans to override it for body text
+
 \usepackage[sfdefault]{FiraSans}
 %\usepackage[sfdefault]{noto}
 \usepackage{inconsolata}
@@ -25,8 +26,8 @@
 \subsectionfont{\color{blackish}}
 \sectionfont{\color{blackish}}
 
-\rohead{\color{red} COMP3000 Programming Languages}
-\lohead{\includegraphics[width=0.5cm]{../logo.jpg}}
+\rohead{\color{red} COMP2000: Object Oriented Programming Practices}
+\lohead{\includegraphics[width=0.5cm]{./logo.jpg}}
 
 
 \usepackage{enumitem}
@@ -72,4 +73,13 @@
   colback=red!2
   #1}
   
+\newtcolorbox{teacher}[1][]{
+  title=teacher's note,
+  width=\textwidth,
+  fonttitle=\bfseries,
+  breakable,
+  fonttitle=\bfseries\color{white},
+  colframe=gray!80,
+  colback=gray!2
+  #1}
   

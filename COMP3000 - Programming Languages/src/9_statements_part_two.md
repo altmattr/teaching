@@ -140,7 +140,7 @@ x = z;
 Match which variables are in l-value positions, which are in r-value positions and which are in both?{
   =x -> both
   =y -> l-value
-  =z -> r-value
+  =z -> both
 }
 
 ## best explanation <gift>
@@ -282,17 +282,17 @@ answer: |
 question: |
   Draw an environment diagram for the state of the environment just before 9 of this program (the line is `bat = foo`)
   ```
-  var foo = 3;
-  var bar;
-  bar = foo;
-  {
-    var bat = 5;
-    bar = bat;
-    {
-      var foo = 9;
-      bat = foo;
-    }
-  }
+  1> var foo = 3;
+  2> var bar;
+  3> bar = foo;
+  4> {
+  5>   var bat = 5;
+  6>   bar = bat;
+  7>   {
+  8>     var foo = 9;
+  9>     bat = foo;
+  10>  }
+  11> }
   ```
 answer: |
   ```
@@ -310,6 +310,27 @@ answer: |
   foo -> 9
   -------
   ```
+
+## automarked environment <gift>
+Which environment diagram most accurately represents the state of the `Environment` _just before_ line 9 is evaluated?
+  ```
+  1> var foo = 3;
+  2> var bar;
+  3> bar = foo;
+  4> \{
+  5>   var bat = 5;
+  6>   bar = bat;
+  7>   \{
+  8>     var foo = 9;
+  9>     bat = foo;
+  10>  \}
+  11> \}
+  ```{
+    = <img width="50%" src="9_imgs/right.jpeg"/>
+    ~ <img width="50%" src="9_imgs/wrong_one.jpeg"/>
+    ~ <img width="50%" src="9_imgs/wrong_two.jpeg"/>
+    ~ <img width="50%" src="9_imgs/wrong_three.jpeg"/>
+}
 
 ## strange (in sse as well) <essay>
 question: |
@@ -335,6 +356,6 @@ a = c;
 Match which variables are in l-value positions, which are in r-value positions and which are in both?{
   =a -> both
   =b -> l-value
-  =c -> r-value
+  =c -> both
 }
 

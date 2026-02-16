@@ -8,3 +8,7 @@
 **/build/*
 **/.DS_Store
 COMP2010*/archive/*
+.ssh/
+.vim/
+*.vimrc
+*.swp

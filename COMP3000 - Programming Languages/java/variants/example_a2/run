@@ -1,0 +1,1 @@
+java -cp ../../. variants.example_a2.Lox ${1:-src/devlins.lox}

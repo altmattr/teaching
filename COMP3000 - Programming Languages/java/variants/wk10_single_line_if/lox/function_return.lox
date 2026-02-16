@@ -1,0 +1,10 @@
+fun foo(fst, snd){
+    bar(snd, fst);
+}
+
+fun bar(fst, snd){
+    print("first: " + fst + " second: " + snd);
+    return;
+}
+
+foo("this one is first", "this one is second");

@@ -1,0 +1,35 @@
+BEGIN {
+    int i;
+    string targetset[];
+
+    /* Collect all command-line targets from ARGV[] */
+    for (i = 0; i < ARGC; i++) {
+        targetset[ARGV[i]] = "1";
+    }
+}
+
+N {
+    /* Mark any node whose name matches a target */
+    if (targetset[$.name] == "1") {
+        $.mark = 1;
+    }
+}
+
+E {
+    /* Reverse reachability */
+    if ($.head.mark == 1) {
+        $.tail.mark = 1;
+        $.mark = 1;
+    }
+}
+
+/* Print marked nodes */
+N[$.mark == 1] {
+    print($);
+}
+
+/* Print marked edges */
+E[$.mark == 1] {
+    print($);
+}
+

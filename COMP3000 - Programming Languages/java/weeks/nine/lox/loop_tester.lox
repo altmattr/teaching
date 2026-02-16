@@ -1,0 +1,18 @@
+var x = 1;
+
+var y = 10;
+
+while (y > x) y = y -1;
+
+y = y * 10;
+
+while (y >= x) {
+    print(y);
+    y = y -1;
+}
+
+y = 10;
+print("---- y is back to 10 ----");
+for(var i = 0; i < y; i = i + 1){
+    print(i);
+}

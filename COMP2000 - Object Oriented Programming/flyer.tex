@@ -1,0 +1,240 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+\input{./latex_setup.tex}
+
+\title{\color{redish} \vspace{-1em}COMP2000: EPIC OO Programming}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\begin{abstract}
+Object Oriented Programming Practices is a second-year unit which sets the stage for a career in software development.  It is an important unit for providing pre-requisite skills, knowledge, and cognition for later of units of study in programming languages, algorithmics, and distributed systems. 
+ 
+In this document we will describe how this unit has been structured as an EPIC educational experience.  This unit of study is \emph{content-heavy} with many complex concepts that need mastering to complete the learning outcomes.  In this document we describe this unit of study at a high level and show how content-heavy units can be an EPIC experience.
+\end{abstract}
+
+
+\begin{figure}[h]
+    \begin{center}
+      \includegraphics[width=0.8\textwidth]{banner.png}
+    \end{center}
+    \caption{Simulations are one of the real-world problems tackled by students.}
+  \end{figure}
+  
+At the start of semester, students will be placed into teams which will persist over the whole semester.  Early on, each team will choose if they wish to take on a \emph{game} or a \emph{simulation} or a \emph{data visualisation}.  All three require the same skills, knowledge, and cognition and all three are supported through the classwork. Unit staff will carefully guide teams towards a specific task within that category which will support the unit learning outcomes. Each week students will attend a TBL class where the application exercise is a direct contribution to their overall project.  Each week students can (optionally) submit a "log book" of that week's work for feedback from their teacher.  Twice during the year, each student (individually) will make some of their own adjustements to the team's work and submit a code-base with their log-books and a reflection for grading.  The unit finishes with a final exam.
+
+\subsubsection*{Weekly Rhythm}
+Each week is consistent:
+\begin{itemize}
+\item Prior to class the student independently completes the preparatory work
+\item A set of self-study exercises for the student to complete at their lieusure are released.
+\item During class the teams complete a RAT and an application exercise, each student keeping a log book
+\item At the end of the week the student may submit their log book for feedback.
+\end{itemize}
+The only exception is that on weeks 7 and 13 the students \emph{must} submit all their log books along with an extended code-base and a reflection document.  These will be graded against a published rubric.  A rubric which includes "timely log book entries" will be published on day one of the course to encouage class attendance.
+
+Figure \ref{fig:activities} shows how learning activities contribute to assessment success.  You can see there is two broad streams.  The Exam stream focusses on theoretical knowledge while the assignement stream focusses on putting that theory into pracice.
+\usetikzlibrary{fit}
+\begin{figure}
+\begin{tikzpicture}[
+    node distance=18mm,
+    >=stealth,
+    every node/.style={ rounded corners}
+]
+
+\node (pre)     [draw=green]  at (0,0)  {pre work};
+\node (iRAT)    [draw=green]  at (3,0)  {iRAT};
+\node (tRAT)    [draw=orange] at (5.5,0)  {tRAT};
+\node (FAT)     [draw=green]  at (8,0)  {applcn ex};
+\node (assign)  [draw=red]    at (13,0) {assign};
+\node (self)    [draw=green]  at (3,1)  {self study};
+\node (exam)    [draw=red]    at (13,1)  {exam};
+\node (logbook) [draw=orange] at (11,-1)  {log book};
+
+% Edges
+\draw[->] (pre) -- (iRAT);
+\draw[->] (iRAT) -- (tRAT);
+\draw[->] (tRAT) -- (FAT);
+\draw[->] (FAT) -- (assign);
+
+\draw[->] (pre) -- (self);
+
+\draw[->] (self) -- (exam);
+\draw[->,thick] (tRAT.north east) to[out=20,in=180] (exam.south west) ;
+\draw[->] (FAT) -- (logbook);
+\draw[->] (logbook) -- (assign);
+
+\draw[draw=gray, thick, rounded corners] (-1,2) rectangle (4.5,-2);
+\draw[draw=gray, thick, rounded corners] (4.7,2) rectangle (9.5,-2);
+\draw[draw=gray, thick, rounded corners] (9.7,2) rectangle (15,-2);
+\node at (0,1.5) {solo};
+\node at (5.7,1.5) {team};
+\node at (10.7,1.5) {solo};
+
+\end{tikzpicture}
+\label{fig:activities}
+\caption{learning activities are in green, assessments are in red.  Feedback opportunities are in orange.}
+\end{figure}
+
+\subsubsection*{The Merge}
+
+Past experiences with TBL have shown that keeping team sizes from reducing too much is a key challenge.  We will approach this with a "second term merge".  After the mid-semester break classes which are too small will merge with their sibling class and each team will merge with another team from the other class.  To achieve this we need all classes scheduled in pairs where they occur on the same day and time but in a different room.  
+
+\subsubsection*{Co-Design}
+As students work through their workshops, unit staff adjust future work to account for the directions students are taking and their choices.  In this way the course is \emph{co-designed} with each cohort of students and each offereing is a fresh student and staff experience.
+
+\subsection*{EPIC}
+
+\begin{description}
+\item[Experience that transforms] One of the career paths for students completing this unit is to build medium sized software systems in small teams and that is exactly what the students will experience in this unit of study.
+\item[Purpose that inspires] The classwork will guide students through the task of creating either a \emph{game}, a \emph{simulation}, or a \emph{data visualisation}.  The students will choose which and we will work with them to define a purposeful example they can work on over the course of the unit./footnote{This is a trial of providing agency in one way but later constraining the students based on our experience of what will work well in practice.}
+\item[Impact that matters] Due to this unit being in second year and primarily focussed on preparatory pre-requisite knowledge, we have not saught to incorporate "impact that matters".  The reader is directed to COMP3000: EPIC programming languages instead.
+\item[Collaboration that empowers] Classes are organised around \emph{Team Based Learning}.  Students work in teams on carefully calibrated activities which both re-inforce the fundamental concepts/skills \emph{and} allows them to creatively apply them as they choose.  There will be thirteen 2-hour collaborative classes across semester at convenient times for students to choose from.  Students will form teams in the first week and work in those teams throughout all thirteen classes.
+\end{description}
+
+\begin{figure}[h]
+    \begin{center}
+    \includegraphics[width=0.8\textwidth]{tbl.jpg}
+\end{center}
+\caption{Students will work collaboratively in all classes in relatively small teams to replicate professional practice}
+\end{figure}
+
+\begin{tabular}{lcp{5cm}l}
+\textbf{class \#} & \textbf{content and skills} & \textbf{EPIC activities} & \textbf{class style}\\
+\hline
+1 & team based learning  & creating effective teams & log book \\
+2 & git & making discord on top of git & competition \\
+3 & objects and classes & interface mockup and system design & butcher's paper \\
+4 & inheritance/overloading  & identify and incorporate & log book \\
+5 & generics & break the code\footnote{take a code base and cause a run time error without using any casts/etc} & simultaneous reporting \\
+6 & exceptions & puzzle using exceptions\footnote{throwing an exception will override the call stack, find the right place to do this to solve the puzzle we give}  & simultaneous reporting \\
+7 & patterns 1 & assignment one showcase & conference \\
+8 & patterns 2 & find a pattern in an assignment one solution\footnote{we provide the repositories to look in} & debating \\
+9 & behaviour param and lambdas & code golf & simultaneous reporting\\
+10 & streams & incorporate last two weeks & simultaneous reporting \\
+11 & collecting & identify and incorporate & simultaneous reporting \\
+12 & paralellism & find and explain paralellism opportunity in your application & simultaneous reporting \\
+13 & & student showcase & conference \\
+\hline
+\end{tabular}
+
+\newpage
+
+\section*{Class Style}
+
+All classes are two hours long and run in TBL syle to the following rough timeline
+
+\begin{tabular}{lr}
+\textbf{time (mins)} & \textbf{activity} \\
+\hline
+00 -> 07 & settling and welcome \\
+07 -> 15 & iRAT \\
+15 -> 40 & tRAT \\
+40 -> 90 & EPIC activity \\
+90 -> 115 & specific reporting \\
+\end{tabular}
+
+\noindent The type of class will determine what form the specific reporting will take:
+
+\begin{description}
+\item [simultaneous reporting]  Each team presents at the front of the class on their findings.  Other teams ask questions.  Each student independently complete their log books and submit offline for feedback.  Log books should include the most interesting things learned from other teams.
+\item [log book/minute paper] Students take the 25 minutes to fill in a page of their log books and show it to the teacher during class time.  The teacher gives feedback on the spot and signs off the log book if required.  Student should record things like: the most useful thing they learned, any specific things they need to remember, any solutions that were interesting to them, but importantly it must include what happened in class (since that is what a log book is).
+\item[competition] The activity will have some metric attached to it.  In the reporting time each team reports their "high score" and the teacher makes a leaderboard.  Teams at the top of the leaderboard are asked to share what tricks and skills they used to reach the top.  Students complete their log books independently and submit offline for feedback within the week.  The log books should include ways to get a higher score next time.
+\item[butcher's paper] The output of the activity is a design or image and the teams each write up their solution on butcher's paper.  The various solutions get put up on the walls for everyone to look at and discuss.  Teachers "mingle" in the reporting period chiming in with great insights.  Students complete their log books independently and submit offline for feedback within the week. The log book should include the student's team's answer and at least one other answer.
+\item[debating] Teams are allocated a question and a side to take.  During the activity the teams prepare an argument for the side they have been asked to take.  During reporting the teams are paired up for a 10 minute public debate.  At the end of each debate the crowd picks the winner.Students complete log books independently.  The log books should include the best "zingers" from the debates.
+\item[conference] The activity and reporting time is devoted to individual presentations given by students.  Students register their interest (not all students need to present) and get 15 mins plus 5 mins question time to present their work.  All students are expected to be present, even if they choose not to present.  Class finishes when all interested students have presented.  Log books are completed independently.  All students will have been working on the same problem that is being presented so all can write reflections on their own work in their log books.
+\end{description}
+
+\newpage
+
+\section*{Rubrics}
+\subsection*{Lab Book}
+\begin{tabular}{p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|p{0.2\textwidth}}
+\hline
+item & F & P & CR & D & HD & Notes\\
+\hline \hline
+weekly log book & no submission or failed to get the point of the week's material & \multicolumn{4}{c|}{any reasonble submssion} & do take the time to give considered feedback and guidance to any submissions\\
+\hline
+\end{tabular}
+\subsection*{Week 7 Submission}
+Student submits: a link to a public github repository, a quiz with a number of reflection questions answered, and a log book.
+
+\begin{tabular}{p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|p{0.2\textwidth}}
+\hline
+item & F & P & CR & D & HD & Notes\\
+\hline \hline
+version control (20\%) & none & a link to public github repository & repository includes multiple commits & respository is forked from collaborative repository & plus commit messages are good & \\ \hline
+program design (40\%) & none & \multicolumn{2}{p{0.2\textwidth}|}{reflective report includes a UML-ish design} & the design is appropriate and makes good use of inheritance & the design is accurate to the submitted code  & don't bother checking the code if the design is no good \\ \hline
+generics and exceptions (20\%) & weak or no log book entries for these weeks & \multicolumn{2}{p{0.2\textwidth}|}{good log book entries for the puzzle and break the code tasks} & plus expln. of the role (or not) of generics and excepns. in your code & plus reflected in the code submitted & \\ \hline
+log book (20\%) & none & log book with reasonable entries for each activity & plus most entries signed for timeliness & \multicolumn{2}{p{0.2\textwidth}|}{plus interesting insights in the entries} & you can fill in this during term so you don't need to recheck it at submission time \\ \hline
+\hline
+\end{tabular}
+
+\newpage
+\section*{EPIC Activities}
+\subsubsection*{Week 1 - Creating Effective Teams}
+\begin{note}
+Week 1 does not contain an iRAT/tRAT exercise.  The teacher will instead use that time to introduce team based learning.
+\end{note}
+
+Your task this week is to choose your team's \emph{application type} and to \emph{create a team contract}.  Your team will choose one of:
+\begin{itemize}
+\item A simulation: You will simulate river flows according to a language provided by unit staff.
+\item A data visualisation: You will create an innovative visualisation of weather data specifically designed for farmers.
+\item A game: You will create a \emph{grid based tactics game} according to the specifications we give you.  
+\end{itemize}
+Once you team has chosen which task, you will stay in that team and work on that task for the remainder of the semester.
+
+Once teams are created, the team will draw up a team contract which each team member records in their log book.  The team contract should spell out the following:
+\begin{itemize}
+\itemsep0em
+\item What task the team has chosen to work on.
+\item The team name
+\item The team members,
+\item The expectations of each member.
+\item The Conditions under which a member may be excluded.
+\item Anything else you think will help the team work well together.
+\end{itemize}
+
+\subsubsection*{Week 2 - Git Discord}
+Your task this week is to \emph{chat with your team members using github as a chat server}.  This will take some serious imagination!  You will need to have a strong understanding of the following git commands:
+\begin{itemize}
+\itemsep0em
+\item add
+\item commit
+\item push
+\item pull
+\item fetch
+\item lob
+\end{itemize}
+So be sure you have done your preparation before hand.  You will know you have achieved the task if each team member can sit at different computers and send messages back and forth using only these commands (and no other communication mechanisms like talking).  Go through the features you like in a chat app and think how they might map to git commands/features.  How can you make your chat \emph{completely private wih no central server}?
+
+Your team will be scored according to: the number of messages, the complexity of messages, the number of chat features you have emulated.  The class teacher will track scores during class.
+
+\begin{teacher}
+Circulate around class and keep them on track. Put up a table on the whiteboard during the EPIC activity and periodically update the scores based on your observations.  For specific reporting, have the one person from each group move to the front of class and project.  Other team members stay at their desks and participate in the demo.  The demo period is a change for the team to finalise its scores in the competition.  Please grab a photo of the final scoreboard and post it to the forums.
+\end{teacher}
+
+\subsubsection*{Week 3 - Interface Mockup and System Design}
+This week your team will be making drawings.  Your team will create a drawing of what the interface to your application is likely to look like and will then use this to start planning out what objects and classes your application will need.   The end result of each is a butcher's paper sheet (i.e. two for each team) showing your interface and your design.  Please use a UML-ish notation for your design.
+
+During the specific reporting period you will go and look at other team's designs and ask questions about them.  By the end of class your log book should contain your team's designs and one other team's designs (pick the one you like best).
+
+\begin{teacher}
+Be sure you have enough butcher's paper and some markers for class.  Try to set up the specific reporting period like a "poster presentation" from a conference.  Take some pictures if the students don't mind.
+\end{teacher}
+
+\newpage
+\section*{Admin}
+\subsubsection*{Public Holidays}
+In the instance of a public holiday, students who will miss a class are welcome to attend any other classes in that week.  The class teacher has discretion to turn students away if the class if over-ful, but this has not happened in practice (yet).
+\subsubsection*{Missed classes}
+Attendance in class is not required for grades but "timely" or "signed" log book entries may be.  In these cases the following hueristics apply:
+\begin{enumerate}
+\item Teachers will be giving those marks based on a subjective assessment of the students engagement in class.  
+\item Classes can be missed with no penalty and no explanation\footnote{I've still got issues here I need to deal with}.
+\item Log books are used to provide regular feedback.  Log books may be physical or electronic.
+\end{enumerate} 
+
+\end{document}
+
+

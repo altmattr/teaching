@@ -1,0 +1,69 @@
+::reference_chains_01::Which statement best defines reference chains in Java? {
+~Variable semantics describe what a Java variable represents and how it behaves when assigned or passed.
+~this refers to the current object instance inside an instance method or constructor.
+~Reference semantics track object identity, while value semantics compare logical content.
+=A reference chain is a sequence of object references used to reach nested data.
+}
+
+::reference_chains_02::Which Java construct is most directly tied to reference chains? {
+=Dot notation like a.getB().getC() traverses a reference chain.
+~The == operator checks identity for object references.
+~Assignment operator = copies references for object types.
+~Classes and records are core Java constructs for compound data modeling.
+}
+
+::reference_chains_03::Which example best demonstrates reference chains in Java code? {
+=order.getCustomer().getAddress() is a common chain example.
+~public int add(int a, int b) { return a + b; } is a method definition.
+~A static factory like LocalDate.of(...) is an object creation example.
+~Overloaded constructors allow different initialization parameter sets.
+}
+
+::reference_chains_04::Which is a common mistake when working with reference chains? {
+~A common mistake is defining methods that do too many unrelated tasks.
+~A common mistake is hard-coding command selection with long if/else chains instead of polymorphism.
+~A common mistake is relying on side effects without clear execution order.
+=A common mistake is risking NullPointerException in long chains.
+}
+
+::reference_chains_05::Which test most directly validates reference chains behavior? {
+~A good test distinguishes identity checks from equality checks.
+~A good test checks both field initialization and invariants across related fields.
+=A good test includes missing-link cases in deep object graphs.
+~A test can assert that new instances start with independent state.
+}
+
+::reference_chains_06::Which performance/maintainability statement about reference chains is most accurate? {
+~Constructor work should stay lightweight to avoid slow object creation.
+~Using this clearly can improve readability in fluent APIs.
+=Long chains may indicate high coupling between classes.
+~Frequent allocation can increase GC pressure in allocation-heavy code paths.
+}
+
+::reference_chains_07::Which refactoring most improves code related to reference chains? {
+~Refactoring to object pools is rare and only justified for measured hotspots.
+~Refactoring complex sequences into named methods improves traceability.
+=Refactoring with intermediate variables or null-safe design improves chain readability.
+~Refactoring with defensive copies can prevent shared-mutable-state bugs.
+}
+
+::reference_chains_08::Which Java API/keyword detail is most relevant to reference chains? {
+~super(...) is used in constructors to initialize the parent class.
+~record types provide concise syntax for immutable compound data carriers.
+=Optional can sometimes make nullable chain traversal safer.
+~The @Override annotation helps ensure intended method definitions match parent signatures.
+}
+
+::reference_chains_09::Which debugging approach is most useful for reference chains problems? {
+~Debugging with this in watch expressions helps inspect current object state.
+~Inspecting identity hash codes can help confirm whether references point to the same object.
+=Debugging chains is easier by inspecting each hop in the debugger.
+~Compiler diagnostics are the primary tool for variable syntax issues.
+}
+
+::reference_chains_10::Which statement about reference chains is true? {
+~Understanding variable semantics is essential for reasoning about Java behavior.
+~Good type design makes APIs safer and easier to use correctly.
+~Good object creation APIs make invalid states hard to construct.
+=Reference chains should reflect meaningful object relationships, not accidental structure.
+}

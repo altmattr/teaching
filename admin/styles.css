@@ -1,0 +1,152 @@
+:root {
+  --bg: #f4f2ee;
+  --panel: #fffdf9;
+  --ink: #1f1f1f;
+  --muted: #595959;
+  --line: #d7d1c7;
+  --accent: #0c5f7a;
+  --accent-soft: #d8edf4;
+  --good: #196b2f;
+  --bad: #9a241f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 20%, #fef6df 0%, transparent 35%),
+    radial-gradient(circle at 85% 85%, #dceef6 0%, transparent 38%),
+    var(--bg);
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 1.25rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1.5fr 1fr;
+}
+
+.graph-panel,
+.question-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+h1,
+h2 {
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.subtitle {
+  margin-top: 0.5rem;
+  color: var(--muted);
+}
+
+#graph {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin-top: 0.75rem;
+  background: #fff;
+}
+
+.question-text {
+  color: var(--muted);
+  min-height: 2.75rem;
+}
+
+.question-form {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.55rem 0.65rem;
+  cursor: pointer;
+}
+
+.choice:hover {
+  background: #f8f4ec;
+}
+
+button {
+  border: 1px solid #0a5168;
+  border-radius: 8px;
+  padding: 0.55rem 0.8rem;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.feedback {
+  min-height: 1.3rem;
+  font-weight: 600;
+}
+
+.feedback.good {
+  color: var(--good);
+}
+
+.feedback.bad {
+  color: var(--bad);
+}
+
+.edge {
+  stroke: #5b5b5b;
+  stroke-width: 2;
+  fill: none;
+  marker-end: url(#arrowhead);
+}
+
+.node {
+  cursor: pointer;
+}
+
+.node circle {
+  fill: #fff;
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.node text {
+  fill: #111;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.node.active circle {
+  fill: var(--accent-soft);
+  stroke-width: 3;
+}
+
+.node.answered circle {
+  stroke: var(--good);
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+}

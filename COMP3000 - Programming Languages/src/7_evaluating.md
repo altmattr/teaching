@@ -168,6 +168,17 @@ In an interpreter for an expression language, what does "truthiness" typically r
 ~ A dynamic mechanism that converts all non-false values into `true` during evaluation.
 }
 
+## free truthyness <essay>
+question: |
+    Imagine you are writing your own programming language which includes the following datatypes:
+      * integers
+      * booleans
+      * characters
+      * strings
+    It has been decided that _any_ value can be tested for "truthyness".  Provide rules for each datatype with an explanation for why you think your rule will work best for programmers.
+answer: |
+    Still to do
+
 ## hooking up <gift>
 When hooking up the interpreter to execute an expression language, which of the following is typically required?
 {

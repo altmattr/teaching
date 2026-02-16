@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graph Quiz SPA</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="graph-panel">
+        <h1>Directed Graph Quiz</h1>
+        <p class="subtitle">Click a node to answer its question.</p>
+        <svg id="graph" viewBox="0 0 760 440" aria-label="Directed graph"></svg>
+      </section>
+      <aside class="question-panel">
+        <h2 id="question-node-title">Select a node</h2>
+        <p id="question-text" class="question-text">
+          Pick any node in the graph to view its multiple-choice question.
+        </p>
+        <form id="question-form" class="question-form"></form>
+        <button id="submit-answer" type="button" disabled>Submit Answer</button>
+        <p id="feedback" class="feedback" aria-live="polite"></p>
+      </aside>
+    </main>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

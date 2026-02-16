@@ -1,0 +1,13 @@
+var x = 5;
+var y = 10;
+
+x = x + 7;
+
+if (x > y) print("addition works");
+if (x <y) print ("addition is broken");
+else print("addition still works");
+if (x == y and x > y){
+    print("something has gone horribly wrong");
+} else {
+    print("don't worry, all is in order");
+}
