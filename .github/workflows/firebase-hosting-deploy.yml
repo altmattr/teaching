@@ -52,4 +52,4 @@ jobs:
         run: |
           set -euxo pipefail
           echo "$FIREBASE_PROJECT_ID"
-          cd prereq-cheq; firebase deploy --only hosting --project "$FIREBASE_PROJECT_ID" --non-interactive
+          cd prereq-cheq; firebase deploy --only hosting --project "pre-req-cheq" --non-interactive
