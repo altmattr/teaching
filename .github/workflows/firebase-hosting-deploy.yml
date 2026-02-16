@@ -38,6 +38,7 @@ jobs:
         run: |
           test -n "${{ secrets.GCP_SA_KEY }}"
           test -n "$FIREBASE_PROJECT_ID"
+          cd prereq-cheq \
           firebase deploy \
             --only hosting \
             --project "$FIREBASE_PROJECT_ID" \
