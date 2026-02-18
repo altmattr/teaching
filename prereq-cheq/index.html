@@ -59,7 +59,7 @@
 
     .uid-chip {
       position: absolute;
-      right: 16px;
+      right: 44px;
       top: 50%;
       transform: translateY(-50%);
       border-radius: 999px;
@@ -78,6 +78,43 @@
       font-size: 0.72rem;
       font-weight: 600;
       color: var(--text);
+    }
+
+    .load-indicator {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      font-size: 10px;
+      line-height: 1;
+    }
+
+    .load-indicator.loading::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      border: 2px solid #cbd5e1;
+      border-top-color: #64748b;
+      animation: spin 0.8s linear infinite;
+    }
+
+    .load-indicator.ready::before {
+      content: "✓";
+      color: #6b7280;
+      font-weight: 600;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 
     .panel {
@@ -371,7 +408,7 @@
   </style>
 </head>
   <body>
-  <h1 class="page-title">PreReq-Cheq <span class="uid-chip"><span class="value" id="uidValue">auth-pending</span></span></h1>
+  <h1 class="page-title">PreReq-Cheq <span class="uid-chip"><span class="value" id="uidValue">auth-pending</span></span><span class="load-indicator loading" id="loadIndicator" aria-label="Loading"></span></h1>
   <div class="layout">
     <section class="panel controls">
       <div class="last-node">
@@ -404,6 +441,7 @@
     const graphEl = document.getElementById('graph');
     const lastNodeEl = document.getElementById('lastNodeValue');
     const uidEl = document.getElementById('uidValue');
+    const loadIndicatorEl = document.getElementById('loadIndicator');
     const nodeScoreEl = document.getElementById('nodeScoreValue');
     const submitBtnEl = document.getElementById('submitAnswersBtn');
     const questionsEl = document.getElementById('questions');
@@ -446,6 +484,13 @@
     let firebaseEnabled = false;
     uidEl.textContent = '(auth pending)';
 
+    function setLoadedState(ready) {
+      if (!loadIndicatorEl) return;
+      loadIndicatorEl.classList.toggle('loading', !ready);
+      loadIndicatorEl.classList.toggle('ready', ready);
+      loadIndicatorEl.setAttribute('aria-label', ready ? 'Loaded' : 'Loading');
+    }
+
     function updateUidDisplay() {
       const uidText = activeUid || 'auth-unavailable';
       uidEl.textContent = currentUidAlias ? `${uidText} aka "${currentUidAlias}"` : uidText;
@@ -465,6 +510,53 @@
     }
 
     async function boot() {
+      try {
+        const res = await fetch('./bit_tree.nomnoml', { cache: 'no-store' });
+        diagramSource = res.ok ? await res.text() : embedded;
+      } catch {
+        diagramSource = embedded;
+      }
+      const labels = nodeLabelsFromSource(diagramSource);
+      seedQuestionCountCacheForLabels(labels);
+      render();
+      setLoadedState(false);
+      let pendingBootTasks = 2;
+      const completeBootTask = () => {
+        pendingBootTasks -= 1;
+        if (pendingBootTasks <= 0) setLoadedState(true);
+      };
+      preloadQuestionCountsForLabels(labels)
+        .then(() => {
+          scoreByTopic = computeScoreByTopic(userGradesByTopic);
+          persistQuestionCountCache();
+          render();
+          if (currentTopicLabel) nodeScoreEl.textContent = String(scoreForTopicLabel(currentTopicLabel));
+        })
+        .finally(completeBootTask);
+
+      const initialLabel = resolveTopicLabel(initialTopicParam, labels);
+      if (initialLabel) {
+        lastNodeEl.textContent = initialLabel;
+        nodeScoreEl.textContent = String(scoreForTopicLabel(initialLabel));
+        loadQuestionsForTopic(initialLabel);
+      }
+
+      hydrateUserData()
+        .then(() => {
+          scoreByTopic = computeScoreByTopic(userGradesByTopic);
+          render();
+          if (currentTopicLabel) {
+            nodeScoreEl.textContent = String(scoreForTopicLabel(currentTopicLabel));
+            if (currentQuestions.length) renderQuestions(currentTopicLabel, currentQuestions);
+          }
+        })
+        .catch((err) => {
+          console.error('[boot] async hydration failed', err);
+        })
+        .finally(completeBootTask);
+    }
+
+    async function hydrateUserData() {
       await initFirebase();
       if (!activeUid) {
         activeUid = 'auth-unavailable';
@@ -482,17 +574,20 @@
       } catch {
         baseUserGrades = {};
       }
+
       const remoteUserRecord = await fetchFirebaseUserRecord(activeUid);
       const remoteUserGrades = extractGradesFromUserRecord(remoteUserRecord);
       const remoteScoreHistory = extractScoreHistoryFromUserRecord(remoteUserRecord);
       const remoteUidAlias = extractUidAliasFromUserRecord(remoteUserRecord);
       const remoteViaAlias = extractViaAliasFromUserRecord(remoteUserRecord);
+
       localGradesByUid = loadLocalGradesByUid();
       const localUserRecord = localGradesByUid[activeUid] || {};
       const localUserGrades = extractGradesFromUserRecord(localUserRecord);
       const localScoreHistory = extractScoreHistoryFromUserRecord(localUserRecord);
       const localUidAlias = extractUidAliasFromUserRecord(localUserRecord);
       const localViaAlias = extractViaAliasFromUserRecord(localUserRecord);
+
       userGradesByTopic = mergeTopicGrades(baseUserGrades, remoteUserGrades);
       userGradesByTopic = mergeTopicGrades(userGradesByTopic, localUserGrades);
       scoreHistoryByTopic = mergeScoreHistoryByTopic(remoteScoreHistory, localScoreHistory);
@@ -506,7 +601,10 @@
       if (requestedViaAlias) {
         await persistViaAliasUnderUser(requestedViaAlias, activeUid);
       }
-      scoreByTopic = computeScoreByTopic(userGradesByTopic);
+      if (requestedUidAlias || requestedViaAlias) {
+        await persistFirebaseUserGrades(activeUid, userGradesByTopic, currentUidAlias, currentViaAlias, scoreHistoryByTopic);
+      }
+
       console.log('[boot] grade sources merged', {
         uid: activeUid,
         firebaseEnabled,
@@ -515,29 +613,6 @@
         localTopics: Object.keys(localUserGrades || {}).length,
         finalTopics: Object.keys(userGradesByTopic || {}).length
       });
-
-      try {
-        const res = await fetch('./bit_tree.nomnoml', { cache: 'no-store' });
-        diagramSource = res.ok ? await res.text() : embedded;
-      } catch {
-        diagramSource = embedded;
-      }
-      const labels = nodeLabelsFromSource(diagramSource);
-      seedQuestionCountCacheForLabels(labels);
-      render();
-      preloadQuestionCountsForLabels(labels).then(() => {
-        scoreByTopic = computeScoreByTopic(userGradesByTopic);
-        persistQuestionCountCache();
-        render();
-        if (currentTopicLabel) nodeScoreEl.textContent = String(scoreForTopicLabel(currentTopicLabel));
-      });
-
-      const initialLabel = resolveTopicLabel(initialTopicParam, labels);
-      if (initialLabel) {
-        lastNodeEl.textContent = initialLabel;
-        nodeScoreEl.textContent = String(scoreForTopicLabel(initialLabel));
-        loadQuestionsForTopic(initialLabel);
-      }
     }
 
     function topicToFilename(topicLabel) {
@@ -570,11 +645,14 @@
     async function preloadQuestionCountsForLabels(labels) {
       const uniqueKeys = [...new Set((labels || []).map((label) => topicToFilename(label)).filter(Boolean))];
       await Promise.all(uniqueKeys.map(async (key) => {
-        if (Number.isFinite(Number(topicQuestionCountByKey[key])) && Number(topicQuestionCountByKey[key]) > 0) return;
+        const cachedCount = Number(topicQuestionCountByKey[key]);
+        const hasQuestionIds = topicQuestionIdSetByKey[key] instanceof Set;
+        if (Number.isFinite(cachedCount) && cachedCount >= 0 && hasQuestionIds) return;
         try {
           const res = await fetch('./questions/' + key + '.md', { cache: 'no-store' });
           if (!res.ok) {
             topicQuestionCountByKey[key] = 0;
+            topicQuestionIdSetByKey[key] = new Set();
             return;
           }
           const text = await res.text();
@@ -583,6 +661,7 @@
           topicQuestionIdSetByKey[key] = new Set(questions.map((q) => q.id).filter(Boolean));
         } catch {
           topicQuestionCountByKey[key] = 0;
+          topicQuestionIdSetByKey[key] = new Set();
         }
       }));
     }
@@ -622,7 +701,7 @@
       for (const [questionId, rawGrade] of Object.entries(topicData)) {
         const grade = Number(rawGrade);
         if (!Number.isFinite(grade)) continue;
-        if (grade === 1 && validIdSet && validIdSet.size > 0 && !validIdSet.has(questionId)) continue;
+        if (grade === 1 && validIdSet instanceof Set && !validIdSet.has(questionId)) continue;
         grades.push(grade);
       }
       return {
@@ -842,8 +921,11 @@
         return false;
       }
       try {
-        await firebaseDb.ref(`users/${authUid}/uidAlias`).set(uidAlias);
-        console.log('[firebase] uid alias saved under user', { uidAlias, authUid });
+        await firebaseDb.ref(`users/${authUid}`).update({
+          uidAlias,
+          ...(currentViaAlias ? { via: currentViaAlias } : {})
+        });
+        console.log('[firebase] uid alias saved under user', { uidAlias, via: currentViaAlias, authUid });
         return true;
       } catch (err) {
         console.error('[firebase] uid alias write failed', {
@@ -866,8 +948,11 @@
         return false;
       }
       try {
-        await firebaseDb.ref(`users/${authUid}/via`).set(viaAlias);
-        console.log('[firebase] via saved under user', { viaAlias, authUid });
+        await firebaseDb.ref(`users/${authUid}`).update({
+          via: viaAlias,
+          ...(currentUidAlias ? { uidAlias: currentUidAlias } : {})
+        });
+        console.log('[firebase] via saved under user', { viaAlias, uidAlias: currentUidAlias, authUid });
         return true;
       } catch (err) {
         console.error('[firebase] via write failed', {
@@ -893,7 +978,7 @@
       const key = topicToFilename(topicLabel);
       const parts = scoreByTopic[key] || { correct: 0, total: 0 };
       const knownTotal = Number(topicQuestionCountByKey[key]);
-      const total = Number.isFinite(knownTotal) && knownTotal > 0 ? knownTotal : parts.total;
+      const total = Number.isFinite(knownTotal) && knownTotal >= 0 ? knownTotal : parts.total;
       return `${parts.correct}/${total}`;
     }
 
@@ -902,7 +987,7 @@
       if (!topicGrades || typeof topicGrades !== 'object') return 0;
       const parts = scorePartsFromTopicData(topicGrades, topicKey);
       const knownTotal = Number(topicQuestionCountByKey[topicKey]);
-      const total = Number.isFinite(knownTotal) && knownTotal > 0 ? knownTotal : parts.total;
+      const total = Number.isFinite(knownTotal) && knownTotal >= 0 ? knownTotal : parts.total;
       if (!total) return 0;
       return parts.correct / total;
     }

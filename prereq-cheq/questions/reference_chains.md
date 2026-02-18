@@ -1,79 +1,121 @@
 # reference_chains_01
-Which statement best defines reference chains in Java?
+Given this Java code:
+```
+Box a = new Box();
+a.value = 5;
 
-- Variable semantics describe what a Java variable represents and how it behaves when assigned or passed.
-- this refers to the current object instance inside an instance method or constructor.
-- Reference semantics track object identity, while value semantics compare logical content.
-+ A reference chain is a sequence of object references used to reach nested data.
+Box b = a;
+Box c = b;
+
+int x = c.value;
+c.value = 9;
+
+int y = a.value;
+```
+Which statement is true?
+
+- `x` changes to `9` because it stores a reference to `c.value`.
++ `x` stays `5`, and `y` is `9`.
+- `a`, `b`, and `c` are different objects, so `y` is `5`.
+- `y` is `5` because `int y` copies from `a` before mutation.
 
 # reference_chains_02
-Which Java construct is most directly tied to reference chains?
+Given this Java code:
+```
+Node n1 = new Node();
+n1.count = 2;
 
-+ Dot notation like a.getB().getC() traverses a reference chain.
-- The == operator checks identity for object references.
-- Assignment operator = copies references for object types.
-- Classes and records are core Java constructs for compound data modeling.
+Node n2 = n1;
+Node n3 = n2;
+
+int p = n2.count;
+n1.count = 7;
+int q = n3.count;
+```
+Which statement is true?
+
+- `p` becomes `7` because it aliases `n2.count`.
++ `p` is `2`, and `q` is `7`.
+- `q` is `2` because `n3` is a copy of `n2`.
+- `n1.count = 7` changes only `n1`.
 
 # reference_chains_03
-Which example best demonstrates reference chains in Java code?
+Given this Java code:
+```
+Box a = new Box();
+a.value = 10;
 
-+ order.getCustomer().getAddress() is a common chain example.
-- public int add(int a, int b) { return a + b; }
-- new ArrayList<>() creates a new list object.
-- a == b being true indicates both references share one object instance.
+Box b = a;
+int x = b.value;
+
+b = new Box();
+b.value = 50;
+
+int y = a.value;
+```
+Which statement is true?
+
+- `x` is `50` and `y` is `50`.
++ `x` is `10` and `y` is `10`.
+- `x` is `10` and `y` is `50`.
+- `x` is `50` and `y` is `10`.
 
 # reference_chains_04
-Which is a common mistake when working with reference chains?
+Given this Java code:
+```
+Cell a = new Cell();
+a.num = 1;
 
-- A common mistake is defining methods that do too many unrelated tasks.
-- A common mistake is hard-coding command selection with long if/else chains instead of polymorphism.
-- A common mistake is relying on side effects without clear execution order.
-+ A common mistake is risking NullPointerException in long chains.
+Cell b = a;
+Cell c = b;
+
+int m = a.num;
+c.num = m + 4;
+int n = b.num;
+```
+Which statement is true?
+
+- `m` becomes `5` because `c.num` changed.
++ `m` is `1`, and `n` is `5`.
+- `n` is `1` because `b` stores a value copy.
+- `a`, `b`, and `c` now refer to different objects.
 
 # reference_chains_05
-Which test most directly validates reference chains behavior?
+Given this Java code:
+```
+Item i1 = new Item();
+i1.v = 3;
 
-- A good test distinguishes identity checks from equality checks.
-- A good test checks both field initialization and invariants across related fields.
-+ A good test includes missing-link cases in deep object graphs.
-- A test can assert that new instances start with independent state.
+Item i2 = i1;
+Item i3 = i2;
+
+int t = i3.v;
+i2.v = t * 2;
+int u = i1.v;
+```
+Which statement is true?
+
+- `t` is `6` and `u` is `6`.
++ `t` is `3` and `u` is `6`.
+- `t` is `3` and `u` is `3`.
+- `t` is `6` and `u` is `3`.
 
 # reference_chains_06
-Which performance/maintainability statement about reference chains is most accurate?
+Given this Java code:
+```
+Box a = new Box();
+a.value = 4;
 
-- Constructor work should stay lightweight to avoid slow object creation.
-- Using this clearly can improve readability in fluent APIs.
-+ Long chains may indicate high coupling between classes.
-- Frequent allocation can increase GC pressure in allocation-heavy code paths.
+Box b = a;
+int snap = b.value;
 
-# reference_chains_07
-Which refactoring most improves code related to reference chains?
+b.value = 9;
+int now = a.value;
+int still = snap;
+```
+Which statement is true?
 
-- Refactoring to object pools is rare and only justified for measured hotspots.
-- Refactoring complex sequences into named methods improves traceability.
-+ Refactoring with intermediate variables or null-safe design improves chain readability.
-- Refactoring with defensive copies can prevent shared-mutable-state bugs.
-
-# reference_chains_08
-Which Java API/keyword detail is most relevant to reference chains?
-
-- super(...) is used in constructors to initialize the parent class.
-- record types provide concise syntax for immutable compound data carriers.
-+ Optional can sometimes make nullable chain traversal safer.
-- The @Override annotation helps ensure intended method definitions match parent signatures.
-
-# reference_chains_09
-Which debugging approach is most useful for reference chains problems?
-
-- Debugging with this in watch expressions helps inspect current object state.
-- Inspecting identity hash codes can help confirm whether references point to the same object.
-+ Debugging chains is easier by inspecting each hop in the debugger.
-- Compiler diagnostics are the primary tool for variable syntax issues.
-
-# reference_chains_10
-Which statement about reference chains is true?
-
-- Understanding variable semantics is essential for reasoning about Java behavior.
-- Good type design makes APIs safer and easier to use correctly.
-- Good object creation APIs make invalid states hard to construct.
-+ Reference chains should reflect meaningful object relationships, not accidental structure.
+- `still` is `9` because `snap` points at `b.value`.
++ `now` is `9`, and `still` is `4`.
+- `now` is `4`, and `still` is `9`.
+- `now` is `4`, and `still` is `4`.
