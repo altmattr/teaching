@@ -45,6 +45,28 @@
       height: calc(100vh - 56px);
     }
 
+    .mobile-tabs {
+      display: none;
+      padding: 0 16px;
+      gap: 8px;
+    }
+
+    .mobile-tab-btn {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font: 600 0.88rem/1 "Fira Sans", "Segoe UI", sans-serif;
+      cursor: pointer;
+    }
+
+    .mobile-tab-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
     .page-title {
       margin: 0;
       height: 56px;
@@ -401,16 +423,31 @@
     }
 
     @media (max-width: 900px) {
+      .page-title {
+        justify-content: flex-start;
+        padding-left: 16px;
+      }
       .layout {
-        grid-template-columns: 1fr;
+        display: block;
+        height: calc(100vh - 96px);
+      }
+      .mobile-tabs {
+        display: flex;
+      }
+      .panel.hidden-mobile {
+        display: none;
       }
     }
   </style>
 </head>
   <body>
   <h1 class="page-title">PreReq-Cheq <span class="uid-chip"><span class="value" id="uidValue">auth-pending</span></span><span class="load-indicator loading" id="loadIndicator" aria-label="Loading"></span></h1>
+  <div class="mobile-tabs" id="mobileTabs">
+    <button class="mobile-tab-btn active" id="tabQuestions" type="button" aria-pressed="true">Questions</button>
+    <button class="mobile-tab-btn" id="tabGraph" type="button" aria-pressed="false">Graph</button>
+  </div>
   <div class="layout">
-    <section class="panel controls">
+    <section class="panel controls" id="questionsPanel">
       <div class="last-node">
         <div class="node-main">
           <div class="value" id="lastNodeValue">No Selection</div>
@@ -425,7 +462,7 @@
       <div class="questions" id="questions"></div>
     </section>
 
-    <section class="panel canvas-wrap">
+    <section class="panel canvas-wrap" id="graphPanel">
       <div id="graph"></div>
     </section>
   </div>
@@ -446,6 +483,10 @@
     const submitBtnEl = document.getElementById('submitAnswersBtn');
     const questionsEl = document.getElementById('questions');
     const questionsHintEl = document.getElementById('questionsHint');
+    const questionsPanelEl = document.getElementById('questionsPanel');
+    const graphPanelEl = document.getElementById('graphPanel');
+    const tabQuestionsEl = document.getElementById('tabQuestions');
+    const tabGraphEl = document.getElementById('tabGraph');
     const embedded = "[loading...]";
     let diagramSource = embedded;
     let scoreByTopic = {};
@@ -466,6 +507,7 @@
     const requestedUidAlias = (urlParams.get('uid') || '').trim();
     const requestedViaAlias = (urlParams.get('via') || '').trim();
     let activeUid = '';
+    let currentMobileTab = 'questions';
     const initialTopicParam = urlParams.get('topic') || '';
     const firebaseConfig = {
       apiKey: "AIzaSyBDHEvOmP37CL4qFGyV8bGb0mAras28yDE",
@@ -489,6 +531,22 @@
       loadIndicatorEl.classList.toggle('loading', !ready);
       loadIndicatorEl.classList.toggle('ready', ready);
       loadIndicatorEl.setAttribute('aria-label', ready ? 'Loaded' : 'Loading');
+    }
+
+    function setMobileTab(tab) {
+      currentMobileTab = tab === 'graph' ? 'graph' : 'questions';
+      const isMobile = window.matchMedia('(max-width: 900px)').matches;
+      if (!isMobile) {
+        questionsPanelEl.classList.remove('hidden-mobile');
+        graphPanelEl.classList.remove('hidden-mobile');
+      } else {
+        questionsPanelEl.classList.toggle('hidden-mobile', currentMobileTab !== 'questions');
+        graphPanelEl.classList.toggle('hidden-mobile', currentMobileTab !== 'graph');
+      }
+      tabQuestionsEl.classList.toggle('active', currentMobileTab === 'questions');
+      tabGraphEl.classList.toggle('active', currentMobileTab === 'graph');
+      tabQuestionsEl.setAttribute('aria-pressed', currentMobileTab === 'questions' ? 'true' : 'false');
+      tabGraphEl.setAttribute('aria-pressed', currentMobileTab === 'graph' ? 'true' : 'false');
     }
 
     function updateUidDisplay() {
@@ -1533,10 +1591,15 @@
       lastNodeEl.textContent = label;
       nodeScoreEl.textContent = String(scoreForTopicLabel(label));
       loadQuestionsForTopic(label);
+      if (window.matchMedia('(max-width: 900px)').matches) setMobileTab('questions');
     });
 
     submitBtnEl.addEventListener('click', submitCurrentTopicAnswers);
+    tabQuestionsEl.addEventListener('click', () => setMobileTab('questions'));
+    tabGraphEl.addEventListener('click', () => setMobileTab('graph'));
+    window.matchMedia('(max-width: 900px)').addEventListener('change', () => setMobileTab(currentMobileTab));
 
+    setMobileTab('questions');
     boot();
   </script>
 </body>
