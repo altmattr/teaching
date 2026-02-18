@@ -1,0 +1,79 @@
+# function_definitions_01
+Which statement best defines function definitions in Java?
+
++ A function definition in Java declares a method signature and body.
+- Object modification changes the internal state of a mutable Java object.
+- Object identity in Java means whether two references point to the exact same object.
+- The new keyword allocates an object and invokes its constructor.
+
+# function_definitions_02
+Which Java construct is most directly tied to function definitions?
+
+- The == operator checks identity for object references.
+- Java has primitive types and reference types.
++ Access modifier, return type, name, and parameters form the method definition.
+- In Java, primitives copy values while object variables copy references.
+
+# function_definitions_03
+Which example best demonstrates function definitions in Java code?
+
++ public int add(int a, int b) { return a + b; }
+- order.getCustomer().getAddress() is a common chain example.
+- new ArrayList<>() creates a new list object.
+- a == b being true indicates both references share one object instance.
+
+# function_definitions_04
+Which is a common mistake when working with function definitions?
+
+- A common mistake is expecting this inside a static method.
+- A common mistake is relying on side effects without clear execution order.
++ A common mistake is defining methods that do too many unrelated tasks.
+- A common mistake is memorizing syntax without understanding object semantics.
+
+# function_definitions_05
+Which test most directly validates function definitions behavior?
+
+- A good test includes missing-link cases in deep object graphs.
+- A good test verifies both side effects and returned output of method calls.
++ A strong test suite covers normal, boundary, and error-path inputs.
+- A good test checks both field initialization and invariants across related fields.
+
+# function_definitions_06
+Which performance/maintainability statement about function definitions is most accurate?
+
+- Long chains may indicate high coupling between classes.
++ Small cohesive methods are easier to optimize and maintain.
+- Uncontrolled modification increases coupling and bug risk.
+- Well-designed compound data improves readability more than using parallel primitive arrays.
+
+# function_definitions_07
+Which refactoring most improves code related to function definitions?
+
+- Refactoring with defensive copies can prevent shared-mutable-state bugs.
+- Refactoring to a builder improves creation of objects with many optional fields.
+- Refactoring with intermediate variables or null-safe design improves chain readability.
++ Refactoring large methods into smaller private helpers improves clarity.
+
+# function_definitions_08
+Which Java API/keyword detail is most relevant to function definitions?
+
+- Using JUnit and a debugger effectively is a practical proficiency signal.
+- final on a reference prevents rebinding, not mutation of the referenced object.
+- Dependency injection frameworks centralize object creation in larger systems.
++ The @Override annotation helps ensure intended method definitions match parent signatures.
+
+# function_definitions_09
+Which debugging approach is most useful for function definitions problems?
+
+- Debuggers and logs help verify the actual runtime sequence.
++ Method-definition issues are easier to debug with clear parameter names and contracts.
+- Compiler error messages are useful when diagnosing overload resolution failures.
+- Creation bugs often surface as null fields or partially initialized objects.
+
+# function_definitions_10
+Which statement about function definitions is true?
+
+- Good type design makes APIs safer and easier to use correctly.
++ Good method definitions express one responsibility clearly.
+- Clear semantics are essential for correct APIs and collection behavior.
+- Compound data should model domain concepts, not just group random values.

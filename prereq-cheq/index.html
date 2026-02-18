@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bit Tree nomnoml Demo</title>
+  <title>The Prerequisite Cheq(uisite) for MQ students</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&family=Fira+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #f4f1ed;
@@ -17,6 +17,7 @@
       --accent-dark: #76232f;
       --muted: #5f5a54;
       --track: #373a36;
+      --mono-font: "Fira Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     }
 
     * {
@@ -27,7 +28,7 @@
       margin: 0;
       font-family: "Fira Sans", "Segoe UI", sans-serif;
       color: var(--text);
-      background: radial-gradient(circle at top left, #efe3e5, var(--bg) 45%);
+      background: #ffffff;
       min-height: 100vh;
       overflow: hidden;
     }
@@ -50,9 +51,33 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.25rem;
+      font-size: 2.2rem;
       font-weight: 700;
       color: var(--accent-dark);
+      position: relative;
+    }
+
+    .uid-chip {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 999px;
+      padding: 4px 10px;
+      background: #ffffff;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      font-size: 0.72rem;
+      line-height: 1;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .uid-chip .value {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text);
     }
 
     .panel {
@@ -86,9 +111,20 @@
       padding: 12px;
       min-height: 84px;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 8px;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .node-main {
+      min-width: 0;
+      display: grid;
+      gap: 6px;
+    }
+
+    .node-score {
+      flex-shrink: 0;
+      text-align: right;
     }
 
     .label {
@@ -103,6 +139,10 @@
       font-weight: 600;
       color: var(--accent);
       word-break: break-word;
+    }
+
+    .node-score .value {
+      font-size: 1.1rem;
     }
 
     .meta {
@@ -135,6 +175,7 @@
       border-radius: 8px;
       padding: 10px;
       background: #ffffff;
+      position: relative;
     }
 
     .question.locked {
@@ -147,6 +188,55 @@
       font-weight: 600;
       margin: 0 0 8px 0;
       font-size: 0.92rem;
+      padding-right: 30px;
+    }
+
+    .question-title code {
+      font-weight: 500;
+    }
+
+    .write-help-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      border: none;
+      background: #2563eb;
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .write-help-popover {
+      position: absolute;
+      top: 34px;
+      right: 8px;
+      max-width: 280px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: 0 8px 16px rgba(15, 23, 42, 0.12);
+      padding: 8px 10px;
+      font-size: 0.84rem;
+      color: var(--text);
+      z-index: 3;
+    }
+
+    .write-help-popover a {
+      color: #2563eb;
+      text-decoration: underline;
+    }
+
+    .write-help-popover[hidden] {
+      display: none;
     }
 
     .choices {
@@ -169,6 +259,66 @@
       margin-top: 2px;
     }
 
+    .code-label {
+      margin: 10px 0 6px 0;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .code-box {
+      width: 100%;
+      min-height: 88px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      padding: 8px 10px;
+      font: 12px/1.4 var(--mono-font);
+      white-space: pre;
+      overflow: auto;
+    }
+
+    .question.locked .code-box {
+      background: #ebe7e2;
+      border-color: #cfc7bc;
+      color: #6f685f;
+    }
+
+    .output-compare {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .output-panel {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      padding: 8px;
+      min-height: 64px;
+    }
+
+    .output-title {
+      margin: 0 0 6px 0;
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .output-text {
+      margin: 0;
+      font: 12px/1.4 var(--mono-font);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    code, pre, kbd, samp {
+      font-family: var(--mono-font);
+    }
+
     .hint {
       margin-top: 12px;
       font-size: 0.9rem;
@@ -184,6 +334,11 @@
       color: white;
       background: var(--accent);
       cursor: pointer;
+      position: sticky;
+      top: 10px;
+      z-index: 5;
+      margin-left: auto;
+      display: block;
     }
 
     .submit-btn:disabled {
@@ -216,21 +371,17 @@
   </style>
 </head>
   <body>
-  <h1 class="page-title">Pre-Req-Cheq</h1>
+  <h1 class="page-title">PreReq-Cheq <span class="uid-chip"><span class="value" id="uidValue">auth-pending</span></span></h1>
   <div class="layout">
     <section class="panel controls">
-      <p>Click a node to load its 10 Java multiple-choice questions.</p>
       <div class="last-node">
-        <div class="label">Selected node</div>
-        <div class="value" id="lastNodeValue">None</div>
-      </div>
-      <div class="meta">
-        <div class="label">uid</div>
-        <div class="value" id="uidValue">guest</div>
-      </div>
-      <div class="meta">
-        <div class="label">Selected node score</div>
-        <div class="value" id="nodeScoreValue">0</div>
+        <div class="node-main">
+          <div class="value" id="lastNodeValue">No Selection</div>
+        </div>
+        <div class="node-score">
+          <div class="label">Score</div>
+          <div class="value" id="nodeScoreValue">0</div>
+        </div>
       </div>
       <button class="submit-btn" id="submitAnswersBtn" type="button" disabled>Submit answers</button>
       <div class="hint" id="questionsHint">No topic selected yet.</div>
@@ -244,6 +395,8 @@
 
   <script src="https://unpkg.com/graphre@0.1.3/dist/graphre.js"></script>
   <script src="https://unpkg.com/nomnoml@1.7.0/dist/nomnoml.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
@@ -258,14 +411,23 @@
     const embedded = "[loading...]";
     let diagramSource = embedded;
     let scoreByTopic = {};
+    let topicQuestionCountByKey = {};
+    let topicQuestionIdSetByKey = {};
     let userGradesByTopic = {};
+    let scoreHistoryByTopic = {};
     let localGradesByUid = {};
     let currentTopicLabel = '';
     let currentTopicKey = '';
     let currentQuestions = [];
     let selectedChoiceByQuestionId = {};
+    let selectedWriteByQuestionId = {};
+    let writeFeedbackByQuestionId = {};
+    let currentUidAlias = '';
+    let currentViaAlias = '';
     const urlParams = new URLSearchParams(window.location.search);
-    const uid = urlParams.get('uid') || 'guest';
+    const requestedUidAlias = (urlParams.get('uid') || '').trim();
+    const requestedViaAlias = (urlParams.get('via') || '').trim();
+    let activeUid = '';
     const initialTopicParam = urlParams.get('topic') || '';
     const firebaseConfig = {
       apiKey: "AIzaSyBDHEvOmP37CL4qFGyV8bGb0mAras28yDE",
@@ -279,9 +441,15 @@
     };
 
     const LOCAL_GRADES_KEY = 'prereq_cheq_user_grades_v1';
+    const QUESTION_COUNT_CACHE_KEY = 'prereq_cheq_topic_question_count_v1';
     let firebaseDb = null;
     let firebaseEnabled = false;
-    uidEl.textContent = uid;
+    uidEl.textContent = '(auth pending)';
+
+    function updateUidDisplay() {
+      const uidText = activeUid || 'auth-unavailable';
+      uidEl.textContent = currentUidAlias ? `${uidText} aka "${currentUidAlias}"` : uidText;
+    }
 
     function withFontDirective(src) {
       return /^#font:/m.test(src) ? src : '#font: Fira Sans\n' + src;
@@ -297,23 +465,56 @@
     }
 
     async function boot() {
+      await initFirebase();
+      if (!activeUid) {
+        activeUid = 'auth-unavailable';
+        updateUidDisplay();
+        console.warn('[auth] using fallback uid because Firebase auth uid is unavailable');
+      }
+
       let baseUserGrades = {};
       try {
         const dbRes = await fetch('./db.json', { cache: 'no-store' });
         if (dbRes.ok) {
           const dbData = await dbRes.json();
-          baseUserGrades = getUserTopicGrades(dbData, uid);
+          baseUserGrades = getUserTopicGrades(dbData, activeUid);
         }
       } catch {
         baseUserGrades = {};
       }
-      await initFirebase();
-      const remoteUserGrades = await fetchFirebaseUserGrades(uid);
+      const remoteUserRecord = await fetchFirebaseUserRecord(activeUid);
+      const remoteUserGrades = extractGradesFromUserRecord(remoteUserRecord);
+      const remoteScoreHistory = extractScoreHistoryFromUserRecord(remoteUserRecord);
+      const remoteUidAlias = extractUidAliasFromUserRecord(remoteUserRecord);
+      const remoteViaAlias = extractViaAliasFromUserRecord(remoteUserRecord);
       localGradesByUid = loadLocalGradesByUid();
-      const localUserGrades = localGradesByUid[uid] || {};
+      const localUserRecord = localGradesByUid[activeUid] || {};
+      const localUserGrades = extractGradesFromUserRecord(localUserRecord);
+      const localScoreHistory = extractScoreHistoryFromUserRecord(localUserRecord);
+      const localUidAlias = extractUidAliasFromUserRecord(localUserRecord);
+      const localViaAlias = extractViaAliasFromUserRecord(localUserRecord);
       userGradesByTopic = mergeTopicGrades(baseUserGrades, remoteUserGrades);
       userGradesByTopic = mergeTopicGrades(userGradesByTopic, localUserGrades);
+      scoreHistoryByTopic = mergeScoreHistoryByTopic(remoteScoreHistory, localScoreHistory);
+      currentUidAlias = requestedUidAlias || localUidAlias || remoteUidAlias || '';
+      currentViaAlias = requestedViaAlias || localViaAlias || remoteViaAlias || '';
+      updateUidDisplay();
+      saveLocalUserRecord(activeUid, userGradesByTopic, currentUidAlias, currentViaAlias, scoreHistoryByTopic);
+      if (requestedUidAlias) {
+        await persistUidAliasUnderUser(requestedUidAlias, activeUid);
+      }
+      if (requestedViaAlias) {
+        await persistViaAliasUnderUser(requestedViaAlias, activeUid);
+      }
       scoreByTopic = computeScoreByTopic(userGradesByTopic);
+      console.log('[boot] grade sources merged', {
+        uid: activeUid,
+        firebaseEnabled,
+        baseTopics: Object.keys(baseUserGrades || {}).length,
+        remoteTopics: Object.keys(remoteUserGrades || {}).length,
+        localTopics: Object.keys(localUserGrades || {}).length,
+        finalTopics: Object.keys(userGradesByTopic || {}).length
+      });
 
       try {
         const res = await fetch('./bit_tree.nomnoml', { cache: 'no-store' });
@@ -321,9 +522,16 @@
       } catch {
         diagramSource = embedded;
       }
-      render();
-
       const labels = nodeLabelsFromSource(diagramSource);
+      seedQuestionCountCacheForLabels(labels);
+      render();
+      preloadQuestionCountsForLabels(labels).then(() => {
+        scoreByTopic = computeScoreByTopic(userGradesByTopic);
+        persistQuestionCountCache();
+        render();
+        if (currentTopicLabel) nodeScoreEl.textContent = String(scoreForTopicLabel(currentTopicLabel));
+      });
+
       const initialLabel = resolveTopicLabel(initialTopicParam, labels);
       if (initialLabel) {
         lastNodeEl.textContent = initialLabel;
@@ -359,24 +567,90 @@
       return matched || '';
     }
 
-    function scoreFromTopicData(topicData) {
-      if (!topicData || typeof topicData !== 'object') return 0;
-      return Object.values(topicData).reduce((sum, grade) => {
-        const n = Number(grade);
-        return sum + (Number.isFinite(n) ? n : 0);
-      }, 0);
+    async function preloadQuestionCountsForLabels(labels) {
+      const uniqueKeys = [...new Set((labels || []).map((label) => topicToFilename(label)).filter(Boolean))];
+      await Promise.all(uniqueKeys.map(async (key) => {
+        if (Number.isFinite(Number(topicQuestionCountByKey[key])) && Number(topicQuestionCountByKey[key]) > 0) return;
+        try {
+          const res = await fetch('./questions/' + key + '.md', { cache: 'no-store' });
+          if (!res.ok) {
+            topicQuestionCountByKey[key] = 0;
+            return;
+          }
+          const text = await res.text();
+          const questions = parseMarkdownQuestions(text);
+          topicQuestionCountByKey[key] = questions.length;
+          topicQuestionIdSetByKey[key] = new Set(questions.map((q) => q.id).filter(Boolean));
+        } catch {
+          topicQuestionCountByKey[key] = 0;
+        }
+      }));
+    }
+
+    function loadQuestionCountCache() {
+      try {
+        const raw = localStorage.getItem(QUESTION_COUNT_CACHE_KEY);
+        if (!raw) return {};
+        const parsed = JSON.parse(raw);
+        return parsed && typeof parsed === 'object' ? parsed : {};
+      } catch {
+        return {};
+      }
+    }
+
+    function persistQuestionCountCache() {
+      try {
+        localStorage.setItem(QUESTION_COUNT_CACHE_KEY, JSON.stringify(topicQuestionCountByKey));
+      } catch {
+        // ignore storage failures
+      }
+    }
+
+    function seedQuestionCountCacheForLabels(labels) {
+      const cached = loadQuestionCountCache();
+      const keys = [...new Set((labels || []).map((label) => topicToFilename(label)).filter(Boolean))];
+      for (const key of keys) {
+        const val = Number(cached[key]);
+        if (Number.isFinite(val) && val > 0) topicQuestionCountByKey[key] = val;
+      }
+    }
+
+    function scorePartsFromTopicData(topicData, topicKey) {
+      if (!topicData || typeof topicData !== 'object') return { correct: 0, total: 0 };
+      const validIdSet = topicQuestionIdSetByKey[topicKey];
+      const grades = [];
+      for (const [questionId, rawGrade] of Object.entries(topicData)) {
+        const grade = Number(rawGrade);
+        if (!Number.isFinite(grade)) continue;
+        if (grade === 1 && validIdSet && validIdSet.size > 0 && !validIdSet.has(questionId)) continue;
+        grades.push(grade);
+      }
+      return {
+        correct: grades.reduce((sum, n) => sum + n, 0),
+        total: grades.length
+      };
     }
 
     function getUserTopicGrades(dbData, currentUid) {
-      return (dbData && dbData[currentUid]) || (dbData && dbData.guest) || {};
+      const raw = (dbData && dbData[currentUid]) || {};
+      const out = {};
+      for (const [topicKey, topicData] of Object.entries(raw || {})) {
+        if (!topicData || typeof topicData !== 'object' || Array.isArray(topicData)) continue;
+        const values = Object.values(topicData);
+        const looksLikeGrades = values.length > 0 && values.every((v) => Number.isFinite(Number(v)));
+        if (looksLikeGrades) out[topicKey] = topicData;
+      }
+      return out;
     }
 
     function mergeTopicGrades(base, overlay) {
       const merged = {};
       for (const [topic, topicGrades] of Object.entries(base || {})) {
+        if (!topicGrades || typeof topicGrades !== 'object' || Array.isArray(topicGrades)) continue;
         merged[topic] = { ...(topicGrades || {}) };
       }
       for (const [topic, topicGrades] of Object.entries(overlay || {})) {
+        if (!topicGrades || typeof topicGrades !== 'object' || Array.isArray(topicGrades)) continue;
         merged[topic] = { ...(merged[topic] || {}), ...(topicGrades || {}) };
       }
       return merged;
@@ -401,44 +675,208 @@
       }
     }
 
+    function extractUidAliasFromUserRecord(record) {
+      return record && typeof record.uidAlias === 'string' ? record.uidAlias : '';
+    }
+
+    function extractViaAliasFromUserRecord(record) {
+      return record && typeof record.via === 'string' ? record.via : '';
+    }
+
+    function extractGradesFromUserRecord(record) {
+      const out = {};
+      for (const [key, value] of Object.entries(record || {})) {
+        if (key === 'uidAlias') continue;
+        if (key === 'via') continue;
+        if (key === 'scoreHistory') continue;
+        if (!value || typeof value !== 'object' || Array.isArray(value)) continue;
+        out[key] = value;
+      }
+      return out;
+    }
+
+    function extractScoreHistoryFromUserRecord(record) {
+      const raw = record && record.scoreHistory && typeof record.scoreHistory === 'object' ? record.scoreHistory : {};
+      const out = {};
+      for (const [topicKey, entries] of Object.entries(raw || {})) {
+        if (!Array.isArray(entries)) continue;
+        out[topicKey] = entries
+          .filter((e) => e && typeof e === 'object')
+          .map((e) => ({
+            timestamp: Number(e.timestamp) || Date.now(),
+            correct: Number(e.correct) || 0,
+            total: Number(e.total) || 0
+          }));
+      }
+      return out;
+    }
+
+    function mergeScoreHistoryByTopic(base, overlay) {
+      const merged = {};
+      for (const [topicKey, entries] of Object.entries(base || {})) {
+        merged[topicKey] = Array.isArray(entries) ? [...entries] : [];
+      }
+      for (const [topicKey, entries] of Object.entries(overlay || {})) {
+        if (!Array.isArray(entries)) continue;
+        merged[topicKey] = [...(merged[topicKey] || []), ...entries];
+      }
+      return merged;
+    }
+
+    function buildUserRecord(gradesByTopic, uidAlias, viaAlias, scoreHistory) {
+      const record = { ...(gradesByTopic || {}) };
+      if (uidAlias) record.uidAlias = uidAlias;
+      if (viaAlias) record.via = viaAlias;
+      if (scoreHistory && Object.keys(scoreHistory).length) record.scoreHistory = scoreHistory;
+      return record;
+    }
+
+    function saveLocalUserRecord(currentUid, gradesByTopic, uidAlias, viaAlias, scoreHistory) {
+      localGradesByUid[currentUid] = buildUserRecord(gradesByTopic, uidAlias, viaAlias, scoreHistory);
+      persistLocalGradesByUid();
+    }
+
     function hasFirebaseConfig(cfg) {
       return Boolean(cfg.apiKey && cfg.authDomain && cfg.databaseURL && cfg.projectId && cfg.appId);
     }
 
     async function initFirebase() {
-      if (!hasFirebaseConfig(firebaseConfig) || typeof firebase === 'undefined') return false;
+      const configOk = hasFirebaseConfig(firebaseConfig);
+      if (!configOk) {
+        console.warn('[firebase] config incomplete, skipping Firebase init', {
+          hasApiKey: Boolean(firebaseConfig.apiKey),
+          hasAuthDomain: Boolean(firebaseConfig.authDomain),
+          hasDatabaseURL: Boolean(firebaseConfig.databaseURL),
+          hasProjectId: Boolean(firebaseConfig.projectId),
+          hasAppId: Boolean(firebaseConfig.appId)
+        });
+        return false;
+      }
+      if (typeof firebase === 'undefined') {
+        console.error('[firebase] SDK globals missing (firebase is undefined)');
+        return false;
+      }
       try {
         if (!firebase.apps.length) {
           firebase.initializeApp(firebaseConfig);
+          console.log('[firebase] initialized app', { projectId: firebaseConfig.projectId });
         }
         await firebase.auth().signInAnonymously();
+        activeUid = firebase.auth().currentUser && firebase.auth().currentUser.uid ? firebase.auth().currentUser.uid : '';
+        updateUidDisplay();
+        console.log('[firebase] anonymous auth success', { uid: activeUid });
         firebaseDb = firebase.database();
         firebaseEnabled = true;
+        console.log('[firebase] realtime database ready');
         return true;
-      } catch {
+      } catch (err) {
         firebaseDb = null;
         firebaseEnabled = false;
+        console.error('[firebase] init/auth failed', {
+          code: err && err.code ? err.code : '',
+          message: err && err.message ? err.message : String(err),
+          err
+        });
         return false;
       }
     }
 
-    async function fetchFirebaseUserGrades(currentUid) {
-      if (!firebaseEnabled || !firebaseDb) return {};
+    async function fetchFirebaseUserRecord(currentUid) {
+      if (!firebaseEnabled || !firebaseDb) {
+        console.warn('[firebase] read skipped: Firebase unavailable', { uid: currentUid });
+        return {};
+      }
       try {
         const snap = await firebaseDb.ref(`users/${currentUid}`).get();
         const data = snap && snap.exists() ? snap.val() : {};
+        console.log('[firebase] read complete', {
+          uid: currentUid,
+          hasData: Boolean(snap && snap.exists()),
+          topicCount: data && typeof data === 'object' ? Object.keys(data).length : 0
+        });
         return data && typeof data === 'object' ? data : {};
-      } catch {
+      } catch (err) {
+        console.error('[firebase] read failed', {
+          uid: currentUid,
+          code: err && err.code ? err.code : '',
+          message: err && err.message ? err.message : String(err),
+          err
+        });
         return {};
       }
     }
 
-    async function persistFirebaseUserGrades(currentUid, gradesByTopic) {
-      if (!firebaseEnabled || !firebaseDb) return false;
+    async function persistFirebaseUserGrades(currentUid, gradesByTopic, uidAlias, viaAlias, scoreHistory) {
+      if (!firebaseEnabled || !firebaseDb) {
+        console.warn('[firebase] write skipped: Firebase unavailable', { uid: currentUid });
+        return false;
+      }
       try {
-        await firebaseDb.ref(`users/${currentUid}`).set(gradesByTopic);
+        const userRecord = buildUserRecord(gradesByTopic, uidAlias, viaAlias, scoreHistory);
+        await firebaseDb.ref(`users/${currentUid}`).set(userRecord);
+        console.log('[firebase] write success', {
+          uid: currentUid,
+          topicCount: gradesByTopic && typeof gradesByTopic === 'object' ? Object.keys(gradesByTopic).length : 0,
+          hasUidAlias: Boolean(uidAlias),
+          hasVia: Boolean(viaAlias)
+        });
         return true;
-      } catch {
+      } catch (err) {
+        console.error('[firebase] write failed', {
+          uid: currentUid,
+          code: err && err.code ? err.code : '',
+          message: err && err.message ? err.message : String(err),
+          err
+        });
+        return false;
+      }
+    }
+
+    async function persistUidAliasUnderUser(uidAlias, authUid) {
+      if (!uidAlias || !authUid) return false;
+      currentUidAlias = uidAlias;
+      updateUidDisplay();
+      saveLocalUserRecord(authUid, userGradesByTopic, currentUidAlias, currentViaAlias, scoreHistoryByTopic);
+      if (!firebaseEnabled || !firebaseDb) {
+        console.warn('[firebase] uid alias write skipped: Firebase unavailable', { uidAlias, authUid });
+        return false;
+      }
+      try {
+        await firebaseDb.ref(`users/${authUid}/uidAlias`).set(uidAlias);
+        console.log('[firebase] uid alias saved under user', { uidAlias, authUid });
+        return true;
+      } catch (err) {
+        console.error('[firebase] uid alias write failed', {
+          uidAlias,
+          authUid,
+          code: err && err.code ? err.code : '',
+          message: err && err.message ? err.message : String(err),
+          err
+        });
+        return false;
+      }
+    }
+
+    async function persistViaAliasUnderUser(viaAlias, authUid) {
+      if (!viaAlias || !authUid) return false;
+      currentViaAlias = viaAlias;
+      saveLocalUserRecord(authUid, userGradesByTopic, currentUidAlias, currentViaAlias, scoreHistoryByTopic);
+      if (!firebaseEnabled || !firebaseDb) {
+        console.warn('[firebase] via write skipped: Firebase unavailable', { viaAlias, authUid });
+        return false;
+      }
+      try {
+        await firebaseDb.ref(`users/${authUid}/via`).set(viaAlias);
+        console.log('[firebase] via saved under user', { viaAlias, authUid });
+        return true;
+      } catch (err) {
+        console.error('[firebase] via write failed', {
+          viaAlias,
+          authUid,
+          code: err && err.code ? err.code : '',
+          message: err && err.message ? err.message : String(err),
+          err
+        });
         return false;
       }
     }
@@ -446,23 +884,27 @@
     function computeScoreByTopic(userData) {
       const result = {};
       for (const [topicKey, topicData] of Object.entries(userData || {})) {
-        result[topicKey] = scoreFromTopicData(topicData);
+        result[topicKey] = scorePartsFromTopicData(topicData, topicKey);
       }
       return result;
     }
 
     function scoreForTopicLabel(topicLabel) {
       const key = topicToFilename(topicLabel);
-      return scoreByTopic[key] ?? 0;
+      const parts = scoreByTopic[key] || { correct: 0, total: 0 };
+      const knownTotal = Number(topicQuestionCountByKey[key]);
+      const total = Number.isFinite(knownTotal) && knownTotal > 0 ? knownTotal : parts.total;
+      return `${parts.correct}/${total}`;
     }
 
     function fractionCorrectForTopicKey(topicKey) {
       const topicGrades = userGradesByTopic[topicKey];
       if (!topicGrades || typeof topicGrades !== 'object') return 0;
-      const grades = Object.values(topicGrades).map((v) => Number(v)).filter((v) => Number.isFinite(v));
-      if (!grades.length) return 0;
-      const correct = grades.filter((v) => v === 1).length;
-      return correct / grades.length;
+      const parts = scorePartsFromTopicData(topicGrades, topicKey);
+      const knownTotal = Number(topicQuestionCountByKey[topicKey]);
+      const total = Number.isFinite(knownTotal) && knownTotal > 0 ? knownTotal : parts.total;
+      if (!total) return 0;
+      return parts.correct / total;
     }
 
     function extractTopicKeyFromNodeGroup(group) {
@@ -564,21 +1006,188 @@
       }
     }
 
-    function parseGiftMultipleChoice(text) {
-      const blocks = [...text.matchAll(/::([^:]*?)::([\s\S]*?)\{([\s\S]*?)\}/g)];
-      return blocks.map((m) => {
-        const id = m[1].trim();
-        const prompt = m[2].trim().replace(/\s+/g, ' ');
-        const choices = m[3]
-          .split(/\r?\n/)
-          .map((line) => line.trim())
-          .filter((line) => /^[~=]/.test(line))
-          .map((line) => ({
-            text: line.slice(1).trim(),
-            correct: line.startsWith('=')
-          }));
-        return { id, prompt, choices };
+    function parseMarkdownQuestions(text) {
+      if (typeof marked === 'undefined' || typeof marked.lexer !== 'function') {
+        console.error('[questions] marked parser unavailable');
+        return parseMarkdownQuestionsFallback(text);
+      }
+      const tokens = marked.lexer(text);
+      const questions = [];
+      let current = null;
+
+      function flushCurrent() {
+        if (!current) return;
+        if (current.id && current.prompt) {
+          if (current.choices.length) {
+            current.type = 'mcq';
+            questions.push(current);
+          } else if (current.template || current.solution) {
+            current.type = 'write';
+            questions.push(current);
+          }
+        }
+        current = null;
+      }
+
+      for (const token of tokens) {
+        if (token.type === 'heading' && token.depth === 1) {
+          flushCurrent();
+          current = { id: (token.text || '').trim(), prompt: '', choices: [], template: '', solution: '' };
+          continue;
+        }
+        if (!current) continue;
+
+        if (token.type === 'paragraph') {
+          const para = (token.raw || token.text || '').trim();
+          if (para) {
+            current.prompt = current.prompt ? `${current.prompt}\n\n${para}` : para;
+          }
+          continue;
+        }
+        if (token.type === 'list') {
+          for (const item of token.items || []) {
+            const rawLine = ((item.raw || '').split(/\r?\n/)[0] || '').trim();
+            let marker = '';
+            let optionText = '';
+
+            const fromRaw = rawLine.match(/^([+-])\s+(.*)$/);
+            if (fromRaw) {
+              marker = fromRaw[1];
+              optionText = fromRaw[2].trim();
+            } else {
+              const fallback = (item.text || '').trim();
+              if (fallback.startsWith('+ ') || fallback.startsWith('- ')) {
+                marker = fallback[0];
+                optionText = fallback.slice(2).trim();
+              }
+            }
+
+            if (marker && optionText) {
+              current.choices.push({
+                text: optionText,
+                correct: marker === '+'
+              });
+            }
+          }
+        }
+        if (token.type === 'code') {
+          const tag = (token.lang || '').trim().toLowerCase();
+          if (tag === 'template') current.template = token.text || '';
+          if (tag === 'solution') current.solution = token.text || '';
+          if (tag !== 'template' && tag !== 'solution') {
+            const fenced = '```' + (token.lang || '') + '\n' + (token.text || '') + '\n```';
+            current.prompt = current.prompt ? `${current.prompt}\n\n${fenced}` : fenced;
+          }
+        }
+      }
+
+      flushCurrent();
+      const fallback = parseMarkdownQuestionsFallback(text);
+      const byId = new Map();
+      for (const q of questions) byId.set(q.id, q);
+      for (const q of fallback) {
+        if (!byId.has(q.id)) byId.set(q.id, q);
+      }
+      return [...byId.values()];
+    }
+
+    function parseMarkdownQuestionsFallback(text) {
+      const sections = text.split(/^#\s+/m).map((s) => s.trim()).filter(Boolean);
+      const out = [];
+      for (const section of sections) {
+        const lines = section.split(/\r?\n/);
+        const id = (lines.shift() || '').trim();
+        if (!id) continue;
+
+        const promptLines = [];
+        const choices = [];
+        let template = '';
+        let solution = '';
+        let fence = '';
+        let fenceBuf = [];
+
+        for (const raw of lines) {
+          const line = raw.trimEnd();
+          const s = line.trim();
+
+          const fenceStart = s.match(/^```([a-zA-Z0-9_-]*)\s*$/);
+          if (fenceStart) {
+            if (!fence) {
+              fence = (fenceStart[1] || '').toLowerCase();
+              fenceBuf = [];
+            } else {
+              const code = fenceBuf.join('\n');
+              if (fence === 'template') template = code;
+              else if (fence === 'solution') solution = code;
+              else promptLines.push('```' + fence + '\n' + code + '\n```');
+              fence = '';
+              fenceBuf = [];
+            }
+            continue;
+          }
+          if (fence) {
+            fenceBuf.push(raw);
+            continue;
+          }
+
+          if (s.startsWith('+ ') || s.startsWith('- ')) {
+            choices.push({ text: s.slice(2).trim(), correct: s.startsWith('+ ') });
+            continue;
+          }
+          if (s) promptLines.push(s);
+        }
+
+        const prompt = promptLines.join('\n').trim();
+        if (!prompt) continue;
+        if (choices.length) {
+          out.push({ id, type: 'mcq', prompt, choices, template: '', solution: '' });
+        } else if (template || solution) {
+          out.push({ id, type: 'write', prompt, choices: [], template, solution });
+        }
+      }
+      return out;
+    }
+
+    function renderBlockMarkdown(el, markdownText) {
+      if (typeof marked === 'undefined' || typeof marked.parse !== 'function' || typeof DOMPurify === 'undefined') {
+        el.textContent = markdownText || '';
+        return;
+      }
+      const html = marked.parse(markdownText || '');
+      el.innerHTML = DOMPurify.sanitize(html, {
+        ALLOWED_TAGS: ['p', 'pre', 'code', 'em', 'strong', 'span', 'a', 'br'],
+        ALLOWED_ATTR: ['href', 'title']
       });
+    }
+
+    function renderInlineMarkdown(el, markdownText) {
+      if (typeof marked === 'undefined' || typeof marked.parseInline !== 'function' || typeof DOMPurify === 'undefined') {
+        el.textContent = markdownText || '';
+        return;
+      }
+      const html = marked.parseInline(markdownText || '');
+      el.innerHTML = DOMPurify.sanitize(html, {
+        ALLOWED_TAGS: ['code', 'em', 'strong', 'span', 'a', 'br'],
+        ALLOWED_ATTR: ['href', 'title']
+      });
+    }
+
+    function captureConsoleOutput(code) {
+      const lines = [];
+      const fakeConsole = {
+        log: (...args) => lines.push(args.map((a) => String(a)).join(' ')),
+        error: (...args) => lines.push(args.map((a) => String(a)).join(' '))
+      };
+      try {
+        const fn = new Function('console', `"use strict";\n${code || ''}`);
+        fn(fakeConsole);
+        return { output: lines.join('\n'), runtimeError: '' };
+      } catch (err) {
+        return {
+          output: lines.join('\n'),
+          runtimeError: err && err.message ? err.message : String(err)
+        };
+      }
     }
 
     function renderQuestions(topicLabel, questions) {
@@ -603,41 +1212,118 @@
         card.className = 'question';
         if (locked) card.classList.add('locked');
 
-        const title = document.createElement('p');
+        const title = document.createElement('div');
         title.className = 'question-title';
-        title.textContent = q.prompt;
+        renderBlockMarkdown(title, q.prompt);
         card.appendChild(title);
+        if (q.type === 'write') {
+          const helpBtn = document.createElement('button');
+          helpBtn.type = 'button';
+          helpBtn.className = 'write-help-btn';
+          helpBtn.textContent = '?';
+          helpBtn.setAttribute('aria-label', 'Write question help');
 
-        const list = document.createElement('ul');
-        list.className = 'choices';
-        for (let ci = 0; ci < q.choices.length; ci += 1) {
-          const c = q.choices[ci];
-          const item = document.createElement('li');
-          item.className = 'choice';
+          const helpPopover = document.createElement('div');
+          helpPopover.className = 'write-help-popover';
+          helpPopover.hidden = true;
+          helpPopover.innerHTML = 'you should write your code in <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference" target="_blank" rel="noopener noreferrer">javascript</a>';
 
-          const input = document.createElement('input');
-          input.type = 'radio';
-          input.name = `q_${qi}`;
-          input.id = `q_${qi}_c_${ci}`;
-          input.value = String(ci);
-          if (locked) {
-            input.disabled = true;
-            if (c.correct) input.checked = true;
-          } else {
-            input.addEventListener('change', () => {
-              selectedChoiceByQuestionId[q.id] = ci;
-            });
+          helpBtn.addEventListener('click', (ev) => {
+            ev.stopPropagation();
+            helpPopover.hidden = !helpPopover.hidden;
+          });
+          card.addEventListener('click', (ev) => {
+            if (!helpPopover.hidden && !helpPopover.contains(ev.target) && ev.target !== helpBtn) {
+              helpPopover.hidden = true;
+            }
+          });
+
+          card.appendChild(helpBtn);
+          card.appendChild(helpPopover);
+
+          const tLabel = document.createElement('p');
+          tLabel.className = 'code-label';
+          tLabel.textContent = 'Template';
+          card.appendChild(tLabel);
+
+          const templateBox = document.createElement('textarea');
+          templateBox.className = 'code-box';
+          templateBox.spellcheck = false;
+          templateBox.value = selectedWriteByQuestionId[q.id] ?? q.template ?? '';
+          if (locked) templateBox.disabled = true;
+          templateBox.addEventListener('input', () => {
+            selectedWriteByQuestionId[q.id] = templateBox.value;
+            delete writeFeedbackByQuestionId[q.id];
+          });
+          card.appendChild(templateBox);
+
+          if (locked && q.solution) {
+            const sLabel = document.createElement('p');
+            sLabel.className = 'code-label';
+            sLabel.textContent = 'Solution';
+            card.appendChild(sLabel);
+
+            const solutionBox = document.createElement('pre');
+            solutionBox.className = 'code-box';
+            solutionBox.textContent = q.solution;
+            card.appendChild(solutionBox);
+          } else if (!locked && writeFeedbackByQuestionId[q.id] && !writeFeedbackByQuestionId[q.id].match) {
+            const feedback = writeFeedbackByQuestionId[q.id];
+            const compare = document.createElement('div');
+            compare.className = 'output-compare';
+
+            const userPanel = document.createElement('div');
+            userPanel.className = 'output-panel';
+            userPanel.innerHTML = '<p class=\"output-title\">Your output</p>';
+            const userText = document.createElement('pre');
+            userText.className = 'output-text';
+            userText.textContent = feedback.userOutput || '(no output)';
+            userPanel.appendChild(userText);
+
+            const solPanel = document.createElement('div');
+            solPanel.className = 'output-panel';
+            solPanel.innerHTML = '<p class=\"output-title\">Expected output</p>';
+            const solText = document.createElement('pre');
+            solText.className = 'output-text';
+            solText.textContent = feedback.solutionOutput || '(no output)';
+            solPanel.appendChild(solText);
+
+            compare.appendChild(userPanel);
+            compare.appendChild(solPanel);
+            card.appendChild(compare);
           }
+        } else {
+          const list = document.createElement('ul');
+          list.className = 'choices';
+          for (let ci = 0; ci < q.choices.length; ci += 1) {
+            const c = q.choices[ci];
+            const item = document.createElement('li');
+            item.className = 'choice';
 
-          const label = document.createElement('label');
-          label.setAttribute('for', input.id);
-          label.textContent = c.text;
+            const input = document.createElement('input');
+            input.type = 'radio';
+            input.name = `q_${qi}`;
+            input.id = `q_${qi}_c_${ci}`;
+            input.value = String(ci);
+            if (locked) {
+              input.disabled = true;
+              if (c.correct) input.checked = true;
+            } else {
+              input.addEventListener('change', () => {
+                selectedChoiceByQuestionId[q.id] = ci;
+              });
+            }
 
-          item.appendChild(input);
-          item.appendChild(label);
-          list.appendChild(item);
+            const label = document.createElement('label');
+            label.setAttribute('for', input.id);
+            renderInlineMarkdown(label, c.text);
+
+            item.appendChild(input);
+            item.appendChild(label);
+            list.appendChild(item);
+          }
+          card.appendChild(list);
         }
-        card.appendChild(list);
         questionsEl.appendChild(card);
       }
       submitBtnEl.disabled = !hasUnlocked;
@@ -647,49 +1333,107 @@
       if (!currentTopicKey || !currentQuestions.length) return;
       const topicGrades = { ...(userGradesByTopic[currentTopicKey] || {}) };
       let gradedCount = 0;
+      let wrongCount = 0;
+      const preExistingCorrectIds = currentQuestions
+        .filter((q) => q.type === 'mcq')
+        .map((q) => q.id)
+        .filter((id) => Number(topicGrades[id]) === 1);
 
       for (const q of currentQuestions) {
         if (Number(topicGrades[q.id]) === 1) continue;
-        const selectedIndex = selectedChoiceByQuestionId[q.id];
-        const selected = Number.isInteger(selectedIndex) ? q.choices[selectedIndex] : null;
-        topicGrades[q.id] = selected && selected.correct ? 1 : 0;
-        gradedCount += 1;
+        if (q.type === 'mcq') {
+          const selectedIndex = selectedChoiceByQuestionId[q.id];
+          if (!Number.isInteger(selectedIndex)) {
+            // Unanswered MCQ: do not grade or penalize.
+            continue;
+          }
+          const selected = Number.isInteger(selectedIndex) ? q.choices[selectedIndex] : null;
+          const isCorrect = Boolean(selected && selected.correct);
+          topicGrades[q.id] = isCorrect ? 1 : 0;
+          if (!isCorrect) wrongCount += 1;
+          gradedCount += 1;
+          continue;
+        }
+        if (q.type === 'write') {
+          if (!Object.prototype.hasOwnProperty.call(selectedWriteByQuestionId, q.id)) {
+            // Unanswered write question: do not grade or penalize.
+            continue;
+          }
+          const userCode = selectedWriteByQuestionId[q.id] ?? q.template ?? '';
+          const solutionCode = q.solution ?? '';
+          const userRun = captureConsoleOutput(userCode);
+          const solutionRun = captureConsoleOutput(solutionCode);
+          const userOut = userRun.runtimeError ? `${userRun.output}\n[error] ${userRun.runtimeError}`.trim() : userRun.output;
+          const solutionOut = solutionRun.runtimeError ? `${solutionRun.output}\n[error] ${solutionRun.runtimeError}`.trim() : solutionRun.output;
+          const matched = userOut === solutionOut;
+          topicGrades[q.id] = matched ? 1 : 0;
+          if (!matched) wrongCount += 1;
+          writeFeedbackByQuestionId[q.id] = { match: matched, userOutput: userOut, solutionOutput: solutionOut };
+          gradedCount += 1;
+        }
+      }
+
+      let penaltyCount = 0;
+      for (const id of preExistingCorrectIds) {
+        if (penaltyCount >= wrongCount) break;
+        if (Number(topicGrades[id]) === 1) {
+          topicGrades[id] = 0;
+          penaltyCount += 1;
+        }
       }
 
       userGradesByTopic[currentTopicKey] = topicGrades;
-      localGradesByUid[uid] = userGradesByTopic;
-      persistLocalGradesByUid();
+      const parts = scorePartsFromTopicData(topicGrades, currentTopicKey);
+      const topicHistory = [...(scoreHistoryByTopic[currentTopicKey] || [])];
+      topicHistory.push({
+        timestamp: Date.now(),
+        correct: parts.correct,
+        total: parts.total
+      });
+      scoreHistoryByTopic[currentTopicKey] = topicHistory;
+      saveLocalUserRecord(activeUid, userGradesByTopic, currentUidAlias, currentViaAlias, scoreHistoryByTopic);
       scoreByTopic = computeScoreByTopic(userGradesByTopic);
       nodeScoreEl.textContent = String(scoreForTopicLabel(currentTopicLabel));
-      const remoteSaved = await persistFirebaseUserGrades(uid, userGradesByTopic);
-      questionsHintEl.textContent = remoteSaved
-        ? `Saved ${gradedCount} response(s) for ${currentTopicLabel} (local + Firebase backup).`
-        : `Saved ${gradedCount} response(s) for ${currentTopicLabel} (${firebaseEnabled ? 'local only' : 'local only, Firebase not configured'}).`;
+      const remoteSaved = await persistFirebaseUserGrades(activeUid, userGradesByTopic, currentUidAlias, currentViaAlias, scoreHistoryByTopic);
+      const storageText = remoteSaved
+        ? 'local + Firebase backup'
+        : (firebaseEnabled ? 'local only' : 'local only, Firebase not configured');
+      const penaltyText = penaltyCount > 0 ? ` Penalty applied: ${penaltyCount} previously-correct question(s) reset.` : '';
+      questionsHintEl.textContent = `Saved ${gradedCount} response(s) for ${currentTopicLabel} (${storageText}).${penaltyText}`;
       renderQuestions(currentTopicLabel, currentQuestions);
       render();
+      document.querySelector('.controls')?.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     async function loadQuestionsForTopic(topicLabel) {
       const fileKey = topicToFilename(topicLabel);
-      const filePath = `./questions/${fileKey}.gift`;
+      const filePath = `./questions/${fileKey}.md`;
       currentQuestions = [];
       currentTopicLabel = topicLabel;
       currentTopicKey = fileKey;
       selectedChoiceByQuestionId = {};
+      selectedWriteByQuestionId = {};
+      writeFeedbackByQuestionId = {};
       submitBtnEl.disabled = true;
       questionsEl.innerHTML = '';
-      questionsHintEl.textContent = `Loading ${fileKey}.gift...`;
+      questionsHintEl.textContent = `Loading ${fileKey}.md...`;
       try {
         const res = await fetch(filePath, { cache: 'no-store' });
         if (!res.ok) {
-          questionsHintEl.textContent = `Could not load ${fileKey}.gift (HTTP ${res.status}).`;
+          questionsHintEl.textContent = `Could not load ${fileKey}.md (HTTP ${res.status}).`;
           return;
         }
         const text = await res.text();
-        const questions = parseGiftMultipleChoice(text);
+        const questions = parseMarkdownQuestions(text);
+        topicQuestionCountByKey[fileKey] = questions.length;
+        topicQuestionIdSetByKey[fileKey] = new Set(questions.map((q) => q.id).filter(Boolean));
+        persistQuestionCountCache();
+        scoreByTopic = computeScoreByTopic(userGradesByTopic);
         renderQuestions(topicLabel, questions);
+        nodeScoreEl.textContent = String(scoreForTopicLabel(topicLabel));
+        render();
       } catch {
-        questionsHintEl.textContent = `Could not load ${fileKey}.gift. Use a local web server rather than file://.`;
+        questionsHintEl.textContent = `Could not load ${fileKey}.md. Use a local web server rather than file://.`;
       }
     }
 

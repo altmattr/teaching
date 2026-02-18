@@ -1,0 +1,79 @@
+# object_identity_01
+Which statement best defines object identity in Java?
+
+- Object creation in Java is the process of allocating and initializing class instances.
+- Overloading defines multiple methods with the same name but different parameter lists.
++ Object identity in Java means whether two references point to the exact same object.
+- Reference semantics track object identity, while value semantics compare logical content.
+
+# object_identity_02
+Which Java construct is most directly tied to object identity?
+
+- Constructors, factory methods, and builders are common object-creation techniques.
+- Java resolves overloaded methods at compile time using argument types.
+- In Java, object variables hold references; primitives hold values directly.
++ The == operator checks identity for object references.
+
+# object_identity_03
+Which example best demonstrates object identity in Java code?
+
+- Implementing undo usually stores command history and a reverse operation per command.
++ a == b being true indicates both references share one object instance.
+- int, boolean, and double are primitive type examples.
+- A Person class with name and age fields is a basic compound data example.
+
+# object_identity_04
+Which is a common mistake when working with object identity?
+
++ A common mistake is using == instead of equals() for value comparison.
+- A common mistake is overusing new inside tight loops when reuse is possible.
+- A common mistake is exposing mutable internal fields directly.
+- A common mistake is hard-coding command selection with long if/else chains instead of polymorphism.
+
+# object_identity_05
+Which test most directly validates object identity behavior?
+
+- A good test verifies both side effects and returned output of method calls.
++ A good test distinguishes identity checks from equality checks.
+- Type-related tests should include boundary values and invalid type paths.
+- A test can assert that new instances start with independent state.
+
+# object_identity_06
+Which performance/maintainability statement about object identity is most accurate?
+
++ Identity matters for caching, synchronization, and aliasing behavior.
+- Using this clearly can improve readability in fluent APIs.
+- Long chains may indicate high coupling between classes.
+- Creation strategy can affect readability and memory behavior.
+
+# object_identity_07
+Which refactoring most improves code related to object identity?
+
++ Refactoring equals/hashCode implementations clarifies value semantics vs identity.
+- Refactoring with defensive copies can prevent shared-mutable-state bugs.
+- Refactoring toward immutability reduces modification-related defects.
+- Refactoring large methods into smaller private helpers improves clarity.
+
+# object_identity_08
+Which Java API/keyword detail is most relevant to object identity?
+
+- super(...) is used in constructors to initialize the parent class.
++ System.identityHashCode(obj) can help inspect identity-related behavior.
+- equals() and hashCode() define value semantics for custom classes.
+- Using JUnit and a debugger effectively is a practical proficiency signal.
+
+# object_identity_09
+Which debugging approach is most useful for object identity problems?
+
+- Inspecting identity hash codes can help confirm whether references point to the same object.
+- Debuggers are useful for inspecting object graphs and nested field values.
+- Debugging chains is easier by inspecting each hop in the debugger.
++ Debugging identity issues often involves tracking shared references.
+
+# object_identity_10
+Which statement about object identity is true?
+
++ Identity and equality are different concepts in Java object models.
+- Good overloading keeps method meaning consistent across variants.
+- Understanding variable semantics is essential for reasoning about Java behavior.
+- Constructors should establish valid invariants before methods are called.

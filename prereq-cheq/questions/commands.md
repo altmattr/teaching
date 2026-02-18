@@ -1,0 +1,89 @@
+# write it
+Write a program which prints `"Hi there!"` to the console.
+
+```template
+```
+
+```solution
+console.log("Hi there!");
+```
+
+# commands_01
+Which statement best defines commands in Java?
+
++ A command in Java is an object that encapsulates an action behind a method call.
+- Object identity in Java means whether two references point to the exact same object.
+- A function call in Java invokes a method with arguments and optional return value.
+- Compound data in Java combines multiple values into one structure, such as objects, arrays, or records.
+
+# commands_02
+Which Java construct is most directly tied to commands?
+
+- Assignment operator = copies references for object types.
+- Statement order in blocks controls sequencing behavior.
++ The Command pattern is typically modeled with an interface such as Runnable or a custom execute() method.
+- Method invocation syntax object.method(args) is the primary construct.
+
+# commands_03
+Which example best demonstrates commands in Java code?
+
+- new ArrayList<>() creates a new list object.
++ Implementing undo usually stores command history and a reverse operation per command.
+- A Person class with name and age fields is a basic compound data example.
+- A static factory like LocalDate.of(...) is an object creation example.
+
+# commands_04
+Which is a common mistake when working with commands?
+
+- A common mistake is using == instead of equals() for value comparison.
+- A common mistake is expecting this inside a static method.
++ A common mistake is hard-coding command selection with long if/else chains instead of polymorphism.
+- A common mistake is exposing many telescoping constructors instead of clearer factories.
+
+# commands_05
+Which test most directly validates commands behavior?
+
+- A strong test suite covers normal, boundary, and error-path inputs.
+- Tests should cover each overloaded signature explicitly.
++ A good command test verifies receiver state changes after execute().
+- A good test distinguishes identity checks from equality checks.
+
+# commands_06
+Which performance/maintainability statement about commands is most accurate?
+
+- Accidental aliasing can cause hard-to-track side effects.
++ Command objects can reduce coupling between invoker code and business logic classes.
+- Choosing mutable vs immutable types affects semantic clarity.
+- Excessive nested calls can reduce readability and debugging clarity.
+
+# commands_07
+Which refactoring most improves code related to commands?
+
+- Extracting intermediate variables can simplify complex method-call expressions.
+- Refactoring parameter names can reduce overuse of this.field assignments.
+- Refactoring shared setup into one canonical constructor reduces bugs.
++ Refactoring to a command map keyed by user input improves extensibility.
+
+# commands_08
+Which Java API/keyword detail is most relevant to commands?
+
+- new can also instantiate arrays, e.g., new int[10].
++ Java collections like Map<String, Command> are commonly used to dispatch commands.
+- Copy constructors or clone alternatives are used when independent copies are needed.
+- Optional can sometimes make nullable chain traversal safer.
+
+# commands_09
+Which debugging approach is most useful for commands problems?
+
++ Stepping through invoker -> command -> receiver helps debug command flow.
+- Creation bugs often surface as null fields or partially initialized objects.
+- Inspecting identity hash codes can help confirm whether references point to the same object.
+- Mutation bugs are debugged by tracing who writes to the object state.
+
+# commands_10
+Which statement about commands is true?
+
++ Commands are especially useful when actions must be queued, logged, or retried.
+- this always points to the receiver object for the current instance call.
+- Reference chains should reflect meaningful object relationships, not accidental structure.
+- Java proficiency includes writing readable code that others can maintain.
