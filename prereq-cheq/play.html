@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maths Topic DAG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --panel: #ffffff;
+      --text: #1f1f1f;
+      --muted: #5f5a54;
+      --border: #d6d0c4;
+      --accent: #a6192e;
+      --accent-dark: #76232f;
+      --node-fill: #ffffff;
+      --node-stroke: #1f1f1f;
+      --link-stroke: #1f1f1f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: "Fira Sans", "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .page {
+      display: grid;
+      grid-template-rows: 56px 1fr;
+      height: 100%;
+    }
+
+    .title {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      position: relative;
+    }
+
+    .zoom-controls {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .zoom-btn {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      border-radius: 8px;
+      min-width: 28px;
+      height: 28px;
+      padding: 0 8px;
+      font: 600 0.9rem/1 "Fira Sans", "Segoe UI", sans-serif;
+      cursor: pointer;
+    }
+
+    .zoom-btn:hover {
+      border-color: #bdb5a8;
+    }
+
+    .zoom-label {
+      min-width: 44px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .canvas-wrap {
+      margin: 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--panel);
+      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.07);
+      overflow: scroll;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 12px;
+    }
+
+    #graph {
+      min-width: max-content;
+      display: block;
+      position: relative;
+    }
+
+    #graph svg {
+      display: block;
+      max-width: none !important;
+      height: auto !important;
+      background: #fff;
+      border-radius: 12px;
+      margin: 0;
+    }
+
+    #graph svg text {
+      font-family: "Fira Sans", "Segoe UI", sans-serif;
+    }
+
+    .status {
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .error {
+      color: #b91c1c;
+      white-space: pre-wrap;
+      font-size: 0.92rem;
+    }
+
+    .node rect {
+      fill: var(--node-fill);
+      stroke: var(--node-stroke);
+      stroke-width: 1.2;
+      rx: 6;
+      ry: 6;
+    }
+
+    .node text {
+      fill: var(--text);
+      font-size: 12px;
+      font-weight: 600;
+      dominant-baseline: middle;
+      text-anchor: middle;
+      pointer-events: none;
+    }
+
+    .link {
+      fill: none;
+      stroke: var(--link-stroke);
+      stroke-width: 1.1;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: center;
+      margin: 6px 0 0;
+    }
+
+    .note-popup {
+      position: absolute;
+      z-index: 5;
+      max-width: 260px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--text);
+      font-size: 0.9rem;
+      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.12);
+    }
+
+    .note-popup.hidden {
+      display: none;
+    }
+
+    .note-title {
+      margin: 0 0 6px;
+      font-weight: 700;
+      color: var(--accent-dark);
+    }
+
+    .note-body {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1 class="title">
+      Maths Topic DAG
+      <span class="zoom-controls">
+        <button class="zoom-btn" id="zoomOutBtn" type="button" aria-label="Zoom out">-</button>
+        <span class="zoom-label" id="zoomLabel">100%</span>
+        <button class="zoom-btn" id="zoomInBtn" type="button" aria-label="Zoom in">+</button>
+        <button class="zoom-btn" id="zoomResetBtn" type="button" aria-label="Reset zoom">Reset</button>
+      </span>
+    </h1>
+    <section class="canvas-wrap">
+      <div id="graph">
+        <div class="status">Loading DAG...</div>
+        <div class="hint">Click a node to expand (stubbed for future sub-DAGs).</div>
+        <div id="graph-inner"></div>
+        <div id="notePopup" class="note-popup hidden" role="dialog" aria-live="polite">
+          <div class="note-title" id="noteTitle"></div>
+          <p class="note-body" id="noteBody"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import * as d3 from "https://esm.sh/d3@7";
+    import dagreD3 from "https://esm.sh/dagre-d3@0.6.4";
+
+    const graphEl = document.getElementById('graph');
+    const notePopupEl = document.getElementById('notePopup');
+    const noteTitleEl = document.getElementById('noteTitle');
+    const noteBodyEl = document.getElementById('noteBody');
+    const zoomInBtnEl = document.getElementById('zoomInBtn');
+    const zoomOutBtnEl = document.getElementById('zoomOutBtn');
+    const zoomResetBtnEl = document.getElementById('zoomResetBtn');
+    const zoomLabelEl = document.getElementById('zoomLabel');
+
+    const NODE_WIDTH = 140;
+    const NODE_HEIGHT = 22;
+    const GAP_X = 22;
+    const GAP_Y = 8;
+    const PADDING = 14;
+
+    let currentZoom = 1;
+    let baseWidth = 0;
+    let baseHeight = 0;
+    let currentSvgEl = null;
+
+    const expansions = new Map();
+
+    function setError(message) {
+      graphEl.innerHTML = '<pre class="error"></pre>';
+      const pre = graphEl.querySelector('pre');
+      pre.textContent = message;
+    }
+
+    function clampZoom(value) {
+      return Math.min(3, Math.max(0.1, value));
+    }
+
+    function applyZoom() {
+      if (!currentSvgEl || !baseWidth || !baseHeight) return;
+      const w = Math.round(baseWidth * currentZoom);
+      const h = Math.round(baseHeight * currentZoom);
+      currentSvgEl.setAttribute("width", String(w));
+      currentSvgEl.setAttribute("height", String(h));
+      zoomLabelEl.textContent = `${Math.round(currentZoom * 100)}%`;
+    }
+
+    function setZoom(value) {
+      currentZoom = clampZoom(value);
+      applyZoom();
+    }
+
+    let dagData = [];
+    let noteById = new Map();
+
+    function rebuildNoteIndex(items) {
+      return new Map(items.map((item) => [item.id, item.note ?? ""]));
+    }
+
+    function buildGraph(items) {
+      const graph = new dagreD3.graphlib.Graph({ multigraph: true })
+        .setGraph({
+          rankdir: "LR",
+          nodesep: GAP_X,
+          ranksep: GAP_Y,
+          marginx: PADDING,
+          marginy: PADDING
+        })
+        .setDefaultEdgeLabel(() => ({}));
+
+      items.forEach((item) => {
+        graph.setNode(item.id, {
+          label: item.label ?? item.id,
+          width: NODE_WIDTH,
+          height: NODE_HEIGHT,
+          rx: 6,
+          ry: 6
+        });
+      });
+
+      items.forEach((item) => {
+        (item.prereqs || []).forEach((parentId) => {
+          graph.setEdge(parentId, item.id, {
+            curve: d3.curveLinear
+          }, `${parentId}->${item.id}`);
+        });
+      });
+
+      return graph;
+    }
+
+    function hideNote() {
+      notePopupEl.classList.add('hidden');
+    }
+
+    function showNote(nodeId, graph, svgNode) {
+      const node = graph.node(nodeId);
+      if (!node || !svgNode) return;
+      const note = noteById.get(nodeId) || "No note yet.";
+
+      noteTitleEl.textContent = node.label || nodeId;
+      noteBodyEl.textContent = note;
+
+      const point = svgNode.createSVGPoint();
+      point.x = (node.x ?? 0) + PADDING;
+      point.y = (node.y ?? 0) + PADDING;
+      const screenPoint = point.matrixTransform(svgNode.getScreenCTM());
+      const graphRect = graphEl.getBoundingClientRect();
+
+      notePopupEl.style.left = `${screenPoint.x - graphRect.left + 12}px`;
+      notePopupEl.style.top = `${screenPoint.y - graphRect.top + 12}px`;
+      notePopupEl.classList.remove('hidden');
+    }
+
+    function renderGraph(items) {
+      const graph = buildGraph(items);
+
+      const graphInnerEl = document.getElementById('graph-inner');
+      graphInnerEl.innerHTML = '';
+
+      const svg = d3.select(graphInnerEl).append('svg');
+
+      const inner = svg.append('g')
+        .attr('transform', `translate(${PADDING},${PADDING})`);
+
+      const renderer = new dagreD3.render();
+      renderer(inner, graph);
+
+      inner.selectAll("g.node rect")
+        .attr("fill", "var(--node-fill)")
+        .attr("stroke", "var(--node-stroke)")
+        .attr("stroke-width", 1.2);
+
+      inner.selectAll("g.edgePath path")
+        .attr("stroke", "var(--link-stroke)")
+        .attr("stroke-width", 1.1)
+        .attr("fill", "none");
+
+      inner.selectAll("g.edgePath marker path")
+        .attr("fill", "var(--link-stroke)");
+
+      const graphWidth = graph.graph().width + PADDING * 2;
+      const graphHeight = graph.graph().height + PADDING * 2;
+      svg.attr('width', graphWidth)
+        .attr('height', graphHeight)
+        .attr('viewBox', `0 0 ${graphWidth} ${graphHeight}`);
+
+      inner.selectAll("g.node")
+        .style("cursor", "pointer")
+        .on("click", (event, nodeId) => {
+          event.stopPropagation();
+          handleNodeClick(nodeId);
+          showNote(nodeId, graph, svg.node());
+        });
+
+      currentSvgEl = svg.node();
+      baseWidth = graphWidth;
+      baseHeight = graphHeight;
+      setZoom(1);
+    }
+
+    function handleNodeClick(node) {
+      const expansion = expansions.get(node);
+      if (!expansion) {
+        const hint = graphEl.querySelector('.hint');
+        if (hint) {
+          hint.textContent = `No sub-DAG registered for “${node}” yet.`;
+        }
+        return;
+      }
+
+      const { nodes } = expansion;
+      renderGraph(nodes);
+    }
+
+    async function loadData() {
+      const res = await fetch('./math.json', { cache: 'no-store' });
+      if (!res.ok) {
+        throw new Error(`Could not load math.json (HTTP ${res.status}).`);
+      }
+      const json = await res.json();
+      if (!Array.isArray(json)) {
+        throw new Error("math.json must be an array of nodes.");
+      }
+      return json;
+    }
+
+    async function init() {
+      try {
+        dagData = await loadData();
+        noteById = rebuildNoteIndex(dagData);
+        renderGraph(dagData);
+      } catch (err) {
+        setError("DAG render error:\n\n" + (err && err.message ? err.message : String(err)));
+      }
+    }
+
+    zoomInBtnEl.addEventListener("click", () => setZoom(currentZoom + 0.1));
+    zoomOutBtnEl.addEventListener("click", () => setZoom(currentZoom - 0.1));
+    zoomResetBtnEl.addEventListener("click", () => setZoom(1));
+    graphEl.addEventListener("click", () => hideNote());
+
+    init();
+  </script>
+</body>
+</html>

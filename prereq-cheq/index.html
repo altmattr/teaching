@@ -474,6 +474,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="/__/firebase/init.js"></script>
   <script>
     const graphEl = document.getElementById('graph');
     const lastNodeEl = document.getElementById('lastNodeValue');
@@ -509,16 +510,11 @@
     let activeUid = '';
     let currentMobileTab = 'questions';
     const initialTopicParam = urlParams.get('topic') || '';
-    const firebaseConfig = {
-      apiKey: "AIzaSyBDHEvOmP37CL4qFGyV8bGb0mAras28yDE",
-      authDomain: "pre-req-cheq.firebaseapp.com",
-      databaseURL: "https://pre-req-cheq-default-rtdb.firebaseio.com",
-      projectId: "pre-req-cheq",
-      storageBucket: "pre-req-cheq.firebasestorage.app",
-      messagingSenderId: "494678027606",
-      appId: "1:494678027606:web:30973a7e63330a8989baf7",
-      measurementId: "G-ZXE7Z3L4HR"
-    };
+    // Inject at runtime for non-Hosting environments (e.g. local dev).
+    // Example: window.__PREREQ_FIREBASE_CONFIG__ = { ... };
+    const firebaseConfig = (window.__PREREQ_FIREBASE_CONFIG__ && typeof window.__PREREQ_FIREBASE_CONFIG__ === 'object')
+      ? window.__PREREQ_FIREBASE_CONFIG__
+      : {};
 
     const LOCAL_GRADES_KEY = 'prereq_cheq_user_grades_v1';
     const QUESTION_COUNT_CACHE_KEY = 'prereq_cheq_topic_question_count_v1';
@@ -874,29 +870,25 @@
     }
 
     function hasFirebaseConfig(cfg) {
-      return Boolean(cfg.apiKey && cfg.authDomain && cfg.databaseURL && cfg.projectId && cfg.appId);
+      return Boolean(cfg && cfg.apiKey && cfg.authDomain && cfg.databaseURL && cfg.projectId && cfg.appId);
     }
 
     async function initFirebase() {
-      const configOk = hasFirebaseConfig(firebaseConfig);
-      if (!configOk) {
-        console.warn('[firebase] config incomplete, skipping Firebase init', {
-          hasApiKey: Boolean(firebaseConfig.apiKey),
-          hasAuthDomain: Boolean(firebaseConfig.authDomain),
-          hasDatabaseURL: Boolean(firebaseConfig.databaseURL),
-          hasProjectId: Boolean(firebaseConfig.projectId),
-          hasAppId: Boolean(firebaseConfig.appId)
-        });
-        return false;
-      }
       if (typeof firebase === 'undefined') {
         console.error('[firebase] SDK globals missing (firebase is undefined)');
         return false;
       }
       try {
         if (!firebase.apps.length) {
+          const configOk = hasFirebaseConfig(firebaseConfig);
+          if (!configOk) {
+            console.warn('[firebase] no runtime config and no pre-initialized app; Firebase disabled');
+            return false;
+          }
           firebase.initializeApp(firebaseConfig);
           console.log('[firebase] initialized app', { projectId: firebaseConfig.projectId });
+        } else {
+          console.log('[firebase] using pre-initialized app');
         }
         await firebase.auth().signInAnonymously();
         activeUid = firebase.auth().currentUser && firebase.auth().currentUser.uid ? firebase.auth().currentUser.uid : '';

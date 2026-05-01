@@ -1,0 +1,53 @@
+- numbers:
+    pre: null
+    note: "The countable numbers"
+- real_numbers:
+    pre: numbers
+    note: "Numbers with decimals in them"
+- pairs:
+    pre: real_numbers
+- zero_to_one:
+    pre: real_numbers
+    note: "The real numbers between 0 and 1 act a certain way"
+- percentages:
+    pre: zero_to_one
+    note: "This is about interpretation mostly"
+- probability:
+    pre: percentages
+    note: "They are the "
+- prob_calc:
+    pre: probability
+- vectors:
+    pre: numbers
+    note: "You need to know what a pile of numbers with possible repeats means, non ordered"
+- vector_operations:
+    pre: vectors
+    note: "You can't do the same thing with lists of numbers as you can with numbers, so what _can_ you do?"
+- populations:
+    pre: vector_operations
+    note: "A set of things can be measured or summarised in certain ways.  Focus on interpretation"
+    subs:
+      - population_measures
+      - population_summaries
+- lists_pairs:
+    pre:
+      - vector
+      - pairs
+      - populations
+    note: "Focus on interpreteation of a list of pairs of measures from a population"
+- axis:
+    pre: vector_pairs
+- prob_in_popl:
+    pre:
+      - populations
+      - probability
+    note: "When a subset of a population has a property we interpret that as a probability over the population"
+- bucketing:
+    pre: vector_operations
+    note: "This is one very important list operation and it is more complex than the others"
+- histogram:
+    pre: 
+      - bucketing
+      - population_measures
+      - axis
+    note: "A nice way to see bucketed data from a population measure"

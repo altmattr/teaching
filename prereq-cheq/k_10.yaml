@@ -1,0 +1,274 @@
+- id: representing_whole_numbers
+  label: representing whole numbers
+  prereqs: []
+  classes:
+    - stage_1
+
+- id: combining_and_separating_quantities
+  label: combining and separating quantities
+  prereqs:
+    - representing_whole_numbers
+  classes:
+    - stage_1
+
+- id: forming_groups
+  label: forming groups
+  prereqs:
+    - representing_whole_numbers
+  classes:
+    - stage_1
+
+- id: geometric_measure
+  label: geometric measure
+  prereqs: []
+  classes:
+    - stage_1
+
+- id: 2d_spatial_structure
+  label: 2D spatial structure
+  prereqs: []
+  classes:
+    - stage_1
+
+- id: 3d_spatial_structure
+  label: 3D spatial structure
+  prereqs: []
+  classes:
+    - stage_1
+
+- id: non_spatial_measure
+  label: non-spatial measure
+  prereqs: []
+  classes:
+    - stage_1
+
+- id: data
+  label: data
+  prereqs: []
+  classes:
+    - stage_1
+
+- id: chance
+  label: chance
+  prereqs:
+    - data
+  classes:
+    - stage_1
+
+- id: representing_numbers_using_place_value
+  label: representing numbers using place value
+  prereqs:
+    - representing_whole_numbers
+  classes:
+    - stage_2_3
+
+- id: additive_relations
+  label: additive relations
+  prereqs:
+    - representing_numbers_using_place_value
+    - combining_and_separating_quantities
+  classes:
+    - stage_2_3
+
+- id: multiplicative_relations
+  label: multiplicative relations
+  prereqs:
+    - forming_groups
+    - additive_relations
+  classes:
+    - stage_2_3
+
+- id: partitioned_fractions
+  label: partitioned fractions
+  prereqs:
+    - representing_numbers_using_place_value
+  classes:
+    - stage_2_3
+
+- id: represents_numbers
+  label: represents numbers
+  prereqs:
+    - representing_numbers_using_place_value
+  classes:
+    - stage_2_3
+
+- id: representing_quality_fractions
+  label: representing quality fractions
+  prereqs:
+    - partitioned_fractions
+  classes:
+    - stage_2_3
+
+- id: geometric_measure_ii
+  label: geometric measure ii
+  prereqs:
+    - geometric_measure
+  classes:
+    - stage_2_3
+
+- id: 2d_spatial_structure_ii
+  label: 2D spatial structure ii
+  prereqs:
+    - 2d_spatial_structure
+  classes:
+    - stage_2_3
+
+- id: 3d_spatial_structure_ii
+  label: 3D spatial structure ii
+  prereqs:
+    - 3d_spatial_structure
+  classes:
+    - stage_2_3
+
+- id: non_spatial_measure_ii
+  label: non-spatial measure ii
+  prereqs:
+    - non_spatial_measure
+  classes:
+    - stage_2_3
+
+- id: data_ii
+  label: data ii
+  prereqs:
+    - data
+  classes:
+    - stage_2_3
+
+- id: chance_ii
+  label: chance ii
+  prereqs:
+    - chance
+  classes:
+    - stage_2_3
+
+- id: number_and_finance
+  label: number and finance
+  prereqs:
+    - representing_numbers_using_place_value
+    - multiplicative_relations
+  classes:
+    - stage_4_5_core
+
+- id: algebra_and_equations
+  label: algebra and equations
+  prereqs:
+    - additive_relations
+    - multiplicative_relations
+  classes:
+    - stage_4_5_core
+
+- id: ratios_and_rates
+  label: ratios and rates
+  prereqs:
+    - multiplicative_relations
+  classes:
+    - stage_4_5_core
+
+- id: linear_and_non_linear_relationships
+  label: linear and non-linear relationships
+  prereqs:
+    - algebra_and_equations
+  classes:
+    - stage_4_5_core
+
+- id: pythagoras_and_trigonometry
+  label: pythagoras and trigonometry
+  prereqs:
+    - 2d_spatial_structure_ii
+    - 3d_spatial_structure_ii
+  classes:
+    - stage_4_5_core
+
+- id: length_area_and_volume
+  label: length, area and volume
+  prereqs:
+    - geometric_measure_ii
+    - non_spatial_measure_ii
+  classes:
+    - stage_4_5_core
+
+- id: geometrical_properties_and_figures
+  label: geometrical properties and figures
+  prereqs:
+    - 2d_spatial_structure_ii
+    - 3d_spatial_structure_ii
+  classes:
+    - stage_4_5_core
+
+- id: data_classification_visualisation_and_analysis
+  label: data classification, visualisation and analysis
+  prereqs:
+    - data_ii
+  classes:
+    - stage_4_5_core
+
+- id: probability
+  label: probability
+  prereqs:
+    - chance_ii
+  classes:
+    - stage_4_5_core
+
+- id: further_algebra_and_equations
+  label: further algebra and equations
+  prereqs:
+    - algebra_and_equations
+  classes:
+    - stage_5_paths
+
+- id: variation_and_rates_of_change
+  label: variation and rates of change
+  prereqs:
+    - ratios_and_rates
+    - linear_and_non_linear_relationships
+  classes:
+    - stage_5_paths
+
+- id: functions_and_graphs
+  label: functions and graphs
+  prereqs:
+    - linear_and_non_linear_relationships
+  classes:
+    - stage_5_paths
+
+- id: further_trigonometry
+  label: further trigonometry
+  prereqs:
+    - pythagoras_and_trigonometry
+  classes:
+    - stage_5_paths
+
+- id: further_area_and_volume
+  label: further area and volume
+  prereqs:
+    - length_area_and_volume
+  classes:
+    - stage_5_paths
+
+- id: geometrical_figures_and_proof
+  label: geometrical figures and proof
+  prereqs:
+    - geometrical_properties_and_figures
+  classes:
+    - stage_5_paths
+
+- id: introduction_to_networks
+  label: introduction to networks
+  prereqs:
+    - data_classification_visualisation_and_analysis
+  classes:
+    - stage_5_paths
+
+- id: data_analysis_and_statistical_enquiry
+  label: data analysis and statistical enquiry
+  prereqs:
+    - data_classification_visualisation_and_analysis
+  classes:
+    - stage_5_paths
+
+- id: further_probability
+  label: further probability
+  prereqs:
+    - probability
+  classes:
+    - stage_5_paths

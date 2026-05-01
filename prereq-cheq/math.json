@@ -1,0 +1,1126 @@
+[
+  {
+    "id": "2D",
+    "label": "2D",
+    "prereqs": [
+      "equations_lines"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "3D",
+    "label": "3D",
+    "prereqs": [
+      "2D"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "algebra",
+    "label": "algebra",
+    "prereqs": [
+      "number_operations"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "angles",
+    "label": "angles",
+    "prereqs": [
+      "numbers"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "anova",
+    "label": "anova",
+    "prereqs": [
+      "t_test"
+    ],
+    "classes": []
+  },
+  {
+    "id": "applications_of",
+    "label": "applications of",
+    "prereqs": [
+      "second_derivative"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "applications_of_di",
+    "label": "applications of di",
+    "prereqs": [
+      "areas"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "areas",
+    "label": "areas",
+    "prereqs": [
+      "definite_integral"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "areas_triple",
+    "label": "areas triple",
+    "prereqs": [
+      "cross_product"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "areas_under",
+    "label": "areas under",
+    "prereqs": [
+      "distributions",
+      "integration"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "association",
+    "label": "association",
+    "prereqs": [
+      "variables"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "associations",
+    "label": "associations",
+    "prereqs": [],
+    "classes": []
+  },
+  {
+    "id": "axis",
+    "label": "axis",
+    "prereqs": [
+      "associations"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "binomial",
+    "label": "binomial",
+    "prereqs": [
+      "mean_variance"
+    ],
+    "classes": []
+  },
+  {
+    "id": "boxplots",
+    "label": "boxplots",
+    "prereqs": [
+      "labelling"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "bucketing",
+    "label": "bucketing",
+    "prereqs": [
+      "vectors"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "by_parts",
+    "label": "by parts",
+    "prereqs": [
+      "integration"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "by_subst",
+    "label": "by subst",
+    "prereqs": [
+      "integration"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "categorical",
+    "label": "categorical",
+    "prereqs": [
+      "variables"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "chain_rule",
+    "label": "chain rule",
+    "prereqs": [
+      "composite_functions",
+      "derivative_rules"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "classifying_functions",
+    "label": "classifying functions",
+    "prereqs": [
+      "functions"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "composite_functions",
+    "label": "composite functions",
+    "prereqs": [
+      "functions"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "confidence_intervals",
+    "label": "confidence intervals",
+    "prereqs": [
+      "sample_means"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "continuity",
+    "label": "continuity",
+    "prereqs": [
+      "limits"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "cross_product",
+    "label": "cross product",
+    "prereqs": [
+      "determinants"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "curve_sketching",
+    "label": "curve sketching",
+    "prereqs": [
+      "minima_maxima"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "data_classification",
+    "label": "data classification",
+    "prereqs": [
+      "numbers"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "data_frame",
+    "label": "data frame",
+    "prereqs": [
+      "vectors"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "definite_integral",
+    "label": "definite integral",
+    "prereqs": [
+      "by_parts",
+      "by_subst"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "derivative_rules",
+    "label": "derivative rules",
+    "prereqs": [
+      "differentiation"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "determinants",
+    "label": "determinants",
+    "prereqs": [
+      "vector_operations"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "differentiation",
+    "label": "differentiation",
+    "prereqs": [
+      "polynomials"
+    ],
+    "classes": [
+      "math1000",
+      "math1010"
+    ]
+  },
+  {
+    "id": "discrete_continuous",
+    "label": "discrete continuous",
+    "prereqs": [
+      "mean_variance"
+    ],
+    "classes": []
+  },
+  {
+    "id": "distributions",
+    "label": "distributions",
+    "prereqs": [
+      "probability"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "dof",
+    "label": "dof",
+    "prereqs": [
+      "sampling_distros"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "dot_product",
+    "label": "dot product",
+    "prereqs": [
+      "vector_operations"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "equations",
+    "label": "equations",
+    "prereqs": [
+      "numbers"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "equations_lines",
+    "label": "equations lines",
+    "prereqs": [
+      "linear_systems"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "equations_planes",
+    "label": "equations planes",
+    "prereqs": [
+      "3D"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "estimates_of_di",
+    "label": "estimates of di",
+    "prereqs": [
+      "definite_integral"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "exponential_logarithmic",
+    "label": "exponential logarithmic",
+    "prereqs": [
+      "hyperbolic_functions"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "exponentials",
+    "label": "exponentials",
+    "prereqs": [
+      "curve_sketching",
+      "polynomials"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "fractions",
+    "label": "fractions",
+    "prereqs": [
+      "numbers"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "function_graphs",
+    "label": "function graphs",
+    "prereqs": [
+      "functions"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "functions",
+    "label": "functions",
+    "prereqs": [
+      "algebra"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "graphs_of_data",
+    "label": "graphs of data",
+    "prereqs": [
+      "function_graphs"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "histograms",
+    "label": "histograms",
+    "prereqs": [
+      "bucketing",
+      "labelling"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "homogenous_equations",
+    "label": "homogenous equations",
+    "prereqs": [
+      "row_operations"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "hyperbolic_functions",
+    "label": "hyperbolic functions",
+    "prereqs": [
+      "inverse_functions"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "increasing_decreasing",
+    "label": "increasing decreasing",
+    "prereqs": [
+      "functions",
+      "tangent"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "integration",
+    "label": "integration",
+    "prereqs": [
+      "second_derivative"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "intersections",
+    "label": "intersections",
+    "prereqs": [
+      "equations_planes"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "intervals",
+    "label": "intervals",
+    "prereqs": [
+      "sets"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "inverse_functions",
+    "label": "inverse functions",
+    "prereqs": [
+      "transforming"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "inverse_trig_functions",
+    "label": "inverse trig functions",
+    "prereqs": [
+      "trig_graphs"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "labelling",
+    "label": "labelling",
+    "prereqs": [
+      "axis"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "limits",
+    "label": "limits",
+    "prereqs": [
+      "series"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "linear_functions",
+    "label": "linear functions",
+    "prereqs": [
+      "functions"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "linear_systems",
+    "label": "linear systems",
+    "prereqs": [
+      "matrices"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "logarithms",
+    "label": "logarithms",
+    "prereqs": [
+      "curve_sketching",
+      "polynomials"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "matrices",
+    "label": "matrices",
+    "prereqs": [
+      "vectors"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "matrix_multiplication",
+    "label": "matrix multiplication",
+    "prereqs": [
+      "matrix_operations"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "matrix_operations",
+    "label": "matrix operations",
+    "prereqs": [
+      "matrices"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "mean_variance",
+    "label": "mean variance",
+    "prereqs": [
+      "random_vars"
+    ],
+    "classes": []
+  },
+  {
+    "id": "minima_maxima",
+    "label": "minima maxima",
+    "prereqs": [
+      "second_derivative"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "monotonic_functions",
+    "label": "monotonic functions",
+    "prereqs": [
+      "second_derivative"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "normal",
+    "label": "normal",
+    "prereqs": [
+      "mean_variance"
+    ],
+    "classes": []
+  },
+  {
+    "id": "number_operations",
+    "label": "number operations",
+    "prereqs": [
+      "numbers"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "numbers",
+    "label": "numbers",
+    "prereqs": [],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "ode",
+    "label": "ode",
+    "prereqs": [
+      "differentiation",
+      "functions"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "one_to_one",
+    "label": "one to one",
+    "prereqs": [
+      "classifying_functions"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "onto",
+    "label": "onto",
+    "prereqs": ["classifying_functions"],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "orthogonal_projection",
+    "label": "orthogonal projection",
+    "prereqs": [
+      "vector_angles"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "periodicity",
+    "label": "periodicity",
+    "prereqs": [
+      "angles"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "group_by",
+    "label": "group by",
+    "prereqs": [
+      "data_frame",
+      "vector_operations"
+    ],
+    "classes": []
+  },
+  {
+    "id": "pivot",
+    "label": "pivot",
+    "prereqs": [
+      "group_by"
+    ],
+    "classes": []
+  },
+  {
+    "id": "polynomials",
+    "label": "polynomials",
+    "prereqs": [
+      "quadratic_functions"
+    ],
+    "classes": []
+  },
+  {
+    "id": "populations",
+    "label": "populations",
+    "prereqs": [
+      "vectors"
+    ],
+    "classes": [
+      "stat1170",
+      "stat1250"
+    ]
+  },
+  {
+    "id": "sampling_popns",
+    "label": "sampling popns",
+    "prereqs": [
+      "populations"
+    ],
+    "classes": [
+      "stat1170",
+      "stat1250"
+    ]
+  },
+  {
+    "id": "position_displacement",
+    "label": "position displacement",
+    "prereqs": [
+      "vectors"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "probability",
+    "label": "probability",
+    "prereqs": [
+      "populations"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "proportionality",
+    "label": "proportionality",
+    "prereqs": [
+      "numbers"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "quadratic_functions",
+    "label": "quadratic functions",
+    "prereqs": [
+      "functions"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "random_vars",
+    "label": "random vars",
+    "prereqs": [
+      "probability",
+      "variables"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "row_operations",
+    "label": "row operations",
+    "prereqs": [
+      "linear_systems"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "sample_means",
+    "label": "sample means",
+    "prereqs": [
+      "sampling_distros"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "sampling_distros",
+    "label": "sampling distros",
+    "prereqs": [
+      "distributions"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "scatterplots",
+    "label": "scatterplots",
+    "prereqs": [
+      "labelling"
+    ],
+    "classes": ["stat1170"]
+  },
+  {
+    "id": "second_derivative",
+    "label": "second derivative",
+    "prereqs": [
+      "derivative_rules"
+    ],
+    "classes": [
+      "math1000",
+      "math1010"
+    ]
+  },
+  {
+    "id": "separable_equations",
+    "label": "separable equations",
+    "prereqs": [
+      "ode"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "sequences",
+    "label": "sequences",
+    "prereqs": [
+      "functions"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "series",
+    "label": "series",
+    "prereqs": [
+      "sequences"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "set_notations",
+    "label": "set notations",
+    "prereqs": [
+      "set_operations"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "set_operations",
+    "label": "set operations",
+    "prereqs": [
+      "sets"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "sets",
+    "label": "sets",
+    "prereqs": [
+      "numbers"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "sinusoidal_models",
+    "label": "sinusoidal models",
+    "prereqs": [
+      "trig_formula"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "standard_error",
+    "label": "standard error",
+    "prereqs": [
+      "sampling_distros"
+    ],
+    "classes": []
+  },
+  {
+    "id": "summaries",
+    "label": "summaries",
+    "prereqs": [
+      "vectors"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "surds",
+    "label": "surds",
+    "prereqs": [
+      "numbers"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "t_test",
+    "label": "t test",
+    "prereqs": [
+      "confidence_intervals"
+    ],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "tangent",
+    "label": "tangent",
+    "prereqs": [
+      "differentiation",
+      "functions",
+      "trig_equations"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "transforming",
+    "label": "transforming",
+    "prereqs": [
+      "functions"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "trig_equations",
+    "label": "trig equations",
+    "prereqs": [
+      "trig_relationships"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "trig_formula",
+    "label": "trig formula",
+    "prereqs": [
+      "trig_equations"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "trig_functions",
+    "label": "trig functions",
+    "prereqs": [
+      "trig_equations"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "trig_graphs",
+    "label": "trig graphs",
+    "prereqs": [
+      "function_graphs",
+      "trig_relationships"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "trig_relationships",
+    "label": "trig relationships",
+    "prereqs": [
+      "unit_circle"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "unit_circle",
+    "label": "unit circle",
+    "prereqs": [
+      "periodicity"
+    ],
+    "classes": [
+      "math1000"
+    ]
+  },
+  {
+    "id": "variables",
+    "label": "variables",
+    "prereqs": [],
+    "classes": [
+      "stat1170"
+    ]
+  },
+  {
+    "id": "vector_angles",
+    "label": "vector angles",
+    "prereqs": [
+      "dot_product"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "vector_operations",
+    "label": "vector operations",
+    "prereqs": [
+      "vectors"
+    ],
+    "classes": [
+      "math1010"
+    ]
+  },
+  {
+    "id": "vectors",
+    "label": "vectors",
+    "prereqs": [
+      "numbers"
+    ],
+    "classes": [
+      "math1010",
+      "stat1170"
+    ]
+  },
+  {
+    "id": "z-test",
+    "label": "z-test",
+    "prereqs": [
+      "confidence_intervals"
+    ],
+    "classes": ["stat1170"]
+  },
+  {
+    "id": "normal_distro",
+    "label": "normal distro",
+    "prereqs": ["distributions"],
+    "classes": [
+      "stat1170"
+    ]
+  }
+]

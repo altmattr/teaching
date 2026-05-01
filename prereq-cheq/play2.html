@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maths Topic DAG (Graphviz)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --panel: #ffffff;
+      --text: #1f1f1f;
+      --muted: #5f5a54;
+      --border: #d6d0c4;
+      --accent: #a6192e;
+      --accent-dark: #76232f;
+      --node-fill: #ffffff;
+      --node-stroke: #1f1f1f;
+      --link-stroke: #1f1f1f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: "Fira Sans", "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .page {
+      display: grid;
+      grid-template-rows: 56px 1fr;
+      height: 100%;
+    }
+
+    .title {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      position: relative;
+    }
+
+    .zoom-controls {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .zoom-btn {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      border-radius: 8px;
+      min-width: 28px;
+      height: 28px;
+      padding: 0 8px;
+      font: 600 0.9rem/1 "Fira Sans", "Segoe UI", sans-serif;
+      cursor: pointer;
+    }
+
+    .zoom-btn:hover {
+      border-color: #bdb5a8;
+    }
+
+    .zoom-label {
+      min-width: 44px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .canvas-wrap {
+      margin: 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--panel);
+      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.07);
+      overflow: scroll;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 12px;
+    }
+
+    #graph {
+      min-width: max-content;
+      display: block;
+    }
+
+    #graph svg {
+      display: block;
+      max-width: none !important;
+      height: auto !important;
+      background: #fff;
+      border-radius: 12px;
+      margin: 0;
+    }
+
+    #graph svg text {
+      font-family: "Fira Sans", "Segoe UI", sans-serif;
+    }
+
+    .status {
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .error {
+      color: #b91c1c;
+      white-space: pre-wrap;
+      font-size: 0.92rem;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: center;
+      margin: 6px 0 0;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1 class="title">
+      Maths Topic DAG (Graphviz)
+      <span class="zoom-controls">
+        <button class="zoom-btn" id="zoomOutBtn" type="button" aria-label="Zoom out">-</button>
+        <span class="zoom-label" id="zoomLabel">100%</span>
+        <button class="zoom-btn" id="zoomInBtn" type="button" aria-label="Zoom in">+</button>
+        <button class="zoom-btn" id="zoomResetBtn" type="button" aria-label="Reset zoom">Reset</button>
+      </span>
+    </h1>
+    <section class="canvas-wrap">
+      <div id="graph">
+        <div class="status">Loading DAG...</div>
+        <div class="hint">Graphviz layout engine (DOT).</div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { graphviz } from "https://esm.sh/@hpcc-js/wasm@2";
+
+    const graphEl = document.getElementById('graph');
+    const zoomInBtnEl = document.getElementById('zoomInBtn');
+    const zoomOutBtnEl = document.getElementById('zoomOutBtn');
+    const zoomResetBtnEl = document.getElementById('zoomResetBtn');
+    const zoomLabelEl = document.getElementById('zoomLabel');
+
+    let currentZoom = 1;
+    let baseWidth = 0;
+    let baseHeight = 0;
+    let currentSvgEl = null;
+
+    function setError(message) {
+      graphEl.innerHTML = '<pre class="error"></pre>';
+      const pre = graphEl.querySelector('pre');
+      pre.textContent = message;
+    }
+
+    function clampZoom(value) {
+      return Math.min(3, Math.max(0.1, value));
+    }
+
+    function applyZoom() {
+      if (!currentSvgEl || !baseWidth || !baseHeight) return;
+      const w = Math.round(baseWidth * currentZoom);
+      const h = Math.round(baseHeight * currentZoom);
+      currentSvgEl.setAttribute("width", String(w));
+      currentSvgEl.setAttribute("height", String(h));
+      zoomLabelEl.textContent = `${Math.round(currentZoom * 100)}%`;
+    }
+
+    function setZoom(value) {
+      currentZoom = clampZoom(value);
+      applyZoom();
+    }
+
+    const dagData = [
+      { id: "2D", label: "2D", prereqs: ["equations_lines"] },
+      { id: "3D", label: "3D", prereqs: ["2D"] },
+      { id: "algebra", label: "algebra", prereqs: ["number_operations"] },
+      { id: "angles", label: "angles", prereqs: ["numbers"] },
+      { id: "applications_of", label: "applications of", prereqs: ["second_derivative"] },
+      { id: "applications_of_di", label: "applications of di", prereqs: ["areas"] },
+      { id: "areas", label: "areas", prereqs: ["definite_integral"] },
+      { id: "areas_triple", label: "areas triple", prereqs: ["cross_product"] },
+      { id: "by_parts", label: "by parts", prereqs: ["integration"] },
+      { id: "by_subst", label: "by subst", prereqs: ["integration"] },
+      { id: "chain_rule", label: "chain rule", prereqs: ["composite_functions", "derivative_rules"] },
+      { id: "classifying_functions", label: "classifying functions", prereqs: ["functions"] },
+      { id: "composite_functions", label: "composite functions", prereqs: ["functions"] },
+      { id: "continuity", label: "continuity", prereqs: ["limits"] },
+      { id: "cross_product", label: "cross product", prereqs: ["determinants"] },
+      { id: "curve_sketching", label: "curve sketching", prereqs: ["minima_maxima"] },
+      { id: "definite_integral", label: "definite integral", prereqs: ["by_parts", "by_subst"] },
+      { id: "derivative_rules", label: "derivative rules", prereqs: ["differentiation"] },
+      { id: "determinants", label: "determinants", prereqs: ["vector_operations"] },
+      { id: "differentiation", label: "differentiation", prereqs: ["polynomials"] },
+      { id: "dot_product", label: "dot product", prereqs: ["vector_operations"] },
+      { id: "equations", label: "equations", prereqs: ["numbers"] },
+      { id: "equations_lines", label: "equations lines", prereqs: ["linear_systems"] },
+      { id: "equations_planes", label: "equations planes", prereqs: ["3D"] },
+      { id: "estimates_of_di", label: "estimates of di", prereqs: ["definite_integral"] },
+      { id: "exponential_logarithmic", label: "exponential logarithmic", prereqs: ["hyperbolic_functions"] },
+      { id: "exponentials", label: "exponentials", prereqs: ["curve_sketching", "polynomials"] },
+      { id: "fractions", label: "fractions", prereqs: ["numbers"] },
+      { id: "function_graphs", label: "function graphs", prereqs: ["functions"] },
+      { id: "functions", label: "functions", prereqs: ["algebra"] },
+      { id: "homogenous_equations", label: "homogenous equations", prereqs: ["row_operations"] },
+      { id: "hyperbolic_functions", label: "hyperbolic functions", prereqs: ["inverse_functions"] },
+      { id: "increasing_decreasing", label: "increasing decreasing", prereqs: ["functions", "tangent"] },
+      { id: "integration", label: "integration", prereqs: ["second_derivative"] },
+      { id: "intersections", label: "intersections", prereqs: ["equations_planes"] },
+      { id: "intervals", label: "intervals", prereqs: ["sets"] },
+      { id: "inverse_functions", label: "inverse functions", prereqs: ["transforming"] },
+      { id: "inverse_trig_functions", label: "inverse trig functions", prereqs: ["trig_graphs"] },
+      { id: "limits", label: "limits", prereqs: ["series"] },
+      { id: "linear_functions", label: "linear functions", prereqs: ["functions"] },
+      { id: "linear_systems", label: "linear systems", prereqs: ["matrices"] },
+      { id: "logarithms", label: "logarithms", prereqs: ["curve_sketching", "polynomials"] },
+      { id: "matrices", label: "matrices", prereqs: ["vectors"] },
+      { id: "matrix_multiplication", label: "matrix multiplication", prereqs: ["matrix_operations"] },
+      { id: "matrix_operations", label: "matrix operations", prereqs: ["matrices"] },
+      { id: "minima_maxima", label: "minima maxima", prereqs: ["second_derivative"] },
+      { id: "monotonic_functions", label: "monotonic functions", prereqs: ["classifying_functions", "second_derivative"] },
+      { id: "number_operations", label: "number operations", prereqs: ["numbers"] },
+      { id: "numbers", label: "numbers", prereqs: [] },
+      { id: "ode", label: "ode", prereqs: ["differentiation", "functions"] },
+      { id: "one_to_one", label: "one to one", prereqs: ["classifying_functions"] },
+      { id: "onto", label: "onto", prereqs: ["classifying_functions"] },
+      { id: "orthogonal_projection", label: "orthogonal projection", prereqs: ["vector_angles"] },
+      { id: "periodicity", label: "periodicity", prereqs: ["angles"] },
+      { id: "polynomials", label: "polynomials", prereqs: ["quadratic_functions"] },
+      { id: "position_displacement", label: "position displacement", prereqs: ["vectors"] },
+      { id: "proportionality", label: "proportionality", prereqs: ["numbers"] },
+      { id: "quadratic_functions", label: "quadratic functions", prereqs: ["functions"] },
+      { id: "row_operations", label: "row operations", prereqs: ["linear_systems"] },
+      { id: "second_derivative", label: "second derivative", prereqs: ["derivative_rules"] },
+      { id: "separable_equations", label: "separable equations", prereqs: ["ode"] },
+      { id: "sequences", label: "sequences", prereqs: ["functions"] },
+      { id: "series", label: "series", prereqs: ["sequences"] },
+      { id: "set_notations", label: "set notations", prereqs: ["set_operations"] },
+      { id: "set_operations", label: "set operations", prereqs: ["sets"] },
+      { id: "sets", label: "sets", prereqs: ["numbers"] },
+      { id: "sinusoidal_models", label: "sinusoidal models", prereqs: ["trig_formula"] },
+      { id: "surds", label: "surds", prereqs: ["numbers"] },
+      { id: "tangent", label: "tangent", prereqs: ["differentiation", "functions", "trig_equations"] },
+      { id: "transforming", label: "transforming", prereqs: ["functions"] },
+      { id: "trig_equations", label: "trig equations", prereqs: ["trig_relationships"] },
+      { id: "trig_formula", label: "trig formula", prereqs: ["trig_equations"] },
+      { id: "trig_functions", label: "trig functions", prereqs: ["trig_equations"] },
+      { id: "trig_graphs", label: "trig graphs", prereqs: ["function_graphs", "trig_relationships"] },
+      { id: "trig_relationships", label: "trig relationships", prereqs: ["unit_circle"] },
+      { id: "unit_circle", label: "unit circle", prereqs: ["periodicity"] },
+      { id: "vector_angles", label: "vector angles", prereqs: ["dot_product"] },
+      { id: "vector_operations", label: "vector operations", prereqs: ["vectors"] },
+      { id: "vectors", label: "vectors", prereqs: ["numbers"] }
+    ];
+
+    function escapeLabel(value) {
+      return String(value).replace(/"/g, '\\"');
+    }
+
+    function buildDot(items) {
+      const lines = [];
+      lines.push('digraph G {');
+      lines.push('  rankdir=TB;');
+      lines.push('  graph [bgcolor="white", splines=true, nodesep=0.4, ranksep=0.5];');
+      lines.push('  node [shape=box, style="rounded,filled", fillcolor="white", color="#1f1f1f", fontname="Fira Sans", fontsize=10];');
+      lines.push('  edge [color="#1f1f1f", arrowsize=0.6];');
+
+      items.forEach((item) => {
+        lines.push(`  "${item.id}" [label="${escapeLabel(item.label ?? item.id)}"];`);
+      });
+
+      items.forEach((item) => {
+        (item.prereqs || []).forEach((parent) => {
+          lines.push(`  "${parent}" -> "${item.id}";`);
+        });
+      });
+
+      lines.push('}');
+      return lines.join('\n');
+    }
+
+    async function renderGraphviz() {
+      try {
+        const dot = buildDot(dagData);
+        const svgText = await graphviz.layout(dot, "svg", "dot");
+        graphEl.innerHTML = '<div id="graph-inner"></div>';
+        const graphInnerEl = graphEl.querySelector('#graph-inner');
+        graphInnerEl.innerHTML = svgText;
+        const svg = graphInnerEl.querySelector('svg');
+        if (!svg) return;
+        currentSvgEl = svg;
+        const vb = (svg.getAttribute("viewBox") || "").trim().split(/\s+/).map(Number);
+        if (vb.length === 4 && Number.isFinite(vb[2]) && Number.isFinite(vb[3])) {
+          baseWidth = vb[2];
+          baseHeight = vb[3];
+        } else {
+          const bw = svg.width && svg.width.baseVal ? svg.width.baseVal.value : 0;
+          const bh = svg.height && svg.height.baseVal ? svg.height.baseVal.value : 0;
+          baseWidth = bw;
+          baseHeight = bh;
+        }
+        currentSvgEl.style.width = "";
+        currentSvgEl.style.height = "";
+        setZoom(1);
+      } catch (err) {
+        setError("Graphviz render error:\n\n" + (err && err.message ? err.message : String(err)));
+      }
+    }
+
+    zoomInBtnEl.addEventListener("click", () => setZoom(currentZoom + 0.1));
+    zoomOutBtnEl.addEventListener("click", () => setZoom(currentZoom - 0.1));
+    zoomResetBtnEl.addEventListener("click", () => setZoom(1));
+
+    renderGraphviz();
+  </script>
+</body>
+</html>

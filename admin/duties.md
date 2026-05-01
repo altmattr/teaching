@@ -1,5 +1,5 @@
 # Computing task responsibilities
-Computing typically has four roles associated with the deliver of a unit: convener, lecturer, teaching assistant (as well as the standing roles of Facutly Education Committee and Director of Education).  The responsibilities break down by roles as:
+Computing typically has four roles associated with the deliver of a unit: convener, lecturer, teaching assistant (as well as the standing roles of Facutly Education Committee and Director of Education).  "stac" is the senior teacihng assistant in large units and the convener in other units.  The responsibilities break down by roles as:
 
   * preparing unit guide              convener
   * approving unit guide              DOE
@@ -7,30 +7,35 @@ Computing typically has four roles associated with the deliver of a unit: conven
   * place in the program              FEC
   * pre-requisite setting             FEC
   * assessment mix                    FEC
-  * chairing weekly meetings          convener
+  * chairing weekly meetings          stac
   * allocating TAs and markers        convener
-  * training and monitoring TA        convener           (senior TA if present)
+  * training and monitoring TA        stac          
   * lecture material                  lecturer           (extra allocation if substantial)
+  * lecture moderation                stac
   * lecture delivery                  lecturer
+  * live lecture moderation           unassigned
   * workshop material                 lecturer           (extra pay for casual lecturer)
+  * workshop moderation               stac
   * workshop delivery                 teaching assistant
   * workshop grading (in class)       teaching assistant
   * assignment writing                lecturer           (extra pay for casual lecturer)
   * assignment grading                teaching assistant (explicit allocation per hour)
-  * assignment moderation             convener           (senior TA if present)
+  * assignment moderation             stac           
+  * assignment tooling                stac               (i.e. github classrooms)
   * exam planning                     convener
   * exam writing                      lecturer           (extra pay for casual lecturer)
   * exam grading                      varies             (explicit allocation per hour)
-  * exam moderation                   convener
+  * exam moderation                   stac
   * grade management                  convener
   * grade reporting                   convener
   * form a                            convener
   * waivers                           convener
   * RPL                               convener
   * special consideration             convener
-  * forum responses                   lecturer           (extra pay for casual lecturer - senior TA if present)
+  * forum responses                   stac               (extra pay for casual lecturer)
   * student consultation              lecturer           (extra pay for casual lecturer)
-  * iLearn management                 convener
+  * iLearn management                 stac
+  * email inbox management            stac
   * exam meeting                      convener
 
 # Sources

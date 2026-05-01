@@ -12,3 +12,4 @@ COMP2010*/archive/*
 .vim/
 *.vimrc
 *.swp
+.firebase

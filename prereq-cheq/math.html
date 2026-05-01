@@ -1,0 +1,1270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maths Topic Tree (ELK)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --panel: #ffffff;
+      --text: #1f1f1f;
+      --muted: #5f5a54;
+      --border: #d6d0c4;
+      --accent: #a6192e;
+      --accent-dark: #76232f;
+      --node-fill: #ffffff;
+      --node-stroke: #1f1f1f;
+      --link-stroke: #1f1f1f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: "Fira Sans", "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .page {
+      display: grid;
+      grid-template-rows: 56px minmax(0, 1fr);
+      height: 100%;
+    }
+
+    .title {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      position: relative;
+      gap: 10px;
+    }
+
+    .zoom-controls {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .source-indicator {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: #fff;
+      padding: 2px 8px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+    }
+
+    .zoom-btn {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      border-radius: 8px;
+      min-width: 28px;
+      height: 28px;
+      padding: 0 8px;
+      font: 600 0.9rem/1 "Fira Sans", "Segoe UI", sans-serif;
+      cursor: pointer;
+    }
+
+    .zoom-btn:hover {
+      border-color: #bdb5a8;
+    }
+
+    .zoom-label {
+      min-width: 44px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .filter-toggle {
+      position: absolute;
+      right: 170px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: var(--muted);
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .filter-toggle input {
+      margin: 0;
+    }
+
+    .title-select {
+      border: none;
+      background: #fff;
+      color: var(--accent-dark);
+      border-radius: 8px;
+      font: 700 2.2rem/1 "Fira Sans", "Segoe UI", sans-serif;
+      padding: 0 30px 0 0;
+      appearance: none;
+      cursor: pointer;
+      background-image: linear-gradient(45deg, transparent 50%, var(--accent-dark) 50%),
+        linear-gradient(135deg, var(--accent-dark) 50%, transparent 50%),
+        linear-gradient(to right, #fff, #fff);
+      background-position: calc(100% - 18px) calc(50% - 2px), calc(100% - 12px) calc(50% - 2px), 100% 0;
+      background-size: 6px 6px, 6px 6px, 2.4em 100%;
+      background-repeat: no-repeat;
+    }
+
+    .title-select:focus {
+      outline: 2px solid rgba(166, 25, 46, 0.25);
+      outline-offset: 2px;
+    }
+
+    .title-select.secondary {
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding-right: 26px;
+      background-position: calc(100% - 16px) calc(50% - 2px), calc(100% - 10px) calc(50% - 2px), 100% 0;
+      background-size: 5px 5px, 5px 5px, 2em 100%;
+    }
+
+    .title-select.hidden {
+      display: none;
+    }
+
+    .zoom-controls.hidden,
+    .filter-toggle.hidden {
+      display: none;
+    }
+
+    .content {
+      --dag-row-size: minmax(0, 1fr);
+      display: grid;
+      grid-template-rows: var(--dag-row-size) minmax(0, 1fr);
+      gap: 10px;
+      margin: 10px;
+      min-height: 0;
+      transition: grid-template-rows 220ms ease;
+    }
+
+    .content.dag-hidden {
+      --dag-row-size: 30px;
+    }
+
+    .canvas-wrap,
+    .detail-wrap {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--panel);
+      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.07);
+      overflow: hidden;
+      display: flex;
+      align-items: stretch;
+      justify-content: stretch;
+      padding: 6px;
+      min-height: 0;
+    }
+
+    .canvas-wrap {
+      flex-direction: column;
+      gap: 6px;
+      transition: padding 220ms ease;
+    }
+
+    .graph-stage {
+      display: flex;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      transition: opacity 180ms ease, transform 220ms ease;
+    }
+
+    .dag-disclosure {
+      align-self: center;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--accent-dark);
+      border-radius: 999px;
+      width: 34px;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 220ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .dag-disclosure:hover {
+      border-color: #bdb5a8;
+      background: #faf8f4;
+    }
+
+    .dag-disclosure::before {
+      content: "▴";
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .content.dag-hidden .dag-disclosure::before {
+      content: "▾";
+    }
+
+    .content.dag-hidden .canvas-wrap {
+      padding-top: 0;
+      padding-bottom: 4px;
+    }
+
+    .content.dag-hidden .graph-stage {
+      opacity: 0;
+      transform: translateY(-18px);
+      pointer-events: none;
+    }
+
+    #graph {
+      flex: 1;
+      min-height: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #graph svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+    }
+
+    #graph svg text {
+      font-family: "Fira Sans", "Segoe UI", sans-serif;
+      font-size: 12px;
+    }
+
+    .detail-panel {
+      flex: 1;
+      overflow: auto;
+      padding: 18px 22px;
+      background:
+        linear-gradient(180deg, rgba(166, 25, 46, 0.03), rgba(166, 25, 46, 0)),
+        #fff;
+    }
+
+    .detail-title {
+      margin: 0 0 12px;
+      font-size: 1.3rem;
+      color: var(--accent-dark);
+    }
+
+    .detail-empty {
+      color: var(--muted);
+      font-size: 0.96rem;
+      max-width: 48rem;
+    }
+
+    .detail-body {
+      max-width: 52rem;
+      line-height: 1.55;
+    }
+
+    .detail-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 14px;
+    }
+
+    .detail-chip {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #faf8f3;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .detail-chip-subject {
+      font-weight: 700;
+      color: var(--accent-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .detail-chip-level {
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .detail-body > :first-child {
+      margin-top: 0;
+    }
+
+    .detail-body h1,
+    .detail-body h2,
+    .detail-body h3 {
+      color: var(--accent-dark);
+      margin: 1.2em 0 0.45em;
+    }
+
+    .detail-body p,
+    .detail-body ul,
+    .detail-body ol,
+    .detail-body blockquote,
+    .detail-body pre,
+    .detail-body table {
+      margin: 0 0 1em;
+    }
+
+    .detail-body table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.96rem;
+    }
+
+    .detail-body th,
+    .detail-body td {
+      border: 1px solid var(--border);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .detail-body th {
+      background: #f7f4ee;
+      color: var(--accent-dark);
+      font-weight: 700;
+    }
+
+    .detail-body code {
+      font-family: "SFMono-Regular", "Menlo", monospace;
+      font-size: 0.92em;
+      background: #f5f3ef;
+      padding: 0.1em 0.3em;
+      border-radius: 4px;
+    }
+
+    .detail-body pre {
+      background: #f5f3ef;
+      padding: 12px;
+      border-radius: 8px;
+      overflow: auto;
+    }
+
+    .detail-body pre code {
+      background: transparent;
+      padding: 0;
+    }
+
+    .pdf-embed {
+      margin: 0 0 1em;
+    }
+
+    .pdf-embed canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .pdf-embed-error {
+      color: #b91c1c;
+      font-size: 0.92rem;
+      padding: 10px 12px;
+      border: 1px solid #efb4b4;
+      border-radius: 8px;
+      background: #fff5f5;
+    }
+
+    .status {
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .error {
+      color: #b91c1c;
+      white-space: pre-wrap;
+      font-size: 0.92rem;
+      padding: 12px;
+    }
+
+    .node rect {
+      fill: var(--node-fill);
+      stroke: var(--node-stroke);
+      stroke-width: 1.1;
+      rx: 6;
+      ry: 6;
+    }
+
+    .node text {
+      fill: var(--text);
+      font-size: 12px;
+      font-weight: 600;
+      dominant-baseline: middle;
+      text-anchor: middle;
+      pointer-events: none;
+    }
+
+    .node.highlight rect {
+      stroke-width: 2.4;
+    }
+
+    .node.highlight text {
+      font-weight: 700;
+    }
+
+    .node.prereq-only rect {
+      fill: #f3f2ef;
+      stroke: #bdb5a8;
+    }
+
+    .node.prereq-only text {
+      fill: #8a847c;
+    }
+
+    .edgePath {
+      fill: none;
+      stroke: var(--link-stroke);
+      stroke-width: 1.05;
+    }
+
+    .edgePath.highlight {
+      stroke-width: 2.2;
+    }
+
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1 class="title">
+      <span class="source-indicator" id="sourceIndicator">Source: math/</span>
+      <select class="title-select" id="scopeSelect" aria-label="Subject scope">
+        <option value="maps" selected>Full</option>
+      </select>
+      <select class="title-select secondary hidden" id="levelSelect" aria-label="Level filter"></select>
+      Topic Tree
+      <label class="filter-toggle" id="showAllToggleWrap" style="right: 280px;">
+        <input type="checkbox" id="showAllToggle">
+        Show all nodes
+      </label>
+      <span class="zoom-controls">
+        <button class="zoom-btn" id="zoomOutBtn" type="button" aria-label="Zoom out">-</button>
+        <span class="zoom-label" id="zoomLabel">100%</span>
+        <button class="zoom-btn" id="zoomInBtn" type="button" aria-label="Zoom in">+</button>
+        <button class="zoom-btn" id="zoomResetBtn" type="button" aria-label="Reset zoom">Reset</button>
+      </span>
+    </h1>
+    <section class="content">
+      <div class="canvas-wrap">
+        <div class="graph-stage">
+          <div id="graph">
+            <div class="status">Loading <code>math/</code>...</div>
+          </div>
+        </div>
+        <button class="dag-disclosure" id="dagDisclosureBtn" type="button" aria-label="Hide DAG" aria-expanded="true"></button>
+      </div>
+      <div class="detail-wrap">
+        <div class="detail-panel" id="detailPanel">
+          <h2 class="detail-title">Topic Notes</h2>
+          <div class="detail-empty">Click a node to view the markdown stored in that topic file.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import * as d3 from "https://esm.sh/d3@7";
+    import Elk from "https://esm.sh/elkjs@0.8.2";
+    import { load as yamlLoad } from "https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.mjs";
+    import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+    import markedKatex from "https://esm.sh/marked-katex-extension@5.1.1";
+    import { renderPdfRegionToCanvas } from "./pdf-region.js";
+
+    const contentEl = document.querySelector(".content");
+    const graphEl = document.getElementById("graph");
+    const zoomInBtnEl = document.getElementById("zoomInBtn");
+    const zoomOutBtnEl = document.getElementById("zoomOutBtn");
+    const zoomResetBtnEl = document.getElementById("zoomResetBtn");
+    const zoomLabelEl = document.getElementById("zoomLabel");
+    const scopeSelectEl = document.getElementById("scopeSelect");
+    const levelSelectEl = document.getElementById("levelSelect");
+    const showAllToggleEl = document.getElementById("showAllToggle");
+    const showAllToggleWrapEl = document.getElementById("showAllToggleWrap");
+    const sourceIndicatorEl = document.getElementById("sourceIndicator");
+    const detailPanelEl = document.getElementById("detailPanel");
+    const dagDisclosureBtnEl = document.getElementById("dagDisclosureBtn");
+
+    const pdfEmbedExtension = {
+      name: "pdfEmbed",
+      level: "block",
+      start(src) {
+        return src.match(/!pdf(?:\[|\()/)?.index;
+      },
+      tokenizer(src) {
+        const titledMatch = src.match(/^!pdf\[([^\]\n]*)\]\(([^)\n]+)\)(?:\n|$)/);
+        if (titledMatch) {
+          return {
+            type: "pdfEmbed",
+            raw: titledMatch[0],
+            text: titledMatch[2].trim(),
+            title: titledMatch[1].trim()
+          };
+        }
+        const bareMatch = src.match(/^!pdf\(([^)\n]+)\)(?:\n|$)/);
+        if (!bareMatch) {
+          return undefined;
+        }
+        return {
+          type: "pdfEmbed",
+          raw: bareMatch[0],
+          text: bareMatch[1].trim(),
+          title: ""
+        };
+      },
+      renderer(token) {
+        const escaped = escapeHtml(token.text);
+        const escapedTitle = escapeHtml(token.title || "");
+        return `<div class="pdf-embed" data-pdf-embed="${escaped}" data-pdf-title="${escapedTitle}"></div>`;
+      }
+    };
+
+    marked.use({
+      extensions: [pdfEmbedExtension]
+    });
+    marked.use(markedKatex({
+      throwOnError: false,
+      output: "html"
+    }));
+    marked.setOptions({
+      gfm: true,
+      breaks: false
+    });
+
+    const NODE_WIDTH = 140;
+    const NODE_HEIGHT = 22;
+    const GAP_X = 18;
+    const GAP_Y = 8;
+    const PADDING = 12;
+    const TAP_MOVE_THRESHOLD_PX = 10;
+
+    let currentZoom = 1;
+    let currentSvgEl = null;
+    let zoomBehavior = null;
+    let allItems = [];
+    let activeDataset = "math";
+    let pendingNodeId = "";
+    let selectedNodeId = "";
+    let dagVisible = true;
+    let suppressClickUntil = 0;
+
+    function setError(message) {
+      graphEl.innerHTML = '<pre class="error"></pre>';
+      graphEl.querySelector("pre").textContent = message;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    function parseClassName(className) {
+      const match = String(className || "").trim().match(/^([a-z]{3,5})([A-Z0-9]+)$/);
+      if (!match) {
+        return null;
+      }
+      return {
+        subject: match[1],
+        level: match[2]
+      };
+    }
+
+    function renderDetail(item) {
+      if (!item) {
+        detailPanelEl.innerHTML = `
+          <h2 class="detail-title">Topic Notes</h2>
+          <div class="detail-empty">Click a node to view the markdown stored in that topic file.</div>
+        `;
+        return;
+      }
+      const markdown = String(item.markdown || "").trim();
+      const classItems = (item.classes || [])
+        .map((className) => parseClassName(className))
+        .filter(Boolean);
+      const metaHtml = classItems.length
+        ? `
+          <div class="detail-meta">
+            ${classItems.map((entry) => `
+              <span class="detail-chip">
+                <span class="detail-chip-subject">${escapeHtml(entry.subject)}</span>
+                <span class="detail-chip-level">${escapeHtml(entry.level)}</span>
+              </span>
+            `).join("")}
+          </div>
+        `
+        : `<div class="detail-empty">No class tags recorded for this topic.</div>`;
+      const bodyHtml = markdown
+        ? marked.parse(markdown)
+        : `<div class="detail-empty">No markdown notes yet for <strong>${escapeHtml(item.label || item.id)}</strong>.</div>`;
+      detailPanelEl.innerHTML = `
+        <h2 class="detail-title">${escapeHtml(item.label || item.id)}</h2>
+        ${metaHtml}
+        <div class="detail-body">${bodyHtml}</div>
+      `;
+      void hydratePdfEmbeds(detailPanelEl);
+    }
+
+    function renderDetailUnavailable() {
+      detailPanelEl.innerHTML = `
+        <h2 class="detail-title">Topic Notes</h2>
+        <div class="detail-empty">Markdown detail view is available for directory-backed datasets such as <code>math/</code>.</div>
+      `;
+    }
+
+    function clampZoom(value) {
+      return Math.min(3, Math.max(0.1, value));
+    }
+
+    function applyZoom() {
+      if (!currentSvgEl || !zoomBehavior) return;
+      const scale = clampZoom(currentZoom);
+      d3.select(currentSvgEl).call(zoomBehavior.scaleTo, scale);
+      zoomLabelEl.textContent = `${Math.round(scale * 100)}%`;
+    }
+
+    function setZoom(value) {
+      currentZoom = clampZoom(value);
+      applyZoom();
+    }
+
+    function fitGraphToViewport(svgSelection) {
+      if (!zoomBehavior || !currentSvgEl) {
+        return;
+      }
+      currentZoom = 1;
+      svgSelection.call(zoomBehavior.transform, d3.zoomIdentity);
+    }
+
+    function truncateLabel(label, maxWidthPx) {
+      const text = String(label ?? "");
+      if (!text) return "";
+      const approxCharWidth = 7;
+      const maxChars = Math.max(4, Math.floor((maxWidthPx - 12) / approxCharWidth));
+      if (text.length <= maxChars) return text;
+      return text.slice(0, Math.max(1, maxChars - 3)).trimEnd() + "...";
+    }
+
+    function parsePdfEmbedSpec(specText) {
+      const parts = String(specText || "").split(",").map((part) => part.trim());
+      if (parts.length !== 6) {
+        throw new Error("!pdf requires 6 comma-separated values.");
+      }
+      const [file, pageNumber, width, height, x, y] = parts;
+      return {
+        file,
+        pageNumber: Number(pageNumber),
+        width: Number(width),
+        height: Number(height),
+        x: Number(x),
+        y: Number(y)
+      };
+    }
+
+    async function hydratePdfEmbeds(rootEl) {
+      const embeds = Array.from(rootEl.querySelectorAll("[data-pdf-embed]"));
+      await Promise.all(embeds.map(async (embedEl) => {
+        const rawSpec = embedEl.getAttribute("data-pdf-embed") || "";
+        const title = embedEl.getAttribute("data-pdf-title") || "";
+        try {
+          const spec = parsePdfEmbedSpec(rawSpec);
+          const canvas = await renderPdfRegionToCanvas(spec);
+          if (title) {
+            canvas.title = title;
+            canvas.setAttribute("aria-label", title);
+          }
+          embedEl.replaceChildren(canvas);
+        } catch (err) {
+          embedEl.innerHTML = `<div class="pdf-embed-error">${escapeHtml(err && err.message ? err.message : String(err))}</div>`;
+        }
+      }));
+    }
+
+    function extractSubject(className) {
+      const match = String(className || "").trim().match(/^([a-z]{3,5})([A-Z0-9]+)$/);
+      return match ? match[1] : "";
+    }
+
+    function extractLevel(className) {
+      const match = String(className || "").trim().match(/^([a-z]{3,5})([A-Z0-9]+)$/);
+      return match ? match[2] : "";
+    }
+
+    function collectSubjects(items) {
+      const subjects = new Set();
+      items.forEach((item) => {
+        (item.classes || []).forEach((className) => {
+          const subject = extractSubject(className);
+          if (subject) {
+            subjects.add(subject);
+          }
+        });
+      });
+      return Array.from(subjects).sort();
+    }
+
+    function populateScopeOptions(items) {
+      const selected = scopeSelectEl.value || "maps";
+      const subjects = collectSubjects(items);
+      scopeSelectEl.innerHTML = "";
+
+      const mapsOption = document.createElement("option");
+      mapsOption.value = "maps";
+      mapsOption.textContent = "Full";
+      scopeSelectEl.appendChild(mapsOption);
+
+      subjects.forEach((subject) => {
+        const option = document.createElement("option");
+        option.value = subject;
+        option.textContent = subject.toUpperCase();
+        scopeSelectEl.appendChild(option);
+      });
+
+      const nextValue = selected === "maps" || subjects.includes(selected) ? selected : "maps";
+      scopeSelectEl.value = nextValue;
+    }
+
+    function populateLevelOptions(items, subject) {
+      const normalized = String(subject || "maps").toLowerCase();
+      if (normalized === "maps") {
+        levelSelectEl.innerHTML = "";
+        levelSelectEl.classList.add("hidden");
+        levelSelectEl.value = "";
+        return;
+      }
+
+      const selected = levelSelectEl.value || "all";
+      const levels = new Set();
+      items.forEach((item) => {
+        (item.classes || []).forEach((className) => {
+          if (extractSubject(className) === normalized) {
+            const level = extractLevel(className);
+            if (level) {
+              levels.add(level);
+            }
+          }
+        });
+      });
+
+      levelSelectEl.innerHTML = "";
+      const allOption = document.createElement("option");
+      allOption.value = "all";
+      allOption.textContent = "All levels";
+      levelSelectEl.appendChild(allOption);
+
+      Array.from(levels).sort().forEach((level) => {
+        const option = document.createElement("option");
+        option.value = level;
+        option.textContent = level;
+        levelSelectEl.appendChild(option);
+      });
+
+      const nextValue = selected === "all" || levels.has(selected) ? selected : "all";
+      levelSelectEl.value = nextValue;
+      levelSelectEl.classList.toggle("hidden", false);
+    }
+
+    function filterItems(scope, level, items, showAllNodes) {
+      const normalized = String(scope || "maps").toLowerCase();
+      if (normalized === "maps") return items;
+      const normalizedLevel = String(level || "all");
+      const visible = items.filter((item) => {
+        const classes = item.classes || [];
+        return classes.some((cls) => {
+          if (extractSubject(cls) !== normalized) {
+            return false;
+          }
+          return normalizedLevel === "all" || extractLevel(cls) === normalizedLevel;
+        });
+      });
+      const itemById = new Map(items.map((item) => [item.id, item]));
+      const visibleIds = new Set(visible.map((item) => item.id));
+
+       if (showAllNodes) {
+        return items.map((item) => ({
+          ...item,
+          prereqOnly: !visibleIds.has(item.id)
+        }));
+      }
+
+      const includedIds = new Set(visibleIds);
+
+      const stack = [...visibleIds];
+      while (stack.length) {
+        const current = stack.pop();
+        const node = itemById.get(current);
+        if (!node) continue;
+        (node.prereqs || []).forEach((parentId) => {
+          if (!includedIds.has(parentId)) {
+            includedIds.add(parentId);
+            stack.push(parentId);
+          }
+        });
+      }
+
+      return items
+        .filter((item) => includedIds.has(item.id))
+        .map((item) => ({
+          ...item,
+          prereqs: (item.prereqs || []).filter((id) => includedIds.has(id)),
+          prereqOnly: !visibleIds.has(item.id)
+        }));
+    }
+
+    function getFilteredItems() {
+      return filterItems(scopeSelectEl.value, levelSelectEl.value, allItems, showAllToggleEl.checked);
+    }
+
+    async function renderCurrentGraph() {
+      if (!dagVisible) {
+        graphEl.innerHTML = "";
+        currentSvgEl = null;
+        zoomBehavior = null;
+        zoomLabelEl.textContent = "100%";
+        return;
+      }
+      pendingNodeId = selectedNodeId || pendingNodeId;
+      await renderElk(getFilteredItems());
+    }
+
+    function buildPrereqMap(items) {
+      const map = new Map();
+      items.forEach((item) => {
+        map.set(item.id, new Set(item.prereqs || []));
+      });
+      return map;
+    }
+
+    function collectAncestors(nodeId, prereqMap) {
+      const visited = new Set();
+      const stack = [nodeId];
+      while (stack.length) {
+        const current = stack.pop();
+        if (visited.has(current)) continue;
+        visited.add(current);
+        const parents = prereqMap.get(current);
+        if (!parents) continue;
+        parents.forEach((p) => {
+          if (!visited.has(p)) stack.push(p);
+        });
+      }
+      return visited;
+    }
+
+    async function renderElk(items) {
+      try {
+        graphEl.innerHTML = "";
+        const elk = new Elk();
+        const nodes = items.map((item) => ({
+          id: item.id,
+          width: NODE_WIDTH,
+          height: NODE_HEIGHT,
+          label: item.label ?? item.id,
+          prereqOnly: Boolean(item.prereqOnly)
+        }));
+        const edges = [];
+        items.forEach((item) => {
+          (item.prereqs || []).forEach((parentId, idx) => {
+            edges.push({
+              id: `${parentId}->${item.id}-${idx}`,
+              sources: [parentId],
+              targets: [item.id]
+            });
+          });
+        });
+
+        const graph = {
+          id: "root",
+          layoutOptions: {
+            "elk.algorithm": "layered",
+            "elk.direction": "RIGHT",
+            "elk.layered.crossingMinimization.strategy": "LAYER_SWEEP",
+            "elk.layered.nodePlacement.strategy": "NETWORK_SIMPLEX",
+            "elk.spacing.nodeNode": `${GAP_X}`,
+            "elk.spacing.nodeNodeBetweenLayers": `${GAP_Y}`
+          },
+          children: nodes,
+          edges
+        };
+
+        const layout = await elk.layout(graph);
+        const width = (layout.width || 0) + PADDING * 2;
+        const height = (layout.height || 0) + PADDING * 2;
+        const containerWidth = Math.max(1, graphEl.clientWidth);
+        const containerHeight = Math.max(1, graphEl.clientHeight);
+
+        const svg = d3.select(graphEl).append("svg")
+          .attr("width", containerWidth)
+          .attr("height", containerHeight)
+          .attr("viewBox", `0 0 ${width} ${height}`);
+
+        const g = svg.append("g").attr("transform", `translate(${PADDING},${PADDING})`);
+
+        const edgeGroup = g.append("g");
+        const edgeEls = [];
+        (layout.edges || []).forEach((edge) => {
+          const sourceId = (edge.sources && edge.sources[0]) || "";
+          const targetId = (edge.targets && edge.targets[0]) || "";
+          (edge.sections || []).forEach((section) => {
+            const points = [section.startPoint, ...(section.bendPoints || []), section.endPoint];
+            const path = d3.line().curve(d3.curveLinear)(points.map((p) => [p.x, p.y]));
+            if (!path) return;
+            const edgeEl = edgeGroup.append("path")
+              .attr("class", "edgePath")
+              .attr("d", path);
+            edgeEls.push({ sourceId, targetId, el: edgeEl });
+          });
+        });
+
+        const itemById = new Map(items.map((item) => [item.id, item]));
+        const prereqMap = buildPrereqMap(items);
+        const nodeElsById = new Map();
+        const layoutNodeById = new Map();
+        const nodeGroup = g.append("g");
+        (layout.children || []).forEach((node) => {
+          const nodeWidth = node.width || NODE_WIDTH;
+          const nodeHeight = node.height || NODE_HEIGHT;
+          layoutNodeById.set(node.id, {
+            x: node.x || 0,
+            y: node.y || 0,
+            width: nodeWidth,
+            height: nodeHeight
+          });
+          const item = itemById.get(node.id);
+          const prereqOnly = item ? Boolean(item.prereqOnly) : false;
+          const nodeG = nodeGroup.append("g")
+            .attr("class", prereqOnly ? "node prereq-only" : "node")
+            .attr("transform", `translate(${node.x || 0},${node.y || 0})`);
+          nodeElsById.set(node.id, nodeG);
+
+          nodeG.append("rect")
+            .attr("width", nodeWidth)
+            .attr("height", nodeHeight);
+
+          nodeG.append("text")
+            .attr("x", nodeWidth / 2)
+            .attr("y", nodeHeight / 2)
+            .text(truncateLabel(node.label || node.id, nodeWidth));
+
+        });
+
+        const highlightNodes = (nodeId) => {
+          const targets = collectAncestors(nodeId, prereqMap);
+          nodeElsById.forEach((nodeEl, id) => {
+            nodeEl.classed("highlight", targets.has(id));
+          });
+          edgeEls.forEach((edge) => {
+            const onPath = targets.has(edge.sourceId) && targets.has(edge.targetId);
+            edge.el.classed("highlight", onPath);
+          });
+        };
+
+        const zoomToNode = (nodeId) => {
+          if (!zoomBehavior) {
+            return;
+          }
+          const node = layoutNodeById.get(nodeId);
+          if (!node) {
+            return;
+          }
+          const containerWidthPx = Math.max(1, graphEl.clientWidth);
+          const containerHeightPx = Math.max(1, graphEl.clientHeight);
+          const baseScale = Math.min(containerWidthPx / width, containerHeightPx / height);
+          const nodeWidthPx = Math.max(1, node.width * baseScale);
+          const nodeHeightPx = Math.max(1, node.height * baseScale);
+          const targetWidthPx = 170;
+          const targetHeightPx = 30;
+          const targetScale = Math.min(1.8, clampZoom(Math.max(
+            1,
+            targetWidthPx / nodeWidthPx,
+            targetHeightPx / nodeHeightPx
+          )));
+          currentZoom = targetScale;
+          svgSelection
+            .transition()
+            .duration(250)
+            .call(zoomBehavior.transform, d3.zoomIdentity
+              .translate(containerWidthPx / 2, containerHeightPx / 2)
+              .scale(targetScale)
+              .translate(-(node.x + node.width / 2), -(node.y + node.height / 2)));
+        };
+
+        const activateNode = (nodeId) => {
+          if (!nodeElsById.has(nodeId)) {
+            return false;
+          }
+          selectedNodeId = nodeId;
+          highlightNodes(nodeId);
+          renderDetail(itemById.get(nodeId));
+          updateNodeUrlParam(nodeId);
+          zoomToNode(nodeId);
+          return true;
+        };
+
+        nodeElsById.forEach((nodeEl, id) => {
+          let pointerStart = null;
+          nodeEl.style("cursor", "pointer");
+          nodeEl.on("pointerdown", (event) => {
+            pointerStart = {
+              x: event.clientX,
+              y: event.clientY,
+              pointerId: event.pointerId
+            };
+          });
+          nodeEl.on("pointerup", (event) => {
+            if (!pointerStart || pointerStart.pointerId !== event.pointerId) {
+              return;
+            }
+            const dx = event.clientX - pointerStart.x;
+            const dy = event.clientY - pointerStart.y;
+            const distance = Math.hypot(dx, dy);
+            pointerStart = null;
+            if (distance <= TAP_MOVE_THRESHOLD_PX) {
+              suppressClickUntil = Date.now() + 250;
+              event.stopPropagation();
+              activateNode(id);
+            }
+          });
+          nodeEl.on("pointercancel", () => {
+            pointerStart = null;
+          });
+          nodeEl.on("click", (event) => {
+            if (Date.now() < suppressClickUntil) {
+              event.stopPropagation();
+              return;
+            }
+            event.stopPropagation();
+            activateNode(id);
+          });
+        });
+
+        graphEl.onclick = () => {
+          nodeElsById.forEach((nodeEl) => nodeEl.classed("highlight", false));
+          edgeEls.forEach((edge) => edge.el.classed("highlight", false));
+          if (activeDataset === "math") {
+            renderDetail(null);
+          } else {
+            renderDetailUnavailable();
+          }
+          selectedNodeId = "";
+          updateNodeUrlParam("");
+        };
+
+        zoomBehavior = d3.zoom().scaleExtent([0.1, 3]).on("zoom", (event) => {
+          g.attr("transform", event.transform);
+          zoomLabelEl.textContent = `${Math.round(event.transform.k * 100)}%`;
+        });
+
+        const svgSelection = d3.select(svg.node());
+        svg.call(zoomBehavior);
+        currentSvgEl = svg.node();
+        fitGraphToViewport(svgSelection);
+        if (pendingNodeId) {
+          if (activateNode(pendingNodeId)) {
+            pendingNodeId = "";
+          }
+        }
+      } catch (err) {
+        setError("ELK render error:\n\n" + (err && err.message ? err.message : String(err)));
+      }
+    }
+
+    function getDataFile() {
+      const params = new URLSearchParams(window.location.search);
+      const fileParam = params.get("file");
+      if (!fileParam) return "math";
+      return fileParam.replace(/[^a-zA-Z0-9_-]/g, "");
+    }
+
+    function getRequestedNodeId() {
+      const params = new URLSearchParams(window.location.search);
+      return (params.get("node") || "").trim();
+    }
+
+    function getRequestedDagVisible() {
+      const params = new URLSearchParams(window.location.search);
+      const value = (params.get("dag") || "1").trim().toLowerCase();
+      return !["0", "false", "hidden", "hide"].includes(value);
+    }
+
+    function updateNodeUrlParam(nodeId) {
+      const url = new URL(window.location.href);
+      if (nodeId) {
+        url.searchParams.set("node", nodeId);
+      } else {
+        url.searchParams.delete("node");
+      }
+      window.history.replaceState({}, "", url);
+    }
+
+    function updateDagUrlParam(isVisible) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("dag", isVisible ? "1" : "0");
+      window.history.replaceState({}, "", url);
+    }
+
+    function applyDagVisibility() {
+      contentEl.classList.toggle("dag-hidden", !dagVisible);
+      zoomInBtnEl.parentElement.classList.toggle("hidden", !dagVisible);
+      showAllToggleWrapEl.classList.toggle("hidden", !dagVisible);
+      dagDisclosureBtnEl.setAttribute("aria-expanded", dagVisible ? "true" : "false");
+      dagDisclosureBtnEl.setAttribute("aria-label", dagVisible ? "Hide DAG" : "Show DAG");
+    }
+
+    function parseFrontMatter(markdownText) {
+      const match = markdownText.match(/^---\n([\s\S]*?)\n---(?:\n|$)/);
+      if (!match) {
+        throw new Error("Missing YAML front matter.");
+      }
+      const data = yamlLoad(match[1]);
+      if (!data || typeof data !== "object") {
+        throw new Error("Invalid YAML front matter.");
+      }
+      const body = markdownText.slice(match[0].length).trim();
+      return {
+        id: data.id,
+        label: data.label,
+        prereqs: Array.isArray(data.prereqs) ? data.prereqs : [],
+        classes: Array.isArray(data.classes) ? data.classes : [],
+        markdown: body
+      };
+    }
+
+    async function loadDirectoryDataset(dirName) {
+      const indexRes = await fetch(`./${dirName}/index.yaml`, { cache: "no-store" });
+      if (!indexRes.ok) {
+        throw new Error(`HTTP ${indexRes.status}`);
+      }
+      const indexRaw = await indexRes.text();
+      const indexData = yamlLoad(indexRaw);
+      const files = Array.isArray(indexData?.files) ? indexData.files : [];
+      const items = await Promise.all(files.map(async (fileName) => {
+        const itemRes = await fetch(`./${dirName}/${fileName}`, { cache: "no-store" });
+        if (!itemRes.ok) {
+          throw new Error(`Could not load ${dirName}/${fileName} (HTTP ${itemRes.status}).`);
+        }
+        const itemRaw = await itemRes.text();
+        return parseFrontMatter(itemRaw);
+      }));
+      return items;
+    }
+
+    async function loadDataset(fileBase) {
+      if (fileBase === "math") {
+        return loadDirectoryDataset(fileBase);
+      }
+      const res = await fetch(`./${fileBase}.yaml`, { cache: "no-store" });
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+      }
+      const raw = await res.text();
+      return yamlLoad(raw);
+    }
+
+    async function init() {
+      try {
+        const fileBase = getDataFile();
+        activeDataset = fileBase;
+        pendingNodeId = getRequestedNodeId();
+        selectedNodeId = pendingNodeId;
+        dagVisible = getRequestedDagVisible();
+        applyDagVisibility();
+        sourceIndicatorEl.textContent = fileBase === "math" ? "Source: math/" : `Source: ${fileBase}.yaml`;
+        allItems = await loadDataset(fileBase);
+        populateScopeOptions(allItems);
+        populateLevelOptions(allItems, scopeSelectEl.value);
+      } catch (err) {
+        setError("Could not load data file.\n\n" + (err && err.message ? err.message : String(err)));
+        return;
+      }
+      if (activeDataset === "math") {
+        renderDetail(null);
+      } else {
+        renderDetailUnavailable();
+      }
+      await renderCurrentGraph();
+    }
+
+    zoomInBtnEl.addEventListener("click", () => setZoom(currentZoom + 0.1));
+    zoomOutBtnEl.addEventListener("click", () => setZoom(currentZoom - 0.1));
+    zoomResetBtnEl.addEventListener("click", () => setZoom(1));
+    scopeSelectEl.addEventListener("change", async () => {
+      populateLevelOptions(allItems, scopeSelectEl.value);
+      if (activeDataset === "math") {
+        renderDetail(null);
+      } else {
+        renderDetailUnavailable();
+      }
+      selectedNodeId = "";
+      updateNodeUrlParam("");
+      await renderCurrentGraph();
+    });
+    levelSelectEl.addEventListener("change", async () => {
+      if (activeDataset === "math") {
+        renderDetail(null);
+      } else {
+        renderDetailUnavailable();
+      }
+      selectedNodeId = "";
+      updateNodeUrlParam("");
+      await renderCurrentGraph();
+    });
+    showAllToggleEl.addEventListener("change", async () => {
+      if (activeDataset === "math") {
+        renderDetail(null);
+      } else {
+        renderDetailUnavailable();
+      }
+      selectedNodeId = "";
+      updateNodeUrlParam("");
+      await renderCurrentGraph();
+    });
+    dagDisclosureBtnEl.addEventListener("click", async () => {
+      dagVisible = !dagVisible;
+      applyDagVisibility();
+      updateDagUrlParam(dagVisible);
+      if (dagVisible) {
+        await renderCurrentGraph();
+      }
+    });
+
+    init();
+  </script>
+</body>
+</html>

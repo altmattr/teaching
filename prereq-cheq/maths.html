@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maths Topic Tree</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --panel: #ffffff;
+      --text: #1f1f1f;
+      --muted: #5f5a54;
+      --border: #d6d0c4;
+      --accent: #a6192e;
+      --accent-dark: #76232f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: "Fira Sans", "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .page {
+      display: grid;
+      grid-template-rows: 56px 1fr;
+      height: 100%;
+    }
+
+    .title {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      position: relative;
+    }
+
+    .zoom-controls {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .zoom-btn {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      border-radius: 8px;
+      min-width: 28px;
+      height: 28px;
+      padding: 0 8px;
+      font: 600 0.9rem/1 "Fira Sans", "Segoe UI", sans-serif;
+      cursor: pointer;
+    }
+
+    .zoom-btn:hover {
+      border-color: #bdb5a8;
+    }
+
+    .zoom-label {
+      min-width: 44px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .canvas-wrap {
+      margin: 10px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--panel);
+      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.07);
+      overflow: scroll;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 6px;
+    }
+
+    #graph {
+      min-width: max-content;
+      display: block;
+    }
+
+    #graph svg {
+      display: block;
+      max-width: none !important;
+      height: auto !important;
+      background: #fff;
+      border-radius: 12px;
+      margin: 0;
+    }
+
+    #graph svg text {
+      font-family: "Fira Sans", "Segoe UI", sans-serif;
+      font-size: 12px;
+    }
+
+    .status {
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .error {
+      color: #b91c1c;
+      white-space: pre-wrap;
+      font-size: 0.92rem;
+    }
+
+    .mermaidTooltip {
+      position: absolute;
+      z-index: 9999;
+      max-width: 320px;
+      padding: 6px 8px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      font-size: 0.82rem;
+      box-shadow: 0 8px 16px rgba(15, 23, 42, 0.12);
+      pointer-events: none;
+    }
+
+    .class-badge {
+      stroke: none !important;
+    }
+
+    .math1000-badge {
+      fill: #16a34a !important;
+    }
+
+    .math1010-badge {
+      fill: #f97316 !important;
+    }
+
+    .stat1170-badge {
+      fill: #16a34a !important;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1 class="title">
+      Maths Topic Tree
+      <span class="zoom-controls">
+        <button class="zoom-btn" id="zoomOutBtn" type="button" aria-label="Zoom out">-</button>
+        <span class="zoom-label" id="zoomLabel">100%</span>
+        <button class="zoom-btn" id="zoomInBtn" type="button" aria-label="Zoom in">+</button>
+        <button class="zoom-btn" id="zoomResetBtn" type="button" aria-label="Reset zoom">Reset</button>
+      </span>
+    </h1>
+    <section class="canvas-wrap">
+      <div id="graph">
+        <div class="status">Loading <code>math.json</code>...</div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+    const graphEl = document.getElementById('graph');
+    const zoomInBtnEl = document.getElementById('zoomInBtn');
+    const zoomOutBtnEl = document.getElementById('zoomOutBtn');
+    const zoomResetBtnEl = document.getElementById('zoomResetBtn');
+    const zoomLabelEl = document.getElementById('zoomLabel');
+    window.showTrigTooltip = () => {};
+    let currentZoom = 1;
+    let baseWidth = 0;
+    let baseHeight = 0;
+    let currentSvgEl = null;
+    let graphInnerEl = null;
+    let classById = new Map();
+
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: "loose",
+      theme: "base",
+      fontFamily: "Fira Sans",
+      flowchart: {
+        curve: "linear",
+        nodeSpacing: 12,
+        rankSpacing: 18,
+        padding: 4
+      },
+      themeVariables: {
+        primaryColor: "#ffffff",
+        primaryTextColor: "#1f1f1f",
+        primaryBorderColor: "#1f1f1f",
+        lineColor: "#1f1f1f",
+        clusterBkg: "#ffffff",
+        clusterBorder: "#1f1f1f",
+        fontFamily: "Fira Sans",
+        fontSize: "12px"
+      }
+    });
+
+    function setError(message) {
+      graphEl.innerHTML = '<pre class="error"></pre>';
+      const pre = graphEl.querySelector('pre');
+      pre.textContent = message;
+    }
+
+    function getNodeId(nodeEl) {
+      const dataId = nodeEl.getAttribute("data-id");
+      if (dataId) return dataId;
+      const rawId = nodeEl.getAttribute("id") || "";
+      const match = rawId.match(/flowchart-(.+?)-\\d+$/);
+      if (match) return match[1];
+      const titleEl = nodeEl.querySelector("title");
+      if (titleEl && titleEl.textContent) {
+        return titleEl.textContent.trim();
+      }
+      return "";
+    }
+
+    function addClassBadges() {
+      if (!graphInnerEl) return;
+      const badgeSize = 5;
+      const badgeOffset = 0;
+      const svgNs = "http://www.w3.org/2000/svg";
+
+      const addBadge = (nodeEl, className, fill, position) => {
+        const bbox = nodeEl.getBBox();
+        let x = bbox.x + badgeOffset;
+        if (position === "top-middle") {
+          x = bbox.x + (bbox.width / 2) - (badgeSize / 2);
+        }
+        let y = bbox.y + badgeOffset;
+        if (position === "bottom-left") {
+          y = bbox.y + bbox.height - badgeOffset - badgeSize;
+        }
+
+        const rect = document.createElementNS(svgNs, "rect");
+        rect.setAttribute("x", String(x));
+        rect.setAttribute("y", String(y));
+        rect.setAttribute("width", String(badgeSize));
+        rect.setAttribute("height", String(badgeSize));
+        rect.setAttribute("rx", "1");
+        rect.setAttribute("ry", "1");
+        rect.setAttribute("class", `class-badge ${className}`);
+        rect.setAttribute("fill", fill);
+        rect.setAttribute("style", `fill: ${fill} !important; stroke: none;`);
+
+        const firstShape = nodeEl.querySelector("rect, polygon, ellipse, path");
+        if (firstShape && firstShape.parentNode === nodeEl) {
+          nodeEl.insertBefore(rect, firstShape.nextSibling);
+        } else {
+          nodeEl.appendChild(rect);
+        }
+      };
+
+      graphInnerEl.querySelectorAll(".node").forEach((nodeEl) => {
+        nodeEl.querySelectorAll(".class-badge").forEach((badge) => badge.remove());
+        const nodeId = getNodeId(nodeEl);
+        const classes = classById.get(nodeId) || [];
+        if (classes.includes("math1000")) {
+          addBadge(nodeEl, "math1000-badge", "#16a34a", "top-left");
+        }
+        if (classes.includes("math1010")) {
+          addBadge(nodeEl, "math1010-badge", "#f97316", "top-middle");
+        }
+        if (classes.includes("stat1170")) {
+          addBadge(nodeEl, "stat1170-badge", "#16a34a", "bottom-left");
+        }
+      });
+    }
+
+    function clampZoom(value) {
+      return Math.min(3, Math.max(0.1, value));
+    }
+
+    function applyZoom() {
+      if (!currentSvgEl || !baseWidth || !baseHeight) return;
+      const w = Math.round(baseWidth * currentZoom);
+      const h = Math.round(baseHeight * currentZoom);
+      currentSvgEl.setAttribute("width", String(w));
+      currentSvgEl.setAttribute("height", String(h));
+      zoomLabelEl.textContent = `${Math.round(currentZoom * 100)}%`;
+    }
+
+    function setZoom(value) {
+      currentZoom = clampZoom(value);
+      applyZoom();
+    }
+
+    async function fetchText(path) {
+      const res = await fetch(path, { cache: "no-store" });
+      if (!res.ok) throw new Error(`Could not load ${path} (HTTP ${res.status}).`);
+      return res.text();
+    }
+
+    function toSafeId(rawId) {
+      return `n_${rawId}`.replace(/[^a-zA-Z0-9_]/g, "_");
+    }
+
+    function escapeLabel(label) {
+      return String(label).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+    }
+
+    function buildMermaidSource(items) {
+      const lines = ["graph LR;"];
+      const idMap = new Map();
+      items.forEach((item) => {
+        idMap.set(item.id, toSafeId(item.id));
+      });
+
+      items.forEach((item) => {
+        const safeId = idMap.get(item.id);
+        const label = item.label ?? item.id;
+        lines.push(`  ${safeId}["${escapeLabel(label)}"]`);
+      });
+
+      items.forEach((item) => {
+        const targetId = idMap.get(item.id);
+        (item.prereqs || []).forEach((parentId) => {
+          const sourceId = idMap.get(parentId);
+          if (!sourceId || !targetId) return;
+          lines.push(`  ${sourceId} --> ${targetId}`);
+        });
+      });
+
+      return { source: lines.join("\n"), idMap };
+    }
+
+    async function renderMermaid() {
+      let items = [];
+      try {
+        const raw = await fetchText("./math.json");
+        items = JSON.parse(raw);
+      } catch (err) {
+        setError("Could not load graph source from math.json.\n\n" + (err && err.message ? err.message : String(err)));
+        return;
+      }
+
+      try {
+        const { source, idMap } = buildMermaidSource(items);
+        classById = new Map();
+        items.forEach((item) => {
+          const classes = item.classes || [];
+          const safeId = idMap.get(item.id);
+          if (safeId) classById.set(safeId, classes);
+          classById.set(item.id, classes);
+          const label = (item.label ?? item.id).trim();
+          if (label) classById.set(label, classes);
+        });
+        const id = "maths-mermaid-" + Date.now();
+        const result = await mermaid.render(id, source);
+        graphEl.innerHTML = '<div id="graph-inner"></div>';
+        graphInnerEl = graphEl.querySelector("#graph-inner");
+        graphInnerEl.innerHTML = result.svg;
+        const svg = graphInnerEl.querySelector("svg");
+        if (svg) {
+          currentSvgEl = svg;
+          svg.style.maxWidth = "none";
+          const vb = (svg.getAttribute("viewBox") || "").trim().split(/\s+/).map(Number);
+          if (vb.length === 4 && Number.isFinite(vb[2]) && Number.isFinite(vb[3])) {
+            baseWidth = vb[2];
+            baseHeight = vb[3];
+          } else {
+            const bw = svg.width && svg.width.baseVal ? svg.width.baseVal.value : 0;
+            const bh = svg.height && svg.height.baseVal ? svg.height.baseVal.value : 0;
+            baseWidth = bw;
+            baseHeight = bh;
+          }
+          currentSvgEl.style.width = "";
+          currentSvgEl.style.height = "";
+          setZoom(1);
+        }
+        if (typeof result.bindFunctions === "function") {
+          result.bindFunctions(graphInnerEl);
+        }
+        addClassBadges();
+      } catch (err) {
+        setError("Mermaid render error:\n\n" + (err && err.message ? err.message : String(err)));
+      }
+    }
+
+    zoomInBtnEl.addEventListener("click", () => setZoom(currentZoom + 0.1));
+    zoomOutBtnEl.addEventListener("click", () => setZoom(currentZoom - 0.1));
+    zoomResetBtnEl.addEventListener("click", () => setZoom(1));
+
+    renderMermaid();
+  </script>
+</body>
+</html>
