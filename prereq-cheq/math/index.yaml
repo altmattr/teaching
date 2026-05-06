@@ -1,9 +1,9 @@
 files:
   - 2d_collections.md
-  - algebraic_manipulation.md
   - algebraic_equations.md
   - algebraic_fractions.md
   - algebraic_logs.md
+  - algebraic_manipulation.md
   - annuities_advanced.md
   - annuties.md
   - arith_perc.md
@@ -45,10 +45,10 @@ files:
   - functions_modifying.md
   - functions_plot_lit.md
   - functions_plots.md
-  - graph_defns.md
   - geometry.md
   - geometry_areas.md
   - geometry_right_angled.md
+  - graph_defns.md
   - graph_drawing.md
   - graph_metrics.md
   - graph_tree.md
@@ -75,9 +75,11 @@ files:
   - ratios.md
   - reading_plots.md
   - scatter_plot.md
+  - scientific_notation.md
   - second_derivatives.md
   - sequences.md
   - shapes.md
+  - sig_figs.md
   - sigma.md
   - simultaneous_equations.md
   - standard_triangles.md
@@ -94,3 +96,4 @@ files:
   - trig_ratios.md
   - types_of_numbers.md
   - unit_circle.md
+  - unit_conversions.md

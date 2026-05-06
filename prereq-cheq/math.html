@@ -268,8 +268,20 @@
         #fff;
     }
 
+    .detail-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: start;
+      gap: 12px 16px;
+      margin: 0 0 14px;
+    }
+
+    .detail-heading {
+      min-width: 0;
+    }
+
     .detail-title {
-      margin: 0 0 12px;
+      margin: 0;
       font-size: 1.3rem;
       color: var(--accent-dark);
     }
@@ -280,6 +292,44 @@
       max-width: 48rem;
     }
 
+    .detail-tabs {
+      display: flex;
+      gap: 0;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      margin: 0;
+      border-bottom: 1px solid var(--border);
+      align-self: end;
+    }
+
+    .detail-tab {
+      border: 1px solid transparent;
+      border-bottom: none;
+      background: transparent;
+      color: var(--muted);
+      border-radius: 10px 10px 0 0;
+      padding: 8px 13px 9px;
+      margin: 0 4px -1px 0;
+      font: 600 0.86rem/1 "Fira Sans", "Segoe UI", sans-serif;
+      cursor: pointer;
+    }
+
+    .detail-tab:hover {
+      color: var(--accent-dark);
+      background: rgba(166, 25, 46, 0.04);
+    }
+
+    .detail-tab.active {
+      color: var(--accent-dark);
+      border-color: var(--border);
+      background: #fff;
+    }
+
+    .detail-resource-status {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
     .detail-body {
       max-width: 52rem;
       line-height: 1.55;
@@ -288,8 +338,12 @@
     .detail-meta {
       display: flex;
       flex-wrap: wrap;
+      justify-content: flex-end;
       gap: 8px;
-      margin: 0 0 14px;
+      margin: 0;
+      justify-self: end;
+      align-self: center;
+      max-width: 28rem;
     }
 
     .detail-chip {
@@ -502,6 +556,7 @@
     import { load as yamlLoad } from "https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.mjs";
     import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
     import markedKatex from "https://esm.sh/marked-katex-extension@5.1.1";
+    import { HtmlGenerator, parse as parseLatex } from "https://cdn.jsdelivr.net/npm/latex.js/dist/latex.mjs";
     import { renderPdfRegionToCanvas } from "./pdf-region.js";
 
     const contentEl = document.querySelector(".content");
@@ -580,6 +635,7 @@
     let selectedNodeId = "";
     let dagVisible = true;
     let suppressClickUntil = 0;
+    const resourceContentCache = new Map();
 
     function setError(message) {
       graphEl.innerHTML = '<pre class="error"></pre>';
@@ -606,6 +662,88 @@
       };
     }
 
+    function getResourceFileName(path) {
+      return String(path || "").split("/").filter(Boolean).pop() || String(path || "");
+    }
+
+    function parseResourceEntry(entry, index) {
+      const text = String(entry || "").trim();
+      if (!text) {
+        return null;
+      }
+      const match = text.match(/^(.*?)\s*\(([^()]*)\)\s*$/);
+      const path = (match ? match[1] : text).trim();
+      if (!path) {
+        return null;
+      }
+      return {
+        id: `resource-${index}`,
+        path,
+        fileName: getResourceFileName(path),
+        title: (match ? match[2] : getResourceFileName(path)).trim() || getResourceFileName(path)
+      };
+    }
+
+    function getResourceExtension(path) {
+      const fileName = getResourceFileName(path);
+      const match = fileName.match(/\.([^.]+)$/);
+      return match ? match[1].toLowerCase() : "";
+    }
+
+    function renderDetailBodyHtml(rootEl, html) {
+      rootEl.innerHTML = html;
+      void hydratePdfEmbeds(rootEl);
+    }
+
+    function renderTopicMarkdownBody(item) {
+      const markdown = String(item.markdown || "").trim();
+      return markdown
+        ? marked.parse(markdown)
+        : `<div class="detail-empty">No markdown notes yet for <strong>${escapeHtml(item.label || item.id)}</strong>.</div>`;
+    }
+
+    async function loadResourceText(path) {
+      if (!resourceContentCache.has(path)) {
+        resourceContentCache.set(path, (async () => {
+          const res = await fetch(`./static/${path}`, { cache: "no-store" });
+          if (!res.ok) {
+            throw new Error(`Could not load static/${path} (HTTP ${res.status}).`);
+          }
+          return res.text();
+        })());
+      }
+      return resourceContentCache.get(path);
+    }
+
+    function renderLatexResourceToHtml(latexSource) {
+      const generator = new HtmlGenerator({ hyphenate: false });
+      parseLatex(latexSource, { generator });
+      return generator.domFragment().innerHTML;
+    }
+
+    async function renderResourceTabContent(bodyEl, resource) {
+      bodyEl.innerHTML = `<div class="detail-resource-status">Loading ${escapeHtml(resource.title)}...</div>`;
+      try {
+        const raw = await loadResourceText(resource.path);
+        const extension = getResourceExtension(resource.path);
+        if (extension === "tex") {
+          renderDetailBodyHtml(bodyEl, renderLatexResourceToHtml(raw));
+          return;
+        }
+        if (extension === "md" || extension === "markdown") {
+          renderDetailBodyHtml(bodyEl, marked.parse(raw));
+          return;
+        }
+        if (extension === "html" || extension === "htm") {
+          renderDetailBodyHtml(bodyEl, raw);
+          return;
+        }
+        renderDetailBodyHtml(bodyEl, `<pre>${escapeHtml(raw)}</pre>`);
+      } catch (err) {
+        bodyEl.innerHTML = `<div class="detail-empty">${escapeHtml(err && err.message ? err.message : String(err))}</div>`;
+      }
+    }
+
     function renderDetail(item) {
       if (!item) {
         detailPanelEl.innerHTML = `
@@ -614,9 +752,11 @@
         `;
         return;
       }
-      const markdown = String(item.markdown || "").trim();
       const classItems = (item.classes || [])
         .map((className) => parseClassName(className))
+        .filter(Boolean);
+      const resources = (item.resources || [])
+        .map((entry, index) => parseResourceEntry(entry, index))
         .filter(Boolean);
       const metaHtml = classItems.length
         ? `
@@ -630,15 +770,54 @@
           </div>
         `
         : `<div class="detail-empty">No class tags recorded for this topic.</div>`;
-      const bodyHtml = markdown
-        ? marked.parse(markdown)
-        : `<div class="detail-empty">No markdown notes yet for <strong>${escapeHtml(item.label || item.id)}</strong>.</div>`;
+      const tabDefs = [
+        { id: "notes", title: "Notes", type: "notes" },
+        ...resources.map((resource) => ({ ...resource, type: "resource" }))
+      ];
       detailPanelEl.innerHTML = `
-        <h2 class="detail-title">${escapeHtml(item.label || item.id)}</h2>
-        ${metaHtml}
-        <div class="detail-body">${bodyHtml}</div>
+        <div class="detail-header">
+          <div class="detail-heading">
+            <h2 class="detail-title">${escapeHtml(item.label || item.id)}</h2>
+          </div>
+          ${metaHtml}
+          <div class="detail-tabs">
+            ${tabDefs.map((tab, index) => `
+              <button
+                class="detail-tab${index === 0 ? " active" : ""}"
+                type="button"
+                data-detail-tab="${escapeHtml(tab.id)}"
+              >${escapeHtml(tab.title)}</button>
+            `).join("")}
+          </div>
+        </div>
+        <div class="detail-body" id="detailBody"></div>
       `;
-      void hydratePdfEmbeds(detailPanelEl);
+      const detailBodyEl = detailPanelEl.querySelector("#detailBody");
+      const tabEls = Array.from(detailPanelEl.querySelectorAll("[data-detail-tab]"));
+      const activateTab = async (tabId) => {
+        tabEls.forEach((tabEl) => {
+          tabEl.classList.toggle("active", tabEl.getAttribute("data-detail-tab") === tabId);
+        });
+        if (!detailBodyEl) {
+          return;
+        }
+        if (tabId === "notes") {
+          renderDetailBodyHtml(detailBodyEl, renderTopicMarkdownBody(item));
+          return;
+        }
+        const resource = resources.find((entry) => entry.id === tabId);
+        if (!resource) {
+          detailBodyEl.innerHTML = `<div class="detail-empty">Resource not found.</div>`;
+          return;
+        }
+        await renderResourceTabContent(detailBodyEl, resource);
+      };
+      tabEls.forEach((tabEl) => {
+        tabEl.addEventListener("click", () => {
+          void activateTab(tabEl.getAttribute("data-detail-tab") || "notes");
+        });
+      });
+      void activateTab(tabDefs[0]?.id || "notes");
     }
 
     function renderDetailUnavailable() {
@@ -1162,6 +1341,7 @@
         label: data.label,
         prereqs: Array.isArray(data.prereqs) ? data.prereqs : [],
         classes: Array.isArray(data.classes) ? data.classes : [],
+        resources: Array.isArray(data.resources) ? data.resources : [],
         markdown: body
       };
     }
