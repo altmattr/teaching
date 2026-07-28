@@ -14,11 +14,7 @@ By the end of this week you should:
 ## Preparation
   * Read Chapter 5 of "Compiling Interpreters"
   * Follow along with the book by making adjustments to your own Lox interpreter
-  * Watch the following lecture videos on echo360
-    - Context free grammars
-    - Nystrom's CFG notation
-    - A CFG for lox _expressions_
-    - Representing syntax trees
+  * Attend the lecture
 
 ## Glossary
 **composition**: If you can process the parts the combine them OR process the whole and still get the same result - you have something that _composes_.  This is a desirable property of any system.

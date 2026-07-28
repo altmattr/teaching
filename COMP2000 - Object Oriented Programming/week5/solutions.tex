@@ -1,0 +1,255 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 5: Generics --- Solution}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\begin{abstract}
+This document explains how the "Break the Code" exercise works.  The goal is to cause a \texttt{ClassCastException} at runtime by exploiting Java's type erasure --- without writing any explicit casts in source code.
+\end{abstract}
+
+\section*{How it works}
+
+Java generics are a \emph{compile-time only} feature.  The compiler uses generic type information to check your code for safety, but then strips it away during compilation.  This process is called \textbf{type erasure}.
+
+After erasure, a class like \texttt{Container<T>} becomes just \texttt{Container} --- all occurrences of \texttt{T} are replaced with \texttt{Object}.  The compiler inserts casts wherever necessary to keep the code type-safe at runtime.  For example:
+
+\begin{lstlisting}
+Container<String> strings = new Container<>();
+strings.add("hello");
+String s = strings.get(0);
+\end{lstlisting}
+
+After erasure, the compiled bytecode is equivalent to:
+
+\begin{lstlisting}
+Container strings = new Container();       // raw
+strings.add("hello");                       // add(Object)
+String s = (String) strings.get(0);         // cast inserted
+\end{lstlisting}
+
+The cast is invisible in source code but critical: it ensures you only ever retrieve \texttt{String} objects from a \texttt{Container<String>}.
+
+The raw type \texttt{Container} (without \texttt{<String>}) bypasses all generic checking.  With a raw reference you can call \texttt{add(Object)} freely, and the compiler only warns --- it does not stop you.  If you insert an \texttt{Integer} into what was originally a \texttt{Container<String>}, you pollute the heap.  The list now contains a value of the wrong type.  The crash does not happen at the point of insertion; it happens later, when the compiler-inserted cast tries to turn that \texttt{Integer} into a \texttt{String}.
+
+\subsubsection*{Step-by-step}
+
+\textbf{Step 1 --- Safe usage.}  The programmer writes \texttt{Container<String> strings = new Container<>()} and adds \texttt{"hello"} and \texttt{"world"} via \texttt{strings.add(...)}.  At compile time the generic type \texttt{String} is checked; the compiler will reject any attempt to add a non-\texttt{String}.  At runtime the generic type is erased to \texttt{Container} and the compiler inserts invisible casts at each \texttt{strings.get(...)} call to ensure type safety.
+
+\textbf{Step 2 --- The raw reference.}  The line \texttt{Container raw = strings} creates a raw-typed alias to the same object.  The compiler emits an unchecked warning but allows the assignment.  Through \texttt{raw}, the call \texttt{raw.add(42)} compiles to \texttt{add(Object)} with no type check.  An \texttt{Integer} now sits inside the list alongside the two \texttt{String}s.  This is \textbf{heap pollution}: the generic container holds an object of the wrong type.  No error occurs yet because the compiler-inserted cast only runs on retrieval.
+
+\textbf{Step 3 --- The crash.}  When \texttt{strings.get(2)} executes, it has been erased to \texttt{(String) items.get(2)}.  The JVM retrieves the \texttt{Integer} at index 2 and attempts to cast it to \texttt{String}.  The cast fails and a \texttt{ClassCastException} is thrown.  The error originated at Step 2, when the raw type bypassed the generic type system, but only manifests now when the invisible cast runs.
+
+\section*{Step-by-step walkthrough}
+
+Here is the solution code from \texttt{Solution.java}:
+
+\begin{lstlisting}
+public class Solution {
+    public static void main(String[] args) {
+        Container<String> strings = new Container<>();
+        strings.add("hello");
+        strings.add("world");
+
+        Container raw = strings;         // (1) raw type
+        raw.add(42);                     // (2) heap pollution
+        raw.add(new Object());
+
+        System.out.println(strings.get(0)); // (3) "hello"  OK
+        System.out.println(strings.get(1)); //     "world"  OK
+        System.out.println(strings.get(2)); //     ClassCastException!
+    }
+}
+\end{lstlisting}
+
+\begin{enumerate}
+    \item \texttt{Container raw = strings;} --- assigning a typed reference to a raw variable triggers an unchecked warning.  The compiler tells you this is unsafe, but it compiles anyway.
+    \item \texttt{raw.add(42);} --- after erasure this is \texttt{raw.add(Object)}.  The \texttt{Integer} \texttt{42} is inserted into the list.  The \texttt{strings} reference still points to the same object on the heap, so its contents now include the \texttt{Integer}.
+    \item \texttt{strings.get(2)} --- the compiler has inserted a cast to \texttt{String} here.  The first two calls succeed because the stored objects really are strings.  The third retrieves \texttt{42}, the JVM attempts to cast it to \texttt{String}, and a \texttt{ClassCastException} is thrown.
+\end{enumerate}
+
+\section*{Key takeaway}
+
+\begin{itemize}
+    \item Generics exist only at compile time.  The JVM does not know about \texttt{Container<String>} --- it only sees \texttt{Container}.
+    \item Raw types disable generic checking for the expression using them.  The compiler warns (unchecked) but produces bytecode anyway.
+    \item Heap pollution occurs when an object of the wrong type is stored in a generic container.  The error manifests later, at the point of an invisible compiler-inserted cast.
+    \item This is also why you cannot write \texttt{new T[]}, why \texttt{instanceof} does not work with parameterised types, and why bridge methods exist.  All of these quirks trace back to type erasure.
+\end{itemize}
+
+\section*{Self Study Solutions}
+
+\section*{Exercise 1: Generic class \texttt{Pair<T, U>}}
+
+\begin{lstlisting}
+public class Pair<T, U> {
+    private T first;
+    private U second;
+
+    public T getFirst() {
+        return first;
+    }
+
+    public U getSecond() {
+        return second;
+    }
+
+    public void setFirst(T first) {
+        this.first = first;
+    }
+
+    public void setSecond(U second) {
+        this.second = second;
+    }
+
+    public static void main(String[] args) {
+        Pair<String, Integer> p1 = new Pair<>();
+        p1.setFirst("age");
+        p1.setSecond(30);
+        System.out.println(p1.getFirst() + ": " + p1.getSecond());
+
+        Pair<Double, String> p2 = new Pair<>();
+        p2.setFirst(3.14159);
+        p2.setSecond("pi");
+        System.out.println(p2.getFirst() + " is " + p2.getSecond());
+    }
+}
+\end{lstlisting}
+
+The key point: both type parameters \texttt{T} and \texttt{U} are placeholders.  The compiler enforces that \texttt{setFirst} only accepts the declared type and \texttt{getFirst} always returns it, but at runtime the class knows nothing about \texttt{T} or \texttt{U}.
+
+
+\section*{Exercise 2: Bounded type parameter \texttt{max}}
+
+\begin{lstlisting}
+public class MaxFinder {
+
+    public static <T extends Comparable<T>> T max(T a, T b) {
+        return a.compareTo(b) >= 0 ? a : b;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(max(3, 7));               // 7
+        System.out.println(max("apple", "zebra"));   // zebra
+
+        Person alice = new Person("Alice", 25);
+        Person bob = new Person("Bob", 30);
+        System.out.println(max(alice, bob).getName());
+    }
+}
+
+class Person implements Comparable<Person> {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int compareTo(Person other) {
+        return Integer.compare(this.age, other.age);
+    }
+
+    @Override
+    public String toString() {
+        return name + " (" + age + ")";
+    }
+}
+\end{lstlisting}
+
+The bound \texttt{<T extends Comparable<T>>} guarantees that \texttt{compareTo} is available.  Without it the compiler would reject \texttt{a.compareTo(b)} because \texttt{T} could be any type.
+
+
+\section*{Exercise 3: Wildcards --- what compiles?}
+
+\begin{lstlisting}
+void printAll(List<?> items) { ... }
+void addNumbers(List<? super Integer> list) { ... }
+\end{lstlisting}
+
+\begin{tabular}{lp{3cm}p{6cm}}
+\toprule
+\textbf{Operation} & \textbf{Compiles?} & \textbf{Why} \\
+\midrule
+\verb|items.add("hello")| & No & \texttt{List<?>} is a list of an \emph{unknown} type.  The compiler cannot guarantee \texttt{"hello"} is compatible with that unknown type, so addition is forbidden. \\
+\verb|items.get(0)| & Yes & Reading is safe.  The result type is \texttt{Object} (the upper bound of \texttt{?}). \\
+\verb|list.add(42)| & Yes & \texttt{? super Integer} means Integer or a supertype.  Adding an \texttt{Integer} is safe for any of those. \\
+\verb|list.get(0)| & Yes & Reading is safe, but the result type is \texttt{Object} because the compiler only knows the lower bound. \\
+\verb|list.add(3.14)| & No & The list could be \texttt{List<Integer>} (which does not accept \texttt{Double}).  The compiler must be conservative. \\
+\bottomrule
+\end{tabular}
+
+This is the PECS principle: \textbf{P}roducer \textbf{E}xtends, \textbf{C}onsumer \textbf{S}uper.  If you read from a structure, use \texttt{? extends}.  If you write to a structure, use \texttt{? super}.
+
+
+\section*{Exercise 4: Erasure restrictions}
+
+\begin{enumerate}
+    \item \texttt{new T()} --- \textbf{Illegal because} after erasure \texttt{T} becomes \texttt{Object} (or its bound), and the JVM does not know which constructor to call.  \textbf{Workaround:} pass a \texttt{Supplier<T>} factory or a \texttt{Class<T>} object and use \texttt{clazz.getDeclaredConstructor().newInstance()}.
+
+    \item \texttt{new T[10]} --- \textbf{Illegal because} after erasure this would be \texttt{new Object[10]}, which could later cause an \texttt{ArrayStoreException} when the wrong type is stored.  \textbf{Workaround:} use \texttt{(T[]) new Object[10]} (unchecked cast) or prefer \texttt{ArrayList<T>} over arrays.
+
+    \item \texttt{instanceof T} --- \textbf{Illegal because} erasure removes the type parameter, leaving nothing for the JVM to check against at runtime.  \textbf{Workaround:} pass a \texttt{Class<T>} parameter and use \texttt{clazz.isInstance(obj)}.
+
+    \item \texttt{List<int>} --- \textbf{Illegal because} type parameters must be reference types.  Primitives are not objects.  \textbf{Workaround:} use \texttt{List<Integer>} with autoboxing, or use a specialised primitive collection library.
+\end{enumerate}
+
+
+\section*{Exercise 5: \texttt{unsafeCast}}
+
+\begin{lstlisting}
+public static <T> T unsafeCast(Object o) {
+    @SuppressWarnings("unchecked")
+    T result = (T) o;
+    return result;
+}
+\end{lstlisting}
+
+This is dangerous because \texttt{T} is erased to \texttt{Object}.  The cast \texttt{(T) o} becomes \texttt{(Object) o}, which always succeeds.  The type check is deferred until the result is assigned to a typed variable:
+
+\begin{lstlisting}
+String s = unsafeCast("hello");   // OK
+Integer i = unsafeCast("world");  // ClassCastException HERE, not at the cast
+\end{lstlisting}
+
+The exception occurs far from the actual unsafe operation, making debugging difficult.  This pattern also breaks type safety: a method could return the wrong type and the error would only surface later in unrelated code.
+
+\section*{Exercise 6: \texttt{List<? extends Number>}}
+
+Neither \texttt{Integer} nor \texttt{Double} can be added.  The wildcard \texttt{? extends Number} means "some unknown subtype of Number".  The list could be \texttt{List<Integer>}, \texttt{List<Double>}, or any other \texttt{Number} subclass.  The compiler cannot guarantee that an \texttt{Integer} is compatible with the list's actual type (if it were \texttt{List<Double>}, adding an \texttt{Integer} would break type safety).
+
+You can \emph{read} from the list (the result is \texttt{Number}), but you cannot write to it.  This is the "producer extends" half of the PECS principle.
+
+\section*{Exercise 7: \texttt{@SafeVarargs}}
+
+The \texttt{@SafeVarargs} annotation suppresses heap pollution warnings on varargs methods with generic types:
+
+\begin{lstlisting}
+@SafeVarargs
+static <T> List<T> flatten(List<T>... lists) {
+    // varargs array type is List<?>[], not List<T>[]
+    // but the method only reads from it -- safe
+}
+\end{lstlisting}
+
+It is unsafe to apply \texttt{@SafeVarargs} to methods you do not control because you cannot verify that the method treats the varargs array safely.  A malicious or buggy method might store the array reference in a way that allows heap pollution:
+
+\begin{lstlisting}
+static <T> void leak(T... args) {
+    Object[] stash = args;     // aliasing the varargs array
+    stash[0] = "not a T";     // heap pollution
+}
+\end{lstlisting}
+
+The annotation is a promise by the author that the varargs array is only used to pass elements through the method and is never stored, exposed, or reassigned with elements of a different type.
+
+\end{document}

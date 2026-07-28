@@ -1,0 +1,160 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg} \quad \textbf{Week 4}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 4: Inheritance and Overloading}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\begin{abstract}
+The goal of this week is to understand how inheritance and method overloading let you design flexible, reusable class hierarchies.  You will identify places in your project where a parent class can capture shared behaviour and where subclasses can specialise it.
+\end{abstract}
+
+\section*{Topics}
+\begin{description}
+\item[Inheritance] Using \texttt{extends} to create class hierarchies
+\item[Interfaces] Defining contracts that classes implement with \texttt{implements}
+\item[Method overriding] Providing specialised behaviour in subclasses with \texttt{@Override}
+\item[Method overloading] Multiple methods with the same name but different parameter lists
+\item[Polymorphism] Treating objects of different subclasses through a common supertype
+\end{description}
+
+\section*{Preparation}
+Attend the lecture in week 3.
+
+Read the following sections of \textit{Learning Java}, 3rd~edition, Chapter~6
+(\href{https://archive.org/details/learningjava0000niem_m6l5}{available freely online}\footnote{\url{https://archive.org/details/learningjava0000niem_m6l5}}):
+\begin{itemize}
+    \item Subclassing and Inheritance
+    \item Interfaces
+    \item Inner Classes --- read the introductory part only, excluding the following subsections:
+    \begin{itemize}
+        \item Inner Classes as Adapters
+        \item Inner Classes Within Methods
+    \end{itemize}
+\end{itemize}
+
+
+\section*{EPIC activity}
+
+Your task this week is to identify and incorporate inheritance and overloading into the project code you have built so far.  Look at the classes you have designed and find places where:
+
+\begin{itemize}
+\itemsep0em
+\item Two or more classes share common fields or methods --- can a superclass extract that shared state?
+\item A method's behaviour should differ depending on the subclass --- where would \texttt{@Override} let you specialise?
+\item A method needs to handle different parameter types --- could overloading provide a cleaner interface?
+\end{itemize}
+
+During the reporting period you will show the inheritance hierarchy you have created and explain the design decisions your team made.
+
+\subsection*{Reporting}
+
+This is a \emph{log book} style class.  Take 25 minutes to fill in a page of your log book and show it to the teacher during class time.  Your log book should include:
+\begin{itemize}
+\itemsep0em
+\item The inheritance hierarchy your team designed (as a UML sketch).
+\item Which fields and methods moved to the superclass and why.
+\item One design decision you are unsure about and would like feedback on.
+\end{itemize}
+
+\section*{Self Study Exercises}
+\begin{enumerate}
+
+\item Write a class hierarchy for animals: an \texttt{Animal} superclass with a \texttt{name} field and a \texttt{makeSound()} method, a \texttt{Mammal} subclass that adds a \texttt{bodyTemp} field, and a \texttt{Dog} subclass that overrides \texttt{makeSound()} to print \texttt{"Woof!"}.  Write a \texttt{main()} that creates a \texttt{Dog} and calls \texttt{makeSound()}.  Which fields and methods does \texttt{Dog} inherit from each ancestor?
+
+\item Given the following \texttt{Shape} class:
+\begin{verbatim}
+abstract class Shape {
+    abstract String areaFormula();
+}
+\end{verbatim}
+Write concrete subclasses \texttt{Circle} and \texttt{Rectangle} that override \texttt{areaFormula()}.  Then write a \texttt{main()} that creates an array of \texttt{Shape} references pointing to both types and calls \texttt{areaFormula()} on each.  What mechanism ensures the correct method is called?
+
+\item Define an interface \texttt{Playable} with a method \texttt{void play()}.  Write two unrelated classes \texttt{Guitar} and \texttt{Chess} that both implement \texttt{Playable}.  In a \texttt{main()} method, create a list of \texttt{Playable} references, add both objects, and call \texttt{play()} on each.  In a comment, explain the difference between \texttt{extends} (for classes) and \texttt{implements} (for interfaces).
+
+\item Create two interfaces: \texttt{Flyable} with \texttt{void fly()} and \texttt{Swimmable} with \texttt{void swim()}.  Write a class \texttt{Duck} that implements both.  In \texttt{main()}, demonstrate that a \texttt{Duck} can be treated as either a \texttt{Flyable} or a \texttt{Swimmable} reference.  Why is this useful?
+
+\item Add a \texttt{default} method \texttt{void describe()} to your \texttt{Playable} interface that prints \texttt{"This is a playable thing."}.  Do \texttt{Guitar} and \texttt{Chess} have to implement it?  Override \texttt{describe()} in \texttt{Guitar} only.  Write code that calls \texttt{describe()} on both objects and predict the output.
+
+\item Given the following classes:
+\begin{verbatim}
+class A { public void shout(){ ... } }
+class B extends A { public void shout(){ ... } }
+class C extends A { public void shout(){ ... } }
+class D extends C { }
+class E extends A { }
+\end{verbatim}
+Which of the following declarations are valid?  Which casts are safe (will never throw \texttt{ClassCastException})?
+\begin{enumerate}
+    \item \texttt{A x = new B();}
+    \item \texttt{B x = new A();}
+    \item \texttt{D x = new C();}
+    \item \texttt{A x = new D(); \quad (C) x;}
+\end{enumerate}
+Explain your reasoning for each.
+
+\item For each pair of methods, state whether the second method \textbf{overloads} or \textbf{overrides} the first, or neither.  Explain your reasoning.
+\begin{verbatim}
+// Pair 1:
+void draw(int x)                 { ... }
+void draw(double x)              { ... }
+
+// Pair 2:
+class Parent {
+    void speak() { ... }
+}
+class Child extends Parent {
+    void speak() { ... }
+}
+
+// Pair 3:
+void compute(int a, int b)       { ... }
+void compute(int a)              { ... }
+\end{verbatim}
+
+\item Consider the following hierarchy:
+\begin{verbatim}
+abstract class Mouse {
+    void behaviour() { System.out.println("Squeek, Squeek!"); }
+}
+class FatMouse extends Mouse {
+    void behaviour(int n) {
+        for (int i = 0; i < n; i++)
+            System.out.println("Eat Cheese!");
+    }
+}
+class FatterMouse extends FatMouse {
+    void behaviour() { System.out.println("Sleep, Sleep!"); }
+}
+\end{verbatim}
+What output does the following code produce?  Trace the method calls.
+\begin{verbatim}
+Mouse m = new FatterMouse();
+m.behaviour();
+m.behaviour(3);   // does this compile?
+\end{verbatim}
+Why does the answer to whether \texttt{m.behaviour(3)} compiles depend on the reference type?
+
+\item Explain what the following code outputs and why:
+\begin{verbatim}
+public static void main(String[] args) {
+    int a = 5;
+    int b = a;
+    b = 10;
+    System.out.println(a);
+
+    StringBuilder sb1 = new StringBuilder("hello");
+    StringBuilder sb2 = sb1;
+    sb2.append(" world");
+    System.out.println(sb1);
+}
+\end{verbatim}
+Why does \texttt{a} stay \texttt{5} but \texttt{sb1} becomes \texttt{"hello world"}?
+
+\item Write an interface \texttt{Repairable} with a method \texttt{void repair()}.  Write a class \texttt{Vehicle} that implements only some methods of \texttt{Repairable} --- why must it be declared \texttt{abstract}?  Then write a concrete subclass \texttt{Car} that extends \texttt{Vehicle} and completes the implementation.  Explain the role of \texttt{abstract} in this design.
+
+\end{enumerate}
+
+\end{document}

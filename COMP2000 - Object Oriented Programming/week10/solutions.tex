@@ -1,0 +1,101 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 10: Streams --- Solutions}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\section*{Self Study Exercises}
+
+\subsection*{Exercise 1: Stream vs collection}
+
+A \textbf{collection} is an in-memory data structure that stores all its elements.  A \textbf{stream} is a conceptually fixed sequence of elements that can be consumed (traversed) only once.  Collections are about data; streams are about computation.  Streams do not store data; they pull elements from a source (like a collection) and process them through a pipeline.
+
+\subsection*{Exercise 2: Three stages of a stream pipeline}
+
+\begin{enumerate}
+    \item \textbf{Source} --- the data source (e.g.\ \texttt{collection.stream()})
+    \item \textbf{Zero or more intermediate operations} --- transform the stream (e.g.\ \texttt{filter}, \texttt{map}, \texttt{sorted})
+    \item \textbf{A terminal operation} --- produces a result or side effect (e.g.\ \texttt{collect}, \texttt{forEach}, \texttt{reduce})
+\end{enumerate}
+
+Example:
+\begin{lstlisting}
+List<String> result = names.stream()       // source
+    .filter(s -> s.length() > 3)           // intermediate
+    .map(String::toUpperCase)              // intermediate
+    .collect(Collectors.toList());         // terminal
+\end{lstlisting}
+
+\subsection*{Exercise 3: Lazy evaluation}
+
+Intermediate operations are lazy --- they are not executed until a terminal operation is invoked.  This allows the stream to optimise the pipeline by fusing operations and only processing elements that are actually needed (short-circuiting).  For example, \texttt{findFirst()} may only process enough elements to satisfy the condition, rather than processing the entire stream.
+
+\subsection*{Exercise 4: String transformation pipeline}
+
+\begin{lstlisting}
+List<String> result = strings.stream()
+    .map(String::toUpperCase)
+    .filter(s -> s.length() > 4)
+    .sorted()
+    .collect(Collectors.toList());
+\end{lstlisting}
+
+\subsection*{Exercise 5: \texttt{flatMap}}
+
+\texttt{flatMap} transforms each element into a stream and then concatenates all those streams into a single stream.  It is used when each element itself produces multiple results.
+
+\begin{lstlisting}
+List<List<Integer>> nested = Arrays.asList(
+    Arrays.asList(1, 2), Arrays.asList(3, 4), Arrays.asList(5, 6));
+List<Integer> flat = nested.stream()
+    .flatMap(List::stream)
+    .collect(Collectors.toList());
+// Result: [1, 2, 3, 4, 5, 6]
+\end{lstlisting}
+
+\subsection*{Exercise 6: Average age of older people}
+
+\begin{lstlisting}
+double avg = people.stream()
+    .filter(p -> p.getAge() > 18)
+    .mapToInt(Person::getAge)
+    .average()
+    .orElse(0.0);
+\end{lstlisting}
+
+\subsection*{Exercise 7: Product with \texttt{reduce}}
+
+\begin{lstlisting}
+List<Integer> numbers = Arrays.asList(2, 3, 4);
+int product = numbers.stream()
+    .reduce(1, (a, b) -> a * b);
+// Result: 24
+
+// If the list is empty, returns the identity value: 1
+\end{lstlisting}
+
+\subsection*{Exercise 8: \texttt{map} vs \texttt{flatMap}}
+
+\texttt{map} transforms each element into exactly one output element (one-to-one).  \texttt{flatMap} transforms each element into zero or more output elements (one-to-many) and flattens the results into a single stream.  Use \texttt{map} for simple value transformations; use \texttt{flatMap} when each input may produce a variable number of outputs (e.g.\ splitting strings, traversing nested collections).
+
+\subsection*{Exercise 9: Grouping transactions by currency}
+
+\begin{lstlisting}
+Map<String, List<Transaction>> byCurrency = transactions.stream()
+    .collect(Collectors.groupingBy(Transaction::getCurrency));
+\end{lstlisting}
+
+\subsection*{Exercise 10: Primitive streams}
+
+Primitive streams (\texttt{IntStream}, \texttt{LongStream}, \texttt{DoubleStream}) avoid boxing overhead when processing numeric data.  They provide specialised operations like \texttt{sum()}, \texttt{average()}, \texttt{range()}, and \texttt{rangeClosed()}.
+
+\begin{lstlisting}
+int sum = IntStream.range(1, 11) // 1 to 10
+    .sum();
+// Result: 55
+\end{lstlisting}
+
+\end{document}

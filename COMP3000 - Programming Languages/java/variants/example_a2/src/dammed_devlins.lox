@@ -8,23 +8,18 @@ var lower_devlins_creek = [3 ~ 2]@4;
 
 var devlins_creek = lower_devlins_creek <- (upper_devlins_creek + joes_creek);
 
-fun devlins_trivial_dam(inflow){
-    return inflow;
+dam devlins_trivial_dam {
+  default: inflow;
 }
 
-fun devlins_always_dam(inflow){
-    return [1~1]@0;
+dam devlins_always_dam {
+  default: [1~1]@0;
 }
 
-fun devlins_smart_dam(inflow){
-    if (devlins_smart_dam_level > 100){
-        return inflow + inflow; // dam is getting full, start flushing
-    }
-    if (devlins_smart_dam_level < 2){
-        return [1~1]@0;  // dam is getting empty, stop all flow
-    } else {
-        return [1~10]@2; // normal situation, allow environmental flows
-    }
+dam devlins_smart_dam {
+  when level > 100: inflow + inflow;
+  when level < 2: [1~1]@0;
+  default: [1~10]@2;
 }
 
 var final = devlins_smart_dam <- devlins_creek;

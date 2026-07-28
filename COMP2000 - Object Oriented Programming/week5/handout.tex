@@ -1,0 +1,91 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg} \quad \textbf{Week 5}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 5: Generics}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\begin{abstract}
+The goal of this week is to understand how generics work at runtime.  Generics in Java are a compile-time feature only --- they are \emph{erased} during compilation.  This week you will exploit that fact to break code that looks correct.
+\end{abstract}
+
+\section*{Topics}
+\begin{description}
+\item[Type erasure] What happens to generic type information after compilation
+\item[Raw types] Using a generic class without its type parameters
+\item[Heap pollution] When a variable of a parameterised type points to an object that is not of that type
+\item[Unchecked warnings] What the compiler tells you when it cannot guarantee type safety
+\end{description}
+
+\section*{Preparation}
+Attend the lecture in week 4.
+
+Read the following sections of \textit{Learning Java}, 3rd~edition, Chapter~8
+(\href{https://archive.org/details/learningjava0000niem_m6l5}{available freely online}\footnote{\url{https://archive.org/details/learningjava0000niem_m6l5}}):
+\begin{itemize}
+    \item Introduction to Generics
+    \item Type Erasure
+    \item Wildcards and Bounded Types
+\end{itemize}
+
+Try to predict: what does \texttt{new ArrayList<String>().getClass()} return at runtime?  Write a short program to test your answer.
+Come to class ready to explain how type erasure makes this possible.
+
+
+\section*{EPIC activity}
+
+\begin{note}
+In Week 4 students were introduced to inheritance and overloading.  By Week 5 they are ready to explore how generics interact with the type system at runtime.
+\end{note}
+
+Your team has been given two files: \texttt{Container.java} and \texttt{Main.java}.  \texttt{Container<T>} is a simple generic wrapper around a list.  \texttt{Main} currently uses it correctly with \texttt{Container<String>}.
+
+Your task: \textbf{modify the code to cause a runtime exception without adding any casts}.  You may change any file, but you may not introduce the cast operator \texttt{(...)} anywhere in your solution.
+
+Here are some approaches to try:
+\begin{itemize}
+\itemsep0em
+\item Replace \texttt{Container<String>} with the raw type \texttt{Container}.  What happens when you add different types and retrieve them?
+\item Write a helper method that takes a raw \texttt{Container} as a parameter.  Can you add an \texttt{Integer} to what was originally a \texttt{Container<String>}?
+\item Experiment with \texttt{@SuppressWarnings("unchecked")}.  Where can the compiler be tricked into allowing unsafe operations?
+\end{itemize}
+
+During the reporting period, each team will present their broken code.  Be ready to explain \emph{why} the error happens and what the compiler was thinking when it let it through.
+
+\begin{teacher}
+Provide each team with a small codebase containing a generic class and a correct usage example.  The starter should have potential vulnerabilities: raw type access and unchecked warnings.  Circulate during the activity to help teams that are stuck understand type erasure.  During reporting, highlight teams that found different attack vectors (raw types, unchecked suppression).  The goal is for students to internalise that generics are a compile-time only feature.
+\end{teacher}
+
+\subsection*{Project Guidance}
+
+Look at your team's project code.  Where would a generic type add safety?  Perhaps a \texttt{Grid<T extends Entity>} to ensure only entities live on your grid, or a typed event system to distinguish different kinds of simulation events.  Try introducing one generic type and observe what the compiler now guarantees that it did not before.
+
+
+\section*{Self Study Exercises}
+\begin{enumerate}
+\item Design a generic class \texttt{Pair<T, U>} with methods \texttt{getFirst()}, \texttt{getSecond()}, \texttt{setFirst(T)}, and \texttt{setSecond(U)}.  Create instances of \texttt{Pair<String, Integer>} and \texttt{Pair<Double, String>}, populate them, and print their contents.
+\item Write a generic method \texttt{<T extends Comparable<T>> T max(T a, T b)} that returns the larger of two values.  Test it with \texttt{Integer}, \texttt{String}, and a custom class of your choice that implements \texttt{Comparable}.
+\item Given the following two method signatures:
+\begin{lstlisting}
+void printAll(List<?> items) { ... }
+void addNumbers(List<? super Integer> list) { ... }
+\end{lstlisting}
+For each method, state which of the following operations compile inside the method body and explain why: \texttt{items.add("hello")}, \texttt{items.get(0)}, \texttt{list.add(42)}, \texttt{list.get(0)}, \texttt{list.add(3.14)}.
+\item Explain why each of the following is illegal in Java.  For each, describe the workaround (if one exists).
+\begin{enumerate}
+    \item \texttt{new T()}
+    \item \texttt{new T[10]}
+    \item \texttt{instanceof T}
+    \item \texttt{List<int>}
+\end{enumerate}
+\item Write a generic method \texttt{<T> T unsafeCast(Object o)} that uses an unchecked cast to convert any object to type \texttt{T}.  Explain why this is dangerous.
+\item Given \texttt{List<? extends Number> numbers}, can you add an \texttt{Integer} to the list?  A \texttt{Double}?  Why or why not?
+\item Research \texttt{@SafeVarargs}.  What problem does it solve and why is it unsafe to use on methods you do not control?
+\end{enumerate}
+
+
+
+
+\end{document}

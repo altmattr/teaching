@@ -1,0 +1,108 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 11: Collecting --- Solutions}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\section*{Self Study Exercises}
+
+\subsection*{Exercise 1: \texttt{Collectors.toList()}}
+
+\texttt{Collectors.toList()} accumulates stream elements into a \texttt{List}.  Two other collection-producing collectors are \texttt{toSet()} (produces a \texttt{Set}) and \texttt{toCollection(HashSet::new)} (produces a specified collection type).
+
+\subsection*{Exercise 2: \texttt{groupingBy}}
+
+\texttt{groupingBy} classifies stream elements according to a classification function and returns a \texttt{Map} where each key is a distinct classification and each value is a list of elements in that category.
+
+\begin{lstlisting}
+Map<Integer, List<Person>> byAge = people.stream()
+    .collect(Collectors.groupingBy(Person::getAge));
+\end{lstlisting}
+
+\subsection*{Exercise 3: \texttt{groupingBy} vs \texttt{partitioningBy}}
+
+\texttt{groupingBy} can produce any number of groups based on a classification function.  \texttt{partitioningBy} takes a \texttt{Predicate} and produces exactly two groups: one for elements that satisfy the predicate (\texttt{true}) and one for those that do not (\texttt{false}).  Use \texttt{partitioningBy} when your split is binary (e.g.\ over threshold / under threshold); use \texttt{groupingBy} for multi-way categorisation.
+
+\subsection*{Exercise 4: Average amount per category}
+
+\begin{lstlisting}
+Map<String, Double> avgByCategory = transactions.stream()
+    .collect(Collectors.groupingBy(
+        Transaction::getCategory,
+        Collectors.averagingDouble(Transaction::getAmount)));
+\end{lstlisting}
+
+\subsection*{Exercise 5: Downstream collectors}
+
+A downstream collector is a second collector passed to \texttt{groupingBy} (or \texttt{partitioningBy}) that further processes each group.  The outer collector groups the elements; the downstream collector reduces each group.
+
+\begin{lstlisting}
+Map<String, Long> countByCategory = transactions.stream()
+    .collect(Collectors.groupingBy(
+        Transaction::getCategory,
+        Collectors.counting()));
+\end{lstlisting}
+
+\subsection*{Exercise 6: \texttt{summarizingDouble}}
+
+\texttt{summarizingDouble} returns a \texttt{DoubleSummaryStatistics} object containing count, sum, min, average, and max in a single pass.
+
+\begin{lstlisting}
+DoubleSummaryStatistics stats = transactions.stream()
+    .collect(Collectors.summarizingDouble(Transaction::getAmount));
+long count = stats.getCount();
+double sum = stats.getSum();
+double min = stats.getMin();
+double avg = stats.getAverage();
+double max = stats.getMax();
+\end{lstlisting}
+
+\subsection*{Exercise 7: \texttt{toMap}}
+
+\texttt{toMap} accumulates elements into a \texttt{Map} given key and value mapping functions.  If two elements map to the same key, a merge function must be provided or an \texttt{IllegalStateException} is thrown.
+
+\begin{lstlisting}
+Map<String, Double> nameToMax = transactions.stream()
+    .collect(Collectors.toMap(
+        Transaction::getName,
+        Transaction::getAmount,
+        (a, b) -> Math.max(a, b)));  // merge: keep the larger
+\end{lstlisting}
+
+\subsection*{Exercise 8: Custom collector for joining}
+
+\begin{lstlisting}
+Collector<String, ?, String> commaJoiner = Collector.of(
+    StringBuilder::new,
+    (sb, s) -> { if (sb.length() > 0) sb.append(", "); sb.append(s); },
+    (a, b) -> a.append(b.length() > 0 ? ", " + b : ""),
+    StringBuilder::toString
+);
+
+String result = words.stream().collect(commaJoiner);
+\end{lstlisting}
+
+\subsection*{Exercise 9: \texttt{mapping} as downstream}
+
+\texttt{Collectors.mapping} applies a mapping function to each element of a group before collecting them with a downstream collector.
+
+\begin{lstlisting}
+Map<String, List<Integer>> agesByDept = employees.stream()
+    .collect(Collectors.groupingBy(
+        Employee::getDepartment,
+        Collectors.mapping(Employee::getAge, Collectors.toList())));
+\end{lstlisting}
+
+\subsection*{Exercise 10: Total sales per region}
+
+\begin{lstlisting}
+Map<String, Double> totalByRegion = orders.stream()
+    .collect(Collectors.groupingBy(
+        Order::getRegion,
+        Collectors.summingDouble(Order::getTotal)));
+\end{lstlisting}
+
+\end{document}

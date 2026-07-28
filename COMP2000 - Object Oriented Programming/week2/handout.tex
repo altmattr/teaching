@@ -1,0 +1,89 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg} \quad \textbf{Week 2}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 2: Git}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\begin{abstract}
+The goal of this week is to understand distributed version control with Git.  You will create repositories, make commits, inspect history, and synchronise changes between team members.  By treating commits as \emph{chat messages} you will simulate a messaging system using only Git commands.
+\end{abstract}
+
+\section*{Topics}
+\begin{description}
+\item[Repository management] Creating a new repository with \texttt{git init} and copying an existing one with \texttt{git clone}.
+\item[Tracking changes] The three-tree model (working directory, staging area, repository) and the \texttt{add}/\texttt{commit} workflow.
+\item[History inspection] Reading a project's history with \texttt{git log} and identifying contributions with \texttt{git blame}.
+\item[Synchronisation] Transferring commits between repositories with \texttt{fetch}, \texttt{pull}, and \texttt{push}.
+\end{description}
+
+\section*{Preparation}
+Attend the lecture in week 1.\par
+Read the following Atlassian Git tutorial pages.  They form a complete track from first principles through to collaboration:
+\begin{enumerate}
+    \item \href{https://www.atlassian.com/git/tutorials/what-is-version-control}{What is version control}\footnote{\url{https://www.atlassian.com/git/tutorials/what-is-version-control}}
+    \item \href{https://www.atlassian.com/git/tutorials/what-is-git}{What is Git}\footnote{\url{https://www.atlassian.com/git/tutorials/what-is-git}}
+    \item \href{https://www.atlassian.com/git/tutorials/setting-up-a-repository}{Setting up a repository}\footnote{\url{https://www.atlassian.com/git/tutorials/setting-up-a-repository}}
+    \item \href{https://www.atlassian.com/git/tutorials/saving-changes}{Saving changes}\footnote{\url{https://www.atlassian.com/git/tutorials/saving-changes}}
+    \item \href{https://www.atlassian.com/git/tutorials/inspecting-a-repository}{Inspecting a repository}\footnote{\url{https://www.atlassian.com/git/tutorials/inspecting-a-repository}}
+    \item \href{https://www.atlassian.com/git/tutorials/syncing}{Syncing}\footnote{\url{https://www.atlassian.com/git/tutorials/syncing}}
+\end{enumerate}
+Make sure you understand each command's purpose before class.  The EPIC activity will ask you to use all of them.
+
+
+\section*{EPIC activity}
+
+Your task this week is to \emph{chat with your team members using Git as a chat server}.  This will take some serious imagination!  You will need a strong understanding of the following commands:
+\begin{itemize}
+\itemsep0em
+\item \texttt{git init} / \texttt{git clone}
+\item \texttt{git add} / \texttt{git commit}
+\item \texttt{git push} / \texttt{git pull} / \texttt{git fetch}
+\item \texttt{git log}
+\end{itemize}
+
+\textbf{How it works.}  Treat each commit as a chat message.  The commit message is the text of your message; the files you include are your attachments.  You send a message by committing and pushing.  You check for new messages by fetching and viewing the log.
+
+\begin{enumerate}
+    \item One team member creates a shared repository on GitHub/Bitbucket/GitLab and adds the others as collaborators.
+    \item Each member clones the repository to their own computer.
+    \item Members take turns composing and pushing commit messages. See if you can do all communication with git instead of talking in person!
+    \item Use \texttt{git log} to read the conversation history.
+    \item Experiment with features: multi-line messages, file attachments (images, text), replies as new commits, timestamps.
+    \item Try to achieve \emph{completely private chat with no central server} using only Git's built-in mechanisms.
+\end{enumerate}
+
+Your team will be scored on: the number of messages, the complexity of messages, and the number of chat features you have emulated.  The class teacher will track scores on a whiteboard during class.
+
+\begin{teacher}
+Circulate around class and keep them on track. Put up a table on the whiteboard during the EPIC activity and periodically update the scores based on your observations.  For specific reporting, have the one person from each group move to the front of class and project.  Other team members stay at their desks and participate in the demo.  The demo period is a chance for the team to finalise its scores in the competition.  Please grab a photo of the final scoreboard and post it to the forums.
+\end{teacher}
+
+\subsection*{Reporting}
+
+When the teacher calls time, one person from each team moves to the front of class and projects the team's chat log.  It will be a compelling demo if you can chat to your teamates who are still sitting at their desks.  Use the demo period to finalise your team's scores in the competition.  Scores are tracked on the whiteboard based on the number of messages, their complexity, and the number of chat features emulated.
+
+Your log book should record the final scoreboard and the most creative approach you saw from another team.
+
+\section*{Self Study Exercises}
+\begin{enumerate}
+\item List three main benefits of version control systems.  For each benefit, explain how it applies to the team chat scenario from this week's exercise.
+
+\item Explain what ``distributed'' means in the context of Git.  In the chat exercise, is it possible to communicate without a central server on GitHub?  How?
+
+\item What is the difference between \texttt{git init} and \texttt{git clone}?  In the chat exercise, which command would you use to start a new chat room, and which would you use to join an existing one?
+
+\item Name Git's three trees (also called areas).  Where is a message after you have typed it into a file?  After \texttt{git add}?  After \texttt{git commit}?
+
+\item Why does Git have a staging area?  How could you use it to compose a multi-part message (e.g.\ text plus an image) before sending it as a single commit?
+
+\item Write a \texttt{git log} command that shows each commit on a single line with a text-based graph of branches.  How would you use this command to read the conversation in your chat repository?
+
+\item What is the difference between \texttt{git fetch} and \texttt{git pull}?  If you want to check for new messages without automatically merging them into your local history, which command should you use?
+
+\item Name the two most common protocols used for Git remote URLs.  If your team wanted a completely private chat with no central server, what could you use in place of a URL like \texttt{https://github.com/...}?
+\end{enumerate}
+
+\end{document}

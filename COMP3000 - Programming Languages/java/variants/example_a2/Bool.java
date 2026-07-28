@@ -5,5 +5,7 @@ public class Bool implements Value {
     public Bool(boolean value){
         this.value = value;
     }
-    
+    public String toString(){
+        return Boolean.toString(value);
+    }
 }

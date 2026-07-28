@@ -1,0 +1,93 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 12: Parallelism --- Solutions}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\section*{Self Study Exercises}
+
+\subsection*{Exercise 1: Creating a parallel stream}
+
+Call \texttt{parallelStream()} on a collection, or convert an existing sequential stream with \texttt{parallel()}.  \texttt{stream()} returns a sequential stream; \texttt{parallelStream()} returns a parallel stream that may process elements concurrently using the common \texttt{ForkJoinPool}.
+
+\subsection*{Exercise 2: When to avoid parallel streams}
+
+Avoid parallel streams when:
+\begin{itemize}
+    \item The data source is small --- overhead of parallelisation outweighs the benefit.
+    \item The operation involves blocking I/O --- threads waste time waiting.
+    \item The stream source is an unsplittable structure (e.g.\ \texttt{LinkedList}) or requires ordering that prevents efficient splitting.
+    \item The accumulator or combiner is not associative or has side effects.
+\end{itemize}
+
+\subsection*{Exercise 3: \texttt{ForkJoinPool}}
+
+\texttt{ForkJoinPool} is a thread pool that implements work-stealing.  Parallel streams by default use the common \texttt{ForkJoinPool} (available via \texttt{ForkJoinPool.commonPool()}).  The pool splits tasks into subtasks (fork) and then combines results (join).
+
+\subsection*{Exercise 4: Race condition}
+
+A race condition occurs when two or more threads access shared data concurrently and at least one modifies it, leading to unpredictable results.
+
+\begin{lstlisting}
+public class Counter {
+    private int count = 0;
+    public void increment() { count++; }  // not atomic
+}
+
+// Two threads calling increment() concurrently may both read the same value
+// and write back the same incremented value, losing an update.
+\end{lstlisting}
+
+\subsection*{Exercise 5: \texttt{synchronized} vs \texttt{Lock}}
+
+\texttt{synchronized} is built-in, concise, and automatically releases the lock.  \texttt{Lock} from \texttt{java.util.concurrent.locks} provides more flexibility: try-lock with timeout, interruptible locking, and separate read/write locks.  Use \texttt{synchronized} for simple mutual exclusion; use \texttt{Lock} for advanced scenarios.
+
+\subsection*{Exercise 6: Summing with parallel stream}
+
+\begin{lstlisting}
+double[] values = new double[1_000_000];
+// ... fill values ...
+
+// Sequential
+long start = System.nanoTime();
+double sumSeq = Arrays.stream(values).sum();
+long timeSeq = System.nanoTime() - start;
+
+// Parallel
+start = System.nanoTime();
+double sumPar = Arrays.stream(values).parallel().sum();
+long timePar = System.nanoTime() - start;
+\end{lstlisting}
+
+\subsection*{Exercise 7: \texttt{reduce} in parallel}
+
+\texttt{reduce} combines stream elements using an associative accumulation function.  Associativity is essential in parallel because the stream splits the input, processes chunks independently, and then combines partial results.  If the function is not associative, the order of combination can produce different results.
+
+\begin{lstlisting}
+int sum = numbers.parallelStream()
+    .reduce(0, Integer::sum);  // associative: (a+b)+c == a+(b+c)
+\end{lstlisting}
+
+\subsection*{Exercise 8: \texttt{reduce} vs \texttt{collect}}
+
+\texttt{reduce} transforms a stream into a single immutable value (e.g.\ sum, product).  \texttt{collect} is designed for mutable reduction --- it accumulates results into a mutable container (e.g.\ \texttt{StringBuilder}, \texttt{List}).  In parallel, \texttt{collect} uses a \texttt{combiner} that merges partial containers; \texttt{reduce} uses a \texttt{combiner} that merges partial results.  \texttt{collect} is generally preferred for parallel collection operations because it is more efficient with mutable containers.
+
+\subsection*{Exercise 9: \texttt{Spliterator}}
+
+\texttt{Spliterator} (Splittable Iterator) is the parallel analogue of \texttt{Iterator}.  It defines methods to traverse elements and to split off a portion of the remaining elements for parallel processing.  The \texttt{trySplit()} method partitions the remaining elements into two halves, enabling divide-and-conquer parallel traversal.  Characteristics like \texttt{SIZED}, \texttt{SUBSIZED}, \texttt{ORDERED}, and \texttt{IMMUTABLE} help the framework optimise splitting.
+
+\subsection*{Exercise 10: Parallel total per category}
+
+\begin{lstlisting}
+Map<String, Double> totalByCategory = transactions.parallelStream()
+    .collect(Collectors.groupingByConcurrent(
+        Transaction::getCategory,
+        Collectors.summingDouble(Transaction::getAmount)));
+\end{lstlisting}
+
+\texttt{groupingByConcurrent} is the concurrent version of \texttt{groupingBy} that uses a \texttt{ConcurrentHashMap} for thread-safe accumulation.  Thread safety concerns: if we used \texttt{groupingBy} (which produces a \texttt{HashMap}), multiple threads would concurrently modify the map, causing corruption.  \texttt{groupingByConcurrent} handles this safely.  Also ensure that the \texttt{category} function is stateless and that \texttt{getAmount()} is side-effect-free.
+
+\end{document}

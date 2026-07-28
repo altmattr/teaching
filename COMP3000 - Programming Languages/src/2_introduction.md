@@ -9,11 +9,7 @@ This week we begin our journey with programming languages, reading the introduct
 
 ## Preparation
   * Read the chapters 1 and 2 of "Crafting Interpreters".
-  * Watch the four lectures on echo360: 
-    -  Intro to book and how to use
-    -  The concept of little languages
-    -  The compiler interpreter pipeline
-    -  Compilers vs Interpreters.
+  * Attend the lecture
 
 # FAT 
 
@@ -75,7 +71,7 @@ answer: |
 question: |
     Imagine the following diagram of programming language implementation options is \emph{sound} and \emph{complete}.  We want to create a compiler/interpreter to convert our "source" language into one of our target languages (x86 or ARM).
     
-    \includegraphics[width=0.5\textwidth]{2_paths.jpeg}
+    \includegraphics[width=0.5\textwidth]{src/2_paths.jpeg}
 
     How many different possible implementations are there? (Hint, this is a COMP2010 question)
 answer: |

@@ -1,0 +1,164 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg} \quad \textbf{Week 6}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 6: Exceptions}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\begin{abstract}
+The goal of this week is to understand how exceptions interact with the call stack.  By adding throws and catches to a chain of methods, you will learn which parts of the stack unwind and which parts still execute after an exception.
+\end{abstract}
+
+\section*{Topics}
+\begin{description}
+\item[Call stack] How method calls are stacked and unwound
+\item[Exception propagation] How a thrown exception travels up the stack
+\item[Catch placement] Where in the call chain a catch block executes relative to the throw
+\item[Finally] Code that always runs, exception or not
+\end{description}
+
+\section*{Preparation}
+Attend the lecture in week 5.
+
+Read the following section of \textit{Learning Java}, 3rd~edition, Chapter~4,
+Section~4.5
+(\href{https://archive.org/details/learningjava0000niem_m6l5}{available freely online}\footnote{\url{https://archive.org/details/learningjava0000niem_m6l5}}):
+\begin{itemize}
+    \item Exceptions
+\end{itemize}
+
+Try to predict: if \texttt{caret()} throws and the exception is not caught in \texttt{pipe()}, does \texttt{pipe()} finish its exit print?  Trace the call stack to confirm your answer.
+Come to class ready to trace which frames unwind when an exception is caught at a different depth.
+
+
+\section*{EPIC activity}
+
+\begin{note}
+This week builds on the exception-handling concepts introduced alongside inheritance and overloading in Week 4.
+\end{note}
+
+You are given three methods that form a chain:
+
+\begin{center}
+\texttt{star() $\rightarrow$ pipe() $\rightarrow$ caret()}
+\end{center}
+
+Each method prints its symbol when it \emph{enters} and again when it \emph{exits normally}.  If an exception propagates through a method (i.e.\ it is not caught there), that method's exit print is skipped.
+
+For example, a normal call without exceptions produces:
+
+\begin{center}
+\texttt{* | \^{} \^{} | *}
+\end{center}
+
+Your task: for each level below, modify the code by adding \texttt{throw} statements and/or \texttt{try-catch} blocks to produce the exact target barcode.
+
+\subsection*{The starter code}
+
+\begin{lstlisting}
+public class BarcodePuzzle {
+    static int iteration = 0;
+
+    public static void main(String[] args) {
+        star();
+        System.out.println();
+    }
+
+    static void star() {
+        System.out.print("* ");
+        pipe();
+        System.out.print("* ");
+    }
+
+    static void pipe() {
+        System.out.print("| ");
+        caret();
+        System.out.print("| ");
+    }
+
+    static void caret() {
+        System.out.print("^ ");
+        System.out.print("^ ");
+    }
+}
+\end{lstlisting}
+
+The static variable \texttt{iteration} is provided for levels that involve loops.  It is set automatically---do not change it, only read from it.
+
+
+\subsection*{Target barcodes}
+
+\begin{tabular}{cp{4cm}lp{5cm}}
+\toprule
+\textbf{Level} & \textbf{Target barcode} & \textbf{Hint} \\
+\midrule
+1 & \texttt{* | \^{} \^{} | *} & No exceptions --- verify the baseline. \\
+2 & \texttt{* | \^{} | *} & \texttt{caret()} throws, caught in \texttt{pipe()}. \\
+3 & \texttt{* | \^{} *} & \texttt{caret()} throws, caught in \texttt{star()}. \\
+4 & \texttt{* | \^{} | *} & Same output as level 2, but use \texttt{finally}. \\
+5 & \texttt{* | \^{} \^{} | | \^{} *} & \texttt{star()} loops \texttt{pipe()} twice.  \texttt{caret()} throws on iteration 2, caught in \texttt{star()}. \\
+6 & \texttt{* | \^{} \^{} | | \^{}} & Same setup as level 5, but the exception is \emph{not} caught. \\
+\bottomrule
+\end{tabular}
+
+\subsection*{Rules}
+\begin{itemize}
+\itemsep0em
+\item You may add \texttt{throw} statements to any method.
+\item You may wrap any call in a \texttt{try-catch} or a \texttt{try-finally}.
+\item You may \emph{not} change the print statements or their order.
+\item For levels 5 and 6, use the \texttt{iteration} variable to conditionally throw.
+\end{itemize}
+
+\subsection*{Reporting}
+
+During the simultaneous reporting period, each team will present their solution for one assigned level.  Your presentation should include:
+
+\begin{itemize}
+\itemsep0em
+\item Which level you solved and the target barcode.
+\item A trace of the call stack showing where the exception is thrown and where it is caught.
+\item Which methods' exit prints were skipped and why.
+\end{itemize}
+
+After each presentation, other teams may ask questions.  Your log book should record:
+\begin{itemize}
+\itemsep0em
+\item Your team's solution.
+\item The most surprising or interesting approach you saw from another team.
+\item A brief explanation of how a different catch placement or a \texttt{finally} block would change the output.
+\end{itemize}
+
+\begin{teacher}
+Circulate during the activity and help teams that are stuck trace the stack by hand on paper.  During reporting, focus on Levels 2 vs.\ 3 (same throw, different catch depth) and Levels 5 vs.\ 6 (caught vs.\ uncaught in a loop).  These pairs highlight the core concept: catch placement determines which frames unwind.
+\end{teacher}
+
+\subsection*{Project Guidance}
+
+Think about what can go wrong in your team's simulation.  An entity might move off the grid, a reference to an entity that has just died might still be held, or a configuration file might be missing.  Define custom exception classes for your domain (e.g.\ \texttt{EntityNotFoundException}, \texttt{InvalidPositionException}) and decide where to catch them versus where to let them propagate.
+
+
+\section*{Self Study Exercises}
+\begin{enumerate}
+\item What is the difference between a checked exception and an unchecked exception in Java?  Give two examples of each.  Why must \texttt{IOException} be declared or caught, but \texttt{NullPointerException} does not need to be?
+
+\item When an exception is thrown in \texttt{caret()} and caught in \texttt{star()}, explain step by step what happens to the local variables in \texttt{pipe()}.  Are they eligible for garbage collection?  Why or why not?
+
+\item If both a \texttt{catch} block and a \texttt{finally} block contain \texttt{return} statements, which value is returned?  Write a small example that demonstrates this.
+
+\item If a \texttt{try} block throws a \texttt{RuntimeException} and the \texttt{finally} block also throws a \texttt{RuntimeException}, which exception propagates to the caller?  What happens to the other one?
+
+\item Given the call chain \texttt{star() $\rightarrow$ pipe() $\rightarrow$ caret()}, if \texttt{caret()} throws an \texttt{IllegalArgumentException}, what would the stack trace look like when caught in \texttt{main()}?  Show the exact format.
+
+\item Draw the inheritance hierarchy of \texttt{Throwable}, \texttt{Error}, \texttt{Exception}, and \texttt{RuntimeException}.  Which of these should a typical application catch, and which should it usually let propagate?
+
+\item Write a single \texttt{catch} block that handles both \texttt{IOException} and \texttt{SQLException}.  What is the type of the exception variable inside the block?
+
+\item What would happen if \texttt{pipe()} caught the exception, re-threw it, and \texttt{star()} caught it again?  Trace the output.
+\item Write a variant where \texttt{caret()} throws two different exception types (e.g.\ \texttt{IllegalArgumentException} and \texttt{RuntimeException}), each caught at a different depth.
+\item Explain the difference between \texttt{try-finally} and \texttt{try-catch-finally} in terms of what prints and what doesn't when an exception occurs.
+\end{enumerate}
+
+\end{document}

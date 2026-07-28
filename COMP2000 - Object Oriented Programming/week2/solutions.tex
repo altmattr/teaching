@@ -1,0 +1,188 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 2: Git --- Solutions}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\section*{EPIC Exercise: Git Discord Chat}
+
+\subsection*{Setup}
+
+\begin{enumerate}
+    \item One team member (Alice) creates a repository on GitHub (e.g.\ \texttt{git-discord-chat}) and adds Bob and Carol as collaborators.
+    \item Bob and Carol each clone the repository:
+\end{enumerate}
+
+\begin{lstlisting}
+git clone https://github.com/alice/git-discord-chat.git
+cd git-discord-chat
+\end{lstlisting}
+
+\subsection*{Sample conversation}
+
+A three-person team runs the following sequence.  Each commit message is a chat line; committed files are attachments.
+
+\begin{lstlisting}
+# --- Alice sends the first message ---
+echo "Hello team!" > message.txt
+git add message.txt
+git commit -m "Alice: Hello team! Starting the chat. [attachment: message.txt]"
+git push
+
+# --- Bob fetches, reads, and replies ---
+git pull
+echo "Hey Alice!" > reply.txt
+git add reply.txt
+git commit -m "Bob: Hey Alice! Ready for the challenge. [attachment: reply.txt]"
+git push
+
+# --- Carol sends a multi-line message with an image ---
+git pull
+cat > update.txt <<EOF
+Carol here.
+I've added a diagram of our architecture.
+EOF
+cp ~/diagram.png .
+git add update.txt diagram.png
+git commit -m "Carol: Multi-line update with architecture diagram [attachments: update.txt, diagram.png]"
+git push
+
+# --- Alice fetches and replies with a timestamp reference ---
+git pull
+echo "Nice diagram Carol!" > feedback.txt
+git add feedback.txt
+git commit -m "Alice: Nice diagram Carol! (re: Carol's multi-line update)"
+git push
+\end{lstlisting}
+
+\subsection*{Viewing the conversation}
+
+Run the following to see the full chat log as a readable timeline:
+
+\begin{lstlisting}
+git log --oneline --graph --all
+\end{lstlisting}
+
+Example output (hashes abbreviated):
+
+\begin{lstlisting}
+* a1b2c3d (HEAD -> main, origin/main) Alice: Nice diagram Carol! (re: Carol's multi-line update)
+* e4f5g6h Carol: Multi-line update with architecture diagram [attachments: update.txt, diagram.png]
+* i7j8k9l Bob: Hey Alice! Ready for the challenge. [attachment: reply.txt]
+* m0n1o2p Alice: Hello team! Starting the chat. [attachment: message.txt]
+\end{lstlisting}
+
+The log reads bottom-to-top (oldest first).  Each line is one ``chat message.''
+
+\subsection*{Chat features demonstrated}
+
+\begin{itemize}
+    \item \textbf{Multi-line messages} --- Use a commit message with embedded newlines (\texttt{git commit -m \$'line1\\nline2'}) or write the message in a file and commit with \texttt{git commit -F msg.txt}.
+    \item \textbf{File attachments} --- Add any file type (image, PDF, text) with \texttt{git add <file>} before committing.
+    \item \textbf{Replies / threading} --- Reply by referencing a previous commit in your message.  For actual branching, create a topic branch per thread and merge when resolved.
+    \item \textbf{Timestamps} --- \texttt{git log --format="\%h \%ci \%s"} shows the author date in a standard format.
+    \item \textbf{Private messages} --- Create a branch that only two members pull from, or use an encrypted file committed to the repo.
+\end{itemize}
+
+\subsection*{No central server}
+
+To chat without GitHub/Bitbucket/GitLab:
+
+\begin{itemize}
+    \item \textbf{Email patches}: \texttt{git format-patch} produces patch files that can be emailed and applied with \texttt{git am}.
+    \item \textbf{Shared filesystem}: Create a bare repository on a USB drive or network share (\texttt{git init --bare /mnt/shared/chat.git}) and use it as the remote.
+    \item \textbf{Direct SSH}: Point the remote URL at a teammate's machine: \texttt{git remote add bob ssh://bob@192.168.1.5/path/to/chat.git}.
+    \item \textbf{Git daemon}: Run \texttt{git daemon --base-path=. --export-all} on one machine; others fetch from \texttt{git://hostname/path}.
+\end{itemize}
+
+\section*{Exercise 1: Benefits of version control}
+
+Three main benefits of version control systems:
+
+\begin{enumerate}
+    \item \textbf{Collaboration} --- Multiple people can work on the same project simultaneously.  In the chat scenario, each team member writes messages (commits) independently and shares them via push/pull.
+    \item \textbf{Backup and restore} --- Every commit is a saved snapshot of the entire project.  If someone accidentally deletes a message or file, you can restore it from any previous commit.  In the chat, this means the conversation is never lost.
+    \item \textbf{History and audit trail} --- Every commit records who made it, when, and what changed.  In the chat, \texttt{git log} shows exactly who said what and in what order, with tamper-evident timestamps.
+\end{enumerate}
+
+\section*{Exercise 2: Distributed version control}
+
+``Distributed'' means every clone of a Git repository contains the \emph{entire} history, not just the latest snapshot.  Every team member's computer has a full copy of all commits.
+
+In the chat exercise, you \emph{can} communicate without a central server.  Instead of pushing to GitHub, you could:
+\begin{itemize}
+\item Use \texttt{git format-patch} to generate patch files and email them to teammates, who apply them with \texttt{git am}.
+\item Set up a shared filesystem (e.g.\ a USB drive or network share) and use \texttt{git pull} from a shared bare repository on that drive.
+\item Use peer-to-peer tools like \texttt{git} over SSH directly between machines.
+\end{itemize}
+However, in practice a central server (GitHub/Bitbucket/GitLab) is far more convenient because it is always online and acts as a reliable rendezvous point.
+
+\section*{Exercise 3: \texttt{git init} vs \texttt{git clone}}
+
+\begin{itemize}
+    \item \texttt{git init} creates a \emph{new} empty repository in the current directory.  Use this to start a new chat room from scratch.
+    \item \texttt{git clone <url>} copies an \emph{existing} repository to your machine, including all history.  Use this to join a chat room that someone else already started.
+\end{itemize}
+In the exercise, the first team member runs \texttt{git init} (or creates a repo on GitHub, which internally runs \texttt{git init --bare}), and everyone else runs \texttt{git clone} to join.
+
+\section*{Exercise 4: Git's three trees}
+
+Git's three trees are:
+
+\begin{enumerate}
+    \item \textbf{Working Directory} --- where you edit files on disk.  After typing a message into a file, it exists here only.
+    \item \textbf{Staging Area (Index)} --- where you list changes that will go into the next commit.  After \texttt{git add}, your message file is staged and ready to be committed.
+    \item \textbf{Repository (HEAD)} --- where committed snapshots are permanently stored.  After \texttt{git commit}, your message is saved in the repository's history and can be seen with \texttt{git log}.
+\end{enumerate}
+
+\section*{Exercise 5: Purpose of the staging area}
+
+The staging area lets you build a commit incrementally.  You can add changes from multiple files (or even parts of files with \texttt{git add -p}) before committing them together as a single logical unit.
+
+In the chat scenario, you might:
+\begin{enumerate}
+\item Type your message text into \texttt{message.txt} and \texttt{git add message.txt}.
+\item Add an image attachment and \texttt{git add image.png}.
+\item Run \texttt{git commit} to send both the text and the image as a single ``chat message.''
+\end{enumerate}
+Without a staging area, your working copy needs to exactly match what you plan to commit into the repository at each commit point and this loss of flexibility hurts some development workflows.
+\section*{Exercise 6: \texttt{git log} with graph}
+
+\begin{lstlisting}
+git log --oneline --graph --all
+\end{lstlisting}
+
+This command shows each commit on one line with a text-based graph.  The \texttt{--oneline} flag condenses each commit to a short hash and subject line.  \texttt{--graph} draws branch structure with ASCII art.  \texttt{--all} shows commits from all branches.
+
+In the chat repository, you would use this to read the conversation chronologically (from oldest to newest, read top to bottom), see who replied to whom (branches and merges show threading), and spot any off-topic side conversations.
+
+\section*{Exercise 7: \texttt{git fetch} vs \texttt{git pull}}
+
+\begin{itemize}
+    \item \texttt{git fetch} downloads new commits from the remote repository but does \emph{not} integrate them into your current working branch.  Your local work is untouched.
+    \item \texttt{git pull} does a \texttt{git fetch} followed by a \texttt{git merge} (or \texttt{git rebase}), integrating the remote changes into your current branch immediately.
+\end{itemize}
+
+If you want to check for new messages without automatically merging them (e.g.\ you are in the middle of composing a reply and do not want to mix incoming messages with your draft), use \texttt{git fetch}.  You can then inspect the fetched commits with \texttt{git log origin/main} and merge them later.
+
+\section*{Exercise 8: Remote URL protocols}
+
+The two most common protocols are:
+
+\begin{enumerate}
+    \item \textbf{HTTPS} --- e.g.\ \texttt{https://github.com/user/repo.git}.  Authenticates with username/password or personal access token.  Widely used because it works through firewalls.
+    \item \textbf{SSH} --- e.g.\ \texttt{git@github.com:user/repo.git}.  Authenticates with public-key cryptography.  More secure for automation and preferred by many developers.
+\end{enumerate}
+
+For a completely private chat with no central server, you could replace the URL with:
+\begin{itemize}
+\item A local filesystem path: \texttt{/mnt/shared/chat.git} (if on a shared drive or USB stick).
+\item An SSH path to a teammate's machine: \texttt{ssh://user@192.168.1.5/path/to/chat.git}.
+\item A direct peer-to-peer connection using \texttt{git daemon} on the local network.
+\end{itemize}
+In all these cases, there is no third-party server --- the repository lives entirely on the team's own machines.
+
+\end{document}

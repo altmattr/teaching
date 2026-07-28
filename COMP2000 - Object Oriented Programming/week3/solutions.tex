@@ -1,0 +1,205 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 3: Objects and Classes --- Solutions}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\section*{Self Study Exercises}
+
+\subsection*{Exercise 1: Class vs Object}
+
+A \textbf{class} is a blueprint or template that defines the structure (fields) and behaviour (methods) that objects of that type will have.  An \textbf{object} is a concrete instance of a class, created at runtime, with its own set of values for the fields.
+
+Using the blueprint analogy: a class is like a house blueprint --- it describes the layout, rooms, and dimensions, but you cannot live in a blueprint.  An object is the actual house built from that blueprint --- it has real walls, doors, and occupants.  Many houses (objects) can be built from the same blueprint (class), each with different paint colours (field values).
+
+In your semester project, you might define classes such as \texttt{Entity}, \texttt{Grid}, \texttt{Player}, or \texttt{DataVisualisation}.  Each class is a blueprint; each object created with \texttt{new} is a concrete instance used by the application.
+
+\subsection*{Exercise 2: Fields and Methods}
+
+Fields (state): position (x, y), health.
+
+Methods (behaviour): move, takeDamage.
+
+\begin{lstlisting}
+public class Entity {
+    private int x;
+    private int y;
+    private int health;
+
+    void move(int newX, int newY) {
+        // update position
+    }
+
+    void takeDamage(int amount) {
+        // reduce health
+    }
+}
+\end{lstlisting}
+
+\subsection*{Exercise 3: Writing a class}
+
+\begin{lstlisting}
+public class Book {
+    String title;
+    String author;
+    int pages;
+
+    String getDescription() {
+        return title + " by " + author + ", " + pages + " pages";
+    }
+
+    boolean isLong() {
+        return pages > 400;
+    }
+}
+\end{lstlisting}
+
+\subsection*{Exercise 4: Constructors and object creation}
+
+\begin{lstlisting}
+public class Book {
+    String title;
+    String author;
+    int pages;
+
+    Book(String t, String a, int p) {
+        title = t;
+        author = a;
+        pages = p;
+    }
+
+    String getDescription() { /* as above */ }
+    boolean isLong() { /* as above */ }
+
+    public static void main(String[] args) {
+        Book b1 = new Book("1984", "George Orwell", 328);
+        Book b2 = new Book("The Hobbit", "J.R.R. Tolkien", 310);
+        System.out.println(b1.getDescription());
+        System.out.println(b2.getDescription());
+    }
+}
+\end{lstlisting}
+
+If no constructor is explicitly defined, Java provides a \textbf{default no-argument constructor} automatically.  This constructor initialises numeric fields to 0, boolean fields to false, and reference fields to null.
+
+\subsection*{Exercise 5: Method overloading}
+
+\begin{lstlisting}
+public class Book {
+    String title;
+    String author;
+    int pages;
+
+    Book(String t, String a, int p) {
+        title = t;
+        author = a;
+        pages = p;
+    }
+
+    Book(String t, String a) {
+        this(t, a, 0);  // delegates to the three-parameter constructor
+    }
+
+    // getDescription(), isLong() as before
+
+    public static void main(String[] args) {
+        Book b1 = new Book("1984", "George Orwell", 328);
+        Book b2 = new Book("Unknown", "Anonymous");  // pages defaults to 0
+    }
+}
+\end{lstlisting}
+
+Overloaded constructors provide flexibility --- clients can create a \texttt{Book} with or without a page count.  The second constructor uses \texttt{this(...)} to delegate to the first, avoiding duplicated initialisation code.
+
+\subsection*{Exercise 6: Using \texttt{this}}
+
+\begin{lstlisting}
+Book(String title, String author, int pages) {
+    this.title = title;      // field = parameter
+    this.author = author;
+    this.pages = pages;
+}
+\end{lstlisting}
+
+When parameter names match field names, the parameter \emph{shadows} the field inside the constructor.  Using \texttt{this.title} explicitly refers to the field, while \texttt{title} alone refers to the parameter.  Without \texttt{this}, the assignment \texttt{title = title;} would be a no-op (parameter assigned to itself), and the field would remain at its default value.
+
+\subsection*{Exercise 7: Static members}
+
+\begin{lstlisting}
+public class Book {
+    static int totalBooks = 0;
+
+    String title;
+    String author;
+    int pages;
+
+    Book(String t, String a, int p) {
+        title = t;
+        author = a;
+        pages = p;
+        totalBooks++;
+    }
+
+    static int getTotalBooks() {
+        return totalBooks;
+    }
+
+    public static void main(String[] args) {
+        new Book("A", "B", 100);
+        new Book("C", "D", 200);
+        new Book("E", "F", 300);
+        System.out.println(Book.getTotalBooks());  // prints 3
+    }
+}
+\end{lstlisting}
+
+Static methods belong to the class itself, not to any particular instance.  Inside a static method there is no \texttt{this} reference, so it cannot access instance fields like \texttt{title}.  The static field \texttt{totalBooks} is shared across all instances.
+
+\subsection*{Exercise 8: Objects collaborating}
+
+\begin{lstlisting}
+public static void main(String[] args) {
+    Counter c1 = new Counter(10);
+    Counter c2 = new Counter(20);
+    c1.add(c2);
+    System.out.println(c1.getValue());  // prints 30
+}
+\end{lstlisting}
+
+Inside the \texttt{add} method, \texttt{other.value} refers to the \texttt{value} field of the \texttt{Counter} object passed as the argument (in this case, \texttt{c2}'s value of 20).  Even though \texttt{value} is private, the \texttt{add} method can access it because it belongs to the same class (\texttt{Counter}) as the object it is inspecting.
+
+\subsection*{Exercise 9: Java API Documentation}
+
+\textbf{\texttt{java.lang.String}}:
+
+\begin{itemize}
+    \item \texttt{length()} --- returns the number of characters in the string.
+    \item \texttt{substring(int beginIndex, int endIndex)} --- returns a new string that is a substring of the original.
+    \item \texttt{toUpperCase()} --- returns a new string with all characters converted to uppercase.
+\end{itemize}
+
+\textbf{\texttt{java.util.ArrayList}}:
+
+\begin{itemize}
+    \item \texttt{add(E element)} --- appends the specified element to the end of the list.
+    \item \texttt{get(int index)} --- returns the element at the specified position.
+    \item \texttt{size()} --- returns the number of elements in the list.
+\end{itemize}
+
+Code snippet:
+
+\begin{lstlisting}
+String s = "hello world";
+System.out.println(s.toUpperCase());  // HELLO WORLD
+
+ArrayList<String> list = new ArrayList<>();
+list.add("apple");
+list.add("banana");
+System.out.println(list.get(0));  // apple
+System.out.println(list.size());  // 2
+\end{lstlisting}
+
+\end{document}

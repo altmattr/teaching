@@ -1,0 +1,74 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg} \quad \textbf{Week 8}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 8: Patterns 2}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\begin{abstract}
+This week you will identify design patterns in existing code and argue for their value.  You will look at assignment one solutions from other teams (provided by unit staff) and find places where a design pattern has been used or could be applied.
+\end{abstract}
+
+\section*{Topics}
+\begin{description}
+\item[Decorator pattern] Attaching additional responsibilities to an object dynamically
+\item[Iterator pattern] Providing a way to access elements of a collection sequentially without exposing its underlying representation
+\item[State pattern] Allowing an object to alter its behaviour when its internal state changes
+\item[Open/Closed Principle (revisited)] Decorating and iterating without modifying existing code
+\end{description}
+
+\section*{Preparation}
+Attend the lecture in week 7.
+
+Read the following chapters of \textit{Head First Design Patterns}
+(\href{https://archive.org/details/headfirstdesignp0010unse}{available freely online}\footnote{\url{https://archive.org/details/headfirstdesignp0010unse}}):
+\begin{itemize}
+    \item Chapter 3 (Decorator Pattern)
+    \item Chapter 9 (Iterator Pattern) --- read up until the subsection titled ``Just when we thought it was safe\ldots''
+    \item Chapter 10 (State Pattern)
+\end{itemize}
+Complete the exercises in Chapters 3, 9 (for the Iterator section only), and 10.
+
+
+\section*{EPIC activity}
+
+Your team has been allocated a question and a side to take.  During the activity your team prepares an argument for the side you have been asked to take.  The repositories to look in are provided by unit staff --- they contain assignment one submissions from other teams.  Find evidence in the code to support your argument.
+
+\subsection*{Reporting}
+
+This is a \emph{debating} style class.  During reporting the teams are paired up for a 10 minute public debate.  At the end of each debate the crowd picks the winner.  Your log book should include the best zingers from the debates.
+
+\begin{teacher}
+Allocate sides so that each argument is arguable from the code.  Moderate the debates and keep time.  After each debate, ask the audience to vote by show of hands.
+\end{teacher}
+
+\subsection*{Project Guidance}
+
+Separately from the in-class debate, look at your own team's project.  Pick one design pattern you have learned (Strategy, Observer, State, Factory, or another).  Where in your simulation would it fit best?  Implement it.  Be ready to explain why you chose that pattern and what problem it solves.
+
+\section*{Self Study Exercises}
+\begin{enumerate}
+\item What are the four main participants in the Decorator pattern?  Briefly describe the role of each.
+
+\item What are the two main participants in the Iterator pattern?  Explain how they allow client code to access elements without knowing the underlying collection structure.
+
+\item What are the three main participants in the State pattern?  How does the pattern allow an object to change its behaviour when its internal state changes?
+
+\item A coffee shop application needs to support a base beverage (e.g.\ \texttt{Espresso}, \texttt{HouseBlend}) with optional add-ons (e.g.\ \texttt{Milk}, \texttt{Mocha}, \texttt{Whip}) that each add cost and a description.  Which design pattern is most suitable?  Justify your answer and sketch the key classes or interfaces you would use.
+
+\item A traffic light cycles through states (green, yellow, red) and behaves differently depending on the current state (e.g.\ cars may go only when green).  Which design pattern is most suitable here?  Justify your answer and sketch the key participants.
+
+\item A music player needs to iterate through a playlist of songs stored in different internal formats (e.g.\ \texttt{ArrayList}, \texttt{LinkedList}) without exposing the underlying data structure.  Which design pattern is most suitable?  Justify your answer.
+
+\item Write a minimal Java implementation of the Decorator pattern for a beverage system.  Define a \texttt{Beverage} abstract class, two concrete beverages (\texttt{Espresso}, \texttt{HouseBlend}), and at least two condiment decorators (\texttt{Mocha}, \texttt{Whip}) that extend \texttt{Beverage} and add cost and description.
+
+\item Write a Java \texttt{Iterator} for a simple \texttt{Playlist} class that stores songs in a \texttt{List<String>}.  The \texttt{Playlist} should provide a \texttt{createIterator()} method that returns an anonymous or inner-class \texttt{Iterator<String>}.
+
+\item Write a minimal Java implementation of the State pattern for a simple vending machine.  Define a \texttt{VendingMachine} context and at least three states: \texttt{NoCoinState}, \texttt{HasCoinState}, and \texttt{DispensingState}.  Each state should handle \texttt{insertCoin()} and \texttt{dispense()} appropriately.
+
+\item Compare the Decorator pattern with the Strategy pattern.  Both wrap behaviour, but they solve different problems.  Explain the difference and give a concrete scenario where you would choose Decorator over Strategy.  Then explain how the Decorator pattern satisfies the Open/Closed Principle.
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,88 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg} \quad \textbf{Week 9}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 9: Behaviour Parameterisation}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\begin{abstract}
+The goal of this week is to explore behaviour parametrisation and lambda expressions.  Code golf challenges you to express operations in the fewest characters possible --- a fun way to discover terse, expressive use of lambdas and the functional interfaces in \texttt{java.util.function}.
+\end{abstract}
+
+\section*{Topics}
+\begin{description}
+\item[Lambda expressions] Anonymous functions as first-class values in Java
+\item[Functional interfaces] \texttt{Predicate}, \texttt{Function}, \texttt{Consumer}, \texttt{Supplier}
+\item[Method references] \texttt{ClassName::methodName} shorthand
+\item[Behaviour parametrisation] Passing behaviour as an argument instead of hard-coding it
+\end{description}
+
+\section*{Preparation}
+Read the following chapters of \textit{Modern Java in Action}
+\footnote{Available in the course materials as \textit{Modern Java in Action, 2nd Edition.pdf}}:
+\begin{itemize}
+    \item Chapter 1 (Java 8, 9, 10, and 11: what's happening?)
+    \item Chapter 2 (Passing code with behavior parameterization)
+\end{itemize}
+
+Attend the lecture in week 8.
+
+Read Chapter 3 (Lambda expressions) of \textit{Modern Java in Action}.
+
+Come to class ready to discuss:
+\begin{itemize}
+    \item how lambdas let you pass behaviour as an argument
+    \item the syntax of lambda expressions and method references
+    \item the role of functional interfaces like \texttt{Predicate} and \texttt{Function}
+\end{itemize}
+
+
+\section*{EPIC activity}
+
+Your team will be given a set of programming puzzles.  Each puzzle asks you to transform or filter a collection using streams and lambdas.  The goal is to produce the correct result in as few characters as possible.  This is not about writing production code --- it is about discovering how expressive lambdas can be.
+
+\subsection*{Reporting}
+
+This is a \emph{simultaneous reporting} style class.  Each team presents their shortest solution for a selected puzzle.  Other teams ask questions.  Your log book should include the most interesting things learned from other teams --- especially any lambda tricks you had not seen before.
+
+\begin{teacher}
+Prepare a set of 5--8 puzzles on a shared repository.  Each puzzle should have a JUnit test that validates the output.  During reporting, project each team's solution and count characters live.  Highlight the shortest solution for each puzzle.
+\end{teacher}
+
+\subsection*{Project Guidance}
+
+Look at your team's simulation code.  Are there places where you chose behaviour by setting a field or using an \texttt{if-else} chain?  Could any of those choices be expressed as lambdas instead of concrete classes?  For example, a movement strategy like \texttt{entity -> neighbours.stream().min(Comparator.comparingDouble(c -> c.foodAvailable()))} might replace an entire \texttt{MoveStrategy} subclass.  Try refactoring one strategy to use a lambda and compare the two versions.
+
+\section*{Self Study Exercises}
+\begin{enumerate}
+\item What is behaviour parameterisation?  How does it differ from passing data as an argument?
+
+\item What is a lambda expression?  Write the general syntax both with and without explicit type declarations.
+
+\item What is a functional interface?  Name three functional interfaces from \texttt{java.util.function} and state the signature of their abstract method.
+
+\item Write a method \texttt{filterStrings} that takes a \texttt{List<String>} and a \texttt{Predicate<String>} and returns a new list containing only the strings that match the predicate.
+
+\item Convert the following anonymous class to a lambda expression:
+\begin{verbatim}
+Collections.sort(people, new Comparator<Person>() {
+    public int compare(Person a, Person b) {
+        return Integer.compare(a.age(), b.age());
+    }
+});
+\end{verbatim}
+
+\item What is a method reference?  Give one example each of: a static method reference, an instance method reference on a parameter, and a constructor reference.
+
+\item Write a lambda expression that implements \texttt{Function<Integer, Integer>} to compute the square of a number.  Then write the equivalent method reference.
+
+\item Suppose you have a \texttt{List<Transaction>} with methods \texttt{getAmount()} and \texttt{getCurrency()}.  Write a stream pipeline that filters transactions over 1000, sorts them by amount descending, and collects them into a list.  Explain what role lambdas play in each step.
+
+\item Can a lambda expression access local variables from its enclosing scope?  What restrictions apply?
+
+\item Explain how behaviour parameterisation enables the Strategy design pattern.  Provide a concrete example in Java.
+\end{enumerate}
+
+\end{document}

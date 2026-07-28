@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="category">
+    <category>
+      <text>$course$/top/RATS/week 01</text>
+    </category>
+    <info format="html">
+      <text/>
+    </info>
+    <idnumber/>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>TBL 01</text>
+    </name>
+    <questiontext format="html">
+      <text>Which of the following shows the correct order of phases in the Team-Based Learning process?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Your answer is correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Your answer is partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Your answer is incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>Clarification Session &gt; Application Task &gt; IRAT &gt; TRAT &gt; Preparation</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Preparation &gt; Clarification Session &gt; Application Task &gt; IRAT &gt; TRAT</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>Preparation &gt; IRAT &gt; TRAT &gt; Clarification Session &gt; Application Task</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>IRAT &gt; Preparation &gt; TRAT &gt; Application Task &gt; Clarification Session</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>TBL 02</text>
+    </name>
+    <questiontext format="html">
+      <text>What is the main purpose of the Individual Readiness Assurance Test (iRAT)?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Your answer is correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Your answer is partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Your answer is incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>To test your ability to memorize facts from lectures</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>To ensure you have completed the pre-class preparation and understand key concepts</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>To determine which team you’ll be placed into</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>To practice answering exam-style questions</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>TBL 03</text>
+    </name>
+    <questiontext format="html">
+      <text>During the Team Readiness Assurance Test (tRAT), what is expected of students?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Your answer is correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Your answer is partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Your answer is incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>Each student completes the quiz independently again</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>The team assigns one person to answer for the group</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>Students discuss each question as a team and reach a consensus before submitting their answer to each question</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>The team submits the same answers from the IRAT without discussion</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>TBL 04</text>
+    </name>
+    <questiontext format="html">
+      <text>What should you expect during the clarification session in Team-Based Learning?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Your answer is correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Your answer is partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Your answer is incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>Your instructor will reteach the entire pre-class content in a lecture format</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Only teams that failed the quiz will participate, teams that pass will move on</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>You will retake the quiz individually for a second attempt</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>Teams that answered correctly may be asked to explain their thinking to help other teams</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>TBL 05</text>
+    </name>
+    <questiontext format="html">
+      <text>What is the main purpose of the Application Task in Team-Based Learning?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Your answer is correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Your answer is partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Your answer is incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>To give each student the chance to revise their quiz answers</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>Having been primed in iRAT/tRAT, students now apply knowledge and concepts to a realistic problem that requires team collaboration and decision-making</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Having been primed in iRAT/tRAT, students now work to address the questions they got wrong and prove they have taken steps to fill knowledge gaps</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>To reflect and evaluate the performance of their team and preparation</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>TBL 06</text>
+    </name>
+    <questiontext format="html">
+      <text>Which of the following is a common challenge students may experience in Team-Based Learning, especially in the early weeks?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Your answer is correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Your answer is partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Your answer is incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text>Struggling to adapt to working closely with the same team over time</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Feeling bored because most of the work is done individually</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Being unsure when to submit their weekly lab report</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Having enough lecture content to revise for the final exam</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>TBL 07</text>
+    </name>
+    <questiontext format="html">
+      <text>How often will we be doing TBL activities in this course?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Your answer is correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Your answer is partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Your answer is incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>In class in weeks 1, 3, 5, 7 and 9</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Never after this first session</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Every week until Session 2 recess</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>Every week in our classes</text>
+      <feedback format="html"><text/></feedback>
+    </answer>
+  </question>
+</quiz>

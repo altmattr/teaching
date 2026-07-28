@@ -1,0 +1,86 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg} \quad \textbf{Week 10}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 10: Streams}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\begin{abstract}
+The goal of this week is to use the Java Streams API to process collections of objects declaratively.  Rather than writing explicit loops, you will chain operations like \texttt{filter}, \texttt{map}, \texttt{reduce}, and \texttt{collect} to express data transformations clearly and concisely.
+\end{abstract}
+
+\section*{Topics}
+\begin{description}
+\item[Stream pipelines] Source, intermediate operations, and terminal operations
+\item[Lazy evaluation] How intermediate operations are deferred until a terminal operation is called
+\item[Common operations] \texttt{filter}, \texttt{map}, \texttt{flatMap}, \texttt{sorted}, \texttt{reduce}
+\item[Primitive streams] \texttt{IntStream}, \texttt{LongStream}, \texttt{DoubleStream}
+\end{description}
+
+\section*{Preparation}
+Attend the lecture in week 9.\par
+Read the following chapters of \textit{Modern Java in Action}
+\footnote{Available in the course materials as \textit{Modern Java in Action, 2nd Edition.pdf}}:
+\begin{itemize}
+    \item Chapter 4 (Introducing streams)
+    \item Chapter 5 (Working with streams)
+\end{itemize}
+
+Come to class ready to discuss:
+\begin{itemize}
+    \item the three stages of a stream pipeline
+    \item the difference between intermediate and terminal operations
+    \item how to use \texttt{filter}, \texttt{map}, \texttt{flatMap}, and \texttt{reduce}
+\end{itemize}
+
+
+\section*{EPIC activity}
+
+Your task this week is to incorporate concepts from the last two weeks into your project.  Use streams and lambdas to refactor parts of your codebase.  Look for loops over collections of entities, calculations of aggregate values (sums, averages, counts), and transformations from one data shape to another.  Replace at least one explicit \texttt{for} or \texttt{while} loop with a stream pipeline.
+
+\subsection*{Reporting}
+
+This is a \emph{simultaneous reporting} style class.  Each team presents the loop they replaced and the stream pipeline they wrote instead.  Discuss the readability, performance, and correctness trade-offs.  Your log book should include the most interesting stream pattern you saw from another team.
+
+\begin{teacher}
+Circulate during the activity and help teams identify loops that are good candidates for stream conversion.  During reporting, encourage discussion of when streams hurt readability rather than help.
+\end{teacher}
+
+\subsection*{Project Guidance}
+
+Use streams to analyse your simulation state.  For example:
+\begin{itemize}
+\itemsep0em
+\item Average energy across all herbivores: \texttt{entities.stream().filter(e -> e instanceof Herbivore).mapToDouble(Entity::energy).average()}
+\item Population by species: \texttt{entities.stream().collect(Collectors.groupingBy(Entity::species, Collectors.counting()))}
+\item Entities below starvation threshold: \texttt{entities.stream().filter(e -> e.energy() < THRESHOLD).toList()}
+\end{itemize}
+
+Find one explicit loop over entities in your code and replace it with a stream pipeline.  Commit both versions so you can compare them.
+
+\section*{Self Study Exercises}
+\begin{enumerate}
+\item What is a stream?  How is it different from a collection?
+
+\item What are the three stages of a stream pipeline?  Give a concrete example.
+
+\item What does it mean that streams are lazily evaluated?  Why does this matter for performance?
+
+\item Given a \texttt{List<String>}, write a stream pipeline that converts each string to uppercase, filters those longer than 4 characters, sorts them, and collects them into a new list.
+
+\item What is \texttt{flatMap}?  Write an example that flattens a \texttt{List<List<Integer>>} into a single \texttt{List<Integer>}.
+
+\item Given a \texttt{List<Person>} with \texttt{getName()} and \texttt{getAge()}, use streams to compute the average age of people older than 18.
+
+\item Use \texttt{reduce} to compute the product of all integers in a \texttt{List<Integer>}.  What value does it return if the list is empty?
+
+\item What is the difference between \texttt{map} and \texttt{flatMap}?  When would you choose one over the other?
+
+\item Write a stream pipeline that takes a \texttt{List<Transaction>} (with \texttt{getCurrency()} and \texttt{getAmount()}) and returns a \texttt{Map<String, List<Transaction>>} grouping transactions by currency.
+
+\item What are primitive streams (\texttt{IntStream}, \texttt{LongStream}, \texttt{DoubleStream})?  Why do they exist?  Give an example using \texttt{IntStream.range}.
+\end{enumerate}
+
+\end{document}

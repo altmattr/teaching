@@ -56,7 +56,7 @@ class Parser {
     try {
       if (match(VAR)) return varDeclaration();
       if (match(PLOT))return plotDeclaration();
-      if (match(FUN)) return function("function");
+      if (match(DAM)) return damDecl();
       return statement();
     } catch (ParseError error) {
       synchronize();
@@ -64,24 +64,45 @@ class Parser {
     }
   }
 
-   Stmt.Function function(String kind) {
-    Token name = consume(IDENTIFIER, "Expect " + kind + " name.");
-    consume(LEFT_PAREN, "Expect '(' after " + kind + " name.");
-    List<Token> parameters = new ArrayList<>();
-    if (!check(RIGHT_PAREN)) {
-      do {
-        if (parameters.size() >= 255) {
-          error(peek(), "Can't have more than 255 parameters.");
-        }
+   Stmt damDecl() {
+    Token name = consume(IDENTIFIER, "Expect dam name.");
+    consume(LEFT_BRACE, "Expect '{' before dam body.");
+    List<Stmt> body = damBody();
+    consume(RIGHT_BRACE, "Expect '}' after dam body.");
+    match(SEMICOLON);
+    return new Stmt.DamDecl(name, body);
+  }
 
-        parameters.add(
-            consume(IDENTIFIER, "Expect parameter name."));
-      } while (match(COMMA));
+  List<Stmt> damBody() {
+    List<Stmt> statements = new ArrayList<>();
+    while (!check(RIGHT_BRACE) && !isAtEnd()) {
+      if (match(WHEN)) {
+        statements.add(whenStatement());
+      } else if (match(DEFAULT)) {
+        statements.add(defaultStatement());
+      } else {
+        statements.add(declaration());
+      }
     }
-    consume(RIGHT_PAREN, "Expect ')' after parameters.");
-    consume(LEFT_BRACE, "Expect '{' before " + kind + " body.");
-    List<Stmt> body = block();
-    return new Stmt.Function(name, parameters, body);
+    return statements;
+  }
+
+  Stmt whenStatement() {
+    Expr condition = expression();
+    consume(COLON, "Expect ':' after when condition.");
+    Expr body = expression();
+    consume(SEMICOLON, "Expect ';' after when body.");
+    Token ifToken = previous();
+    Stmt thenBranch = new Stmt.Return(ifToken, body);
+    return new Stmt.If(condition, thenBranch, null);
+  }
+
+  Stmt defaultStatement() {
+    consume(COLON, "Expect ':' after 'default'.");
+    Expr body = expression();
+    consume(SEMICOLON, "Expect ';' after default body.");
+    Token returnToken = previous();
+    return new Stmt.Return(returnToken, body);
   }
 
   Stmt statement() {
@@ -189,6 +210,12 @@ class Parser {
       if (match(NUMBER)){
           return new Expr.Number(Double.parseDouble(previous().lexeme));
       }
+      if (match(INFLOW)){
+          return new Expr.Inflow();
+      }
+      if (match(LEVEL)){
+          return new Expr.Level();
+      }
       throw error(peek(), "Expect flow expression.");
   }
 
@@ -251,6 +278,7 @@ class Parser {
         case WHILE:
         case PRINT:
         case RETURN:
+        case DAM:
           return;
       }
 

@@ -32,6 +32,15 @@ public class Flow implements Value{
 
     }
 
+    public Flow addUpstreamDelayed(Flow upstream) {
+        double[] result = new double[10];
+        result[0] = this.prediction[0];
+        for (int i = 1; i < 10; i++) {
+            result[i] = this.prediction[i] + upstream.prediction[i - 1];
+        }
+        return new Flow(result);
+    }
+
     public String toString(){
         String ret = "[";
         for (int i = 0; i < 10; i++){

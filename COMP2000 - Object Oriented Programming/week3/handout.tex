@@ -1,0 +1,112 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg} \quad \textbf{Week 3}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 3: Objects and Classes}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\begin{abstract}
+The goal of this week is to move from ideas to designs.  You will sketch what your application will look like and draw the class structure that will bring it to life.  These designs will guide your work for the rest of the semester.
+\end{abstract}
+
+\section*{Topics}
+\begin{description}
+\item[Interface design] Sketching user-facing screens and interactions
+\item[Class modelling] Identifying objects, their fields, and their responsibilities
+\item[UML notation] Using a loose UML-ish notation to communicate design ideas
+\end{description}
+
+\section*{Preparation}
+Attend the lecture in week 2.
+
+Read the following sections of \textit{Learning Java}, 3rd~edition, Chapter~5
+(\href{https://archive.org/details/learningjava0000niem_m6l5}{available freely online}\footnote{\url{https://archive.org/details/learningjava0000niem_m6l5}}):
+\begin{itemize}
+    \item Classes
+    \item Methods
+    \item Object Creation
+\end{itemize}
+
+Think about what kinds of objects exist in the world you are modelling (e.g.\ a simulation has entities, a grid, a visualisation has data sources, charts, a game has characters, levels, controllers).
+Come to class ready to draw.
+
+
+\section*{EPIC activity}
+
+This week your team will be making drawings.  Your team will create a drawing of what the interface to your application is likely to look like and will then use this to start planning out what objects and classes your application will need.  The end result of each is a butcher's paper sheet (i.e.\ two for each team) showing your interface and your design.  Please use a UML-ish notation for your design.
+
+Before you begin though, your team will need to decide what it wants to build!  Your teacher should have started you on this process in earlier weeks but if your team does not yet know, now is the time to decide.
+
+During the specific reporting period you will go and look at other team's designs and ask questions about them.  By the end of class your log book should contain your team's designs and one other team's designs (pick the one you like best).
+
+\begin{teacher}
+Be sure you have enough butcher's paper and some markers for class.  Try to set up the specific reporting period like a "poster presentation" from a conference.  Take some pictures if the students don't mind.
+\end{teacher}
+
+\subsection*{Reporting}
+
+This is a \emph{butcher's paper} style class.  The output of the activity is a design or image and the teams each write up their solution on butcher's paper.  The various solutions get put up on the walls for everyone to look at and discuss.  Teachers mingle in the reporting period chiming in with great insights.  Your log book should include your team's answer and at least one other answer.
+
+\subsection*{Project Guidance}
+
+By the end of today's class your team will have choosen which type of simulation they want to build and to have done some initial design work.  You will be submitting individually so you may like to expand on where your team ends up at the end of class.  You might expand with your team, or by yourself if you prefer.  Here are some example simulations for inspiration.
+\begin{itemize}
+\item \textbf{SimWild} (\url{https://github.com/Hrishik0018/SimWild}) --- A grid-based wildlife simulation with plants, herbivores, and carnivores.  Simple inheritance hierarchy and Java Swing GUI.
+\item \textbf{Predator-Prey-Simulation-Java} (\url{https://github.com/akiskailidis/Predator-Prey-Simulation-Java}) --- Foxes and rabbits on a 20$\times$20 grid.  Clean, minimal design from an OOP course.
+\item \textbf{Predator-Prey-Ecosystem-Simulator} (\url{https://github.com/junuIZEE/Predator-Prey-Ecosystem-Simulator}) --- Wolves, rabbits and grass with live population charts, heritable traits, and JavaFX.  From a CS-212 OOP semester project.
+\end{itemize}
+
+These are not templates to copy --- they are examples of what other students have built.  Your team's simulation will be your own.  Draw a UML sketch of your planned classes: what objects exist, what fields do they hold, what responsibilities do they have?  Discuss where inheritance might help later and leave room in your design for it.
+
+\section*{Self Study Exercises}
+\begin{enumerate}
+
+\item In your own words, explain the difference between a class and an object.  Why might it be useful to have a single class from which many objects are created?  Relate this to the project you will design this semester --- what classes might you define, and what objects would be created from them?
+
+\item Consider the following description of part of a simulation:
+
+\begin{quote}
+Each entity in the simulation has a position (x and y coordinates) and a health value.  Entities can move to a new position and take damage.
+\end{quote}
+
+Identify which elements are fields (state) and which are methods (behaviour).  Then write a Java class stub for an \texttt{Entity} class that declares the fields and method signatures described above.
+
+\item Write a Java class called \texttt{Book} with the following members:
+\begin{itemize}
+    \item Fields: \texttt{title} (String), \texttt{author} (String), \texttt{pages} (int)
+    \item A method \texttt{getDescription()} that returns a string in the format ``\textit{Title} by \textit{Author}, \textit{N} pages''.
+    \item A method \texttt{isLong()} that returns \texttt{true} if \texttt{pages} is greater than 400.
+\end{itemize}
+
+\item Add a constructor to your \texttt{Book} class that initialises all three fields.  Write a \texttt{main()} method that creates two \texttt{Book} objects and prints their descriptions using \texttt{getDescription()}.  What would happen if you did not define any constructor at all?
+
+\item Add two overloaded constructors to \texttt{Book}: one that accepts \texttt{title}, \texttt{author}, and \texttt{pages}; and one that accepts only \texttt{title} and \texttt{author} (defaulting \texttt{pages} to 0).  Show how each constructor is called in \texttt{main()}.  Why is it useful to have multiple constructors?
+
+\item Rewrite your \texttt{Book} constructor(s) using the \texttt{this} keyword to distinguish between constructor parameters and fields.  Explain in a sentence why using \texttt{this} is necessary when parameter names match field names.  What would happen if you omitted \texttt{this}?
+
+\item Add a \texttt{static} field \texttt{totalBooks} to \texttt{Book} that is incremented in every constructor.  Add a \texttt{static} method \texttt{getTotalBooks()} that returns this count.  In \texttt{main()}, create three books and print the total.  Explain why \texttt{getTotalBooks()} cannot access the \texttt{title} field directly.
+
+\item Given the following class:
+\begin{verbatim}
+public class Counter {
+    private int value = 0;
+    
+    Counter(int v) { value = v; }
+    void add(Counter other) { value = value + other.value; }
+    int getValue() { return value; }
+}
+\end{verbatim}
+		Write a \texttt{main()} method that creates two \texttt{Counter} objects --- one with value 10 and one with value 20 --- adds them together using the \texttt{add} method, and prints the result.  Inside the \texttt{add} method, what does \texttt{other.value} refer to?  Draw a diagram showing what is happening in memory as the two \texttt{Counter} objects are created and the state of all the variables during execution of \texttt{addCounter}.
+
+\item Visit the Java API documentation for \texttt{java.lang.String} and \texttt{java.util.ArrayList}.  For each class:
+\begin{itemize}
+    \item List three methods and briefly describe what each does.
+    \item Write a short code snippet that uses at least one method from each class.
+\end{itemize}
+The Java API documentation is available at \url{https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html} and \url{https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayList.html}.
+
+\end{enumerate}
+
+\end{document}

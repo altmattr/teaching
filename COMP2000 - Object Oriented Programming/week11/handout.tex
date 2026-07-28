@@ -1,0 +1,81 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg} \quad \textbf{Week 11}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 11: Collecting}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\begin{abstract}
+The goal of this week is to deepen your use of the Streams API by focusing on the \texttt{Collectors} utility class.  You will learn how to accumulate stream elements into lists, sets, maps, and custom containers, and how to build meaningful summaries of your data.
+\end{abstract}
+
+\section*{Topics}
+\begin{description}
+\item[Collectors] \texttt{toList()}, \texttt{toSet()}, \texttt{toMap()}
+\item[Grouping] \texttt{groupingBy} for multi-level categorisation
+\item[Summarising] \texttt{summarizingInt}, \texttt{summarizingDouble}, \texttt{averagingInt}
+\item[Custom collectors] Building your own collector with \texttt{Collector.of()}
+\end{description}
+
+\section*{Preparation}
+Attend the lecture in week 10.\par
+Read Chapter 6 (Collecting data with streams) of \textit{Modern Java in Action}
+\footnote{Available in the course materials as \textit{Modern Java in Action, 2nd Edition.pdf}}.
+
+Come to class ready to discuss:
+\begin{itemize}
+    \item how \texttt{groupingBy} and \texttt{partitioningBy} categorise data
+    \item downstream collectors and how to compose them
+    \item when you might write a custom \texttt{Collector}
+\end{itemize}
+
+
+\section*{EPIC activity}
+
+Your task this week is to identify a place in your code where you could use a collector and incorporate it.  Look for opportunities to:
+\begin{itemize}
+\itemsep0em
+\item Group entities by some property (species, state, location).
+\item Produce a summary statistic (total, average, min, max) for each group.
+\item Build a map from one entity property to another.
+\item Write a custom collector that accumulates a simulation-specific metric.
+\end{itemize}
+
+\subsection*{Reporting}
+
+This is a \emph{simultaneous reporting} style class.  Each team presents the collector they used, the data it produces, and why that data is meaningful for their simulation.  Your log book should include the most creative use of a collector you saw from another team.
+
+\begin{teacher}
+Encourage teams that finish early to write a custom \texttt{Collector} implementation and compare it with the built-in collectors.
+\end{teacher}
+
+\subsection*{Project Guidance}
+
+Build on last week's stream work.  Use \texttt{Collectors.groupingBy} to produce a map of species to population count.  Use \texttt{Collectors.summarizingDouble} to get min, max, and average energy for each species.  Or create a custom collector that accumulates a time series of population data for charting.  The goal is to produce a meaningful metric that tells you something interesting about your ecosystem's health or dynamics.
+
+\section*{Self Study Exercises}
+\begin{enumerate}
+\item What does \texttt{Collectors.toList()} do?  Name two other collectors that produce collection types.
+
+\item How does \texttt{groupingBy} work?  Write an example that groups a \texttt{List<Person>} by \texttt{getAge()}.
+
+\item What is the difference between \texttt{groupingBy} and \texttt{partitioningBy}?  When would you use each?
+
+\item Write a stream pipeline that produces a \texttt{Map<String, Double>} where each key is a transaction category and each value is the average transaction amount in that category.
+
+\item What is a downstream collector?  Use \texttt{counting()} as a downstream collector with \texttt{groupingBy} to count how many transactions fall into each category.
+
+\item What does \texttt{summarizingDouble} return?  How can you extract the count, sum, min, average, and max from it?
+
+\item Write a \texttt{toMap} example.  What happens if two entries have the same key?  How can you resolve merge conflicts?
+
+\item Write a custom collector that concatenates strings with a \texttt{, } separator as a terminal operation.
+
+\item Use \texttt{mapping} as a downstream collector to transform each element before collecting into a downstream collector.
+
+\item Given a \texttt{List<Order>} with \texttt{getRegion()} and \texttt{getTotal()}, produce a report of total sales per region using collectors.
+\end{enumerate}
+
+\end{document}

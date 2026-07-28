@@ -13,11 +13,7 @@ By the end of this week you should:
 ## Preparation
 
  * Read the remaining material in chapter 10 of "Crafting Interpreters"
- * Watch the echo360 videos:
-  * parsing function definitions
-  * how functions behave in the interpreter
-  * tracing function calls
-  * closures
+ * Attend the lecture
 
 # RAT
 

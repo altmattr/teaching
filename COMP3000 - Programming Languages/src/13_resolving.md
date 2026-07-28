@@ -14,9 +14,7 @@ By the end of this week you should:
 ## Preparation
 
   * Read chapter 11 of "Crafting Interpreters"
-  * Watch the following echo360 videos:
-    - The closure scoping problem
-    - The closure scoping solution
+  * Attend the lecture
 
 # RAT
 

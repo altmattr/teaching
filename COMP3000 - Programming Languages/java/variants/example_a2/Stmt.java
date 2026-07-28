@@ -8,7 +8,7 @@ abstract class Stmt {
     R visitVarStmt(Var stmt);
     R visitPlotStmt(Plot stmt);
     R visitPrintStmt(Print stmt);
-    R visitFunctionStmt(Function stmt);
+    R visitDamDeclStmt(DamDecl stmt);
     R visitIfStmt(If stmt);
     R visitReturnStmt(Return stmt);
     R visitBlockStmt(Block stmt);
@@ -63,20 +63,18 @@ abstract class Stmt {
 
     final Expr expression;
   }
-  static class Function extends Stmt {
-    Function(Token name, List<Token> params, List<Stmt> body) {
+  static class DamDecl extends Stmt {
+    DamDecl(Token name, List<Stmt> body) {
       this.name = name;
-      this.params = params;
       this.body = body;
     }
 
     @Override
     <R> R accept(Visitor<R> visitor) {
-      return visitor.visitFunctionStmt(this);
+      return visitor.visitDamDeclStmt(this);
     }
 
     final Token name;
-    final List<Token> params;
     final List<Stmt> body;
   }
   static class If extends Stmt {

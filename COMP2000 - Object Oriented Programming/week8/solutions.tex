@@ -1,0 +1,224 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 8: Patterns 2 --- Solutions}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\section*{Self Study Exercises}
+
+\subsection*{Exercise 1: Participants in the Decorator pattern}
+
+The four participants are:
+\begin{enumerate}
+    \item \textbf{Component (abstract class or interface)} --- defines the interface for objects that can have responsibilities added dynamically.
+    \item \textbf{ConcreteComponent} --- the base object to which additional responsibilities can be attached.
+    \item \textbf{Decorator (abstract class)} --- maintains a reference to a Component object and conforms to the Component interface.
+    \item \textbf{ConcreteDecorator} --- extends the Decorator and adds behaviour (or state) before or after delegating to the wrapped Component.
+\end{enumerate}
+
+\subsection*{Exercise 2: Participants in the Iterator pattern}
+
+The two main participants are:
+\begin{enumerate}
+    \item \textbf{Iterator (interface)} --- declares methods like \texttt{hasNext()} and \texttt{next()} for traversing a collection.
+    \item \textbf{ConcreteIterator} --- implements the Iterator interface, keeping track of the current position in the traversal of a particular collection.
+\end{enumerate}
+The collection (Aggregate) provides a method to create an Iterator, which allows client code to access elements without knowing whether the underlying collection is an array, a list, a tree, or any other structure.
+
+\subsection*{Exercise 3: Participants in the State pattern}
+
+The three main participants are:
+\begin{enumerate}
+    \item \textbf{Context} --- maintains a reference to a State object and delegates state-specific behaviour to it.
+    \item \textbf{State (interface)} --- defines the interface for all concrete states; each method corresponds to an action that the Context can perform.
+    \item \textbf{ConcreteState} --- implements the State interface with behaviour specific to that particular state.  Each ConcreteState can transition the Context to a different state when appropriate.
+\end{enumerate}
+
+\subsection*{Exercise 4: Coffee shop --- Decorator pattern}
+
+The \textbf{Decorator pattern} is the best fit.  Each add-on (Milk, Mocha, Whip) is a ConcreteDecorator that wraps a Beverage, adding its own cost and description.  This lets us compose any combination of add-ons without creating an explosion of subclasses.
+
+Key design sketch:
+\begin{lstlisting}
+abstract class Beverage {
+    String description = "Unknown Beverage";
+    String getDescription() { return description; }
+    abstract double cost();
+}
+
+class Espresso extends Beverage {
+    Espresso() { description = "Espresso"; }
+    double cost() { return 1.99; }
+}
+
+abstract class CondimentDecorator extends Beverage {
+    Beverage beverage;
+    abstract String getDescription();
+}
+
+class Mocha extends CondimentDecorator {
+    Mocha(Beverage b) { beverage = b; }
+    String getDescription() { return beverage.getDescription() + ", Mocha"; }
+    double cost() { return beverage.cost() + 0.20; }
+}
+\end{lstlisting}
+
+\subsection*{Exercise 5: Traffic light --- State pattern}
+
+The \textbf{State pattern} is the best fit.  The traffic light (Context) holds a reference to a current State (GreenState, YellowState, RedState).  Each state handles the \texttt{change()} method differently and transitions to the next state.
+
+Key design sketch:
+\begin{lstlisting}
+interface TrafficLightState {
+    void change(TrafficLight light);
+    String getColour();
+}
+
+class GreenState implements TrafficLightState {
+    public void change(TrafficLight light) {
+        light.setState(new YellowState());
+    }
+    public String getColour() { return "Green"; }
+}
+
+class TrafficLight {
+    private TrafficLightState state = new GreenState();
+    void setState(TrafficLightState s) { this.state = s; }
+    void change() { state.change(this); }
+    String getColour() { return state.getColour(); }
+}
+\end{lstlisting}
+
+\subsection*{Exercise 6: Music player playlist --- Iterator pattern}
+
+The \textbf{Iterator pattern} is the best fit.  The \texttt{Playlist} (Aggregate) provides a \texttt{createIterator()} method that returns an \texttt{Iterator<Song>}.  Clients can traverse songs without caring whether the internal storage is an \texttt{ArrayList}, \texttt{LinkedList}, or a custom data structure.
+
+Key design sketch:
+\begin{lstlisting}
+interface Iterator<T> {
+    boolean hasNext();
+    T next();
+}
+
+class Playlist implements Iterable<Song> {
+    private List<Song> songs;
+    public Iterator<Song> iterator() {
+        return songs.iterator(); // uses Java's built-in Iterator
+    }
+}
+\end{lstlisting}
+
+\subsection*{Exercise 7: Java implementation of Decorator for beverages}
+
+\begin{lstlisting}
+abstract class Beverage {
+    String description = "Unknown Beverage";
+    String getDescription() { return description; }
+    abstract double cost();
+}
+
+class Espresso extends Beverage {
+    Espresso() { description = "Espresso"; }
+    double cost() { return 1.99; }
+}
+
+class HouseBlend extends Beverage {
+    HouseBlend() { description = "House Blend Coffee"; }
+    double cost() { return 0.89; }
+}
+
+abstract class CondimentDecorator extends Beverage {
+    Beverage beverage;
+    abstract String getDescription();
+}
+
+class Mocha extends CondimentDecorator {
+    Mocha(Beverage b) { beverage = b; }
+    String getDescription() { return beverage.getDescription() + ", Mocha"; }
+    double cost() { return beverage.cost() + 0.20; }
+}
+
+class Whip extends CondimentDecorator {
+    Whip(Beverage b) { beverage = b; }
+    String getDescription() { return beverage.getDescription() + ", Whip"; }
+    double cost() { return beverage.cost() + 0.10; }
+}
+
+// Usage:
+// Beverage b = new Mocha(new Whip(new Espresso()));
+// System.out.println(b.getDescription() + " $" + b.cost());
+\end{lstlisting}
+
+\subsection*{Exercise 8: Iterator for a Playlist}
+
+\begin{lstlisting}
+import java.util.Iterator;
+import java.util.List;
+import java.util.ArrayList;
+
+class Playlist implements Iterable<String> {
+    private List<String> songs = new ArrayList<>();
+
+    void addSong(String song) { songs.add(song); }
+
+    @Override
+    public Iterator<String> iterator() {
+        return songs.iterator();
+    }
+}
+
+// Usage:
+// Playlist pl = new Playlist();
+// pl.addSong("Song A");
+// pl.addSong("Song B");
+// for (String s : pl) { System.out.println(s); }
+\end{lstlisting}
+
+\subsection*{Exercise 9: Java implementation of State for a vending machine}
+
+\begin{lstlisting}
+interface VendingMachineState {
+    void insertCoin(VendingMachine vm);
+    void dispense(VendingMachine vm);
+}
+
+class NoCoinState implements VendingMachineState {
+    public void insertCoin(VendingMachine vm) {
+        System.out.println("Coin accepted");
+        vm.setState(new HasCoinState());
+    }
+    public void dispense(VendingMachine vm) {
+        System.out.println("Insert coin first");
+    }
+}
+
+class HasCoinState implements VendingMachineState {
+    public void insertCoin(VendingMachine vm) {
+        System.out.println("Coin already inserted");
+    }
+    public void dispense(VendingMachine vm) {
+        System.out.println("Dispensing item...");
+        vm.setState(new NoCoinState());
+    }
+}
+
+class VendingMachine {
+    private VendingMachineState state = new NoCoinState();
+    void setState(VendingMachineState s) { this.state = s; }
+    void insertCoin() { state.insertCoin(this); }
+    void dispense() { state.dispense(this); }
+}
+\end{lstlisting}
+
+\subsection*{Exercise 10: Decorator vs Strategy, and the Open/Closed Principle}
+
+\textbf{Decorator vs Strategy:} Strategy lets you swap an entire algorithm at runtime via composition.  Decorator lets you add small pieces of behaviour (responsibilities) to an object, one layer at a time, without changing the object's interface.  A good rule of thumb: use Strategy when the variation is an entire algorithm, use Decorator when the variation is a stack of optional features.
+
+\textbf{Example choosing Decorator over Strategy:} A coffee shop where each beverage can have any combination of condiments.  Each condiment adds cost and a description.  Decorator handles this naturally by stacking wrappers; Strategy would require pre-defining every possible combination as a separate strategy.
+
+\textbf{Open/Closed Principle:} The Decorator pattern satisfies Open/Closed because the \texttt{Beverage} base class and existing decorators are \textbf{closed for modification} (we do not change their code when adding features).  To add a new condiment, we write a new \texttt{ConcreteDecorator} class --- the system is \textbf{open for extension}.  No existing class needs to change.
+
+\end{document}

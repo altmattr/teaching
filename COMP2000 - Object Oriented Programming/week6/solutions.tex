@@ -1,0 +1,345 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 6: Exceptions --- Solution}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\begin{abstract}
+Solutions to the Barcode Puzzle.  Attempt each level yourself before reading these solutions.
+\end{abstract}
+
+\section*{Level 1: Baseline}
+
+No exceptions.  Each method prints its symbol on entry, calls the next, then prints again on exit:
+
+\begin{lstlisting}
+static void star() {
+    System.out.print("* ");
+    pipe();
+    System.out.print("* ");
+}
+static void pipe() {
+    System.out.print("| ");
+    caret();
+    System.out.print("| ");
+}
+static void caret() {
+    System.out.print("^ ");
+    System.out.print("^ ");
+}
+\end{lstlisting}
+
+\textbf{Trace:} \texttt{*}
+ $\rightarrow$ \texttt{|} $\rightarrow$ \texttt{\^{}} $\rightarrow$ \texttt{\^{}} $\rightarrow$ \texttt{|} $\rightarrow$ \texttt{*}
+
+\section*{Level 2: \texttt{caret()} throws, \texttt{pipe()} catches}
+
+The throw in \texttt{caret()} skips \texttt{caret()}'s own exit print.  The catch in \texttt{pipe()} prevents the exception from propagating further, so \texttt{pipe()}'s exit and \texttt{star()}'s exit both run normally.
+
+\begin{lstlisting}
+static void pipe() {
+    System.out.print("| ");
+    try {
+        caret();
+    } catch (RuntimeException e) { }
+    System.out.print("| ");
+}
+static void caret() {
+    System.out.print("^ ");
+    throw new RuntimeException();
+}
+\end{lstlisting}
+
+\textbf{Trace:} \texttt{*} $\rightarrow$ \texttt{|} $\rightarrow$ \texttt{\^{}} $\rightarrow$ \textbf{\textcolor{red}{throw}} $\rightarrow$ \texttt{|} $\rightarrow$ \texttt{*}
+
+The exception does not reach \texttt{star()}---it is handled at the \texttt{pipe()} level.
+
+
+\section*{Level 3: \texttt{caret()} throws, \texttt{star()} catches}
+
+Now the exception propagates through \texttt{pipe()} too, skipping \texttt{pipe()}'s exit print entirely.  Only \texttt{star()}'s exit runs after the catch.
+
+\begin{lstlisting}
+static void star() {
+    System.out.print("* ");
+    try {
+        pipe();
+    } catch (RuntimeException e) { }
+    System.out.print("* ");
+}
+static void pipe() {
+    System.out.print("| ");
+    caret();
+    System.out.print("| ");     // skipped
+}
+static void caret() {
+    System.out.print("^ ");
+    throw new RuntimeException();
+}
+\end{lstlisting}
+
+\textbf{Trace:} \texttt{*} $\rightarrow$ \texttt{|} $\rightarrow$ \texttt{\^{}} $\rightarrow$ \textbf{\textcolor{red}{throw}} $\rightarrow$ \texttt{*}
+
+Compare with Level 2: the same throw leads to a different output because the catch is placed higher up the stack.  This is the key insight---the catch location determines which exit blocks are skipped.
+
+\section*{Level 4: \texttt{finally} always runs}
+
+Same throw and catch positions as Level 3, but \texttt{pipe()} wraps its call in a \texttt{try-finally}.  The \texttt{finally} block executes even though the exception propagates through \texttt{pipe()}, producing the same output as Level 2 through a different mechanism.
+
+\begin{lstlisting}
+static void pipe() {
+    System.out.print("| ");
+    try {
+        caret();
+    } finally {
+        System.out.print("| ");   // always runs
+    }
+}
+static void caret() {
+    System.out.print("^ ");
+    throw new RuntimeException();
+}
+\end{lstlisting}
+
+\textbf{Trace:} \texttt{*} $\rightarrow$ \texttt{|} $\rightarrow$ \texttt{\^{}} $\rightarrow$ \textbf{\textcolor{red}{throw}} $\rightarrow$ \textbf{\textcolor{blue}{finally}} \texttt{|} $\rightarrow$ \texttt{*}
+
+
+\section*{Level 5: Loop with exception on iteration 2, caught}
+
+\texttt{star()} now loops \texttt{pipe()} twice.  \texttt{caret()} throws only on the second iteration (when \texttt{iteration == 2}).  The exception is caught inside the loop body, so the loop continues normally to the next iteration---but since this is the last iteration, \texttt{star()}'s exit print runs.
+
+\begin{lstlisting}
+static void star() {
+    System.out.print("* ");
+    for (int i = 0; i < 2; i++) {
+        iteration = i + 1;
+        try {
+            pipe();
+        } catch (RuntimeException e) { }
+    }
+    System.out.print("* ");
+}
+static void caret() {
+    System.out.print("^ ");
+    if (iteration == 2) {
+        throw new RuntimeException();
+    }
+    System.out.print("^ ");
+}
+\end{lstlisting}
+
+\textbf{Trace:}
+\begin{itemize}
+\itemsep0em
+\item Iter 1: \texttt{*} $\rightarrow$ \texttt{|} $\rightarrow$ \texttt{\^{}} $\rightarrow$ \texttt{\^{}} $\rightarrow$ \texttt{|}
+\item Iter 2: \texttt{|} $\rightarrow$ \texttt{\^{}} $\rightarrow$ \textbf{\textcolor{red}{throw}} $\rightarrow$ \texttt{* (star exit)}
+\end{itemize}
+
+\textbf{Output:} \texttt{* | \^{} \^{} | | \^{} *}
+
+\section*{Level 6: Loop with exception on iteration 2, NOT caught}
+
+Same setup as Level 5, but the exception is not caught inside the loop.  It propagates out of \texttt{star()} entirely, skipping the loop's remaining iterations \emph{and} \texttt{star()}'s exit print.
+
+\begin{lstlisting}
+static void star() {
+    System.out.print("* ");
+    for (int i = 0; i < 2; i++) {
+        iteration = i + 1;
+        pipe();     // no try-catch
+    }
+    System.out.print("* ");   // never reached
+}
+static void caret() {
+    System.out.print("^ ");
+    if (iteration == 2) {
+        throw new RuntimeException();
+    }
+    System.out.print("^ ");
+}
+\end{lstlisting}
+
+\textbf{Trace:}
+\begin{itemize}
+\itemsep0em
+\item Iter 1: \texttt{*} $\rightarrow$ \texttt{|} $\rightarrow$ \texttt{\^{}} $\rightarrow$ \texttt{\^{}} $\rightarrow$ \texttt{|}
+\item Iter 2: \texttt{|} $\rightarrow$ \texttt{\^{}} $\rightarrow$ \textbf{\textcolor{red}{throw}} $\rightarrow$ \texttt{(program terminates)}
+\end{itemize}
+
+\textbf{Output:} \texttt{* | \^{} \^{} | | \^{}}
+
+The difference between Level 5 and Level 6 is a single \texttt{try-catch}.  It changes whether the method's cleanup code (the exit print) runs or not.
+
+
+\section*{Self-Study Solutions}
+
+\section*{Exercise 1: Checked vs.\ unchecked}
+
+A \textbf{checked exception} must be either caught with a \texttt{try-catch} or declared in the method signature with \texttt{throws}.  The compiler enforces this at compile time.  Examples: \texttt{IOException}, \texttt{SQLException}, \texttt{ClassNotFoundException}.
+
+An \textbf{unchecked exception} does not need to be caught or declared.  These are subclasses of \texttt{RuntimeException}.  Examples: \texttt{NullPointerException}, \texttt{ArithmeticException}, \texttt{IllegalArgumentException}.
+
+\texttt{IOException} is checked because it is a predictable failure of I/O operations --- the caller should have a plan for handling it.  \texttt{NullPointerException} is unchecked because it usually indicates a programming bug (e.g.\ calling a method on \texttt{null}) that should be fixed, not caught at runtime.
+
+\section*{Exercise 2: Local variables and the stack}
+
+When \texttt{caret()} throws and the exception is caught in \texttt{star()}:
+
+\begin{enumerate}
+\item The JVM records the current stack state and begins unwinding.  It looks for a matching catch block, starting in \texttt{caret()}, then \texttt{pipe()}, then \texttt{star()}.
+\item \texttt{pipe()}'s stack frame is discarded.  Any local variables in \texttt{pipe()} (e.g.\ parameters, local primitives, object references) are no longer reachable.
+\item The objects that were referenced only from \texttt{pipe()}'s local variables become eligible for garbage collection once \texttt{pipe()}'s frame is popped --- but only if no other live reference exists.
+\item If \texttt{pipe()} held a reference to an object that is also referenced from \texttt{star()} or elsewhere, that object is \emph{not} eligible for GC.
+\end{enumerate}
+
+\section*{Exercise 3: \texttt{return} in \texttt{catch} and \texttt{finally}}
+
+The \texttt{finally} block always wins.  If both \texttt{catch} and \texttt{finally} have \texttt{return}, the \texttt{finally} value is returned.  The \texttt{catch} return value is discarded:
+
+\begin{lstlisting}
+public static int test() {
+    try {
+        throw new RuntimeException();
+    } catch (RuntimeException e) {
+        return 1;       // computed but discarded
+    } finally {
+        return 2;       // this is returned
+    }
+}
+// test() returns 2
+\end{lstlisting}
+
+\section*{Exercise 4: Exception masking}
+
+If both the \texttt{try} and \texttt{finally} blocks throw, the \texttt{finally} exception propagates and the \texttt{try} exception is \textbf{suppressed}:
+
+\begin{lstlisting}
+try {
+    throw new RuntimeException("from try");
+} finally {
+    throw new RuntimeException("from finally");
+}
+// propagates: RuntimeException("from finally")
+// suppressed: RuntimeException("from try")
+\end{lstlisting}
+
+The suppressed exception can be retrieved via \texttt{getSuppressed()} on the thrown exception (since Java 7).
+
+\section*{Exercise 5: Stack trace}
+
+\begin{lstlisting}
+java.lang.IllegalArgumentException
+    at Solution.caret(Solution.java:25)
+    at Solution.pipe(Solution.java:19)
+    at Solution.star(Solution.java:13)
+    at Solution.main(Solution.java:5)
+\end{lstlisting}
+
+The stack trace is printed with the most recent call first (\texttt{caret()}), showing the full chain of calls that led to the exception.
+
+\section*{Exercise 6: Throwable hierarchy}
+
+\begin{verbatim}
+        Object
+           |
+       Throwable
+        /     \
+    Error    Exception
+(serious)   (recoverable)
+                |
+        RuntimeException
+         (programming bug)
+\end{verbatim}
+
+\begin{itemize}
+\item \texttt{Error}: Indicates serious system problems (e.g.\ \texttt{OutOfMemoryError}, \texttt{StackOverflowError}).  Applications should generally \emph{not} catch these.
+\item \texttt{Exception} (checked): Indicates conditions a well-written application should anticipate and recover from.
+\item \texttt{RuntimeException} (unchecked): Indicates programming bugs.  Should usually be fixed rather than caught.
+\end{itemize}
+
+\section*{Exercise 7: Multi-catch}
+
+\begin{lstlisting}
+try {
+    // code that throws both
+} catch (IOException | SQLException e) {
+    // e is implicitly final
+    // type of e: the common supertype (Exception)
+}
+\end{lstlisting}
+
+The exception variable \texttt{e} has type \texttt{Exception} (the nearest common superclass of the two exceptions) and is implicitly \texttt{final}.
+
+
+\section*{Exercise 8: Re-throw}
+
+If \texttt{pipe()} catches the exception from \texttt{caret()} and re-throws it, and \texttt{star()} catches it again:
+
+\begin{lstlisting}
+static void star() {
+    System.out.print("* ");
+    try {
+        pipe();
+    } catch (RuntimeException e) {
+        // catches the re-throw
+    }
+    System.out.print("* ");
+}
+static void pipe() {
+    System.out.print("| ");
+    try {
+        caret();
+    } catch (RuntimeException e) {
+        throw e;            // re-throw
+    }
+    System.out.print("| "); // never reached
+}
+static void caret() {
+    System.out.print("^ ");
+    throw new RuntimeException();
+}
+\end{lstlisting}
+
+\textbf{Trace:} \texttt{*} $\rightarrow$ \texttt{|} $\rightarrow$ \texttt{\^{}} $\rightarrow$ \textbf{throw} $\rightarrow$ \textbf{catch in pipe} $\rightarrow$ \textbf{re-throw} $\rightarrow$ \textbf{catch in star} $\rightarrow$ \texttt{*}
+
+\textbf{Output:} \texttt{* | \^{} *}
+
+Note: \texttt{pipe()}'s exit print (\texttt{|}) never runs because the re-throw bypasses it.  This is the same output as Level 3, but achieved via a re-throw instead of letting the original exception propagate unaided.
+
+\section*{Exercise 9: Two exception types}
+
+\begin{lstlisting}
+static void star() {
+    System.out.print("* ");
+    try { pipe(); }
+    catch (IllegalArgumentException e) { }
+    System.out.print("* ");
+}
+static void pipe() {
+    System.out.print("| ");
+    try { caret(); }
+    catch (RuntimeException e) { }
+    System.out.print("| ");
+}
+static void caret() {
+    System.out.print("^ ");
+    if (someCondition) {
+        throw new IllegalArgumentException();
+    } else {
+        throw new RuntimeException();
+    }
+}
+\end{lstlisting}
+
+If \texttt{caret()} throws \texttt{IllegalArgumentException}, it propagates to and is caught in \texttt{star()} (no output from \texttt{pipe()}'s exit or \texttt{caret()}'s exit).  If it throws \texttt{RuntimeException}, it is caught in \texttt{pipe()} (only \texttt{caret()}'s exit skipped).  Different exception types lead to different unwind depths.
+
+\section*{Exercise 10: \texttt{try-finally} vs.\ \texttt{try-catch-finally}}
+
+With \texttt{try-catch-finally}, the catch block handles the exception and the finally block always runs afterward.  All exit prints execute.
+
+With \texttt{try-finally} (no catch), the exception propagates after the finally block completes.  The method's own exit print (after the try-finally) never runs because the exception is still in flight.  In the puzzle context, \texttt{pipe()} with \texttt{try-finally} would print its \texttt{|} in the finally, but the exception would continue to \texttt{star()}, skipping any code placed after the try-finally.
+
+\end{document}

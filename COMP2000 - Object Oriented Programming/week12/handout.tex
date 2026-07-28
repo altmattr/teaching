@@ -1,0 +1,83 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg} \quad \textbf{Week 12}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 12: Parallelism}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\begin{abstract}
+The goal of this week is to understand concurrency and parallelism in Java.  You will identify opportunities in your simulation where multiple things can happen at once and implement a parallel solution.  Along the way you will encounter --- and learn to handle --- the synchronisation challenges that parallelism introduces.
+\end{abstract}
+
+\section*{Topics}
+\begin{description}
+\item[Threads] Creating and starting threads with \texttt{Thread} and \texttt{Runnable}
+\item[Synchronisation] \texttt{synchronized} blocks, locks, and atomic variables
+\item[Parallel streams] Using \texttt{parallelStream()} for data parallelism
+\item[Race conditions] What happens when two threads access shared state without coordination
+\item[Fork-Join] The \texttt{ForkJoinPool} framework for recursive parallelism
+\end{description}
+
+\section*{Preparation}
+Attend the lecture in week 11.\par
+Read Chapter 7 (Parallel data processing and performance) of \textit{Modern Java in Action}
+\footnote{Available in the course materials as \textit{Modern Java in Action, 2nd Edition.pdf}}.
+
+Come to class ready to discuss:
+\begin{itemize}
+    \item when parallel streams improve performance and when they hurt it
+    \item the role of the \texttt{ForkJoinPool}
+    \item how to avoid race conditions in parallel operations
+\end{itemize}
+
+
+\section*{EPIC activity}
+
+Your task this week is to find an opportunity for parallelism in your application and implement it.  Consider:
+\begin{itemize}
+\itemsep0em
+\item Partitioning your grid into regions and simulating each region on a separate thread.
+\item Using parallel streams to compute population statistics across all entities.
+\item Separating the simulation tick from the rendering thread so the UI does not freeze.
+\end{itemize}
+
+Identify the parallelism opportunity, implement it, and document any race conditions you discover.
+
+\subsection*{Reporting}
+
+This is a \emph{simultaneous reporting} style class.  Each team presents the parallelism opportunity they identified, how they implemented it, and any synchronisation challenges they encountered.  Your log book should include the most surprising race condition or synchronisation bug you saw from another team.
+
+\begin{teacher}
+Remind teams to use \texttt{synchronized}, \texttt{wait}/\texttt{notify}, and the \texttt{java.util.concurrent} package as covered in the preparatory reading.  Watch for teams that accidentally introduce deadlocks---these make great discussion points during reporting.
+\end{teacher}
+
+\subsection*{Project Guidance}
+
+Where could things happen in parallel in your simulation?  The most natural fit is region-based parallelism: partition your grid into quadrants and simulate each quadrant on a separate thread.  You will need to handle entities that move across quadrant boundaries and ensure that two threads do not update the same cell simultaneously.  Start with a simple split (e.g.\ top-half / bottom-half) and measure the speedup.  Document any race conditions you encounter and how you resolved them.
+
+\section*{Self Study Exercises}
+\begin{enumerate}
+\item How do you create a parallel stream in Java?  What is the difference between \texttt{stream()} and \texttt{parallelStream()}?
+
+\item When should you avoid using parallel streams?  Give at least two scenarios.
+
+\item What is \texttt{ForkJoinPool}?  How does it relate to parallel streams in Java?
+
+\item What is a race condition?  Write a simple Java example that illustrates one.
+
+\item What is the difference between \texttt{synchronized} and \texttt{Lock} from \texttt{java.util.concurrent.locks}?
+
+\item Write code that uses \texttt{parallelStream()} to sum a large array of doubles.  Compare it with the equivalent sequential version.
+
+\item What is the \texttt{reduce} operation in a parallel stream?  Why must the accumulator function be associative?
+
+\item What is the difference between \texttt{reduce} and \texttt{collect} in parallel streams?
+
+\item What is a \texttt{Spliterator}?  How does it enable parallel traversal of a stream source?
+
+\item Given a large \texttt{List<Transaction>}, write a parallel stream to compute the total value per category.  Discuss the thread-safety concerns with your approach.
+\end{enumerate}
+
+\end{document}

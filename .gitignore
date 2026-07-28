@@ -13,3 +13,4 @@ COMP2010*/archive/*
 *.vimrc
 *.swp
 .firebase
+**/__pycache__/

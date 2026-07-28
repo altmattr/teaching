@@ -80,8 +80,8 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
   }
 
   @Override
-  public String visitFunctionStmt(Stmt.Function stmt) {
-    return parenthesize("fun " + stmt.name.lexeme );
+  public String visitDamDeclStmt(Stmt.DamDecl stmt) {
+    return parenthesize("dam " + stmt.name.lexeme );
   }
 
   @Override
@@ -107,6 +107,16 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
   @Override
   public String visitBoolExpr(Expr.Bool expr) {
     return Boolean.toString(expr.value);
+  }
+
+  @Override
+  public String visitInflowExpr(Expr.Inflow expr) {
+    return "inflow";
+  }
+
+  @Override
+  public String visitLevelExpr(Expr.Level expr) {
+    return "level";
   }
 
 }

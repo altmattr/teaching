@@ -1,0 +1,166 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 7: Patterns 1 --- Solutions}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\section*{Self Study Exercises}
+
+\subsection*{Exercise 1: Participants in the Strategy pattern}
+
+The four participants are:
+\begin{enumerate}
+    \item \textbf{Strategy (interface)} --- declares a common interface for all supported algorithms.
+    \item \textbf{ConcreteStrategy} --- implements the Strategy interface with a specific algorithm.
+    \item \textbf{Context} --- holds a reference to a Strategy object and delegates work to it.  The context does not know which concrete strategy it is using.
+    \item \textbf{Client} --- creates a ConcreteStrategy, configures the Context with it, and triggers the behaviour.
+\end{enumerate}
+
+\subsection*{Exercise 2: Participants in the Observer pattern}
+
+The two main participants are:
+\begin{enumerate}
+    \item \textbf{Subject} --- maintains a list of observers and provides methods to attach, detach, and notify them.  When its state changes, it calls \texttt{notifyObservers()}.
+    \item \textbf{Observer (interface)} --- declares an \texttt{update()} method that the Subject calls when its state changes.  ConcreteObservers implement this method to take action (e.g.\ update a display, write to a log).
+\end{enumerate}
+The interaction is a one-to-many dependency: one subject notifies many observers automatically, without the subject needing to know their concrete types.
+
+\subsection*{Exercise 3: Movement behaviours in a simulation}
+
+The \textbf{Strategy pattern} is the best fit.  Each movement behaviour (walking, flying, swimming) is a concrete strategy implementing a common \texttt{MoveBehaviour} interface.  Entities (the context) hold a reference to a \texttt{MoveBehaviour} and delegate movement to it.  Behaviours can be swapped at runtime (e.g.\ an entity that learns to fly).
+
+Key design sketch:
+\begin{lstlisting}
+interface MoveBehaviour {
+    void move(Entity entity);
+}
+
+class WalkBehaviour implements MoveBehaviour { ... }
+class FlyBehaviour implements MoveBehaviour { ... }
+class SwimBehaviour implements MoveBehaviour { ... }
+
+class Entity {
+    private MoveBehaviour moveBehaviour;
+    void performMove() { moveBehaviour.move(this); }
+    void setMoveBehaviour(MoveBehaviour mb) { this.moveBehaviour = mb; }
+}
+\end{lstlisting}
+
+\subsection*{Exercise 4: Payment processing --- Strategy pattern}
+
+\begin{lstlisting}
+interface PaymentStrategy {
+    void pay(double amount);
+}
+
+class CreditCardPayment implements PaymentStrategy {
+    private String cardNumber;
+    CreditCardPayment(String cardNumber) { this.cardNumber = cardNumber; }
+    public void pay(double amount) {
+        System.out.println("Paid $" + amount + " with card " + cardNumber);
+    }
+}
+
+class PayPalPayment implements PaymentStrategy {
+    private String email;
+    PayPalPayment(String email) { this.email = email; }
+    public void pay(double amount) {
+        System.out.println("Paid $" + amount + " via PayPal (" + email + ")");
+    }
+}
+
+class ShoppingCart {
+    private PaymentStrategy strategy;
+    void setPaymentStrategy(PaymentStrategy strategy) {
+        this.strategy = strategy;
+    }
+    void checkout(double amount) { strategy.pay(amount); }
+}
+\end{lstlisting}
+
+\subsection*{Exercise 5: Weather station --- Observer pattern}
+
+\begin{lstlisting}
+import java.util.ArrayList;
+import java.util.List;
+
+interface Observer {
+    void update(float temperature, float humidity);
+}
+
+class WeatherData {
+    private List<Observer> observers = new ArrayList<>();
+    private float temperature;
+    private float humidity;
+
+    void registerObserver(Observer o) { observers.add(o); }
+    void removeObserver(Observer o) { observers.remove(o); }
+
+    void setMeasurements(float temp, float hum) {
+        this.temperature = temp;
+        this.humidity = hum;
+        notifyObservers();
+    }
+
+    private void notifyObservers() {
+        for (Observer o : observers) o.update(temperature, humidity);
+    }
+}
+
+class CurrentConditionsDisplay implements Observer {
+    public void update(float temp, float hum) {
+        System.out.println("Current: " + temp + "C, " + hum + "% humidity");
+    }
+}
+
+class StatisticsDisplay implements Observer {
+    public void update(float temp, float hum) {
+        System.out.println("Stats updated: min/max TBD");
+    }
+}
+\end{lstlisting}
+
+\subsection*{Exercise 6: Composition over inheritance in Strategy}
+
+``Favour composition over inheritance'' means that we achieve reuse by assembling objects that contain other objects (composition) rather than by inheriting behaviour from a parent class (inheritance).  In the Strategy pattern, the \texttt{Context} does \emph{not} subclass each behaviour.  Instead it \emph{contains} a \texttt{Strategy} reference and delegates to it.  This is more flexible because strategies can be swapped at runtime, which inheritance cannot do.  It also avoids deep and brittle class hierarchies: adding a new behaviour means writing a new \texttt{ConcreteStrategy} class, not modifying the inheritance tree.
+
+\subsection*{Exercise 7: Comparing Strategy and Observer}
+
+\begin{description}
+    \item[Similarity] Both decouple the client from concrete implementations --- Strategy decouples algorithm selection, Observer decouples notification recipients.
+    \item[Difference] Strategy is about \emph{choosing an algorithm} at runtime (one-to-one delegation).  Observer is about \emph{notifying multiple dependents} when state changes (one-to-many broadcast).
+    \item[When to use Strategy] When you have multiple related algorithms and want to make them interchangeable, e.g.\ compression algorithms (ZIP, GZIP), payment methods, sorting algorithms.
+    \item[When to use Observer] When a change to one object requires updating others, and you do not know the number or type of those objects in advance, e.g.\ UI event listeners, stock-price tickers, logging frameworks.
+\end{description}
+
+\subsection*{Exercise 8: Memory-safety issue in Observer}
+
+The main issue is the \textbf{``lapsed listener'' problem}.  If an observer is registered with a subject but never removed, the subject holds a strong reference to the observer, preventing it from being garbage-collected.  Over time this causes a memory leak, especially in long-running applications like GUIs.
+
+Solutions:
+\begin{itemize}
+    \item Always call \texttt{removeObserver()} when the observer is no longer needed.
+    \item Use \texttt{WeakReference} in the subject's observer list so that observers can be collected if no other strong references exist (as Swing's \texttt{EventListenerList} does).
+    \item Use the language-level constructs like \texttt{java.beans.PropertyChangeSupport} which handle weak references automatically.
+\end{itemize}
+
+\subsection*{Exercise 9: Identifying the Observer pattern}
+
+This is the \textbf{Observer pattern}.  The \texttt{notifyObservers()} method should iterate over all registered observers and call their \texttt{update()} method (or equivalent), passing the relevant state data.  This ensures every observer is informed of the subject's state change without the subject knowing the observers' concrete types.
+
+\subsection*{Exercise 10: Strategy and the Open/Closed Principle}
+
+The Strategy pattern satisfies the Open/Closed Principle because the \texttt{Sorter} class (context) is \textbf{closed for modification} (its code does not change when a new algorithm is added) but \textbf{open for extension} (new sorting strategies can be added without touching \texttt{Sorter}).
+
+Steps to add a new sorting strategy:
+\begin{enumerate}
+    \item Write a new class (\texttt{MergeSortStrategy}) that implements the existing \texttt{SortStrategy} interface.
+    \item Implement the sorting algorithm in that class.
+    \item Instantiate the new strategy and pass it to the \texttt{Sorter} context (either via constructor or setter).
+\end{enumerate}
+No code inside \texttt{Sorter} or any existing strategy class needs to change.  This demonstrates the power of programming to an interface rather than an implementation.
+
+\end{document}

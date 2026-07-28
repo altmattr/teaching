@@ -12,10 +12,7 @@ By the end of this week you should:
 
 ## Preparation
   * Read the rest of Chapter 8 of "Crafting Interpreters"
-  * Watch the following videos on echo360:
-    - Intro and discussion of context
-    - Blocks are statements
-    - How assignment works
+  * Attend the lecture
 
 
 # FAT

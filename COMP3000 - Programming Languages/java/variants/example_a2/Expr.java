@@ -12,6 +12,8 @@ abstract class Expr {
     R visitVariableExpr(Variable expr);
     R visitNumberExpr(Number expr);
     R visitBoolExpr(Bool expr);
+    R visitInflowExpr(Inflow expr);
+    R visitLevelExpr(Level expr);
   }
   static class Assign extends Expr {
     Assign(Token name, Expr value) {
@@ -120,6 +122,26 @@ abstract class Expr {
     }
 
     final boolean value;
+  }
+  static class Inflow extends Expr {
+    Inflow() {
+    }
+
+    @Override
+    <R> R accept(Visitor<R> visitor) {
+      return visitor.visitInflowExpr(this);
+    }
+
+  }
+  static class Level extends Expr {
+    Level() {
+    }
+
+    @Override
+    <R> R accept(Visitor<R> visitor) {
+      return visitor.visitLevelExpr(this);
+    }
+
   }
 
   abstract <R> R accept(Visitor<R> visitor);

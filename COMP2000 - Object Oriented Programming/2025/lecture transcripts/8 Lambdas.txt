@@ -1,0 +1,125 @@
+SPEAKER 0
+OK, so lambdas, what are lambdas? So I'm gonna start off here by doing something a little bit wacky. There's a surprise. Get rid of all this. And before I even write any code, I'm gonna do something even more strange. So at the beginning of the lecture I said let's write some pseudo code, so something that the compiler and VS code wasn't happy with. But let's go a little bit further. How many of you remember seeing something like this at some point in your life? I'm hoping everybody Everybody's done some high school maths. So what's that thing? Hm? It's an it's algebraic, yes, but what is it? It's a function. You learn about these in 1st year, right, you'll learn about functions from a computing perspective. But this is a mathematical function, it just says give me some value and I'll give you that value plus 7 back. And you know you guys should be relatively familiar with that notation. Is that the only way of notating a function in maths? What if I was to do something like this instead? Has anybody seen Notation from a mathematician that looks a bit like that? Yeah. OK, so a few of you went, no, I've never seen that before, but looking at that, can you understand what it means? Is it any different from the line above? Is this line here, let's let's let's go full math, Line 2 versus line 1, Formula 1 versus Formula 2, is there any difference between these two formulae? Is it different from what? It is very different from an implication. So this is not mathematical logic, this is algebra as you pointed out. So it's not an implication. Yeah. Yep, they're actually telling me exactly the same thing. This says. Give me an X and I'll give you X + 7 back. It's a function, that's why we've said F. But of course I could have said, you know, G or H or some other thing, it doesn't really matter. Here I'm saying give me an X and I'll give you X + 7 back. It's just a different notation to mean the same thing. It's a function. They're both ways of notating a function. OK, so let's assume that I'm not telling you a lie. They're both ways of notating a function, what's different between them? Um, the error function means.
+
+SPEAKER 1
+Like you're actually returning some sort of Something 7, whereas the FX Function Nope.
+
+SPEAKER 0
+value No, no, so actually, so the, the response was, is the first one updating the value of X and the second one not? Um, that is a very deep rabbit hole to climb down. So, well it doesn't really matter the other way around. The thing that mathematicians actually balk at when they see a computer scientist or a programmer write something like this, they shake their heads and go, what the hell are you talking about? Because that makes absolutely no sense in mathematics. Right, so the idea of updating something, I mean the the word variable itself is kind of problematic because we're just saying it's a placeholder. In maths if X is now 7, then it's 7 till the end of time, it doesn't change, right? So we're not updating something, I mean it's a it's a good guess, but no, clearly that's actually a problem. So let's put that aside for the moment because that is a deep discussion which we shouldn't have here. What is the difference between these two things? Yep. Naming, the only difference between them is one is a function that has a name. And the name is F and one's a function that doesn't have a name. But you know mathematicians seem to like this idea of a function without a name. Maybe that could be useful for computing as well.
+
+SPEAKER 2
+That's what a lambda is.
+
+SPEAKER 0
+So lambdas are actually an idea that has been around for a very, very long time. Like many of these um mechanisms inside programming languages, some of them derive from, well, they actually derived from mathematics, and the people in the programming community that sort of are the most mathematically inclined tend to be functional programmers, so languages like Lisp or Haskal or Scheme, languages that you guys may or may not have heard of. They've had these express things called lambda expressions forever, and they turned out to be very, very powerful. So the Java designers and developers went, we want some of that, let's include them in Java. So let's actually go and build something that is a lambda but it's not using this wacky mathematical notation, that's actually using Java notation. So let's actually have a look at what that might look like. So, let's get rid of that. And we'll turn it into something. That looks more Java-ish. So we're gonna take. And X Now because it's Java we need to tell it what type it is, so we're gonna say it's an integer. We're gonna use that same syntax. Give me an X and I'll give you something back. So let's say something like, give me back X + 1. Kinda looks pretty similar, doesn't it? The only thing I've done here is added the round brackets and said hey it's an int. So that's kind of a lambda, but it's still not happy. And the reason is what? What do I need to do in Java if I want to use something that's, An expression of some kind. If you want to use anything in Java, what's it supposed to be? What's it need? To Need to assign it to something. So let's, let's give it a name. And say, A lambda OK. Well I'm still not happy. What's wrong with that? Yeah. Yeah, I haven't told it the return type, I mean I kinda have implicitly here. But I need to say what a lambda is, so let's put a little int in front of it. Oh So now what have we got? Bit confused as to why that's unhappy at this point, so let's compile it and see what it's grumbling about. Ah yes, OK. OK, so, I've kind of constructed a lamber but it's still kind of grumpy. I've put it in An integer variable, so this is a primitive type. And I'm saying I'm gonna return a primitive type. But I said that the Java developers said look these lambda things that they seem to use in these other languages look really cool. Didn't we just say that earlier about something that happened in the 90s, what did they say became common in languages in the 90s?
+
+SPEAKER 2
+Hmm?
+
+SPEAKER 0
+Exceptions. And how did Java implement exceptions? What are exceptions, what are they? They're a type, they're a class. So if I'm gonna add a new language feature, what am I likely to make them out of? Type objects. Cause everything in Java is kind of an object except for these wacky primitive types. Everything is something that's an instance of either capital O object or one of its children. So what I really want to do is Make something that's an object. That's not an object, it's a primitive type. So, and it's telling me here the target type of this expression must be a functional interface. What the blazes does that mean? Well, I'm gonna just put the answer in and then we'll come back to it, we'll circle back to this. So I'm gonna change the type of int, or of a lambda, I'm gonna call it an int unary, Operator. Now don't worry, we'll, we're gonna come and explain what that actually means in a sec. But I'm just gonna make the compiler happy, at least I hope I'm gonna make it happy. I think I need to import it. Yep, if I do that. Lo and behold, it is now happy. So we haven't told you what this thing actually means here, although it's got the word int in it, so that's promising. That's the same as what we're expecting. So let's compile it and see if it runs and yep it works. I haven't printed anything out so I don't expect any output but the program is is happy. OK, so what's that do for us? Well, it gives us this object that we can treat as if it's a method or a function. So how do we do that? Well, because it's an object, what do we know about objects? Once I've got an object and I've got an instance of that object, what can I, what do I do to use it? OK, you can manipulate, but what do you do in Java to manipulate an object? OK, let's let's go go with this. I've got this thing now called a lambda. What if I put a dot after it? What do I find? Right, there's a bunch of methods, because it's an object. And it's an object of this thing called an in unitary operator. So there's a whole bunch of methods that are defined because it's a member of this class. So I could look through this list and there's quite a few of them, but I'm gonna use this one appliers int. Just gonna stick a number in here and the number of the day seems to be 12. So what's that doing? Well, it's saying take this function. And feed the value 12 to it. That's what it's doing. OK, So we can run that, let's just do that for the sake of completeness, but again it won't do anything exciting because it's not gonna produce any output. So let's generate another lambda. So this time I'm gonna call it. Cause I'm not very exciting with names, I'm gonna call it Belander. And I'm gonna say this time again it takes an inch. But instead of returning a value. I'm just gonna do a sis out. Oh, that's right, I can't use that here. Gonna use the whole thing, which is a bit annoying, but there we go. And try not to hit caps lock. And I'm gonna just print out the value of X. OK. So we saw earlier that the return type has to be or the type of the object has to be some sort of class. But let's see if we can build that up. So what is the return type of this? We said that the return type of this thing here, we've had to do this, but we said earlier it was an integer, it's gonna give me back an integer. Yep. Yeah it's void because this is what's called a side effect. It generates some output but it doesn't return anything. So the return type of this whole function is void. But again if I say that here, it's gonna get grumpy with me. So let's um let's run the compiler again, see what it has to say to it to me. It'll give me that same kind of error. And it will say, It's an invalid return type, and what we want to have is a thing called a functional, What did we say it was? Anybody remember? Yeah, it's a functional interface, so let's go and bring up our browser.
+
+SPEAKER 2
+I hear you. Let's see if we can find it here.
+
+SPEAKER 0
+OK, so here is all the functional interfaces that come with Java. So we saw one earlier that was called Unary. INT unitary operator, so let's go looking for that, IT. Unitary operator, there it is there. Represents an operation on a single in value that reproduces an in value result. So is that true? Yep, we give it an integer value as its argument and it generates an integer as its result. What have we just wanted to do with B lambda, we've said feed it an integer and the return type is void, which basically means we throw it away, we throw the integer away. So can we find something in here that looks like that? Yeah. Represents an operation that accepts a single link value argument and returns no result, isn't that what we're looking for? So an in consumer, so let's try it out. And again, oh, we do we. Oh, there it is. Well Java's magically pulled in the, uh, or VS code's magically pulled in the right uh library. So it's second guessed this, but yep, it seems to be happier with that lot. Let's try it out. So yeah. Is there anything surprising about what just happened though? Didn't we expect to see some output? Yeah, we haven't used it, we've just created it, so let's go and use the thing. So this time we'll say B lambda, and we'll notice again it allows us to do the uh apply in, does it allow us to use apply in, let's have a look at the, In the face. And we'll see here. That it has just a couple of methods. So one of the unfortunate things with these functional interfaces is there's little consistency.
+
+SPEAKER 2
+It's a bit ugly. So we probably wanna do an accept I think from
+
+SPEAKER 0
+memory. And we'll give it, I don't know, we'll give it a 7 this time. We had 7s and 12s last time, so let's do 7s and 12s this time. And if I've guessed correctly, I'm expecting to see the number 8 on pop out on the screen. No, 7. Sorry, yes, not 8, that's I'm not adding to it in this example. All I'm doing is saying take in the value and print it out.
+
+SPEAKER 2
+OK. Where's my terminal, that's what I want. Alright, so so far does this seem useful?
+
+SPEAKER 0
+I'm guessing the answer's probably no. This doesn't seem very useful at all. I've constructed a completely different way of generating functions or things that look like methods that seems to be a little pointless. So let's explore what you can do with them. So let's make a list of integers.
+
+SPEAKER 2
+So We'll say something like. I should just say list here.
+
+SPEAKER 0
+And let's do something like 4 inch. I equals 0, I is less than. There's some number, let's go 10. I plus plus. And then do, oops, how about I give it a name, Damien, that might be helpful. And say the list, we'll call it the list, because
+
+SPEAKER 2
+why not?
+
+SPEAKER 0
+And we need to bring in both of those, I expect, port and will this work? Yes it will.
+
+SPEAKER 2
+OK.
+
+SPEAKER 0
+OK, so we've got our list, just for the sake of completeness, we'll, we'll print out the list, see what that looks like.
+
+SPEAKER 2
+Oh yo yo. Oops. Oh, what did they do wrong? Try that again, it's better.
+
+SPEAKER 0
+OK, so we've got a little list of numbers from 0 to 10, so there's our list. So what can we do with these things? Well, One of the things you can do with lambdas, let's just comment that out for the moment, is you can actually use them in conjunction with things like lists. So Let's have a look at some of the methods that are available to us on the list. So our our built-in, well not built in our library provided list type includes a bunch of methods. And looking down here we've got some weird things they've got these little question marks in them. Notice how a lot of them have got this question mark idea in them. Question mark is actually telling you that it's a functional interface. It's expecting an object that is of that type, functional interface. So let's try one of these out.
+
+SPEAKER 2
+Let's try this one here for each.
+
+SPEAKER 0
+Now I'm gonna do something a little weird syntactically just to make things clear as to what's going on. So you remember our lambda syntax is just literally the type that I'm providing and then the code that I want to execute on the other side of an arrow. Now so far I've been assigning them to objects. But the whole point of these is to have a function that doesn't actually have a name. So in some sense this thing up here I've created what's supposedly an anonymous function, but then I've kind of gone and given it a name. Sort of defeats the purpose. The purpose is really to be able to generate a function that doesn't actually end up being assigned to a variable. So let's do something like this.
+
+SPEAKER 2
+Oops.
+
+SPEAKER 0
+So I've just created a bit of code that prints out whatever value I pass to it. So I've passed in this indigen I notice I'm using the class, it'll become apparent why I'm doing that in a minute. Well, it's because I've got a list of integers here. So let's run that code.
+
+SPEAKER 2
+What have I got?
+
+SPEAKER 0
+I've got my, where's that 7 come from? Oh, it's cause I'm printing that here. That's right. We'll leave it there for the moment. So I'm printing out my list. But you'll notice the way I've done this, well, let's actually have a think about this, what's, what would normally generate output that looks like this, given that I've declared, This array list, what would you normally write to do this? Yep, you'd write a full loop of some description. So you'd have something that looks like this. I'm doing the ad here, but I could have equally taken this code and put a system out here inside the loop.
+
+SPEAKER 2
+Yeah. What's this code look like? Yeah.
+
+SPEAKER 1
+It's an anonymous function that takes in an integer i from the list, the list and prints it out to the error thing.
+
+SPEAKER 0
+Yep. So this is actually kind of given me a full loop. But the body of the full loop is being passed in as a parameter. So I think you can already see how this can be used. Uh, for things that you might want to do. A little bit more powerfully. Now so far that's I guess not super exciting, so let's take that and change it one step. What if I wanted to do two things.
+
+SPEAKER 2
+Not just print out the value, but what if I
+
+SPEAKER 0
+wanted to add something to it, for example. So let's let's go with that.
+
+SPEAKER 2
+Yep.
+
+SPEAKER 0
+Oh, that was a. That was a typo, I tried to type this out and it came up with scis error. So thank you, I didn't even notice, but yes, that wasn't meant to be scis error, it doesn't really make a difference. OK, so let's do something a little bit more sophisticated. What if I wanted to do two lines of code? I'll type the whole thing this time so I don't make the same mistake. So let's say I wanted to print out the value and then the value squared say. So I times I. What I'd normally need to do is put this stuff in a block of code, well I can do that here, I can put in some curly brackets around the code I wanna execute. And now I've got a lambda that actually has two actions inside it. So lenders themselves can be, they're a function, they can have any code in it you'd like, just like you could with your previous code. Now, Let's run that. I'm gonna comment this out cause that's gonna start irritating me in a second. So I've gotten the same kind of output, but you'll notice this time it's gone through and done the square of each number, as well as the number itself. But what's wrong with this, what's. What's terrible about that chunk of code that I've just given you? Yeah. It's all in one line, it's a bit unreadable, so it turns out you can do this. Cause it's a block, I can simply. Do this. And then I'll take the curly brackets at the ends and the round brackets like so and you get something that looks like this, and Java is perfectly happy with that. There you go, same code. Now by the way, you'll probably see people do this sort of thing with the formatting, this is, this is supposedly the idiomatic way of doing it in Java. I really don't like this. They do something wacky like this so that it's between the curly braces and then they shift this over as well and yeah I think that's pretty ugly. Um, but you know that's the way the most sort of workaday Java programmers often write this stuff. I'm kinda happy with this syntax here, I think that's perfectly readable. OK, So that's kinda neat. What about, what else can we do? Well, let's look through our list of methods that we can call. What's down here? We have some remove, we could remove everything. What about this remove if? Take something called a predicate, who knows what a predicate
+
+SPEAKER 2
+is? Anybody? Something that makes a decision.
+
+SPEAKER 0
+Yeah, it makes a decision, sort of, I mean that's true but it's not quite the answer I was looking for. Anybody else wanna have a go?
+
+SPEAKER 2
+Yeah.
+
+SPEAKER 0
+Like. It's a function that returns a bullion. That's what a predicate is, it's either true or false.
+
+SPEAKER 2
+So, A predicate is, if we have a look, another
+
+SPEAKER 0
+one. Of our various forms of functions, so there it is there, predicate. So, we can use this to say let's remove values from the list if they match some criteria. So, Let's pass that in. What if we say let's remove stuff that's an odd number. So how would we encode that? How do we find out if the number's odd, yep.
+
+SPEAKER 2
+Um Sorry, doesn't doesn't.
+
+SPEAKER 0
+012. OK, you could do it that way. Yep, so I mod 2. So there's our remainder, I said we'd come to the remainder. I'm gonna say it's not equal to. 0. So if we've got a value that's not equal to 0 after taking the remainder. Must have been an odd number. So let's put the extra bracket on the end here, actually now I've already got it. So there is our lambda. So let's do that again. Actually, let's copy this code. I'm gonna comment out the squared bit, so we're gonna have before and after. OK, so what have we got? We've got the numbers from 0 to 10. And then we've got numbers 0246 and 8. And notice, the 2nd time we haven't put logic in here that skips things, we've said print the whole list. So this line of code here has gone through and actually removed elements from the list.

@@ -243,6 +243,8 @@ if __name__ == "__main__":
                     else:
                       all_md.write(f"## {clean_item}\n\n{item_data}\n\n")
                       venue_md.write(f"# {clean_item}\n\n{item_data}\n\n")
+                      all_tex.write(f"\\section*{{{clean_item}}}\n\n{item_data}\n\n")
+                      venue_tex.write(f"\\section*{{{clean_item}}}\n\n{item_data}\n\n")
                   tex_bottommatter(venue_tex)
                 os.system(f"latexmk -pdf -interaction=nonstopmode -output-directory=build/{topic} build/{topic}/{cleanish_venue}.tex > /dev/null")
               tex_bottommatter(all_tex)

@@ -1,0 +1,137 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+\input{../latex_setup.tex}
+\graphicspath{{../}}
+
+\title{\color{redish}\vspace{-1em}COMP2000: Semester Project}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\subsection*{Overview}
+
+Your task is to make a simulation of some natural or imagined system (ecosystem, traffic, physics, etc) where entities interact and produce emergent behaviour.  You will find many existing examples of such systems such as:
+\begin{itemize}
+  \item predator-prey systems
+  \item Conway's game of life
+  \item traffic simulation --- cars, traffic lights, congestion that builds and clears
+  \item flocking / boids --- birds or fish that self-organise with simple rules
+  \item epidemic spread --- agents move, infect, recover, with R0 visibly emergent
+  \item ant colony foraging --- individual ants leave pheromone trails, paths emerge
+  \item forest fire --- trees grow, lightning strikes, fire spreads with wind
+  \item market simulation --- buyers and sellers set prices, boom/bust cycles emerge
+\end{itemize}
+
+You will need to create such a system, but that is not the overall goal.  The overall goal is to \emph{use the creation of such a system to understand and communicate OO programming}.
+
+It is up to your team to decide on a simulation to attempt and you will work on it together with your team throughout semester.  Your submisisons will be \emph{individual}.  You will take the work from your team, add your own reflections on the code, and submit that.   This type of hybrid team/individual assessment allows you to get the benefits of working in a team without the downsides of relying on others for you grades.
+
+You will see two worksheets to complete, one in each of the submission links, and two rubrics which show you the answers we are looking for where you can show off your understanding.
+
+Your simulation is the \emph{canvas}, not the \emph{art}. The worksheets (worksheet-7.md and worksheet-13.md) are where you show what you understand. Each question asks you to point to a place in your code and explain \emph{why} you designed it that way --- why you chose an inheritance hierarchy over an interface, where generics keep your collections safe, which design pattern solved a growth problem, and how lambdas or streams made a tangled loop disappear.
+
+By Week 13 your simulation will be genuinely interesting to run, but the grade comes from how clearly you can discuss the design decisions behind it.
+
+\section*{Rubrics}
+\subsection*{Log Book (feedback only, doesn't contribute to final grade)}
+\begin{tabular}{@{}p{0.10\textwidth}|p{0.11\textwidth}p{0.11\textwidth}p{0.11\textwidth}p{0.11\textwidth}p{0.12\textwidth}|p{0.16\textwidth}@{}}
+\hline
+item & F & P & CR & D & HD & Notes\\
+\hline \hline
+weekly log book &
+no submission or entry does not address the week's activity &
+entry present, relates to the activity &
+entry shows understanding of the key concept taught &
+entry connects the concept to the team's own project &
+entry demonstrates insight, evaluation, or a question that extends thinking &
+sign-offs (if used) confirm timeliness\\
+\hline
+\end{tabular}
+
+\subsection*{Week 7 Submission}
+Student submits: a link to a public GitHub repository, answers to reflection questions, and a log book.
+
+Note: it is an assumption that the submission will compile and run.  Compilation failures attract zero grades.
+
+\begin{tabular}{@{}p{0.12\textwidth}|p{0.11\textwidth}p{0.12\textwidth}p{0.14\textwidth}p{0.17\textwidth}p{0.19\textwidth}@{}}
+\hline
+item & F (0) & P (60) & CR (72) & D(84) & HD (100)\\
+\hline \hline
+version control (20\%) &
+no repo link &
+public GitHub repo link provided &
+student has regular commits across the submission period &
+commits are meaningful, each describes a discrete change;
+student can explain their commit history &
+repository includes branches, PRs, or equivalent
+collaborative workflow in their own contributions\\
+\hline
+program design (20\%) &
+none &
+reflective report includes a basic class sketch &
+design identifies classes, fields, and their relationships &
+design uses inheritance hierarchy appropriately &
+design is accurate to the submitted code\\
+\hline
+generics and exceptions (20\%) &
+weak or no entries for these weeks &
+log book entries present for the puzzle and break the code &
+entries explain how generics and exceptions work &
+discusses the role (or intentional absence) of each in own project &
+code correctly uses (or deliberately avoids) these features\\
+\hline
+uniqueness and creativity (20\%) &
+a direct submission of in-class work &
+minor modifications to in-class work &
+some modifications to in-class work &
+substantial improvements to in-class work &
+unexpected or advanced design feature(s) \\ 
+\hline
+log book (20\%) &
+no log book submitted &
+entries present for each activity &
+most entries signed (timely) &
+entries show reflection connecting the activity to the project &
+entries demonstrate insight and learning across multiple weeks\\
+\hline
+\end{tabular}
+
+\subsection*{Week 13 Submission}
+Student submits: final code, log book, and a reflective report.
+
+Note: it is an assumption that the submission will compile and run.  Compilation failures attract zero grades.
+
+\begin{tabular}{@{}p{0.12\textwidth}|p{0.11\textwidth}p{0.12\textwidth}p{0.14\textwidth}p{0.17\textwidth}p{0.19\textwidth}@{}}
+\hline
+item & F(0) & P(60) & CR(72) & D(84) & HD(100)\\
+\hline \hline
+design patterns (30\%) &
+no pattern attempted &
+attempts to implement a pattern &
+pattern is implemented correctly &
+pattern is well-integrated into the existing design &
+pattern choice is justified; alternative patterns were considered\\
+\hline
+streams / lambdas / parallelism (30\%) &
+none attempted &
+attempts to use at least one of these features &
+feature works correctly in the code &
+feature is well-integrated across the codebase &
+sophisticated use (e.g.\ parallel streams with thread safety, custom collector, lambda replacing a class hierarchy)\\
+\hline
+uniqueness and creativity (20\%) &
+a direct submission of in-class work &
+minor modifications to in-class work &
+substantial improvements to in-class work &
+project exhibits emergent behaviour, non-trivial features, or impressive complexity &
+genuinely surprising or interesting outcome demonstrating deep engagement\\
+\hline
+log book + final reflection (20\%) &
+no log book submitted &
+entries present for most weeks &
+entries present for all weeks, timely &
+entries connect activities to the project throughout the semester &
+final reflection critically evaluates what was learned, what trade-offs were made, and what could be improved\\
+\hline
+\end{tabular}
+
+\end{document}

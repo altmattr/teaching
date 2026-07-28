@@ -13,10 +13,7 @@ By the end of this week you should:
 
 ## Preparation
   * Read Chapter 9 of "Crafting Interpreters"
-  * Watch the following videos on echo360:
-    - Mathematical foundations of computation
-    - Conditions
-    - Loops
+  * Attend the lecture
 
 # RAT
 ## Which new grammar a <gift>

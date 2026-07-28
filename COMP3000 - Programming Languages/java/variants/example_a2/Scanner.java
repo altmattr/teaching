@@ -34,6 +34,11 @@ class Scanner {
     keywords.put("var",    VAR);
     keywords.put("while",  WHILE);
     keywords.put("plot",   PLOT);
+    keywords.put("dam",    DAM);
+    keywords.put("when",   WHEN);
+    keywords.put("default", DEFAULT);
+    keywords.put("inflow", INFLOW);
+    keywords.put("level",  LEVEL);
   }
 
   Scanner(String source){
@@ -73,6 +78,7 @@ class Scanner {
       case '-': addToken(MINUS); break;
       case '+': addToken(PLUS); break;
       case ';': addToken(SEMICOLON); break;
+      case ':': addToken(COLON); break;
       case '*': addToken(STAR); break; 
       case '@': addToken(AT); break; 
       case '~': addToken(TILDE); break; 

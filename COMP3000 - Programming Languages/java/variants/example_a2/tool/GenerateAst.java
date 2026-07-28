@@ -21,7 +21,9 @@ public class GenerateAst {
       "Unary    : Token operator, Expr right",
       "Variable : Token name",
       "Number   : double value",
-      "Bool     : boolean value"
+      "Bool     : boolean value",
+      "Inflow   : ",
+      "Level    : "
     ));
 
     defineAst(outputDir, "Stmt", Arrays.asList(
@@ -29,7 +31,7 @@ public class GenerateAst {
       "Var        : Token name, Expr initializer",
       "Plot       : Expr expression",
       "Print      : Expr expression",
-      "Function   : Token name, List<Token> params, List<Stmt> body",
+      "DamDecl    : Token name, List<Stmt> body",
       "If         : Expr condition, Stmt thenBranch, Stmt elseBranch",
       "Return     : Token keyword, Expr value"  ,
       "Block      : List<Stmt> statements"
@@ -72,10 +74,14 @@ public class GenerateAst {
         baseName + " {");
 
     // Constructor.
-    writer.println("    " + className + "(" + fieldList + ") {");
+    if (fieldList.trim().isEmpty()) {
+      writer.println("    " + className + "() {");
+    } else {
+      writer.println("    " + className + "(" + fieldList + ") {");
+    }
 
     // Store parameters in fields.
-    String[] fields = fieldList.split(", ");
+    String[] fields = fieldList.trim().isEmpty() ? new String[0] : fieldList.split(", ");
     for (String field : fields) {
       String name = field.split(" ")[1];
       writer.println("      this." + name + " = " + name + ";");

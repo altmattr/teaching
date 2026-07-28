@@ -1,0 +1,89 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg} \quad \textbf{Week 7}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 7: Patterns 1}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\begin{abstract}
+This week is devoted to presenting your work so far.  Each student who chooses to present will have 15 minutes plus 5 minutes of questions to showcase their assignment one submission.  This is a chance to share what you have built, get feedback, and see how other teams approached the same problem.
+\end{abstract}
+
+\section*{Topics}
+\begin{description}
+\item[Strategy pattern] Encapsulating interchangeable behaviours behind a common interface
+\item[Observer pattern] Establishing one-to-many dependency notification
+\item[Open/Closed Principle] Designing classes that are open for extension but closed for modification
+\item[Composition over inheritance] Achieving reuse by assembling behaviours rather than inheriting them
+\end{description}
+
+\section*{Preparation}
+Attend the lecture in week 6.
+
+Read the following chapters of \textit{Head First Design Patterns}
+(\href{https://archive.org/details/headfirstdesignp0010unse}{available freely online}\footnote{\url{https://archive.org/details/headfirstdesignp0010unse}}):
+\begin{itemize}
+    \item Chapter 1 (Strategy Pattern)
+    \item Chapter 2 (Observer Pattern)
+\end{itemize}
+Complete the exercises in Chapters 1 and 2 of \textit{Head First Design Patterns}.
+
+
+\section*{EPIC activity}
+
+\begin{note}
+This is the first graded submission point.  All log books, code, and reflections are due this week.
+\end{note}
+
+This is a \emph{conference} style class.  The activity and reporting time is devoted to individual presentations given by students.  Students register their interest (not all students need to present) and get 15 minutes plus 5 minutes question time to present their work.  All students are expected to be present, even if they choose not to present.  Class finishes when all interested students have presented.
+
+\subsection*{Reporting}
+
+All students will have been working on the same problem that is being presented so all can write reflections on their own work in their log books.  Your log book should include:
+\begin{itemize}
+\itemsep0em
+\item Notes from at least two presentations by other teams.
+\item One technique or approach you saw that you would like to try.
+\item A reflection on your own submission: what went well and what you would improve.
+\end{itemize}
+
+\begin{teacher}
+Coordinate the presentation schedule in advance.  Ensure each presenter has a projector connection.  Encourage questions from the audience.  Take photos for the unit forum (with permission).
+\end{teacher}
+
+\subsection*{Project Guidance}
+
+Look back at the object model you designed in Week 3 and compare it to the code you have now.  How has it changed?  What design decisions worked well?  What would you redo?  Write a brief reflection in your log book.  Consider questions like:
+\begin{itemize}
+\itemsep0em
+\item Did your inheritance hierarchy hold up as the project grew?
+\item Are there places where the code is harder to change than you expected?
+\item What would you tell your Week 3 selves knowing what you know now?
+\end{itemize}
+
+\section*{Self Study Exercises}
+\begin{enumerate}
+\item What are the four main participants (classes or interfaces) in the Strategy pattern?  Briefly describe the role of each.
+
+\item What are the two main participants in the Observer pattern besides the client?  Explain how they interact to achieve a one-to-many notification mechanism.
+
+\item A simulation game needs to support multiple movement behaviours (e.g.\ walking, flying, swimming) that can be assigned to different entities at runtime.  Which design pattern is most suitable for this requirement?  Justify your answer and sketch the key interfaces or abstract classes you would use.
+
+\item Write a minimal Java implementation of the Strategy pattern for a payment processing system.  Define a \texttt{PaymentStrategy} interface with a \texttt{pay(double amount)} method and at least two concrete strategies (e.g.\ \texttt{CreditCardPayment} and \texttt{PayPalPayment}).  Include a \texttt{ShoppingCart} class that accepts a strategy and delegates payment to it.
+
+\item Write a minimal Java implementation of the Observer pattern for a weather station.  Define a \texttt{WeatherData} subject that tracks temperature and humidity, and at least two observer types (e.g.\ \texttt{CurrentConditionsDisplay} and \texttt{StatisticsDisplay}) that update when the weather data changes.
+
+\item The Strategy pattern is often described as an example of ``favour composition over inheritance.''  Explain what this means and why composition is preferable to inheritance in this context.
+
+\item Compare and contrast the Strategy and Observer patterns.  In what kind of situations would you choose one over the other?  Give at least one concrete example for each.
+
+\item What is a potential memory-safety issue when implementing the Observer pattern in Java?  How can it be avoided?
+
+\item A class diagram shows an interface \texttt{Subject} with methods \texttt{registerObserver()}, \texttt{removeObserver()}, and \texttt{notifyObservers()}, along with a \texttt{ConcreteSubject} and several \texttt{ConcreteObserver} classes.  Identify the design pattern and explain what the \texttt{notifyObservers()} method should do.
+
+\item Explain how the Strategy pattern helps satisfy the Open/Closed Principle.  Describe the steps you would take to add a new sorting strategy to an existing \texttt{Sorter} application without modifying the \texttt{Sorter} class itself.
+\end{enumerate}
+
+\end{document}

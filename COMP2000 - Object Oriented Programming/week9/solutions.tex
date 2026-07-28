@@ -1,0 +1,136 @@
+\documentclass[twoside=false,DIV=14]{scrartcl}
+
+\input{../latex_setup.tex}
+\lohead{\includegraphics[width=0.5cm]{../logo.jpg}}
+\title{\color{redish} \vspace{-1em}COMP2000 Week 9: Behaviour Parameterisation --- Solutions}
+
+\begin{document}
+{\color{blackish}\maketitle}\vspace{-7em}
+
+\section*{Self Study Exercises}
+
+\subsection*{Exercise 1: Behaviour parameterisation}
+
+Behaviour parameterisation is a pattern where you pass a block of code (behaviour) as an argument to a method, rather than passing data.  The method can then execute that behaviour at the appropriate point.  It decouples the algorithm from the specific actions it performs.  Passing data is simply handing values to a method; behaviour parameterisation hands an executable action that may use or transform those values.
+
+\subsection*{Exercise 2: Lambda expression syntax}
+
+A lambda expression is an anonymous function --- a concise way to represent an instance of a functional interface.
+
+General syntax (with types):
+\begin{verbatim}
+(Type param1, Type param2) -> expression
+(Type param1, Type param2) -> { statements; }
+\end{verbatim}
+
+Without types (type inference):
+\begin{verbatim}
+(param1, param2) -> expression
+(param1, param2) -> { statements; }
+\end{verbatim}
+
+Single parameter with no parentheses (if type is inferred):
+\begin{verbatim}
+param -> expression
+\end{verbatim}
+
+\subsection*{Exercise 3: Functional interfaces}
+
+A functional interface is an interface with exactly one abstract method.  It can have any number of default or static methods.
+
+Three from \texttt{java.util.function}:
+\begin{description}
+\item[\texttt{Predicate<T>}] \texttt{boolean test(T t)}
+\item[\texttt{Function<T, R>}] \texttt{R apply(T t)}
+\item[\texttt{Consumer<T>}] \texttt{void accept(T t)}
+\end{description}
+
+\subsection*{Exercise 4: \texttt{filterStrings} method}
+
+\begin{lstlisting}
+public List<String> filterStrings(List<String> strings, Predicate<String> predicate) {
+    List<String> result = new ArrayList<>();
+    for (String s : strings) {
+        if (predicate.test(s)) {
+            result.add(s);
+        }
+    }
+    return result;
+}
+\end{lstlisting}
+
+Usage: \texttt{filterStrings(words, s -> s.startsWith("A"));}
+
+\subsection*{Exercise 5: Anonymous class to lambda}
+
+\begin{lstlisting}
+Collections.sort(people, (a, b) -> Integer.compare(a.age(), b.age()));
+\end{lstlisting}
+
+Or using a method reference with \texttt{Comparator.comparingInt}:
+\begin{lstlisting}
+people.sort(Comparator.comparingInt(Person::age));
+\end{lstlisting}
+
+\subsection*{Exercise 6: Method references}
+
+A method reference is shorthand for a lambda that calls an existing method.
+
+\begin{description}
+\item[Static method reference:] \texttt{Integer::parseInt} is equivalent to \texttt{s -> Integer.parseInt(s)}.
+\item[Instance method reference on a parameter:] \texttt{String::length} is equivalent to \texttt{s -> s.length()}.
+\item[Constructor reference:] \texttt{ArrayList::new} is equivalent to \texttt{() -> new ArrayList()}.
+\end{description}
+
+\subsection*{Exercise 7: Square function}
+
+Lambda:
+\begin{lstlisting}
+Function<Integer, Integer> square = x -> x * x;
+\end{lstlisting}
+
+Method reference (requires a static method):
+\begin{lstlisting}
+class MathUtil { static int square(int x) { return x * x; } }
+Function<Integer, Integer> square = MathUtil::square;
+\end{lstlisting}
+
+\subsection*{Exercise 8: Transaction pipeline}
+
+\begin{lstlisting}
+List<Transaction> result = transactions.stream()
+    .filter(t -> t.getAmount() > 1000)
+    .sorted((a, b) -> Double.compare(b.getAmount(), a.getAmount()))
+    .collect(Collectors.toList());
+\end{lstlisting}
+
+Lambdas are used in:
+\begin{itemize}
+\item \texttt{filter}: a \texttt{Predicate<Transaction>} that tests amount
+\item \texttt{sorted}: a \texttt{Comparator<Transaction>} that compares amounts in reverse
+\end{itemize}
+
+\subsection*{Exercise 9: Variable capture}
+
+Yes, a lambda can access local variables from its enclosing scope, but they must be \textbf{effectively final} --- not reassigned after initialisation.  This restriction avoids concurrency issues.  The lambda also has access to instance variables and static variables of the enclosing class without this restriction.
+
+\subsection*{Exercise 10: Behaviour parameterisation and Strategy}
+
+The Strategy pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable.  Behaviour parameterisation lets you pass the algorithm directly as a lambda, eliminating the need for separate Strategy classes.
+
+Example: instead of defining a \texttt{SortingStrategy} interface and concrete classes, you can just pass a \texttt{Comparator} (a functional interface) to \texttt{Collections.sort()}:
+
+\begin{lstlisting}
+// Before: concrete strategy class
+class AgeSort implements Comparator<Person> {
+    public int compare(Person a, Person b) {
+        return Integer.compare(a.age(), b.age());
+    }
+}
+people.sort(new AgeSort());
+
+// After: behaviour parameterisation with lambda
+people.sort((a, b) -> Integer.compare(a.age(), b.age()));
+\end{lstlisting}
+
+\end{document}

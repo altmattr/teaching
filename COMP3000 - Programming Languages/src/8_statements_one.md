@@ -12,11 +12,7 @@ By the end of this week you should:
 
 ## Preparation
   * Read Sections 8.1 and 8.2 of chapter 8 of "Crafting Interpreters"
-  * Watch the following echo360 videos
-    - Generating Statements
-    - Parsing Statements
-    - Grammar tracing
-    - Adding variables to expressions
+  * Attend the lecture
 
 **bindings**: Ask the internet what a _variable binding_ is and you will get all sorts of different answers.  Some say it is the binding of a variable to a scope.  Others say it is the binding of a variable to a location in memory, others say it is the binding of a value to a variable.  It can mean any of these things, but I think the second is closest for us.  The important thing about bindings is that once they exists, they persist.  That means we need to keep track of bindings.  So, they are always related to whats in a variable and always need tracking by an interpreter.
 

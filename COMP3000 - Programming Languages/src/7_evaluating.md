@@ -11,10 +11,7 @@ By the end of this week you should:
 
 ## Preparation
   * Read chapter 7 of "Crafting Interpreters"
-  * Watch the following echo360 Videos
-    - Recap and context for evaluation
-    - A quick description of each accept method
-    - Details of the evaluation visitor
+  * Attend the lecture
 
 **values vs computation**: Computing never escapes the duality of code and data.  Your computer memory has code mixed with data.  Up to now we have separated _expressions_ from _statements_ (statements are code only, expressions are data that might need computing).  We will now talk more about _values_ vs _computation_.  
 

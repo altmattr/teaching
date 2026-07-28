@@ -11,10 +11,7 @@ By the end of this week you should:
 
 ## Preparation
   * Read chapter 3 of "Crafting Interpreters" (the Lox book).
-  * Watch lox lectures on echo360:
-    - High level features, types, expressions, and statements.
-    - Functions and OO features
-    - Lox live coding session
+  * Attend the lecture
   * Ensure you have a working lox implementation on your computer.
   * Experiment with lox programs.
 

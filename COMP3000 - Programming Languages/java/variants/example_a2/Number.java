@@ -5,4 +5,7 @@ public class Number implements Value {
     public Number(double value){
         this.value = value;
     }
+    public String toString(){
+        return Double.toString(value);
+    }
 }

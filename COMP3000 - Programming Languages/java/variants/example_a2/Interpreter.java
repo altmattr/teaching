@@ -124,18 +124,22 @@ class Interpreter implements Expr.Visitor<Value>,
 
     switch (expr.operator.type) {
       case GREATER:
-      System.out.println(((Number)left).value + " " + ((Number)right).value);
         return new Bool(((Number)left).value > ((Number)right).value);
       case LESS:
         return new Bool(((Number)left).value < ((Number)right).value);
       case PLUS:
-        return ((Flow)left).plus((Flow)right);
+        if (left instanceof Flow && right instanceof Flow) {
+          return ((Flow)left).plus((Flow)right);
+        }
+        if (left instanceof Number && right instanceof Number) {
+          return new Number(((Number)left).value + ((Number)right).value);
+        }
       case LEFT_ARROW:
         if (left instanceof Flow){
-         return ((Flow)left).addUpstream((Flow)right);
+         return ((Flow)left).addUpstreamDelayed((Flow)right);
         }
-        if (left instanceof LoxFunction){
-          return ((LoxFunction)left).call(this, List.of((Flow)right));
+        if (left instanceof LoxCallable){
+          return ((LoxCallable)left).call(this, List.of((Flow)right));
         }
     }
     // Unreachable.
@@ -161,10 +165,9 @@ class Interpreter implements Expr.Visitor<Value>,
   }
 
   @Override
-  public Void visitFunctionStmt(Stmt.Function stmt) {
-    LoxFunction function = new LoxFunction(stmt, environment);
-    environment.define(stmt.name.lexeme, function);
-    environment.define(stmt.name.lexeme+"_level", new Number(0));
+  public Void visitDamDeclStmt(Stmt.DamDecl stmt) {
+    LoxDam dam = new LoxDam(stmt.name, stmt.body, environment);
+    environment.define(stmt.name.lexeme, dam);
     return null;
   }
 
@@ -212,5 +215,15 @@ class Interpreter implements Expr.Visitor<Value>,
   @Override
   public Value visitBoolExpr(Expr.Bool expr) {
     return new Bool(expr.value);
+  }
+
+  @Override
+  public Value visitInflowExpr(Expr.Inflow expr) {
+    return environment.get(new Token(TokenType.INFLOW, "inflow", null, 0));
+  }
+
+  @Override
+  public Value visitLevelExpr(Expr.Level expr) {
+    return environment.get(new Token(TokenType.LEVEL, "level", null, 0));
   }
 }

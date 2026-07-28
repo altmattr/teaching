@@ -13,10 +13,7 @@ By the end of this week you should:
 
 ## Preparation
   * Read Chapter 4 of "Compiling Interpreters"
-  * Watch the following lecture videos on echo360
-    - scanning part 1
-    - scanning part 2
-    - making changes to a scanner
+  * Attend the lecture
   * Ensure you have started your own Lox interpreter.  I.e. not the one you were using last week (which will be complete), but one that follows along with the book.
   * Re-read the unit preamble, where we explain the EPIC learning style and how it applied to COMP3000.
 
