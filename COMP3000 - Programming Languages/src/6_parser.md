@@ -45,6 +45,11 @@ question: |
     \end{enumerate}
 
     Make sure you create the on-paper grammer in Nystrom's notation before attempting to implmenting it!  It is absolutely OK if your team only gets to the on-paper grammar this week.
+
+    \subsubsection*{Reporting Period / Logbook Advice}
+    During the reporting period, share one grammar rule your team wrote and discuss any ambiguity you encountered. Listen to how other teams structured their grammars, different approaches to the same language features can reveal design trade-offs.
+
+    For your logbook this week: record a grammar rule from another team that handles something more cleanly than yours does.
     \newpage
 
 answer: |

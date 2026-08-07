@@ -120,6 +120,11 @@ question: |
     \end{lstlisting}
 
     There are problems with this, but it gives you an idea of a direction you can go in.  Flesh this out, come up with a better form.  I encourage you to consider functions while doing so.  Even though we haven't done parsing of functions yet, it won't be long.
+
+    \subsubsection*{Reporting Period / Logbook Advice}
+    During the reporting period, share the dam behaviour your team designed and the syntax you chose for its control flow. Listen to how other teams expressed dam logic, conditionals, functions, and custom syntax are all on the table.
+
+    For your logbook this week: record one approach to dam syntax from another team that you think is more expressive than yours.
     \newpage
 answer: |
     still to come
@@ -265,7 +270,7 @@ answer: |
     `````
     This one turned out quite a bit simpler than the for loop did, it is a very natural fit for syntactic sugar.
 
-# Exams
+# Exam
 ## Which new grammar b <gift>
 The following is the grammar we used to parse logical expressions but the _and_ and _or_ parts are missing
 ```

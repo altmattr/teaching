@@ -48,8 +48,11 @@ Show your teacher your logbook at the end of each class. If you have entries tha
 **Q: What if I miss a week?**
 Catch up — do a logbook entry for the work you missed when you get back.
 
+**Q: I can't attend for the first few weeks — will I miss out on the logbook and a team?**
+It's fine to miss a few weeks. Your job is to work on the tasks at home on your own as best you can, so you have the best context when you return to class. When you get back you can still get feedback on your logbook entries — for example, if you miss the first two weeks, you can get all the first three weeks' entries marked off in the third week. Your teacher will make sure there's a team with a slot you can fit into when you can attend. As long as you're making a genuine contribution in class and getting to class as much as you can, your teacher will be happy to catch you up after a necessary break. If your condition is ongoing, register with Student Wellbeing to get access to all the support you need.
+
 **Q: Do the entries need to be detailed?**
-Timeliness matters more than quality. We're only looking for a few notes.
+Timeliness matters more than quality. We're only looking for a few paragraphs at most, even a few sentances can be enough dependingon the week's task.
 
 **Q: Are they submitted with the assignment?**
 Yes — they go in with your assignment submission, like a reflection you've already written.
@@ -84,3 +87,10 @@ Directly — the tasks in workshops are very closely related to the assignment. 
 
 **Q: When will we see the rubrics?**
 Early — probably week 2. You won't be waiting until weeks 5 or 6.
+
+---
+
+## Software & Setup
+
+**Q: What do I need to have set up before I start?**
+Have Git installed and a GitHub account ready before week 2, when your team's first activity uses Git. The GitHub setup guide walks you through both (https://docs.github.com/en/get-started/set-up-git). You'll need the account anyway — your assignment is submitted through a public GitHub repository.

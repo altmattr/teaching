@@ -49,6 +49,11 @@ question: |
   I find this \emp{so much easier to read}.  Your task this week is to do the same for the language your team has been developing.  Rewrite your example programs to use variables and adjust your implementation so it can parse these new programs correctly.
 
   This is a short application exercise, the remainder of class will be used to chat about assignment one.
+
+  \subsubsection*{Reporting Period / Logbook Advice}
+  During the reporting period, share one of your example programs rewritten with variables and show how much cleaner it is. Listen to how other teams named their variables and structured their programs, naming conventions and organisation habits vary widely.
+
+  For your logbook this week: record one naming or structuring convention from another team that you'd like to adopt.
   \newpage
 answer: |
   Still to do.

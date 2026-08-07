@@ -217,6 +217,11 @@ question: |
     This task will be part of assignment two, but you will need to extend it to get full marks so take this opportunity to brainstorm ideas with your team-mates
     \end{note}
 
+    \subsubsection*{Reporting Period / Logbook Advice}
+    During the reporting period, share one of your three dam implementations and the algorithm it uses. Listen to how other teams modelled the same dam behaviours, even with the same requirements, implementations will differ.
+
+    For your logbook this week: note one dam algorithm from another team that handles a case yours doesn't, and consider adding it.
+
 # SSE
 
 ## trace a lox program <essay>

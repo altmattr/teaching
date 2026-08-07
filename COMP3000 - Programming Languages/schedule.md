@@ -37,11 +37,11 @@
     - echo                                             |     |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x   |   x   |   x   |   x   |  x  |
     - grades                                           |     |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x   |   x   |   x   |   x   |  x  |
   * check on forums to make sure nothing missed        |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x   |   x   |   x   |   x   |  x  |
-  * post weekly details                                |  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
-  * weeks 0 -> i_2 + 1 are ready                       |  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * post weekly details                                |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x   |   x   |   x   |   x   |  x  |
+  * weeks 0 -> i_2 + 1 are ready                       |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
   * unhide i_2 + 1                                     |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x   |   x   |   x   |   x   |  x  |
   * highlight week i_2                                 |  /  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x   |   x   |   x   |   x   |  x  |
-  * check if any assignment is due out week i_2+1      |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * check if any assignment is due out week i_2+1      |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
   * add week (2i_1 -> 2i_2) questions to exam          |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |     |
   * doublexcheck gradebook not messed up               |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x   |   x   |   x   |   x   |  x  |
   * unhide any week i_1 solutions                      |  /  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x   |   x   |   x   |   x   |  x  |

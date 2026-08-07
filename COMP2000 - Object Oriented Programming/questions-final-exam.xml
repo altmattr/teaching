@@ -1054,6 +1054,534 @@ class Call {
       </testcase>
     </testcases>
   </question>
+  <question type="multichoice">
+    <name>
+      <text>Q01. What is a class in Java? (easy)</text>
+    </name>
+    <questiontext format="html">
+      <text>Which of the following best describes a class in Java?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text />
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber />
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text />
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text />
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text />
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text>A blueprint for creating objects.</text>
+      <feedback format="html">
+        <text>Correct! A class is a blueprint for creating objects, defining their properties and behaviors.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A storage location for primitive data types.</text>
+      <feedback format="html">
+        <text>This describes a variable rather than a class.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>The runtime environment for Java applications.</text>
+      <feedback format="html">
+        <text>The runtime environment (JVM) is separate from the concept of classes.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A reference to an object in memory.</text>
+      <feedback format="html">
+        <text>An object reference points to an instance of a class, not the class itself.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A function used to execute Java programs.</text>
+      <feedback format="html">
+        <text>Functions/methods execute code but do not define object blueprints.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q02. What is the term for creating an object in Java? (easy)</text>
+    </name>
+    <questiontext format="html">
+      <text>What is the term for creating an object in Java?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text />
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber />
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text />
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text />
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text />
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text>Instantiation</text>
+      <feedback format="html">
+        <text>Correct! Instantiation refers to the process of creating an object from a class.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Initialization</text>
+      <feedback format="html">
+        <text>Initialization refers to assigning initial values to variables or fields.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Implementation</text>
+      <feedback format="html">
+        <text>Implementation refers to defining the methods of an interface.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Compilation</text>
+      <feedback format="html">
+        <text>Compilation converts source code to bytecode, not objects.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Declaration</text>
+      <feedback format="html">
+        <text>Declaration is the act of defining a variable or method, not creating an object.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q03. Constructor characteristics in Java (moderate)</text>
+    </name>
+    <questiontext format="html">
+      <text>Which of the following is &lt;b&gt;NOT&lt;/b&gt; a characteristic of a constructor in Java?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text />
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber />
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text />
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text />
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text />
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text>A constructor can be marked as static.</text>
+      <feedback format="html">
+        <text>Correct! Constructors cannot be static, as they belong to the instance, not the class.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A constructor has the same name as the class.</text>
+      <feedback format="html">
+        <text>This is true; constructors must have the same name as the class.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A constructor can be overloaded.</text>
+      <feedback format="html">
+        <text>This is true; constructors can have multiple forms (overloading).</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A constructor cannot have a return type.</text>
+      <feedback format="html">
+        <text>This is true; constructors do not have a return type.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A constructor initializes an object when it is created.</text>
+      <feedback format="html">
+        <text>This is true; constructors initialize objects when created.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q04. The purpose of the `this` keyword in Java (moderate)</text>
+    </name>
+    <questiontext format="html">
+      <text>What is the purpose of the `this` keyword in Java?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text />
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber />
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text />
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text />
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text />
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text>To refer to the current object of the class.</text>
+      <feedback format="html">
+        <text>Correct! The `this` keyword is a reference to the current object in Java.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>To refer to the superclass of the current object.</text>
+      <feedback format="html">
+        <text>This describes the `super` keyword, which refers to the parent class.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>To create a new object of the current class.</text>
+      <feedback format="html">
+        <text>The `this` keyword does not create objects; the `new` keyword is used for that.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>To call a method from a different class.</text>
+      <feedback format="html">
+        <text>The `this` keyword cannot be used for accessing methods in other classes.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>To define a static variable for the class.</text>
+      <feedback format="html">
+        <text>The `this` keyword is unrelated to static variables.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q05. Method overloading in Java (moderate)</text>
+    </name>
+    <questiontext format="html">
+      <text>Which of the following correctly demonstrates method overloading?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text />
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber />
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text />
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text />
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text />
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text>Defining two methods with the same name but different parameter types.</text>
+      <feedback format="html">
+        <text>Correct! Method overloading allows methods with the same name but different parameters in the same class.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Defining two methods with the same name and same parameter types.</text>
+      <feedback format="html">
+        <text>Methods with the same parameter types cannot be overloaded.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Defining two methods with the same name and return type.</text>
+      <feedback format="html">
+        <text>Return type alone cannot differentiate overloaded methods.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Defining two methods using the `extends` keyword.</text>
+      <feedback format="html">
+        <text>The `extends` keyword is used for inheritance, not overloading.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Defining two methods using the `static` modifier.</text>
+      <feedback format="html">
+        <text>The `static` modifier does not relate to method overloading.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q06. Fields and Methods in Java (moderatly challenging)</text>
+    </name>
+    <questiontext format="html">
+      <text>Which of the following statements is &lt;b&gt;true&lt;/b&gt; about fields and methods in a Java class?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text />
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber />
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text />
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text />
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text />
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text>Fields represent the state of the object, and methods define its behavior.</text>
+      <feedback format="html">
+        <text>Correct! Fields define an object's state, and methods define its behavior.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Fields must always be `private`, and methods must always be `public`.</text>
+      <feedback format="html">
+        <text>Fields are not required to be private, and methods are not always public.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Fields are shared across all instances of the class.</text>
+      <feedback format="html">
+        <text>Only `static` fields are shared across instances.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Methods cannot access private fields of the class.</text>
+      <feedback format="html">
+        <text>Methods can access private fields within the same class.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Methods must always return a value.</text>
+      <feedback format="html">
+        <text>Methods can return no value if marked `void`.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q07. Default Constructor Behavior (moderately challenging)</text>
+    </name>
+    <questiontext format="html">
+      <text>What happens if a Java class does not explicitly define any constructors?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text />
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber />
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text />
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text />
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text />
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text>A no-argument constructor is provided by default.</text>
+      <feedback format="html">
+        <text>Correct! A default no-argument constructor is provided if no constructors are explicitly defined.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>The program will not compile.</text>
+      <feedback format="html">
+        <text>The program will compile even without an explicitly defined constructor.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>The JVM will automatically create an object without any constructor.</text>
+      <feedback format="html">
+        <text>The JVM does not create objects without constructors.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Objects cannot be created from the class.</text>
+      <feedback format="html">
+        <text>Objects can still be created using the default constructor.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>The class must define at least one method to initialize its objects.</text>
+      <feedback format="html">
+        <text>Methods are not required for object initialization.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q09. Characteristics of Static Methods in Java (moderate)</text>
+    </name>
+    <questiontext format="html">
+      <text>Which statement about static methods in Java is &lt;b&gt;true&lt;/b&gt;?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text />
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber />
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text />
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text />
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text />
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text>Static methods cannot access instance variables directly.</text>
+      <feedback format="html">
+        <text>Correct! Static methods cannot access instance variables directly because they belong to the class, not any instance.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Static methods can only be declared in abstract classes.</text>
+      <feedback format="html">
+        <text>Static methods can be declared in any class, not just abstract classes.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Static methods are only accessible from within the class they are declared in.</text>
+      <feedback format="html">
+        <text>Static methods are not restricted to the class; their accessibility depends on their access modifier.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Static methods are automatically private.</text>
+      <feedback format="html">
+        <text>Static methods are not automatically private; they can have any access modifier.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A class can have only one static method.</text>
+      <feedback format="html">
+        <text>A class can have multiple static methods.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Default constructor field values</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;What is the output of the following code?&lt;/p&gt;&lt;pre&gt;public class Point {
+    int x;
+    int y;
+}
+
+Point p = new Point();
+System.out.println(p.x + ", " + p.y);&lt;/pre&gt;</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text/>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text/>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text/>
+    </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>null, null</text>
+      <feedback format="html">
+        <text>null is the default for reference types, but x and y are ints.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Compilation error</text>
+      <feedback format="html">
+        <text>Without any declared constructor, Java supplies a default no-argument constructor.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>1, 1</text>
+      <feedback format="html">
+        <text>Fields are never assigned, so they keep their default values rather than 1.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>0, 0</text>
+      <feedback format="html">
+        <text>Correct! A default no-argument constructor is provided, and int fields default to 0.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>No output — the program crashes</text>
+      <feedback format="html">
+        <text>The object is created successfully and its fields can be read.</text>
+      </feedback>
+    </answer>
+  </question>
   <question type="category">
     <category>
       <text>$course$/top/Final Exam/Week 04</text>
@@ -6353,7 +6881,298 @@ Obs2 got 25.2</text>
       </feedback>
     </answer>
   </question>
-  <question type="category">
+  
+<question type="multichoice">
+    <name>
+      <text>Advantage of State Pattern</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;Which of the following is a key advantage of using the State Pattern?&lt;/p&gt;</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text/>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text/>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text/>
+    </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>&lt;p&gt;It provides a way to traverse elements in a collection without exposing its implementation.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;This describes the Iterator Pattern.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>&lt;p&gt;It simplifies code by removing the need for conditional statements based on state.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Excellent! The State Pattern localizes state-specific behavior, improving code maintainability and readability.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>&lt;p&gt;It allows adding new functionality to objects without modifying their existing code.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;This is a benefit of the Decorator Pattern.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>&lt;p&gt;It creates an abstraction for object creation processes.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;This describes a Factory or Abstract Factory Pattern.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>&lt;p&gt;It ensures all parts of a system share the same instance of a state.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;The State Pattern doesn’t enforce a single shared instance for all parts of the system.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+<question type="multichoice">
+    <name>
+      <text>Benefit of Iterator Pattern</text>
+    </name>
+    <questiontext format="html">
+      <text>Which of the following is a key benefit of using the Iterator Pattern?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text/>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text/>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text/>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text>It ensures a collection's elements are accessed in a specific order, regardless of its underlying structure.</text>
+      <feedback format="html">
+        <text>Correct! The Iterator Pattern abstracts the traversal logic, making it independent of the collection's implementation.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>It allows objects to change their behavior dynamically.</text>
+      <feedback format="html">
+        <text>This relates to the State Pattern.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>It makes it easier to enforce the Singleton design principle.</text>
+      <feedback format="html">
+        <text>This describes the Singleton Pattern.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>It adds new functionality to an object without modifying its structure.</text>
+      <feedback format="html">
+        <text>This describes the Decorator Pattern.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>It allows multiple collections to share the same underlying state.</text>
+      <feedback format="html">
+        <text>This is unrelated to the Iterator Pattern.</text>
+      </feedback>
+    </answer>
+  </question>
+<question type="multichoice">
+    <name>
+      <text>Purpose of Decorator Pattern</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;What is the primary purpose of the Decorator Pattern?&lt;/p&gt;</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text/>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text/>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text/>
+    </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>&lt;p&gt;To manage object creation without exposing the instantiation process.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;This describes a Factory or Builder pattern, not the Decorator Pattern.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>&lt;p&gt;To provide a way to access elements of a collection sequentially without exposing its underlying representation.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;This describes the Iterator Pattern, not the Decorator Pattern.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>&lt;p&gt;To allow an object to change its behavior when its internal state changes.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;This describes the State Pattern, not the Decorator Pattern.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>&lt;p&gt;To enforce a single point of access to a resource.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;This describes the Singleton Pattern, not the Decorator Pattern.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>&lt;p&gt;To add responsibilities to an object dynamically without modifying its code.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Well done! The Decorator Pattern enhances the functionality of an object without modifying its underlying structure.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+<question type="multichoice">
+    <name>
+      <text>Role of Context in State Pattern</text>
+    </name>
+    <questiontext format="html">
+      <text>What role does the "context" class play in the State Pattern?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text/>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text/>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text/>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text>It manages state transitions and delegates requests to the current state.</text>
+      <feedback format="html">
+        <text>Excellent! The context class is responsible for coordinating the behavior of the different state objects.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>It acts as a wrapper that dynamically changes the object's behavior.</text>
+      <feedback format="html">
+        <text>This is more related to the Decorator Pattern.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>It ensures that the object only has one state at a time.</text>
+      <feedback format="html">
+        <text>While true, this does not fully describe the context's responsibilities.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>It provides access to the elements of a collection.</text>
+      <feedback format="html">
+        <text>This is a characteristic of the Iterator Pattern.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>It adds new responsibilities to an object without altering its structure.</text>
+      <feedback format="html">
+        <text>This describes the Decorator Pattern, not the State Pattern.</text>
+      </feedback>
+    </answer>
+  </question>
+<question type="multichoice">
+    <name>
+      <text>SRP in Iterator Pattern</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;How does the Iterator Pattern adhere to the Single Responsibility Principle?&lt;/p&gt;</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text/>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text/>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text/>
+    </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>&lt;p&gt;By ensuring that each collection can only have one iterator instance.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;This is incorrect, as each collection can have multiple iterators.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>&lt;p&gt;By centralizing the management of all collection elements in a single class.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;The Iterator Pattern does not centralize the management of elements; it separates traversal logic from the collection.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>&lt;p&gt;By encapsulating the logic for accessing and traversing a collection within a separate iterator class.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct! This separation ensures that collections only manage data storage while the iterator handles traversal.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>&lt;p&gt;By delegating collection traversal to subclasses of the collection class.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;The traversal logic is encapsulated in the iterator, not delegated to subclasses of the collection.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>&lt;p&gt;By combining the responsibilities of both data storage and traversal in the iterator.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;The iterator does not combine traversal and storage responsibilities; it focuses solely on traversal.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+<question type="category">
     <category>
       <text>$course$/top/Final Exam/Week 09</text>
     </category>
@@ -6867,7 +7686,124 @@ What is the result?</text>
       </feedback>
     </answer>
   </question>
-  <question type="category">
+  
+<question type="multichoice">
+    <name>
+      <text>What is a lambda expression in Java?</text>
+    </name>
+    <questiontext format="html">
+      <text>What is a lambda expression in Java?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text/>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text/>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text/>
+    </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>A type of loop in Java</text>
+      <feedback format="html">
+        <text>Incorrect. A lambda expression is not a loop. It is used for functional interface implementation.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A way to define a class anonymously</text>
+      <feedback format="html">
+        <text>Incorrect. Lambda expressions do not define anonymous classes; they implement functional interfaces.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>A concise way to represent a functional interface implementation</text>
+      <feedback format="html">
+        <text>Correct! A lambda expression is a concise way to implement a functional interface.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A means of defining a package in Java</text>
+      <feedback format="html">
+        <text>Incorrect. Lambda expressions have no relation to package definitions.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A method to manage exceptions in Java</text>
+      <feedback format="html">
+        <text>Incorrect. Lambda expressions are unrelated to exception handling.</text>
+      </feedback>
+    </answer>
+  </question>
+<question type="multichoice">
+    <name>
+      <text>What will happen if a lambda expression captures a local variable that is modified later in the code?</text>
+    </name>
+    <questiontext format="html">
+      <text>What will happen if a lambda expression captures a local variable that is modified later in the code?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text/>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text/>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text/>
+    </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>The code will compile and run successfully.</text>
+      <feedback format="html">
+        <text>Incorrect. A lambda cannot capture a variable that is modified after it is defined.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>The lambda expression will throw a runtime exception.</text>
+      <feedback format="html">
+        <text>Incorrect. This issue is caught at compile time, not runtime.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>The code will fail to compile due to the "effectively final" restriction.</text>
+      <feedback format="html">
+        <text>Correct! Lambda expressions can only capture variables that are effectively final.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>The variable will be copied into the lambda and behave independently.</text>
+      <feedback format="html">
+        <text>Incorrect. Variables captured by lambdas must follow the "effectively final" rule.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>The variable will be referenced from the lambda and take the new value.</text>
+      <feedback format="html">
+        <text>Incorrect. The correct behavior is tied to the "effectively final" restriction.</text>
+      </feedback>
+    </answer>
+  </question>
+<question type="category">
     <category>
       <text>$course$/top/Final Exam/Week 11</text>
     </category>
@@ -7293,7 +8229,182 @@ What is the result?</text>
       </feedback>
     </answer>
   </question>
-  <question type="category">
+  
+<question type="multichoice">
+    <name>
+      <text>Which method can turn a Stream into a List?</text>
+    </name>
+    <questiontext format="html">
+      <text>Which method can turn a Stream into a List?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text/>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text/>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text/>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text>collect</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>filter</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>map</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>reduce</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>flatMap</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+  </question>
+<question type="multichoice">
+    <name>
+      <text>Which of the following is **NOT** a terminal operation in the Streams API?</text>
+    </name>
+    <questiontext format="markdown">
+      <text>Which of the following is **NOT** a terminal operation in the Streams API?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text/>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text/>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text/>
+    </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>collect</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>reduce</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>map</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>forEach</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>count</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+  </question>
+<question type="multichoice">
+    <name>
+      <text>Which of the following operations is **stateful**?</text>
+    </name>
+    <questiontext format="html">
+      <text>Which of the following operations is **stateful**?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text/>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text/>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text/>
+    </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>filter</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>distinct</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>map</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>forEach</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>reduce</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+  </question>
+<question type="category">
     <category>
       <text>$course$/top/Final Exam/Week 12</text>
     </category>
@@ -7708,7 +8819,182 @@ What is the result?</text>
       </feedback>
     </answer>
   </question>
-  <question type="category">
+  
+<question type="multichoice">
+    <name>
+      <text>Purpose of Collectors Class</text>
+    </name>
+    <questiontext format="html">
+      <text>What is the primary purpose of the &lt;code&gt;Collectors&lt;/code&gt; class in Java Streams API?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>The &lt;code&gt;Collectors&lt;/code&gt; class provides implementations of the &lt;code&gt;Collector&lt;/code&gt; interface, which is used to collect or aggregate data from a stream into another form, such as a list, map, or a reduced value.</text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text/>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text/>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text/>
+    </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>To iterate over individual elements of a stream</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>To perform terminal operations on a stream</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>To transform a stream into a different kind of result, such as a collection or a single value</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>To sort elements in a stream</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>To modify elements within a stream</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+  </question>
+<question type="multichoice">
+    <name>
+      <text>Result of Collectors.toList()</text>
+    </name>
+    <questiontext format="html">
+      <text>What is the result of using &lt;code&gt;Collectors.toList()&lt;/code&gt; on a stream?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>&lt;code&gt;Collectors.toList()&lt;/code&gt; collects all elements of the stream into a &lt;code&gt;List&lt;/code&gt;.</text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text/>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text/>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text/>
+    </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>A Set containing all elements of the stream</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A Map containing all elements grouped by keys</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>A List containing all elements of the stream</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A single concatenated string of all elements</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A reduced value based on a binary operator</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+  </question>
+<question type="multichoice">
+    <name>
+      <text>Role of the Finisher in Custom Collectors</text>
+    </name>
+    <questiontext format="html">
+      <text>When creating a custom collector, what does the &lt;code&gt;finisher&lt;/code&gt; function do?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>The &lt;code&gt;finisher&lt;/code&gt; function converts the accumulated result into the final desired output in a custom collector.</text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text/>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text/>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text/>
+    </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>Combines partial results produced by the accumulator</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>Converts the accumulated result into the final result</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Splits the stream into two groups based on a predicate</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Provides a supplier for the mutable container</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Processes each element of the stream into a mutable container</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+  </question>
+<question type="category">
     <category>
       <text>$course$/top/Final Exam/Week 13</text>
     </category>

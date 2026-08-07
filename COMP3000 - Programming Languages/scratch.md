@@ -1,42 +1,14 @@
-# 2026 Week 1 Transcript Summary
+# Student query: "Is attendance marked in this unit?"
 
-Extracted from `2026/transcripts/week 1.vtt`.
+**No — attendance isn't marked directly, but it matters indirectly.**
 
----
+Classes aren't compulsory in this unit. You can miss a few with no special considerations required, and catch up afterwards. That said, two things pull you back in:
 
-## Teams / Team-Based Learning
+1. **Your team needs you there.** This is team-based learning — the team writes a contract in Week 1, and if you stop showing up they can replace you, leaving you with no team and no support for the assignment.
+2. **The logbook rubric item (~10% of the assignment) rewards consistency your teacher can see.** Full marks come from *timely* entries throughout the semester that your teacher actually saw you keeping. If you don't attend, you can still log in and write entries, but you lose the "seen by teacher" part that distinguishes full marks from a couple of marks.
 
-- Every assessment is individual despite teams — "you're doing work in a group, but you're submitting individually"
-- Team creates a common pool of work; rubric has an item for "have you extended your team's work"
-- TBL cycle: pre-reading → iRAT (individual) → tRAT (team) → FAT (classwide) → Application Task (~1hr team work on assignment-related task)
-- Teams are persistent through term; ~80% of assignment work happens in class
-- Teams handle non-contributors themselves; team contract written in week 1
-- Geographic seating tip: "sit next to someone you want to work with"
-- No minutes needed for TBL sessions
-- Competition concern (keeping work secret for individual marks) is theoretically possible but hasn't been seen in practice
-- Submission involves code + answering questions about the code (individually marking)
-- Classes not formally compulsory but "the team needs you there, so they're compulsory in that sense" — you will get kicked out of your team if you don't turn up
+So attendance itself isn't ticked off for a mark, but attending class is how you earn the logbook marks and keep your team intact.
 
-## Log Books
+Sources: Week 1 2026 lecture (~00:39:30, "classes are not compulsory"), faq.md "Are classes compulsory?", logbook rubric item in src/assignments.md (lines 158, 260).
 
-- Keep a personal logbook (not team) of workshop activity — "good study technique and good professional technique"
-- Format flexible: electronic, paper, whatever works
-- Show teacher at end of each class → rubric item (~15-20% of assessment section)
-- Entries submitted with assignment submission
-- Teachers give feedback based on logbook content
-- Timeliness matters more than quality
-- If you miss a week, catch up with an entry
-- "The logbook is a personal logbook, not a team logbook"
-
-## Assignments
-
-- Two submission points (A1, A2) on same major project
-- Submission = code + answers to questions about the code
-- AI use allowed if disclosed
-- Workshop tasks directly move assignment forward — "probably something that exactly will appear in your assignment"
-- Full assignment released earlier than students expect
-- Assignment = practical material; exam = theoretical (50/50 split)
-- Self-study exercises more valuable for exam than assignment
-- Rubrics released early (maybe week 2)
-- Expanding on team's work earns extra marks
-- "It's not like a group assignment where someone sends you some work on a Tuesday afternoon to fill in the gap"
+Note: in 2024 they did formally tick off attendance (2024/transcripts/week_1.vtt ~00:29:48), but the 2026 approach is the "not compulsory, but logbook + team" model above.

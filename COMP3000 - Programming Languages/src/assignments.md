@@ -137,7 +137,7 @@ question: |
     What folder is the "working folder" to compile your parser? & \\ \hline
     What command(s) will compile your parser? & \\ \hline
     In your language, how long does it take all the water to work through a river system after 1 day of rain? & \\ \hline
-    Does your language include statements or is it an expression langauge? & \\ \hline
+    Does your language include statements or is it an expression language? & \\ \hline
     Which chapter of the book have you used as the starting point for your solution? & \\ \hline
     \end{tabular}
 
@@ -182,12 +182,12 @@ question: |
     Your task in this assignment is to add \emph{evaluation} and \emph{dams} to your language.
 
     \subsubsection*{Evaluation}
-    Submission One left off with an expression language.  Many of you added statements because it really made sense.  From this starting point you should add evaluation for your expression langauge.  Evaluation means implementing an interpreter which evaluates expressions to some value. The value may be a single number or a sequence of numbers or anything else that makes sense for your language.  You should ensure this value is output in some way so your marker can see it.  We have set two levels of achievement in the rubric depending on the capabilities of your interpreter.  You will almost certainly need to add statements and variables to achieve these things and we have provided an example solution for these in the exemplar.
+    Submission One left off with an expression language.  Many of you added statements because it really made sense.  From this starting point you should add evaluation for your expression language.  Evaluation means implementing an interpreter which evaluates expressions to some value. The value may be a single number or a sequence of numbers or anything else that makes sense for your language.  You should ensure this value is output in some way so your marker can see it.  We have set two levels of achievement in the rubric depending on the capabilities of your interpreter.  You will almost certainly need to add statements and variables to achieve these things and we have provided an example solution for these in the exemplar.
     
     Explanation vids have been provided for each rubric item to show you an example of what this can look like.
 
     \subsubsection*{Dams}
-    Dams are human controlled flow adjustment mechanisms.  Sometime they allow all the flow through, sometimes they increase the flow, sometimes they stop or reduce the flow.  Your tasks is to add a syntax and evaluation for dams into your langauge.  The rubric specifies what grades will be given for different levels of achievement in this item.
+    Dams are human controlled flow adjustment mechanisms.  Sometime they allow all the flow through, sometimes they increase the flow, sometimes they stop or reduce the flow.  Your tasks is to add a syntax and evaluation for dams into your language.  The rubric specifies what grades will be given for different levels of achievement in this item.
 
     Explanation vids have been provided for each rubric item to show you an example of what this can look like.
 
@@ -206,6 +206,7 @@ question: |
     \item The rainfall is given as an argument to the program running script
     \item The interpreter has some default rainfall built-in.  This is what mine did with a default of 1mm.
     \end{itemize}
+    The \emph{catchment size} --- the area of land that drains into the river --- should also be user-definable; your marker will check for it.
 
 
 
@@ -214,7 +215,7 @@ question: |
     You may build your submission from your team's work, from the exemplar, or from your own work in workshops.  You are free to use your team's code, grammar, and design decisions as much as you like.  A worked example of a complete river system language (the exemplar) is described in the introduction to this document.
 
     \subsubsection*{The Structure of your submission}
-    You will submit two things - both of which are iLearn items available in the "Assessemnts" section:
+    You will submit two things - both of which are iLearn items available in the "Assessments" section:
     \begin{itemize}
     \item A zip file containing your interpreter and example programs\\ (url is \verb+https://ilearn.mq.edu.au/mod/assign/view.php?id=8940558+)
     \item A completed quiz with instructions for your marker\\ (url is  \verb+https://ilearn.mq.edu.au/mod/quiz/view.php?id=8997793+)
@@ -240,21 +241,28 @@ question: |
     \subsubsection*{Use of Generative AI}
     An ability to use Generative AI is not a learning outcome of this course but GenAI is a tool you may choose to use along your journey.  If your submission is primarily AI generated, you will likely find yourself in the bottom of each rubric item.  Lox and Nystrom's notation are not well represented in AI training sets and Gen AIs are generally bad at language design.  We value, and give grades for, your contribution to the solution since it is you (not the GenAI vendor) who is earning the grade.
 
+    \begin{note}
+    You are free to use any and everything from your team's work on this task.  You may not use other team's work directly or solicit for solutions.  These remain contraventions of academic integrity.  The work of the team belongs to all team members, so they can submit that without contravening academic integrity.  However, this is your own submission.  You can, and should, improve upon your team's work as much as possible.  We have included a "similarity/creativity" score in the rubric so we can reward solutions that go beyond what was done in class.  Note that \emph{the document must be your own work}.  It can heavily reference the team's work, but you should write it from scratch yourself.
+
+    You are also free to use any of the example solutions given by unit staff without referencing them.
+    \end{note}
+
     \subsubsection*{Rubric}
-    The rubric has a total of 12 marks which are scaled up to the 25\% of the assignment constribution to your final mark.
+    The rubric has a total of 16 marks which are scaled up to the 25\% of the assignment contribution to your final mark.
 
     \begin{tabular}{p{0.7\textwidth}|r}
     functionality & max marks for this item \\
     \hline
-    Your language must be able to interpret an expression which describes simple river flows.  The interpreter must output something when it is finished indicating at least one of the flows in the system.  We recommend outputting all named flows, but you could have a special output expression in which case you will output just that expression. & 2 \\ \hline
-    Your language can model the flow over multiple days and the output of your interpreter shows the predicted flows on all those days.  As with the last item, you may output just one flow, or all named flows, or whatever makes most sense for your language. & 2 \\ \hline
-    Your language has a syntax to support dams.  Dams don't always let all or none of the flow through, they run some "algorithm" to decide how much flow to let through.  Provide example programs demonstrating your dam syntax and your parser can successfully parse those programs.  Your marker may write their own program so please include a full grammar here. & 2 \\ \hline
-    The interpreter can run the dam's algorithm accurately and downstream river flows reflect its behaviour. & 2 \\ \hline
-    The output from a dam can depend on at least two of the following: the flow into the dam, today's rain, the dam level. You may add others if you like. & 2 \\ \hline
-    How well does this language express the underlying concepts.  I.e. have you chosen sensible keywords and syntax structures and have your implemented an interesting language overall.  & 1 \\ \hline
-    Uniqueness and creativity.  You can present your work in the week 13 class to guarantee full marks for this rubric item & 1 \\ \hline
+    Your language must be able to interpret an expression which describes simple river flows.  The interpreter must output something when it is finished indicating at least one of the flows in the system.  We recommend outputting all named flows, but you could have a special output expression in which case you will output just that expression.  \newline Rainfall and river catchment size should be user-definable. & 2 \\ \hline
+    Your language can model the flow over multiple days and the output of your interpreter shows the predicted flows on all those days.  As with the last item, you may output just one flow, or all named flows, or whatever makes most sense for your language.  \newline Flows should carry over between days --- predicted flows depend on previous days' water, not just today's rainfall. & 2 \\ \hline
+    Your language has a syntax to support dams.  Dams don't always let all or none of the flow through, they run some "algorithm" to decide how much flow to let through.  Provide example programs demonstrating your dam syntax and your parser can successfully parse those programs.  Your marker may write their own program so please include a full grammar here.  \newline Grammar should be complete and match your example programs, so the marker can write their own. & 2 \\ \hline
+    The interpreter can run the dam's algorithm accurately and downstream river flows reflect its behaviour.  \newline Sensible behaviour for no-flow, half-flow, and full-flow dams; check the release fraction doesn't exceed 1; dam parameters should be user-settable. & 2 \\ \hline
+    The output from a dam can depend on at least two of the following: the flow into the dam, today's rain, the dam level. You may add others if you like.  \newline Explain your design decisions and implementation steps --- this explanation is worth half of this item's marks. & 2 \\ \hline
+    Log-book entries showing consistent workshop engagement throughout the semester.  No logbook = 0 marks.  Complete and timely entries = full marks. & 2 \\ \hline
+    How well does this language express the underlying concepts.  I.e. have you chosen sensible keywords and syntax structures and have your implemented an interesting language overall.  & 2 \\ \hline
+    Uniqueness and creativity.  You can present your work in the week 13 class to guarantee full marks for this rubric item & 2 \\ \hline
     \end{tabular}
-    Note the quiz (which you can view any time) does expand upon these rubric descritions to aid in your submission.
+    Note the quiz (which you can view any time) does expand upon these rubric descriptions to aid in your submission.
 
     \newpage
 answer: |

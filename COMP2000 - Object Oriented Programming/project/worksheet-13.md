@@ -1,8 +1,6 @@
-# COMP2000 Worksheet 2 — Final Submission (Week 13)
+# COMP2000 Worksheet 2 — Final Submission
 
 **Student name:**
-
-**Team name:**
 
 **GitHub repo URL:**
 
@@ -10,7 +8,7 @@
 
 ## 1. Design Patterns
 
-**1.1.** Which design pattern(s) did your team implement? Name them and state where each appears in your codebase.
+**1.1.** Which design pattern(s) did you implement? Name them and state where each appears in your codebase.
 
 
 
@@ -52,15 +50,15 @@
 
 ---
 
-## 3. Project Showcase
+## 3. Uniqueness and Creativity
 
-**3.1.** Describe your project in 2–3 sentences. What does it do? Who is the audience?
-
-
+**3.1.** What did you add to your simulation that went beyond the in-class activities? Describe the feature and what inspired it.
 
 
 
-**3.2.** What is the single most technically interesting feature of your project? Explain how it works.
+
+
+**3.2.** Paste a code snippet or describe a design decision that demonstrates emergent behaviour, non-trivial complexity, or a genuinely surprising outcome.
 
 
 
@@ -86,7 +84,7 @@
 
 - What was the most important concept you learned?
 
-- What design trade-off did your team face, and how did you resolve it?
+- What design trade-off did you face, and how did you resolve it?
 
 - If you started over, what would you do differently?
 

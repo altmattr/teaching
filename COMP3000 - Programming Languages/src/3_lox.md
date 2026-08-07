@@ -74,6 +74,11 @@ question: |
     \includegraphics{src/3_second.jpg}
 
     Once you have this done, go have some fun with logo and with generating logo programs.  If you have time to come up with a really fun generated program, please share the lox program that generated it with the class.
+
+    \subsubsection*{Reporting Period / Logbook Advice}
+    During the reporting period, share the most creative turtle program your team generated. Listen to what other teams came up with, generating programs from programs is a weird idea and different teams will have very different approaches.
+
+    For your logbook this week: note one generated turtle program from another team that impressed you, and what made it clever.
     \newpage
 answer: |
     I'm going to start with a lox program that outputs the string "fd 10" which is the logo program for going forward 10 units.
@@ -179,6 +184,8 @@ What will be the output of the following lox program
 Match the language feature with its job{
     =statement -> produce an effect
     =expression -> produce a value
+    =variable -> represents a value
+    =function -> produces a value, an effect, both, or neither
 }
 
 ## types of inheritance <gift>
@@ -188,6 +195,12 @@ Which of the following approaches to OO language design did the text book author
   ~-33%objects
   ~-33%sharing
   ~-33%inheritance
+}
+
+## type checking <gift>
+"Lox does no type checking."{
+    =False, Lox checks types, but at run time rather than at compile time.
+    ~True, dynamic typing means no type checking happens at all.
 }
 
 

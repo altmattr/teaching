@@ -127,6 +127,12 @@ print(s(k)(i)(k("a")("b")));
 ## assignment <essay>
 question: |
   Work in your team on your assignment
+
+  \subsubsection*{Reporting Period / Logbook Advice}
+  During the reporting period, share one design decision your team made about your language and why. Listen to what other teams are prioritising in their languages, it might give you ideas for your own uniqueness and creativity marks.
+
+  For your logbook this week: record one feature or idea from another team's language that you'd like to explore for your submission.
+
 answer: |
   none
 

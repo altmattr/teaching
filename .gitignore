@@ -5,6 +5,10 @@
 *.dvi
 *.synctex.gz
 *.fdb_latexmk
+*.snm
+*.nav
+*.toc
+*.vrb
 **/build/*
 **/.DS_Store
 COMP2010*/archive/*
@@ -14,3 +18,4 @@ COMP2010*/archive/*
 *.swp
 .firebase
 **/__pycache__/
+*.zip

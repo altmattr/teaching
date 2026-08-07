@@ -32,6 +32,11 @@ question: |
 
     You will be given 45 mins to work on this at which point we will re-convene to discuss the various solutions that were created.  Your group will be expected to share your solution with the class after 1 hour.
     \end{note}
+
+    \subsubsection*{Reporting Period / Logbook Advice}
+    During the reporting period, share one clause from your team contract that you think is most important. Listen to how other teams handled expectations and exclusions, different teams will prioritise different things.
+
+    For your logbook this week: note one idea from another team's contract that you wish you'd included in yours.
     \newpage
 answer: |
     none provided

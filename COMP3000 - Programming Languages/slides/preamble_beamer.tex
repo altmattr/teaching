@@ -1,0 +1,135 @@
+\usepackage{arev} % order matters, putting this above allows FiraSans to override it for body text
+\usepackage[sfdefault]{FiraSans}
+\usepackage{inconsolata}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{amsmath}
+\usepackage[most]{tcolorbox}
+
+\usepackage{xcolor}
+\definecolor{blackish}{RGB}{56,58,54}
+\definecolor{redish}{RGB}{109,41,49}
+\definecolor{red}{RGB}{152,41,50}
+\definecolor{orangeish}{RGB}{188,71,0}
+\definecolor{blueish}{RGB}{25,33,139}
+
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}[triangle]
+\setbeamertemplate{enumerate items}[default]
+
+\setbeamercolor{structure}{fg=blueish}
+\setbeamercolor{title}{fg=redish}
+\setbeamercolor{subtitle}{fg=blackish}
+\setbeamercolor{frametitle}{fg=blackish}
+\setbeamercolor{frametitle rule}{fg=redish}
+\setbeamercolor{footline}{fg=blackish}
+\setbeamercolor{author}{fg=blackish}
+\setbeamercolor{date}{fg=blackish}
+\setbeamercolor{normal text}{fg=blackish}
+\setbeamercolor{block title}{fg=white,bg=blueish!80}
+\setbeamercolor{block body}{bg=blueish!5}
+\setbeamercolor{block title alerted}{fg=white,bg=red!80}
+\setbeamercolor{block body alerted}{bg=red!5}
+\setbeamercolor{block title example}{fg=white,bg=orangeish!80}
+\setbeamercolor{block body example}{bg=orangeish!5}
+
+\setbeamertemplate{frametitle}{
+  \vskip0.2em
+  {\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle\par}
+  {\color{redish}\hrule height 0.5pt \vspace{0.1em}}
+  \vskip0.2em
+}
+
+\setbeamertemplate{footline}{%
+  \hfill%
+  {\color{red}\scriptsize COMP3000 Programming Languages}\hspace{0.4em}%
+  {\includegraphics[height=0.4cm]{logo.jpg}}\hspace{0.4em}%
+  {\color{blackish}\scriptsize\insertframenumber/\inserttotalframenumber}\hspace{0.4em}\vspace{0.2em}
+}
+
+\setbeamertemplate{title page}{%
+  \vbox{}
+  \vfill
+  \begingroup
+    \centering
+    {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
+    \vskip0.5em
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}
+    \vskip1em
+    {\color{redish}\hrule height 0.8pt\par}
+    \vskip1em
+    {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}
+    \vskip0.3em
+    {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}
+  \endgroup
+  \vfill
+}
+
+\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\texttt}
+
+\lstset{basicstyle=\ttfamily}
+
+\newtcolorbox{aside}[1][]{
+  title=Aside,
+  width=0.9\textwidth,
+  fonttitle=\bfseries,
+  breakable,
+  fonttitle=\bfseries\color{black},
+  colframe=blueish!80,
+  colback=blueish!2
+  #1}
+
+\newtcolorbox{goodtoknow}[1][]{
+  title=Good to know,
+  width=0.9\textwidth,
+  fonttitle=\bfseries,
+  breakable,
+  fonttitle=\bfseries\color{black},
+  colframe=blueish!80,
+  colback=blueish!2
+  #1}
+
+\newtcolorbox{notebox}[1][]{
+  title=Note,
+  width=\textwidth,
+  fonttitle=\bfseries,
+  breakable,
+  fonttitle=\bfseries\color{black},
+  colframe=orangeish!80,
+  colback=orangeish!2
+  #1}
+
+\newtcolorbox{hint}[1][]{
+  title=Hint,
+  width=\textwidth,
+  fonttitle=\bfseries,
+  breakable,
+  fonttitle=\bfseries\color{white},
+  colframe=blueish!80,
+  colback=blueish!2
+  #1}
+
+\newtcolorbox{todo}[1][]{
+  title=!! TODO !!,
+  width=\textwidth,
+  fonttitle=\bfseries,
+  breakable,
+  fonttitle=\bfseries\color{white},
+  colframe=red!80,
+  colback=red!2
+  #1}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blueish,
+  urlcolor=blueish,
+  filecolor=blueish
+}

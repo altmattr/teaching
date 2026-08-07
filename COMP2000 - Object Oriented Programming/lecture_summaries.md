@@ -9,9 +9,10 @@ All lectures are 110 minutes (1 h 50). Timestamps are cumulative: the time at wh
   - Walk through the three-tree model (working directory, staging area, repository) with a diagram so students understand where changes live at each stage. Move on by 0:15.
   - Cover the basic workflow: init, clone, add, commit, log, status. Run each command live so students see what git does at each step. Move on by 0:35.
   - Explain synchronisation: fetch, pull, push, and working with remotes. Students need to understand how to share work with their team. Move on by 0:50.
-  - Show how to set up a GitHub repo, add collaborators, and the difference between SSH and HTTPS. Move on by 1:00.
-  - Run a live demo of the team chat exercise (commits as messages). This is the main activity and it helps students see why commit messages matter. Move on by 1:20.
-  - Give students a git log to trace through. They interpret the history and reconstruct what happened. Move on by 1:35.
+  - Run a live demo of setting up GitHub from scratch: create an account, install Git, configure your identity with `git config --global user.name` and `user.email`, generate an SSH key and add it to the account, then verify with `ssh -T git@github.com`. Move on by 1:00.
+  - Show how to set up a GitHub repo, add collaborators, and the difference between SSH and HTTPS. Move on by 1:15.
+  - Run a live demo of the team chat exercise (commits as messages). This is the main activity and it helps students see why commit messages matter. Move on by 1:30.
+  - Give students a git log to trace through. They interpret the history and reconstruct what happened. Move on by 1:40.
   - Leave time for Q&A and a quick review before wrapping up. Move on by 1:50.
 
 ---

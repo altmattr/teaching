@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="questions.xsl"?>
 <quiz>
   <question type="category">
     <category>
-      <text>$course$/top/RATS/week 01</text>
+      <text>$course$/top/RATS/week 03</text>
     </category>
     <info format="html">
       <text/>
@@ -11,10 +12,19 @@
   </question>
   <question type="multichoice">
     <name>
-      <text>TBL 01</text>
+      <text>Book reference vs object vs class</text>
     </name>
     <questiontext format="html">
-      <text>Which of the following shows the correct order of phases in the Team-Based Learning process?</text>
+      <text>&lt;p&gt;Given the following class and instantiation:&lt;/p&gt;&lt;pre&gt;public class Book {
+    String title;
+    int pages;
+    public Book(String t, int p) {
+        title = t;
+        pages = p;
+    }
+}
+
+Book b = new Book("Java", 300);&lt;/pre&gt;&lt;p&gt;What does &lt;code&gt;b&lt;/code&gt; refer to?&lt;/p&gt;</text>
     </questiontext>
     <generalfeedback format="html">
       <text/>
@@ -24,42 +34,66 @@
     <hidden>0</hidden>
     <idnumber/>
     <single>true</single>
-    <shuffleanswers>true</shuffleanswers>
+    <shuffleanswers>false</shuffleanswers>
     <answernumbering>abc</answernumbering>
-    <showstandardinstruction>0</showstandardinstruction>
+    <showstandardinstruction>1</showstandardinstruction>
     <correctfeedback format="html">
-      <text>Your answer is correct.</text>
+      <text/>
     </correctfeedback>
     <partiallycorrectfeedback format="html">
-      <text>Your answer is partially correct.</text>
+      <text/>
     </partiallycorrectfeedback>
     <incorrectfeedback format="html">
-      <text>Your answer is incorrect.</text>
+      <text/>
     </incorrectfeedback>
-    <shownumcorrect/>
-    <answer fraction="0" format="html">
-      <text>Clarification Session &gt; Application Task &gt; IRAT &gt; TRAT &gt; Preparation</text>
-      <feedback format="html"><text/></feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>Preparation &gt; Clarification Session &gt; Application Task &gt; IRAT &gt; TRAT</text>
-      <feedback format="html"><text/></feedback>
-    </answer>
     <answer fraction="100" format="html">
-      <text>Preparation &gt; IRAT &gt; TRAT &gt; Clarification Session &gt; Application Task</text>
-      <feedback format="html"><text/></feedback>
+      <text>A reference to a Book object in memory.</text>
+      <feedback format="html">
+        <text>Correct! The class is the blueprint, `new Book(...)` creates the object, and `b` holds a reference to that object.</text>
+      </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text>IRAT &gt; Preparation &gt; TRAT &gt; Application Task &gt; Clarification Session</text>
-      <feedback format="html"><text/></feedback>
+      <text>A second Book class created from the original class definition.</text>
+      <feedback format="html">
+        <text>Classes are not created at runtime with `new`; only objects are.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>The Book object itself, stored directly inside the variable `b`.</text>
+      <feedback format="html">
+        <text>In Java, object variables hold references, not the objects themselves.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A method call that returns a newly created Book object.</text>
+      <feedback format="html">
+        <text>`new Book(...)` creates the object, but `b` is the variable that refers to it.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A copy of the Book class definition.</text>
+      <feedback format="html">
+        <text>Each instantiation does not copy the class; it creates one object from the single class blueprint.</text>
+      </feedback>
     </answer>
   </question>
   <question type="multichoice">
     <name>
-      <text>TBL 02</text>
+      <text>Constructor initialization trace</text>
     </name>
     <questiontext format="html">
-      <text>What is the main purpose of the Individual Readiness Assurance Test (iRAT)?</text>
+      <text>&lt;p&gt;What is the output of the following code?&lt;/p&gt;&lt;pre&gt;public class Counter {
+    private int count;
+    public Counter(int start) {
+        count = start;
+    }
+    public int getCount() {
+        return count;
+    }
+}
+
+Counter c = new Counter(7);
+System.out.println(c.getCount());&lt;/pre&gt;</text>
     </questiontext>
     <generalfeedback format="html">
       <text/>
@@ -69,42 +103,59 @@
     <hidden>0</hidden>
     <idnumber/>
     <single>true</single>
-    <shuffleanswers>true</shuffleanswers>
+    <shuffleanswers>false</shuffleanswers>
     <answernumbering>abc</answernumbering>
-    <showstandardinstruction>0</showstandardinstruction>
+    <showstandardinstruction>1</showstandardinstruction>
     <correctfeedback format="html">
-      <text>Your answer is correct.</text>
+      <text/>
     </correctfeedback>
     <partiallycorrectfeedback format="html">
-      <text>Your answer is partially correct.</text>
+      <text/>
     </partiallycorrectfeedback>
     <incorrectfeedback format="html">
-      <text>Your answer is incorrect.</text>
+      <text/>
     </incorrectfeedback>
-    <shownumcorrect/>
     <answer fraction="0" format="html">
-      <text>To test your ability to memorize facts from lectures</text>
-      <feedback format="html"><text/></feedback>
+      <text>0</text>
+      <feedback format="html">
+        <text>The field starts at 0 but the constructor sets it to the argument before getCount() is called.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>null</text>
+      <feedback format="html">
+        <text>count is an int, not a reference type, so it can never be null.</text>
+      </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text>To ensure you have completed the pre-class preparation and understand key concepts</text>
-      <feedback format="html"><text/></feedback>
+      <text>7</text>
+      <feedback format="html">
+        <text>Correct! The constructor runs when `new Counter(7)` is executed, setting count to 7.</text>
+      </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text>To determine which team you’ll be placed into</text>
-      <feedback format="html"><text/></feedback>
+      <text>1</text>
+      <feedback format="html">
+        <text>The constructor argument is 7, not 1.</text>
+      </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text>To practice answering exam-style questions</text>
-      <feedback format="html"><text/></feedback>
+      <text>Compilation error</text>
+      <feedback format="html">
+        <text>The code compiles; a constructor with an int parameter is valid.</text>
+      </feedback>
     </answer>
   </question>
   <question type="multichoice">
     <name>
-      <text>TBL 03</text>
+      <text>Constructor declaration rules</text>
     </name>
     <questiontext format="html">
-      <text>During the Team Readiness Assurance Test (tRAT), what is expected of students?</text>
+      <text>&lt;p&gt;Which of the following declarations will cause a compilation error?&lt;/p&gt;&lt;pre&gt;public class Account {
+    public Account() { }          // I
+    public void Account() { }     // II
+    public static Account() { }   // III
+}&lt;/pre&gt;</text>
     </questiontext>
     <generalfeedback format="html">
       <text/>
@@ -114,42 +165,66 @@
     <hidden>0</hidden>
     <idnumber/>
     <single>true</single>
-    <shuffleanswers>true</shuffleanswers>
+    <shuffleanswers>false</shuffleanswers>
     <answernumbering>abc</answernumbering>
-    <showstandardinstruction>0</showstandardinstruction>
+    <showstandardinstruction>1</showstandardinstruction>
     <correctfeedback format="html">
-      <text>Your answer is correct.</text>
+      <text/>
     </correctfeedback>
     <partiallycorrectfeedback format="html">
-      <text>Your answer is partially correct.</text>
+      <text/>
     </partiallycorrectfeedback>
     <incorrectfeedback format="html">
-      <text>Your answer is incorrect.</text>
+      <text/>
     </incorrectfeedback>
-    <shownumcorrect/>
     <answer fraction="0" format="html">
-      <text>Each student completes the quiz independently again</text>
-      <feedback format="html"><text/></feedback>
+      <text>II and III</text>
+      <feedback format="html">
+        <text>II is not a constructor: it has a return type, so it is a regular method and compiles.</text>
+      </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text>The team assigns one person to answer for the group</text>
-      <feedback format="html"><text/></feedback>
+      <text>II only</text>
+      <feedback format="html">
+        <text>A method with the same name as the class is allowed as long as it declares a return type.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>None — all three are valid constructors</text>
+      <feedback format="html">
+        <text>III fails to compile: a constructor cannot be marked static.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>I and II</text>
+      <feedback format="html">
+        <text>I is a perfectly valid no-argument constructor.</text>
+      </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text>Students discuss each question as a team and reach a consensus before submitting their answer to each question</text>
-      <feedback format="html"><text/></feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>The team submits the same answers from the IRAT without discussion</text>
-      <feedback format="html"><text/></feedback>
+      <text>III only</text>
+      <feedback format="html">
+        <text>Correct! Constructors cannot be static. `void Account()` is a legal (if confusingly named) method, not a constructor.</text>
+      </feedback>
     </answer>
   </question>
   <question type="multichoice">
     <name>
-      <text>TBL 04</text>
+      <text>This keyword shadowing trace</text>
     </name>
     <questiontext format="html">
-      <text>What should you expect during the clarification session in Team-Based Learning?</text>
+      <text>&lt;p&gt;What is printed by the following code?&lt;/p&gt;&lt;pre&gt;public class Person {
+    private String name;
+    public Person(String name) {
+        name = name;
+    }
+    public String getName() {
+        return name;
+    }
+}
+
+Person p = new Person("Alice");
+System.out.println(p.getName());&lt;/pre&gt;</text>
     </questiontext>
     <generalfeedback format="html">
       <text/>
@@ -159,42 +234,64 @@
     <hidden>0</hidden>
     <idnumber/>
     <single>true</single>
-    <shuffleanswers>true</shuffleanswers>
+    <shuffleanswers>false</shuffleanswers>
     <answernumbering>abc</answernumbering>
-    <showstandardinstruction>0</showstandardinstruction>
+    <showstandardinstruction>1</showstandardinstruction>
     <correctfeedback format="html">
-      <text>Your answer is correct.</text>
+      <text/>
     </correctfeedback>
     <partiallycorrectfeedback format="html">
-      <text>Your answer is partially correct.</text>
+      <text/>
     </partiallycorrectfeedback>
     <incorrectfeedback format="html">
-      <text>Your answer is incorrect.</text>
+      <text/>
     </incorrectfeedback>
-    <shownumcorrect/>
     <answer fraction="0" format="html">
-      <text>Your instructor will reteach the entire pre-class content in a lecture format</text>
-      <feedback format="html"><text/></feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>Only teams that failed the quiz will participate, teams that pass will move on</text>
-      <feedback format="html"><text/></feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>You will retake the quiz individually for a second attempt</text>
-      <feedback format="html"><text/></feedback>
+      <text>Alice</text>
+      <feedback format="html">
+        <text>Alice is only stored in the parameter, not in the field. The parameter is discarded when the constructor ends.</text>
+      </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text>Teams that answered correctly may be asked to explain their thinking to help other teams</text>
-      <feedback format="html"><text/></feedback>
+      <text>null</text>
+      <feedback format="html">
+        <text>Correct! The parameter shadows the field, so `name = name` assigns the parameter to itself. The field is never set; use `this.name = name`.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Compilation error</text>
+      <feedback format="html">
+        <text>The code compiles; the problem is logical, not syntactic.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>No output — the program crashes with an exception</text>
+      <feedback format="html">
+        <text>The program runs without exceptions; it just prints null.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>"</text>
+      <feedback format="html">
+        <text>The empty string is never assigned; the field keeps its default value of null.</text>
+      </feedback>
     </answer>
   </question>
   <question type="multichoice">
     <name>
-      <text>TBL 05</text>
+      <text>Method overloading dispatch trace</text>
     </name>
     <questiontext format="html">
-      <text>What is the main purpose of the Application Task in Team-Based Learning?</text>
+      <text>&lt;p&gt;What is printed by the following code?&lt;/p&gt;&lt;pre&gt;public class Printer {
+    public void print(int x) { System.out.println("int"); }
+    public void print(String s) { System.out.println("String"); }
+    public void print(double d) { System.out.println("double"); }
+}
+
+Printer p = new Printer();
+p.print(5);
+p.print(2.5);
+p.print("hi");&lt;/pre&gt;</text>
     </questiontext>
     <generalfeedback format="html">
       <text/>
@@ -204,42 +301,71 @@
     <hidden>0</hidden>
     <idnumber/>
     <single>true</single>
-    <shuffleanswers>true</shuffleanswers>
+    <shuffleanswers>false</shuffleanswers>
     <answernumbering>abc</answernumbering>
-    <showstandardinstruction>0</showstandardinstruction>
+    <showstandardinstruction>1</showstandardinstruction>
     <correctfeedback format="html">
-      <text>Your answer is correct.</text>
+      <text/>
     </correctfeedback>
     <partiallycorrectfeedback format="html">
-      <text>Your answer is partially correct.</text>
+      <text/>
     </partiallycorrectfeedback>
     <incorrectfeedback format="html">
-      <text>Your answer is incorrect.</text>
+      <text/>
     </incorrectfeedback>
-    <shownumcorrect/>
     <answer fraction="0" format="html">
-      <text>To give each student the chance to revise their quiz answers</text>
-      <feedback format="html"><text/></feedback>
+      <text>int, String, double</text>
+      <feedback format="html">
+        <text>2.5 matches the double parameter, not the String one.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>String, double, int</text>
+      <feedback format="html">
+        <text>The order of calls is print(5), print(2.5), print("hi").</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Compilation error</text>
+      <feedback format="html">
+        <text>Each call has an exact argument-type match, so overload resolution succeeds.</text>
+      </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text>Having been primed in iRAT/tRAT, students now apply knowledge and concepts to a realistic problem that requires team collaboration and decision-making</text>
-      <feedback format="html"><text/></feedback>
+      <text>int, double, String (one per line)</text>
+      <feedback format="html">
+        <text>Correct! Overloading selects the method by argument type: 5 is int, 2.5 is double, and "hi" is String.</text>
+      </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text>Having been primed in iRAT/tRAT, students now work to address the questions they got wrong and prove they have taken steps to fill knowledge gaps</text>
-      <feedback format="html"><text/></feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>To reflect and evaluate the performance of their team and preparation</text>
-      <feedback format="html"><text/></feedback>
+      <text>5, 2.5, hi</text>
+      <feedback format="html">
+        <text>The methods print the type names, not the argument values.</text>
+      </feedback>
     </answer>
   </question>
   <question type="multichoice">
     <name>
-      <text>TBL 06</text>
+      <text>Object state mutation trace</text>
     </name>
     <questiontext format="html">
-      <text>Which of the following is a common challenge students may experience in Team-Based Learning, especially in the early weeks?</text>
+      <text>&lt;p&gt;What is the output of the following code?&lt;/p&gt;&lt;pre&gt;public class Entity {
+    private int health;
+    public Entity() {
+        health = 100;
+    }
+    public void takeDamage(int amount) {
+        health = health - amount;
+    }
+    public int getHealth() {
+        return health;
+    }
+}
+
+Entity e = new Entity();
+e.takeDamage(30);
+e.takeDamage(20);
+System.out.println(e.getHealth());&lt;/pre&gt;</text>
     </questiontext>
     <generalfeedback format="html">
       <text/>
@@ -249,42 +375,61 @@
     <hidden>0</hidden>
     <idnumber/>
     <single>true</single>
-    <shuffleanswers>true</shuffleanswers>
+    <shuffleanswers>false</shuffleanswers>
     <answernumbering>abc</answernumbering>
-    <showstandardinstruction>0</showstandardinstruction>
+    <showstandardinstruction>1</showstandardinstruction>
     <correctfeedback format="html">
-      <text>Your answer is correct.</text>
+      <text/>
     </correctfeedback>
     <partiallycorrectfeedback format="html">
-      <text>Your answer is partially correct.</text>
+      <text/>
     </partiallycorrectfeedback>
     <incorrectfeedback format="html">
-      <text>Your answer is incorrect.</text>
+      <text/>
     </incorrectfeedback>
-    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>100</text>
+      <feedback format="html">
+        <text>The takeDamage calls modify the health field; it does not stay at its initial value.</text>
+      </feedback>
+    </answer>
     <answer fraction="100" format="html">
-      <text>Struggling to adapt to working closely with the same team over time</text>
-      <feedback format="html"><text/></feedback>
+      <text>50</text>
+      <feedback format="html">
+        <text>Correct! The constructor sets health to 100, then takeDamage reduces it by 30 and then 20.</text>
+      </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text>Feeling bored because most of the work is done individually</text>
-      <feedback format="html"><text/></feedback>
+      <text>0</text>
+      <feedback format="html">
+        <text>Health only reaches 0 if 100 total damage is taken; here only 50 is.</text>
+      </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text>Being unsure when to submit their weekly lab report</text>
-      <feedback format="html"><text/></feedback>
+      <text>30</text>
+      <feedback format="html">
+        <text>Both damage calls affect the same object's state.</text>
+      </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text>Having enough lecture content to revise for the final exam</text>
-      <feedback format="html"><text/></feedback>
+      <text>Compilation error</text>
+      <feedback format="html">
+        <text>The class and main logic are all valid Java.</text>
+      </feedback>
     </answer>
   </question>
+
   <question type="multichoice">
     <name>
-      <text>TBL 07</text>
+      <text>Static method instance field access</text>
     </name>
     <questiontext format="html">
-      <text>How often will we be doing TBL activities in this course?</text>
+      <text>&lt;p&gt;What happens when the following code is compiled?&lt;/p&gt;&lt;pre&gt;public class MathUtils {
+    private int version;
+    public static int add(int a, int b) {
+        return version + a + b;
+    }
+}&lt;/pre&gt;</text>
     </questiontext>
     <generalfeedback format="html">
       <text/>
@@ -294,34 +439,47 @@
     <hidden>0</hidden>
     <idnumber/>
     <single>true</single>
-    <shuffleanswers>true</shuffleanswers>
+    <shuffleanswers>false</shuffleanswers>
     <answernumbering>abc</answernumbering>
-    <showstandardinstruction>0</showstandardinstruction>
+    <showstandardinstruction>1</showstandardinstruction>
     <correctfeedback format="html">
-      <text>Your answer is correct.</text>
+      <text/>
     </correctfeedback>
     <partiallycorrectfeedback format="html">
-      <text>Your answer is partially correct.</text>
+      <text/>
     </partiallycorrectfeedback>
     <incorrectfeedback format="html">
-      <text>Your answer is incorrect.</text>
+      <text/>
     </incorrectfeedback>
-    <shownumcorrect/>
     <answer fraction="0" format="html">
-      <text>In class in weeks 1, 3, 5, 7 and 9</text>
-      <feedback format="html"><text/></feedback>
+      <text>Compiles and runs, returning 0.</text>
+      <feedback format="html">
+        <text>The code does not compile because the static method references a non-static field.</text>
+      </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text>Never after this first session</text>
-      <feedback format="html"><text/></feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>Every week until Session 2 recess</text>
-      <feedback format="html"><text/></feedback>
+      <text>Compilation error: methods cannot be declared static.</text>
+      <feedback format="html">
+        <text>Static methods are perfectly legal; the problem is accessing the instance field.</text>
+      </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text>Every week in our classes</text>
-      <feedback format="html"><text/></feedback>
+      <text>Compilation error: a static method cannot access an instance field directly.</text>
+      <feedback format="html">
+        <text>Correct! `version` is an instance field, so it cannot be referenced from the static method without an object.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Runtime exception when add() is called.</text>
+      <feedback format="html">
+        <text>The failure happens at compile time, before any code runs.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Compiles; version defaults to 0, so add returns a + b.</text>
+      <feedback format="html">
+        <text>version is an instance field; even though it would default to 0, the reference to it from a static context does not compile.</text>
+      </feedback>
     </answer>
   </question>
 </quiz>

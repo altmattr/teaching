@@ -67,6 +67,11 @@ question: |
   \begin{note}
   There is three weeks work bundled up in this tasks but you can get parts of it to work if you are not completely up to speed.  On the other hand, if you have a version of Lox that has kept up with the text, it won't actually take much work to get this part going.
   \end{note}
+
+  \subsubsection*{Reporting Period / Logbook Advice}
+  During the reporting period, share what your team caught up on and any breakthroughs you had. Listen to what other teams struggled with and how they resolved it, someone else's solution might be just what you need.
+
+  For your logbook this week: note one thing that another team explained that helped you understand something better.
   \newpage
 
 answer: |

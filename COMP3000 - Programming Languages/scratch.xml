@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="category">
+    <category>
+      <text>$course$/top/3_lox/RAT</text>
+    </category>
+  </question>
+
+  <question type="truefalse">
+    <name>
+      <text>type checking</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA["Lox does no type checking."]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>1.0000000</penalty>
+    <hidden>0</hidden>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>false</text>
+      <feedback format="html">
+        <text>Lox checks types, but at run time rather than at compile time.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>true</text>
+      <feedback format="html">
+        <text>dynamic typing means no type checking happens at all.</text>
+      </feedback>
+    </answer>
+  </question>
+</quiz>

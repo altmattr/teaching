@@ -1,0 +1,561 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\input{slides/preamble_beamer.tex}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={COMP3000 Week 2},
+  pdfauthor={COMP3000 Programming Languages},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{COMP3000 Week 2}
+\subtitle{Little Languages + The Pipeline}
+\author{COMP3000 Programming Languages}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Last week in 60 seconds}
+\phantomsection\label{last-week-in-60-seconds}
+\begin{itemize}
+\tightlist
+\item
+  A \textbf{domain-specific language} (DSL) is a little language built
+  for one job
+\item
+  Examples: SQL, regex, LaTeX, Make, CSS, shell
+\item
+  When you can, \textbf{reuse an existing one} instead of rolling your
+  own
+\item
+  The big idea: you will \textbf{build your own} little language for
+  water flows
+\item
+  The pipeline, teased: \textbf{Scanner \(\rightarrow\) Parser
+  \(\rightarrow\) Interpreter}
+\end{itemize}
+
+\note{Recap from Week 1. Today we turn the three-word pipeline teaser
+into the full picture, and we use regex as a worked example of a little
+language.}
+\end{frame}
+
+\begin{frame}{From teaser to full picture}
+\phantomsection\label{from-teaser-to-full-picture}
+\begin{itemize}
+\tightlist
+\item
+  Last week: just the names -- Scanner, Parser, Interpreter
+\item
+  The real pipeline has more stages than that
+\item
+  Not every implementation walks the whole route
+\item
+  Today: the \textbf{complete map}, then where our implementation stops
+\end{itemize}
+
+\note{Set up the arc of the lecture: the full mountain, then why
+``compiler or interpreter?'' is the wrong question, then regex as a DSL
+that shows every idea in miniature.}
+\end{frame}
+
+\begin{frame}{Little languages, again}
+\phantomsection\label{little-languages-again}
+\begin{itemize}
+\tightlist
+\item
+  Ch 1: ``For every successful general-purpose language, there are a
+  thousand successful niche ones''
+\item
+  They are \textbf{pidgins tailor-built to a specific task}
+\item
+  Small on purpose: restricted syntax, restricted features
+\item
+  They lean on the machinery around them (their ``host'') for the hard
+  parts
+\end{itemize}
+
+\note{The definition again, but deeper. A DSL deliberately gives up
+generality to speak precisely about one domain. Think of sed, or the
+command language in a game: it does one job well and leans on the
+surrounding environment.}
+\end{frame}
+
+\begin{frame}{Reuse\ldots{} or roll your own?}
+\phantomsection\label{reuse-or-roll-your-own}
+\begin{itemize}
+\tightlist
+\item
+  ``When you can, good to reuse an existing one instead of rolling your
+  own''
+\item
+  Why: documentation, debuggers, editor support, syntax highlighting
+\item
+  ``Once you factor in all the other trappings, doing it yourself
+  becomes a tall order''
+\item
+  But when nothing fits your domain, building one is the right call --
+  that's this unit
+\end{itemize}
+
+\note{The trade-off from ch 1. Our domain (water flows) has no existing
+language, so we build one. But the default should always be to reuse.}
+\end{frame}
+
+\begin{frame}{The pipeline, in full}
+\phantomsection\label{the-pipeline-in-full}
+\begin{center}
+\includegraphics[width=0.85\textwidth]{text/site/image/a-map-of-the-territory/mountain.png}
+\end{center}
+
+\textbf{Scan \(\rightarrow\) Parse \(\rightarrow\) Static Analysis
+\(\rightarrow\) Optimise \(\rightarrow\) Code Gen \(\rightarrow\) VM
+\(\rightarrow\) Runtime}
+
+\note{Ch 2's map of the territory. Source text at the bottom, climb to
+where meaning is clear, descend to something the machine can run. We
+covered the first two last week; today we name the rest.}
+\end{frame}
+
+\begin{frame}{Front end, middle end, back end}
+\phantomsection\label{front-end-middle-end-back-end}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Front end}: where source text becomes a structured
+  representation
+
+  \begin{itemize}
+  \tightlist
+  \item
+    scanning and parsing
+  \end{itemize}
+\item
+  \textbf{Middle end}: where we reason about the program
+
+  \begin{itemize}
+  \tightlist
+  \item
+    static analysis and optimisation
+  \end{itemize}
+\item
+  \textbf{Back end}: where we produce something runnable
+
+  \begin{itemize}
+  \tightlist
+  \item
+    code generation, virtual machine, runtime
+  \end{itemize}
+\end{itemize}
+
+\note{The three traditional regions of a compiler. Our tree-walk
+interpreter only uses the front end and stops there -- it evaluates the
+tree directly.}
+\end{frame}
+
+\begin{frame}{Static analysis: seeing what the code does}
+\phantomsection\label{static-analysis-seeing-what-the-code-does}
+\begin{itemize}
+\tightlist
+\item
+  The parser knows the \emph{syntax}; static analysis works out the
+  \emph{meaning}
+\item
+  \textbf{Binding}: connecting each identifier to the variable or
+  function it refers to
+\item
+  \textbf{Type checking}: rejecting programs that don't make sense (in
+  typed languages)
+\item
+  Ch 2: ``get a high-level view of what the code is doing''
+\item
+  In Lox: a \textbf{resolver} pass walks the tree before we evaluate it
+\end{itemize}
+
+\note{Static analysis runs without executing anything. It's where a lot
+of errors get caught early. Our Lox interpreter adds this pass in the
+book's second part.}
+\end{frame}
+
+\begin{frame}[fragile]{Optimisation: doing less work}
+\phantomsection\label{optimisation-doing-less-work}
+\begin{itemize}
+\tightlist
+\item
+  If an expression always gives the same value, compute it once at build
+  time
+\item
+  \textbf{Constant folding}:
+\end{itemize}
+
+\vspace{0.5em}
+
+\texttt{pennyArea\ =\ 3.14159\ *\ (0.75\ /\ 2)\ *\ (0.75\ /\ 2);}
+
+becomes
+
+\texttt{pennyArea\ =\ 0.4417860938;}
+
+\begin{itemize}
+\tightlist
+\item
+  ``Optimization is a huge part of the programming language business''
+\end{itemize}
+
+\note{Constant folding from ch 2. We can do the arithmetic in the
+compiler and replace the expression with its result. Later the book
+pairs it with constant propagation.}
+\end{frame}
+
+\begin{frame}{Code generation: speaking the machine's language}
+\phantomsection\label{code-generation-speaking-the-machines-language}
+\begin{itemize}
+\tightlist
+\item
+  The back end converts our representation into runnable code
+\item
+  \textbf{Native code}: instructions for a real chip (x86, ARM)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    lightning fast, but tied to one architecture, and a lot of work
+  \end{itemize}
+\item
+  \textbf{Bytecode}: instructions for a \emph{virtual} machine
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ``a dense, binary encoding of the language's low-level operations''
+  \item
+    portable across architectures
+  \end{itemize}
+\end{itemize}
+
+\note{The design decision at the bottom of the mountain. Wirth and
+Richards produced p-code for a hypothetical machine so one compiler
+could target many chips.}
+\end{frame}
+
+\begin{frame}{Virtual machines and the runtime}
+\phantomsection\label{virtual-machines-and-the-runtime}
+\begin{itemize}
+\tightlist
+\item
+  A \textbf{VM} emulates a hypothetical chip; it runs the bytecode at
+  runtime
+\item
+  Slower than native code, but simple and portable
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ``Implement your VM in C, and you can run your language on any
+    platform with a C compiler''
+  \end{itemize}
+\item
+  The \textbf{runtime} provides services while a program runs:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    garbage collection, and tracking object types at runtime
+  \end{itemize}
+\end{itemize}
+
+\note{Language VMs (like Java's JVM, or Python's) vs system VMs (like
+VirtualBox). Our second interpreter in this unit is a bytecode VM.}
+\end{frame}
+
+\begin{frame}{Where our journey stops}
+\phantomsection\label{where-our-journey-stops}
+\begin{itemize}
+\tightlist
+\item
+  Our first interpreter is a \textbf{tree-walk interpreter}: scan,
+  parse, evaluate
+
+  \begin{itemize}
+  \tightlist
+  \item
+    no static analysis, no code generation, no VM -- it walks the tree
+    directly
+  \end{itemize}
+\item
+  Later in the unit we add the static-analysis pass
+\item
+  So we climb part of the mountain, and evaluate from the top
+\end{itemize}
+
+\note{Reassure students: we don't build the whole mountain. We take the
+tree-walk route, and the book's second half adds a bytecode VM. The
+other stages are context.}
+\end{frame}
+
+\begin{frame}{Compilers and interpreters}
+\phantomsection\label{compilers-and-interpreters}
+\begin{itemize}
+\tightlist
+\item
+  ``What's the difference?'' is like asking the difference between a
+  fruit and a vegetable
+\item
+  \textbf{Fruit} is a \emph{botanical} term; \textbf{vegetable} is
+  \emph{culinary}
+\item
+  Neither implies the negation of the other
+\item
+  Tomatoes are both; apples are fruit but not vegetables; carrots are
+  vegetables but not fruit
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.55\textwidth]{text/site/image/a-map-of-the-territory/plants.png}
+\end{center}
+
+\note{The ch 2 analogy. ``Compiled'' and ``interpreted'' are not two
+sides of a binary -- they are different ways of describing an
+implementation, and both can apply at once.}
+\end{frame}
+
+\begin{frame}{Compiling is an implementation technique}
+\phantomsection\label{compiling-is-an-implementation-technique}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Compiling}: translating source to some other, usually
+  lower-level, form
+
+  \begin{itemize}
+  \tightlist
+  \item
+    bytecode, machine code, or even another high-level language
+    (transpiling)
+  \end{itemize}
+\item
+  A \textbf{compiler} translates source but doesn't execute it -- you
+  run the output yourself
+\item
+  An \textbf{interpreter} takes source and executes it directly, ``from
+  source''
+\end{itemize}
+
+\note{Three crisp definitions from ch 2. These are properties of
+\emph{implementations}, not of languages.}
+\end{frame}
+
+\begin{frame}[fragile]{It's not about the language}
+\phantomsection\label{its-not-about-the-language}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{CPython}: runs your program from source (an interpreter), and
+  it \emph{has} a compiler -- it parses and compiles to bytecode
+  internally
+\item
+  \textbf{Go}: \texttt{go\ build} compiles and stops; \texttt{go\ run}
+  compiles \emph{then} executes -- it both \emph{is} and \emph{has} a
+  compiler
+\item
+  So ``is Java compiled or interpreted?'' is not meaningful
+\item
+  We can only answer for \textbf{particular implementations}
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.6\textwidth]{text/site/image/a-map-of-the-territory/venn.png}
+\end{center}
+
+\note{The overlapping region of the Venn diagram: interpreters that
+compile internally. Our second interpreter lives there too. Most
+``scripting'' languages work this way.}
+\end{frame}
+
+\begin{frame}[fragile]{Regex: a DSL for text}
+\phantomsection\label{regex-a-dsl-for-text}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Regular expressions} are a little language for pattern
+  matching in text
+\item
+  Match a pattern against a string,
+  e.g.~\texttt{\textbackslash{}d\{4\}-\textbackslash{}d\{2\}-\textbackslash{}d\{2\}}
+  matches a date
+\item
+  Look at its features and it is suspiciously like a general-purpose
+  language:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{variables}: capture groups, reused later
+  \item
+    \textbf{loops}: the \texttt{*} and \texttt{+} quantifiers
+  \item
+    \textbf{conditions}: the \texttt{?} operator\ldots{} sort of
+  \end{itemize}
+\end{itemize}
+
+\note{Regex is the worked DSL of the lecture. The features list here
+sets up the completeness discussion at the end.}
+\end{frame}
+
+\begin{frame}{Live on regexr.com}
+\phantomsection\label{live-on-regexr.com}
+\begin{itemize}
+\tightlist
+\item
+  Head to \textbf{regexr.com} and try it yourself
+\item
+  Try:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    an exact string, e.g.~``my presence''
+  \item
+    one of two strings, e.g.~``my presence'' or ``my friends''
+  \item
+    a repeated letter, e.g.~repeated p's or g's
+  \item
+    capture the first word of each character's dialogue
+  \end{itemize}
+\end{itemize}
+
+\note{Live demo on regexr.com. This mirrors the Week 2 workshop
+activity, where you do the same exploration and then write up your own
+example in the FAT.}
+\end{frame}
+
+\begin{frame}{What makes a language complete?}
+\phantomsection\label{what-makes-a-language-complete}
+\begin{itemize}
+\tightlist
+\item
+  A language is \textbf{complete} if it can express all possible
+  computations
+\item
+  All complete languages have equivalent expressive power
+\item
+  The \textbf{Turing view}: variables, conditions, and loops -- like a
+  Turing machine
+\item
+  The \textbf{Church view}: variables and functions -- like the lambda
+  calculus
+\item
+  ``This dual nature of computing is one of the most fascinating aspects
+  of programming language theory''
+\end{itemize}
+
+\note{The completeness test from the workshop. Knowing for sure takes
+real maths, but these two feature tests are a good approximation.}
+\end{frame}
+
+\begin{frame}{Wrap-up and Week 3 prep}
+\phantomsection\label{wrap-up-and-week-3-prep}
+\begin{itemize}
+\tightlist
+\item
+  Today's reading: \textbf{Chapters 1--2} (re-read if needed)
+\item
+  \textbf{Before next class}: read \textbf{Chapter 3} and complete the
+  Week 3 iRAT
+\item
+  Next week: \textbf{Lox} -- the language we build, and its features
+\item
+  Preview: a Lox program that drives turtle graphics
+\end{itemize}
+
+\note{Next week introduces Lox and the first real implementation work.
+Chapter 3 is short -- the iRAT will draw directly on it.}
+\end{frame}
+
+\end{document}

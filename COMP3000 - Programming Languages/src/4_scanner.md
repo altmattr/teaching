@@ -83,6 +83,8 @@ question: |
   but I have put some magic into that \verb+central_molo_rainfall+ variable.  It is \emph{not} just a number, it somehow captures the way rain makes its way into a creek in the days after the rainfall event.  It is a simple solution with powerful effects\footnote{\emph{This} is super-power of programming based solutions to this problem}.
 
 
+  A fully worked example of a river system language is available on iLearn.  The README explains the design decisions, core concepts, and possible extensions in detail.  It's one possible design, not a template, but reading it will show you how the pieces fit together.
+
   \subsubsection*{Your team's task}
 
   This week I want you to:
@@ -103,8 +105,13 @@ question: |
   \item All water that gets into a creek/river will also flow out of it.
   \item All water that falls from the sky will (within 10 days) make its way into the creek/river.
   \item Each catchment has one creek/river which drains it.
-  \end{enumerate}
-  \newpage
+    \end{enumerate}
+
+    \subsubsection*{Reporting Period / Logbook Advice}
+    During the reporting period, share the literal form your team chose for describing water flow and your reasoning. Listen to how other teams solved the same problem, there are many valid approaches and you might hear something better than yours.
+
+    For your logbook this week: record one literal design from another team that you think is more elegant than yours, and why.
+    \newpage
 
 answer: |
   \begin{note}

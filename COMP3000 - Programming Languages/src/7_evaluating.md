@@ -92,6 +92,11 @@ question: |
 
     \subsubsection*{The output}
     What will the output of the program be?  In Lox, we return a success code \emph{and} run any of the print commands.  We might not have print commands, will the program just silently run?  The whole point of this program is to work out the flow in the output river, so you should hard code your evaluator to print this value at the end of execution, whatever that value is.
+
+    \subsubsection*{Reporting Period / Logbook Advice}
+    During the reporting period, share how your team decided to handle rainfall input and what your evaluator outputs. Listen to how other teams handled these design decisions, there's no single right answer and you might want to switch.
+
+    For your logbook this week: note one decision another team made about input or output that you think would improve your language.
     \newpage
 answer: |
     Still to come
@@ -173,8 +178,17 @@ question: |
       * characters
       * strings
     It has been decided that _any_ value can be tested for "truthyness".  Provide rules for each datatype with an explanation for why you think your rule will work best for programmers.
+
+    Hint: in Lox, `0` and the empty string are both truthy.  Does that make sense for _your_ language?
 answer: |
-    Still to do
+    My rules, with my reasons:
+
+      * Integers — `0` is falsey, everything else is truthy.  This is the convention in C and Python, so programmers will guess it without reading the docs.  It also gives a nice counting idiom: a loop like `while (n) ...` keeps running until `n` hits 0, which reads exactly like "keep going while I still have work to do".
+      * Booleans — `true` is truthy and `false` is falsey, with no exceptions.  There is no defensible alternative, and any language that behaved otherwise would be maddening.
+      * Characters — the null character is falsey, everything else is truthy.  This mirrors the integer rule if you think of a character as a small number, so the two rules stay consistent.  It also gives you a single "empty" value to test for, which is handy when scanning a string looking for an end marker.
+      * Strings — the empty string is falsey, everything else is truthy.  This is the Python / Ruby / JavaScript convention, so it is what most programmers already expect.  It turns the common check "did I get any text?" into a one-liner: `if (name) ...`.  The alternative (all strings truthy) forces `if (name.length > 0)` everywhere, which is exactly the boilerplate a small language should be saving you from.
+
+      The common thread is one obvious "empty" value per type.  A falsey value is the type's "nothing to see here" answer, and programmers are good at predicting that: 0, false, the null character, and "" are all the natural empty values.  I deliberately kept `0` and `""` falsey even though Lox treats them as truthy, because in Lox the distinction is inherited from Java's habit of being strict, whereas a language with no `nil` needs its own empty values and these are the most intuitive.
 
 ## hooking up <gift>
 When hooking up the interpreter to execute an expression language, which of the following is typically required?

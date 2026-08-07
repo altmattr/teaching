@@ -6,7 +6,7 @@ Welcome to COMP2000. Classes begin this week, both lectures and workshops.  You 
 
 ## Week 2
 
-This week is all about Git. Before class, read through the Atlassian Git tutorial pages (there are six of them, starting with "What is version control" and finishing with "Syncing"). You don't need to memorise every command, but you do need to know what init, clone, add, commit, push, pull, and log do. The lecture last week covered this, so if you attended you'll already have the basics. In the EPIC activity, your team will use Git as a chat server. That means treating commits as messages and push/pull as sending and receiving. It's a bit of a brain teaser, but it forces you to really understand how the three-tree model works. Bring your logbook.
+This week is all about Git. Before class, make sure Git is installed and you have a GitHub account you can log into — the setup guide is linked in the week 2 handout. Then read through the Atlassian Git tutorial pages (there are six of them, starting with "What is version control" and finishing with "Syncing"). You don't need to memorise every command, but you do need to know what init, clone, add, commit, push, pull, and log do. The lecture last week covered this, so if you attended you'll already have the basics. In the EPIC activity, your team will use Git as a chat server. That means treating commits as messages and push/pull as sending and receiving. It's a bit of a brain teaser, but it forces you to really understand how the three-tree model works. Bring your logbook.
 
 ## Week 3
 

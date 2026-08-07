@@ -1,0 +1,428 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\input{slides/preamble_beamer.tex}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={COMP3000 Week 1},
+  pdfauthor={COMP3000 Programming Languages},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{COMP3000 Week 1}
+\subtitle{Team Based Learning + Domain-Specific Languages}
+\author{COMP3000 Programming Languages}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Welcome to COMP3000}
+\phantomsection\label{welcome-to-comp3000}
+\begin{itemize}
+\tightlist
+\item
+  13 lectures, 110 minutes each
+\item
+  Every lecture is followed by a two-hour collaborative workshop
+\item
+  Today: what the unit is about, how classes run, and the big idea that
+  drives everything
+\item
+  No preparation needed this week -- but from Week 2 on there is
+\end{itemize}
+
+\note{Walk through the shape of the unit before diving into content.
+Emphasise the lecture-to-workshop rhythm: the lecture introduces, the
+workshop applies.}
+\end{frame}
+
+\begin{frame}{What the unit is about}
+\phantomsection\label{what-the-unit-is-about}
+\begin{itemize}
+\tightlist
+\item
+  You will \textbf{design and build your own programming language}
+\item
+  Not a toy: a language that solves a real problem
+\item
+  The domain this year: \textbf{modelling water flows in river systems}
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.45\textwidth]{googong.jpg}
+\end{center}
+
+\emph{The Googong Dam -- one of the river flows students model.}
+
+\note{Show the dam image. This is the hook: languages are usually
+described as general-purpose tools, but here we build a \emph{little
+language} for a specific job, the way industry actually uses them.}
+\end{frame}
+
+\begin{frame}{Why a language for water flows?}
+\phantomsection\label{why-a-language-for-water-flows}
+\begin{itemize}
+\tightlist
+\item
+  River managers need to know what rainfall does to river levels over
+  time
+\item
+  Flood prediction, dam strategies, public safety
+\item
+  Normally done with simulation software
+\item
+  We will do it with a \textbf{custom language} instead
+\item
+  No such language exists yet -- you will build it
+\end{itemize}
+
+\note{Frame as EPIC: purpose that inspires, impact that matters. The
+students are filling a real hole.}
+\end{frame}
+
+\begin{frame}{How the classes run -- Team Based Learning}
+\phantomsection\label{how-the-classes-run-team-based-learning}
+\begin{itemize}
+\tightlist
+\item
+  The unit runs on \textbf{TBL}: you work in a team for all 13 weeks
+\item
+  Each week follows a fixed cycle:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{iRAT} -- individual multiple-choice quiz (done before class)
+  \item
+    \textbf{tRAT} -- the same quiz, answered with your team
+  \item
+    \textbf{FAT} -- class-wide discussion of the answers
+  \item
+    \textbf{Application Task} -- one hour of team work on the assignment
+  \end{itemize}
+\item
+  Pre-reading every week, starting Week 2
+\end{itemize}
+
+\note{iRAT before class; tRAT + FAT + application task in class. Team
+contracts are made in Week 1.}
+\end{frame}
+
+\begin{frame}{Teams matter}
+\phantomsection\label{teams-matter}
+\begin{itemize}
+\tightlist
+\item
+  You'll form teams today and stay in them all semester
+\item
+  The workshops build your assignment \emph{as a team}
+\item
+  Everyone draws on the shared pool of team work for their own
+  submission
+\item
+  Teams write a \textbf{contract} in Week 1: expectations, and how a
+  member can be excluded
+\item
+  If you stop showing up, your team can replace you
+\end{itemize}
+
+\note{Stress the team contract activity in today's workshop. The logbook
+is personal, but the work is shared.}
+\end{frame}
+
+\begin{frame}{Domain-specific languages -- the big idea}
+\phantomsection\label{domain-specific-languages-the-big-idea}
+\begin{itemize}
+\tightlist
+\item
+  A \textbf{domain-specific language} (DSL) is a language built for one
+  job
+\item
+  Ch 1 calls them \emph{``little languages''} -- ``pidgins tailor-built
+  to a specific task''
+\item
+  Think application scripting languages, template engines, markup
+  formats, config files
+\item
+  Contrast with a \textbf{general-purpose language} (GPL): Java, C,
+  Python -- built for any job
+\end{itemize}
+
+\note{Definition from the textbook: ``For every successful
+general-purpose language, there are a thousand successful niche ones.''}
+\end{frame}
+
+\begin{frame}{Little languages are everywhere}
+\phantomsection\label{little-languages-are-everywhere}
+\includegraphics[width=0.5\textwidth]{text/site/image/introduction/little-languages.png}
+
+\begin{itemize}
+\tightlist
+\item
+  SQL, regex, LaTeX, Make, CSS, shell -- all little languages
+\item
+  Almost every large software project needs a handful
+\item
+  When you can, \textbf{reuse an existing one} instead of rolling your
+  own
+\end{itemize}
+
+\note{``Once you factor in documentation, debuggers, editor support,
+syntax highlighting, and all the other trappings, doing it yourself
+becomes a tall order.'' -- ch 1}
+\end{frame}
+
+\begin{frame}{Some well-known DSLs}
+\phantomsection\label{some-well-known-dsls}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{SQL} -- querying relational databases
+\item
+  \textbf{Regular expressions} -- pattern matching in text
+\item
+  \textbf{LaTeX} -- typesetting documents
+\item
+  \textbf{Make} -- describing build dependencies
+\item
+  \textbf{Dream Maker} -- the game \emph{Space Station 13} is built in
+  it
+\item
+  \textbf{strudel.cc} -- making music by writing code in the browser
+\end{itemize}
+
+\note{Mention the live regex demo that comes in Week 2. strudel.cc is
+worth showing live if internet allows.}
+\end{frame}
+
+\begin{frame}{Why build a DSL at all?}
+\phantomsection\label{why-build-a-dsl-at-all}
+\begin{itemize}
+\tightlist
+\item
+  When a general-purpose language is \textbf{too much}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    too verbose for the job
+  \item
+    too hard for the people who need to write it
+  \end{itemize}
+\item
+  A DSL says \emph{exactly} what the task needs, in the task's own terms
+\item
+  The classic trade-off from ch 1: reuse an existing one\ldots{} or
+  build your own when nothing fits
+\end{itemize}
+
+\note{Domain experts (here: water engineers) shouldn't need a CS degree
+to express their problem.}
+\end{frame}
+
+\begin{frame}{Languages are great exercise}
+\phantomsection\label{languages-are-great-exercise}
+\begin{itemize}
+\tightlist
+\item
+  Implementing a language is a \emph{real} test of programming skill
+\item
+  Recursion, trees, graphs, dynamic arrays, hash tables -- all from
+  scratch
+\item
+  ``Rise to it, and you'll come away a stronger programmer''
+\end{itemize}
+
+\note{From ch 1 ``Languages are great exercise''.}
+\end{frame}
+
+\begin{frame}{There's no magic}
+\phantomsection\label{theres-no-magic}
+\begin{itemize}
+\tightlist
+\item
+  Languages feel magical -- until you build one
+\item
+  ``There is no magic at all. It's just code, and the people who hack on
+  languages are just people.'' -- ch 1
+\item
+  By the end of this unit you'll \emph{be} one of those people
+\end{itemize}
+
+\note{The demystifying pitch. A couple of techniques are new, but
+nothing harder than obstacles already overcome.}
+\end{frame}
+
+\begin{frame}{The pipeline -- a teaser}
+\phantomsection\label{the-pipeline-a-teaser}
+\begin{itemize}
+\item
+  A language implementation transforms source text step by step
+\item
+  The three stages we build this semester:
+
+  \textbf{Scanner} \(\rightarrow\) \textbf{Parser} \(\rightarrow\)
+  \textbf{Interpreter}
+\item
+  Today, just the names. We build each in turn from Week 4.
+\end{itemize}
+
+\note{Ch 2's mountain metaphor: source text at the bottom, climb to
+where the code's meaning is clear, descend to something the machine can
+run. Our first interpreter is a \emph{tree-walk} interpreter -- climb
+partway, then evaluate the tree directly.}
+\end{frame}
+
+\begin{frame}[fragile]{Source text becomes tokens}
+\phantomsection\label{source-text-becomes-tokens}
+\texttt{var\ average\ =\ (min\ +\ max)\ /\ 2;}
+
+\vspace{0.5em}
+
+\includegraphics[width=0.8\textwidth]{text/site/image/a-map-of-the-territory/tokens.png}
+
+\emph{The scanner chunks characters into tokens.}
+
+\note{Scanning (lexing): the linear stream of characters becomes
+words/tokens. Whitespace and comments are discarded.}
+\end{frame}
+
+\begin{frame}{Tokens become a tree}
+\phantomsection\label{tokens-become-a-tree}
+\includegraphics[width=0.75\textwidth]{text/site/image/a-map-of-the-territory/ast.png}
+
+\emph{The parser builds an abstract syntax tree from the flat token
+stream.}
+
+\note{Parsing gives the syntax a grammar -- the ability to compose
+larger expressions from smaller parts, mirroring the nested structure of
+the language.}
+\end{frame}
+
+\begin{frame}{The mountain, in full}
+\phantomsection\label{the-mountain-in-full}
+\includegraphics[width=0.9\textwidth]{text/site/image/a-map-of-the-territory/mountain.png}
+
+\begin{itemize}
+\tightlist
+\item
+  Not every implementation walks the whole mountain
+\item
+  Our interpreter: \textbf{scan, parse, evaluate} -- a tree-walk
+  interpreter
+\item
+  Later topics (Ch 11) add a static-analysis pass before evaluating
+\end{itemize}
+
+\note{Ch 2's map: scanning, parsing, static analysis, optimization, code
+generation, VM, runtime. We take the tree-walk route this semester.}
+\end{frame}
+
+\begin{frame}{Wrap-up and Week 2 prep}
+\phantomsection\label{wrap-up-and-week-2-prep}
+\begin{itemize}
+\tightlist
+\item
+  Today's reading: \textbf{Chapters 1--2} of \emph{Crafting
+  Interpreters}
+\item
+  \textbf{Before next class}: read those chapters and complete the Week
+  2 iRAT
+\item
+  Next week: little languages in more depth, and the \emph{full}
+  pipeline picture
+\item
+  Reminder: form your team and write your team contract today
+\end{itemize}
+
+\note{Next lecture covers the pipeline in full plus regular expressions
+as a worked DSL. iRAT is done individually before class, every week from
+now on.}
+\end{frame}
+
+\end{document}

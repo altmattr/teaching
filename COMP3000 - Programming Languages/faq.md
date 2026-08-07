@@ -47,13 +47,13 @@ No — the logbook is personal, not a team logbook.
 Whatever works for you — electronic, paper, anything.
 
 **Q: How do I get marks for it?**
-Show your teacher your logbook at the end of each class. If you have entries that were done consistently through the semester and your teacher saw them, you get full marks. If you have some entries but they're inconsistent, you get partial marks. It's worth around 15–20% of the assignment assessment section.
+Submit it in your assigment submission
 
 **Q: What if I miss a week?**
 Catch up — do a logbook entry for the work you missed when you get back.
 
 **Q: Do the entries need to be detailed?**
-Timeliness matters more than quality. We're only looking for a few notes.
+We're only looking for a few notes.
 
 **Q: Are they submitted with the assignment?**
 Yes — they go in with your assignment submission, like a reflection you've already written.
@@ -62,13 +62,10 @@ Yes — they go in with your assignment submission, like a reflection you've alr
 Yes — your teacher gives you feedback based on what's in your logbook, so you get timely feedback during the semester instead of waiting until marking.
 
 **Q: How will the logbook contribute to the assignment?**
-Two ways. First, there's a rubric item for logbook entries worth around 20% of the assignment assessment section — full marks for consistent entries your teacher saw, partial marks if they're patchy. Second, your teacher reads your logbook and gives you feedback throughout the semester, so you get 13 chances to get feedback on your assignment work rather than waiting until marking. The entries are submitted alongside your assignment submission.
+Two ways. First, there's a rubric item for logbook entries worth around 10% of the assignment assessment section. Second, your teacher can read your logbook and gives you feedback throughout the semester, so you get 13 chances to get feedback on your assignment work rather than waiting until marking. The entries are submitted alongside your assignment submission.
 
 **Q: Should the logbook be a record of events, or more about my personal feelings and opinions?**
 Both — but in a practical, lightweight way. My own practice is to down what I did each day AND the decisions I made and why. For you, that means something like: "Worked on X. Tried Y approach because Z. Got stuck on W." Not a diary, not a deep personal reflection — just enough that you (and your teacher) can see you were thinking about what you were doing AND you can go back to make sense of what you did in the past and add that information to your submissions. Timeliness matters more than quality, so don't stress about making it polished. A few notes right after class is better than a long reflective essay a week later.
-
-**Q: If I miss a class and write a logbook entry, is it fine if it doesn't talk about what happened in class?**
-Yes — that should be fine. The emphasis is on timeliness over quality, and the point is to show you're engaging with the course, not to document what happened in class. An entry like "Missed class, caught up by doing X" still shows the study habit the logbook is designed to encourage. If you're worried, ask your teacher — they're the ones marking it.
 
 ---
 
@@ -88,3 +85,23 @@ Directly — the tasks in workshops are very closely related to the assignment. 
 
 **Q: When will we see the rubrics?**
 Early — probably week 2. You won't be waiting until weeks 5 or 6.
+
+---
+
+## Textbook
+
+**Q: What chapter of the textbook does the unit go up to?**
+Chapter 11 (Resolving and Binding). Chapters 12 (Classes) and 13 (Inheritance) are not covered.
+
+---
+
+## Getting Help
+
+**Q: I struggled in COMP2000. What should I review to do well in COMP3000?**
+Come to lectures and ask questions. Make good use of office hours (Thursdays at 12) — we can really get into the things you need help with there.
+
+## Teaching Style
+
+**Q: Why don't you provide lecture slides?**
+
+Take a look a this link https://www.structural-learning.com/post/fluency-illusions-students-think-they-know and then come back to this discussion.  Slides are typically missing all the important parts.  They are a top-down view of the material but students are seeking a bottom-up understanding.  Providing slides encourages students into the "fluency-trap".  Reading the slides feels easier so it feels like better learning but it is actually much worse learning.  Providing slides encourages the poorer learning technique.

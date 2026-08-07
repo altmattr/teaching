@@ -67,6 +67,12 @@ How does the scope chain resolve variable references when a closure is called in
 ## easier way <essay>
 question: |
     There has to be an easier way to do this.  Brainstorm possiblities in class and try them out to see if they work.
+
+    \subsubsection*{Reporting Period / Logbook Advice}
+    During the reporting period, share the alternative approach to resolution your team explored and whether you think it would work. Listen to what other teams tried, there's no provided answer for this task so hearing others' ideas is especially valuable.
+
+    For your logbook this week: note one resolution approach from another team that you hadn't considered, and whether you'd try it.
+
 answer: |
     I can't provide you a ready-made answer to this one but your discussion should include
 

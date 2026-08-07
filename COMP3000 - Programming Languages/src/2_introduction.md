@@ -1,15 +1,73 @@
-TODO: This document is not fully adjusted to the v2 tooling yet.
-
 ## Week Overview
 
-This week we begin our journey with programming languages, reading the introduction of our text book.
-\item[The concept of little languages]  What is a little language?  Why do we care?  What are some examples?
-\item[The Compiler/Interpreter Pipeline]  What is the compiler/interpreter pipeline?  What are the parts of a compiler?  What are the parts of an interpreter?  How do they differ?
-\item[Compilers vs Interpreters]  What is the difference between a compiler and an interpreter?  What are some examples of each?
+Last week we met the idea of a *little language* (a domain-specific language) and saw a teaser of the pipeline that turns source text into something runnable.  This week we take both further:
+
+  * **Little languages, revisited**  What is a little language?  Why do we care?  What are some examples?  When should we reuse an existing one instead of rolling our own?
+  * **The full pipeline**  What is the compiler/interpreter pipeline?  What are the parts of a compiler?  What are the parts of an interpreter?  How do they differ?
+  * **Compilers vs interpreters**  What is the difference between a compiler and an interpreter?  What are some examples of each?
+  * **Regular expressions as a DSL**  A live exploration of a very popular little language for pattern matching in text.
+  * **Language completeness**  When is a language powerful enough to express all possible computations?  The Turing view (variables, conditions, loops) and the Church view (variables, functions).
+
+## Goals
+
+By the end of this week you should:
+
+  * Explain what makes a language "little", and weigh up reusing an existing language against building your own
+  * Name the stages of the implementation pipeline: scanner, parser, static analysis, optimiser, code generation, and their purpose
+  * Explain why "compiled or interpreted?" is a question about *implementations*, not languages
+  * Use a regular expression to match, capture, and count patterns in text
+  * Apply the Turing and Church tests to decide whether a language is likely complete
 
 ## Preparation
   * Read the chapters 1 and 2 of "Crafting Interpreters".
   * Attend the lecture
+
+# RAT
+
+## certainly a compiler <gift>
+Which of these characteristics would make a language implementation certainly a compiler?{
+  = code generation
+  ~ scanning
+  ~ parsing
+  ~ interpretation
+  ~ static analysis
+}
+
+## two phases <gift>
+Two of the following phases can't easily co-exist in a single compiler/interpreter. Which two?{
+  = code generation
+  ~ scanning
+  ~ parsing
+  = interpretation
+  ~ static analysis
+}
+
+## optimisations <gift>
+Which of the following are optimisations a compiler/interpreter might do?  Note, there could be more than one correct answer.{
+  ~ change "five" to 5
+  = change 5 + 5 to 10
+  ~ change 5+5 to 10+0
+  = strip "if true" from a block of code
+  = remove a loop that executes 0 times
+  ~ convert an "order n squared" algorithm to an "order n" algorithm
+}
+
+## synonym for lexing <gift>
+Which of the following is a synonym for lexing{
+  ~ parsing
+  = scanning
+  ~ luthering
+  ~ code generation
+  ~ code degeneration
+  ~ interpretation
+  ~ static analysis
+}
+
+## the cpu <gift>
+A computer's CPU is an interpreter.{
+  = True, a CPU fetches and executes instructions one at a time, which is exactly what an interpreter does.
+  ~ False, interpreters run source code, while a CPU runs machine code that has already been compiled.
+}
 
 # FAT 
 
@@ -38,6 +96,10 @@ question: |
     \item \textbf{Variables, Functions}: A language with variables and functions is probably complete.  This is the "Church" view of completeness and corresponds to a computational calculus\footnote{This dual nature of computing is one of the most fascinating aspects of programming language theory.  Some fundamental truths of the universe are hidden within it}.
     \end{itemize}
 
+    \subsubsection*{Reporting Period / Logbook Advice}
+    During the reporting period, share the regex pattern your team found most surprising or fun. Listen to what other teams discovered, especially any patterns you hadn't thought to try.
+
+    For your logbook this week: note one regex trick from another team that you'd like to remember, and whether hearing other teams' arguments changed your mind on whether regex is a complete language.
     \newpage
 
 answer: |
@@ -66,16 +128,6 @@ question: |
 
 answer: |
   The command language in minecraft is \emph{almost} a little language but it does not include any control flow so perhaps that is being generous?  Though redstone can get you control flow.  Little languages are often very restricted and rely on machinery from elsewhere to do the hard work, so I think it counts in the end.  More likely you will have used BASH, which is the little language you use whenever you do something in the command line.  It has heaps of features you never thought to use.
-
-## Counting Branches <tex-essay>
-question: |
-    Imagine the following diagram of programming language implementation options is \emph{sound} and \emph{complete}.  We want to create a compiler/interpreter to convert our "source" language into one of our target languages (x86 or ARM).
-    
-    \includegraphics[width=0.5\textwidth]{src/2_paths.jpeg}
-
-    How many different possible implementations are there? (Hint, this is a COMP2010 question)
-answer: |
-    none given
 
 ## Compiler Parts <tex-essay>
 question: |

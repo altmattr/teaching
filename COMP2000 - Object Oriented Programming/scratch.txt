@@ -1,0 +1,17 @@
+Hi [name],
+
+Thanks for letting me know — and the good news is this is a very solvable situation.
+
+First, it is just fine to miss a couple of weeks. Plenty of students do. The main thing is that you catch up on the tasks at home on your own as best you can, so you have the best context when you return to class. Week 1 was mostly getting set up with team-based learning, and week 2 was Git — both are worth working through yourself so you're not starting cold.
+
+On the team front: [Ysobel] will make sure there's a team with a slot you can fit into. Send her a note saying you missed weeks 1–2 and need a team, and she'll place you before the next class. When you join, just introduce yourself to the team and do the team contract with them — it's fine to write it up together in your first class back, even if it's a week or two later than everyone else.
+
+For the assignment itself, try not to worry. The submission is individual, and the team creates a shared pool of work you draw from. Once you're placed in a team you'll have access to their repo, so you'll be able to fork it for your individual part just like everyone else. You may have slightly less of your team's work to start from than if you'd been there from day one, but you'll contribute from the moment you join, and the rubric rewards you for extending the team's work — so there's plenty of opportunity to make up ground. If a team ever doesn't work out, your own work is always a fallback since it's an individual submission.
+
+One more thing: because you missed the first two weeks, you can get all of the first three weeks' logbook entries marked off when you get to class in week 3 — just show your teacher what you did at home. If you'd like, check the FAQ on iLearn, which covers missing weeks in a bit more detail.
+
+As long as you're making a genuine contribution in class and getting to class as much as you can from here, your teacher will be happy to catch you up.
+
+Thanks,
+
+matt

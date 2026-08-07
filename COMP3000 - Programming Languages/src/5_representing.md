@@ -93,6 +93,11 @@ question: |
     \item A river's flow out is the sum of the flows in plus the water that falls in that watershed.
     \item There is no delay for water to flow through a river.  This one isn't realistic, but it helps simplify my system a lot.\footnote{I use $+$ for combining rivers.  If there was a delay, I would need to do something different for $a + b$ than I do for $b + a$, which doens't really match with how I think of $+$}
     \end{itemize}
+
+    \subsubsection*{Reporting Period / Logbook Advice}
+    During the reporting period, share the expression tree your team built for one of the example river systems and the syntax you chose to represent it. Listen to how other teams handled combining flows, especially whether they used different symbols or operators.
+
+    For your logbook this week: note one syntactic choice from another team that made you rethink your own design.
     \newpage
 
 answer: |
