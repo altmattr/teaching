@@ -192,7 +192,7 @@ question: |
     Explanation vids have been provided for each rubric item to show you an example of what this can look like.
 
     \subsubsection*{The output of a program}
-    If you take a look at the rubric quiz, you will see examples of how our example solution outputs values after a program runs.  You have some flexibility here but we suggest the following:
+    If you take a look at the rubric evidence document, you will see examples of how our example solution outputs values after a program runs.  You have some flexibility here but we suggest the following:
     \begin{enumerate}
     \item either your language includes a print statement \emph{and} your example programs use it, or
     \item your interpreter outputs something by default that will help your marker.
@@ -215,13 +215,13 @@ question: |
     You may build your submission from your team's work, from the exemplar, or from your own work in workshops.  You are free to use your team's code, grammar, and design decisions as much as you like.  A worked example of a complete river system language (the exemplar) is described in the introduction to this document.
 
     \subsubsection*{The Structure of your submission}
-    You will submit two things - both of which are iLearn items available in the "Assessments" section:
+    You will submit a single zip file (url is \verb+https://ilearn.mq.edu.au/mod/assign/view.php?id=8940558+) available in the "Assessments" section.  The zip should contain \emph{both}:
     \begin{itemize}
-    \item A zip file containing your interpreter and example programs\\ (url is \verb+https://ilearn.mq.edu.au/mod/assign/view.php?id=8940558+)
-    \item A completed quiz with instructions for your marker\\ (url is  \verb+https://ilearn.mq.edu.au/mod/quiz/view.php?id=8997793+)
+    \item your interpreter and example programs, and
+    \item your completed rubric evidence document with instructions for your marker
     \end{itemize}
 
-    You should structure your zip in the same way as the exemplar zip is structured.  That is there should be two directories, one for the code in your language (in the exemplar this directory is  called \verb+lox+) and one for the java source (in the exemplar this directory called \verb+exemplar+ because that is the package name).  See figure \ref{fig:example}.  As well, please include a compile script and a run script which show how to compile and run your program.  If possible, these should be scripts which can be run by your marker - the scripts in the exemplar will guide you and should work on most operating systems.  If you must diverge from this setup, you can put build and run instructions in \emph{each} of your answers in the quiz.
+    You should structure your zip in the same way as the exemplar zip is structured.  That is there should be two directories, one for the code in your language (in the exemplar this directory is  called \verb+lox+) and one for the java source (in the exemplar this directory called \verb+exemplar+ because that is the package name).  See figure \ref{fig:example}.  As well, please include a compile script and a run script which show how to compile and run your program.  If possible, these should be scripts which can be run by your marker - the scripts in the exemplar will guide you and should work on most operating systems.  If you must diverge from this setup, you can put build and run instructions in your rubric evidence document.
 
     \begin{figure}
     \includegraphics{src/11_example.png}
@@ -229,14 +229,14 @@ question: |
     \label{fig:example}
     \end{figure}
 
-    \subsubsection*{A quiz instead of a document}
-    In this submission you will use a quiz, linked from the iLearn page, to explain how your language works.  There is one question for each rubric item and you can use the text box to explain how you meet or achieve that rubric item and give any help your marker might need to compile, run, and understand your language.  Your grades and feedback will be given directly via that quiz.  Each question includes a linked video where we show \emph{our solution in action} as a guide for you in putting together your own solution.  You don't need to follow these but it provides one option you can follow if you like.
+    \subsubsection*{A rubric evidence document}
+    As part of your submission you will complete a rubric evidence document and include it in your zip.  There is one section for each rubric item where you explain how you meet or achieve that rubric item and give any help your marker might need to compile, run, and understand your language.  Each section includes a linked video where we show \emph{our solution in action} as a guide for you in putting together your own solution.  You don't need to follow these but it provides one option you can follow if you like.
 
-    The quiz is your chance to explain your decisions and implementation to your marker, writing clear and concise answers will help your marker award you grades.  For example, your marker won't know how dams work in your language unless you tell them so you can't get dam marks unless you clearly describe that in your quiz answer.  If your intention is not clear from the answers you submit, you won't be awarded grades, even for work that is ultimately correct.  It is your responsibility to communicate clearly everything your marker needs in your quiz answer.  Your marker will be one of the class teachers, so you can assume they are familiar with anything from class.  I.e. there is no need to explain any class concepts.
+    The rubric evidence document is your chance to explain your decisions and implementation to your marker, writing clearly and concisely will help your marker award you grades.  For example, your marker won't know how dams work in your language unless you tell them so you can't get dam marks unless you clearly describe that in your rubric evidence document.  If your intention is not clear from your rubric evidence document, you won't be awarded grades, even for work that is ultimately correct.  It is your responsibility to communicate clearly everything your marker needs in your rubric evidence document.  Your marker will be one of the class teachers, so you can assume they are familiar with anything from class.  I.e. there is no need to explain any class concepts.
 
     We recommend you point your marker to the example program you submitted which demonstrates this rubric item as the simplest way to demonstrate you have achieved it.
 
-    The quiz has no time limit and multiple attempts are allowed so you can update/adjust your answers right up to the due date.
+    You can update and adjust your rubric evidence document right up to the due date.
 
     \subsubsection*{Use of Generative AI}
     An ability to use Generative AI is not a learning outcome of this course but GenAI is a tool you may choose to use along your journey.  If your submission is primarily AI generated, you will likely find yourself in the bottom of each rubric item.  Lox and Nystrom's notation are not well represented in AI training sets and Gen AIs are generally bad at language design.  We value, and give grades for, your contribution to the solution since it is you (not the GenAI vendor) who is earning the grade.
@@ -262,7 +262,7 @@ question: |
     How well does this language express the underlying concepts.  I.e. have you chosen sensible keywords and syntax structures and have your implemented an interesting language overall.  & 2 \\ \hline
     Uniqueness and creativity.  You can present your work in the week 13 class to guarantee full marks for this rubric item & 2 \\ \hline
     \end{tabular}
-    Note the quiz (which you can view any time) does expand upon these rubric descriptions to aid in your submission.
+    Note the rubric evidence document does expand upon these rubric descriptions to aid in your submission.
 
     \newpage
 answer: |

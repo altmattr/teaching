@@ -189,7 +189,7 @@ Match the language feature with its job{
 }
 
 ## types of inheritance <gift>
-Which of the following approaches to OO language design did the text book author choose for Lox? _Note you may recieve negative marks for picking a wrong option_.{
+Which of the following approaches to OO language design did the text book author choose for Lox? _Note you may receive negative marks for picking a wrong option_.{
   =50%classes
   =50%prototyps
   ~-33%objects

@@ -1,10 +1,10 @@
-# A2 Marking Guide
+# A2 Rubric Evidence Document
 
-This document replaces the quiz used for the second submission.  It explains how the submission is marked and what you need to tell your marker.
+This document is part of your second submission.  Complete it and include it in your submission zip, alongside your source code.  It explains how the submission is marked and what you need to tell your marker.
 
 ## How it works
 
-Here you will explain to your marker how you have achieved each rubric item.  This will also record your final grade for the assessment.  Note you must submit a zip file on the other submission link before completing this.  Each rubric item has one text box you can use to explain yourself and an attached video giving an example of what that rubric item is looking for.
+Here you will explain to your marker how you have achieved each rubric item.  Include this completed document in your submission zip, alongside your source code.  Each rubric item has one section where you explain yourself and an attached video giving an example of what that rubric item is looking for.
 
 Your submission will be marked out of **16** with marks for:
 
@@ -31,6 +31,10 @@ Your language must be able to interpret an expression language which describes s
 
 Video: https://ilearn.mq.edu.au/pluginfile.php/9814546/question/questiontext/16519095/1/122955576/rubric%201.mov
 
+### Your explanation
+
+_Write your explanation here; add as much space as you need and point to the relevant example program in your zip._
+
 ## 2. A more complex expression language: model multiple days, output on each day (2)
 
 - 2 Can model multiple days and output each day.
@@ -42,6 +46,10 @@ Video: https://ilearn.mq.edu.au/pluginfile.php/9814546/question/questiontext/165
 You will get these marks if your expression language can model the flow over multiple days and the output of your interpreter shows the predicted flows on all those days.  As with the last item, you may output just one flow, or all named flows, or whatever makes most sense for your language.
 
 Video: https://ilearn.mq.edu.au/pluginfile.php/9814546/question/questiontext/16519095/2/122955577/rubric%202.mov
+
+### Your explanation
+
+_Write your explanation here; add as much space as you need and point to the relevant example program in your zip._
 
 ## 3. Dam syntax: syntax and parsing only (2)
 
@@ -59,6 +67,10 @@ Your language has a syntax to support dams.  Dams don't always let all or none o
 
 Video: https://ilearn.mq.edu.au/pluginfile.php/9814546/question/questiontext/16519095/3/122955578/rubric%203.mov
 
+### Your explanation
+
+_Write your explanation here; add as much space as you need and point to the relevant example program in your zip._
+
 ## 4. Dam evaluation: simple dams affect output sensibly (2)
 
 - 2 Outputs for no-flow, half-flow, and full-flow all work as expected.
@@ -71,6 +83,10 @@ Video: https://ilearn.mq.edu.au/pluginfile.php/9814546/question/questiontext/165
 The interpreter can run the dam's algorithm accurately and downstream river flows reflect its behaviour.
 
 Video: https://ilearn.mq.edu.au/pluginfile.php/9814546/question/questiontext/16519095/4/122955579/rubric%204.mov
+
+### Your explanation
+
+_Write your explanation here; add as much space as you need and point to the relevant example program in your zip._
 
 ## 5. Interesting dam algorithms: dam can do a conditional, explain design and implementation (2)
 
@@ -95,6 +111,10 @@ To get these marks you must explain the language design decisions and implementa
 
 Video: https://ilearn.mq.edu.au/pluginfile.php/9814546/question/questiontext/16519095/5/122955580/rubric%205.mov
 
+### Your explanation
+
+_Write your explanation here; add as much space as you need and point to the relevant example program in your zip._
+
 ## 6. Log-book (2)
 
 - 2 Complete and timely entries throughout the semester.
@@ -111,6 +131,10 @@ Log-book entries showing consistent workshop engagement throughout the semester.
 
 Your marker will give low, medium, or high marks for the quality of your language.  You can explain here the decisions you made to help convince them of the quality of your language.
 
+### Your explanation
+
+_Write your explanation here; add as much space as you need and point to the relevant example program in your zip._
+
 Video: https://ilearn.mq.edu.au/pluginfile.php/9814546/question/questiontext/16519095/6/122955581/rubric%206%20and%207.mov
 
 ## 8. Uniqueness and creativity (2)
@@ -120,3 +144,7 @@ Video: https://ilearn.mq.edu.au/pluginfile.php/9814546/question/questiontext/165
 - 0 Does not go beyond the exemplar code, or is essentially the same as Lox.
 
 Your marker will give zero, one, or two marks for how far your submission goes beyond class work and the example solutions.  You may use this space to explain what is unique and creative about your language.  You can present your work in the week 13 class to guarantee full marks for this rubric item.
+
+### Your explanation
+
+_Write your explanation here; add as much space as you need and point to the relevant example program in your zip._
