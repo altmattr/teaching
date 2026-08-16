@@ -255,7 +255,7 @@ prim -> "1" | "2" | "3" | "4" | "5" | "6" | "7"
 ```
 {
     ~Grammar 1 only
-    =Grammar 2 only
+    =Grammar 1 only
     ~Both Grammar 1 and Grammar 2
     ~Neither Grammar 1 nor Grammar 2
 }

@@ -38,13 +38,13 @@
     - grades                                           |     |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x   |   x   |   x   |   x   |  x  |
   * check on forums to make sure nothing missed        |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x   |   x   |   x   |   x   |  x  |
   * post weekly details                                |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x   |   x   |   x   |   x   |  x  |
-  * weeks 0 -> i_2 + 1 are ready                       |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
-  * unhide i_2 + 1                                     |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x   |   x   |   x   |   x   |  x  |
-  * highlight week i_2                                 |  /  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x   |   x   |   x   |   x   |  x  |
-  * check if any assignment is due out week i_2+1      |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * weeks 0 -> i_2 + 1 are ready                       |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * unhide i_2 + 1                                     |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * highlight week i_2                                 |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * check if any assignment is due out week i_2+1      |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
   * add week (2i_1 -> 2i_2) questions to exam          |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |     |
   * doublexcheck gradebook not messed up               |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x   |   x   |   x   |   x   |  x  |
-  * unhide any week i_1 solutions                      |  /  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x  |  x   |   x   |   x   |   x   |  x  |
+  * unhide any week i_1 solutions                      |  /  |  /  |  /  |  x  |  x  |  x  |  x  |  x  |  x  |  x   |   x   |   x   |   x   |  x  |
   * exam (details then full exam)                      |     |     |     |     |  -  |     |     |     |     |  -   |       |       |       |     |
 
 # exam prep
@@ -61,4 +61,5 @@
   * sign the final grade form                          | - |
 
 TODO:
-
+  * consider adding statements to assignment one
+  * can you get the explanation vids back?  They are stuck in last years a2 marking quiz

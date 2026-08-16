@@ -35,6 +35,8 @@ def open_file(file_path):
 def grab_the_data():
     parser = argparse.ArgumentParser(description="Tooling v2 script")
     parser.add_argument("-g", "--glob", type=str, required=False, help="Input file path", default="src/*.md")
+    parser.add_argument("-n", "--no-answers", action="store_true",
+                        help="Also typeset *_noanswers versions of the tex/md/pdf files which omit the model answers")
     args = parser.parse_args()
 
     topics = {}
@@ -53,7 +55,7 @@ def grab_the_data():
                     print(f"{key} -> {item_key} -> {item_value[:10]}...")
                 data[key] = items
         topics[Path(file).stem] = data
-    return topics
+    return topics, args
 
 def inline_images(text):
     def lam(image):
@@ -79,6 +81,10 @@ def tex_images(text):
                   lambda m: "\n\n\\" + "includegraphics[width="+perc2width(m.group(2)) + "]{src/" + m.group(3) + "}\n\n", 
                   text)
 
+def emit(tex_fh, md_fh, tex_str, md_str):
+    tex_fh.write(tex_str)
+    md_fh.write(md_str)
+
 def gift_to_gift(item,question, answers):
     print(f"gift_to_gift: {item}, {question[:10]}..., {[a[:10] for a in answers]}...")
     return f"::{item}::[markdown]\n{inline_images(question)}{{\n" + "\n".join([inline_images(answer) for answer in answers]) + "\n}\n"
@@ -91,7 +97,7 @@ def gift_to_tex(item, question, answers):
 def gift_to_md(item, question, answers):
     return f"## {item}\n\n{inline_images(question)}\n\n  *" + "\n  *".join(answers) + "\n\n"
 
-def yaml_to_tex(item, item_parsed, isTex=False):
+def yaml_to_tex(item, item_parsed, isTex=False, with_answers=True):
     if not isTex:
         item     = pandoc.write(pandoc.read(item,                            format='markdown'), format="latex")
         question = pandoc.write(pandoc.read(tex_images(item_parsed.get('question', '')), format='markdown'), format="latex")
@@ -99,6 +105,8 @@ def yaml_to_tex(item, item_parsed, isTex=False):
     else:
         question = item_parsed.get('question', '')
         answer = item_parsed.get('answer', '')
+    if not with_answers:
+        return f"\\section*{{{item}}}\n\n{question}\n\n"
     return f"\\section*{{{item}}}\n\n{question}\n\n\\subsection*{{Answer}}\n\n{answer}\n\n"
 
 def yaml_to_xml(item, item_parsed, isTex=False):
@@ -141,7 +149,7 @@ def yaml_to_xml(item, item_parsed, isTex=False):
                  </responsetemplate>
                </question>"""
 
-def yaml_to_md(item, item_parsed, isTex=False):
+def yaml_to_md(item, item_parsed, isTex=False, with_answers=True):
     if isTex:
         item     = pandoc.write(pandoc.read(item,                            format='latex'), format='markdown')
         question = pandoc.write(pandoc.read(item_parsed.get('question', ''), format='latex'), format='markdown')
@@ -149,6 +157,8 @@ def yaml_to_md(item, item_parsed, isTex=False):
     else:
         question = item_parsed.get('question', '')
         answer = item_parsed.get('answer', '')
+    if not with_answers:
+        return f"## {item}\n\n{question}\n\n"
     return f"## {item}\n\n{question}\n\n**Answer:**\n\n{answer}\n\n"
 
 def tex_topmatter(file, topic):
@@ -164,7 +174,8 @@ def tex_bottommatter(file):
     file.write("\\end{document}\n")
 
 if __name__ == "__main__":
-    topics = grab_the_data()
+    topics, args = grab_the_data()
+    no_answers = args.no_answers
 
     for topic, topic_data in topics.items():
         print(f"processing topic: {topic}")
@@ -183,6 +194,10 @@ if __name__ == "__main__":
             ): 
               tex_topmatter(all_tex, clean_topic.replace("_", " "))
               xml.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?><quiz>")
+              if no_answers:
+                  all_tex_noanswers = open_file(f"build/{topic}/{topic}_all_noanswers.tex")
+                  all_md_noanswers = open_file(f"build/{topic}/{topic}_all_noanswers.md")
+                  tex_topmatter(all_tex_noanswers, clean_topic.replace("_", " "))
               for (venue, venue_data) in topic_data.items():
                 # venue has the following files:
                 #  * topic_venue.tex
@@ -194,12 +209,18 @@ if __name__ == "__main__":
                     clean_venue = name_conversion[clean_venue]
                 if not venue == top_matter:
                     all_tex.write(f"\\newpage\n\\part*{{{clean_venue}}}\n")
+                    if no_answers:
+                        all_tex_noanswers.write(f"\\newpage\n\\part*{{{clean_venue}}}\n")
                 print(f"  processing venue: {clean_venue}")
                 with (
                     open_file(f"build/{topic}/{cleanish_venue}.tex") as venue_tex,
                     open_file(f"build/{topic}/{cleanish_venue}.md") as venue_md
                 ):
                   tex_topmatter(venue_tex, clean_topic.replace("_", " ") +r" $\rightarrow$ " + clean_venue)
+                  if no_answers:
+                      venue_tex_noanswers = open_file(f"build/{topic}/{cleanish_venue}_noanswers.tex")
+                      venue_md_noanswers = open_file(f"build/{topic}/{cleanish_venue}_noanswers.md")
+                      tex_topmatter(venue_tex_noanswers, clean_topic.replace("_", " ") +r" $\rightarrow$ " + clean_venue)
                   for (item, item_data) in venue_data.items():
                     item_type = re.search(r"<(.*)>", item).group(1) if re.search(r"<(.*)>", item) else "nil"
                     clean_item = re.sub(r"[^a-zA-Z0-9_ ]", "", re.sub(r"<.*>", "", item)).strip()
@@ -226,27 +247,50 @@ if __name__ == "__main__":
                       gift.write(f"\n\n$CATEGORY: {clean_topic}/{clean_venue}\n\n")  # will get more than I need, but also won't get the surplus ones, so it is a win in my book
                       # TODO: write gift files to xml as well - then you can turf the gift format entirely
                       gift.write(gift_to_gift(clean_item,question,answers))
-                      all_tex.write(gift_to_tex(clean_item, question, answers))
-                      venue_tex.write(gift_to_tex(clean_item, question, answers))
-                      all_md.write(gift_to_md(clean_item, question, answers))
-                      venue_md.write(gift_to_md(clean_item, question, answers))
+                      tex_str = gift_to_tex(clean_item, question, answers)
+                      md_str = gift_to_md(clean_item, question, answers)
+                      emit(all_tex, all_md, tex_str, md_str)
+                      emit(venue_tex, venue_md, tex_str, md_str)
+                      if no_answers:
+                          emit(all_tex_noanswers, all_md_noanswers, tex_str, md_str)
+                          emit(venue_tex_noanswers, venue_md_noanswers, tex_str, md_str)
                     elif item_type == "essay" or item_type == "tex-essay":
                       isTex = True if item_type == "tex-essay" else False
                       item_parsed = yaml.safe_load(item_data)
                       # write all the files
                       xml.write(f"<question type=\"category\"><category><text>{clean_topic}/{clean_venue}</text></category><info format=\"html\"><text></text></info><idnumber></idnumber></question>")
                       xml.write(yaml_to_xml(clean_item, item_parsed, isTex))
-                      all_tex.write(yaml_to_tex(clean_item, item_parsed, isTex))
-                      venue_tex.write(yaml_to_tex(clean_item, item_parsed, isTex))
-                      all_md.write(yaml_to_md(clean_item, item_parsed, isTex))
-                      venue_md.write(yaml_to_md(clean_item, item_parsed, isTex))
+                      tex_str = yaml_to_tex(clean_item, item_parsed, isTex, with_answers=True)
+                      md_str = yaml_to_md(clean_item, item_parsed, isTex, with_answers=True)
+                      emit(all_tex, all_md, tex_str, md_str)
+                      emit(venue_tex, venue_md, tex_str, md_str)
+                      if no_answers:
+                          tex_str = yaml_to_tex(clean_item, item_parsed, isTex, with_answers=False)
+                          md_str = yaml_to_md(clean_item, item_parsed, isTex, with_answers=False)
+                          emit(all_tex_noanswers, all_md_noanswers, tex_str, md_str)
+                          emit(venue_tex_noanswers, venue_md_noanswers, tex_str, md_str)
                     else:
-                      all_md.write(f"## {clean_item}\n\n{item_data}\n\n")
-                      venue_md.write(f"# {clean_item}\n\n{item_data}\n\n")
-                      all_tex.write(f"\\section*{{{clean_item}}}\n\n{item_data}\n\n")
-                      venue_tex.write(f"\\section*{{{clean_item}}}\n\n{item_data}\n\n")
+                      tex_str = f"\\section*{{{clean_item}}}\n\n{item_data}\n\n"
+                      md_str = f"## {clean_item}\n\n{item_data}\n\n"
+                      emit(all_tex, all_md, tex_str, md_str)
+                      emit(venue_tex, venue_md, tex_str, md_str)
+                      if no_answers:
+                          emit(all_tex_noanswers, all_md_noanswers, tex_str, md_str)
+                          emit(venue_tex_noanswers, venue_md_noanswers, tex_str, md_str)
                   tex_bottommatter(venue_tex)
+                  if no_answers:
+                      tex_bottommatter(venue_tex_noanswers)
+                      venue_tex_noanswers.close()
+                      venue_md_noanswers.close()
                 os.system(f"latexmk -pdf -interaction=nonstopmode -output-directory=build/{topic} build/{topic}/{cleanish_venue}.tex > /dev/null")
+                if no_answers:
+                    os.system(f"latexmk -pdf -interaction=nonstopmode -output-directory=build/{topic} build/{topic}/{cleanish_venue}_noanswers.tex > /dev/null")
               tex_bottommatter(all_tex)
+              if no_answers:
+                  tex_bottommatter(all_tex_noanswers)
+                  all_tex_noanswers.close()
+                  all_md_noanswers.close()
               xml.write("</quiz>")
         os.system(f"latexmk -pdf -interaction=nonstopmode -output-directory=build/{topic} build/{topic}/{topic}_all.tex > /dev/null")
+        if no_answers:
+            os.system(f"latexmk -pdf -interaction=nonstopmode -output-directory=build/{topic} build/{topic}/{topic}_all_noanswers.tex > /dev/null")

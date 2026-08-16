@@ -21,91 +21,18 @@ By the end of this week you should:
 
 ## Thinking about water flows <tex-essay>
 question: |
-  Over the remainder of semester, we will be creating a programming language to \emph{model} and \emph{simulate} water flows in rivers.  This main task will scaffold your application exercises and your assignment submissions.
+  The assignment document is your single source of truth for the semester project.  It describes the river-modelling domain, the simplifying assumptions, the worked example (the exemplar), and what each submission requires.  Read the introduction and the section called \emph{The Exemplar} before you start this task, everything you need to understand the problem is there.
 
-  Modelling rivers involves taking rainfall data and simulating what water levels will result from that rainfall over a period of time.  This type of modelling is vital to environmental management and public safety. Floods can be predicted and mitigation methods can be designed.  It also allows water managers to experiment with different dam strategies to maximise safety.
-
-  River system modelling is normally done with simulation software but it could be done better if it was done with a \emph{custom programming language} instead.  COMP3000 2025 students will use what they are learning to create just such a language.
-
-  \begin{note}
-  Over semester your team will make the best river modelling language you can.  You are not being pushed towards a certain solution, you are exploring possibilities.  The textbook will help you implement the language you come up with, but your general knowledge and imagination will guide the language.  If you need to ask "domain questions" of an expert in the domain, ask your class teacher or post in the forums.  We've chosen this problem because you all know how water and rivers work in at least some way.
-  \end{note}
-
-  Solving this problem is \emph{a real contribution to the science of waterflow management}.  Your team is taking on a real-world problem, you will need to bring your A-game.
-
-  \subsubsection*{Co-Design}
-  As students work through their workshops, unit staff will adjust future work to account for the directions students are taking and their choices.  In this way the course is \emph{co=designed} with each cohort of students.
-
-  \subsubsection*{A guide}
-  \begin{figure}
-  \includegraphics[width=0.588\textwidth]{src/6_simplified_act.jpg}
-  \includegraphics[width=0.512\textwidth]{src/6_situated_act.jpg}
-  \caption{An example watershed.  On the left is a stylised map and on the right is all the draining rivers and dams on a map to help situate the watershed.}
-  \label{fig:act_watershed}
-  \end{figure}
-
-  I have done this task already to prove (to myself) it is a good idea.  I will give you a little tour of \emph{my} solution to help guide you on your way.  My solution is a programming language based on Lox (I called it "mattlock").  I added a few new features (beyond what is covered in the text book) to support modelling water flows.  When I execute a program in this language it computes all the waterflows in every river for me.  You will be familiar with programs that only output the things you told it to print, but why be so constrained?  In my case I made the output of the program \emph{the final state of all the variables in the program, all wrapped up in a table} and that ended up being just what I needed!  I created different programs written in that language to model different river systems.  I have so far done the Canberra river system (which is in Figure \ref{fig:act_watershed}), the full ACT river system, the Lane Cove River system to Chatswood, and the Berowra River system all the way to Marramarra creek (that is a long program but really shows off how much you can say when you have the right notation to do it in). Thus my repository of mattlock programs is:
+  \subsubsection*{This week's task}
+  Your team's job this week is to start designing your language.  Specifically:
   \begin{itemize}
-  \item \verb+canberra.mattlock+ (40 lines of mattlock code)
-  \item \verb+act.mattlock+ (50 lines of mattlock code)
-  \item \verb|lane_cove.mattlock| (180 lines of mattlock code)
-  \item \verb|berowra.mattlock| (473 lines of mattlock code)
+  \item Work out how the whole process works: rain falls on the catchment and, over the following days, works its way into the creeks and rivers.  Your language has to describe this.
+  \item Decide what form the water-flow literal takes, what does a value like \verb+central_molo_rainfall+ look like in your language?  Recall that a literal is a way of writing a value in your language which communicates its type and its value.  Numbers, strings, and true/false are literals you already know.  Water flow is a domain concept which might deserve a literal of its own.
   \end{itemize}
+  This literal will end up in your grammar and in the basic questions of the rubric explanation (a1\_rubric.md) for Submission One, so it is worth thinking about now.
 
-  And here is an example run of one of my water modelling programs.  The river system it is simulating is shown in Figure \ref{fig:act_watershed}.
-  \begin{lstlisting}[basicstyle=\footnotesize\ttfamily]
-  > java mattlock.Lox canberra.mattlock
-  This system assumes that the rainfall all over the river system is the same and can 
-  be described with one number per day.
-  
-  Rainfall (mm) per day:
-  ----------------------
-              0    1    2    3    4    5    6    7    8    9    10   11
-  rainfall  11.4  0.0  0.4  0.0  0.0  2.0  0.2  0.2  0.2  0.0  0.0  8.3
-
-  Running the model computes the flow in each watershed on each day.
-
-  Flows (L/second)
-  ----------------
-                    0     1     2    3    4     5      6     7     8    9    10      11 
-  upper_molo     57.00   0.0  2.00  0.0  0.0  10.0   1.00  1.00  1.00  0.0  0.0   41.50 
-  googong       114.00   0.0  4.00  0.0  0.0  20.0   2.00  2.00  2.00  0.0  0.0   83.00 
-  quean          31.40  20.0  0.40  0.0  0.0  22.0  20.20  0.20  0.20  0.0  0.0   28.30 
-  jerra          22.80   0.0  0.80  0.0  0.0   4.0   0.40  0.40  0.40  0.0  0.0   16.60 
-  central_molo  145.40  20.0  4.40  0.0  0.0  42.0  22.20  2.20  2.20  0.0  0.0  111.30 
-  lower_molo      9.12   0.0  0.32  0.0  0.0   1.6   0.16  0.16  0.16  0.0  0.0    6.64 
-  \end{lstlisting}
-
-  I can't show you my programming language - I want each team to be creative and come up with new exciting ideas - but I can give a little hint.  In the Canberra river system, central molongolo is made up of all the water coming from upper molongolo, all the water from queanbeyan, all the water from jerrabomberra, and the water that fell over that area.  I represent this in my program as
-  \begin{lstlisting}
-  central_molo = upper_molo + quean + jerra + central_molo_rainfall
-  \end{lstlisting}
-  but I have put some magic into that \verb+central_molo_rainfall+ variable.  It is \emph{not} just a number, it somehow captures the way rain makes its way into a creek in the days after the rainfall event.  It is a simple solution with powerful effects\footnote{\emph{This} is super-power of programming based solutions to this problem}.
-
-
-  A fully worked example of a river system language is available on iLearn.  The README explains the design decisions, core concepts, and possible extensions in detail.  It's one possible design, not a template, but reading it will show you how the pieces fit together.
-
-  \subsubsection*{Your team's task}
-
-  This week I want you to:
-  \begin{itemize}
-  \item Brainstorm how this whole process even works.  
-  \item Brainstorm what sort of forms that \verb+central_molo_rainfall+ could take.
-  \end{itemize}
-
-  The second task might require you to think about any special \emph{literals} we might need.  Recall that a literal is a way of writing a value in your language which communicates its type and its value.  Numbers, strings, and True/False are literals you will be familiar with.  When creating our own language for a particular domain, there may be domain concepts that need added to the language as literals.  Note that this week's class will involve lots of brainstorming, head-scratching, exploration, and inspiration.  You might choose to make additions to your scanner based on what you decide, but that is a secondary concern.
-  
-  \subsubsection*{Water flows}
-  When it rains, water flows into the local creek/river.  It hits the ground and, over time, goes down under gravity.  It doesn't happen instantaneously and water may still be flowing into a creek/river up to 10 days after a rainfall event. 
-
-  I will add a few simplifying assumptions to help:
-  \begin{enumerate}
-  \item The rainfall across a whole \emph{catchment} can be described with one number (in mm).
-  \item The flow out of one creek is exactly the flow into the next creek.
-  \item All water that gets into a creek/river will also flow out of it.
-  \item All water that falls from the sky will (within 10 days) make its way into the creek/river.
-  \item Each catchment has one creek/river which drains it.
-    \end{enumerate}
+  \subsubsection*{Optional scanner step}
+  This week is all about scanning, so if your team has settled on a literal syntax, go ahead and add the new token(s) your literal needs to your scanner.  This is optional, you can   design the syntax now and add the tokens later.
 
     \subsubsection*{Reporting Period / Logbook Advice}
     During the reporting period, share the literal form your team chose for describing water flow and your reasoning. Listen to how other teams solved the same problem, there are many valid approaches and you might hear something better than yours.
@@ -177,7 +104,7 @@ What is the primary purpose of the scanner (lexical analyzer) in a compiler or i
 
 ## token examples <gift>
 Which of the following is an example of a token in the scanning process? {
-    =A variable name like `3x`.
+    =A variable name like `x3`.
     ~A syntax error found in the source code.
     ~A function call like `foo(5)`.
     ~A computation like `x + 3`.

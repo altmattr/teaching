@@ -56,7 +56,7 @@ When evaluating unary operators (e.g., `-` or `!`) in an interpreter, which of t
 }
 
 ## Assignment grade 1 <gift>
-Consider the following description of an assignment one submission: "The student was in a productive group who worked out exactly what an expression should look like for river flows.  The student did their own Lox-like parser for that expression language and created 2 example programs in it.  They submitted the work with a document showing how to compile and run but without any explanation of how the language works.  The parser worked perfectly on the example programs.  The student forgot to include table A."  What grade would you expect them to receive according to the rubric?{
+Consider the following description of an assignment one submission: "The student was in a productive group who worked out exactly what an expression should look like for river flows.  The student did their own Lox-like parser for that expression language and created 2 example programs in it.  They submitted the work with a document showing how to compile and run but without any explanation of how the language works.  The parser worked perfectly on the example programs.  The student forgot to include the rubric explanation (`a1_rubric.md`)."  What grade would you expect them to receive according to the rubric?{
     ~0
     ~20
     ~40
