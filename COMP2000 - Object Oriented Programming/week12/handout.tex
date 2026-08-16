@@ -53,9 +53,9 @@ This is a \emph{simultaneous reporting} style class.  Each team presents the par
 Remind teams to use \texttt{synchronized}, \texttt{wait}/\texttt{notify}, and the \texttt{java.util.concurrent} package as covered in the preparatory reading.  Watch for teams that accidentally introduce deadlocks---these make great discussion points during reporting.
 \end{teacher}
 
-\subsection*{Project Guidance}
+\section*{Project Guidance}
 
-Where could things happen in parallel in your simulation?  The most natural fit is region-based parallelism: partition your grid into quadrants and simulate each quadrant on a separate thread.  You will need to handle entities that move across quadrant boundaries and ensure that two threads do not update the same cell simultaneously.  Start with a simple split (e.g.\ top-half / bottom-half) and measure the speedup.  Document any race conditions you encounter and how you resolved them.
+This is your team's work \emph{between classes}, do it in your own time and have it committed and pushed to your shared repository before you return next week.  Where could things happen in parallel in your simulation?  The most natural fit is region-based parallelism: partition your grid into quadrants and simulate each quadrant on a separate thread.  You will need to handle entities that move across quadrant boundaries and ensure that two threads do not update the same cell simultaneously.  Start with a simple split (e.g.\ top-half / bottom-half) and measure the speedup.  Document any race conditions you encounter and how you resolved them.  Record what you did in your log book.  Anything you add beyond the class activity is the kind of contribution the Uniqueness and Creativity rubric rewards.
 
 \section*{Self Study Exercises}
 \begin{enumerate}

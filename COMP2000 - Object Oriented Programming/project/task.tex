@@ -21,9 +21,11 @@ Your task is to make a simulation of some natural or imagined system (ecosystem,
   \item market simulation --- buyers and sellers set prices, boom/bust cycles emerge
 \end{itemize}
 
+Conway's game of life is such great fun \href{https://youtu.be/rBaK4-EoF_8?si=a56O2gm5cs1a3VJB}{so it is a good place to start}.
+
 You will need to create such a system, but that is not the overall goal.  The overall goal is to \emph{use the creation of such a system to understand and communicate OO programming}.
 
-It is up to your team to decide on a simulation to attempt and you will work on it together with your team throughout semester.  Your submisisons will be \emph{individual}.  You will take the work from your team, add your own reflections on the code, and submit that.   This type of hybrid team/individual assessment allows you to get the benefits of working in a team without the downsides of relying on others for you grades.
+It is up to your team to decide on a simulation to attempt and you will work on it together with your team throughout semester.  Your submissions will be \emph{individual}.  You will take the work from your team, add your own reflections on the code, and submit that.   This type of hybrid team/individual assessment allows you to get the benefits of working in a team without the downsides of relying on others for your grades.
 
 You will see two worksheets to complete, one in each of the submission links, and two rubrics which show you the answers we are looking for where you can show off your understanding.
 
@@ -31,24 +33,34 @@ Your simulation is the \emph{canvas}, not the \emph{art}. The worksheets (worksh
 
 By Week 13 your simulation will be genuinely interesting to run, but the grade comes from how clearly you can discuss the design decisions behind it.
 
+\textbf{Your simulation needs to be watchable.}  A simulation you can't see is a simulation you can't understand.  So in addition to the logic, you must build an interface that shows your simulation in action.  A simple graphical display that draws your entities as they move and interact is enough.  Do not spend time on a polished GUI: Swing or JavaFX will eat your semester and add nothing to your design.  Just draw on a \texttt{JPanel} inside a \texttt{JFrame}, redrawing a few times a second, and you are done.  Plan for a window early in the semester rather than a last-week afterthought, and remember that the Week 13 showcase expects to see your simulation running.
+
+\subsection*{Showcases}
+In weeks 7 and 13 the class is devoted to "student showcases".  These classes occur \emph{before} the submission date.  The idea is that students should have done most/all of their coding by this time and that class is a chance to \emph{show their work and get feedback} before finalising their submission.  Feedback will come from other students and from the class teacher.  Not all students need to present, students choose to take this opportunity or to let it pass if they are behind on their work.  The benefits to taking it are that you will end up with a better submission \emph{and your uniqueness and creativity grades will be ensured}.  I.e. every student who takes the opportunity will get full marks for that rubric item.  Students not presenting are still expected to attend that class and complete their logbooks.  They will also get tips/advice/directions for their own work from seeing what the other students present.
+
+\subsection*{How to succeed}
+Throughout semester:\begin{itemize}
+  \item Work with your team to design and implement one Java simulation.
+  \item Maintain the team's shared code repository.
+  \item Complete the weekly worksheet/project activities.
+  \item Record your learning and project reflections in your individual log book.
+  \item Maintain evidence of your own contribution through Git commits.
+\end{itemize}
+Around submission time:\begin{itemize}
+  \item Fork the team's repository before preparing your submssion
+  \item Showcase your work in class.
+  \item Complete the submission worksheet.
+  \item Submit according to instructions.
+\end{itemize}
+
 \section*{Rubrics}
-\subsection*{Log Book (feedback only, doesn't contribute to final grade)}
-\begin{tabular}{@{}p{0.10\textwidth}|p{0.11\textwidth}p{0.11\textwidth}p{0.11\textwidth}p{0.11\textwidth}p{0.12\textwidth}|p{0.16\textwidth}@{}}
-\hline
-item & F & P & CR & D & HD & Notes\\
-\hline \hline
-weekly log book &
-no submission or entry does not address the week's activity &
-entry present, relates to the activity &
-entry shows understanding of the key concept taught &
-entry connects the concept to the team's own project &
-entry demonstrates insight, evaluation, or a question that extends thinking &
-sign-offs (if used) confirm timeliness\\
-\hline
-\end{tabular}
+
+\begin{note}
+	Because this is an individual submission, the github url you provide your marker \emph{cannot be your team's github url}.  You are responsible for setting up your own repository to link to.  The repository can be a fork of your team's repository, it does not need to be fresh, but it must have it's own url even if all the code is identical to the team's.
+\end{note}
 
 \subsection*{Week 7 Submission}
-Student submits: a link to a public GitHub repository, answers to reflection questions, and a log book.
+Student submits exactly two files (do not zip them): the completed worksheet and your log book.  The worksheet includes a link to your own public GitHub repository.  Your URL must be your own fork of your team's repository, not your team's URL because your submission is individual.
 
 Note: it is an assumption that the submission will compile and run.  Compilation failures attract zero grades.
 
@@ -57,7 +69,7 @@ Note: it is an assumption that the submission will compile and run.  Compilation
 item & F (0) & P (60) & CR (72) & D(84) & HD (100)\\
 \hline \hline
 version control (20\%) &
-no repo link &
+no repo link or team's repo link &
 public GitHub repo link provided &
 student has regular commits across the submission period &
 commits are meaningful, each describes a discrete change;
@@ -96,7 +108,7 @@ entries demonstrate insight and learning across multiple weeks\\
 \end{tabular}
 
 \subsection*{Week 13 Submission}
-Student submits: final code, log book, and a reflective report.
+Student submits exactly two files (do not zip them): the completed worksheet and your log book.  The worksheet includes the URL of your own fork of your team's repository, where your final code lives.  Your submission is individual, so the URL must be your own fork not your team's URL.
 
 Note: it is an assumption that the submission will compile and run.  Compilation failures attract zero grades.
 
@@ -134,4 +146,12 @@ final reflection critically evaluates what was learned, what trade-offs were mad
 \hline
 \end{tabular}
 
+\section{FAQ}
+
+\begin{description}
+  \item[How can I tell whether my project idea is suitable or likely to work well?]  You probably can't but that is all built into how we run the classes.  Your class teacher will be paying close attention and will let you know if you are heading down a dead end or taking on something too ambitious.  You are free to be creative and you can leave the careful calibration to us.
+  \item[How important are the visual aspects of the project?]  The quality of the visuals are not graded but the Object Oriented Programming techniques you used to achieve them are graded. Interactive graphics is a rich source of interesting OO design problems and solutions.  Aiming for quality graphics will naturally open up opportunities for you to get more marks.  You will find your own personal pride will push you to make a good looking simulation and first impressions always end up influencing a user but there is nothing in the rubric specifically related to how good the visuals are.
+  \item[What level of ambition is expected for the project?]  The level of ambition is up to the student.  EPIC teaching puts more agency for learning in the hands of the students.  More ambition gives you a bigger canvas to show off what you have learned.  Your class teacher will feedback to your team if they think you are aiming too high/low.
+  \item[What happens if my team’s project is not fully functional by the end?]  Your submission is individual.  If your team's work is not enough, you will add to it yourself before submitting.  We expect most students will add substantially to what their group has achieved before submitting.  Some teams will work so well that they won't need to, but that is not our expectation.
+\end{description}
 \end{document}

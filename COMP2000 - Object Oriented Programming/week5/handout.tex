@@ -58,10 +58,9 @@ During the reporting period, each team will present their broken code.  Be ready
 Provide each team with a small codebase containing a generic class and a correct usage example.  The starter should have potential vulnerabilities: raw type access and unchecked warnings.  Circulate during the activity to help teams that are stuck understand type erasure.  During reporting, highlight teams that found different attack vectors (raw types, unchecked suppression).  The goal is for students to internalise that generics are a compile-time only feature.
 \end{teacher}
 
-\subsection*{Project Guidance}
+\section*{Project Guidance}
 
-Look at your team's project code.  Where would a generic type add safety?  Perhaps a \texttt{Grid<T extends Entity>} to ensure only entities live on your grid, or a typed event system to distinguish different kinds of simulation events.  Try introducing one generic type and observe what the compiler now guarantees that it did not before.
-
+This is your team's work \emph{between classes}, do it in your own time and have it committed and pushed to your shared repository before you return next week.  Look at your team's project code.  Where would a generic type add safety?  Perhaps a \texttt{Grid<T extends Entity>} to ensure only entities live on your grid, or a typed event system to distinguish different kinds of simulation events.  Try introducing one generic type and observe what the compiler now guarantees that it did not before.  Record what you did in your log book.  Anything you add beyond the class activity is the kind of contribution the Uniqueness and Creativity rubric rewards.
 
 \section*{Self Study Exercises}
 \begin{enumerate}

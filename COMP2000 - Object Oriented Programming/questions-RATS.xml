@@ -38,18 +38,6 @@
       <text>Your answer is incorrect.</text>
     </incorrectfeedback>
     <shownumcorrect/>
-    <answer fraction="0" format="html">
-      <text>Clarification Session &gt; Application Task &gt; IRAT &gt; TRAT &gt; Preparation</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>Preparation &gt; Clarification Session &gt; Application Task &gt; IRAT &gt; TRAT</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
     <answer fraction="100" format="html">
       <text>Preparation &gt; IRAT &gt; TRAT &gt; Clarification Session &gt; Application Task</text>
       <feedback format="html">
@@ -58,6 +46,18 @@
     </answer>
     <answer fraction="0" format="html">
       <text>IRAT &gt; Preparation &gt; TRAT &gt; Application Task &gt; Clarification Session</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Clarification Session &gt; Application Task &gt; IRAT &gt; TRAT &gt; Preparation</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Preparation &gt; Clarification Session &gt; Application Task &gt; IRAT &gt; TRAT</text>
       <feedback format="html">
         <text/>
       </feedback>
@@ -250,12 +250,6 @@
       <text>Your answer is incorrect.</text>
     </incorrectfeedback>
     <shownumcorrect/>
-    <answer fraction="0" format="html">
-      <text>To give each student the chance to revise their quiz answers</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
     <answer fraction="100" format="html">
       <text>Having been primed in iRAT/tRAT, students now apply knowledge and concepts to a realistic problem that requires team collaboration and decision-making</text>
       <feedback format="html">
@@ -270,6 +264,12 @@
     </answer>
     <answer fraction="0" format="html">
       <text>To reflect and evaluate the performance of their team and preparation</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>To give each student the chance to revise their quiz answers</text>
       <feedback format="html">
         <text/>
       </feedback>
@@ -303,6 +303,12 @@
       <text>Your answer is incorrect.</text>
     </incorrectfeedback>
     <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>Having enough lecture content to revise for the final exam</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
     <answer fraction="100" format="html">
       <text>Struggling to adapt to working closely with the same team over time</text>
       <feedback format="html">
@@ -317,12 +323,6 @@
     </answer>
     <answer fraction="0" format="html">
       <text>Being unsure when to submit their weekly lab report</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>Having enough lecture content to revise for the final exam</text>
       <feedback format="html">
         <text/>
       </feedback>
@@ -357,12 +357,6 @@
     </incorrectfeedback>
     <shownumcorrect/>
     <answer fraction="0" format="html">
-      <text>In class in weeks 1, 3, 5, 7 and 9</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
       <text>Never after this first session</text>
       <feedback format="html">
         <text/>
@@ -376,6 +370,12 @@
     </answer>
     <answer fraction="100" format="html">
       <text>Every week in our classes</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>In class in weeks 1, 3, 5, 7 and 9</text>
       <feedback format="html">
         <text/>
       </feedback>
@@ -479,6 +479,12 @@
   <incorrectfeedback format="html">
     <text/>
   </incorrectfeedback>
+  <answer fraction="0" format="html">
+    <text>Git deletes the conflicting file and reports an error.</text>
+    <feedback format="html">
+      <text>Git preserves all files. It flags the conflict for manual resolution rather than deleting anything.</text>
+    </feedback>
+  </answer>
   <answer fraction="100" format="html">
     <text>Git rejects Bob's push. Bob must pull, resolve the conflict, commit the resolution, then push again.</text>
     <feedback format="html">
@@ -501,12 +507,6 @@
     <text>Git asks Bob interactively which version to keep and pushes the chosen version.</text>
     <feedback format="html">
       <text>Git does not prompt for resolution at push time. Conflicts are resolved locally after a pull creates a merge commit.</text>
-    </feedback>
-  </answer>
-  <answer fraction="0" format="html">
-    <text>Git deletes the conflicting file and reports an error.</text>
-    <feedback format="html">
-      <text>Git preserves all files. It flags the conflict for manual resolution rather than deleting anything.</text>
     </feedback>
   </answer>
 </question><question type="multichoice">
@@ -536,6 +536,18 @@
   <incorrectfeedback format="html">
     <text/>
   </incorrectfeedback>
+  <answer fraction="0" format="html">
+    <text>It prevents any file from being committed until it has been reviewed by a team member.</text>
+    <feedback format="html">
+      <text>Git has no built-in review requirement. Code review is a separate workflow using pull requests or similar tools.</text>
+    </feedback>
+  </answer>
+  <answer fraction="0" format="html">
+    <text>It allows Git to work without a network connection.</text>
+    <feedback format="html">
+      <text>Git is already fully functional offline. The staging area is unrelated to network access.</text>
+    </feedback>
+  </answer>
   <answer fraction="100" format="html">
     <text>It allows you to compose a commit from only some of your changes, keeping unrelated changes separate.</text>
     <feedback format="html">
@@ -552,18 +564,6 @@
     <text>It is a temporary holding area for files before they are sent to the remote repository.</text>
     <feedback format="html">
       <text>The staging area is local. Sending data to a remote is done with git push, which operates on commits, not staged files.</text>
-    </feedback>
-  </answer>
-  <answer fraction="0" format="html">
-    <text>It prevents any file from being committed until it has been reviewed by a team member.</text>
-    <feedback format="html">
-      <text>Git has no built-in review requirement. Code review is a separate workflow using pull requests or similar tools.</text>
-    </feedback>
-  </answer>
-  <answer fraction="0" format="html">
-    <text>It allows Git to work without a network connection.</text>
-    <feedback format="html">
-      <text>Git is already fully functional offline. The staging area is unrelated to network access.</text>
     </feedback>
   </answer>
 </question><question type="multichoice">
@@ -593,18 +593,6 @@
   <incorrectfeedback format="html">
     <text/>
   </incorrectfeedback>
-  <answer fraction="100" format="html">
-    <text>&lt;code&gt;git fetch&lt;/code&gt; downloads commits without merging; &lt;code&gt;git pull&lt;/code&gt; downloads and then merges into the current branch.</text>
-    <feedback format="html">
-      <text>Correct. The merge step is what distinguishes pull from fetch.</text>
-    </feedback>
-  </answer>
-  <answer fraction="0" format="html">
-    <text>&lt;code&gt;git pull&lt;/code&gt; downloads commits while &lt;code&gt;git fetch&lt;/code&gt; uploads commits.</text>
-    <feedback format="html">
-      <text>Both commands download from the remote. Uploading is done with &lt;code&gt;git push&lt;/code&gt;.</text>
-    </feedback>
-  </answer>
   <answer fraction="0" format="html">
     <text>&lt;code&gt;git fetch&lt;/code&gt; only works on feature branches while &lt;code&gt;git pull&lt;/code&gt; works on any branch.</text>
     <feedback format="html">
@@ -621,6 +609,18 @@
     <text>&lt;code&gt;git fetch&lt;/code&gt; transfers only metadata; &lt;code&gt;git pull&lt;/code&gt; transfers file contents.</text>
     <feedback format="html">
       <text>Both transfer the same data (commits, files, and metadata). Only the post-download action differs.</text>
+    </feedback>
+  </answer>
+  <answer fraction="100" format="html">
+    <text>&lt;code&gt;git fetch&lt;/code&gt; downloads commits without merging; &lt;code&gt;git pull&lt;/code&gt; downloads and then merges into the current branch.</text>
+    <feedback format="html">
+      <text>Correct. The merge step is what distinguishes pull from fetch.</text>
+    </feedback>
+  </answer>
+  <answer fraction="0" format="html">
+    <text>&lt;code&gt;git pull&lt;/code&gt; downloads commits while &lt;code&gt;git fetch&lt;/code&gt; uploads commits.</text>
+    <feedback format="html">
+      <text>Both commands download from the remote. Uploading is done with &lt;code&gt;git push&lt;/code&gt;.</text>
     </feedback>
   </answer>
 </question><question type="multichoice">
@@ -652,6 +652,12 @@
     </incorrectfeedback>
     <shownumcorrect/>
     <answer fraction="-100" format="html">
+      <text>Removes old versions of your files from the repository.</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="-100" format="html">
       <text>Sends staged changes to a remote repository.</text>
       <feedback format="html">
         <text/>
@@ -671,12 +677,6 @@
     </answer>
     <answer fraction="100" format="html">
       <text>Capture a snapshot of staged local changes.</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="-100" format="html">
-      <text>Removes old versions of your files from the repository.</text>
       <feedback format="html">
         <text/>
       </feedback>
@@ -710,12 +710,6 @@
       <text>Your answer is incorrect.</text>
     </incorrectfeedback>
     <shownumcorrect/>
-    <answer fraction="0" format="html">
-      <text>git blame</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
     <answer fraction="100" format="html">
       <text>git diff</text>
       <feedback format="html">
@@ -736,6 +730,12 @@
     </answer>
     <answer fraction="0" format="html">
       <text>git showme</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>git blame</text>
       <feedback format="html">
         <text/>
       </feedback>
@@ -770,18 +770,6 @@
     </incorrectfeedback>
     <shownumcorrect/>
     <answer fraction="0" format="html">
-      <text>git clone</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>git stash</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
       <text>git create</text>
       <feedback format="html">
         <text/>
@@ -795,6 +783,18 @@
     </answer>
     <answer fraction="0" format="html">
       <text>git initialize</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>git clone</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>git stash</text>
       <feedback format="html">
         <text/>
       </feedback>
@@ -829,6 +829,12 @@
     </incorrectfeedback>
     <shownumcorrect/>
     <answer fraction="0" format="html">
+      <text>git push</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
       <text>git commit</text>
       <feedback format="html">
         <text/>
@@ -842,12 +848,6 @@
     </answer>
     <answer fraction="100" format="html">
       <text>git add</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>git push</text>
       <feedback format="html">
         <text/>
       </feedback>
@@ -881,18 +881,6 @@
       <text>Your answer is incorrect.</text>
     </incorrectfeedback>
     <shownumcorrect/>
-    <answer fraction="100" format="html">
-      <text>Temporarily save changes that are not ready to be committed.</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>Removes files from staging.</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
     <answer fraction="0" format="html">
       <text>Backs local files up to a remote repository.</text>
       <feedback format="html">
@@ -907,6 +895,18 @@
     </answer>
     <answer fraction="0" format="html">
       <text>Moves files into the local trash folder.</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>Temporarily save changes that are not ready to be committed.</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Removes files from staging.</text>
       <feedback format="html">
         <text/>
       </feedback>
@@ -940,12 +940,6 @@
       <text>Your answer is incorrect.</text>
     </incorrectfeedback>
     <shownumcorrect/>
-    <answer fraction="100" format="html">
-      <text>git status</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
     <answer fraction="0" format="html">
       <text>git log</text>
       <feedback format="html">
@@ -966,6 +960,12 @@
     </answer>
     <answer fraction="0" format="html">
       <text>git check</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>git status</text>
       <feedback format="html">
         <text/>
       </feedback>
@@ -1011,18 +1011,6 @@
 * E: Generics work alongside polymorphism, not as a replacement for it.</text>
     </incorrectfeedback>
     <answer fraction="0" format="html">
-      <text>To enable runtime type checking of objects.</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>To allow the creation of abstract classes.</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
       <text>To automatically convert data types during assignment.</text>
       <feedback format="html">
         <text/>
@@ -1036,6 +1024,18 @@
     </answer>
     <answer fraction="100" format="html">
       <text>To provide stronger compile-time type checking and reduce runtime errors.</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>To enable runtime type checking of objects.</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>To allow the creation of abstract classes.</text>
       <feedback format="html">
         <text/>
       </feedback>
@@ -1072,6 +1072,12 @@
 * E: This is invalid because it uses raw types improperly.</text>
     </incorrectfeedback>
     <answer fraction="0" format="markdown">
+      <text>`Box&lt;String&gt; box = new Box&lt;&gt;();`</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="markdown">
       <text>`Box box = new Box&lt;String&gt;();`</text>
       <feedback format="html">
         <text/>
@@ -1091,12 +1097,6 @@
     </answer>
     <answer fraction="0" format="markdown">
       <text>`Box box = new Box&lt;&gt;();`</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="100" format="markdown">
-      <text>`Box&lt;String&gt; box = new Box&lt;&gt;();`</text>
       <feedback format="html">
         <text/>
       </feedback>
@@ -1136,6 +1136,12 @@ The syntax `&lt;T&gt;` in a method declaration defines a generic type parameter 
 * E: Java generics are not equivalent to templated classes in C++.</text>
     </incorrectfeedback>
     <answer fraction="0" format="html">
+      <text>A shorthand for a templated class.</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
       <text>A wildcard for all types.</text>
       <feedback format="html">
         <text/>
@@ -1155,12 +1161,6 @@ The syntax `&lt;T&gt;` in a method declaration defines a generic type parameter 
     </answer>
     <answer fraction="100" format="html">
       <text>A declaration of a generic type parameter.</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>A shorthand for a templated class.</text>
       <feedback format="html">
         <text/>
       </feedback>
@@ -1209,12 +1209,6 @@ The syntax `&lt;T&gt;` in a method declaration defines a generic type parameter 
 * D: While the size would be `0` without the invalid line, the code will not compile.
 * E: The code is valid except for the commented-out line.</text>
     </incorrectfeedback>
-    <answer fraction="0" format="html">
-      <text>&lt;p&gt;Runtime error due to type mismatch.&lt;/p&gt;</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
     <answer fraction="100" format="markdown">
       <text>Compilation error due to the line `list.add(5);`.</text>
       <feedback format="html">
@@ -1235,6 +1229,12 @@ The syntax `&lt;T&gt;` in a method declaration defines a generic type parameter 
     </answer>
     <answer fraction="0" format="html">
       <text>&lt;p&gt;The code is invalid and won't execute.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>&lt;p&gt;Runtime error due to type mismatch.&lt;/p&gt;</text>
       <feedback format="html">
         <text/>
       </feedback>
@@ -1277,6 +1277,18 @@ You can add null to a list declared with `List&lt;?&gt;` because `null` is a val
 * D: There is no runtime error.
 * E: The code executes successfully.</text>
     </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>&lt;p&gt;The code will not execute&lt;/p&gt;</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="markdown">
+      <text>`1`</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
     <answer fraction="0" format="markdown">
       <text>`0`</text>
       <feedback format="html">
@@ -1291,18 +1303,6 @@ You can add null to a list declared with `List&lt;?&gt;` because `null` is a val
     </answer>
     <answer fraction="0" format="html">
       <text>&lt;p&gt;Runtime error&lt;/p&gt;</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>&lt;p&gt;The code will not execute&lt;/p&gt;</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="100" format="markdown">
-      <text>`1`</text>
       <feedback format="html">
         <text/>
       </feedback>
@@ -1404,6 +1404,18 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
 * E: This is valid if `T` is a type parameter defined within the scope.</text>
     </incorrectfeedback>
     <answer fraction="0" format="markdown">
+      <text>`List&lt;? super Integer&gt;`</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="markdown">
+      <text>`List&lt;? super T&gt;`</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="markdown">
       <text>`List&lt;?&gt;`</text>
       <feedback format="html">
         <text/>
@@ -1421,18 +1433,6 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
         <text/>
       </feedback>
     </answer>
-    <answer fraction="0" format="markdown">
-      <text>`List&lt;? super Integer&gt;`</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="markdown">
-      <text>`List&lt;? super T&gt;`</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
   </question>
   <question type="category">
     <category>
@@ -1445,11 +1445,11 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
   </question>
   <question type="multichoice"><name><text>Stack trace interpretation</text></name><questiontext format="html"><text><![CDATA[<p>Given the following simplified stack trace, which line contains the source of the exception?</p><pre>Exception in thread "main" java.lang.ArithmeticException: / by zero
     at Calculator.divide(Calculator.java:12)
-    at App.main(App.java:5)</pre>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p>The topmost frame in a stack trace is where the exception was thrown. Here, <code>Calculator.divide(Calculator.java:12)</code> is line 12 of <code>Calculator.java</code>. The stack trace shows the call chain that led to the error: <code>main</code> called <code>divide</code>, which threw the exception.</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="100" format="html"><text><![CDATA[Line 12 of Calculator.java (the divide method)]]></text><feedback format="html"><text><![CDATA[Correct. The top frame is the throw site.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[Line 5 of App.java (the main method)]]></text><feedback format="html"><text><![CDATA[This is where the call originated, not where the exception was thrown. The top frame is the throw site.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[The line where main() calls divide()]]></text><feedback format="html"><text><![CDATA[That is one frame down in the stack. The topmost frame is the actual throw location.]]></text></feedback></answer>
+    at App.main(App.java:5)</pre>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p>The topmost frame in a stack trace is where the exception was thrown. Here, <code>Calculator.divide(Calculator.java:12)</code> is line 12 of <code>Calculator.java</code>. The stack trace shows the call chain that led to the error: <code>main</code> called <code>divide</code>, which threw the exception.</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="0" format="html"><text><![CDATA[The line where main() calls divide()]]></text><feedback format="html"><text><![CDATA[That is one frame down in the stack. The topmost frame is the actual throw location.]]></text></feedback></answer>
     <answer fraction="0" format="html"><text><![CDATA[It is impossible to tell from the stack trace]]></text><feedback format="html"><text><![CDATA[The stack trace shows the exact file and line number where the exception occurred — the topmost frame.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[Line 1 of the Java standard library]]></text><feedback format="html"><text><![CDATA[The stack trace clearly shows user code at Calculator.java:12 and App.java:5, not library code.]]></text></feedback></answer></question><question type="multichoice">
+    <answer fraction="0" format="html"><text><![CDATA[Line 1 of the Java standard library]]></text><feedback format="html"><text><![CDATA[The stack trace clearly shows user code at Calculator.java:12 and App.java:5, not library code.]]></text></feedback></answer>
+    <answer fraction="100" format="html"><text><![CDATA[Line 12 of Calculator.java (the divide method)]]></text><feedback format="html"><text><![CDATA[Correct. The top frame is the throw site.]]></text></feedback></answer>
+    <answer fraction="0" format="html"><text><![CDATA[Line 5 of App.java (the main method)]]></text><feedback format="html"><text><![CDATA[This is where the call originated, not where the exception was thrown. The top frame is the throw site.]]></text></feedback></answer></question><question type="multichoice">
     <name>
       <text>What is the output of the given code snippet?</text>
     </name>
@@ -1476,12 +1476,6 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
     <incorrectfeedback format="html">
       <text/>
     </incorrectfeedback>
-    <answer fraction="100" format="html">
-      <text>Arithmetic Exception caught and then Finally block executed</text>
-      <feedback format="html">
-        <text>Correct! The catch block catches the ArithmeticException, and the finally block is executed afterwards.</text>
-      </feedback>
-    </answer>
     <answer fraction="0" format="html">
       <text>Compilation error</text>
       <feedback format="html">
@@ -1506,16 +1500,22 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
         <text>Incorrect. Java handles the exception, so the program does not crash.</text>
       </feedback>
     </answer>
+    <answer fraction="100" format="html">
+      <text>Arithmetic Exception caught and then Finally block executed</text>
+      <feedback format="html">
+        <text>Correct! The catch block catches the ArithmeticException, and the finally block is executed afterwards.</text>
+      </feedback>
+    </answer>
   </question>
   <question type="multichoice"><name><text>Checked vs unchecked exceptions</text></name><questiontext format="html"><text><![CDATA[<p>Which of the following exceptions must be declared in a method's <code>throws</code> clause if it can be thrown but not caught inside the method?</p>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p>Checked exceptions (subclasses of <code>Exception</code> but not <code>RuntimeException</code>) must be declared or caught. <code>IOException</code> is a checked exception. <code>NullPointerException</code>, <code>ArrayIndexOutOfBoundsException</code>, and <code>IllegalArgumentException</code> are unchecked (extend <code>RuntimeException</code>) and do not need to be declared. <code>Error</code> and its subclasses are also unchecked.</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="100" format="html"><text><![CDATA[<code>IOException</code>]]></text><feedback format="html"><text><![CDATA[Correct. IOException is a checked exception and must be declared in throws or caught.]]></text></feedback></answer>
     <answer fraction="0" format="html"><text><![CDATA[<code>NullPointerException</code>]]></text><feedback format="html"><text><![CDATA[NullPointerException is a RuntimeException (unchecked) and does not require a throws declaration.]]></text></feedback></answer>
     <answer fraction="0" format="html"><text><![CDATA[<code>ArrayIndexOutOfBoundsException</code>]]></text><feedback format="html"><text><![CDATA[This is also a RuntimeException (unchecked). No throws clause is needed.]]></text></feedback></answer>
     <answer fraction="0" format="html"><text><![CDATA[<code>IllegalArgumentException</code>]]></text><feedback format="html"><text><![CDATA[IllegalArgumentException is a RuntimeException (unchecked). No throws declaration required.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[<code>StackOverflowError</code>]]></text><feedback format="html"><text><![CDATA[Error and its subclasses are unchecked. They are not expected to be caught in normal application code.]]></text></feedback></answer></question><question type="multichoice"><name><text>Try-with-resources</text></name><questiontext format="html"><text><![CDATA[<p>What does a <code>try</code>-with-resources statement guarantee that a traditional <code>try</code>-<code>finally</code> block does not?</p>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p>Try-with-resources (introduced in Java 7) automatically closes each resource declared in the try header by calling its <code>close()</code> method, regardless of whether the try block completes normally or abruptly. While a finally block also runs in both cases, try-with-resources handles the case where both the try block and the close() call throw exceptions: the exception from close() is suppressed, and the original exception propagates. In a finally block, a thrown exception from close() would mask the original exception.</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="100" format="html"><text><![CDATA[It automatically closes resources, with suppressed exception handling if both try and close() throw.]]></text><feedback format="html"><text><![CDATA[Correct. Try-with-resources uses suppressed exceptions to preserve the original exception.]]></text></feedback></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<code>StackOverflowError</code>]]></text><feedback format="html"><text><![CDATA[Error and its subclasses are unchecked. They are not expected to be caught in normal application code.]]></text></feedback></answer></question><question type="multichoice"><name><text>Try-with-resources</text></name><questiontext format="html"><text><![CDATA[<p>What does a <code>try</code>-with-resources statement guarantee that a traditional <code>try</code>-<code>finally</code> block does not?</p>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p>Try-with-resources (introduced in Java 7) automatically closes each resource declared in the try header by calling its <code>close()</code> method, regardless of whether the try block completes normally or abruptly. While a finally block also runs in both cases, try-with-resources handles the case where both the try block and the close() call throw exceptions: the exception from close() is suppressed, and the original exception propagates. In a finally block, a thrown exception from close() would mask the original exception.</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="0" format="html"><text><![CDATA[It allows multiple resources separated by commas instead of nested try-finally blocks.]]></text><feedback format="html"><text><![CDATA[While this is a convenience feature, the key improvement is the suppressed exception mechanism.]]></text></feedback></answer>
+    <answer fraction="100" format="html"><text><![CDATA[It automatically closes resources, with suppressed exception handling if both try and close() throw.]]></text><feedback format="html"><text><![CDATA[Correct. Try-with-resources uses suppressed exceptions to preserve the original exception.]]></text></feedback></answer>
     <answer fraction="0" format="html"><text><![CDATA[It guarantees the resource is closed even if no exception occurs.]]></text><feedback format="html"><text><![CDATA[A finally block also guarantees execution regardless of exceptions. This is not unique to try-with-resources.]]></text></feedback></answer>
     <answer fraction="0" format="html"><text><![CDATA[It catches exceptions thrown by the resource's close() method so they do not propagate.]]></text><feedback format="html"><text><![CDATA[Exceptions from close() are not silently swallowed; they are suppressed and attached to the primary exception.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[It eliminates the need for any catch block.]]></text><feedback format="html"><text><![CDATA[Catch blocks are still optional and can be used with try-with-resources.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[It allows multiple resources separated by commas instead of nested try-finally blocks.]]></text><feedback format="html"><text><![CDATA[While this is a convenience feature, the key improvement is the suppressed exception mechanism.]]></text></feedback></answer></question><question type="multichoice">
+    <answer fraction="0" format="html"><text><![CDATA[It eliminates the need for any catch block.]]></text><feedback format="html"><text><![CDATA[Catch blocks are still optional and can be used with try-with-resources.]]></text></feedback></answer></question><question type="multichoice">
     <name>
       <text>What will happen if a finally block contains a return statement?</text>
     </name>
@@ -1542,6 +1542,18 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
     <incorrectfeedback format="html">
       <text/>
     </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>The finally block cannot contain a return statement.</text>
+      <feedback format="html">
+        <text>Incorrect. It is legal for a finally block to have a return statement.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>The return statement in the finally block will execute only if no exception is thrown.</text>
+      <feedback format="html">
+        <text>Incorrect. The return statement in the finally block always executes, regardless of exceptions.</text>
+      </feedback>
+    </answer>
     <answer fraction="100" format="html">
       <text>The return statement in the finally block will override any return statement in the try or catch blocks.</text>
       <feedback format="html">
@@ -1558,18 +1570,6 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
       <text>The return statement in the finally block will be ignored.</text>
       <feedback format="html">
         <text>Incorrect. The return statement in the finally block is not ignored; it takes precedence.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>The finally block cannot contain a return statement.</text>
-      <feedback format="html">
-        <text>Incorrect. It is legal for a finally block to have a return statement.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>The return statement in the finally block will execute only if no exception is thrown.</text>
-      <feedback format="html">
-        <text>Incorrect. The return statement in the finally block always executes, regardless of exceptions.</text>
       </feedback>
     </answer>
   </question>
@@ -1600,18 +1600,6 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
     <incorrectfeedback format="html">
       <text/>
     </incorrectfeedback>
-    <answer fraction="100" format="html">
-      <text>The exception will propagate to the method's caller</text>
-      <feedback format="html">
-        <text>Correct! Uncaught exceptions propagate up the call stack to the nearest handler.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>The program will terminate immediately</text>
-      <feedback format="html">
-        <text>Incorrect. The program terminates only if the exception is uncaught at the top of the call stack.</text>
-      </feedback>
-    </answer>
     <answer fraction="0" format="html">
       <text>The method will complete successfully</text>
       <feedback format="html">
@@ -1630,12 +1618,24 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
         <text>Incorrect. Exceptions and errors are different types of throwable objects.</text>
       </feedback>
     </answer>
+    <answer fraction="100" format="html">
+      <text>The exception will propagate to the method's caller</text>
+      <feedback format="html">
+        <text>Correct! Uncaught exceptions propagate up the call stack to the nearest handler.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>The program will terminate immediately</text>
+      <feedback format="html">
+        <text>Incorrect. The program terminates only if the exception is uncaught at the top of the call stack.</text>
+      </feedback>
+    </answer>
   </question>
-  <question type="multichoice"><name><text>Custom exceptions — correct statement</text></name><questiontext format="html"><text><![CDATA[<p>Which of the following statements about custom exceptions in Java is true?</p>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p>Custom exceptions are typically defined by extending <code>Exception</code> (for checked exceptions) or <code>RuntimeException</code> (for unchecked exceptions). The choice depends on whether you want callers to be forced to handle the exception (checked) or not (unchecked). There is no requirement to extend only <code>Exception</code> — both <code>Exception</code> and <code>RuntimeException</code> are valid parent classes.</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="0" format="html"><text><![CDATA[Custom exceptions must extend the Exception class.]]></text><feedback format="html"><text><![CDATA[Not always. Custom exceptions can extend either Exception (checked) or RuntimeException (unchecked), depending on the design intent.]]></text></feedback></answer>
+  <question type="multichoice"><name><text>Custom exceptions — correct statement</text></name><questiontext format="html"><text><![CDATA[<p>Which of the following statements about custom exceptions in Java is true?</p>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p>Custom exceptions are typically defined by extending <code>Exception</code> (for checked exceptions) or <code>RuntimeException</code> (for unchecked exceptions). The choice depends on whether you want callers to be forced to handle the exception (checked) or not (unchecked). There is no requirement to extend only <code>Exception</code> — both <code>Exception</code> and <code>RuntimeException</code> are valid parent classes.</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="0" format="html"><text><![CDATA[Custom exceptions must implement the Serializable interface explicitly.]]></text><feedback format="html"><text><![CDATA[Exceptions already implement Serializable through the Throwable hierarchy. No explicit implementation is needed.]]></text></feedback></answer>
+    <answer fraction="0" format="html"><text><![CDATA[Custom exceptions must extend the Exception class.]]></text><feedback format="html"><text><![CDATA[Not always. Custom exceptions can extend either Exception (checked) or RuntimeException (unchecked), depending on the design intent.]]></text></feedback></answer>
     <answer fraction="0" format="html"><text><![CDATA[Custom exceptions must override the toString() method.]]></text><feedback format="html"><text><![CDATA[Override of toString() is optional, not mandatory.]]></text></feedback></answer>
     <answer fraction="0" format="html"><text><![CDATA[Custom exceptions cannot include custom error messages.]]></text><feedback format="html"><text><![CDATA[Custom exceptions can include custom error messages via constructor parameters.]]></text></feedback></answer>
-    <answer fraction="100" format="html"><text><![CDATA[Custom exceptions can extend either Exception or RuntimeException.]]></text><feedback format="html"><text><![CDATA[Correct. The choice determines whether the exception is checked or unchecked.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[Custom exceptions must implement the Serializable interface explicitly.]]></text><feedback format="html"><text><![CDATA[Exceptions already implement Serializable through the Throwable hierarchy. No explicit implementation is needed.]]></text></feedback></answer></question><question type="category">
+    <answer fraction="100" format="html"><text><![CDATA[Custom exceptions can extend either Exception or RuntimeException.]]></text><feedback format="html"><text><![CDATA[Correct. The choice determines whether the exception is checked or unchecked.]]></text></feedback></answer></question><question type="category">
     <category>
       <text>$course$/top/RATS/week 07</text>
     </category>
@@ -1729,6 +1729,12 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
     <incorrectfeedback format="html">
       <text/>
     </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text>&lt;p&gt;In the context class&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct! The context class is responsible for delegating the task and selecting the appropriate strategy.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
     <answer fraction="0" format="html">
       <text>&lt;p&gt;In a factory class that creates strategies&lt;/p&gt;</text>
       <feedback format="html">
@@ -1751,12 +1757,6 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
       <text>&lt;p&gt;In the abstract strategy interface&lt;/p&gt;</text>
       <feedback format="html">
         <text>&lt;p&gt;Incorrect. The abstract strategy defines the interface, not the logic for selection.&lt;/p&gt;</text>
-      </feedback>
-    </answer>
-    <answer fraction="100" format="html">
-      <text>&lt;p&gt;In the context class&lt;/p&gt;</text>
-      <feedback format="html">
-        <text>&lt;p&gt;Correct! The context class is responsible for delegating the task and selecting the appropriate strategy.&lt;/p&gt;</text>
       </feedback>
     </answer>
   </question>
@@ -1846,12 +1846,6 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
       <text/>
     </incorrectfeedback>
     <answer fraction="0" format="html">
-      <text>&lt;p&gt;To restrict the creation of objects to a single instance&lt;/p&gt;</text>
-      <feedback format="html">
-        <text>&lt;p&gt;Incorrect. This describes the Singleton Pattern, not the Strategy Pattern.&lt;/p&gt;</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
       <text>&lt;p&gt;To encapsulate a request as an object&lt;/p&gt;</text>
       <feedback format="html">
         <text>&lt;p&gt;Incorrect. This describes the Command Pattern, not the Strategy Pattern.&lt;/p&gt;</text>
@@ -1873,6 +1867,12 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
       <text>&lt;p&gt;To notify multiple objects about a single subject's state change&lt;/p&gt;</text>
       <feedback format="html">
         <text>&lt;p&gt;Incorrect. This describes the Observer Pattern, not the Strategy Pattern.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>&lt;p&gt;To restrict the creation of objects to a single instance&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect. This describes the Singleton Pattern, not the Strategy Pattern.&lt;/p&gt;</text>
       </feedback>
     </answer>
   </question>
@@ -1904,6 +1904,12 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
       <text/>
     </incorrectfeedback>
     <answer fraction="0" format="html">
+      <text>&lt;p&gt;It decouples the abstraction from its implementation so they can vary independently&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect. This describes the Bridge Pattern.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
       <text>&lt;p&gt;It ensures that a class has only one instance&lt;/p&gt;</text>
       <feedback format="html">
         <text>&lt;p&gt;Incorrect. This describes the Singleton Pattern.&lt;/p&gt;</text>
@@ -1925,12 +1931,6 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
       <text>&lt;p&gt;It allows an object to alter its behavior when its internal state changes&lt;/p&gt;</text>
       <feedback format="html">
         <text>&lt;p&gt;Incorrect. This describes the State Pattern.&lt;/p&gt;</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>&lt;p&gt;It decouples the abstraction from its implementation so they can vary independently&lt;/p&gt;</text>
-      <feedback format="html">
-        <text>&lt;p&gt;Incorrect. This describes the Bridge Pattern.&lt;/p&gt;</text>
       </feedback>
     </answer>
   </question>
@@ -1961,12 +1961,6 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
     <incorrectfeedback format="html">
       <text/>
     </incorrectfeedback>
-    <answer fraction="100" format="html">
-      <text>&lt;p&gt;The Strategy Pattern encapsulates algorithms, while the Observer Pattern is about communication between objects&lt;/p&gt;</text>
-      <feedback format="html">
-        <text>&lt;p&gt;Correct! The Strategy Pattern is about interchangeable algorithms, whereas the Observer Pattern deals with state-change notifications.&lt;/p&gt;</text>
-      </feedback>
-    </answer>
     <answer fraction="0" format="html">
       <text>&lt;p&gt;The Strategy Pattern defines a one-to-many dependency while the Observer Pattern defines a one-to-one dependency&lt;/p&gt;</text>
       <feedback format="html">
@@ -1989,6 +1983,12 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
       <text>&lt;p&gt;The Observer Pattern requires concrete implementations, while the Strategy Pattern does not&lt;/p&gt;</text>
       <feedback format="html">
         <text>&lt;p&gt;Incorrect. Both patterns require concrete implementations for their respective components.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>&lt;p&gt;The Strategy Pattern encapsulates algorithms, while the Observer Pattern is about communication between objects&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct! The Strategy Pattern is about interchangeable algorithms, whereas the Observer Pattern deals with state-change notifications.&lt;/p&gt;</text>
       </feedback>
     </answer>
   </question>
@@ -2019,12 +2019,6 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
     <incorrectfeedback format="html">
       <text/>
     </incorrectfeedback>
-    <answer fraction="0" format="html">
-      <text>&lt;p&gt;Observers can directly modify the state of the subject&lt;/p&gt;</text>
-      <feedback format="html">
-        <text>&lt;p&gt;Incorrect. Observers do not directly modify the subject's state; they are notified of changes.&lt;/p&gt;</text>
-      </feedback>
-    </answer>
     <answer fraction="100" format="html">
       <text>&lt;p&gt;The subject class is responsible for updating the observers when its state changes&lt;/p&gt;</text>
       <feedback format="html">
@@ -2047,6 +2041,12 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
       <text>&lt;p&gt;The Observer Pattern is used to encapsulate algorithms&lt;/p&gt;</text>
       <feedback format="html">
         <text>&lt;p&gt;Incorrect. Encapsulation of algorithms is the purpose of the Strategy Pattern.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>&lt;p&gt;Observers can directly modify the state of the subject&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect. Observers do not directly modify the subject's state; they are notified of changes.&lt;/p&gt;</text>
       </feedback>
     </answer>
   </question>
@@ -2144,6 +2144,18 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
       <text/>
     </incorrectfeedback>
     <answer fraction="0" format="html">
+      <text>&lt;p&gt;Inheritance can be used to achieve runtime flexibility, but the Decorator Pattern cannot.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;This is incorrect; inheritance is not as flexible at runtime as the Decorator Pattern.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>&lt;p&gt;The Decorator Pattern allows adding functionality at runtime, whereas inheritance adds functionality at compile-time.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct! This is a key distinction between dynamic composition (Decorator) and static inheritance.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
       <text>&lt;p&gt;The Decorator Pattern is limited to modifying only one object instance, whereas inheritance changes all instances of a class.&lt;/p&gt;</text>
       <feedback format="html">
         <text>&lt;p&gt;This distinction is not entirely accurate.&lt;/p&gt;</text>
@@ -2159,18 +2171,6 @@ The wildcard `?` cannot be directly followed by a bound like extends or super ou
       <text>&lt;p&gt;The Decorator Pattern modifies the object's state, while inheritance changes the object's class hierarchy.&lt;/p&gt;</text>
       <feedback format="html">
         <text>&lt;p&gt;The Decorator Pattern doesn't modify state; it adds behavior dynamically.&lt;/p&gt;</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>&lt;p&gt;Inheritance can be used to achieve runtime flexibility, but the Decorator Pattern cannot.&lt;/p&gt;</text>
-      <feedback format="html">
-        <text>&lt;p&gt;This is incorrect; inheritance is not as flexible at runtime as the Decorator Pattern.&lt;/p&gt;</text>
-      </feedback>
-    </answer>
-    <answer fraction="100" format="html">
-      <text>&lt;p&gt;The Decorator Pattern allows adding functionality at runtime, whereas inheritance adds functionality at compile-time.&lt;/p&gt;</text>
-      <feedback format="html">
-        <text>&lt;p&gt;Correct! This is a key distinction between dynamic composition (Decorator) and static inheritance.&lt;/p&gt;</text>
       </feedback>
     </answer>
   </question>
@@ -2220,12 +2220,6 @@ class ConnectionManager {
       <text/>
     </incorrectfeedback>
     <shownumcorrect/>
-    <answer fraction="100" format="html">
-      <text>State Pattern</text>
-      <feedback format="html">
-        <text>Correct! ConnectionManager changes its behavior by switching between state objects.</text>
-      </feedback>
-    </answer>
     <answer fraction="0" format="html">
       <text>Strategy Pattern</text>
       <feedback format="html">
@@ -2242,6 +2236,12 @@ class ConnectionManager {
       <text>Observer Pattern</text>
       <feedback format="html">
         <text>Observer involves one-to-many notification, not state-based behavior delegation.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>State Pattern</text>
+      <feedback format="html">
+        <text>Correct! ConnectionManager changes its behavior by switching between state objects.</text>
       </feedback>
     </answer>
   </question>
@@ -2331,6 +2331,12 @@ while (it.hasNext()) {
       <text/>
     </incorrectfeedback>
     <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>Observer Pattern</text>
+      <feedback format="html">
+        <text>Observer involves one-to-many notification, not wrapping.</text>
+      </feedback>
+    </answer>
     <answer fraction="100" format="html">
       <text>Decorator Pattern</text>
       <feedback format="html">
@@ -2347,12 +2353,6 @@ while (it.hasNext()) {
       <text>State Pattern</text>
       <feedback format="html">
         <text>State changes behavior based on internal state, not layering functionality.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>Observer Pattern</text>
-      <feedback format="html">
-        <text>Observer involves one-to-many notification, not wrapping.</text>
       </feedback>
     </answer>
   </question>
@@ -2406,18 +2406,6 @@ vm.pressButton();&lt;/pre&gt;</text>
       <text/>
     </incorrectfeedback>
     <shownumcorrect/>
-    <answer fraction="100" format="html">
-      <text>Idle→Dispense</text>
-      <feedback format="html">
-        <text>Correct! First press runs Idle (prints "Idle→" and transitions to Dispensing), second press runs Dispensing (prints "Dispense").</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>Idle→Idle→</text>
-      <feedback format="html">
-        <text>After the first pressButton the state transitions to Dispensing, so it doesn't stay Idle.</text>
-      </feedback>
-    </answer>
     <answer fraction="0" format="html">
       <text>DispenseIdle→</text>
       <feedback format="html">
@@ -2428,6 +2416,18 @@ vm.pressButton();&lt;/pre&gt;</text>
       <text>Idle→Dispensing</text>
       <feedback format="html">
         <text>"Dispensing" is the class name, but the actual output is "Dispense" as printed by Dispensing.pressButton.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>Idle→Dispense</text>
+      <feedback format="html">
+        <text>Correct! First press runs Idle (prints "Idle→" and transitions to Dispensing), second press runs Dispensing (prints "Dispense").</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Idle→Idle→</text>
+      <feedback format="html">
+        <text>After the first pressButton the state transitions to Dispensing, so it doesn't stay Idle.</text>
       </feedback>
     </answer>
   </question>
@@ -2472,12 +2472,6 @@ vm.pressButton();&lt;/pre&gt;</text>
       <text/>
     </incorrectfeedback>
     <shownumcorrect/>
-    <answer fraction="100" format="html">
-      <text>Decorator Pattern and Iterator Pattern</text>
-      <feedback format="html">
-        <text>Correct! LoggingIterator decorates (wraps) an Iterator with logging while itself implementing the Iterator interface.</text>
-      </feedback>
-    </answer>
     <answer fraction="0" format="html">
       <text>Strategy Pattern and Iterator Pattern</text>
       <feedback format="html">
@@ -2494,6 +2488,12 @@ vm.pressButton();&lt;/pre&gt;</text>
       <text>Observer Pattern and Iterator Pattern</text>
       <feedback format="html">
         <text>Observer involves one-to-many notification, not wrapping an iterator.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>Decorator Pattern and Iterator Pattern</text>
+      <feedback format="html">
+        <text>Correct! LoggingIterator decorates (wraps) an Iterator with logging while itself implementing the Iterator interface.</text>
       </feedback>
     </answer>
   </question>
@@ -2592,6 +2592,12 @@ vm.pressButton();&lt;/pre&gt;</text>
     <text/>
   </incorrectfeedback>
   <answer fraction="0" format="html">
+    <text>Define an enum AnimalType with FLYING, SWIMMING, BOTH and use conditional logic in every method.</text>
+    <feedback format="html">
+      <text>This replaces polymorphism with conditionals, making the code harder to extend and maintain.</text>
+    </feedback>
+  </answer>
+  <answer fraction="0" format="html">
     <text>Define an abstract base class Animal with methods fly() and swim(), then override only the relevant methods in each subclass.</text>
     <feedback format="html">
       <text>This forces every animal subclass to inherit fly() and swim() even if they do not apply, violating the Interface Segregation Principle.</text>
@@ -2613,12 +2619,6 @@ vm.pressButton();&lt;/pre&gt;</text>
     <text>Use multiple inheritance by extending both an Animal class and separate Flyer and Swimmer classes.</text>
     <feedback format="html">
       <text>Java does not support multiple inheritance of classes. This is exactly why interfaces exist.</text>
-    </feedback>
-  </answer>
-  <answer fraction="0" format="html">
-    <text>Define an enum AnimalType with FLYING, SWIMMING, BOTH and use conditional logic in every method.</text>
-    <feedback format="html">
-      <text>This replaces polymorphism with conditionals, making the code harder to extend and maintain.</text>
     </feedback>
   </answer>
 </question><question type="multichoice">
@@ -2648,18 +2648,6 @@ vm.pressButton();&lt;/pre&gt;</text>
   <incorrectfeedback format="html">
     <text/>
   </incorrectfeedback>
-  <answer fraction="100" format="html">
-    <text>The class must override the conflicting method; otherwise the code does not compile.</text>
-    <feedback format="html">
-      <text>Correct. Java requires the class to provide its own implementation to resolve the ambiguity.</text>
-    </feedback>
-  </answer>
-  <answer fraction="0" format="html">
-    <text>The class automatically inherits the method from the first interface listed in the implements clause.</text>
-    <feedback format="html">
-      <text>Java does not prioritise one interface's default method over another. The result is always a compilation error without an explicit override.</text>
-    </feedback>
-  </answer>
   <answer fraction="0" format="html">
     <text>The class inherits both methods and the compiler chooses the most specific one at runtime.</text>
     <feedback format="html">
@@ -2676,6 +2664,18 @@ vm.pressButton();&lt;/pre&gt;</text>
     <text>The code compiles if both default methods have identical implementations; otherwise it fails.</text>
     <feedback format="html">
       <text>The compiler does not inspect the implementation bodies. Any conflict, regardless of content, requires explicit resolution.</text>
+    </feedback>
+  </answer>
+  <answer fraction="100" format="html">
+    <text>The class must override the conflicting method; otherwise the code does not compile.</text>
+    <feedback format="html">
+      <text>Correct. Java requires the class to provide its own implementation to resolve the ambiguity.</text>
+    </feedback>
+  </answer>
+  <answer fraction="0" format="html">
+    <text>The class automatically inherits the method from the first interface listed in the implements clause.</text>
+    <feedback format="html">
+      <text>Java does not prioritise one interface's default method over another. The result is always a compilation error without an explicit override.</text>
     </feedback>
   </answer>
 </question><question type="multichoice">
@@ -2716,12 +2716,6 @@ public class Main {
   <incorrectfeedback format="html">
     <text/>
   </incorrectfeedback>
-  <answer fraction="100" format="html">
-    <text>"Hello from Child"</text>
-    <feedback format="html">
-      <text>Correct. Java calls the method of the actual runtime type (Child), not the reference type (Parent).</text>
-    </feedback>
-  </answer>
   <answer fraction="0" format="html">
     <text>"Hello from Parent"</text>
     <feedback format="html">
@@ -2744,6 +2738,12 @@ public class Main {
     <text>"Hello from Parent" followed by "Hello from Child"</text>
     <feedback format="html">
       <text>Only one method is called. The parent's version is not called first — it is entirely overridden.</text>
+    </feedback>
+  </answer>
+  <answer fraction="100" format="html">
+    <text>"Hello from Child"</text>
+    <feedback format="html">
+      <text>Correct. Java calls the method of the actual runtime type (Child), not the reference type (Parent).</text>
     </feedback>
   </answer>
 </question><question type="multichoice">
@@ -2841,6 +2841,12 @@ class Dog extends Animal {
     <incorrectfeedback format="html">
       <text/>
     </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>Interfaces must extend the Object class.</text>
+      <feedback format="html">
+        <text>Interfaces do not extend the Object class.</text>
+      </feedback>
+    </answer>
     <answer fraction="100" format="html">
       <text>A class can implement multiple interfaces.</text>
       <feedback format="html">
@@ -2863,12 +2869,6 @@ class Dog extends Animal {
       <text>All implemented methods must be private.</text>
       <feedback format="html">
         <text>Methods in an interface are public and abstract by default.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>Interfaces must extend the Object class.</text>
-      <feedback format="html">
-        <text>Interfaces do not extend the Object class.</text>
       </feedback>
     </answer>
   </question>
@@ -2899,6 +2899,18 @@ class Dog extends Animal {
     <incorrectfeedback format="html">
       <text/>
     </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>implements</text>
+      <feedback format="html">
+        <text>The &lt;code&gt;implements&lt;/code&gt; keyword is used to implement interfaces, not classes.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>inherit</text>
+      <feedback format="html">
+        <text>There is no &lt;code&gt;inherit&lt;/code&gt; keyword in Java.</text>
+      </feedback>
+    </answer>
     <answer fraction="100" format="html">
       <text>extends</text>
       <feedback format="html">
@@ -2915,18 +2927,6 @@ class Dog extends Animal {
       <text>super</text>
       <feedback format="html">
         <text>The &lt;code&gt;super&lt;/code&gt; keyword is used to access parent class methods or constructors but does not establish inheritance.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>implements</text>
-      <feedback format="html">
-        <text>The &lt;code&gt;implements&lt;/code&gt; keyword is used to implement interfaces, not classes.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>inherit</text>
-      <feedback format="html">
-        <text>There is no &lt;code&gt;inherit&lt;/code&gt; keyword in Java.</text>
       </feedback>
     </answer>
   </question>
@@ -2957,18 +2957,6 @@ class Dog extends Animal {
     <incorrectfeedback format="html">
       <text/>
     </incorrectfeedback>
-    <answer fraction="100" format="html">
-      <text>Default methods allow interfaces to provide method implementations.</text>
-      <feedback format="html">
-        <text>Excellent! Default methods provide flexibility by allowing interfaces to include implementations.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>Default methods must be overridden in all implementing classes.</text>
-      <feedback format="html">
-        <text>Default methods do not need to be overridden unless desired.</text>
-      </feedback>
-    </answer>
     <answer fraction="0" format="html">
       <text>Default methods cannot be overridden.</text>
       <feedback format="html">
@@ -2985,6 +2973,18 @@ class Dog extends Animal {
       <text>Default methods can only be defined in abstract classes.</text>
       <feedback format="html">
         <text>Default methods are a feature of interfaces, not abstract classes.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>Default methods allow interfaces to provide method implementations.</text>
+      <feedback format="html">
+        <text>Excellent! Default methods provide flexibility by allowing interfaces to include implementations.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Default methods must be overridden in all implementing classes.</text>
+      <feedback format="html">
+        <text>Default methods do not need to be overridden unless desired.</text>
       </feedback>
     </answer>
   </question>
@@ -3033,6 +3033,18 @@ Book b = new Book("Java", 300);&lt;/pre&gt;&lt;p&gt;What does &lt;code&gt;b&lt;/
     <incorrectfeedback format="html">
       <text/>
     </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>A method call that returns a newly created Book object.</text>
+      <feedback format="html">
+        <text>`new Book(...)` creates the object, but `b` is the variable that refers to it.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A copy of the Book class definition.</text>
+      <feedback format="html">
+        <text>Each instantiation does not copy the class; it creates one object from the single class blueprint.</text>
+      </feedback>
+    </answer>
     <answer fraction="100" format="html">
       <text>A reference to a Book object in memory.</text>
       <feedback format="html">
@@ -3049,18 +3061,6 @@ Book b = new Book("Java", 300);&lt;/pre&gt;&lt;p&gt;What does &lt;code&gt;b&lt;/
       <text>The Book object itself, stored directly inside the variable `b`.</text>
       <feedback format="html">
         <text>In Java, object variables hold references, not the objects themselves.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>A method call that returns a newly created Book object.</text>
-      <feedback format="html">
-        <text>`new Book(...)` creates the object, but `b` is the variable that refers to it.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>A copy of the Book class definition.</text>
-      <feedback format="html">
-        <text>Each instantiation does not copy the class; it creates one object from the single class blueprint.</text>
       </feedback>
     </answer>
   </question>
@@ -3103,6 +3103,12 @@ System.out.println(c.getCount());&lt;/pre&gt;</text>
       <text/>
     </incorrectfeedback>
     <answer fraction="0" format="html">
+      <text>Compilation error</text>
+      <feedback format="html">
+        <text>The code compiles; a constructor with an int parameter is valid.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
       <text>0</text>
       <feedback format="html">
         <text>The field starts at 0 but the constructor sets it to the argument before getCount() is called.</text>
@@ -3124,12 +3130,6 @@ System.out.println(c.getCount());&lt;/pre&gt;</text>
       <text>1</text>
       <feedback format="html">
         <text>The constructor argument is 7, not 1.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>Compilation error</text>
-      <feedback format="html">
-        <text>The code compiles; a constructor with an int parameter is valid.</text>
       </feedback>
     </answer>
   </question>
@@ -3233,12 +3233,6 @@ System.out.println(p.getName());&lt;/pre&gt;</text>
     <incorrectfeedback format="html">
       <text/>
     </incorrectfeedback>
-    <answer fraction="0" format="html">
-      <text>Alice</text>
-      <feedback format="html">
-        <text>Alice is only stored in the parameter, not in the field. The parameter is discarded when the constructor ends.</text>
-      </feedback>
-    </answer>
     <answer fraction="100" format="html">
       <text>null</text>
       <feedback format="html">
@@ -3261,6 +3255,12 @@ System.out.println(p.getName());&lt;/pre&gt;</text>
       <text>"</text>
       <feedback format="html">
         <text>The empty string is never assigned; the field keeps its default value of null.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Alice</text>
+      <feedback format="html">
+        <text>Alice is only stored in the parameter, not in the field. The parameter is discarded when the constructor ends.</text>
       </feedback>
     </answer>
   </question>
@@ -3301,18 +3301,6 @@ p.print("hi");&lt;/pre&gt;</text>
       <text/>
     </incorrectfeedback>
     <answer fraction="0" format="html">
-      <text>int, String, double</text>
-      <feedback format="html">
-        <text>2.5 matches the double parameter, not the String one.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>String, double, int</text>
-      <feedback format="html">
-        <text>The order of calls is print(5), print(2.5), print("hi").</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
       <text>Compilation error</text>
       <feedback format="html">
         <text>Each call has an exact argument-type match, so overload resolution succeeds.</text>
@@ -3328,6 +3316,18 @@ p.print("hi");&lt;/pre&gt;</text>
       <text>5, 2.5, hi</text>
       <feedback format="html">
         <text>The methods print the type names, not the argument values.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>int, String, double</text>
+      <feedback format="html">
+        <text>2.5 matches the double parameter, not the String one.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>String, double, int</text>
+      <feedback format="html">
+        <text>The order of calls is print(5), print(2.5), print("hi").</text>
       </feedback>
     </answer>
   </question>
@@ -3375,6 +3375,12 @@ System.out.println(e.getHealth());&lt;/pre&gt;</text>
       <text/>
     </incorrectfeedback>
     <answer fraction="0" format="html">
+      <text>Compilation error</text>
+      <feedback format="html">
+        <text>The class and main logic are all valid Java.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
       <text>100</text>
       <feedback format="html">
         <text>The takeDamage calls modify the health field; it does not stay at its initial value.</text>
@@ -3396,12 +3402,6 @@ System.out.println(e.getHealth());&lt;/pre&gt;</text>
       <text>30</text>
       <feedback format="html">
         <text>Both damage calls affect the same object's state.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>Compilation error</text>
-      <feedback format="html">
-        <text>The class and main logic are all valid Java.</text>
       </feedback>
     </answer>
   </question>
@@ -3439,6 +3439,12 @@ System.out.println(e.getHealth());&lt;/pre&gt;</text>
       <text/>
     </incorrectfeedback>
     <answer fraction="0" format="html">
+      <text>Compiles; version defaults to 0, so add returns a + b.</text>
+      <feedback format="html">
+        <text>version is an instance field; even though it would default to 0, the reference to it from a static context does not compile.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
       <text>Compiles and runs, returning 0.</text>
       <feedback format="html">
         <text>The code does not compile because the static method references a non-static field.</text>
@@ -3460,12 +3466,6 @@ System.out.println(e.getHealth());&lt;/pre&gt;</text>
       <text>Runtime exception when add() is called.</text>
       <feedback format="html">
         <text>The failure happens at compile time, before any code runs.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>Compiles; version defaults to 0, so add returns a + b.</text>
-      <feedback format="html">
-        <text>version is an instance field; even though it would default to 0, the reference to it from a static context does not compile.</text>
       </feedback>
     </answer>
   </question>
@@ -3506,6 +3506,12 @@ System.out.println(e.getHealth());&lt;/pre&gt;</text>
       <text/>
     </incorrectfeedback>
     <answer fraction="0" format="html">
+      <text>It eliminates the need for interfaces in Java.</text>
+      <feedback format="html">
+        <text>Interfaces can still be used, especially functional interfaces, in behavior parameterization.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
       <text>It allows defining multiple classes within a single method.</text>
       <feedback format="html">
         <text>Multiple classes cannot be defined within a single method; this is unrelated to behavior parameterization.</text>
@@ -3529,23 +3535,17 @@ System.out.println(e.getHealth());&lt;/pre&gt;</text>
         <text>It doesn't involve converting methods into static utilities.</text>
       </feedback>
     </answer>
-    <answer fraction="0" format="html">
-      <text>It eliminates the need for interfaces in Java.</text>
-      <feedback format="html">
-        <text>Interfaces can still be used, especially functional interfaces, in behavior parameterization.</text>
-      </feedback>
-    </answer>
   </question>
   <question type="multichoice"><name><text>Stream pipeline output</text></name><questiontext format="html"><text><![CDATA[<p>What is the result of the following code?</p><pre>List&lt;String&gt; words = Arrays.asList("cat", "elephant", "dog", "tiger");
 List&lt;String&gt; result = words.stream()
     .filter(s -&gt; s.length() &gt; 3)
     .map(String::toUpperCase)
     .collect(Collectors.toList());
-System.out.println(result);</pre>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p>The stream first filters out strings with length ≤ 3 (removing "cat" and "dog"), then converts each remaining string to uppercase ("ELEPHANT", "TIGER"), and collects them into a list.</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="100" format="html"><text><![CDATA[[ELEPHANT, TIGER]]]></text><feedback format="html"><text><![CDATA[Correct. filter keeps only strings longer than 3 characters, then map converts to uppercase.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[[CAT, ELEPHANT, DOG, TIGER]]]></text><feedback format="html"><text><![CDATA[This would be the result without the filter step. filter() removes "cat" and "dog".]]></text></feedback></answer>
+System.out.println(result);</pre>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p>The stream first filters out strings with length ≤ 3 (removing "cat" and "dog"), then converts each remaining string to uppercase ("ELEPHANT", "TIGER"), and collects them into a list.</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="0" format="html"><text><![CDATA[[CAT, ELEPHANT, DOG, TIGER]]]></text><feedback format="html"><text><![CDATA[This would be the result without the filter step. filter() removes "cat" and "dog".]]></text></feedback></answer>
     <answer fraction="0" format="html"><text><![CDATA[[cat, elephant, dog, tiger]]]></text><feedback format="html"><text><![CDATA[This would be the result without the map step (and uppercase conversion).]]></text></feedback></answer>
     <answer fraction="0" format="html"><text><![CDATA[[elephant, tiger]]]></text><feedback format="html"><text><![CDATA[Almost, but the map step converts to uppercase. The result is [ELEPHANT, TIGER].]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[[CAT, DOG]]]></text><feedback format="html"><text><![CDATA[This reverses the logic: it keeps only strings of length ≤ 3, which is the opposite of the filter condition.]]></text></feedback></answer></question><question type="multichoice">
+    <answer fraction="0" format="html"><text><![CDATA[[CAT, DOG]]]></text><feedback format="html"><text><![CDATA[This reverses the logic: it keeps only strings of length ≤ 3, which is the opposite of the filter condition.]]></text></feedback></answer>
+    <answer fraction="100" format="html"><text><![CDATA[[ELEPHANT, TIGER]]]></text><feedback format="html"><text><![CDATA[Correct. filter keeps only strings longer than 3 characters, then map converts to uppercase.]]></text></feedback></answer></question><question type="multichoice">
     <name>
       <text>Behavior Parameterization with Sorting</text>
     </name>
@@ -3572,6 +3572,18 @@ System.out.println(result);</pre>]]></text></questiontext><generalfeedback forma
     <incorrectfeedback format="html">
       <text/>
     </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text>list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());</text>
+      <feedback format="html">
+        <text>Excellent! The sorted() method in streams takes a comparator as an argument, demonstrating behavior parameterization for dynamic sorting.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>list.stream().forEach(System.out::println);</text>
+      <feedback format="html">
+        <text>This only prints elements, unrelated to sorting.</text>
+      </feedback>
+    </answer>
     <answer fraction="0" format="html">
       <text>list.sort(Comparator.naturalOrder());</text>
       <feedback format="html">
@@ -3588,18 +3600,6 @@ System.out.println(result);</pre>]]></text></questiontext><generalfeedback forma
       <text>Collections.reverse(list);</text>
       <feedback format="html">
         <text>This reverses the list but not via sorting behavior parameterization.</text>
-      </feedback>
-    </answer>
-    <answer fraction="100" format="html">
-      <text>list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());</text>
-      <feedback format="html">
-        <text>Excellent! The sorted() method in streams takes a comparator as an argument, demonstrating behavior parameterization for dynamic sorting.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>list.stream().forEach(System.out::println);</text>
-      <feedback format="html">
-        <text>This only prints elements, unrelated to sorting.</text>
       </feedback>
     </answer>
   </question>
@@ -3630,6 +3630,12 @@ System.out.println(result);</pre>]]></text></questiontext><generalfeedback forma
     <incorrectfeedback format="html">
       <text/>
     </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>It enforces the use of abstract classes.</text>
+      <feedback format="html">
+        <text>Abstract classes aren’t enforced by behavior parameterization.</text>
+      </feedback>
+    </answer>
     <answer fraction="100" format="html">
       <text>It reduces boilerplate code by avoiding anonymous inner classes.</text>
       <feedback format="html">
@@ -3654,29 +3660,23 @@ System.out.println(result);</pre>]]></text></questiontext><generalfeedback forma
         <text>Behavior parameterization doesn’t inherently ensure thread safety.</text>
       </feedback>
     </answer>
-    <answer fraction="0" format="html">
-      <text>It enforces the use of abstract classes.</text>
-      <feedback format="html">
-        <text>Abstract classes aren’t enforced by behavior parameterization.</text>
-      </feedback>
-    </answer>
   </question>
-  <question type="multichoice"><name><text>Functional interface matching</text></name><questiontext format="html"><text><![CDATA[<p>Which functional interface matches the following lambda expression?</p><pre>(String s) -&gt; s.length() &gt; 5</pre>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p>The lambda takes a <code>String</code> argument and returns a <code>boolean</code>. This matches the <code>Predicate&lt;String&gt;</code> functional interface, whose abstract method <code>test(String)</code> takes one argument and returns a <code>boolean</code>. <code>Function&lt;String, Boolean&gt;</code> would also take a String and return a Boolean, but a lambda returning a boolean is idiomatically a Predicate, and auto-boxing to Boolean adds unnecessary overhead.</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="100" format="html"><text><![CDATA[Predicate&lt;String&gt;]]></text><feedback format="html"><text><![CDATA[Correct. Predicate&lt;T&gt; takes a T and returns a boolean, matching this lambda's signature.]]></text></feedback></answer>
+  <question type="multichoice"><name><text>Functional interface matching</text></name><questiontext format="html"><text><![CDATA[<p>Which functional interface matches the following lambda expression?</p><pre>(String s) -&gt; s.length() &gt; 5</pre>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p>The lambda takes a <code>String</code> argument and returns a <code>boolean</code>. This matches the <code>Predicate&lt;String&gt;</code> functional interface, whose abstract method <code>test(String)</code> takes one argument and returns a <code>boolean</code>. <code>Function&lt;String, Boolean&gt;</code> would also take a String and return a Boolean, but a lambda returning a boolean is idiomatically a Predicate, and auto-boxing to Boolean adds unnecessary overhead.</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="0" format="html"><text><![CDATA[Supplier&lt;Boolean&gt;]]></text><feedback format="html"><text><![CDATA[Supplier&lt;T&gt; takes no arguments and returns a T. This lambda takes a String argument.]]></text></feedback></answer>
+    <answer fraction="0" format="html"><text><![CDATA[Comparator&lt;String&gt;]]></text><feedback format="html"><text><![CDATA[Comparator's abstract method takes two arguments and returns an int, not matching this single-argument boolean lambda.]]></text></feedback></answer>
+    <answer fraction="100" format="html"><text><![CDATA[Predicate&lt;String&gt;]]></text><feedback format="html"><text><![CDATA[Correct. Predicate&lt;T&gt; takes a T and returns a boolean, matching this lambda's signature.]]></text></feedback></answer>
     <answer fraction="0" format="html"><text><![CDATA[Function&lt;String, Boolean&gt;]]></text><feedback format="html"><text><![CDATA[While the signatures are compatible (String → Boolean via autoboxing), Predicate is the idiomatic choice for boolean-valued functions and avoids autoboxing overhead.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[Consumer&lt;String&gt;]]></text><feedback format="html"><text><![CDATA[Consumer&lt;T&gt; takes a T but returns void, not boolean.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[Supplier&lt;Boolean&gt;]]></text><feedback format="html"><text><![CDATA[Supplier&lt;T&gt; takes no arguments and returns a T. This lambda takes a String argument.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[Comparator&lt;String&gt;]]></text><feedback format="html"><text><![CDATA[Comparator's abstract method takes two arguments and returns an int, not matching this single-argument boolean lambda.]]></text></feedback></answer></question><question type="multichoice"><name><text>Method reference equivalence</text></name><questiontext format="html"><text><![CDATA[<p>Which of the following lambda expressions is equivalent to the method reference <code>String::length</code>?</p>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p><code>String::length</code> is a method reference to an instance method on a parameter. It is equivalent to a lambda that takes a String argument and calls <code>s.length()</code>. The method reference binds to the instance method of the first (and only) argument.</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="100" format="html"><text><![CDATA[<code>s -&gt; s.length()</code>]]></text><feedback format="html"><text><![CDATA[Correct. String::length takes a String argument and calls length() on it, exactly like s -> s.length().]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[<code>() -&gt; String.length()</code>]]></text><feedback format="html"><text><![CDATA[This is a no-argument lambda that tries to call a static method, which does not exist. length() is an instance method.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[<code>(s, t) -&gt; s.length()</code>]]></text><feedback format="html"><text><![CDATA[This takes two arguments, but String::length takes only one argument (the instance to call length on).]]></text></feedback></answer>
+    <answer fraction="0" format="html"><text><![CDATA[Consumer&lt;String&gt;]]></text><feedback format="html"><text><![CDATA[Consumer&lt;T&gt; takes a T but returns void, not boolean.]]></text></feedback></answer></question><question type="multichoice"><name><text>Method reference equivalence</text></name><questiontext format="html"><text><![CDATA[<p>Which of the following lambda expressions is equivalent to the method reference <code>String::length</code>?</p>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p><code>String::length</code> is a method reference to an instance method on a parameter. It is equivalent to a lambda that takes a String argument and calls <code>s.length()</code>. The method reference binds to the instance method of the first (and only) argument.</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="0" format="html"><text><![CDATA[<code>(s, t) -&gt; s.length()</code>]]></text><feedback format="html"><text><![CDATA[This takes two arguments, but String::length takes only one argument (the instance to call length on).]]></text></feedback></answer>
     <answer fraction="0" format="html"><text><![CDATA[<code>s -&gt; s.length() &gt; 0</code>]]></text><feedback format="html"><text><![CDATA[This returns a boolean, not an int. String::length returns an int.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[<code>String s -&gt; s.length()</code>]]></text><feedback format="html"><text><![CDATA[This is invalid syntax. Parameter types require parentheses: (String s) -> s.length().]]></text></feedback></answer></question><question type="multichoice"><name><text>Effectively final with lambdas</text></name><questiontext format="html"><text><![CDATA[<p>Why does the following code fail to compile?</p><pre>int x = 10;
+    <answer fraction="0" format="html"><text><![CDATA[<code>String s -&gt; s.length()</code>]]></text><feedback format="html"><text><![CDATA[This is invalid syntax. Parameter types require parentheses: (String s) -> s.length().]]></text></feedback></answer>
+    <answer fraction="100" format="html"><text><![CDATA[<code>s -&gt; s.length()</code>]]></text><feedback format="html"><text><![CDATA[Correct. String::length takes a String argument and calls length() on it, exactly like s -> s.length().]]></text></feedback></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<code>() -&gt; String.length()</code>]]></text><feedback format="html"><text><![CDATA[This is a no-argument lambda that tries to call a static method, which does not exist. length() is an instance method.]]></text></feedback></answer></question><question type="multichoice"><name><text>Effectively final with lambdas</text></name><questiontext format="html"><text><![CDATA[<p>Why does the following code fail to compile?</p><pre>int x = 10;
 Runnable r = () -&gt; System.out.println(x);
 x = 20;
-System.out.println(x);</pre>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p>Lambda expressions can only capture variables that are effectively final — variables whose value does not change after initialisation. Here, <code>x</code> is reassigned (<code>x = 20</code>) after the lambda captures it, violating the effectively final restriction. The variable is not effectively final because it is modified after the lambda definition.</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="100" format="html"><text><![CDATA[Because x is not effectively final — it is reassigned after being captured by the lambda.]]></text><feedback format="html"><text><![CDATA[Correct. The variable x is modified after the lambda is defined, which breaks the effectively final requirement.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[Because Runnable cannot use local variables from its enclosing scope.]]></text><feedback format="html"><text><![CDATA[Runnable (and lambdas in general) can capture local variables as long as they are effectively final.]]></text></feedback></answer>
+System.out.println(x);</pre>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p>Lambda expressions can only capture variables that are effectively final — variables whose value does not change after initialisation. Here, <code>x</code> is reassigned (<code>x = 20</code>) after the lambda captures it, violating the effectively final restriction. The variable is not effectively final because it is modified after the lambda definition.</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="0" format="html"><text><![CDATA[Because Runnable cannot use local variables from its enclosing scope.]]></text><feedback format="html"><text><![CDATA[Runnable (and lambdas in general) can capture local variables as long as they are effectively final.]]></text></feedback></answer>
     <answer fraction="0" format="html"><text><![CDATA[Because System.out cannot be referenced from a lambda.]]></text><feedback format="html"><text><![CDATA[System.out is accessible from lambdas. It is a static field and can be used anywhere.]]></text></feedback></answer>
     <answer fraction="0" format="html"><text><![CDATA[Because the lambda must be assigned to a variable before use.]]></text><feedback format="html"><text><![CDATA[The lambda is assigned to the variable r. The issue is the variable capture, not the assignment.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[Because println returns void and cannot be used in a lambda body.]]></text><feedback format="html"><text><![CDATA[println is a void method and can be called in a lambda body that returns void (like Runnable's run()).]]></text></feedback></answer></question><question type="category">
+    <answer fraction="0" format="html"><text><![CDATA[Because println returns void and cannot be used in a lambda body.]]></text><feedback format="html"><text><![CDATA[println is a void method and can be called in a lambda body that returns void (like Runnable's run()).]]></text></feedback></answer>
+    <answer fraction="100" format="html"><text><![CDATA[Because x is not effectively final — it is reassigned after being captured by the lambda.]]></text><feedback format="html"><text><![CDATA[Correct. The variable x is modified after the lambda is defined, which breaks the effectively final requirement.]]></text></feedback></answer></question><question type="category">
     <category>
       <text>$course$/top/RATS/week 10</text>
     </category>
@@ -3712,6 +3712,12 @@ System.out.println(x);</pre>]]></text></questiontext><generalfeedback format="ht
       <text/>
     </incorrectfeedback>
     <answer fraction="0" format="markdown">
+      <text>None of the above</text>
+      <feedback format="markdown">
+        <text>Incorrect. The correct answer is to use `list.sort` with the lambda expression.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="markdown">
       <text>`Collections.sort(list, (s1, s2) -&gt; s1.length() - s2.length());`</text>
       <feedback format="markdown">
         <text>Incorrect. While this syntax works, it is not the modern or preferred way.</text>
@@ -3733,12 +3739,6 @@ System.out.println(x);</pre>]]></text></questiontext><generalfeedback format="ht
       <text>`list.sort((s1, s2) -&gt; Integer.compare(s1.length(), s2.length()));`</text>
       <feedback format="markdown">
         <text>Correct! Using the `sort` method on the `List` interface with `Integer.compare` is modern and concise.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="markdown">
-      <text>None of the above</text>
-      <feedback format="markdown">
-        <text>Incorrect. The correct answer is to use `list.sort` with the lambda expression.</text>
       </feedback>
     </answer>
   </question>
@@ -3778,18 +3778,6 @@ public class Main {
       <text/>
     </incorrectfeedback>
     <shownumcorrect/>
-    <answer fraction="100" format="html">
-      <text>false</text>
-      <feedback format="html">
-        <text>Correct! The lambda "hi".length() &gt; 3 evaluates to false since 2 is not greater than 3.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>true</text>
-      <feedback format="html">
-        <text>"hi" has length 2, which is not greater than 3, so the result is false.</text>
-      </feedback>
-    </answer>
     <answer fraction="0" format="html">
       <text>hi</text>
       <feedback format="html">
@@ -3800,6 +3788,18 @@ public class Main {
       <text>Compilation error — lambda does not match StringChecker</text>
       <feedback format="html">
         <text>The lambda s -&gt; s.length() &gt; 3 matches the functional interface StringChecker.check(String): boolean.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>false</text>
+      <feedback format="html">
+        <text>Correct! The lambda "hi".length() &gt; 3 evaluates to false since 2 is not greater than 3.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>true</text>
+      <feedback format="html">
+        <text>"hi" has length 2, which is not greater than 3, so the result is false.</text>
       </feedback>
     </answer>
   </question>
@@ -3836,6 +3836,18 @@ What will the code print?</text>
       <text/>
     </incorrectfeedback>
     <answer fraction="0" format="markdown">
+      <text>All words</text>
+      <feedback format="markdown">
+        <text>Incorrect. Not all words satisfy the condition `word.length() &gt; 5`.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="markdown">
+      <text>Banana and Cherry</text>
+      <feedback format="markdown">
+        <text>Correct. Both of these words satisfy the condition given.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="markdown">
       <text>Apple and Banana</text>
       <feedback format="markdown">
         <text>Incorrect. Only "Banana" satisfies the condition.</text>
@@ -3851,18 +3863,6 @@ What will the code print?</text>
       <text>Cherry</text>
       <feedback format="markdown">
         <text>Incorrect. "Cherry" does not satisfy the length condition.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="markdown">
-      <text>All words</text>
-      <feedback format="markdown">
-        <text>Incorrect. Not all words satisfy the condition `word.length() &gt; 5`.</text>
-      </feedback>
-    </answer>
-    <answer fraction="100" format="markdown">
-      <text>Banana and Cherry</text>
-      <feedback format="markdown">
-        <text>Correct. Both of these words satisfy the condition given.</text>
       </feedback>
     </answer>
   </question>
@@ -3898,6 +3898,18 @@ What is the output?</text>
     <incorrectfeedback format="html">
       <text/>
     </incorrectfeedback>
+    <answer fraction="0" format="markdown">
+      <text>Compilation error</text>
+      <feedback format="markdown">
+        <text>Incorrect. The code compiles successfully.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="markdown">
+      <text>None of the above</text>
+      <feedback format="markdown">
+        <text>Incorrect. The correct output is 246810.</text>
+      </feedback>
+    </answer>
     <answer fraction="100" format="markdown">
       <text>246810</text>
       <feedback format="markdown">
@@ -3914,18 +3926,6 @@ What is the output?</text>
       <text>13579</text>
       <feedback format="markdown">
         <text>Incorrect. The lambda multiplies each value by 2, not adds.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="markdown">
-      <text>Compilation error</text>
-      <feedback format="markdown">
-        <text>Incorrect. The code compiles successfully.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="markdown">
-      <text>None of the above</text>
-      <feedback format="markdown">
-        <text>Incorrect. The correct output is 246810.</text>
       </feedback>
     </answer>
   </question>
@@ -3960,6 +3960,12 @@ r.run();&lt;/pre&gt;&lt;p&gt;What happens when this code is compiled and run?&lt
       <text/>
     </incorrectfeedback>
     <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>Runtime exception</text>
+      <feedback format="html">
+        <text>This is caught at compile time, not runtime.</text>
+      </feedback>
+    </answer>
     <answer fraction="100" format="html">
       <text>Compilation error — x is not effectively final</text>
       <feedback format="html">
@@ -3976,12 +3982,6 @@ r.run();&lt;/pre&gt;&lt;p&gt;What happens when this code is compiled and run?&lt
       <text>Prints 20</text>
       <feedback format="html">
         <text>The code does not compile. x is reassigned after the lambda captures it, violating the effectively final rule.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>Runtime exception</text>
-      <feedback format="html">
-        <text>This is caught at compile time, not runtime.</text>
       </feedback>
     </answer>
   </question>
@@ -4013,18 +4013,6 @@ r.run();&lt;/pre&gt;&lt;p&gt;What happens when this code is compiled and run?&lt
       <text/>
     </incorrectfeedback>
     <answer fraction="0" format="markdown">
-      <text>`stream.collect(Collectors.list());`</text>
-      <feedback format="markdown">
-        <text>Incorrect. There is no method named `Collectors.list()` in Java.</text>
-      </feedback>
-    </answer>
-    <answer fraction="100" format="markdown">
-      <text>`stream.collect(Collectors.toList());`</text>
-      <feedback format="markdown">
-        <text>Correct! `Collectors.toList()` is used to collect stream elements into a `List`.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="markdown">
       <text>`stream.toList();`</text>
       <feedback format="markdown">
         <text>Incorrect. The method `toList` is not a valid method for streams in Java 8.</text>
@@ -4040,6 +4028,18 @@ r.run();&lt;/pre&gt;&lt;p&gt;What happens when this code is compiled and run?&lt
       <text>`stream.forEach(Collectors.toList());`</text>
       <feedback format="markdown">
         <text>Incorrect. `forEach` is used for performing actions, not collecting elements.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="markdown">
+      <text>`stream.collect(Collectors.list());`</text>
+      <feedback format="markdown">
+        <text>Incorrect. There is no method named `Collectors.list()` in Java.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="markdown">
+      <text>`stream.collect(Collectors.toList());`</text>
+      <feedback format="markdown">
+        <text>Correct! `Collectors.toList()` is used to collect stream elements into a `List`.</text>
       </feedback>
     </answer>
   </question>
@@ -4070,18 +4070,6 @@ r.run();&lt;/pre&gt;&lt;p&gt;What happens when this code is compiled and run?&lt
     <incorrectfeedback format="html">
       <text/>
     </incorrectfeedback>
-    <answer fraction="0" format="markdown">
-      <text>`x -&gt; x * 2`</text>
-      <feedback format="markdown">
-        <text>Correct. A trailing semicolon at the end is unnecessary without curly braces.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="markdown">
-      <text>`(int x) -&gt; x * 2;`</text>
-      <feedback format="markdown">
-        <text/>
-      </feedback>
-    </answer>
     <answer fraction="100" format="markdown">
       <text>`x -&gt; { return x * 2; };`</text>
       <feedback format="markdown">
@@ -4098,6 +4086,18 @@ r.run();&lt;/pre&gt;&lt;p&gt;What happens when this code is compiled and run?&lt
       <text>`(x) { return x * 2; }`</text>
       <feedback format="markdown">
         <text>Incorrect. This is not valid lambda syntax as parentheses must be followed by `-&gt;`.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="markdown">
+      <text>`x -&gt; x * 2`</text>
+      <feedback format="markdown">
+        <text>Correct. A trailing semicolon at the end is unnecessary without curly braces.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="markdown">
+      <text>`(int x) -&gt; x * 2;`</text>
+      <feedback format="markdown">
+        <text/>
       </feedback>
     </answer>
   </question>
@@ -4119,25 +4119,25 @@ r.run();&lt;/pre&gt;&lt;p&gt;What happens when this code is compiled and run?&lt
     <answer fraction="0" format="html"><text><![CDATA[Processing depends on the JVM implementation and may vary at runtime.]]></text><feedback format="html"><text><![CDATA[Lazy evaluation is guaranteed by the Streams API specification. The behaviour is not implementation-dependent.]]></text></feedback></answer></question>
 <question type="multichoice"><name><text>Infinite streams and limit</text></name><questiontext format="html"><text><![CDATA[<p>What is the output of the following code?</p><pre>Stream.iterate(1, n -&gt; n + 2)
     .limit(4)
-    .collect(Collectors.toList())</pre>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p><code>Stream.iterate(1, n -> n + 2)</code> generates an infinite stream of odd numbers starting from 1: 1, 3, 5, 7, 9, ... The <code>limit(4)</code> operation truncates the stream to the first 4 elements. The <code>collect</code> terminal operation triggers evaluation and collects [1, 3, 5, 7].</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="100" format="html"><text><![CDATA[[1, 3, 5, 7]]]></text><feedback format="html"><text><![CDATA[Correct. The infinite stream is truncated to 4 elements by limit().]]></text></feedback></answer>
+    .collect(Collectors.toList())</pre>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p><code>Stream.iterate(1, n -> n + 2)</code> generates an infinite stream of odd numbers starting from 1: 1, 3, 5, 7, 9, ... The <code>limit(4)</code> operation truncates the stream to the first 4 elements. The <code>collect</code> terminal operation triggers evaluation and collects [1, 3, 5, 7].</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="0" format="html"><text><![CDATA[[1, 2, 3, 4]]]></text><feedback format="html"><text><![CDATA[This would be the result for Stream.iterate(1, n -> n + 1).limit(4), but the increment is n + 2, producing odd numbers.]]></text></feedback></answer>
+    <answer fraction="100" format="html"><text><![CDATA[[1, 3, 5, 7]]]></text><feedback format="html"><text><![CDATA[Correct. The infinite stream is truncated to 4 elements by limit().]]></text></feedback></answer>
     <answer fraction="0" format="html"><text><![CDATA[[1, 3, 5, 7, 9]]]></text><feedback format="html"><text><![CDATA[limit(4) keeps only 4 elements. 9 would be the 5th element.]]></text></feedback></answer>
     <answer fraction="0" format="html"><text><![CDATA[[2, 4, 6, 8]]]></text><feedback format="html"><text><![CDATA[This would be the result for n -> n + 2 starting from 2, not starting from 1.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[The code runs indefinitely and never terminates.]]></text><feedback format="html"><text><![CDATA[The limit() operation prevents infinite iteration by truncating the stream. A terminal operation with limit() will terminate.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[[1, 2, 3, 4]]]></text><feedback format="html"><text><![CDATA[This would be the result for Stream.iterate(1, n -> n + 1).limit(4), but the increment is n + 2, producing odd numbers.]]></text></feedback></answer></question>
+    <answer fraction="0" format="html"><text><![CDATA[The code runs indefinitely and never terminates.]]></text><feedback format="html"><text><![CDATA[The limit() operation prevents infinite iteration by truncating the stream. A terminal operation with limit() will terminate.]]></text></feedback></answer></question>
 <question type="multichoice"><name><text>Pipeline tracing with peek</text></name><questiontext format="html"><text><![CDATA[<p>What is printed by the following code?</p><pre>Stream.of("a", "bb", "ccc")
     .peek(s -&gt; System.out.print(s + " "))
     .filter(s -&gt; s.length() &gt; 1)
     .peek(s -&gt; System.out.print(s + " "))
-    .count();</pre>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p><code>peek()</code> performs an action on each element as it flows through the pipeline without consuming it. The first peek prints each element as it enters the pipeline. The filter passes elements with length > 1 ("bb" and "ccc"). The second peek prints each filtered element. <code>count()</code> is the terminal operation that triggers execution. The order of processing respects the pipeline: for each element, the first peek fires, then filter checks, and if passed, the second peek fires.</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="100" format="html"><text><![CDATA["a bb ccc bb ccc "]]></text><feedback format="html"><text><![CDATA[Correct. First peek prints all three inputs; filter removes "a"; second peek prints the two survivors.]]></text></feedback></answer>
+    .count();</pre>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p><code>peek()</code> performs an action on each element as it flows through the pipeline without consuming it. The first peek prints each element as it enters the pipeline. The filter passes elements with length > 1 ("bb" and "ccc"). The second peek prints each filtered element. <code>count()</code> is the terminal operation that triggers execution. The order of processing respects the pipeline: for each element, the first peek fires, then filter checks, and if passed, the second peek fires.</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="0" format="html"><text><![CDATA[Nothing is printed because peek does not execute without a terminal operation.]]></text><feedback format="html"><text><![CDATA[count() is the terminal operation and triggers execution. The code does produce output.]]></text></feedback></answer>
+    <answer fraction="0" format="html"><text><![CDATA["aa bbb cccc "]]></text><feedback format="html"><text><![CDATA[This would only happen if peek modified elements, but peek does not transform the stream.]]></text></feedback></answer>
+    <answer fraction="100" format="html"><text><![CDATA["a bb ccc bb ccc "]]></text><feedback format="html"><text><![CDATA[Correct. First peek prints all three inputs; filter removes "a"; second peek prints the two survivors.]]></text></feedback></answer>
     <answer fraction="0" format="html"><text><![CDATA["bb ccc "]]></text><feedback format="html"><text><![CDATA[This is only the output of the second peek (after filter). The first peek also executes and prints all elements.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA["a bb ccc bb ccc a bb ccc "]]></text><feedback format="html"><text><![CDATA[The elements are not processed twice through the full pipeline. Each element flows through once.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[Nothing is printed because peek does not execute without a terminal operation.]]></text><feedback format="html"><text><![CDATA[count() is the terminal operation and triggers execution. The code does produce output.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA["aa bbb cccc "]]></text><feedback format="html"><text><![CDATA[This would only happen if peek modified elements, but peek does not transform the stream.]]></text></feedback></answer></question>
-<question type="multichoice"><name><text>Optional with streams</text></name><questiontext format="html"><text><![CDATA[<p>What does <code>findFirst()</code> return when called on an empty stream?</p>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p>The <code>findFirst()</code> method returns an <code>Optional</code> that describes the first element of the stream. If the stream is empty, it returns <code>Optional.empty()</code>. Returning <code>null</code> directly is avoided because <code>Optional</code> forces the caller to consider the empty case. This is a key design choice in the Streams API to prevent <code>NullPointerException</code>.</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="100" format="html"><text><![CDATA[Optional.empty()]]></text><feedback format="html"><text><![CDATA[Correct. findFirst() wraps the result in Optional to force callers to handle the empty case.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[null]]></text><feedback format="html"><text><![CDATA[The Streams API avoids returning null. Optional.empty() is returned instead.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[A NoSuchElementException is thrown.]]></text><feedback format="html"><text><![CDATA[findFirst() does not throw when the stream is empty. It returns Optional.empty().]]></text></feedback></answer>
+    <answer fraction="0" format="html"><text><![CDATA["a bb ccc bb ccc a bb ccc "]]></text><feedback format="html"><text><![CDATA[The elements are not processed twice through the full pipeline. Each element flows through once.]]></text></feedback></answer></question>
+<question type="multichoice"><name><text>Optional with streams</text></name><questiontext format="html"><text><![CDATA[<p>What does <code>findFirst()</code> return when called on an empty stream?</p>]]></text></questiontext><generalfeedback format="html"><text><![CDATA[<p>The <code>findFirst()</code> method returns an <code>Optional</code> that describes the first element of the stream. If the stream is empty, it returns <code>Optional.empty()</code>. Returning <code>null</code> directly is avoided because <code>Optional</code> forces the caller to consider the empty case. This is a key design choice in the Streams API to prevent <code>NullPointerException</code>.</p>]]></text></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><idnumber/><single>true</single><shuffleanswers>true</shuffleanswers><answernumbering>abc</answernumbering><showstandardinstruction>1</showstandardinstruction><correctfeedback format="html"><text/></correctfeedback><partiallycorrectfeedback format="html"><text/></partiallycorrectfeedback><incorrectfeedback format="html"><text/></incorrectfeedback><answer fraction="0" format="html"><text><![CDATA[A NoSuchElementException is thrown.]]></text><feedback format="html"><text><![CDATA[findFirst() does not throw when the stream is empty. It returns Optional.empty().]]></text></feedback></answer>
     <answer fraction="0" format="html"><text><![CDATA[An empty List is returned.]]></text><feedback format="html"><text><![CDATA[findFirst() returns an Optional, not a List.]]></text></feedback></answer>
-    <answer fraction="0" format="html"><text><![CDATA[0]]></text><feedback format="html"><text><![CDATA[findFirst() returns an Optional, not a numeric value. The behaviour is different from reduction operations like count().]]></text></feedback></answer></question>
+    <answer fraction="0" format="html"><text><![CDATA[0]]></text><feedback format="html"><text><![CDATA[findFirst() returns an Optional, not a numeric value. The behaviour is different from reduction operations like count().]]></text></feedback></answer>
+    <answer fraction="100" format="html"><text><![CDATA[Optional.empty()]]></text><feedback format="html"><text><![CDATA[Correct. findFirst() wraps the result in Optional to force callers to handle the empty case.]]></text></feedback></answer>
+    <answer fraction="0" format="html"><text><![CDATA[null]]></text><feedback format="html"><text><![CDATA[The Streams API avoids returning null. Optional.empty() is returned instead.]]></text></feedback></answer></question>
   <question type="multichoice">
     <name>
       <text>GroupingBy collector trace (moderate)</text>
@@ -4168,18 +4168,6 @@ Map&lt;Integer, List&lt;String&gt;&gt; byLength = words.stream()
       <text/>
     </incorrectfeedback>
     <shownumcorrect/>
-    <answer fraction="100" format="html">
-      <text>[cat, dog]</text>
-      <feedback format="html">
-        <text>Correct! "cat" and "dog" both have length 3 and are collected into a List under the key 3.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>[cat]</text>
-      <feedback format="html">
-        <text>Both "cat" and "dog" have length 3, so both are included in the list.</text>
-      </feedback>
-    </answer>
     <answer fraction="0" format="html">
       <text>[cat, dog, bird]</text>
       <feedback format="html">
@@ -4190,6 +4178,18 @@ Map&lt;Integer, List&lt;String&gt;&gt; byLength = words.stream()
       <text>{cat=3, dog=3, bird=4}</text>
       <feedback format="html">
         <text>This is the string representation of a Map grouping by length, but byLength.get(3) returns a List of values for key 3.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>[cat, dog]</text>
+      <feedback format="html">
+        <text>Correct! "cat" and "dog" both have length 3 and are collected into a List under the key 3.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>[cat]</text>
+      <feedback format="html">
+        <text>Both "cat" and "dog" have length 3, so both are included in the list.</text>
       </feedback>
     </answer>
   </question>
@@ -4224,12 +4224,6 @@ Map&lt;Integer, List&lt;String&gt;&gt; byLength = words.stream()
       <text/>
     </incorrectfeedback>
     <shownumcorrect/>
-    <answer fraction="100" format="html">
-      <text>&lt;p&gt;It buffers all elements and sorts them before &lt;code&gt;findFirst()&lt;/code&gt; returns the smallest.&lt;/p&gt;</text>
-      <feedback format="html">
-        <text>Correct! sorted() is stateful — it must consume the entire stream before producing output, so peek prints "123".</text>
-      </feedback>
-    </answer>
     <answer fraction="0" format="html">
       <text>&lt;p&gt;It sorts elements lazily — only the elements needed for &lt;code&gt;findFirst()&lt;/code&gt; are sorted.&lt;/p&gt;</text>
       <feedback format="html">
@@ -4246,6 +4240,12 @@ Map&lt;Integer, List&lt;String&gt;&gt; byLength = words.stream()
       <text>&lt;p&gt;It does not execute because &lt;code&gt;findFirst()&lt;/code&gt; short-circuits before &lt;code&gt;sorted()&lt;/code&gt; runs.&lt;/p&gt;</text>
       <feedback format="html">
         <text>sorted() must process all elements before findFirst can return, so there is no short-circuit here.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>&lt;p&gt;It buffers all elements and sorts them before &lt;code&gt;findFirst()&lt;/code&gt; returns the smallest.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>Correct! sorted() is stateful — it must consume the entire stream before producing output, so peek prints "123".</text>
       </feedback>
     </answer>
   </question>
@@ -4342,6 +4342,18 @@ Map&lt;Integer, List&lt;String&gt;&gt; byLength = words.stream()
       <text/>
     </incorrectfeedback>
     <answer fraction="0" format="html">
+      <text>It ensures that the collector cannot be used with parallel streams</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>It indicates that the collector is thread-safe and can be used concurrently</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
       <text>It denotes that the combiner function is optional</text>
       <feedback format="html">
         <text/>
@@ -4355,18 +4367,6 @@ Map&lt;Integer, List&lt;String&gt;&gt; byLength = words.stream()
     </answer>
     <answer fraction="0" format="html">
       <text>It instructs the collector to skip the finisher step</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>It ensures that the collector cannot be used with parallel streams</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="100" format="html">
-      <text>It indicates that the collector is thread-safe and can be used concurrently</text>
       <feedback format="html">
         <text/>
       </feedback>
@@ -4399,6 +4399,18 @@ Map&lt;Integer, List&lt;String&gt;&gt; byLength = words.stream()
     <incorrectfeedback format="html">
       <text/>
     </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>Defining a combiner to merge partial results</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Ensuring the collector's characteristics are specified</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
     <answer fraction="100" format="html">
       <text>Defining a reducer to finalize the collected result</text>
       <feedback format="html">
@@ -4413,18 +4425,6 @@ Map&lt;Integer, List&lt;String&gt;&gt; byLength = words.stream()
     </answer>
     <answer fraction="0" format="html">
       <text>Defining an accumulator to process elements</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>Defining a combiner to merge partial results</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>Ensuring the collector's characteristics are specified</text>
       <feedback format="html">
         <text/>
       </feedback>
@@ -4458,12 +4458,6 @@ Map&lt;Integer, List&lt;String&gt;&gt; byLength = words.stream()
       <text/>
     </incorrectfeedback>
     <answer fraction="0" format="html">
-      <text>Collectors.toMap()</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
       <text>Collectors.mapping()</text>
       <feedback format="html">
         <text/>
@@ -4483,6 +4477,12 @@ Map&lt;Integer, List&lt;String&gt;&gt; byLength = words.stream()
     </answer>
     <answer fraction="100" format="html">
       <text>Collectors.groupingBy(Function.identity(), Collectors.counting())</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Collectors.toMap()</text>
       <feedback format="html">
         <text/>
       </feedback>
@@ -4516,18 +4516,6 @@ Map&lt;Integer, List&lt;String&gt;&gt; byLength = words.stream()
       <text/>
     </incorrectfeedback>
     <answer fraction="0" format="html">
-      <text>partitioningBy() supports custom downstream collectors, but groupingBy() does not</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="100" format="html">
-      <text>groupingBy() uses a classifier to create multiple groups; partitioningBy() always creates two groups based on a predicate</text>
-      <feedback format="html">
-        <text/>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
       <text>groupingBy() always creates two groups, while partitioningBy() creates multiple groups</text>
       <feedback format="html">
         <text/>
@@ -4541,6 +4529,18 @@ Map&lt;Integer, List&lt;String&gt;&gt; byLength = words.stream()
     </answer>
     <answer fraction="0" format="html">
       <text>groupingBy() is used for reduction, while partitioningBy() is used for mapping</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>partitioningBy() supports custom downstream collectors, but groupingBy() does not</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>groupingBy() uses a classifier to create multiple groups; partitioningBy() always creates two groups based on a predicate</text>
       <feedback format="html">
         <text/>
       </feedback>
@@ -4576,12 +4576,6 @@ Map&lt;Boolean, List&lt;String&gt;&gt; map = words.stream()
       <text/>
     </incorrectfeedback>
     <shownumcorrect/>
-    <answer fraction="100" format="html">
-      <text>&lt;p&gt;It has two keys: &lt;code&gt;true&lt;/code&gt; maps to words with length &amp;gt; 3 and &lt;code&gt;false&lt;/code&gt; maps to the rest.&lt;/p&gt;</text>
-      <feedback format="html">
-        <text>Correct! partitioningBy always creates exactly two groups based on the predicate.</text>
-      </feedback>
-    </answer>
     <answer fraction="0" format="html">
       <text>&lt;p&gt;It has a key for each distinct string, with a boolean value indicating whether length &amp;gt; 3.&lt;/p&gt;</text>
       <feedback format="html">
@@ -4598,6 +4592,12 @@ Map&lt;Boolean, List&lt;String&gt;&gt; map = words.stream()
       <text>&lt;p&gt;It maps each word to a boolean and collects them in a &lt;code&gt;Map&amp;lt;String, Boolean&amp;gt;&lt;/code&gt;.&lt;/p&gt;</text>
       <feedback format="html">
         <text>partitioningBy returns Map&lt;Boolean, List&lt;String&gt;&gt;, not Map&lt;String, Boolean&gt;.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>&lt;p&gt;It has two keys: &lt;code&gt;true&lt;/code&gt; maps to words with length &amp;gt; 3 and &lt;code&gt;false&lt;/code&gt; maps to the rest.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>Correct! partitioningBy always creates exactly two groups based on the predicate.</text>
       </feedback>
     </answer>
   </question>
@@ -4691,6 +4691,12 @@ Map&lt;String, Integer&gt; map = words.stream()
       <text/>
     </incorrectfeedback>
     <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>&lt;p&gt;It adds each element to the &lt;code&gt;StringBuilder&lt;/code&gt; with a comma appended.&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>That is the role of the accumulator (second argument), not the finisher.</text>
+      </feedback>
+    </answer>
     <answer fraction="100" format="html">
       <text>&lt;p&gt;It removes the trailing comma from the accumulated &lt;code&gt;StringBuilder&lt;/code&gt; to produce the final &lt;code&gt;String&lt;/code&gt;.&lt;/p&gt;</text>
       <feedback format="html">
@@ -4707,12 +4713,6 @@ Map&lt;String, Integer&gt; map = words.stream()
       <text>&lt;p&gt;It merges two &lt;code&gt;StringBuilder&lt;/code&gt; instances during parallel collection.&lt;/p&gt;</text>
       <feedback format="html">
         <text>That is the role of the combiner (third argument), not the finisher.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>&lt;p&gt;It adds each element to the &lt;code&gt;StringBuilder&lt;/code&gt; with a comma appended.&lt;/p&gt;</text>
-      <feedback format="html">
-        <text>That is the role of the accumulator (second argument), not the finisher.</text>
       </feedback>
     </answer>
   </question>
@@ -4811,12 +4811,6 @@ Map&lt;String, Integer&gt; map = words.stream()
       <text/>
     </incorrectfeedback>
     <answer fraction="0" format="html">
-      <text>A small list of strings with minimal processing</text>
-      <feedback format="html">
-        <text>Incorrect. Parallel streams are not efficient for small tasks.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
       <text>A blocking I/O operation</text>
       <feedback format="html">
         <text>Incorrect. I/O tasks are typically not a good match for parallel streams.</text>
@@ -4838,6 +4832,12 @@ Map&lt;String, Integer&gt; map = words.stream()
       <text>A large computationally expensive task split into multiple operations</text>
       <feedback format="html">
         <text>Correct! Parallel streams are well-suited for large computationally expensive tasks.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A small list of strings with minimal processing</text>
+      <feedback format="html">
+        <text>Incorrect. Parallel streams are not efficient for small tasks.</text>
       </feedback>
     </answer>
   </question>
@@ -4868,12 +4868,6 @@ Map&lt;String, Integer&gt; map = words.stream()
     <incorrectfeedback format="html">
       <text/>
     </incorrectfeedback>
-    <answer fraction="100" format="markdown">
-      <text>`forEachOrdered()` respects encounter order, but `forEach()` does not</text>
-      <feedback format="markdown">
-        <text>Correct! `forEachOrdered()` ensures processing in encounter order, while `forEach()` does not.</text>
-      </feedback>
-    </answer>
     <answer fraction="0" format="markdown">
       <text>`forEachOrdered()` allows reordering of elements</text>
       <feedback format="markdown">
@@ -4896,6 +4890,12 @@ Map&lt;String, Integer&gt; map = words.stream()
       <text>`forEach()` is slower in parallel streams than `forEachOrdered()`</text>
       <feedback format="html">
         <text>Incorrect. Performance depends on the use case, not inherently on the method.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="markdown">
+      <text>`forEachOrdered()` respects encounter order, but `forEach()` does not</text>
+      <feedback format="markdown">
+        <text>Correct! `forEachOrdered()` ensures processing in encounter order, while `forEach()` does not.</text>
       </feedback>
     </answer>
   </question>
@@ -4926,6 +4926,18 @@ Map&lt;String, Integer&gt; map = words.stream()
     <incorrectfeedback format="html">
       <text/>
     </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text>Parallel streams share a common ForkJoinPool by default</text>
+      <feedback format="html">
+        <text>Correct! By default, all parallel streams use a shared ForkJoinPool.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>The ForkJoinPool requires explicit thread management</text>
+      <feedback format="html">
+        <text>Incorrect. Parallel streams manage threads in the ForkJoinPool automatically.</text>
+      </feedback>
+    </answer>
     <answer fraction="0" format="html">
       <text>A new ForkJoinPool is created for each parallel stream</text>
       <feedback format="html">
@@ -4942,18 +4954,6 @@ Map&lt;String, Integer&gt; map = words.stream()
       <text>The ForkJoinPool only works for sequential streams</text>
       <feedback format="html">
         <text>Incorrect. ForkJoinPool is explicitly used for parallel streams.</text>
-      </feedback>
-    </answer>
-    <answer fraction="100" format="html">
-      <text>Parallel streams share a common ForkJoinPool by default</text>
-      <feedback format="html">
-        <text>Correct! By default, all parallel streams use a shared ForkJoinPool.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>The ForkJoinPool requires explicit thread management</text>
-      <feedback format="html">
-        <text>Incorrect. Parallel streams manage threads in the ForkJoinPool automatically.</text>
       </feedback>
     </answer>
   </question>
@@ -4985,12 +4985,6 @@ Map&lt;String, Integer&gt; map = words.stream()
       <text/>
     </incorrectfeedback>
     <answer fraction="0" format="html">
-      <text>It requires more memory</text>
-      <feedback format="html">
-        <text>Incorrect. Memory usage is usually not the main bottleneck for parallel streams.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
       <text>It cannot process unordered data</text>
       <feedback format="html">
         <text>Incorrect. Parallel streams can handle unordered data efficiently.</text>
@@ -5012,6 +5006,12 @@ Map&lt;String, Integer&gt; map = words.stream()
       <text>It cannot handle large datasets</text>
       <feedback format="html">
         <text>Incorrect. Parallel streams are well-suited for large datasets.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>It requires more memory</text>
+      <feedback format="html">
+        <text>Incorrect. Memory usage is usually not the main bottleneck for parallel streams.</text>
       </feedback>
     </answer>
   </question>
@@ -5043,6 +5043,12 @@ Map&lt;String, Integer&gt; map = words.stream()
       <text/>
     </incorrectfeedback>
     <answer fraction="0" format="html">
+      <text>Order of operations in the stream</text>
+      <feedback format="html">
+        <text>Incorrect. The order of operations can significantly influence performance.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
       <text>Size of the data set</text>
       <feedback format="html">
         <text>Incorrect. The size of the data is a critical determinant in choosing parallel streams.</text>
@@ -5064,12 +5070,6 @@ Map&lt;String, Integer&gt; map = words.stream()
       <text>Computational cost of operations</text>
       <feedback format="html">
         <text>Incorrect. Computational cost is an important consideration for parallel streams.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>Order of operations in the stream</text>
-      <feedback format="html">
-        <text>Incorrect. The order of operations can significantly influence performance.</text>
       </feedback>
     </answer>
   </question>
@@ -5100,18 +5100,6 @@ Map&lt;String, Integer&gt; map = words.stream()
     <incorrectfeedback format="html">
       <text/>
     </incorrectfeedback>
-    <answer fraction="100" format="html">
-      <text>The stream’s size must be calculated dynamically</text>
-      <feedback format="markdown">
-        <text>Correct! Without the `SIZED` characteristic, the size must be determined dynamically, which affects performance.</text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text>The stream cannot be split for parallel processing</text>
-      <feedback format="markdown">
-        <text>Incorrect. A stream can still split without `SIZED`, though performance may degrade.</text>
-      </feedback>
-    </answer>
     <answer fraction="0" format="html">
       <text>The elements cannot be traversed in parallel</text>
       <feedback format="markdown">
@@ -5128,6 +5116,18 @@ Map&lt;String, Integer&gt; map = words.stream()
       <text>The Spliterator throws an exception during execution</text>
       <feedback format="markdown">
         <text>Incorrect. Spliterators without `SIZED` do not throw exceptions.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>The stream’s size must be calculated dynamically</text>
+      <feedback format="markdown">
+        <text>Correct! Without the `SIZED` characteristic, the size must be determined dynamically, which affects performance.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>The stream cannot be split for parallel processing</text>
+      <feedback format="markdown">
+        <text>Incorrect. A stream can still split without `SIZED`, though performance may degrade.</text>
       </feedback>
     </answer>
   </question>

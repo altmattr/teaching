@@ -51,9 +51,9 @@ This is a \emph{simultaneous reporting} style class.  Each team presents their s
 Prepare a set of 5--8 puzzles on a shared repository.  Each puzzle should have a JUnit test that validates the output.  During reporting, project each team's solution and count characters live.  Highlight the shortest solution for each puzzle.
 \end{teacher}
 
-\subsection*{Project Guidance}
+\section*{Project Guidance}
 
-Look at your team's simulation code.  Are there places where you chose behaviour by setting a field or using an \texttt{if-else} chain?  Could any of those choices be expressed as lambdas instead of concrete classes?  For example, a movement strategy like \texttt{entity -> neighbours.stream().min(Comparator.comparingDouble(c -> c.foodAvailable()))} might replace an entire \texttt{MoveStrategy} subclass.  Try refactoring one strategy to use a lambda and compare the two versions.
+This is your team's work \emph{between classes}, do it in your own time and have it committed and pushed to your shared repository before you return next week.  Look at your team's simulation code.  Are there places where you chose behaviour by setting a field or using an \texttt{if-else} chain?  Could any of those choices be expressed as lambdas instead of concrete classes?  For example, a movement strategy like \texttt{entity -> neighbours.stream().min(Comparator.comparingDouble(c -> c.foodAvailable()))} might replace an entire \texttt{MoveStrategy} subclass.  Try refactoring one strategy to use a lambda and compare the two versions.  Record what you did in your log book.  Anything you add beyond the class activity is the kind of contribution the Uniqueness and Creativity rubric rewards.
 
 \section*{Self Study Exercises}
 \begin{enumerate}

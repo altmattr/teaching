@@ -2,7 +2,7 @@
 
 **Student name:**
 
-**GitHub repo URL:**
+**GitHub repo URL:** (your own fork of your team's repository, not your team's URL)
 
 ---
 

@@ -48,8 +48,8 @@ Show your teacher your logbook at the end of each class. If you have entries tha
 **Q: What if I miss a week?**
 Catch up — do a logbook entry for the work you missed when you get back.
 
-**Q: I can't attend for the first few weeks — will I miss out on the logbook and a team?**
-It's fine to miss a few weeks. Your job is to work on the tasks at home on your own as best you can, so you have the best context when you return to class. When you get back you can still get feedback on your logbook entries — for example, if you miss the first two weeks, you can get all the first three weeks' entries marked off in the third week. Your teacher will make sure there's a team with a slot you can fit into when you can attend. As long as you're making a genuine contribution in class and getting to class as much as you can, your teacher will be happy to catch you up after a necessary break. If your condition is ongoing, register with Student Wellbeing to get access to all the support you need.
+**Q: I can't attend for a while (e.g. due to surgery, illness, or work) — will I miss out on the logbook and a team?**
+It's fine to miss a few weeks, whether that's at the start of the semester or later on. Your job is to work on the tasks at home on your own as best you can — work your way through the weekly handouts when you can so you can hit the ground running when you return. There will be no problems at all getting set up with a team when you can attend; your teacher will make sure there's a team with a slot you can fit into. When you get back you can still get feedback on your logbook entries — for example, if you miss the first two weeks, you can get all the first three weeks' entries marked off in the third week. As long as you're making a genuine contribution in class and getting to class as much as you can, your teacher will be happy to catch you up after a necessary break. If your condition is ongoing, register with Student Wellbeing to get access to all the support you need.
 
 **Q: Do the entries need to be detailed?**
 Timeliness matters more than quality. We're only looking for a few paragraphs at most, even a few sentances can be enough dependingon the week's task.
@@ -87,6 +87,18 @@ Directly — the tasks in workshops are very closely related to the assignment. 
 
 **Q: When will we see the rubrics?**
 Early — probably week 2. You won't be waiting until weeks 5 or 6.
+
+**Q: How can I tell whether my project idea is suitable or likely to work well?**
+You probably can't but that is all built into how we run the classes. Your class teacher will be paying close attention and will let you know if you are heading down a dead end or taking on something too ambitious. You are free to be creative and you can leave the careful calibration to us.
+
+**Q: How important are the visual aspects of the project?**
+The quality of the visuals are not graded but the Object Oriented Programming techniques you used to achieve them are graded. Interactive graphics is a rich source of interesting OO design problems and solutions. Aiming for quality graphics will naturally open up opportunities for you to get more marks. You will find your own personal pride will push you to make a good looking simulation and first impressions always end up influencing a user but there is nothing in the rubric specifically related to how good the visuals are.
+
+**Q: What level of ambition is expected for the project?**
+The level of ambition is up to the student. EPIC teaching puts more agency for learning in the hands of the students. More ambition gives you a bigger canvas to show off what you have learned. Your class teacher will feedback to your team if they think you are aiming too high/low.
+
+**Q: What happens if my team's project is not fully functional by the end?**
+Your submission is individual. If your team's work is not enough, you will add to it yourself before submitting. We expect most students will add substantially to what their group has achieved before submitting. Some teams will work so well that they won't need to, but that is not our expectation.
 
 ---
 
