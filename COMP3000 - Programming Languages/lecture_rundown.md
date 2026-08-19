@@ -53,9 +53,10 @@ Textbook: Chapter 4
 - (0:10) What is scanning: Characters → tokens
 - (0:25) Tokens, keywords, literals: Token types, the scanner's job
 - (0:40) Lookahead: Single vs double (Lox needs 2)
-- (0:55) Demo: water flow tokens: Add `~`, `@` to scanner
-- (1:15) Semester project intro: What we're building, the river system domain
-- (1:40) Wrap-up: Read Ch 5
+- (0:55) Demo: traffic
+- (1:20) Scanner in action: `cd java && javac variants/four_traffic/*.java && java variants.four_traffic.Lox --debug variants/four_traffic/traffic_lang/demo.traffic_lang`
+- (1:35) Semester project intro: What we're building, the river system domain
+- (1:50) Wrap-up: Read Ch 5
 
 ---
 

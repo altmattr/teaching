@@ -1,6 +1,6 @@
-package weeks.four;
+package variants.four_improved;
 
-import static weeks.four.TokenType.*;
+import static variants.four_improved.TokenType.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;

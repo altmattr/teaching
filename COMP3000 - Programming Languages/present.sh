@@ -20,6 +20,7 @@ declare -a slide_title
 declare -a slide_notes
 declare -a slide_time_str
 declare -a slide_seconds
+declare -a slide_commands
 slide_count=0
 week_heading=""
 
@@ -51,6 +52,19 @@ while IFS= read -r line; do
             slide_title[$slide_count]="$text"
             slide_notes[$slide_count]=""
         fi
+
+        # Extract backtick commands from notes
+        slide_commands[$slide_count]=""
+        remainder="${slide_notes[$slide_count]}"
+        while [[ "$remainder" =~ \`([^\`]+)\` ]]; do
+            cmd="${BASH_REMATCH[1]}"
+            remainder="${remainder#*"${BASH_REMATCH[0]}"}"
+            if [ -n "${slide_commands[$slide_count]}" ]; then
+                slide_commands[$slide_count]+=$'\n'"$cmd"
+            else
+                slide_commands[$slide_count]="$cmd"
+            fi
+        done
 
         slide_time_str[$slide_count]="$time_str"
         slide_seconds[$slide_count]=$total_seconds
@@ -100,6 +114,15 @@ draw() {
             if [ -n "${slide_notes[$i]}" ]; then
                 printf "        %s\n" "${slide_notes[$i]}"
             fi
+            if [ -n "${slide_commands[$i]}" ]; then
+                local ncmds
+                ncmds=$(printf '%s\n' "${slide_commands[$i]}" | grep -c .)
+                if [ "$ncmds" -eq 1 ]; then
+                    printf "        \033[36m(o) run command\033[0m\n"
+                else
+                    printf "        \033[36m(o) run command (%d available)\033[0m\n" "$ncmds"
+                fi
+            fi
         else
             printf "      %s\n" "${slide_title[$i]}"
         fi
@@ -117,6 +140,48 @@ draw() {
     fi
 }
 
+run_command() {
+    local cmds="$1"
+    local selected=""
+    local ncmds
+    ncmds=$(printf '%s\n' "$cmds" | grep -c .)
+
+    if [ "$ncmds" -gt 1 ]; then
+        printf '\e[?25h'
+        clear
+        echo "Commands available:"
+        local i=1
+        while IFS= read -r line; do
+            printf "  %d) %s\n" "$i" "$line"
+            i=$((i + 1))
+        done <<< "$cmds"
+        printf "  0) Cancel\n"
+        printf "Choose: "
+        read -r choice
+        if [[ "$choice" =~ ^[1-9]+$ ]] && [ "$choice" -le "$ncmds" ]; then
+            selected=$(printf '%s\n' "$cmds" | sed -n "${choice}p")
+        else
+            return
+        fi
+    else
+        selected=$(printf '%s\n' "$cmds" | head -1)
+    fi
+
+    printf '\e[?25h'
+    clear
+    printf '$ \033[33m%s\033[0m\n\n' "$selected"
+    bash -c "$selected"
+    local rc=$?
+    echo ""
+    if [ $rc -ne 0 ]; then
+        printf "\033[31m(exit code: %d)\033[0m\n" "$rc"
+    fi
+    echo ""
+    printf "Press any key to return..."
+    read -rsn1
+    printf '\e[?25l'
+}
+
 # Main loop
 while true; do
     draw
@@ -125,6 +190,10 @@ while true; do
 
     if [[ "$key" == "q" ]] || [[ "$key" == $'\x03' ]]; then
         exit 0
+    elif [[ "$key" == "o" ]] || [[ "$key" == "O" ]]; then
+        if [ -n "${slide_commands[$current]}" ]; then
+            run_command "${slide_commands[$current]}"
+        fi
     elif [[ "$key" == $'\e' ]]; then
         read -rsn2 key2
         case "$key2" in
