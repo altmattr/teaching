@@ -35,17 +35,17 @@
 
 # each weekend                                         | 0-1 | 1-2 | 2-3 | 3-4 | 4-5 | 5-6 | 6-7 | 7-8 | 8-9 | 9-10 | 10-11 | 11-12 | 12-13 | 13+ |
   * grab metrics                                                                                              
-    - echo                                             |     |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
-    - grades                                           |     |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
-  * check on forums to make sure nothing missed        |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
-  * post weekly details                                |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
-  * weeks 0 -> i_2 + 1 are ready                       |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
-  * unhide i_2 + 1                                     |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
-  * highlight week i_2                                 |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
-  * check if any assignment is due out week i_2+1      |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+    - echo                                             |     |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+    - grades                                           |     |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * check on forums to make sure nothing missed        |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * post weekly details                                |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * weeks 0 -> i_2 + 1 are ready                       |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * unhide i_2 + 1                                     |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * highlight week i_2                                 |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * check if any assignment is due out week i_2+1      |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
   * add week (2i_1 -> 2i_2) questions to exam          |  /  |  /  |  /  |  /  |  /  |  /  |  /  |     |     |      |       |       |       |     |
-  * double-check gradebook not messed up               |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
-  * unhide any week i_1 solutions                      |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * double-check gradebook not messed up               |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * unhide any week i_1 solutions                      |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
   * exam (details then full exam)                      |     |     |     |     |  -  |     |     |     |     |  -   |       |       |       |     |
 
 # exam prep
@@ -62,4 +62,4 @@
   * sign the final grade form                          | - |
 
 TODO:
-
+  * have BL look over the new handouts and update all the links.

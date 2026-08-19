@@ -83,7 +83,7 @@ The log reads bottom-to-top (oldest first).  Each line is one ``chat message.''
     \item \textbf{Multi-line messages} --- Use a commit message with embedded newlines (\texttt{git commit -m \$'line1\\nline2'}) or write the message in a file and commit with \texttt{git commit -F msg.txt}.
     \item \textbf{File attachments} --- Add any file type (image, PDF, text) with \texttt{git add <file>} before committing.
     \item \textbf{Replies / threading} --- Reply by referencing a previous commit in your message.  For actual branching, create a topic branch per thread and merge when resolved.
-    \item \textbf{Timestamps} --- \texttt{git log --format="\%h \%ci \%s"} shows the author date in a standard format.
+    \item \textbf{Timestamps} --- \texttt{git log --format="\%h \%ci \%s"} shows the author date in a standard format.  Note: you can use \texttt{ai} insted of \texttt{ci} if you like, in this context they are the same thing.
     \item \textbf{Private messages} --- Create a branch that only two members pull from, or use an encrypted file committed to the repo.
 \end{itemize}
 

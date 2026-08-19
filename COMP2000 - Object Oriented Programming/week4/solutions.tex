@@ -160,7 +160,7 @@ Classes are not required to override default methods.  If they do, the override 
     \item \texttt{A x = new B();} --- \textbf{Valid}. \texttt{B} is a subclass of \texttt{A}, so upcasting is always safe.
     \item \texttt{B x = new A();} --- \textbf{Invalid / compile error}. \texttt{A} is the superclass; a superclass reference cannot be assigned to a subclass variable without an explicit cast (and even then it would throw \texttt{ClassCastException} at runtime).
     \item \texttt{D x = new C();} --- \textbf{Invalid}. \texttt{C} is not a subclass of \texttt{D} (it is the superclass of \texttt{D}), so this assignment fails.
-    \item \texttt{A x = new D();} --- \textbf{Valid} (upcast).  \texttt{(C) x;} --- \textbf{Safe}, because \texttt{D} \texttt{extends} \texttt{C}, so the object's runtime type (\texttt{D}) is a \texttt{C}.  This cast will never throw \texttt{ClassCastException}.
+    \item \texttt{A x = new D();} --- \textbf{Valid} (upcast).  \texttt{x = (C) x;} --- \textbf{Safe}, because \texttt{D} \texttt{extends} \texttt{C}, so the object's runtime type (\texttt{D}) is a \texttt{C}.  This cast will never throw \texttt{ClassCastException}.
 \end{enumerate}
 
 \subsection*{Exercise 7: Overloading vs overriding}

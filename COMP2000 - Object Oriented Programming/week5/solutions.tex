@@ -166,7 +166,7 @@ class Person implements Comparable<Person> {
 }
 \end{lstlisting}
 
-The bound \texttt{<T extends Comparable<T>>} guarantees that \texttt{compareTo} is available.  Without it the compiler would reject \texttt{a.compareTo(b)} because \texttt{T} could be any type.
+The bound \texttt{<T extends Comparable<T>{}>} guarantees that \texttt{compareTo} is available.  Without it the compiler would reject \texttt{a.compareTo(b)} because \texttt{T} could be any type.
 
 
 \section*{Exercise 3: Wildcards --- what compiles?}

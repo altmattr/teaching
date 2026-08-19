@@ -105,7 +105,7 @@ interface Iterator<T> {
 
 class Playlist implements Iterable<Song> {
     private List<Song> songs;
-    public Iterator<Song> iterator() {
+    public Iterator<Song> createIterator() {
         return songs.iterator(); // uses Java's built-in Iterator
     }
 }
@@ -200,7 +200,18 @@ class HasCoinState implements VendingMachineState {
         System.out.println("Coin already inserted");
     }
     public void dispense(VendingMachine vm) {
-        System.out.println("Dispensing item...");
+	System.out.println("Dispensing item ...");
+        vm.setState(new DispensingState());
+	vm.dispense();
+    }
+}
+
+class DispensingState implements VendingMachineState {
+    public void insertCoin(VendingMachine vm) {
+        System.out.println("Please wait, dispensing in progress");
+    }
+    public void dispense(VendingMachine vm) {
+        System.out.println("Item dispensed...");
         vm.setState(new NoCoinState());
     }
 }
@@ -212,6 +223,8 @@ class VendingMachine {
     void dispense() { state.dispense(this); }
 }
 \end{lstlisting}
+
+One interesting feature of this solution is that the state transition from \texttt{DispensingState} to \texttt{NoCoinState} happens automatically.  There is no method to trigger that transition.  This is because we expect the machine to complete the dispensing without our intervention so the design reflects that.  It also means this design could perhaps work with one less state.  Were this a simulation though, perhaps the ability to put a pause in the execution between the two states might really help.
 
 \subsection*{Exercise 10: Decorator vs Strategy, and the Open/Closed Principle}
 

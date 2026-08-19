@@ -22,8 +22,7 @@ This week you will identify design patterns in existing code and argue for their
 \section*{Preparation}
 Attend the lecture in week 7.
 
-Read the following chapters of \textit{Head First Design Patterns}
-(\href{https://archive.org/details/headfirstdesignp0010unse}{available freely online}\footnote{\url{https://archive.org/details/headfirstdesignp0010unse}}):
+Read the following chapters of \textit{Head First Design Patterns}:
 \begin{itemize}
     \item Chapter 3 (Decorator Pattern)
     \item Chapter 9 (Iterator Pattern) --- read up until the subsection titled ``Just when we thought it was safe\ldots''
@@ -66,7 +65,7 @@ This is your team's work \emph{between classes}, do it in your own time and have
 
 \item Write a Java \texttt{Iterator} for a simple \texttt{Playlist} class that stores songs in a \texttt{List<String>}.  The \texttt{Playlist} should provide a \texttt{createIterator()} method that returns an anonymous or inner-class \texttt{Iterator<String>}.
 
-\item Write a minimal Java implementation of the State pattern for a simple vending machine.  Define a \texttt{VendingMachine} context and at least three states: \texttt{NoCoinState}, \texttt{HasCoinState}, and \texttt{DispensingState}.  Each state should handle \texttt{insertCoin()} and \texttt{dispense()} appropriately.
+\item Write a minimal Java implementation of the State pattern for a simple vending machine.  Define a \texttt{VendingMachine} context and at least three states: \texttt{NoCoinState}, \texttt{HasCoinState}, and \texttt{DispensingState}.  Each state should handle \texttt{insertCoin()} and \texttt{dispense()} appropriately. If your solution diverges in any way from the standard description, explain why.
 
 \item Compare the Decorator pattern with the Strategy pattern.  Both wrap behaviour, but they solve different problems.  Explain the difference and give a concrete scenario where you would choose Decorator over Strategy.  Then explain how the Decorator pattern satisfies the Open/Closed Principle.
 \end{enumerate}

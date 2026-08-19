@@ -22,8 +22,7 @@ The goal of this week is to understand how generics work at runtime.  Generics i
 \section*{Preparation}
 Attend the lecture in week 4.
 
-Read the following sections of \textit{Learning Java}, 3rd~edition, Chapter~8
-(\href{https://archive.org/details/learningjava0000niem_m6l5}{available freely online}\footnote{\url{https://archive.org/details/learningjava0000niem_m6l5}}):
+Read the following sections of \textit{Learning Java}, 3rd~edition, Chapter~8:
 \begin{itemize}
     \item Introduction to Generics
     \item Type Erasure
@@ -65,7 +64,7 @@ This is your team's work \emph{between classes}, do it in your own time and have
 \section*{Self Study Exercises}
 \begin{enumerate}
 \item Design a generic class \texttt{Pair<T, U>} with methods \texttt{getFirst()}, \texttt{getSecond()}, \texttt{setFirst(T)}, and \texttt{setSecond(U)}.  Create instances of \texttt{Pair<String, Integer>} and \texttt{Pair<Double, String>}, populate them, and print their contents.
-\item Write a generic method \texttt{<T extends Comparable<T>> T max(T a, T b)} that returns the larger of two values.  Test it with \texttt{Integer}, \texttt{String}, and a custom class of your choice that implements \texttt{Comparable}.
+\item Write a generic method \texttt{<T extends Comparable<T>{}> T max(T a, T b)} that returns the larger of two values.  Test it with \texttt{Integer}, \texttt{String}, and a custom class of your choice that implements \texttt{Comparable}.
 \item Given the following two method signatures:
 \begin{lstlisting}
 void printAll(List<?> items) { ... }
