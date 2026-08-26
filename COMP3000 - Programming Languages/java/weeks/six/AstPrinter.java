@@ -1,4 +1,4 @@
-package weeks.seven;
+package weeks.six;
 
 class AstPrinter implements Expr.Visitor<String> {
   String print(Expr expr) {

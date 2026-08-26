@@ -1,10 +1,10 @@
-package weeks.nine;
+package weeks.eight;
 
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static weeks.nine.TokenType.*;
+import static weeks.eight.TokenType.*;
 
 /**
  * 

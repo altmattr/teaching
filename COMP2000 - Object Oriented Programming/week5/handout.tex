@@ -35,10 +35,6 @@ Come to class ready to explain how type erasure makes this possible.
 
 \section*{EPIC activity}
 
-\begin{note}
-In Week 4 students were introduced to inheritance and overloading.  By Week 5 they are ready to explore how generics interact with the type system at runtime.
-\end{note}
-
 Your team has been given two files: \texttt{Container.java} and \texttt{Main.java}.  \texttt{Container<T>} is a simple generic wrapper around a list.  \texttt{Main} currently uses it correctly with \texttt{Container<String>}.
 
 Your task: \textbf{modify the code to cause a runtime exception without adding any casts}.  You may change any file, but you may not introduce the cast operator \texttt{(...)} anywhere in your solution.
@@ -51,7 +47,7 @@ Here are some approaches to try:
 \item Experiment with \texttt{@SuppressWarnings("unchecked")}.  Where can the compiler be tricked into allowing unsafe operations?
 \end{itemize}
 
-During the reporting period, each team will present their broken code.  Be ready to explain \emph{why} the error happens and what the compiler was thinking when it let it through.
+During the reporting period, each team will present their broken code.  Be ready to explain \emph{why} the error happens and what the compiler was thinking when it let it through.  Your logbook should include the best solution you saw.  It might be from your own team or from one of the presentations.
 
 \begin{teacher}
 Provide each team with a small codebase containing a generic class and a correct usage example.  The starter should have potential vulnerabilities: raw type access and unchecked warnings.  Circulate during the activity to help teams that are stuck understand type erasure.  During reporting, highlight teams that found different attack vectors (raw types, unchecked suppression).  The goal is for students to internalise that generics are a compile-time only feature.
@@ -59,7 +55,7 @@ Provide each team with a small codebase containing a generic class and a correct
 
 \section*{Project Guidance}
 
-This is your team's work \emph{between classes}, do it in your own time and have it committed and pushed to your shared repository before you return next week.  Look at your team's project code.  Where would a generic type add safety?  Perhaps a \texttt{Grid<T extends Entity>} to ensure only entities live on your grid, or a typed event system to distinguish different kinds of simulation events.  Try introducing one generic type and observe what the compiler now guarantees that it did not before.  Record what you did in your log book.  Anything you add beyond the class activity is the kind of contribution the Uniqueness and Creativity rubric rewards.
+This is your team's work \emph{between classes}, do it in your own time and have it committed and pushed to your shared repository before you return next week.  Look at your team's project code.  Where would a generic type add safety?  Perhaps a \texttt{Grid<T extends Entity>} to ensure only entities live on your grid, or a typed event system to distinguish different kinds of simulation events.  Try introducing one generic type and observe what the compiler now guarantees that it did not before.  Anything you add beyond the class activity is the kind of contribution the Uniqueness and Creativity rubric rewards.
 
 \section*{Self Study Exercises}
 \begin{enumerate}

@@ -1,4 +1,4 @@
-package weeks.eight;
+package weeks.seven;
 
 import java.io.BufferedReader;
 import java.io.IOException;

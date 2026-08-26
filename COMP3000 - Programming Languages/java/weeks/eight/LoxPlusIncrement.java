@@ -1,8 +1,8 @@
-package weeks.nine;
+package weeks.eight;
 
 
 import java.util.List;
-import static weeks.nine.TokenType.*;
+import static weeks.eight.TokenType.*;
 
 public class LoxPlusIncrement extends Lox{
   public static void main(String[] args){

@@ -1,4 +1,4 @@
-package weeks.six;
+package weeks.five;
 
 class Token {
   final TokenType type;

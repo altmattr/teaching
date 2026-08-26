@@ -1,4 +1,4 @@
-package weeks.eight;
+package weeks.seven;
 
 import java.util.HashMap;
 import java.util.Map;

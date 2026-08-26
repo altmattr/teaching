@@ -321,7 +321,7 @@ question: |
 answer: |
     I've found a fun way to make a modified interpreter.  I've had to get rid of all the `private` modifiers in my interpreter, but once I do, I can define a modified lox interpreter by subclassing the existing classes.  Here is how I did it in this case
     `````
-    package weeks.ten;
+    package weeks.nine;
 
 
     import java.util.List;

@@ -1,4 +1,4 @@
-package weeks.six;
+package weeks.five;
 
 class RuntimeError extends RuntimeException {
   final Token token;

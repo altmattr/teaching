@@ -1,4 +1,4 @@
-package weeks.seven;
+package weeks.six;
 
 import java.util.List;
 

@@ -37,16 +37,16 @@
   * grab metrics                                                                                              
     - echo                                             |     |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
     - grades                                           |     |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
-  * check on forums to make sure nothing missed        |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
-  * post weekly details                                |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
-  * weeks 0 -> i_2 + 1 are ready                       |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
-  * unhide i_2 + 1                                     |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
-  * highlight week i_2                                 |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
-  * check if any assignment is due out week i_2+1      |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * check on forums to make sure nothing missed        |  /  |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * post weekly details                                |  /  |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * weeks 0 -> i_2 + 1 are ready                       |  /  |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * unhide i_2 + 1                                     |  /  |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * highlight week i_2                                 |  /  |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * check if any assignment is due out week i_2+1      |  /  |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
   * add week (2i_1 -> 2i_2) questions to exam          |  /  |  /  |  /  |  /  |  /  |  /  |  /  |     |     |      |       |       |       |     |
-  * double-check gradebook not messed up               |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
-  * unhide any week i_1 solutions                      |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
-  * exam (details then full exam)                      |     |     |     |     |  -  |     |     |     |     |  -   |       |       |       |     |
+  * double-check gradebook not messed up               |  /  |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * unhide any week i_1 solutions                      |  /  |  /  |  /  |  /  |  /  |  -  |  -  |  -  |  -  |  -   |   -   |   -   |   -   |  -  |
+  * exam (details then full exam)                      |     |     |     |     |  /  |     |     |     |     |  -   |       |       |       |     |
 
 # exam prep
   * check all IS are in the gradebook                  | - |

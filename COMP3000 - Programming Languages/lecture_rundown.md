@@ -69,7 +69,7 @@ Textbook: Chapter 5
 - (0:25) Context-free grammars: Terminals, non-terminals, metasyntax
 - (0:40) Grammar notation: Nystrom's notation, generating strings
 - (0:55) Demo: GenerateAst tool: Visitor pattern, metaprogramming
-- (1:15) Grammar for river combining: `+` and `<-` operators as grammar rules
+- (1:15) Grammar for traffic: What does the AST look like
 - (1:40) Wrap-up: Read Ch 6
 
 ---

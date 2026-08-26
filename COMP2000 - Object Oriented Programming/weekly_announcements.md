@@ -18,7 +18,7 @@ Inheritance and Overloading. Before class, read Learning Java Chapter 6 (Subclas
 
 ## Week 5
 
-Generics. Before class, read Learning Java Chapter 8 (Introduction to Generics, Type Erasure, Wildcards and Bounded Types). The lecture covered wrapper classes, what type erasure means at runtime, bounded type parameters, and wildcards. Come ready to break things. Your team will be given starter code (Container.java and Main.java) and your job is to cause a runtime exception without adding any casts. You'll explore raw types, unchecked suppression, and heap pollution. It's hands-on and a bit sneaky. Think about: what does `new ArrayList<String>().getClass()` actually return at runtime? Try it before class. Bring your logbook.
+This week in workshops we cover generics. Before class, read Learning Java Chapter 8 (Introduction to Generics, Type Erasure, Wildcards and Bounded Types). The lecture covered wrapper classes, what type erasure means at runtime, bounded type parameters, and wildcards. Come ready to break things! Your team will be given starter code (Container.java and Main.java) and your job is to cause a runtime exception without adding any casts. You'll explore raw types, unchecked suppression, and heap pollution. It's hands-on and a bit sneaky. Think about: what does `new ArrayList<String>().getClass()` actually return at runtime? Try it before class. Bring your logbook.
 
 ## Week 6
 

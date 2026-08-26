@@ -1,4 +1,4 @@
-package weeks.seven;
+package weeks.six;
 
 enum TokenType {
   // Single-character tokens.

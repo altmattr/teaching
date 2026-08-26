@@ -1,8 +1,8 @@
-package weeks.six;
+package weeks.five;
 
 import java.util.List;
 
-import static weeks.six.TokenType.*;
+import static weeks.five.TokenType.*;
 
 /**
  * implements the following grammar

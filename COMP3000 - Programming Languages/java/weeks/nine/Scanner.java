@@ -1,6 +1,6 @@
-package weeks.ten;
+package weeks.nine;
 
-import static weeks.ten.TokenType.*;
+import static weeks.nine.TokenType.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,9 +1,9 @@
-package weeks.seven;
+package weeks.six;
 
 import java.util.List;
 import java.util.ArrayList;
 
-import static weeks.seven.TokenType.*;
+import static weeks.six.TokenType.*;
 
 /**
  * 

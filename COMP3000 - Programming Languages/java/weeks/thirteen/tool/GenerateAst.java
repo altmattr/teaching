@@ -41,7 +41,7 @@ public class GenerateAst {
     String path = outputDir + "/" + baseName + ".java";
     PrintWriter writer = new PrintWriter(path, "UTF-8");
 
-    writer.println("package weeks.twelve;");
+    writer.println("package weeks.thirteen;");
     writer.println();
     writer.println("import java.util.List;");
     writer.println();

@@ -1,4 +1,4 @@
-package weeks.seven.tool;
+package weeks.six.tool;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,7 +33,7 @@ public class GenerateAst {
     String path = outputDir + "/" + baseName + ".java";
     PrintWriter writer = new PrintWriter(path, "UTF-8");
 
-    writer.println("package weeks.seven;");
+    writer.println("package weeks.six;");
     writer.println();
     writer.println("import java.util.List;");
     writer.println();
