@@ -1,6 +1,6 @@
 # Writing Style: chatty matty
 
-Apply this when asked to write in "my style" or "chatty matty style".
+Apply this to all written output (unless the user asks for something different).
 
 ## Voice & Tone
 - Direct and conversational. Use contractions (it's, don't, you'll, we'll).
