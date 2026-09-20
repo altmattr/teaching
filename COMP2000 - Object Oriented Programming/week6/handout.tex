@@ -28,7 +28,7 @@ Section~4.5:
     \item Exceptions
 \end{itemize}
 
-Try to predict: if \texttt{caret()} throws and the exception is not caught in \texttt{pipe()}, does \texttt{pipe()} finish its exit print?  Trace the call stack to confirm your answer.
+Try to predict: if \texttt{chuck\_a\_fit()} throws and the exception is not caught in \texttt{pipe()}, does \texttt{pipe()} finish its exit print?  Trace the call stack to confirm your answer.
 Come to class ready to trace which frames unwind when an exception is caught at a different depth.
 
 
@@ -38,13 +38,13 @@ Come to class ready to trace which frames unwind when an exception is caught at 
 This week builds on the exception-handling concepts introduced alongside inheritance and overloading in Week 4.
 \end{note}
 
-You are given three methods that form a chain:
+You are given four methods that form a chain:
 
 \begin{center}
-\texttt{star() $\rightarrow$ pipe() $\rightarrow$ caret()}
+\texttt{star() $\rightarrow$ pipe() $\rightarrow$ caret() $\rightarrow$ chuck\_a\_fit()}
 \end{center}
 
-Each method prints its symbol when it \emph{enters} and again when it \emph{exits normally}.  If an exception propagates through a method (i.e.\ it is not caught there), that method's exit print is skipped.
+Each of \texttt{star()}, \texttt{pipe()} and \texttt{caret()} prints its symbol when it \emph{enters} and again when it \emph{exits normally}.  \texttt{chuck\_a\_fit()} prints nothing; it is the designated place for your \texttt{throw} statements.  If an exception propagates through a method (i.e.\ it is not caught there), that method's exit print is skipped.
 
 For example, a normal call without exceptions produces:
 
@@ -79,13 +79,17 @@ public class BarcodePuzzle {
 
     static void caret() {
         System.out.print("^ ");
+        chuck_a_fit();
         System.out.print("^ ");
+    }
+
+    static void chuck_a_fit() {
+        // add your throws here
     }
 }
 \end{lstlisting}
 
-The static variable \texttt{iteration} is provided for levels that involve loops.  It is set automatically---do not change it, only read from it.
-
+The static variable \texttt{iteration} is provided for levels that involve loops.
 
 \subsection*{Target barcodes}
 
@@ -94,22 +98,26 @@ The static variable \texttt{iteration} is provided for levels that involve loops
 \textbf{Level} & \textbf{Target barcode} & \textbf{Hint} \\
 \midrule
 1 & \texttt{* | \^{} \^{} | *} & No exceptions --- verify the baseline. \\
-2 & \texttt{* | \^{} | *} & \texttt{caret()} throws, caught in \texttt{pipe()}. \\
-3 & \texttt{* | \^{} *} & \texttt{caret()} throws, caught in \texttt{star()}. \\
+2 & \texttt{* | \^{} | *} & \texttt{chuck\_a\_fit()} throws, caught in \texttt{pipe()}. \\
+3 & \texttt{* | \^{} *} & \texttt{chuck\_a\_fit()} throws, caught in \texttt{star()}. \\
 4 & \texttt{* | \^{} | *} & Same output as level 2, but use \texttt{finally}. \\
-5 & \texttt{* | \^{} \^{} | | \^{} *} & \texttt{star()} loops \texttt{pipe()} twice.  \texttt{caret()} throws on iteration 2, caught in \texttt{star()}. \\
-6 & \texttt{* | \^{} \^{} | | \^{}} & Same setup as level 5, but the exception is \emph{not} caught. \\
+5 & \texttt{* | \^{} \^{} | | \^{} *} & \texttt{star()} loops \texttt{pipe()} twice. \\
+6 & \texttt{* | \^{} \^{} | | \^{}} & \\
 \bottomrule
 \end{tabular}
 
 \subsection*{Rules}
 \begin{itemize}
 \itemsep0em
-\item You may add \texttt{throw} statements to any method.
+\item You may add \texttt{throw} statements only to \texttt{chuck\_a\_fit()}, the bottom of the chain.
 \item You may wrap any call in a \texttt{try-catch} or a \texttt{try-finally}.
 \item You may \emph{not} change the print statements or their order.
 \item For levels 5 and 6, use the \texttt{iteration} variable to conditionally throw.
 \end{itemize}
+
+\subsection*{Bonus question}
+
+You may have noticed that \texttt{chuck\_a\_fit()} is unnecessary: it prints nothing and (on level 1) does nothing.  But it is there for a reason.  Experiment: add \texttt{throw new RuntimeException();} directly to \texttt{caret()} between its two prints, and again to \texttt{pipe()} after its call to \texttt{caret()}.  What does the compiler tell you in each case?  Why does this explain the purpose of the empty bottom method?
 
 \subsection*{Reporting}
 
@@ -142,20 +150,20 @@ This is your team's work \emph{between classes}, do it in your own time and have
 \begin{enumerate}
 \item What is the difference between a checked exception and an unchecked exception in Java?  Give two examples of each.  Why must \texttt{IOException} be declared or caught, but \texttt{NullPointerException} does not need to be?
 
-\item When an exception is thrown in \texttt{caret()} and caught in \texttt{star()}, explain step by step what happens to the local variables in \texttt{pipe()}.  Are they eligible for garbage collection?  Why or why not?
+\item When an exception is thrown in \texttt{chuck\_a\_fit()} and caught in \texttt{star()}, explain step by step what happens to the local variables in \texttt{pipe()}.  Are they eligible for garbage collection?  Why or why not?
 
 \item If both a \texttt{catch} block and a \texttt{finally} block contain \texttt{return} statements, which value is returned?  Write a small example that demonstrates this.
 
 \item If a \texttt{try} block throws a \texttt{RuntimeException} and the \texttt{finally} block also throws a \texttt{RuntimeException}, which exception propagates to the caller?  What happens to the other one?
 
-\item Given the call chain \texttt{star() $\rightarrow$ pipe() $\rightarrow$ caret()}, if \texttt{caret()} throws an \texttt{IllegalArgumentException}, what would the stack trace look like when caught in \texttt{main()}?  Show the exact format.
+\item Given the call chain \texttt{star() $\rightarrow$ pipe() $\rightarrow$ caret() $\rightarrow$ chuck\_a\_fit()}, if the bottom method throws an \texttt{IllegalArgumentException}, what would the stack trace look like when caught in \texttt{main()}?  Show the exact format.
 
 \item Draw the inheritance hierarchy of \texttt{Throwable}, \texttt{Error}, \texttt{Exception}, and \texttt{RuntimeException}.  Which of these should a typical application catch, and which should it usually let propagate?
 
 \item Write a single \texttt{catch} block that handles both \texttt{IOException} and \texttt{SQLException}.  What is the type of the exception variable inside the block?
 
-\item What would happen if \texttt{pipe()} caught the exception, re-threw it, and \texttt{star()} caught it again?  Trace the output.
-\item Write a variant where \texttt{caret()} throws two different exception types (e.g.\ \texttt{IllegalArgumentException} and \texttt{RuntimeException}), each caught at a different depth.
+\item What would happen if \texttt{pipe()} caught the exception from \texttt{chuck\_a\_fit()}, re-threw it, and \texttt{star()} caught it again?  Trace the output.
+\item Write a variant where \texttt{chuck\_a\_fit()} throws two different exception types (e.g.\ \texttt{IllegalArgumentException} and \texttt{RuntimeException}), each caught at a different depth.
 \item Explain the difference between \texttt{try-finally} and \texttt{try-catch-finally} in terms of what prints and what doesn't when an exception occurs.
 \end{enumerate}
 

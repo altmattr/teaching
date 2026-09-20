@@ -22,19 +22,25 @@ This week in workshops we cover generics. Before class, read Learning Java Chapt
 
 ## Week 6
 
-Exceptions. Before class, read Learning Java Chapter 4.5 (Exceptions). The lecture covered the Throwable hierarchy, checked vs unchecked exceptions, try/catch/finally, and the `throws` keyword. In the EPIC activity, your team gets three methods that call each other (star → pipe → caret) and you need to add throw and catch statements to produce exact "barcode" outputs. Each level changes where the exception is caught, which changes which exit prints get skipped. It's like a puzzle. Come ready to trace the call stack by hand. If you understand what happens to local variables when a frame unwinds, you're in good shape. Bring your logbook.
+This week we learn Exceptions. Before class, read Learning Java Chapter 4.5 (Exceptions). The lecture covered the Throwable hierarchy, checked vs unchecked exceptions, try/catch/finally, and the `throws` keyword. In the EPIC activity, your team gets three methods that call each other (star → pipe → caret) and you need to add throw and catch statements to produce exact "barcode" outputs. Each level changes where the exception is caught, which changes which exit prints get skipped. It's like a puzzle. Come ready to trace the call stack by hand. If you understand what happens to local variables when a frame unwinds, you're in good shape. Bring your logbook.
 
 ## Week 7
 
-Patterns 1: Strategy and Observer. Before class, read Head First Design Patterns Chapters 1 and 2. The lecture covered design patterns generally, the Strategy pattern (composition over inheritance for interchangeable behaviours), and the Observer pattern (one-to-many notification without tight coupling). The EPIC activity is a conference-style class where individual students present their mid-semester submission. If you're presenting, you get 15 minutes plus 5 minutes of questions. All students must attend even if they're not presenting. Your mid-semester submission is due this week. That means your log book, code, and reflection need to be ready. Check the assessment brief for exactly what's required. Bring your logbook.
+Patterns 1: Strategy and Observer. Before class, read Head First Design Patterns Chapters 1 and 2. The lecture covered design patterns generally, the Strategy pattern (composition over inheritance for interchangeable behaviours), and the Observer pattern (one-to-many notification without tight coupling). The EPIC activity is a conference-style class where individual students present their current progress towards their mid-semester submission. If you're presenting, you get up to 15 minutes plus 5 minutes of questions but you don't need to use all your time. All students must attend even if they're not presenting. 
+
+Students who choose to present will be allocated full marks on the "Uniqueness and Creativity" section of the assignment rubric as a thankyou for sharing your work.  Everyone gains from more people presenting, the presenter and the audience so please do your best to present.
+
+If you do want to present, please add yourself to the presentation group on iLearn so your teacher can best schedule the class.  
+
+Your mid-semester submission is due this week. That means your log book, code, and reflection need to be ready. Check the assessment brief for exactly what's required.
 
 ## Week 8
 
-Patterns 2: Decorator, Iterator, State. Before class, read Head First Design Patterns Chapters 3 (Decorator), 9 (Iterator, up to "Just when we thought it was safe"), and 10 (State). The lecture covered how Decorator wraps objects to add responsibilities dynamically, Iterator lets you traverse collections without exposing their structure, and State lets an object change behaviour when its internal state changes. The EPIC activity is a debate. Your team will be assigned a question and a side, and you'll argue it using evidence from other teams' code. Come ready to argue. After the debate, look at your own project and pick one design pattern that fits. Implement it and be ready to explain why you chose it. Bring your logbook.
+Patterns 2: Decorator, Iterator, State. Before class, read Head First Design Patterns Chapters 3 (Decorator), 9 (Iterator, up to "Just when we thought it was safe"), and 10 (State). The lecture covered how Decorator wraps objects to add responsibilities dynamically, Iterator lets you traverse collections without exposing their structure, and State lets an object change behaviour when its internal state changes. The EPIC activity is a debate. Your team will be assigned a question and a side, and you'll argue it using evidence from exemplar code. Come ready to argue. If you don't want to get hosed by your opponents in the debate you should have done some substantial prep on all the patterns we covered in class.   You will only have a certain amount of time to prepare in class so you will need be well on top of the material to succeed.
 
 ## Week 9
 
-Behaviour Parameterisation (Lambdas). Before class, read Modern Java in Action Chapters 1, 2, and 3. The lecture covered what lambdas are (anonymous functions you can pass around), the syntax, functional interfaces like Predicate and Function, and method references. In the EPIC activity, your team gets programming puzzles where you transform or filter collections using streams and lambdas. The goal is to produce the correct result in as few characters as possible. It's code golf. It's not about writing production code, it's about discovering how expressive lambdas can be. Come ready to think in short expressions. Bring your logbook.
+Behaviour Parameterisation (Lambdas). Before class, read Modern Java in Action Chapters 1, 2, and 3. The lecture covered what lambdas are (anonymous functions you can pass around), the syntax, functional interfaces like Predicate and Function, and method references. In the EPIC activity, your team gets programming puzzles where you transform or filter collections using lambdas and collection methods like sort, removeIf, and replaceAll. The goal is to produce the correct result in as few characters as possible. It's code golf. It's not about writing production code, it's about discovering how expressive lambdas can be. Come ready to think in short expressions. Bring your logbook.
 
 ## Week 10
 
@@ -46,7 +52,9 @@ Collecting. Before class, read Modern Java in Action Chapter 6. The lecture cove
 
 ## Week 12
 
-Parallelism. Before class, read Modern Java in Action Chapter 7. The lecture covered threads, Runnable, race conditions, synchronised blocks, parallelStream, and ForkJoinPool. In the EPIC activity, your team will find an opportunity for parallelism in your simulation and implement it. Maybe you partition your grid into regions and simulate each on a separate thread. Maybe you use parallel streams for population statistics. Document any race conditions you find and how you fixed them. Bring your logbook.
+Before class, read Modern Java in Action Chapter 7. The lecture covered threads, Runnable, race conditions, synchronised blocks, parallelStream, and ForkJoinPool. In the EPIC activity, your team will find an opportunity for parallelism in your simulation and implement it. Maybe you partition your grid into regions and simulate each on a separate thread. Maybe you use parallel streams for population statistics. Document any race conditions you find and how you fixed them. Bring your logbook.
+
+You will have the option to present your work again in week 13, only people who register will be allowed to speak so be sure to register at the link in the week 13 section of iLearn.  When the registration slots are full, no more will be allowed.  Remember your presentation is an _individual_ task, not a team task.
 
 ## Week 13
 

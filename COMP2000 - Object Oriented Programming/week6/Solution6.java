@@ -1,4 +1,4 @@
-public class BarcodePuzzle {
+public class Solution6 {
 
     static int iteration = 0;
 
@@ -9,8 +9,11 @@ public class BarcodePuzzle {
 
     static void star() {
         System.out.print("* ");
-        pipe();
-        System.out.print("* ");
+        for (int i = 0; i < 2; i++) {
+            iteration = i + 1;
+            pipe();
+        }
+        System.out.print("* ");   // never reached
     }
 
     static void pipe() {
@@ -26,6 +29,8 @@ public class BarcodePuzzle {
     }
 
     static void chuck_a_fit() {
-        // add your throws here
+        if (iteration == 2) {
+            throw new RuntimeException();
+        }
     }
 }

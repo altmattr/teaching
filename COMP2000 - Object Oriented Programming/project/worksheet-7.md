@@ -35,6 +35,8 @@
 
 ## 2. Program Design
 
+Don't forget to submit a pdf file of your program design along with this file.
+
 **2.1.** List every class in your project and write 1–2 sentences describing its responsibility.
 
 
@@ -85,13 +87,9 @@
 
 ## 4. Log Book
 
-**4.1.** Attach or link your log book entries for Weeks 1–6.
+Don't forget to submit an electronic version of your logbook.
 
-
-
-
-
-**4.2.** Which week's activity taught you the most? What did you learn?
+**4.1.** Which week's activity taught you the most? What did you learn?
 
 ---
 

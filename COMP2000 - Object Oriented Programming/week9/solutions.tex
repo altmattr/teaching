@@ -133,4 +133,61 @@ people.sort(new AgeSort());
 people.sort((a, b) -> Integer.compare(a.age(), b.age()));
 \end{lstlisting}
 
+\section*{Code Golf Solutions}
+
+Each puzzle gives you a list of words and a deliberately long loop solution.  The count is the number of characters in the method body exactly as written, spaces and newlines included.  The method signature and the imports are free.  The bodies below are reference solutions, not champions: they show one lambda per puzzle, but sharper minds may find something shorter.
+
+\subsection*{Puzzle 1: sortByLength}
+
+\emph{Sort the words by length, shortest first.}
+
+\lstinline{words.sort(Comparator.comparingInt(String::length)); return words;}
+
+Count: 66 (starter 216).
+
+\subsection*{Puzzle 2: sortIgnoreCase}
+
+\emph{Sort the words ignoring case.}
+
+\lstinline{words.sort((a, b) -> a.compareToIgnoreCase(b)); return words;}
+
+Count: 61 (starter 201).
+
+\subsection*{Puzzle 3: dropShort}
+
+\emph{Drop the words shorter than 3 letters.}
+
+\lstinline{words.removeIf(w -> w.length() < 3); return words;}
+
+Count: 50 (starter 169).
+
+\subsection*{Puzzle 4: upperAll}
+
+\emph{Shout every word.}
+
+\lstinline{words.replaceAll(String::toUpperCase); return words;}
+
+Count: 52 (starter 140).
+
+\subsection*{Puzzle 5: normalize}
+
+\emph{Shout, drop short words, then sort by length.}
+
+\begin{lstlisting}
+words.replaceAll(String::toUpperCase);
+words.removeIf(w -> w.length() < 3);
+words.sort(Comparator.comparingInt(String::length));
+return words;
+\end{lstlisting}
+
+Count: 142 on one line (starter 471).
+
+\subsection*{Puzzle 6: reversed}
+
+\emph{Reverse every word.}
+
+\lstinline{words.replaceAll(w -> new StringBuilder(w).reverse().toString()); return words;}
+
+Count: 79 (starter 166).
+
 \end{document}

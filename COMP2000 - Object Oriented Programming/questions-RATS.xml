@@ -2245,19 +2245,15 @@ class ConnectionManager {
       </feedback>
     </answer>
   </question>
-  <question type="multichoice">
+<question type="multichoice">
     <name>
-      <text>Iterator code identification (easy)</text>
+      <text>Iterator pattern identification (easy)</text>
     </name>
     <questiontext format="html">
-      <text>&lt;pre&gt;List&lt;String&gt; names = Arrays.asList("A", "B", "C");
-Iterator&lt;String&gt; it = names.iterator();
-while (it.hasNext()) {
-    System.out.println(it.next());
-}&lt;/pre&gt;&lt;p&gt;What design pattern does the &lt;code&gt;Iterator&lt;/code&gt; interface exemplify?&lt;/p&gt;</text>
+      <text>&lt;p&gt;A music app stores a playlist of songs. The GUI code needs to cycle through the songs, but does not care whether they are held in an &lt;code&gt;ArrayList&lt;/code&gt; or a &lt;code&gt;LinkedList&lt;/code&gt;. Which design pattern addresses this requirement?&lt;/p&gt;</text>
     </questiontext>
     <generalfeedback format="html">
-      <text>&lt;p&gt;The &lt;code&gt;Iterator&lt;/code&gt; interface provides a standard way to access elements of a collection sequentially without exposing its internal structure. This is the Iterator Pattern.&lt;/p&gt;</text>
+      <text/>
     </generalfeedback>
     <defaultgrade>1.0000000</defaultgrade>
     <penalty>0.3333333</penalty>
@@ -2278,27 +2274,27 @@ while (it.hasNext()) {
     </incorrectfeedback>
     <shownumcorrect/>
     <answer fraction="100" format="html">
-      <text>Iterator Pattern</text>
+      <text>&lt;p&gt;The collection hands the client a separate object that walks through the songs one at a time, so the client never sees the underlying &lt;code&gt;ArrayList&lt;/code&gt; or &lt;code&gt;LinkedList&lt;/code&gt;.&lt;/p&gt;</text>
       <feedback format="html">
-        <text>Correct! Iterator abstracts traversal of a collection.</text>
+        <text>&lt;p&gt;Correct. The Iterator pattern separates traversal from the collection: the client asks for an iterator via a method like &lt;code&gt;iterator()&lt;/code&gt;, then uses &lt;code&gt;hasNext()&lt;/code&gt; and &lt;code&gt;next()&lt;/code&gt; without touching the internal structure.&lt;/p&gt;</text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text>Strategy Pattern</text>
+      <text>&lt;p&gt;The playlist notifies the GUI whenever a song is added or removed&lt;/p&gt;</text>
       <feedback format="html">
-        <text>Strategy encapsulates interchangeable algorithms, not sequential access to elements.</text>
+        <text>&lt;p&gt;That is the Observer pattern, which is about change notification rather than hiding how elements are stored.&lt;/p&gt;</text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text>State Pattern</text>
+      <text>&lt;p&gt;Extra behaviour such as shuffling is layered onto the playlist by wrapping it in another object&lt;/p&gt;</text>
       <feedback format="html">
-        <text>State changes behavior based on internal state, not traversal of elements.</text>
+        <text>&lt;p&gt;That is the Decorator pattern. It adds responsibilities to an object but does not hide the collection's internal structure during traversal.&lt;/p&gt;</text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text>Decorator Pattern</text>
+      <text>&lt;p&gt;The playlist can switch between different storage formats at runtime&lt;/p&gt;</text>
       <feedback format="html">
-        <text>Decorator dynamically adds responsibilities, not traversal.</text>
+        <text>&lt;p&gt;That is the Strategy pattern. Swapping storage formats is not the same as letting a client walk the playlist without seeing the format.&lt;/p&gt;</text>
       </feedback>
     </answer>
   </question>

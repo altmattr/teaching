@@ -1,6 +1,4 @@
-public class BarcodePuzzle {
-
-    static int iteration = 0;
+public class Solution4 {
 
     public static void main(String[] args) {
         star();
@@ -9,23 +7,30 @@ public class BarcodePuzzle {
 
     static void star() {
         System.out.print("* ");
-        pipe();
+        try {
+            pipe();
+        } catch (RuntimeException e) {
+            // caught here
+        }
         System.out.print("* ");
     }
 
     static void pipe() {
         System.out.print("| ");
-        caret();
-        System.out.print("| ");
+        try {
+            caret();
+        } finally {
+            System.out.print("| ");   // always runs
+        }
     }
 
     static void caret() {
         System.out.print("^ ");
         chuck_a_fit();
-        System.out.print("^ ");
+        System.out.print("^ ");     // skipped
     }
 
     static void chuck_a_fit() {
-        // add your throws here
+        throw new RuntimeException();
     }
 }

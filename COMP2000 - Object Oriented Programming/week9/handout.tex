@@ -41,14 +41,23 @@ Come to class ready to discuss:
 
 \section*{EPIC activity}
 
-Your team will be given a set of programming puzzles.  Each puzzle asks you to transform or filter a collection using streams and lambdas.  The goal is to produce the correct result in as few characters as possible.  This is not about writing production code --- it is about discovering how expressive lambdas can be.
+Your team will be given a set of programming puzzles.  Each puzzle asks you to transform or filter a collection using lambdas and the collection operations that take functional interfaces, like \texttt{sort}, \texttt{removeIf}, and \texttt{replaceAll}.  The goal is to produce the correct result in as few characters as possible.  This is not about writing production code, it is about discovering how expressive lambdas can be.
+
+There are six puzzles, \texttt{Puzzle1.java} through \texttt{Puzzle6.java}.  Each is a single method and the repository includes a JUnit test for every puzzle.  Run \texttt{./run\_tests.sh} to check your answers before you submit.
+
+The scoring:
+\begin{itemize}
+    \item the method signature and the imports are fixed --- only the method body counts,
+    \item count every character in your body, spaces and newlines included,
+    \item a correct long answer beats an incorrect short one; among correct answers, fewest characters wins,
+\end{itemize}
 
 \subsection*{Reporting}
 
 This is a \emph{simultaneous reporting} style class.  Each team presents their shortest solution for a selected puzzle.  Other teams ask questions.  Your log book should include the most interesting things learned from other teams --- especially any lambda tricks you had not seen before.
 
 \begin{teacher}
-Prepare a set of 5--8 puzzles on a shared repository.  Each puzzle should have a JUnit test that validates the output.  During reporting, project each team's solution and count characters live.  Highlight the shortest solution for each puzzle.
+Prepare a set of 5--8 puzzles on a shared repository.  Each puzzle should have a JUnit test that validates the output.  The shared repository is the \texttt{puzzles} folder linked above; it contains the six stubs, their tests, the JUnit JARs, and \texttt{run\_tests.sh}.  During reporting, project each team's solution and count characters live.  Highlight the shortest solution for each puzzle.
 \end{teacher}
 
 \section*{Project Guidance}

@@ -1,6 +1,4 @@
-public class BarcodePuzzle {
-
-    static int iteration = 0;
+public class Solution1 {
 
     public static void main(String[] args) {
         star();
@@ -26,6 +24,6 @@ public class BarcodePuzzle {
     }
 
     static void chuck_a_fit() {
-        // add your throws here
+        // does nothing in level 1
     }
 }

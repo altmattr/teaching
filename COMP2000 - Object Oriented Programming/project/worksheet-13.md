@@ -8,6 +8,8 @@
 
 ## 1. Design Patterns
 
+Don't forget to submit a pdf file which shows a diagram of your pattern implemenation to supplement this text description.
+
 **1.1.** Which design pattern(s) did you implement? Name them and state where each appears in your codebase.
 
 
