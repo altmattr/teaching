@@ -20,43 +20,21 @@ By the end of this week you should:
 
 # FAT 
 
-## adding variables <tex-essay>
+## assignment one showcase <tex-essay>
 question: |
-  I expect this week's work to come as a great relief - we are adding variable declarations to our parser!
+  This week's class is a \emph{conference} style session in preparation for assignment one.  The work you have done so far is exactly what the assignment asks you to build, so this is a chance to lay it out in front of the room and get feedback before the deadline.
 
-  Up to now you have had to put every program into a single expression and I am sure you will agree that has been getting painful.  With the addition of statements as explained in the text book, we can finally split up our programs and make them readable.
-  \begin{note}
-  Last week we wrote an evaluator but we are only partly working out the evaluation for this new form.  We are adding variable declarations and use and a print statement but evaluation of variables won't be complete until after next week.  Concentrate on re-writing your example programs and getting the new versions to parse.
-  \end{note}
-
-  Last week I showed you this program for Devlin's creek in one of the formats I have been working with
-
-  \begin{lstlisting}
-  4R + (2.2R + 8R + (1.2R + 6R))
-  \end{lstlisting}
-
-  With variables, I can rewrite it as
-
-  \begin{lstlisting}
-  var mahers_creek  = 6R;
-  var joes_creek    = 1.2R;
-  var lower_joes    = 2.2R + mahers_creek + joes_creek;
-  var devlins_creek = 8R;
-  var lower_devlins = 4R + lower_joes + devlins_creek;
-  print(lower_devlins);
-  \end{lstlisting}
-
-  I find this \emp{so much easier to read}.  Your task this week is to do the same for the language your team has been developing.  Rewrite your example programs to use variables and adjust your implementation so it can parse these new programs correctly.
-
-  This is a short application exercise, the remainder of class will be used to chat about assignment one.
-
+  Register your interest in presenting \emph{before} class.  Presenting is optional, not everyone needs to present, but everyone is expected to attend and take part in the discussion.  Each presenter gets 15 minutes plus 5 minutes of questions.  The presentations are \emph{individual}, not done in teams.  Your assignment submission is individual and thus so is this presentation.  If more than one member of the same team wants to present, they should try to find different angles on the work for their presentation. Aim for an informative and interesting presentation, not a comprehensive one.  Your goal is to be interesting, not to look clever.
+  
   \subsubsection*{Reporting Period / Logbook Advice}
-  During the reporting period, share one of your example programs rewritten with variables and show how much cleaner it is. Listen to how other teams named their variables and structured their programs, naming conventions and organisation habits vary widely.
-
-  For your logbook this week: record one naming or structuring convention from another team that you'd like to adopt.
+  Take notes on the presentations.  Your log book should include:
+  \begin{itemize}
+  \item Notes from at least two presentations by other teams
+  \item One technique or approach you saw that you would consider trying.
+  \item A short reflection on your own work: what is going well, and what needs attention before the assignment is due
+  \end{itemize}
   \newpage
 answer: |
-  Still to do.
 
 
 # RAT
@@ -78,7 +56,7 @@ print x + y;
   ~none
 }
 
-## variable uses
+## variable uses <gift>
 In the following code, which lines contain _variable uses_.  Don't include variable _declarations_ in your answer<br/>
 ```
 var x = 1;
@@ -201,7 +179,7 @@ answer: |
   <   public Void visitExitStmt(Stmt.Exit exit){
   <     System.exit(0);
   <     return null;
-  diff variants/week7_with_exit/Parser.java weeks/seven/Parser.java
+  diff variants/week7_with_exit/Parser.java weeks/nine/Parser.java
   13,14c13
   <             |  printStmt
   <             |  exitStmt;
@@ -212,10 +190,10 @@ answer: |
   <         consume(SEMICOLON, "Expect ';' after exit statement");
   <         return new Stmt.Exit();
   <       }
-  diff variants/week7_with_exit/Scanner.java weeks/seven/Scanner.java
+  diff variants/week7_with_exit/Scanner.java weeks/nine/Scanner.java
   36d35
   <     keywords.put("exit",   EXIT);
-  diff variants/week7_with_exit/Stmt.java weeks/seven/Stmt.java
+  diff variants/week7_with_exit/Stmt.java weeks/nine/Stmt.java
   1c1
   9d8
   <     R visitExitStmt(Exit stmt);
@@ -230,7 +208,7 @@ answer: |
   <       return visitor.visitExitStmt(this);
   <     }
   < 
-  diff variants/week7_with_exit/TokenType.java weeks/seven/TokenType.java
+  diff variants/week7_with_exit/TokenType.java weeks/nine/TokenType.java
   19c19
   <   PRINT, RETURN, SUPER, THIS, TRUE, VAR, WHILE, EXIT,
   ---

@@ -7,7 +7,6 @@ abstract class Stmt {
     R visitExpressionStmt(Expression stmt);
     R visitVarStmt(Var stmt);
     R visitPlotStmt(Plot stmt);
-    R visitPrintStmt(Print stmt);
     R visitDamDeclStmt(DamDecl stmt);
     R visitIfStmt(If stmt);
     R visitReturnStmt(Return stmt);
@@ -47,18 +46,6 @@ abstract class Stmt {
     @Override
     <R> R accept(Visitor<R> visitor) {
       return visitor.visitPlotStmt(this);
-    }
-
-    final Expr expression;
-  }
-  static class Print extends Stmt {
-    Print(Expr expression) {
-      this.expression = expression;
-    }
-
-    @Override
-    <R> R accept(Visitor<R> visitor) {
-      return visitor.visitPrintStmt(this);
     }
 
     final Expr expression;

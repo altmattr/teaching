@@ -50,18 +50,5 @@ class AstPrinter implements Expr.Visitor<String> {
     return "an assignment!";
   }
 
-  @Override
-  public String visitCallExpr(Expr.Call expr) {
-    StringBuilder builder = new StringBuilder();
 
-    builder.append(parenthesize("call " + expr.callee.accept(this),
-                                expr.arguments.toArray(new Expr[0])));
-    return builder.toString();
-  }
-
-  @Override
-  public String visitLogicalExpr(Expr.Logical expr) {
-    return parenthesize(expr.operator.lexeme,
-                        expr.left, expr.right);
-  }
 }

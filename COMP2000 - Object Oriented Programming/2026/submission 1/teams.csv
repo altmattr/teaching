@@ -1,0 +1,73 @@
+group_id,practical_group,member_ids,member_names,repo_basename,size,edge_reasons
+G01,MON 01:00PM C04,42511860;48412821;48542202,Courtney Webber;Joel Andrews;Hai Ha Nguyen,comp2000assessment,3,commit history jaccard=0.80; commit history jaccard=1.00; repo basename 'comp2000assessment'
+G02,TUE 11:00AM C09,42670691;49171380,Anton Chistiakov;Asad Tariq,cyberpunk2000,2,commit history jaccard=0.21; repo basename 'cyberpunk2000'
+G03,MON 03:00PM C06,45202397;46971661;47422092;47879076;48955035,Ryan Destura;Kaifeng Fan;Jia Yu Dong;Billy Chen;Ahmed Trad,comp2000-enjoyers,5,commit history jaccard=0.36; commit history jaccard=0.60; commit history jaccard=0.64; commit history jaccard=1.00; identical design; repo basename 'comp2000-enjoyers'
+G04,MON 01:00PM C04,45292450;48900982;49052829,Joo Min Yoon;Miguel Genciana;Alexander Vissarion,comp2000,3,commit history jaccard=0.42; commit history jaccard=0.50; commit history jaccard=0.56
+G05,TUE 11:00AM C10,46351221;48007544;48918741;49152203;49166778;49229478;61394599,Matthew Vassilieff;Fahmida Samiha;Atharv Javagal;Gabriel Ramos;Abbas Dullow;Christopher Kendrick;Lolowa Alabdulwahed,jellystoneforestfiresimulation,7,commit history jaccard=0.67; commit history jaccard=0.70; commit history jaccard=1.00; identical design; repo basename 'jellystone'
+G06,TUE 09:00AM C08,46465693;49233238,Alexandra Lowe;Sri Sharada Kalyanaraman,chat_server_macu,2,repo basename 'chat_server_macu'
+G07,TUE 09:00AM C08,47076003,Spencer Davis,comp2000-individual,1,
+G08,TUE 09:00AM C08,47077476;49132296;49147633;60773995;61207985,Aimaan Ahmad Tahsin;Kittinat Orachunka;Timothy Chan;Raben Kyle Patotoy;Arif Reogir,runway,5,commit history jaccard=0.25; commit history jaccard=0.31; commit history jaccard=0.33; commit history jaccard=0.36; commit history jaccard=0.44; commit history jaccard=0.56; commit history jaccard=0.62; commit history jaccard=0.67; commit history jaccard=0.75; repo basename 'comp2000-assignment-thedefaults'
+G09,TUE 11:00AM C09,47082755;47104163;47614277;48500836;48582182,Yeeun Baek;James Shelton;Reina Salmon;Matthew Drohan;Jon Walls,comp2000assessment,5,commit history jaccard=0.50; commit history jaccard=0.70; repo basename 'comp2000assessment'
+G10,MON 03:00PM C06,47089679;47393203;47438525;48425265;48452165;48525014;48925381;49130188;49162713;60780843,Riley Mcalister;Anthony Khatchigian;Luis Tenorio;Oliver Becchio;Samip Khadka;Adam Komadina;Seokmin Cho;Hien Minh Le;James Turnbull;Sagun Shrestha,comp2000-assignment-1,10,commit history jaccard=0.20; commit history jaccard=0.21; commit history jaccard=0.23; commit history jaccard=0.29; commit history jaccard=0.31; commit history jaccard=0.89; identical design; repo basename 'comp-2000-team-2'; repo basename 'comp2000-assignment-1'
+G11,TUE 11:00AM C10,47161965;47323566;48322288;48418528;48815861;48977152;60891793;60946245;61466131,Jubril Olaboopo;Addrita Nawal;Cammilus John Baptist;Benjamin Gan;Callum Holley;Rongrui Guo;Ali Abdo;Frank Henry (Henry) Villar;Iakov Dergachev,comp2000---object-oriented-programming,9,commit history jaccard=0.36; commit history jaccard=0.45; commit history jaccard=0.58; commit history jaccard=0.60; commit history jaccard=0.64; commit history jaccard=0.67; commit history jaccard=0.90; commit history jaccard=1.00; repo basename 'comp2000---object-oriented-programming'
+G12,MON 03:00PM C05,47180129;48952133;48977489;49154419;61145505,Rabi Attaii;Alexander Batchelor;Tengis Chadraabal;Marco Antonio Pardim Carvalho;Ana Camila Garcia Martinez,comp2000-team-oops-forest-fire,5,commit history jaccard=0.25; commit history jaccard=0.36; commit history jaccard=0.40; commit history jaccard=0.50; commit history jaccard=0.70; repo basename 'comp2000-team-oops-forest-fire'
+G13,MON 05:00PM C11,47275049;48499935;48603090;49153730;49154788,Joshua Dedeigbo;Hala Rawshdeh;Yousef Mustafa Abdel Rahim Musleh;Elaina Ramsay;Harrison Mcluckie,comp2000-project,5,commit history jaccard=0.27; commit history jaccard=0.31; commit history jaccard=0.40; commit history jaccard=0.75; repo basename 'comp2000-project'
+G14,TUE 09:00AM C07,47325631;47881380;49062751;49081977,Omid Aakefi;Mena Nabeh;Danielle Wrigley;Bhaavna Venkatramana Rao,antcolonysimulation,4,commit history jaccard=0.70; commit history jaccard=0.80; commit history jaccard=0.88; commit history jaccard=1.00; identical design; repo basename 'cypher'
+G15,MON 05:00PM C11,47357681;47980044;48915319;49009877;60802286,Brian Cheng;Leon Prince;Terry Nguyen;Utkarsh Ratti;Justin Romald Baroi,comp2000project,5,commit history jaccard=0.21; commit history jaccard=0.22; commit history jaccard=0.25; commit history jaccard=0.31; commit history jaccard=0.36; commit history jaccard=0.43; commit history jaccard=0.45; commit history jaccard=0.50; commit history jaccard=0.69; repo basename 'comp2000project'
+G16,TUE 11:00AM C10,47404329;48429619;48512087;48853046;49047418;49198033,Nathaniel Malek;Ryan Mckee;Adrian Xian;Arpan Debnath;William Brown;Aidan Huang,the-ungradeables2comp2000,6,commit history jaccard=0.43; commit history jaccard=0.58; commit history jaccard=0.60; commit history jaccard=0.67; commit history jaccard=0.73; commit history jaccard=0.90; repo basename 'the-ungradeables2comp2000'
+G17,TUE 11:00AM C09,47409711;48521558;48711454;48769266;49125761,Nicholas Fang;Neev Patel;Shahriar Hasan;Tran Khoi Nguyen (Kian) Nguyen;Abir Maya Bhowmick,git-wreckers-on-a-zombie-mission,5,commit history jaccard=0.20; identical design; repo basename 'git-wreckers-on-a-zombie-mission'
+G18,MON 01:00PM C03,47436115;48490768;48879770;48963658;48983497;60930373,Marc Tubella Goicoechea;Aanya Chaudhary;Julia Anderson;George Cerovic;Mykhailo Chumak;Nicholas Pemberton,train-simulator,6,commit history jaccard=0.26; commit history jaccard=0.29; commit history jaccard=0.32; commit history jaccard=0.33; commit history jaccard=0.42; commit history jaccard=0.44; commit history jaccard=0.50; identical design; repo basename 'train-simulator'
+G19,MON 05:00PM C11,47549939;48880604;48976962;60984570,Nguyen Phuc An Nong;Achint Singh;Abdul Rahman Masood Ali Khan Abdul Rahman Masood Ali Khan;Suraiya Tahsin Ali,comp2000-assignment1,4,commit history jaccard=0.54; commit history jaccard=0.58; commit history jaccard=0.91; repo basename 'comp2000-assignment1'
+G20,MON 03:00PM C06,47572221;48351741,Daniel Zohar;Anum Anum Taliya,comp2000assignment1,2,repo basename 'comp2000assignment1'
+G21,MON 03:00PM C06,47596686,Aidan Winter,comp2000-submission-1-fork,1,
+G22,MON 05:00PM C11,47646837;48798428,Md Aynul Islam Rabbi Miah;Michael Sexton,football_simulation,2,repo basename 'football_simulation'
+G23,TUE 09:00AM C07,47693223;47719532;48524719;49153110,Emmanuel Love;Gabriel Steel;Joseph Howe Lumbria;Marija Kaleda,comp2000_project_nomouse,4,commit history jaccard=0.33; commit history jaccard=1.00; repo basename 'comp2000_project_nomouse'
+G24,TUE 11:00AM C09,47777796,Chris Zhou,,1,
+G25,MON 01:00PM C03,47785721,Spenser Guo,,1,
+G26,MON 03:00PM C05,47862106;49046020;49144014;49229370;60903422,Callum Sonter;Kiel Mendoza De Jesus;Vikram Singh;Bryn Lee;Tan (Steven ) Nguyen,comp2000-half-half,5,commit history jaccard=0.55; commit history jaccard=0.60; commit history jaccard=0.86; commit history jaccard=1.00; identical design; repo basename 'comp2000-half-half'
+G27,MON 03:00PM C05,47870265,Jordan Hiscox,williams_battle_simulator_week_7-fork,1,
+G28,MON 05:00PM C11,47912251,Akual Malith,comp2000_2026-akualmalith,1,
+G29,MON 01:00PM C03,47915943;48560049;49159097;49180312;49223887,James Clements;Farah Abbas;Bianca Fung;Lucas Martino;Christopher Youssef,comp2000-bees,5,commit history jaccard=0.67; repo basename 'comp2000-bees'
+G30,TUE 11:00AM C09,47933224;48272000;48523933;49014102;49016776;49202553,Corbin Phillips;Tallen Britten;Oscar Halliday;Farhan Nur Alam;Auyon Debnath;Zixuan Chen,comp2000predatorprey,6,commit history jaccard=0.50; commit history jaccard=0.77; repo basename 'comp2000predatorprey'
+G31,TUE 11:00AM C10,47949910,Le Chi Chau,project,1,
+G32,TUE 09:00AM C08,48110930;48499536;49056050;49145053;49162748,Chakris Eungpongpan;Hiang Loong Tan;Marcus Shidiak;Judah Jeya Devan;Ryan Abouhussein,comp2000,5,commit history jaccard=0.50; commit history jaccard=0.60; commit history jaccard=0.83; identical design; repo basename 'comp2000'
+G33,MON 01:00PM C04,48213039,Florencia Pandiana,florenciapandiana_48213039_comp2000assessment,1,
+G34,MON 05:00PM C11,48287865,Elliott Weatherill,comp2000-assignment1-ewfork,1,
+G35,TUE 11:00AM C09,48389536,Imrul Ahsan Fahim,comp2000-object-oriented-programming-simulation,1,
+G36,MON 01:00PM C03,48412953;49120409;49136054,Denzell Muliana;Toufique Rahman Tahsin;Zeyu Zheng,comp2000-simulation-assignment-thing-team,3,commit history jaccard=0.25; commit history jaccard=0.33; commit history jaccard=0.82; repo basename 'comp2000-simulation-assignment-thing-team'
+G37,TUE 09:00AM C07,48418188;48471046;49148583;49176501;60889373,Angus (Gus) Manley;Helin (Jenson) Xu;Brent Bernardo;Benedict Cheung;Conor Grace,comp2000-assignment,5,commit history jaccard=0.43; commit history jaccard=0.50; commit history jaccard=0.55; commit history jaccard=0.60; commit history jaccard=0.67; commit history jaccard=0.70; commit history jaccard=0.75; commit history jaccard=0.80; commit history jaccard=0.86; repo basename 'comp2000-assignment'
+G38,MON 01:00PM C03,48432806,William Aung,williams_battle_simulator,1,
+G39,MON 03:00PM C06,48453404,Riya Chauhan,comp2000-submission-1,1,
+G40,MON 01:00PM C04,48468827;48660736;48927732;60831979,Aayush Yadav;Arunima Paul Shrestha;Nimesh Raj Thapa;Ishrat Ahmed Ssroat,space-station-survival-,4,commit history jaccard=0.50; commit history jaccard=1.00; repo basename 'space-station-survival-'
+G41,MON 01:00PM C03,48490911;49036114;49166271;49169335,Viveka Karthigai Raja;Sushant Gurung;Yuvan Gowtham Krishna;Daksh Arora,comp2000-itera,4,commit history jaccard=0.42; commit history jaccard=0.45; commit history jaccard=0.56; commit history jaccard=0.70; commit history jaccard=0.78; commit history jaccard=0.90; identical design; repo basename 'comp2000-itera'
+G42,MON 03:00PM C05,48499625;48944866;49138480,August Hsu;Raphael Kencana;Caridee Chau,comp2000-project,3,commit history jaccard=0.67; identical design; repo basename 'comp2000-project'
+G43,MON 01:00PM C04,48504009;48953202;49067281;49171739,Joshua Martin;Ansh Verma;Cooper Went;Edrick Han,comp2000groupprogramrepo,4,repo basename 'comp2000groupprogramrepo'
+G44,TUE 09:00AM C08,48516589;48523968;48523976;49147226;49163973,Minying Wu;Daniel Harvey;Luke Whitehead;Ashton Magri;Amanda Ho,comp2000-project,5,commit history jaccard=0.22; commit history jaccard=0.25; commit history jaccard=0.47; commit history jaccard=0.54; commit history jaccard=0.69; commit history jaccard=1.00; repo basename 'comp2000-project'
+G45,MON 03:00PM C05,48555983;49224484;60830271,Jacob Caldwell;Rafic El Badawi El Najjar;Mejal Maharjan,williams_battle_simulator,3,commit history jaccard=0.50; commit history jaccard=0.60; repo basename 'williams_battle_simulator'
+G46,MON 01:00PM C04,48571695,Manh Duy (David) Nguyen,manhduynguyen_48571695_comp2000assignment1,1,
+G47,MON 01:00PM C04,48579262;48618217;49073117;49258257,Efe Celik;Harman Singh Harman Singh;Asad Malik;Shopithan Ravichandran,comp2000-semester-project,4,commit history jaccard=0.30; commit history jaccard=0.50; commit history jaccard=0.67; commit history jaccard=0.80; repo basename 'comp2000-semester-project'
+G48,TUE 09:00AM C08,48692255,Zahin Rafid,comp2000-,1,
+G49,TUE 11:00AM C09,48712167,Niya Patel,comp2000-simulation1,1,
+G50,MON 01:00PM C03,48737224,Ayaan Ali Khan,,1,
+G51,MON 03:00PM C06,48766380,Aarya Alhad Tamhane,,1,
+G52,TUE 09:00AM C07,48798177;49155105;49162209;49168312,Clarence Tan;Andres Azabache Justiniano;Max Taniegra;Joshua Mangan,thee-sheep-simulation-clarence,4,commit history jaccard=0.73; commit history jaccard=0.80; commit history jaccard=0.82; commit history jaccard=0.89; commit history jaccard=0.90; identical design; repo basename 'team-v---thee-sheep-simulation-v-'
+G53,,48825085,Bing (Annita) Liang,comp2000-simulation,1,
+G54,TUE 09:00AM C07,48827835,Sansarin Sermsoontornsil,,1,
+G55,TUE 11:00AM C09,48908797;49073206,Hamza Mughal;Joon Park,hamza-oop-project,2,commit history jaccard=0.73
+G56,TUE 11:00AM C09,48930830,Rumit Maharjan,comp2000-simulation-astrolot,1,
+G57,MON 03:00PM C05,48950548;49064509;49081845;60828056,Rehaan Sajid Bhajikhada;Kevin Zhou;Ervin Bandong;Aryan Joshi,comp2000-starfish,4,commit history jaccard=0.73; repo basename 'comp2000-starfish'
+G58,TUE 11:00AM C10,48965243,Kavhneel Naicker,comp2000-ecosystem,1,
+G59,TUE 09:00AM C08,48971669,Thi To Nguyen,48971669--uyen-thi-to-nguyen--comp2000--aircraft-traffic,1,
+G60,MON 03:00PM C05,48974935;49075330;49225383,Haoqian Yu;Thomas Nagle-Hill;Thomas Fox,comp-2000-asses-1-political-sim,3,commit history jaccard=0.21; repo basename 'comp-2000-asses-1-political-sim'
+G61,MON 01:00PM C04,49023977;49225812;49247891;60868848,Durjoy Paul Apon;Charlie Stratton;Aurpan Pal;Shoumik Ghosh,fantastic-four_comp2000,4,commit history jaccard=0.33; commit history jaccard=0.38; commit history jaccard=0.50; repo basename 'fantastic-four_comp2000'
+G62,MON 01:00PM C04,49066315,Nomikos Reisis,,1,
+G63,TUE 09:00AM C08,49071378,Aaron Pang,comp2000-a1,1,
+G64,TUE 09:00AM C07,49093703,Hiroki Oshida,comp2000_fork_hiroki,1,
+G65,MON 01:00PM C04,49147641,Mitchell Chiu,,1,
+G66,TUE 09:00AM C08,49156527;60779659,Kirill Korzunov;Grace Bohra,week7submission,2,commit history jaccard=0.23
+G67,MON 01:00PM C03,49169513,Ryan Ouyang,comp2000-simulation-assignment,1,
+G68,MON 01:00PM C03,49170279;60893303,Prakul Girish;Zeu Sul,comp2000,2,repo basename 'comp2000'
+G69,MON 01:00PM C03,60819219,Riyash Bhandari Chhetri,comp2k,1,
+G70,MON 03:00PM C06,60846534,Arjun Sandeep Rao,comp2000-week7,1,
+G71,MON 03:00PM C06,60893745,Maanas Govindarajan,session-2-2026-comp-2000-assignment-1,1,
+G72,TUE 11:00AM C09,61216542,Abyad Razin,predator-prey-project,1,

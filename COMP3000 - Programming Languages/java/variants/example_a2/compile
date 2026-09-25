@@ -1,3 +1,6 @@
+set -e
 javac tool/*.java
 java  -cp ../../ variants.example_a2.tool.GenerateAst ./
 javac *.java
+cd ../..
+jar cfe example_a2.jar variants.example_a2.Lox variants/example_a2/*.class

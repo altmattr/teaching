@@ -90,9 +90,10 @@ def gift_to_gift(item,question, answers):
     return f"::{item}::[markdown]\n{inline_images(question)}{{\n" + "\n".join([inline_images(answer) for answer in answers]) + "\n}\n"
 
 def gift_to_tex(item, question, answers):
+    item_tex = item.replace("_", r"\_")
     question2 = pandoc.write(pandoc.read(question, format='markdown'), format='latex')
     answers = [pandoc.write(pandoc.read(answer, format='markdown'), format='latex') for answer in answers]
-    return f"\\section{{{item}}}\n"+question2+"\n\\begin{{enumerate}}\n\\item" + "\n\\item".join(answers) + "\n\\end{enumerate}\n\n"
+    return f"\\section{{{item_tex}}}\n"+question2+"\n\\begin{enumerate}\n\\item" + "\n\\item".join(answers) + "\n\\end{enumerate}\n\n"
 
 def gift_to_md(item, question, answers):
     return f"## {item}\n\n{inline_images(question)}\n\n  *" + "\n  *".join(answers) + "\n\n"
@@ -102,12 +103,14 @@ def yaml_to_tex(item, item_parsed, isTex=False, with_answers=True):
         item     = pandoc.write(pandoc.read(item,                            format='markdown'), format="latex")
         question = pandoc.write(pandoc.read(tex_images(item_parsed.get('question', '')), format='markdown'), format="latex")
         answer   = pandoc.write(pandoc.read(tex_images(item_parsed.get('answer', ''  )), format='markdown'), format="latex")
+        title    = item
     else:
         question = item_parsed.get('question', '')
         answer = item_parsed.get('answer', '')
+        title = item.replace("_", r"\_")
     if not with_answers:
-        return f"\\section*{{{item}}}\n\n{question}\n\n"
-    return f"\\section*{{{item}}}\n\n{question}\n\n\\subsection*{{Answer}}\n\n{answer}\n\n"
+        return f"\\section*{{{title}}}\n\n{question}\n\n"
+    return f"\\section*{{{title}}}\n\n{question}\n\n\\subsection*{{Answer}}\n\n{answer}\n\n"
 
 def yaml_to_xml(item, item_parsed, isTex=False):
     print(f"item_parsed is {item_parsed}")
@@ -270,7 +273,7 @@ if __name__ == "__main__":
                           emit(all_tex_noanswers, all_md_noanswers, tex_str, md_str)
                           emit(venue_tex_noanswers, venue_md_noanswers, tex_str, md_str)
                     else:
-                      tex_str = f"\\section*{{{clean_item}}}\n\n{item_data}\n\n"
+                      tex_str = f"\\section*{{{clean_item.replace('_', r'\_')}}}\n\n{pandoc.write(pandoc.read(tex_images(item_data), format='markdown'), format='latex')}\n\n"
                       md_str = f"## {clean_item}\n\n{item_data}\n\n"
                       emit(all_tex, all_md, tex_str, md_str)
                       emit(venue_tex, venue_md, tex_str, md_str)
@@ -282,15 +285,15 @@ if __name__ == "__main__":
                       tex_bottommatter(venue_tex_noanswers)
                       venue_tex_noanswers.close()
                       venue_md_noanswers.close()
-                os.system(f"latexmk -pdf -interaction=nonstopmode -output-directory=build/{topic} build/{topic}/{cleanish_venue}.tex > /dev/null")
+                os.system(f"latexmk -g -pdf -interaction=nonstopmode -output-directory=build/{topic} build/{topic}/{cleanish_venue}.tex > /dev/null")
                 if no_answers:
-                    os.system(f"latexmk -pdf -interaction=nonstopmode -output-directory=build/{topic} build/{topic}/{cleanish_venue}_noanswers.tex > /dev/null")
+                    os.system(f"latexmk -g -pdf -interaction=nonstopmode -output-directory=build/{topic} build/{topic}/{cleanish_venue}_noanswers.tex > /dev/null")
               tex_bottommatter(all_tex)
               if no_answers:
                   tex_bottommatter(all_tex_noanswers)
                   all_tex_noanswers.close()
                   all_md_noanswers.close()
               xml.write("</quiz>")
-        os.system(f"latexmk -pdf -interaction=nonstopmode -output-directory=build/{topic} build/{topic}/{topic}_all.tex > /dev/null")
+        os.system(f"latexmk -g -pdf -interaction=nonstopmode -output-directory=build/{topic} build/{topic}/{topic}_all.tex > /dev/null")
         if no_answers:
-            os.system(f"latexmk -pdf -interaction=nonstopmode -output-directory=build/{topic} build/{topic}/{topic}_all_noanswers.tex > /dev/null")
+            os.system(f"latexmk -g -pdf -interaction=nonstopmode -output-directory=build/{topic} build/{topic}/{topic}_all_noanswers.tex > /dev/null")

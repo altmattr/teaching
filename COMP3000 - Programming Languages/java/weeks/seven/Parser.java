@@ -7,19 +7,14 @@ import static weeks.seven.TokenType.*;
 
 /**
  * 
-  program   -> declaration* EOF;
-  declaration -> varDecl
-              |  statement;
-  statement -> exprStmt
-            |  printStmt
-            |  block;
-  block     -> "{" definition* "}"
+  program   -> statement* EOF;
+  statement -> varDecl
+            |  exprStmt
+            |  printStmt;
   exprStmt  -> expression ";";
   printStmt -> "print" expression ";";
   varDecl   -> "var" IDENTIFIER ( "=" expression )? ";"; 
-  expression     -> assignment;
-  assignment     -> IDENTIFIER "=" assignment
-                 | equality;
+  expression     -> equality;
   equality       -> comparison (("!=" |"==" ) comparison )* ;
   comparison     -> term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
   term           -> factor ( ( "-" | "+" ) factor )* ;
@@ -42,27 +37,16 @@ class Parser {
   List<Stmt> parse() {
     List<Stmt> statements = new ArrayList<Stmt>();
     while (!isAtEnd()) {
-      statements.add(declaration());
+      statements.add(statement());
     }
 
     return statements; 
   }
 
-  private Stmt declaration() {
-    try {
-      if (match(VAR)) return varDeclaration();
-
-      return statement();
-    } catch (ParseError error) {
-      synchronize();
-      return null;
-    }
-  }
-
   private Stmt statement() {
     try {
       if (match(PRINT)) return printStatement();
-      if (match(LEFT_BRACE)) return new Stmt.Block(block());
+      if (match(VAR)) return varDeclaration();
       return expressionStatement();
     } catch (ParseError error) {
       synchronize();
@@ -74,17 +58,6 @@ class Parser {
     Expr value = expression();
     consume(SEMICOLON, "Expect ';' after value.");
     return new Stmt.Print(value);
-  }
-
-  private List<Stmt> block() {
-    List<Stmt> statements = new ArrayList<>();
-
-    while (!check(RIGHT_BRACE) && !isAtEnd()) {
-      statements.add(declaration());
-    }
-
-    consume(RIGHT_BRACE, "Expect '}' after block.");
-    return statements;
   }
 
   private Stmt expressionStatement() {
@@ -106,27 +79,10 @@ class Parser {
   }
 
   private Expr expression(){
-      return assignment();
+      return equality();
   }
 
-  private Expr assignment() {
-    Expr expr = equality();
-
-    if (match(EQUAL)) {
-      Token equals = previous();
-      Expr value = assignment();
-
-      if (expr instanceof Expr.Variable) {
-        Token name = ((Expr.Variable)expr).name;
-        return new Expr.Assign(name, value);
-      }
-
-      error(equals, "Invalid assignment target."); 
-    }
-
-    return expr;
-  }
-
+  // equality       → comparison ( ( "!=" | "==" ) comparison )* ;
   private Expr equality() {
     Expr expr = comparison();
 

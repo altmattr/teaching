@@ -79,13 +79,13 @@ Textbook: Chapter 5
 Textbook: Chapter 6
 
 - (0:00) Recap: ASTs, grammars
-- (0:10) Recursive descent parsing: Grammar → Java methods
-- (0:25) Ambiguity: Finding and removing it
-- (0:35) Precedence and associativity: How grammar structure enforces these
-- (0:45) Left recursion: Why it breaks recursive descent, workarounds
-- (0:55) Demo: parser for water flow: On-paper grammar first, then Java
-- (1:20) Assignment One guidance: What's due, rubric, examples
-- (1:40) Wrap-up: Read Ch 7
+- (0:15) Recursive descent parsing: Grammar → Java methods
+- (0:30) Ambiguity: Finding and removing it
+- (0:45) Precedence and associativity: How grammar structure enforces these
+- (1:00) Left recursion: Why it breaks recursive descent, workarounds
+- (1:15) Demo: parser for water flow: On-paper grammar first, then Java
+- (1:35) Assignment One guidance: What's due, rubric, examples
+- (1:50) Wrap-up: Read Ch 7
 
 ---
 
@@ -107,8 +107,7 @@ Textbook: Chapter 7
 
 Textbook: Chapter 8 (sections 8.1–8.2)
 
-- (0:00) Recap: evaluation
-- (0:10) Statements vs expressions: Effects vs values
+- (0:00) Recap: the machiny we have built up so far
 - (0:25) Variable declarations: `var x = value;` grammar and parsing
 - (0:40) Assignment: L-values, side effects
 - (0:55) Demo: adding variables: End-to-end: scanner → parser → AST → interpreter

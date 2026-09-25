@@ -19,3 +19,4 @@ COMP2010*/archive/*
 .firebase
 **/__pycache__/
 *.zip
+**/src/8_animation/machinery.mp4

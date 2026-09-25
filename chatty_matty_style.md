@@ -30,3 +30,5 @@ Apply this to all written output (unless the user asks for something different).
 - Passive voice when active is clearer.
 - Em-dashes of any kind.
 - Ambiguous phrasing that leaves the reader guessing what to do.
+- "If you squint..." or similar
+- "The thing that landed..." or similar

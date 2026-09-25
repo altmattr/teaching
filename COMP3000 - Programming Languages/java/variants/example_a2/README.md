@@ -368,6 +368,8 @@ Each approach has tradeoffs. Command-line arguments are easy to implement but on
 
 Real hydrology models are driven by external data. A language that only supports hardcoded rainfall is a toy. Adding external input makes it useful.
 
+# Some possible extensions for inspiration
+
 ### Multiple Rainfall Events
 
 The current model handles one rain event (10-day prediction). A more realistic model handles multiple rain events over a longer period. Each rain event produces its own 10-day flow array. The interpreter superimposes these arrays (adds them element-wise, offset by the day difference) to produce a combined prediction.

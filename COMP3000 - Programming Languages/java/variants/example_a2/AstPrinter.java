@@ -31,15 +31,6 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
 
 
   @Override
-  public String visitPrintStmt(Stmt.Print stmt){
-    return parenthesize("print", stmt.expression);
-  }
-  @Override
-  public String visitAssignExpr(Expr.Assign expr) {
-    return parenthesize(expr.name.lexeme + " : " , expr.value);
-  }
-
-  @Override
   public String visitBinaryExpr(Expr.Binary expr) {
     return parenthesize(expr.operator.lexeme,
                         expr.left, expr.right);
@@ -54,11 +45,6 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
   @Override
   public String visitFlowExpr(Expr.Flow expr) {
     return "[" + Double.toString(expr.mean) + "~" + Double.toString(expr.variance) + "]@" + Double.toString(expr.magnitude);
-  }
-
-  @Override
-  public String visitUnaryExpr(Expr.Unary expr) {
-    return parenthesize(expr.operator.lexeme, expr.right);
   }
 
   @Override
@@ -86,7 +72,13 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
 
   @Override
   public String visitIfStmt(Stmt.If stmt) {
-    return parenthesize("if", stmt.condition);// TODO: you can't see the then and else branches here but that's ok or the ast printout is too big
+    StringBuilder builder = new StringBuilder();
+    builder.append(parenthesize("if", stmt.condition)).append("\n");
+    builder.append("  then: ").append(stmt.thenBranch != null ? stmt.thenBranch.accept(this) : "null").append("\n");
+    if (stmt.elseBranch != null) {
+      builder.append("  else: ").append(stmt.elseBranch.accept(this));
+    }
+    return builder.toString().trim();
   }
 
   @Override
@@ -96,7 +88,12 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
 
   @Override
   public String visitBlockStmt(Stmt.Block stmt) {
-    return "block of some variety";
+    StringBuilder builder = new StringBuilder("[block");
+    for (Stmt s : stmt.statements) {
+      builder.append("\n  ").append(s.accept(this));
+    }
+    builder.append("\n]");
+    return builder.toString();
   }
 
   @Override

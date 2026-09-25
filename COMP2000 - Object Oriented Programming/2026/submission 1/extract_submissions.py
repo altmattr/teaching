@@ -14,6 +14,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -31,7 +32,12 @@ from xml.etree import ElementTree
 BASE = Path(__file__).resolve().parent
 SUBMISSIONS = BASE / "submissions"
 PRESENTERS = BASE / "presenters.csv"
+PARTICIPANTS = BASE / "participants.csv"
 OUT = BASE / "evidence.csv"
+
+PRACTICAL_RE = re.compile(
+    r"\[Practical_\d+\|([A-Z]{3})\|(\d{1,2}:\d{2}[AP]M)\|([A-Z0-9]+)\]"
+)
 
 SECTION_RE = re.compile(r"(\d\.\d)[.\s]")
 PROMPT_FRAGS = (
@@ -261,6 +267,30 @@ def repo_status(url):
     return "timeout", 0
 
 
+def practical_groups():
+    """Map student id -> practical group label like 'MON 09:00AM C07'.
+
+    Reads participants.csv (roster export).  The practical sits in a
+    [Practical_1|DAY|TIME|ROOM] token inside the Groups column; a student
+    present in the file without that token maps to an empty string.
+    """
+    labels = {}
+    if not PARTICIPANTS.exists():
+        return labels
+    with open(PARTICIPANTS, newline="", encoding="utf-8-sig") as fh:
+        rows = list(csv.DictReader(fh))
+    for r in rows:
+        sid = str(r.get("ID number", "")).strip()
+        if not sid:
+            continue
+        m = PRACTICAL_RE.search(r.get("Groups", "") or "")
+        if m:
+            labels[sid] = f"{m.group(1)} {m.group(2)} {m.group(3)}"
+        else:
+            labels[sid] = ""
+    return labels
+
+
 def presented_set():
     ids = set()
     if not PRESENTERS.exists():
@@ -283,6 +313,7 @@ def main():
     if not SUBMISSIONS.is_dir():
         sys.exit(f"no submissions dir at {SUBMISSIONS}")
     presented, emails = presented_set()
+    practical = practical_groups()
     folders = sorted(
         d for d in os.listdir(SUBMISSIONS)
         if d.endswith("_assignsubmission_file") and (SUBMISSIONS / d).is_dir()
@@ -323,6 +354,7 @@ def main():
             "name": name,
             "email": emails.get(sid, ""),
             "presented": "yes" if sid in presented else ("no" if emails.get(sid) else "no"),
+            "practical_group": practical.get(sid, ""),
             "worksheet_file": ws_f or "",
             "worksheet_type": ws_type,
             "design_file": ds_f or "",
@@ -339,7 +371,7 @@ def main():
         rows.append(row)
 
     cols = [
-        "id", "name", "email", "presented",
+        "id", "name", "email", "presented", "practical_group",
         "worksheet_file", "worksheet_type", "design_file", "logbook_file", "other_files",
         "repo_url", "repo_status", "branch_count",
         "filled_sections", "gitlog_lines", "logbook_entries", "missing_files",
@@ -354,6 +386,10 @@ def main():
     print("presented:", sorted(presented))
     no3 = [r["id"] for r in rows if r["missing_files"]]
     print("folders missing a required file:", len(no3), no3)
+    nomatch = [r["id"] for r in rows if not r["practical_group"]]
+    print("rows without a practical group:", len(nomatch), nomatch)
+    cnt = Counter(r["practical_group"] for r in rows if r["practical_group"])
+    print("practical groups:", dict(sorted(cnt.items())))
 
 
 if __name__ == "__main__":

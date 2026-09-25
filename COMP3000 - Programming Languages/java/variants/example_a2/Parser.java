@@ -210,6 +210,12 @@ class Parser {
       if (match(NUMBER)){
           return new Expr.Number(Double.parseDouble(previous().lexeme));
       }
+      if (match(TRUE)){
+          return new Expr.Bool(true);
+      }
+      if (match(FALSE)){
+          return new Expr.Bool(false);
+      }
       if (match(INFLOW)){
           return new Expr.Inflow();
       }
@@ -270,13 +276,8 @@ class Parser {
       if (previous().type == SEMICOLON) return;
 
       switch (peek().type) {
-        case CLASS:
-        case FUN:
         case VAR:
-        case FOR:
         case IF:
-        case WHILE:
-        case PRINT:
         case RETURN:
         case DAM:
           return;

@@ -17,28 +17,18 @@ class Scanner {
 
   static {
     keywords = new HashMap<>();
-    keywords.put("and",    AND);
-    keywords.put("class",  CLASS);
     keywords.put("else",   ELSE);
-    keywords.put("false",  FALSE);
-    keywords.put("for",    FOR);
-    keywords.put("fun",    FUN);
     keywords.put("if",     IF);
-    keywords.put("nil",    NIL);
-    keywords.put("or",     OR);
-    keywords.put("print",  PRINT);
     keywords.put("return", RETURN);
-    keywords.put("super",  SUPER);
-    keywords.put("this",   THIS);
-    keywords.put("true",   TRUE);
     keywords.put("var",    VAR);
-    keywords.put("while",  WHILE);
     keywords.put("plot",   PLOT);
     keywords.put("dam",    DAM);
     keywords.put("when",   WHEN);
     keywords.put("default", DEFAULT);
     keywords.put("inflow", INFLOW);
     keywords.put("level",  LEVEL);
+    keywords.put("true",   TRUE);
+    keywords.put("false",  FALSE);
   }
 
   Scanner(String source){
@@ -47,7 +37,6 @@ class Scanner {
 
   List<Token> scanTokens() {
     while (!isAtEnd()) {
-      // We are at the beginning of the next lexeme.
       start = current;
       scanToken();
     }
@@ -56,9 +45,6 @@ class Scanner {
     return tokens;
   }
 
-  // private boolean isAtEnd() {
-  //   return current >= source.length();
-  // }
   private boolean isAtEnd(){return isAtEnd(0);}
   private boolean isAtEnd(int howFar){
     return current + howFar >= source.length();
@@ -73,33 +59,32 @@ class Scanner {
       case ']': addToken(RIGHT_SQUARE); break;
       case '{': addToken(LEFT_BRACE); break;
       case '}': addToken(RIGHT_BRACE); break;
-      case ',': addToken(COMMA); break;
-      case '.': addToken(DOT); break;
-      case '-': addToken(MINUS); break;
-      case '+': addToken(PLUS); break;
       case ';': addToken(SEMICOLON); break;
       case ':': addToken(COLON); break;
-      case '*': addToken(STAR); break; 
-      case '@': addToken(AT); break; 
-      case '~': addToken(TILDE); break; 
-      case '!':
-        addToken(match('=') ? BANG_EQUAL : BANG);
-        break;
+      case '+': addToken(PLUS); break;
+      case '@': addToken(AT); break;
+      case '~': addToken(TILDE); break;
       case '=':
         addToken(match('=') ? EQUAL_EQUAL : EQUAL);
         break;
       case '<':
-        addToken(match('=') ? LESS_EQUAL :  match('-') ? LEFT_ARROW: LESS);
+        addToken(match('-') ? LEFT_ARROW : LESS);
         break;
       case '>':
         addToken(match('=') ? GREATER_EQUAL : GREATER);
         break;
+      case '!':
+        if (match('=')) {
+          addToken(BANG_EQUAL);
+        } else {
+          Lox.error(line, "Unexpected character.");
+        }
+        break;
       case '/':
         if (match('/')) {
-          // A comment goes until the end of the line.
           while (peek() != '\n' && !isAtEnd()) advance();
-        }else {
-          addToken(SLASH);
+        } else {
+          Lox.error(line, "Unexpected character.");
         }
         break;
       // ignore whitespace
@@ -110,13 +95,11 @@ class Scanner {
       case '\n':
         line++;
         break;
-      // string literals
-      case '"': string(); break;
-      default : 
+      default:
         if (isDigit(c)){
           number();
         } else if (c == 'o' && isOctDigit(peek())){
-          octal(); 
+          octal();
         } else if (isAlpha(c)) {
           identifier();
         } else {
@@ -147,38 +130,10 @@ class Scanner {
     return true;
   }
 
-  // // private char peek() {
-  // //   if (isAtEnd()) return '\0';
-  // //   return source.charAt(current);
-  // // }
-
-  // private char peekNext() {
-  //   if (current + 1 >= source.length()) return '\0';
-  //   return source.charAt(current + 1);
-  // } 
   private char peek(){ return peek(0);}
   private char peek(int howFar){
     if (isAtEnd(howFar)) return '\0';
     return source.charAt(current + howFar);
-  }
-
-  private void string() {
-    while (peek() != '"' && !isAtEnd()) {
-      if (peek() == '\n') line++;
-      advance();
-    }
-
-    if (isAtEnd()) {
-      Lox.error(line, "Unterminated string.");
-      return;
-    }
-
-    // The closing ".
-    advance();
-
-    // Trim the surrounding quotes.
-    String value = source.substring(start + 1, current - 1);
-    addToken(STRING, value);
   }
 
   private boolean isDigit(char c) {
@@ -191,11 +146,8 @@ class Scanner {
   private void number() {
     while (isDigit(peek())) advance();
 
-    // Look for a fractional part.
     if (peek() == '.' && isDigit(peek(1))) {
-      // Consume the "."
       advance();
-
       while (isDigit(peek())) advance();
     }
 
@@ -211,9 +163,6 @@ class Scanner {
   private void identifier() {
     while (isAlphaNumeric(peek())) advance();
     String text = source.substring(start, current);
-    // TokenType type = keywords.get(text);
-    // if (type == null) type = IDENTIFIER;
-    // addToken(type);
     addToken(keywords.getOrDefault(text, IDENTIFIER));
   }
 

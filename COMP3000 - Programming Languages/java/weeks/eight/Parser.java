@@ -2,37 +2,19 @@ package weeks.eight;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import static weeks.eight.TokenType.*;
 
 /**
  * 
-  program   -> declaration* EOF;
-  declaration -> varDecl
-              |  statement;
-  statement -> exprStmt
-            |  forStmt
-            |  ifStmt
-            |  printStmt
-            |  whileStmt
-            |  block;
-  block     -> "{" definition* "}"
+  program   -> statement* EOF;
+  statement -> varDecl
+            |  exprStmt
+            |  printStmt;
   exprStmt  -> expression ";";
-  forStmt   -> "for" "(" ( varDecl | exprStmt | ";" )
-                 expression? ";"
-                 expression? ")" statement ;
-
-  ifStmt    -> "if" "(" expression ")" statement
-               ( "else" statement )? ;
   printStmt -> "print" expression ";";
-  whileStmt -> "while" "(" expression ")" statement ;
   varDecl   -> "var" IDENTIFIER ( "=" expression )? ";"; 
-  expression     -> assignment;
-  assignment     -> IDENTIFIER "=" assignment
-                 | logic_or;
-  logic_or       -> logic_and ( "or" logic_and)* ;
-  logic_and      -> equality ( "and" equality)*;
+  expression     -> equality;
   equality       -> comparison (("!=" |"==" ) comparison )* ;
   comparison     -> term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
   term           -> factor ( ( "-" | "+" ) factor )* ;
@@ -44,9 +26,9 @@ import static weeks.eight.TokenType.*;
                  | IDENTIFIER;
  */
 class Parser {
-  static class ParseError extends RuntimeException {}
-  final List<Token> tokens;
-  int current = 0;
+  private static class ParseError extends RuntimeException {}
+  private final List<Token> tokens;
+  private int current = 0;
   
   Parser(List<Token> tokens){
       this.tokens = tokens;
@@ -55,30 +37,16 @@ class Parser {
   List<Stmt> parse() {
     List<Stmt> statements = new ArrayList<Stmt>();
     while (!isAtEnd()) {
-      statements.add(declaration());
+      statements.add(statement());
     }
 
     return statements; 
   }
 
-  Stmt declaration() {
+  private Stmt statement() {
     try {
-      if (match(VAR)) return varDeclaration();
-
-      return statement();
-    } catch (ParseError error) {
-      synchronize();
-      return null;
-    }
-  }
-
-  Stmt statement() {
-    try {
-      if (match(FOR)) return forStatement();
-      if (match(IF)) return ifStatement();
       if (match(PRINT)) return printStatement();
-      if (match(WHILE)) return whileStatement();
-      if (match(LEFT_BRACE)) return new Stmt.Block(block());
+      if (match(VAR)) return varDeclaration();
       return expressionStatement();
     } catch (ParseError error) {
       synchronize();
@@ -86,95 +54,19 @@ class Parser {
     }
   }
 
-  Stmt forStatement(){
-    consume(LEFT_PAREN, "Expect '(' after 'for'.");
-    Stmt initializer;
-    if (match(SEMICOLON)) {
-      initializer = null;
-    } else if (match(VAR)) {
-      initializer = varDeclaration();
-    } else {
-      initializer = expressionStatement();
-    }
-    Expr condition = null;
-    if (!check(SEMICOLON)) {
-      condition = expression();
-    }
-    consume(SEMICOLON, "Expect ';' after loop condition.");
-    
-    Expr increment = null;
-    if (!check(RIGHT_PAREN)) {
-      increment = expression();
-    }
-    consume(RIGHT_PAREN, "Expect ')' after for clauses.");
-
-    Stmt body = statement();
-
-    if (increment != null) {
-      body = new Stmt.Block(
-          Arrays.asList(
-              body,
-              new Stmt.Expression(increment)));
-    }
-
-    if (condition == null) 
-      condition = new Expr.Literal(true);
-    body = new Stmt.While(condition, body);
-
-    if (initializer != null) {
-      body = new Stmt.Block(Arrays.asList(initializer, body));
-    }
-
-    return body;
-  }
-
-  Stmt ifStatement() {
-    consume(LEFT_PAREN, "Expect '(' after 'if'.");
-    Expr condition = expression();
-    consume(RIGHT_PAREN, "Expect ')' after if condition."); 
-
-    Stmt thenBranch = statement();
-    Stmt elseBranch = null;
-    if (match(ELSE)) {
-      elseBranch = statement();
-    }
-
-    return new Stmt.If(condition, thenBranch, elseBranch);
-  }
-
-  Stmt printStatement() {
+  private Stmt printStatement() {
     Expr value = expression();
     consume(SEMICOLON, "Expect ';' after value.");
     return new Stmt.Print(value);
   }
 
-  Stmt whileStatement() {
-    consume(LEFT_PAREN, "Expect '(' after 'while'.");
-    Expr condition = expression();
-    consume(RIGHT_PAREN, "Expect ')' after condition.");
-    Stmt body = statement();
-
-    return new Stmt.While(condition, body);
-  }
-
-  List<Stmt> block() {
-    List<Stmt> statements = new ArrayList<>();
-
-    while (!check(RIGHT_BRACE) && !isAtEnd()) {
-      statements.add(declaration());
-    }
-
-    consume(RIGHT_BRACE, "Expect '}' after block.");
-    return statements;
-  }
-
-  Stmt expressionStatement() {
+  private Stmt expressionStatement() {
     Expr expr = expression();
     consume(SEMICOLON, "Expect ';' after expression.");
     return new Stmt.Expression(expr);
   }
 
-  Stmt varDeclaration() {
+  private Stmt varDeclaration() {
     Token name = consume(IDENTIFIER, "Expect variable name.");
 
     Expr initializer = null;
@@ -186,53 +78,12 @@ class Parser {
     return new Stmt.Var(name, initializer);
   }
 
-  Expr expression(){
-      return assignment();
+  private Expr expression(){
+      return equality();
   }
 
-  Expr assignment() {
-    Expr expr = or();
-
-    if (match(EQUAL)) {
-      Token equals = previous();
-      Expr value = assignment();
-
-      if (expr instanceof Expr.Variable) {
-        Token name = ((Expr.Variable)expr).name;
-        return new Expr.Assign(name, value);
-      }
-
-      error(equals, "Invalid assignment target."); 
-    }
-
-    return expr;
-  }
-
-  Expr or() {
-    Expr expr = and();
-
-    while (match(OR)) {
-      Token operator = previous();
-      Expr right = and();
-      expr = new Expr.Logical(expr, operator, right);
-    }
-
-    return expr;
-  }
-
-  Expr and() {
-    Expr expr = equality();
-
-    while (match(AND)) {
-      Token operator = previous();
-      Expr right = equality();
-      expr = new Expr.Logical(expr, operator, right);
-    }
-
-    return expr;
-  }
-
-  Expr equality() {
+  // equality       → comparison ( ( "!=" | "==" ) comparison )* ;
+  private Expr equality() {
     Expr expr = comparison();
 
     while (match(BANG_EQUAL, EQUAL_EQUAL)) {
@@ -243,8 +94,7 @@ class Parser {
 
     return expr;
   }    
-
-  boolean match(TokenType... types) {
+  private boolean match(TokenType... types) {
     for (TokenType type : types) {
       if (check(type)) {
         advance();
@@ -255,29 +105,29 @@ class Parser {
     return false;
   }
 
-  boolean check(TokenType type) {
+  private boolean check(TokenType type) {
     if (isAtEnd()) return false;
     return peek().type == type;
   }
 
-  Token advance() {
+  private Token advance() {
     if (!isAtEnd()) current++;
     return previous();
   }
 
-  boolean isAtEnd() {
+  private boolean isAtEnd() {
     return peek().type == EOF;
   }
 
-  Token peek() {
+  private Token peek() {
     return tokens.get(current);
   }
 
-  Token previous() {
+  private Token previous() {
     return tokens.get(current - 1);
   }
   // comparison     → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
-  Expr comparison() {
+  private Expr comparison() {
     Expr expr = term();
 
     while (match(GREATER, GREATER_EQUAL, LESS, LESS_EQUAL)) {
@@ -289,7 +139,7 @@ class Parser {
     return expr;
   }
 
-  Expr term() {
+  private Expr term() {
     Expr expr = factor();
 
     while (match(MINUS, PLUS)) {
@@ -301,7 +151,7 @@ class Parser {
     return expr;
   }
 
-  Expr factor() {
+  private Expr factor() {
     Expr expr = unary();
 
     while (match(SLASH, STAR)) {
@@ -313,7 +163,7 @@ class Parser {
     return expr;
   }
 
-  Expr unary() {
+  private Expr unary() {
     if (match(BANG, MINUS)) {
       Token operator = previous();
       Expr right = unary();
@@ -323,7 +173,7 @@ class Parser {
     return primary();
   }
 
-  Expr primary() {
+  private Expr primary() {
     if (match(FALSE)) return new Expr.Literal(false);
     if (match(TRUE)) return new Expr.Literal(true);
     if (match(NIL)) return new Expr.Literal(null);
@@ -343,18 +193,18 @@ class Parser {
     throw error(peek(), "Expect expression.");
   }
 
-  Token consume(TokenType type, String message) {
+  private Token consume(TokenType type, String message) {
     if (check(type)) return advance();
 
     throw error(peek(), message);
   }
 
-  ParseError error(Token token, String message) {
+  private ParseError error(Token token, String message) {
     Lox.error(token, message);
     return new ParseError();
   }
 
-  void synchronize() {
+  private void synchronize() {
     advance();
 
     while (!isAtEnd()) {

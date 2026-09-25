@@ -5,7 +5,7 @@
   * TBL Practice
 
 ## Preparation
-\item None this week, but in all future weeks you will need to \emph{pre-prepare} for class.  \emph{This week only} there will be a short explanation of TBL before we begin the class for real.  In future weeks \emph{there will be not lecture at the start of class}.  You will complete the iRAT yourself \emph{before} class, then you will get into groups and complete the tRAT before we move on to the application exercise.
+None this week, but in all future weeks you will need to \emph{pre-prepare} for class.  \emph{This week only} there will be a short explanation of TBL before we begin the class for real.  In future weeks \emph{there will be not lecture at the start of class}.  You will complete the iRAT yourself \emph{before} class, then you will get into groups and complete the tRAT before we move on to the application exercise.
 
 
 # FAT

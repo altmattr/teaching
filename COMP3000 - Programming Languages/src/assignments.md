@@ -146,7 +146,7 @@ question: |
     Basic questions in a1\_rubric.md (10\%) & None answered accurately & 2 or more answered accurately & 6 or more answered accurately & All answered accurately \\ \hline
     Log-book submissions (10\%) & No logbook submitted or no entries & Some entries but inconsistent across the semester & Regular entries throughout the semester & Complete entries throughout the semester. \\ \hline
     Grammar given in the document in Nystrom's notation (20\%) & No grammar or substantially broken grammar in the document & A grammar with small errors & A grammar that can model rivers systems & A grammar that can model river systems and an explanation of how each example program parses according the grammar \\ \hline
-    Three example programs (20\%) & No program or the programs don't model river system correctly & Three programs of some form & \emph{pass} and the example programs all match the given grammar & \emph{credit} and the Lox-like parser can actually parse the programs \\ \hline
+    Three example programs (20\%) & Less than three programs or the programs don't model river system correctly & Three programs of some form & \emph{pass} and the example programs all match the given grammar & \emph{credit} and the Lox-like parser can actually parse the programs \\ \hline
     Parser written in Java based on Lox codebase (20\%) & None or not in Java & Code is based on the Lox from chapter 6 of text & Code is based on the Lox from chapter 6 and your additions fit with the style & If there is any improvement to the Chapter 6 Lox code with an explanation in the document, you will get this grade. \\ \hline
     Uniqueness and Creativity (20\%) & A direct submission of in-class work & minor modifications to in-class work & substantial improvement on in-class work & a unique submission showing creativity \\
     \hline
@@ -156,6 +156,7 @@ question: |
     \begin{description}
     \item[0\%] You have been working with your team all semester and you take the solutions your team came up with, add \emph{your own} document and submit it as-is.
     \item[14\%]  You have been working with your team all semester and they also met outside class hour to try out other things. You take the solutions your team came up with, add \emph{your own} document and submit it as-is.
+    \item[20\%]  You have been working with your team all semester and they also met outside class hour to try out other things.  The other things worked well and your team's solution has extensions and creativity. You take the solutions your team came up with, add \emph{your own comprehensive} document and submit it as-is.
     \item[20\%]  You have been working with your team all semester. You take the solutions your team came up with and make some adjustments of your own to make it even better.  You add \emph{your own} document and submit.
     \item[20\%] You have been the main person doing all the work for your team and you submit that work, with a document of your own.
     \end{description}

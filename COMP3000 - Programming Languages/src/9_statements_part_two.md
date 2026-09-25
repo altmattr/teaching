@@ -17,20 +17,16 @@ By the end of this week you should:
 
 # FAT
 
-## catching up <tex-essay>
+## variables and the evaluator <tex-essay>
 question: |
-  \begin{note}
-  This week's exercise is a catch-up on weeks 7 and 8.  You can keep your powder dry on week 9 implementations until next week.  We hope some people explored these ideas in their submissions for assignment one, meaning we can take on something bigger this week to help catch up.
-  \end{note}
-
   At this point, from earlier weeks and your work on assignment one, you should have some example expressions in your water flow languages.  My expression for the Devlin's creek looks like:
 
   \begin{lstlisting}
   4R + (2.2R + 8R + (1.2R + 6R))
   \end{lstlisting}
-    
+
   I'm fairly sure you have all been wishing you had variables to work with, so now we will add them.
- 
+
   With variables, I can rewrite the above example as
 
   \begin{lstlisting}
@@ -42,21 +38,23 @@ question: |
   print(lower_devlins);
   \end{lstlisting}
 
-  I find this \emp{so much easier to read}.  Your task this week is to do the same for the language your team has been developing.  Rewrite your example programs to use variables and adjust your implementation so it can parse these new programs correctly.
+  I find this \emph{so much easier to read}.
+
+  \begin{enumerate}
+  \item Rewrite your example programs to use variables and adjust your implementation so it can parse these new programs correctly.
+  \item Now write the Tree Walking Evaluator for \emph{your} team's language.
+  \item At the end of class, demonstrate your evaluator running to the class.
+  \end{enumerate}
 
   \begin{note}
-  If someone in your team did a particularly good job in assignment one, you could swap to building on that langauge instead of the team's shared language.  Taking the time to write things out clearly as done in the assignment can really help clarify the path forward
+  If someone in your team did a particularly good job in assignment one, you could swap to building on that language instead of the team's shared language.  Taking the time to write things out clearly as done in the assignment can really help clarify the path forward.
   \end{note}
 
-  Once you have done this, write your Tree Walking Evaluator for \emph{your} team's language.
-  
-  At the end of class we hope you will be able to demonstrate your evaluator running to the class.
-
   \subsubsection*{The input?}
-  One key question is "what is the input that the program runs on?"  My expression above assumes there is a rainfall history floating around that the executor can work on.  I chose to hard code the rainfall into my evaluator.  As evaluation progresses, the visitor itself has a rainfall history it can call on to compute the final \emph{value} which is emmitted from the program.  There are lots of other options and your team is free to use any they want.  A few sensible ones are:
+  One key question is "what is the input that the program runs on?"  My expression above assumes there is a rainfall history floating around that the executor can work on.  I chose to hard code the rainfall into my evaluator.  As evaluation progresses, the visitor itself has a rainfall history it can call on to compute the final \emph{value} which is emitted from the program.  There are lots of other options and your team is free to use any they want.  A few sensible ones are:
   \begin{itemize}
   \item Hard code into the interpreter (as I have)
-  \item Pull from the internet during run-time (most advanced approcah)
+  \item Pull from the internet during run-time (most advanced approach)
   \item Pass in on the command line
   \item Grab from an environment variable
   \end{itemize}
@@ -65,13 +63,11 @@ question: |
   What will the output of the program be?  In Lox, we return a success code \emph{and} run any of the print commands.  We might not have print commands, will the program just silently run?  The whole point of this program is to work out the flow in the output river, so you should hard code your evaluator to print this value at the end of execution, whatever that value is.
 
   \begin{note}
-  There is three weeks work bundled up in this tasks but you can get parts of it to work if you are not completely up to speed.  On the other hand, if you have a version of Lox that has kept up with the text, it won't actually take much work to get this part going.
+  There is three weeks work bundled up in this task but you can get parts of it to work if you are not completely up to speed.  On the other hand, if you have a version of Lox that has kept up with the text, it won't actually take much work to get this part going.
   \end{note}
 
   \subsubsection*{Reporting Period / Logbook Advice}
-  During the reporting period, share what your team caught up on and any breakthroughs you had. Listen to what other teams struggled with and how they resolved it, someone else's solution might be just what you need.
-
-  For your logbook this week: note one thing that another team explained that helped you understand something better.
+  During the reporting period, walk the class through a small program in your language, from scan to evaluated output.  Listen to how other teams decided to get their input and print their output, then note in your log book one thing another team explained that helped you understand your own implementation better.
   \newpage
 
 answer: |

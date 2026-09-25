@@ -14,11 +14,9 @@ public class GenerateAst {
     String outputDir = args[0];
     
     defineAst(outputDir, "Expr", Arrays.asList(
- "Assign   : Token name, Expr value",
       "Binary   : Expr left, Token operator, Expr right",
       "Grouping : Expr expression",
       "Flow     : double mean, double variance, double magnitude",
-      "Unary    : Token operator, Expr right",
       "Variable : Token name",
       "Number   : double value",
       "Bool     : boolean value",
@@ -30,10 +28,9 @@ public class GenerateAst {
       "Expression : Expr expression",
       "Var        : Token name, Expr initializer",
       "Plot       : Expr expression",
-      "Print      : Expr expression",
       "DamDecl    : Token name, List<Stmt> body",
       "If         : Expr condition, Stmt thenBranch, Stmt elseBranch",
-      "Return     : Token keyword, Expr value"  ,
+      "Return     : Token keyword, Expr value",
       "Block      : List<Stmt> statements"
       ));
   }

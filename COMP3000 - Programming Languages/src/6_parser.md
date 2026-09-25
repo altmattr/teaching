@@ -448,6 +448,31 @@ answer: |
     ```
     This works, and I will leave it here for now.  _However_ - you should note carefully what is happening in your output.  There is no way to tell strings from symbols anymore.  We treat all literals as simple values and the value of a symbol is the same as the value of a string.  _Draw out the AST you are getting from certain expressions to see what I mean_.
 
+## Using grammars as a secret code. <essay>
+question: |
+    Consider the following grammar
+    ```
+    1 message -> "the" item "is" "somewhere" clue;
+    1 item    -> description item
+    2         |  item_only ;
+    1 item_only -> "decoy"
+    2            | "treasure"
+    3            | "bomb"
+    4            | "parking"
+    5            | "students";
+    1 description -> "real"
+    2              | "fake"
+    3              | "hidden"
+    4              | "expensive"
+    5              | "free";
+    1 clue -> clue "and" clue_part
+    2       | clue_part;
+    1 clue_part -> "the" item "glows"
+    2            | "the" item "is" description;
+    ```
+    Given to you by a spy from a rival company.  They have hidden the forumula to a new cancer-curing drug in a safe somewhere and tell you that the grammer  and a breadth first search will lead you to it.  They then say to you "the bomb is somewhere the parking is hidden" and "11121124254".  Can you guess where the formula is and the code to open the safe?  Hint: the location is within 500m of the COMP3000 lecture hall.
+    
+
 # Exam
 
 ## which works <gift>
