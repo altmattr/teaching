@@ -520,15 +520,17 @@ prim -> "1" | "2" | "3" | "4" | "5" | "6" | "7"
     ~It is non-associative
 }
 
-## definitions <gift>
-Match the term to the definition of that term{
-    =precedence -> determines which operator is evaluated first when there is a mix of operators
+# Past Exams
+
+## definitions 2025 <gift>
+Match the term to the definition of that term which best matches it from the given set{
+    =non-associative -> operators you can't use in a place where associativity is needed to resolve ambiguity
     =associativity -> determines which operator is evaluated first when the same operator appears in one expression
     =parenthesis -> sets order explicitly
-    =non-associative -> operators you can't use in a place where associativity is needed to resolve ambiguity
+    =precedence -> determines which operator is evaluated first when there is a mix of operators
 }
 
-## which derivation two <gift>
+## which derivation two 2025 <gift>
 Which of the following is a derivation of the string `"Hi Bob Bye Bob "` according to this grammar
 ```
 top -> thing*

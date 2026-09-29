@@ -1,0 +1,615 @@
+COMP3000 EXAM PLANNING (2026)
+=============================
+
+Date: 29 September 2026
+Status: IN PROGRESS.  Q1, Q8 and Q15 have been written into the bank, the
+         other 5 new questions below are still drafts, not final wording.
+         No reuses have been moved yet.
+
+
+THE AIM
+-------
+Build a fresh 2026 exam by using 2025 exam as inspiration.
+
+The 20-slot shape is not a requirement. Where the unused set is thin, the
+paper is allowed to grow rather than reaching for something weak. Week 4
+is the case in point: it keeps all five of its Exam-venue questions, so
+the paper comes out at 23 questions.
+
+The 2025 paper is 20 questions worth 30 marks:
+  * 4 essays at 3 marks
+  * 2 gifts at 2 marks
+  * 14 gifts at 1 mark
+
+
+THE TABLE
+---------
+
+Week 4 (scanner) now contributes all five of its Exam-venue questions
+rather than a swap of two, because the exam does not have to be 20
+questions long.  Nothing new is written for the scanner.
+
+Q   2025 question                          Type   Replacement                             Source                         Marks
+--- -------------------------------------- ------ --------------------------------------- ------------------------------ ----
+1   differences                            essay  new: lox workarounds (WRITTEN)          3_lox.md:396                   3
+2   Add another type of comment            essay  kept unchanged (was 2025 Q2)            4_scanner.md:405               3
+3   scanner purpose                        gift   kept unchanged (was 2025 Q3)            4_scanner.md:572               1
+4   (not sat in 2025)                      gift   scanner strategy                        4_scanner.md:580               1
+5   (not sat in 2025)                      gift   write a coffee parser                   4_scanner.md:548               1
+6   (not sat in 2025)                      gift   edge cases in scanners                  4_scanner.md:588               1
+7   Expression AST                         gift   Parser purpose                          5_representing.md:379          1
+8   Representing Unary                     gift   new: unary tree shape (WRITTEN)         5_representing.md:387          1
+9   definitions                            gift   which statement for grammar a           6_parser.md:507                1
+10  which derivation two                   gift   new: derivation of "Hi Bob Bye Bob "    to be written                  1
+11  binary_evaluation_order                gift   hooking up                              7_evaluating.md:193            1
+12  free truthyness                        essay  alternatives to objects                 7_evaluating.md:112            3
+13  match                                  gift   compiler or interpreter                 2_introduction.md:302          1
+14  variable decls                         gift   landr                                   9_statements_part_two.md:344   1
+15  variable uses                     gift   new: uses in a function body (WRITTEN) 8_statements_one.md:262        1
+16  strange                                essay  new: chained assignment a = b = c = 5   to be written                  3
+17  Which new grammar b                    gift   which works                             6_parser.md:478                1
+18  automarked environment                 gift   new: environment state (text MC)        to be written                  2
+19  anon church 2                          gift   output of closure 2                     12_functions_part_two.md:331   1
+20  basic parser                           gift   new: function declaration parse order   to be written                  1
+21  Function Evaluation and Environment    gift   Closure Behavior                        12_functions_part_two.md:248   1
+22  what type of value b                   gift   callable function 2                     11_functions_part_one.md:424   1
+23  which needs lexical scoping            gift   new: which needs lexical scoping        to be written                  2
+
+
+TALLY
+-----
+  8 new questions, 3 of them written (Q1, Q8, Q15)
+  15 reused from the unused set
+
+  4 essays at 3 marks      = 12
+  2 gifts at 2 marks       =  4
+  17 gifts at 1 mark       = 17
+                              --
+  Total                    = 33 marks across 23 questions
+
+The paper is 3 questions and 3 marks longer than 2025, and all of the
+difference is scanner.  2025 sat 2 scanner questions worth 4 marks (Q2 and
+Q3); this one sits 5 worth 7 (Q2 to Q6).  Week 4 goes from joint lightest
+to joint heaviest, tied with statements at 7 marks a piece.
+
+Q4, Q5 and Q6 were written for the Exam venue but never sat, so they are
+new to the paper in the only sense that matters to a student.  Nothing
+had to be written for week 4.  All three are self-contained: a 4-option
+strategy question, a token-enum design question, and a question about
+which edge case is hardest.  None of them needs a code template, which is
+why they drop in without touching the GIFT tooling.
+
+
+THE 8 NEW QUESTIONS (DRAFTS)
+----------------------------
+  Q1, Q8 and Q15 are WRITTEN and in the bank.  The rest are drafts.
+
+Q1. ESSAY, 3 MARKS. Replaces "differences".
+
+  STATUS: WRITTEN.  In the bank as `lox workarounds <essay>` in the Exam
+  venue of 3_lox.md.  Week 3 builds and renders clean.  The 2025 question
+  and answer are untouched under Past Exams as `differences 2025`.
+
+  Question:
+    Pick one thing that Lox, as described in the book "Crafting
+    Interpreters", cannot express, and which you would want in a program
+    you were writing for fun.  Describe two different Lox workarounds for
+    it.
+
+    For each workaround, explain what it costs.  Then say which of the two
+    you would rather write yourself, and why.  There is no single right
+    answer here, so make sure your reasons are the kind you could defend
+    to the other person in the group.
+
+  Model answer (in the bank) uses `switch` as the missing feature, with
+  two workarounds:
+      1. An if/else chain dispatching on the operator character.
+      2. A table of function values, with a small `apply` function that
+         dispatches.  The if chain has not gone away, it has moved.
+  The costs are compared honestly, then the answer picks the chain for a
+  four-operator calculator and the table for a fifty-command turtle
+  program, on the grounds that the turning point is not the number of
+  cases but whether the case list changes often.
+
+  Marking scheme, 1 mark each:
+      - A real gap in Lox plus a first workaround that would actually work.
+      - A second, genuinely different workaround, with its cost stated
+        rather than assumed to be free.
+      - A choice between the two that is argued rather than asserted.
+
+  Other things students will reach for, all of which have two distinct
+  workarounds available: no arrays, no classes, no modulo, no string
+  methods, no `do...while`.
+
+  Note on the shape of the question.  This is deliberately not a "describe
+  two differences between Java and Lox" question, because the 2025 paper
+  already had one and students can pattern-match the structure.  Asking
+  for a design decision and a defended preference gets at the same
+  "understand some basic Lox design decisions" goal without repeating the
+  form.  Java is not mentioned at all, so if the paper needs to keep
+  testing the Java contrast, that has to come from elsewhere.
+
+
+Q8. GIFT, 1 MARK. Replaces "Representing Unary".
+  STATUS: WRITTEN.  In the bank as `tree shape for a unary node <gift>` in
+  the Exam venue of 5_representing.md.  Week 5 builds and renders clean,
+  1 page, zero LaTeX errors.
+  Question:
+    In the Lox interpreter from "Crafting Interpreters", the unary
+    expression `-a` is parsed into a node of class `Expr.Unary`, which
+    the code generator declares with a `Token operator` field and a
+    single `Expr right` field.  Which of the following trees is
+    correct?{
+      = A `Unary` node whose `operator` field holds the `-` token, with a
+        single child representing "a" in its `right` field.
+      ~ A `Unary` node with two children, both representing "a".
+      ~ A `Grouping` node wrapping the `-` token, with a child
+        representing "a" beneath it.
+      ~ A single `Literal` node whose value is the string "-a", with no
+        children.
+    }
+
+  What the NB changed.  Naming the class turns 2025's two arity
+  mistakes into four separate errors, so each option is a different
+  wrong idea:
+    - wrong field count, right class (a `Unary` with two children)
+    - wrong class by reaching for `Grouping`
+    - flattening, where the operator is swallowed into a `Literal` value
+    - and the correct answer, which names both declared fields
+  The 2025 distractor is kept in the same slot, so a student who
+  pattern-matches to it still picks the same wrong answer.
+
+  Two costs of naming the class, both accepted.  A student who has read
+  the declaration can rule out the two-children option on sight, so the
+  arity distractor is weak for anyone who has memorised
+  `Unary : Token operator, Expr right`.  It is one mark and the field
+  layout is the thing being tested, so that is the right trade.
+
+  The larger cost is the forward reference.  Week 5 never names the node
+  classes in its teaching content, so the stem quotes material a student
+  meets in week 6, where 6_parser.md:167 shows the declaration this
+  question is built on.  Fine for a cumulative paper, and the slot has
+  to live where `Representing Unary` sat, but worth remembering that
+  this question is really a week 6 question in a week 5 slot.
+
+  Note: this also cleans up two artefacts from the PDF extraction in the
+  2025 wording, which read `Abstract Syntax Tree"` and
+  `Interpreters""` with stray double quotes.
+
+  Title note: the plan first called this "tree shape for -a".  The
+  hyphen has to go because tooling/v2.py:229 cleans item names with
+  `[^a-zA-Z0-9_ ]`, and the first build rendered the section as
+  "tree shape for a".  Harmless, but a title that silently drops a
+  character is not worth keeping.
+
+Q10. GIFT, 1 MARK. Replaces "which derivation two".
+
+NB: I've adjusted the grammar, check it still makes sense
+NB: I don't think any of those answers actually relate to the string in the question.
+
+  Which of the following is a derivation of the string
+  `"Hi Bob Bye Bob "` according to this grammar
+  ```
+  top -> greet ;
+  greet -> "Hi " greet
+        |  "Bye " greet
+        |  person 
+        | greet greet;
+  person -> "Bob "
+         |  "Pete" ;
+  ```
+  {
+    =```
+    top
+      ->  "Hi " greet
+        ->  "Hi " "Bye " greet
+          ->  "Hi " "Bye " person
+            ->  "Hi " "Bye " "Bob "
+    ```
+    ~```
+    top
+      ->  "Bye " greet
+        ->  "Bye " "Hi " greet
+          ->  "Bye " "Hi " person
+            ->  "Bye " "Hi " "Bob "
+    ```
+    ~```
+    top
+      ->  "Hi " greet
+        ->  "Hi " "Bye " greet
+          ->  "Hi " "Bye " person
+            ->  "Hi " "Bye " "Pete "
+    ```
+    ~```
+    top
+      ->  "Hi " "Bye " person
+        ->  "Hi " person "Bye "
+          ->  "Hi " "Bob " "Bye "
+    ```
+  }
+
+  Note: the 2025 version used four images of derivation trees, which I
+  cannot reproduce. This is a text version, same skill being tested.
+  I also fixed the grammar. The 2025 grammar said `top -> thing*` but
+  never defined `thing`, which is not a valid grammar.
+
+  Format check needed: multi-line code blocks as MC options. This is safe,
+  because `which needs lexical scoping` already uses that exact format
+  in the bank.
+
+Q15. GIFT, 1 MARK. Replaces "variable uses".
+
+NB: Approved, put this one in
+
+  STATUS: WRITTEN.  In the bank as `uses in a function body <gift>` in
+  the Exam venue of 8_statements_one.md:262.  Week 8 builds and renders
+  clean, 1 page, zero LaTeX errors.  The braces print as real braces,
+  confirmed by extracting the text back out of the built PDF.
+
+  In the following code, which lines contain a variable _use_.  Don't
+  include variable _declarations_ in your answer
+
+  \ttfamily
+  var x = 1;\
+  fun f(a)\{\
+  \vrule width 0pt height 0pt depth 0pt\kern1em return a + 1;\
+  \}\
+  print f(x);
+  \rmfamily
+  {
+    ~1 only
+    ~2 and 3
+    ~3 only
+    =3 and 5
+    ~2, 3, and 5
+    ~none
+  }
+
+  Note: five lines.  Line 1 declares x.  Line 2 declares f and a, and
+  nothing else, because the opening brace is on that line.  Line 3 uses
+  a.  Line 4 is the closing brace, so it is neither a declaration nor a
+  use.  Line 5 uses f and x.  Answer is 3 and 5.
+
+  Splitting `fun f(a){` from `return a + 1;` is the whole point, and it
+  was your fix.  The original had `fun f(a){ return a + 1; }` on a
+  single line, so that one line both declared the parameter a and used
+  it in `a + 1`, and the marked answer of `3 only` was wrong.  With the
+  body on its own line, no line both declares and uses, so "which lines
+  contain a use" has exactly one right answer.
+
+  Option set is shaped like the RAT original it replaces, at
+  8_statements_one.md:59, which is also six options.  `2 and 3` catches
+  students who count the parameter list as a use, `2, 3, and 5` catches
+  those who count every declaration line, and `3 only` catches those who
+  forget the print.  `4 only` and `4 and 5` are unavailable as options,
+  since line 4 is the brace, which is why there are two `only` traps
+  rather than three.
+
+  I also deliberately avoided assignment targets like `x = y;` because
+  the bank is inconsistent about them. `landr` treats a write as "both",
+  while `variable uses` treats it as a use.  Leaving them out keeps that
+  separate ambiguity out of the question.
+
+  FORMATTING, the fiddly part.  A literal `{` cannot go in a GIFT stem.
+  The answer block is split off with `re.split(r"(?<!\\){", item_data)`
+  at tooling/v2.py:247, which needs exactly one unescaped `{` in the
+  whole item and the answer block already claims it.  The unescaped
+  version fails the build outright:
+
+      File "tooling/v2.py", line 247, in <module>
+        question, rest = re.split(r"(?<!\\){", item_data)
+      ValueError: too many values to unpack (expected 2)
+
+  So the braces have to be written `\{` and `\}`, and the question is
+  whether the student then sees the backslashes.  They do not, but only
+  because this is NOT written inside a code fence.  Two things follow
+  from that, both learned by getting it wrong first.
+
+  Inside a fence, braces stay literal, because a fenced block becomes
+  `verbatim` and `verbatim` does not process escapes.  So
+  `fun f(a)\{` inside a fence prints as `fun f(a)\{`, backslash and all,
+  which reads as if Lox needs escaping.  Worse than useless in exam
+  content.  This is why there is no fence here at all.
+
+  With no fence the `\{` is ordinary LaTeX, and `\{` is precisely how
+  you write a literal brace, so it prints as `{`.  A trailing `\` on
+  each line is a pandoc hard line break, which becomes `\\`.  Verified
+  output from the build:
+
+      \ttfamily
+      var x = 1;\\
+      fun f(a)\{\\
+      \vrule width 0pt height 0pt depth 0pt\kern1em return a + 1;\\
+      \}\\
+      print f(x); \rmfamily
+
+  And the PDF text, read back out of the built Exam.pdf:
+
+      var x = 1;
+      fun f(a){
+      return a + 1;
+      }
+      print f(x);
+
+  `\ttfamily` and `\rmfamily` are used because `\texttt{...}` would need
+  a brace pair, which we cannot spare.  They take no arguments, so they
+  cost nothing, and `\rmfamily` puts the option list back in roman.
+  Two trailing spaces work as the line break too, if the trailing
+  backslashes read as too cryptic in the source.
+
+  THE INDENT, and this is the part that cost the most time, because the
+  obvious answer is wrong.  Indent is
+  `\vrule width 0pt height 0pt depth 0pt\kern1em `.
+
+  The obvious answer is `\quad`.  It compiles cleanly, and it is
+  silently discarded.  I shipped it, believed it worked because latexmk
+  exited 0, and it was a no-op.  The reason is that `\quad` is
+  *discardable* glue, and TeX throws away discardable material at the
+  start of a line, which is exactly where it lands, immediately after a
+  `\\`.  Same for `\qquad`, `\enspace`, `\ ` and a bare `\kern`.
+
+  Caught it by measuring x positions in the built PDF rather than by
+  eyeballing the render or trusting the exit code.  Line starts:
+
+      x=76.71  L0 noindent
+      x=61.77  L1 \quad            <- same as no indent
+      x=61.77  L2 \qquad           <- same
+      x=61.77  L3 \enspace         <- same
+      x=61.77  L4 backslash-space  <- same
+      x=91.66  L5 \hspace*{30pt}   <- moved
+      x=61.77  L6 noindent         <- back to baseline
+
+  Compiled clean with zero errors, indented nothing.  The lesson for
+  the rest of the bank: a clean latexmk exit proves the code COMPILES,
+  it proves nothing about what it RENDERS.  Measure the output.
+
+  `\hspace*` is the starred form precisely because it defeats this
+  discard, by starting the line with a non-discardable rule.  But
+  `\hspace*{1em}` needs a brace pair, which is the one thing we cannot
+  spend.  So the indent is spelled out as its two parts: a zero-size
+  `\vrule` to anchor the line, then `\kern1em` for the width.  Both are
+  brace-free, and the two together match `\hspace*{1em}` exactly:
+
+      x=71.73  \vrule ... \kern1em
+      x=71.73  \hspace*{1em}
+
+  One more trap on the way: `\kern1em` must not be run straight into the
+  next word.  TeX reads a control word as the longest run of letters, so
+  `\kern1emreturn` would be fine but `\quadreturn` asks for a command
+  called `quadreturn` and fails to compile:
+
+      Undefined control sequence   # \quadreturn a + 1;
+
+  The space in `\kern1em return` is therefore load-bearing.
+
+  The price of this route is that the code is not verbatim, so anything
+  that is a LaTeX or markdown metacharacter needs escaping.  Braces,
+  `#`, `%`, `&`, `_` and `$` all need care.  This snippet has none of
+  those beyond the braces, so it is safe here, but it is a sharp tool
+  for arbitrary code.
+
+  OTHER BANK BUGS FOUND, not caused by this plan, not fixed.  Recording
+  them so they do not get rediscovered later.
+
+  - Backtick fenced code in a GIFT stem does not render as code.
+    tooling/v2.py:241 rewrites newlines inside backtick spans into a
+    literal backslash-n, so the RAT's `variable decls` and
+    `variable uses` at 8_statements_one.md:42 and :59 both collapse to
+    a single line:
+
+        \texttt{\textbackslash{}nvar\ x\ \textbackslash{}=\ 1;\textbackslash{}nprint\ x;\textbackslash{}n}
+
+    The escaped-brace route above fixes both, and is the obvious thing
+    to do to them next.
+
+  - The `<pre>` convention at 11_functions_part_one.md:43 silently loses
+    the program.  Pandoc drops the whole block when converting markdown
+    to latex.  Checked in the build output:
+
+        grep -c "return lam1" build/11_functions_part_one/RAT.tex   # 0
+        grep -c "return lam1" build/11_functions_part_one/RAT.md    # 3
+
+    So `anon church 1` and `callable function 1` currently print a
+    question saying "given the following lox program" with no program
+    under it.  Those snippets have `#` and `$` in them, so they want
+    the fence-plus-escape treatment per snippet, not the loose route
+    used above.
+
+
+Q16. ESSAY, 3 MARKS. Replaces "strange".
+
+NB: this is the same question - the variation needs to be more. . If you can come up with a MC question instead of an essay - even better!
+  question: |
+    Write some lox code which shows one of the "strange" or "interesting"
+    things you can do because assignment is an expression in our parser.
+    What is the output expected of this code?
+
+  answer: |
+    ```
+    var a;
+    var b;
+    var c;
+    a = b = c = 5;
+    print a + b + c;
+    ```
+    This prints 15.
+
+    Assignment is an expression in Lox, so it has a value (whatever was
+    just assigned) and it can appear anywhere an expression can appear,
+    including on the right of another assignment.  So `a = b = c = 5` is
+    not a syntax error, it is three nested assignment expressions.  The
+    innermost `c = 5` evaluates to 5, then `b = (c = 5)` assigns 5 to b
+    and evaluates to 5, then `a = (b = (c = 5))` assigns 5 to a.  All
+    three hold 5, so the sum is 15.
+
+    In Java none of this would compile.  `a = b = c = 5;` is an error
+    because in Java an assignment is a statement, not an expression, so
+    it has no value to hand to the assignment on its left.  Same rule
+    that makes the classic `while (x = x - 1)` loop compile in C but not
+    in Java.
+
+  Note: the 2025 version used `while (x = x - 1)`. This one uses chained
+  assignment, so it tests the same idea by a different route.
+
+
+Q18. GIFT, 2 MARKS. Replaces "automarked environment".
+
+  Which of the following best describes the state of the `Environment`
+  just before line 6 is evaluated?
+  ```
+  1> var count = 1;
+  2> fun bump(){
+  3>   var count = 10;
+  4>   {
+  5>     var msg = "hi";
+  6>     count = count + 1;
+  7>   }
+  8>   return count;
+  9> }
+  ```
+  {
+    = The global environment has `count -> 1`, the scope for `bump` has
+      `count -> 10`, and the inner block has `msg -> "hi"`.
+    ~ The global environment has `count -> 10` and the inner block has
+      `msg -> "hi"`, because the local declaration wrote through to the
+      global.
+    ~ The global environment has `count -> 1` and the scope for `bump` has
+      `count -> 10` and `msg -> "hi"`, because `msg` belongs to the
+      function scope rather than the block.
+    ~ The global environment has `count -> 1` and `msg -> "hi"`, and the
+      scope for `bump` has `count -> 10`.
+  }
+
+  Note: the 2025 version was an image-based MC over a similar program.
+  This is the text equivalent, using a different program so it is not
+  just a re-run of the existing `wiring up environments` essay, which
+  covers the original 2025 program.
+
+
+Q20. GIFT, 1 MARK. Replaces "basic parser".
+
+  In the Lox parser, which sequence of steps correctly parses a function
+  declaration?{
+    = Consume the `fun` keyword, then the function name, then the
+      parameter list, then the body block.
+    ~ Consume the function name, then the `fun` keyword, then the
+      parameter list, then the body block.
+    ~ Consume the `fun` keyword, then the parameter list, then the
+      function name, then the body block.
+    ~ Consume the function name, then a return type, then the parameter
+      list, then the body block.
+  }
+
+  Note: cleans up an artefact from the PDF extraction in the 2025
+  wording, which read `parse a function header in Lox"` with a stray
+  double quote.
+
+
+Q23. GIFT, 2 MARKS. Replaces "which needs lexical scoping".
+
+  Only one of the following programs would have an error if we had not
+  fixed the name resolution to account for lexical scopes.  Which one?{
+    ~```
+    var a = 5;
+    {
+        fun foo(a) {
+            return a + a;
+        }
+        print(foo(1));
+        var b = 2;
+        print(foo(3));
+    }```
+    ~```
+    var a = 5;
+    {
+        fun foo() {
+            return a + a;
+        }
+        print(foo());
+        var b = 2;
+        print(foo());
+    }```
+    ~```
+    var a = 5;
+    {
+        var a = 2;
+        fun foo() {
+            return a + a;
+        }
+        print(foo());
+    }```
+    =```
+    var a = 5;
+    {
+        fun foo() {
+            return a + a;
+        }
+        print(foo());
+        var a = 2;
+        print(foo());
+    }```
+  }
+
+  Correct answer is the fourth program.  `foo` is called before the
+  block's `var a = 2;` runs, but the declaration is hoisted into the
+  block's own environment, so reading `a` there finds an uninitialised
+  binding.  Without lexical scoping `a` would resolve to the global 5
+  and the program would quietly print 10 instead of erroring.
+
+
+WATCH-OUTS
+----------
+
+Q7 is the weakest swap in the whole table.  `Parser purpose` asks about the
+role of the parser, but the 2025 question asked about AST *structure*.  It
+is the only unused Exam-venue question that sits near the AST, so there is
+no better option without writing yet another new question.
+
+Q12 is a venue move, not a straight swap.  `alternatives to objects` lives
+in the SSE venue of `7_evaluating.md`, so using it in the exam means
+promoting it out of SSE.  If that is a problem, `value vs expression` sits
+next to it, but that is a one-sentence pithy question really worth 1 mark,
+not 3, so it would leave a hole in the marks.
+
+Q15 deliberately avoids assignment targets because the bank contradicts
+itself on them.  Worth fixing in the bank at some point, separately.
+
+Q2 and Q6 both touch comments, which looked like a clash on paper. It is
+not. Q2 asks the student to implement a new comment form end to end, and
+Q6 only asks them to recognise which edge case is hard, so the answer to
+one does not leak the other. Both are worth sitting.
+
+The `#` collision in the bank is not a problem for this paper. Q2 claims
+`#` for line comments, and `Hex numbers` (4_scanner.md:315) also claims
+it, but `Hex numbers` lives in the SSE venue and is not in the 2026 paper.
+The two would only collide if they were ever sat together.
+
+Q1 is the only week 3 question in the paper, and it is worth remembering
+that week 3 is the language tour, not the scoping week. Scoping does not
+appear in 3_lox.md at all, so a scoping question there would be a week 9
+and 13 question in the wrong place. Anything written for this slot has to
+be answerable from chapter 3 of the book. The first attempt at Q1 was a
+Java/Lox scoping comparison and was dropped for exactly this reason.
+
+
+NOT DONE YET
+------------
+  * 5 of the 8 new questions are not written into the bank yet.  Q1, Q8
+    and Q15 are done, see above.
+  * None of the 15 reuses have been moved into the Exam venue.
+  * `alternatives to objects` has not been moved out of the SSE venue.
+  * No combined exam PDF generated, so the paper has never been assembled
+    end to end.  The three written questions do build on their own: week 3,
+    week 5 and week 8 each typeset clean.
+  * Q10 is still waiting on four images of derivations from you.  The
+    grammar in the draft is fine and does derive the target string, but
+    the current options are all wrong: they produce "Hi Bye Bob " and one
+    of them starts with an illegal first step.  The correct answer is an
+    8-step leftmost derivation, and because `greet -> greet greet` is in
+    the grammar the rightmost derivation of the same string is also
+    legal, so it cannot serve as a distractor.
+  * The Past Exams venues were altered by the earlier 19-question
+    de-duplication, not by this plan.  `Representing Unary` now carries a
+    `2025` suffix, and 19 questions that were duplicated across both
+    venues were dropped from the Exam venues.  That pass is not reflected
+    in the table above, which still counts the pre-cleanup pool.

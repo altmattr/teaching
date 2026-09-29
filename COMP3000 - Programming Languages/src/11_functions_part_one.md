@@ -376,51 +376,6 @@ answer: |
 
 # Exam
 
-## anon church 2 <gift>
-Given the following lox program, what is the output if the last line is replaced with `print(one(bat)(0));`
-
-`````
-fun foo(z)\{
-    fun lam(x)\{
-        return x;
-    }
-    return lam;
-}
-
-fun bar(z)\{
-    fun lam(x)\{
-        return z(x);
-    }
-    return lam;
-}
-
-fun bat(x)\{
-    return x+1;
-}
-
-fun baz(m)\{
-    fun lam1(n)\{
-        fun lam2(f)\{
-            fun lam3(x)\{
-                return m(f)(n(f)(x));
-            }
-            return lam3;
-        }
-        return lam2;
-    }
-    return lam1;
-}
-
-print("last line");
-`````
-{
-    ~0
-    =1
-    ~2
-    ~a run time error
-    ~"<native fn>"
-}
-
 ## callable function 2 <gift>
 What is the output of the following program if the last line is replaced with `print(functionOne(1)(1));`
 `````
@@ -439,8 +394,56 @@ print("last line");
     ~error
 }
 
-## basic parser <gift>
-What is the correct sequence of steps to parse a function header in Lox? 
+# Past Exams
+
+## anon church 2 2025 <gift>
+Given the following lox program, what is the output if the last line is replaced with `print(one(bat)(0));`
+
+`````
+fun foo(z)\{
+    fun lam(x)\{
+        return x;
+    \}
+    return lam;
+\}
+
+fun bar(z)\{
+    fun lam(x)\{
+        return z(x);
+    \}
+    return lam;
+\}
+
+fun bat(x)\{
+    return x+1;
+\}
+fun one(x)\{return x;\}
+
+fun baz(m)\{
+    fun lam1(n)\{
+        fun lam2(f)\{
+            fun lam3(x)\{
+                return m(f)(n(f)(x));
+            \}
+            return lam3;
+        \}
+        return lam2;
+    \}
+    return lam1;
+\}
+
+print("last line");
+`````
+{
+    ~0
+    =1
+    ~2
+    ~a run time error
+    ~"<native fn>"
+}
+
+## basic parser 2025 <gift>
+What is the correct sequence of steps to parse a function header in Lox"
 {
     =Parse the function name, then the parameter list, followed by a block for the body.
     ~Parse the function name, then the return type, followed by the block for the body.

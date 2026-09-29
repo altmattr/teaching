@@ -145,22 +145,6 @@ answer: |
 
 # Exam
 
-## match <gift>
-Match each of these Lox concepts with the phase of the interpreter they fit into{
-    =TokenType => Scanner
-    =Expr => Parser
-    =Object => Interpreter
-}
-
-## binary_evaluation_order <gift>
-When evaluating binary operators (e.g., `+`, `*`) in an interpreter, which of the following steps is typically required?
-{
-~ Apply the operator directly to the raw syntax of the operands.
-= Evaluate both operands first, then apply the operator to the results.
-~ Apply the operator to the first operand only and ignore the second operand.
-~ Assume the operands are integers and apply the operator without validation.
-}
-
 ## truthyness <gift>
 In an interpreter for an expression language, what does "truthiness" typically refer to?
 {
@@ -170,16 +154,36 @@ In an interpreter for an expression language, what does "truthiness" typically r
 ~ A dynamic mechanism that converts all non-false values into `true` during evaluation.
 }
 
-## free truthyness <essay>
+## hooking up <gift>
+When hooking up the interpreter to execute an expression language, which of the following is typically required?
+{
+~ Directly evaluating the source code without parsing it into a structured format.
+= Traversing the abstract syntax tree (AST) and interpreting each node based on its type.
+~ Converting the source code into machine code before execution.
+~ Storing all intermediate results in a global table during execution.
+}
+
+# Past Exams
+
+## binary_evaluation_order 2025 <gift>
+When evaluating binary operators (e.g., `+`, `*`) in an interpreter such as the Lox interpreter defined in `Interpreter.java`, which of the following steps is typically required?
+{
+~ Apply the operator directly to the raw syntax of the operands.
+= Evaluate both operands first, then apply the operator to the results.
+~ Apply the operator to the first operand only and ignore the second operand.
+~ Assume the operands are integers and apply the operator without validation.
+}
+
+## free truthyness 2025 <essay>
 question: |
-    Imagine you are writing your own programming language which includes the following datatypes:
+    Imagine you are writing your own general purpose programming language which includes the following datatypes:
       * integers
       * booleans
       * characters
       * strings
     It has been decided that _any_ value can be tested for "truthyness".  Provide rules for each datatype with an explanation for why you think your rule will work best for programmers.
 
-    Hint: in Lox, `0` and the empty string are both truthy.  Does that make sense for _your_ language?
+    Note: this language will _not_ have a void/null/None/nil value, everything is a value-type and there are no reference-types.
 answer: |
     My rules, with my reasons:
 
@@ -188,13 +192,11 @@ answer: |
       * Characters — the null character is falsey, everything else is truthy.  This mirrors the integer rule if you think of a character as a small number, so the two rules stay consistent.  It also gives you a single "empty" value to test for, which is handy when scanning a string looking for an end marker.
       * Strings — the empty string is falsey, everything else is truthy.  This is the Python / Ruby / JavaScript convention, so it is what most programmers already expect.  It turns the common check "did I get any text?" into a one-liner: `if (name) ...`.  The alternative (all strings truthy) forces `if (name.length > 0)` everywhere, which is exactly the boilerplate a small language should be saving you from.
 
-      The common thread is one obvious "empty" value per type.  A falsey value is the type's "nothing to see here" answer, and programmers are good at predicting that: 0, false, the null character, and "" are all the natural empty values.  I deliberately kept `0` and `""` falsey even though Lox treats them as truthy, because in Lox the distinction is inherited from Java's habit of being strict, whereas a language with no `nil` needs its own empty values and these are the most intuitive.
+    The common thread is one obvious "empty" value per type.  A falsey value is the type's "nothing to see here" answer, and programmers are good at predicting that: 0, false, the null character, and "" are all the natural empty values.  I deliberately kept `0` and `""` falsey even though Lox treats them as truthy, because in Lox the distinction is inherited from Java's habit of being strict, whereas a language with no `nil` needs its own empty values and these are the most intuitive.
 
-## hooking up <gift>
-When hooking up the interpreter to execute an expression language, which of the following is typically required?
-{
-~ Directly evaluating the source code without parsing it into a structured format.
-= Traversing the abstract syntax tree (AST) and interpreting each node based on its type.
-~ Converting the source code into machine code before execution.
-~ Storing all intermediate results in a global table during execution.
+## match 2025 <gift>
+Match each of these Lox concepts with the phase of the interpreter they fit into{
+    =TokenType => Scanner
+    =Expr => Parser
+    =Object => Interpreter
 }

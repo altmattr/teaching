@@ -259,7 +259,29 @@ answer: |
 
 # Exam
 
-## variable decls <gift>
+## uses in a function body <gift>
+In the following code, which lines contain a variable _use_.  Don't
+include variable _declarations_ in your answer
+
+\ttfamily
+var x = 1;\
+fun f(a)\{\
+\vrule width 0pt height 0pt depth 0pt\kern1em return a + 1;\
+\}\
+print f(x);
+\rmfamily
+{
+  ~1 only
+  ~2 and 3
+  ~3 only
+  =3 and 5
+  ~2, 3, and 5
+  ~none
+}
+
+# Past Exams
+
+## variable decls 2025 <gift>
 In the following code, which lines contain _variable declarations_.  Don't include variable _uses_ in your answer<br/>
 ```
 var x = 1;
@@ -275,7 +297,7 @@ print x + 1;
   ~none
 }
 
-## variable uses <gift>
+## variable uses 2025 <gift>
 In the following code, which lines contain _variable uses_.  Don't include variable _declarations_ in your answer<br/>
 ```
 var x = 1;

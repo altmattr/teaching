@@ -376,14 +376,6 @@ answer: |
 
 # Exam
 
-## Expression AST <gift>
-In the context of designing an AST for the expression "1 + 2 * 3", which of the following correctly represents the structure, assuming arithmetic operator precedence is respected? {
-    = A root node "+" with a left child "1" and a right child "*" (whose children are "2" and "3").
-    ~ A root node "*" with a left child "+" (whose children are "1" and "2") and a right child "3".
-    ~ A flat structure with "+" at the root and "1", "2", and "3" as its children.
-    ~ Three separate root nodes for "+", "*", and the literals "1", "2", and "3", with no hierarchy.
-}
-
 ## Parser purpose <gift>
 What is the role of the parser in generating an Abstract Syntax Tree (AST)? {
     = The parser analyzes the token sequence and organizes it into a hierarchical structure representing the code's syntax.
@@ -392,8 +384,26 @@ What is the role of the parser in generating an Abstract Syntax Tree (AST)? {
     ~ The parser breaks the source code into tokens for lexical analysis.
 }
 
-## Representing Unary <gift>
-Upon parsing a unary operator and it's operand such as "-a", what form of Abstract Syntax Tree? would fit best into the Lox interpreter described in "Crafting Interpreters"?{
+## tree shape for a unary node <gift>
+In the Lox interpreter from "Crafting Interpreters", the unary expression `-a` is parsed into a node of class `Expr.Unary`, which the code generator declares with a `Token operator` field and a single `Expr right` field. Which of the following trees is correct? {
+    = A `Unary` node whose `operator` field holds the `-` token, with a single child representing "a" in its `right` field.
+    ~ A `Unary` node with two children, both representing "a".
+    ~ A `Grouping` node wrapping the `-` token, with a child representing "a" beneath it.
+    ~ A single `Literal` node whose value is the string "-a", with no children.
+}
+
+# Past Exams
+
+## Expression AST 2025 <gift>
+In the context of designing an AST for the expression "1 + 2 * 3", which of the following correctly represents the structure, assuming arithmetic operator precedence is respected? {
+    = A root node "+" with a left child "1" and a right child "*" (whose children are "2" and "3").
+    ~ A root node "*" with a left child "+" (whose children are "1" and "2") and a right child "3".
+    ~ A flat structure with "+" at the root and "1", "2", and "3" as its children.
+    ~ Three separate root nodes for "+", "*", and the literals "1", "2", and "3", with no hierarchy.
+}
+
+## Representing Unary 2025 <gift>
+Upon parsing a unary operator and it's operand such as "-a", what form of Abstract Syntax Tree" would fit best into the Lox interpreter described in "Crafting Interpreters""{
     = A parent node labeled "-" with a single child node representing "a".
     ~ A parent node labeled "-" with two child nodes, both representing "a".
     ~ A single node containing the string "-a".

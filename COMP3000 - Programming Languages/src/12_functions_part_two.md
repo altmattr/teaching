@@ -254,24 +254,6 @@ When a function is defined inside another function, what behavior does the inter
 = The inner function captures the outer function's environment, creating a closure.  
 }
 
-## what type of value b <gift>
-What kind of value is being returned by the `return` statement in the following code
-```
-fun foo()\{
-  var i = 0;
-  fun bar()\{
-    i = i + 1;
-  \}
-  return bar;
-\}
-```
-{
-  ~nil
-  ~number
-  =uninterpreted function
-  ~string
-}
-
 ## output of closure reuui <gift>
 What is the output of the following lox code?
 <pre>
@@ -360,11 +342,31 @@ print(s(k)(i)(k("a")("b")));
   ~b a
 }
 
-## Function Evaluation and Environment <gift>
-What happens to the environment when a function is called in the interpreter?  
+# Past Exams
+
+## Function Evaluation and Environment 2025 <gift>
+What happens to the environment when a function is called in the interpreter"
 {
-= A new environment is created with the function's parameters bound to the argument values.  
-~ The current environment is reused, and the parameters are overwritten with the argument values.  
-~ The caller's environment is copied into a new frame and used for execution.  
-~ No environment changes occur; variables are resolved globally.  
+    = A new environment is created with the function's parameters bound to the argument values.
+    ~ The current environment is reused, and the parameters are overwritten with the argument values.
+    ~ The caller's environment is copied into a new frame and used for execution.
+    ~ No environment changes occur; variables are resolved globally.
+}
+
+## what type of value b 2025 <gift>
+What kind of value is being returned by the `return` statement in the following code
+```
+fun foo()\{
+  var i = 0;
+  fun bar()\{
+    i = i + 1;
+  \}
+  return bar;
+\}
+```
+{
+    ~nil
+    ~number
+    =uninterpreted function
+    ~string
 }

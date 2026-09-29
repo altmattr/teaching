@@ -271,7 +271,9 @@ answer: |
     This one turned out quite a bit simpler than the for loop did, it is a very natural fit for syntactic sugar.
 
 # Exam
-## Which new grammar b <gift>
+# Past Exams
+
+## Which new grammar b 2025 <gift>
 The following is the grammar we used to parse logical expressions but the _and_ and _or_ parts are missing
 ```
   program   -> declaration* EOF;
@@ -292,7 +294,7 @@ The following is the grammar we used to parse logical expressions but the _and_ 
                ( "else" statement )? ;
   printStmt -> "print" expression ";";
   whileStmt -> "while" "(" expression ")" statement ;
-  varDecl   -> "var" IDENTIFIER ( "=" expression )? ";"; 
+  varDecl   -> "var" IDENTIFIER ( "=" expression )? ";";
   expression     -> assignment;
   assignment     -> IDENTIFIER "=" assignment
                  | logic_or;
@@ -305,14 +307,14 @@ The following is the grammar we used to parse logical expressions but the _and_ 
   unary          -> ( "!" | "-" ) unary
                  | primary ;
   primary        -> NUMBER | STRING | "true" | "false" | "nil"
-                 | "(" expression ")" 
+                 | "(" expression ")"
                  | IDENTIFIER;
 ```
 Which of the following ways to fill-in the missing parts will give a grammar where _the and operator_ is given as an infix `&&` and _the or operator_ is given as an infix `||` as in C.  _The and operator_ must have higher precedence than _the or operator_.{
+    ~  `logic_or -> equality ( "||" equality)* ;logic_and -> logic_or ( "&&" logic_or)*;`
     ~  `logic_or -> logic_and ( "or" logic_and)* ;logic_and -> equality ( "and" equality)*;`
+    =  `logic_or -> logic_and ( "||" logic_and)* ;logic_and -> equality ( "&&" equality)*;`
     ~  `logic_or -> equality ( "or" equality)* ;logic_and -> logic_or ( "and" logic_or)*;`
-    ~  `logic_or -> logic_and ( "||" logic_and)* ;logic_and -> equality ( "&&" equality)*;`
-    =  `logic_or -> equality ( "||" equality)* ;logic_and -> logic_or ( "&&" logic_or)*;`
 }
 
 

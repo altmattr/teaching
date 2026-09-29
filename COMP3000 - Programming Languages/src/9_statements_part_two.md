@@ -309,8 +309,37 @@ answer: |
   -------
   ```
 
-## automarked environment <gift>
-Which environment diagram most accurately represents the state of the `Environment` _just before_ line 9 is evaluated?
+## landr <gift>
+In this code snippet
+```
+var a;
+var b;
+var c = "there";
+a = "hi";
+b = a;
+a = c;
+```
+Match which variables are in l-value positions, which are in r-value positions and which are in both?{
+  =a -> both
+  =b -> l-value
+  =c -> both
+}
+
+# Past Exams
+
+## strange 2025 (in sse as well) <essay>
+question: |
+  Write some lox code (it can use lox features we haven't implemented yet if you like) which shows some of the "strange" or "interesting" things you can do because assignment is an expression in our parser.  What is the output expected of this code?
+answer: |
+  ```
+  while (x = x - 1){
+    print x;
+  }
+  ```
+  Assignment in lox is an expression whose value is whatever value got assigned.  In this case it is `x-1` every time we go around the loop.  Lox also treats all integers as "truthy" so the value never trips the loop to stop.  Thus this loop will print from `x` to negative infinity.
+
+## automarked environment 2025 <gift>
+Which environment most accurately represents the state of the `Environment` _just before_ line 9 is evaluated?
   ```
   1> var foo = 3;
   2> var bar;
@@ -328,32 +357,5 @@ Which environment diagram most accurately represents the state of the `Environme
     ~ <img width="50%" src="9_imgs/wrong_one.jpeg"/>
     ~ <img width="50%" src="9_imgs/wrong_two.jpeg"/>
     ~ <img width="50%" src="9_imgs/wrong_three.jpeg"/>
-}
-
-## strange (in sse as well) <essay>
-question: |
-  Write some lox code (it can use lox features we haven't implemented yet if you like) which shows some of the "strange" or "interesting" things you can do because assignment is an expression in our parser.  What is the output expected of this code?
-answer: |
-  ```
-  while (x = x - 1){
-    print x;
-  }
-  ```
-  Assignment in lox is an expression whose value is whatever value got assigned.  In this case it is `x-1` every time we go around the loop.  Lox also treats all integers as "truthy" so the value never trips the loop to stop.  Thus this loop will print from `x` to negative infinity.
-
-## landr <gift>
-In this code snippet
-```
-var a;
-var b;
-var c = "there";
-a = "hi";
-b = a;
-a = c;
-```
-Match which variables are in l-value positions, which are in r-value positions and which are in both?{
-  =a -> both
-  =b -> l-value
-  =c -> both
 }
 

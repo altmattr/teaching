@@ -393,7 +393,55 @@ answer: |
 
 # Exam
 
-## differences <essay>
+## lox workarounds <essay>
+question: |
+    Pick one thing that Lox, as described in the book "Crafting Interpreters", cannot express, and which you would want in a program you were writing for fun.  Describe two different Lox workarounds for it.
+
+    For each workaround, explain what it costs.  Then say which of the two you would rather write yourself, and why.  There is no single right answer here, so make sure your reasons are the kind you could defend to the other person in the group.
+answer: |
+    The thing I picked is `switch`.  Lox has `if` and `while` and `for`, but no way to say "run one of these blocks depending on this value" without writing out the chain by hand.  So if I have an interpreter for a small calculator, and I want to dispatch on the operator character, here are the two workarounds I would consider.
+
+    *Workaround one, the if chain:*
+
+    `````
+    if (op == "+") {
+      return left + right;
+    } else if (op == "-") {
+      return left - right;
+    } else if (op == "*") {
+      return left * right;
+    } else {
+      return left / right;
+    }
+    `````
+
+    *Workaround two, a table of function values:*
+
+    `````
+    fun add(a, b) { return a + b; }
+    fun sub(a, b) { return a - b; }
+    fun mul(a, b) { return a * b; }
+    fun div(a, b) { return a / b; }
+
+    fun apply(op, a, b) {
+      if (op == "+") return add(a, b);
+      if (op == "-") return sub(a, b);
+      if (op == "*") return mul(a, b);
+      return div(a, b);
+    }
+    `````
+
+    The costs are different.  The if chain is the smallest thing that works, and it is easy to read top to bottom, but every new operator is another four lines in the middle of the chain, and the chain is inside whatever function is doing the dispatch, so a big one turns into a wall of `else if`.  The table version costs me five function declarations up front, which is more code for the same behaviour, and the `if` chain has not gone anywhere, I have just moved it to a place where the operators are defined next to each other.  The win is that the dispatch logic is now one small function that I do not have to edit again, and adding an operator is a new function plus one more line in `apply`.  For a language with first class functions, that separation is worth something, because now the operator table is the part I could hand to a map function or print out for debugging.
+
+    Which would I rather write?  The if chain, for the calculator, because four operators is not enough to pay for the ceremony, and reading `left + right` inline tells me what happens without a jump.  If the calculator grew to twenty operators, or more likely if I was writing the dispatch for something like a turtle graphics program with fifty commands, I would move to the table.  The turning point for me is not the number of cases so much as whether I would ever want to change what the cases are, because that is the case where keeping the list in one place earns back the extra declarations.
+
+    Other answers I would accept: a student could reasonably pick the lack of arrays (use a delimited string and a scanning function, or a linked list built out of a small class), the lack of classes (use a closure to bundle data with the functions that operate on it, which is the functional answer the course has been building towards), integer division or the absence of a modulo operator (write it out longhand), the absence of string methods (write a function that takes a string and returns a new string, which is the same thing as a method but spelled differently), or the lack of a `do...while` (use a `while` with the test at the bottom, or `for` with an empty update).  All of these have two genuinely different workarounds available, which is what the question is really testing.
+
+    A one-workaround answer gets 1 mark, because the first mark is for identifying a real gap and producing something that would actually work.  The second mark is for the second, different workaround, and for being honest about what it costs, not just listing it as if it were free.  The third mark is for a choice between them that is argued rather than asserted, so "the second one is better" is worth nothing but "the second one is better because the operator list is in one place and I would be editing that list often" is worth the mark.
+
+# Past Exams
+
+## differences 2025 <essay>
 question: |
     Describe two differences between the syntax of Java and the syntax of Lox as described in the book "Crafting Interpreters".   Be precise with your terms and explain the differences in some detail for full marks.
 answer: |

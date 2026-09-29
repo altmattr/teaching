@@ -143,7 +143,7 @@ question: |
     \hline
     \textbf{Rubric item} & Fail (0) & Pass (50) & Credit (70) & Distinction (100) \\
     \hline
-    Basic questions in a1\_rubric.md (10\%) & None answered accurately & 2 or more answered accurately & 6 or more answered accurately & All answered accurately \\ \hline
+    Basic questions in a1\_rubric.md (10\%) & None answered accurately & 2 or more answered accurately & 4 or more answered accurately & All answered accurately \\ \hline
     Log-book submissions (10\%) & No logbook submitted or no entries & Some entries but inconsistent across the semester & Regular entries throughout the semester & Complete entries throughout the semester. \\ \hline
     Grammar given in the document in Nystrom's notation (20\%) & No grammar or substantially broken grammar in the document & A grammar with small errors & A grammar that can model rivers systems & A grammar that can model river systems and an explanation of how each example program parses according the grammar \\ \hline
     Three example programs (20\%) & Less than three programs or the programs don't model river system correctly & Three programs of some form & \emph{pass} and the example programs all match the given grammar & \emph{credit} and the Lox-like parser can actually parse the programs \\ \hline

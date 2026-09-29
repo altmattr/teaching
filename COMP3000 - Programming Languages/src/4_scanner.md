@@ -402,14 +402,54 @@ answer: |
 
 # Exam
 
-## Add another type of comment <essay>
+## write a coffee parser <gift>
+Imagine you are writing a scanner for scanning coffee orders into tokens.  Your can assume a CoffeeToken enum has been defined for you with the following tokens:
+    * SKIM ('s')
+    * OAT ('o')
+    * SOY ('y')
+    * FLATWHITE ('f')
+    * CAPPUCCINO ('c')
+    * LATE ('l')
+    * BLACK ('b')
+    * PICCOLO ('p')
+    * SUGAR ('-')
+    * NUMBER
+    * SHOT ('*')
+For most tokens, a single character (given above) is used to encode them in the coffee language. but shot and sugar might be followed by a number which can be any number up to 9.  Some example orders and their token stream are:
+    * `sf` `SKIM FLATWHITE`
+    * `ol*3` `OAT LATTE SHOT 3`
+    * `yp-2` `SOY PICCOLO SUGAR 2`
+If you were writing a scanner for coffee orders, how much _lookahead_ would the scanner need?{
+  =0
+  ~1
+  ~2
+  ~3
+}
+
+## scanner strategy <gift>
+What is the most common strategy used by a scanner to handle multi-character tokens, such as identifiers or string literals? {
+    = Reading the source code character by character in a single pass and grouping characters into tokens based on matching patterns.
+    ~ Using a predefined dictionary to directly map substrings of the source code to tokens.
+    ~ Performing a binary search on the source code to identify tokens.
+    ~ Applying a brute-force algorithm to test all possible token combinations.
+}
+
+## edge cases in scanners <gift>
+When designing a scanner, which of the following edge cases is typically the hardest to handle? {
+    = Nested comments in languages that support them.
+    ~ Single-character tokens like `+` or `-`.
+    ~ White spaces between tokens.
+}
+
+# Past Exams
+
+## Add another type of comment 2025 <essay>
 question: |
   Write a scanner that will support new types of comments.  These comments should start with `#` and proceed to the end of the line only.
-  We have populated the answer box with an empty scanner (`QScanner`) which inherits from the lox scanner described in the text.  The test code uses this scanner.  Override whatever methods you need to achieve the desired result
-  
-  Here is a template to get you started
+  We have populated the answer box with an empty scanner (`QScanner`) which inherits from the lox scanner described in the text.  Override whatever methods you need to achieve the desired result
+answer: |
   `````
-  import static com.craftinginterpreters.lox.TokenType.*; // [static-import]
+  import static com.craftinginterpreters.lox.TokenType.*; 
 
   class QScanner  extends Scanner{
     public QScanner(String source) {
@@ -419,6 +459,7 @@ question: |
     public void scanToken() {
       char c = advance();
       switch (c) {
+        case '#': while(peek() != '\n' && !isAtEnd()) advance(); break;
         case '(': addToken(LEFT_PAREN); break;
         case ')': addToken(RIGHT_PAREN); break;
         case '{': addToken(LEFT_BRACE); break;
@@ -472,122 +513,11 @@ question: |
     }
   }
   `````
-answer: |
-  `````
-  import static com.craftinginterpreters.lox.TokenType.*; 
 
-  class QScanner  extends Scanner{
-    public QScanner(String source) {
-      super(source);
-    }
-
-    public void scanToken() {
-      char c = advance();
-      switch (c) {
-        case '#': while(peek() != '\n' && !isAtEnd()) advance(); break;
-        case '(': addToken(LEFT_PAREN); break;
-        case ')': addToken(RIGHT_PAREN); break;
-        case '{': addToken(LEFT_BRACE); break;
-        case '}': addToken(RIGHT_BRACE); break;
-        case ',': addToken(COMMA); break;
-        case '.': addToken(DOT); break;
-        case '-': 
-            if (match('-')) {
-                while (peek() != '\n' && isAtEnd()) advance();
-            } else {
-                addToken(MINUS);
-            }
-            break;
-        case '+': addToken(PLUS); break;
-        case ';': addToken(SEMICOLON); break;
-        case '*': addToken(STAR); break; // [slash]
-        case '!':
-          addToken(match('=') ? BANG_EQUAL : BANG);
-          break;
-        case '=':
-          addToken(match('=') ? EQUAL_EQUAL : EQUAL);
-          break;
-        case '<':
-          addToken(match('=') ? LESS_EQUAL : LESS);
-          break;
-        case '>':
-          addToken(match('=') ? GREATER_EQUAL : GREATER);
-          break;
-        case '/':
-          if (match('/')) {
-            // A comment goes until the end of the line.
-            while (peek() != '\n' && !isAtEnd()) advance();
-          } else {
-            addToken(SLASH);
-          }
-          break;
-        case ' ':
-        case '\r':
-        case '\t':
-          // Ignore whitespace.
-          break;
-
-        case '\n':
-          line++;
-          break;
-        case '"': string(); break;
-        default:
-          if (isDigit(c)) {
-            number();
-          } else if (isAlpha(c)) {
-            identifier();
-          } else {
-            Lox.error(line, "Unexpected character.");
-          }
-          break;
-      }
-    }
-  }
-  `````
-
-## write a coffee parser <gift>
-Imagine you are writing a scanner for scanning coffee orders into tokens.  Your can assume a CoffeeToken enum has been defined for you with the following tokens:
-    * SKIM ('s')
-    * OAT ('o')
-    * SOY ('y')
-    * FLATWHITE ('f')
-    * CAPPUCCINO ('c')
-    * LATE ('l')
-    * BLACK ('b')
-    * PICCOLO ('p')
-    * SUGAR ('-')
-    * NUMBER
-    * SHOT ('*')
-For most tokens, a single character (given above) is used to encode them in the coffee language. but shot and sugar might be followed by a number which can be any number up to 9.  Some example orders and their token stream are:
-    * `sf` `SKIM FLATWHITE`
-    * `ol*3` `OAT LATTE SHOT 3`
-    * `yp-2` `SOY PICCOLO SUGAR 2`
-If you were writing a scanner for coffee orders, how much _lookahead_ would the scanner need?{
-  =0
-  ~1
-  ~2
-  ~3
-}
-
-## scanner purpose <gift>
+## scanner purpose 2025 <gift>
 Which of the following best describes the primary purpose of a scanner in the context of an interpreter? {
     ~ To evaluate expressions in the source code.
     = To convert the source code into a sequence of tokens.
     ~ To parse the tokens into an abstract syntax tree (AST).
     ~ To optimize the source code for performance.
-}
-
-## scanner strategy <gift>
-What is the most common strategy used by a scanner to handle multi-character tokens, such as identifiers or string literals? {
-    = Reading the source code character by character in a single pass and grouping characters into tokens based on matching patterns.
-    ~ Using a predefined dictionary to directly map substrings of the source code to tokens.
-    ~ Performing a binary search on the source code to identify tokens.
-    ~ Applying a brute-force algorithm to test all possible token combinations.
-}
-
-## edge cases in scanners <gift>
-When designing a scanner, which of the following edge cases is typically the hardest to handle? {
-    = Nested comments in languages that support them.
-    ~ Single-character tokens like `+` or `-`.
-    ~ White spaces between tokens.
 }
