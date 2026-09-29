@@ -1,0 +1,206 @@
+ 
+Microsoft Teams
+Image
+Image	
+Matthew Roberts    11 days ago
+Marking submission one
+Hi all, time to organise marking.   Who is interested/available?  I'm keen to make this as efficient as possible, we can work together to make it painless.
+
+Image	
+Ysobel Sims    11 days ago
+I'm waiting on paperwork for a research grant to be finalised, which means I'm on half time right now, so I am happy to do some marking. I'd say 20 hours as an upper bound. 
+
+Image	
+Chloe Wang    11 days ago
+I am interested 🙂
+
+Image	
+Matthew Roberts    10 days ago
+Chloe Wang, Ysobel Sims lets organise this then!
+
+Image	
+David Sanders    10 days ago
+I can mark also, but maybe at a reduced level since I'm gonna be marking for COMP2270 also. Not sure how many hours I will be allocated for this yet, but it will be substantial.
+
+10 hours worth should be safe. If you allocated me anything I can't do i'll let you know ASAP
+
+Image	
+Matthew Roberts    10 days ago
+the three day extension period is not done yet so we can't start until tomorrow at the earliest.  I am working on a process.  I have written a script to do some summarising from the submission.  It pulls out the repo and checks if it is public and does a few metrics to help orient.  The output is a spreadsheet.  I think it might be a good starting point.  We can add extra columns to the generated ones where you can add your comments and scores.
+
+Image	
+Matthew Roberts    10 days ago
+It has found a heap of private ones and I will need to send an email about them today
+
+Image	
+Ysobel Sims    10 days ago
+I'm very curious to see what people who didn't turn up to classes ended up submitting, and how many seem to be solo submissions. 
+
+Image	
+Ysobel Sims    10 days ago
+If groups have named their repos something more descriptive than 'COMP2000' then perhaps all submissions from a given group can be clustered for one person to mark sequentially. 
+
+Image	
+Matthew Roberts    10 days ago
+good thoughts, I will see what I can do in my script.  I guess you might prefer to mark your own students as well?
+
+Image	
+Ysobel Sims    10 days ago
+I don't mind which students I mark. Marking our own students may be quicker, but I also think there is a benefit to randomising it a bit. 
+
+Image	
+Matthew Roberts    3 days ago
+I've uploaded all the submissions and a starter file populated from my scripts here ​submission 1​.  Take a look at the "evidence" file which we can use to organise our grading.  I'll probably rename it to "grades" and add a column for each rubric item but for now I just want us to all start thinking about a grading process together.  The script that guessed at the group numbers is complex and janky - you can let me know how close it got once we get further into marking
+
+Image	
+Ysobel Sims    3 days ago
+I can see my class groups are mostly together. The only one I can see that didn't work is Hiroki, who added his name to his fork. Are we expecting any more late submissions? I'm surprised to see some names missing. 
+
+Image	
+Matthew Roberts    3 days ago
+yes, plenty of spec cons
+
+Image	
+Matthew Roberts    3 days ago
+COMP2000 Could you all please pick one of your classes (say the lowest numbered) and mark one group's submissions over the next three days?  We can organise a chat on Friday to touch base and make a plan to push on with the rest of the marking over the following week.  I've added columns to "evidence" for each of the rubric items and please use the notes column liberally.  Please just put the notes text in one line (don't use linebreaks) even if/when you are writing quite a bit.  Use semi-colons to separate comments in that cell and my script will sort it all out when I upload the grades).  FYI: I will look over each one you mark to help tie our Friday discussion together.  Please don't be worried, I consider you the experts, I am just the person tasked with looking across each expert for consistency's sake.
+
+Image	
+David Sanders    1 day ago
+Matthew Roberts marking is going slower than expected for my other units and current forecast doesn't look good for me being able to guarantee completion of 10 hours for this. Might be best to reallocate these.
+
+Image	
+Ysobel Sims    1 day ago
+Added extra columns - 'marker' where I've put my initials, and staff notes for anything we dont want in the student feedback but to flag. What's the official amount of time for marking per assignment Matthew Roberts? 
+
+Image	
+Matthew Roberts    1 day ago
+Official time is however long it takes. That's one of the things we will work out from this first set
+
+Image	
+Matthew Roberts    23 hours ago
+Ysobel Sims how long did it take you to do those ones?
+
+Image	
+Ysobel Sims    22 hours ago
+About an hour and a half for the four, but that may have include some one time set up and getting familiar with the rubric. I think half of that was going over the first person and the overall project, and the remaining half was the other three.
+
+Image	
+Matthew Roberts    22 hours ago
+Can you tell me about the log scores?  I can only check the log itself and they looked ok to me but you didn't give any of them full marks
+
+Image	
+Matthew Roberts    22 hours ago
+Chloe Wang how long did you spend on your four?
+
+Image	
+Chloe Wang    22 hours ago
+I did a group of six and it was a few hours. I'm not sure exactly but I probably was overthinking it. Took me a while to look through everything, getting familiar and making sense of what to look for and such 😅
+
+Image	
+Matthew Roberts    22 hours ago
+I do expect it will take a while.  we are heading in the direction of 20mins/student?
+
+Image	
+Matthew Roberts    22 hours ago
+Chloe Wang same question for you re log books?
+
+Image	
+Chloe Wang    22 hours ago
+For logbooks, I based it on whether entries were timely, any missed entries and what they actually wrote about (i.e. if they've thought about/reflect on each week rather than describing what happened)
+
+Image	
+Ysobel Sims    21 hours ago
+Happy to be more relaxed on the logbooks. I looked at whether they tied into the project or just described the activities in class (D rubic) and whether there was learning across weeks (HD) - some didn't tie into the project at all, the highest marked was the most aligned with being reflective on learning and the project but a lot of that reflection was repeatedly saying each week that he needed to catch up and wasn't familiar enough with the content to participate in the activities. Its hard to tell if that counts as engaging with the course in the way you would expect in a logbook. If the logbook is intended to be more chill, that's all good - perhaps just if there is some sign of reflection and sentences for each week, that is enough for 100?
+
+Image	
+Matthew Roberts    21 hours ago
+you are both being consistent with each other, which is good.  Lets err on the side of being more generous though.  I would expect around one in four to be full marks as a guide
+
+Image	
+Matthew Roberts    21 hours ago
+This is the first time trying log books in this course, so you two will be learning more than me by seeing them so much more.  Lets just be a little more generous and keep everything else the same.
+
+Image	
+Matthew Roberts    21 hours ago
+are you both up for a heap more marking now?  If so, would you work on the weekends?
+
+Image	
+Ysobel Sims    21 hours ago
+No worries, sounds good. and yes 20 min/student is a good estimate. 207 student is about 70 hours. If its just Chloe and myself, then that's 35 hours each - likely a bit of a stretch for me to do depending on when we need this done by. I often mark on weekends, and plan to do so tomorrow. 
+
+Image	
+Matthew Roberts    20 hours ago
+I've got some helpers joining us
+
+Image	
+Chloe Wang    19 hours ago
+Looking at another group now.
+
+Is there any issue if the log is submitted as a zip folder?
+
+And how should we handle missing files? E.g. would some program design marks still be awarded if there's no UML diagram but classes are listed and described in the worksheet?
+
+Image	
+Matthew Roberts    19 hours ago
+lets try and accommodate zip files for logs.  hopefully not too many students do that
+
+Image	
+Matthew Roberts    19 hours ago
+lets do a 50 mark penalty for no design file.  So if the text is perfect and describes everything then they get 50 for that rubric item
+
+Image	
+Scott Xu    19 hours ago
+Hello all. Glad to be here
+Image	
+Scott Xu    19 hours ago
+Will I need access to iLearn Matthew?
+Image	
+Matthew Roberts    5 hours ago
+I've put everything you need in the "shared" files tab
+
+Image	
+Ysobel Sims    3 hours ago
+I've got someone (49093703) who has linked a copy of the repo from three weeks ago (not a fork!). The project is missing a lot of features that the main repo has, runs but is static, and only has one project commit from the student. The main repo has six project commits from the student. The worksheet answers refer to classes in the main repo but not in their copy, but the git log for the first question matches their copy. Given their answers are a mix of both, it's a bit confusing as to which to use, and what commit in the main repo their answers come from. 
+
+Image	
+Matthew Roberts    3 hours ago
+ignore the presence of the main repo.  That makes their worksheet nonsensical I suppose?  which means mostly low marks.
+
+Image	
+Ysobel Sims    3 hours ago
+Although technically it isn't a "working graphical simulation", which attracts 0 marks, depending on the interpretation of that. 
+
+Image	
+Matthew Roberts    3 hours ago
+we can be generous on that point
+
+Image	
+Chloe Wang    1 hour ago
+Re the group I marked yesterday, few more issues I want to clear up
+
+ 
+
+The submission with a missing UML diagram has one in the logbook zip folder. It is a basic diagram that others in the group submitted as well, so I just marked accordingly. They also didn't answer uniqueness questions in the worksheet, so unsure how to mark that section.
+
+ 
+
+There is another student with no worksheet submitted, so no link, so a 0 for version control? Unsure if they have any commits to the repo either. But since no worksheet, also no answers about program design, generic and exceptions or uniqueness, so unsure how to mark those too.
+
+ 
+
+And there is still a student with an unreachable link. How should that be dealt with?
+
+Image	
+Chloe Wang    1 hour ago
+I'm also doing some marking for comp1010 so I'll be a bit busier over the next week 
+
+Image	
+Matthew Roberts    1 hour ago
+if they don't answer a section of the worksheet, give 0 for that.  If there is no worksheet they can have zero overall
+
+Image	
+Matthew Roberts    1 hour ago
+when you find info in the wrong place, or the wrong file, it is fine to mark it just as if it was where it beloned
+
+Go to Teams >
+

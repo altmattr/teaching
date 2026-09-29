@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Compare the grades in marks.csv against the equivalent grades in marking.xlsx."""
 import argparse
-import csv
 import pathlib
 
 import matplotlib.pyplot as plt
@@ -35,8 +34,8 @@ XLSX_COLUMNS = {
 
 def read_marks_csv(path: pathlib.Path) -> pd.DataFrame:
     df = pd.read_csv(path, dtype={"id": str}, keep_default_na=False)
-    df = df[["id"] + list(CSV_COLUMNS.values())].copy()
-    df.columns = ["id"] + list(CSV_COLUMNS.keys())
+    df = df[["id", "name"] + list(CSV_COLUMNS.values())].copy()
+    df.columns = ["id", "name"] + list(CSV_COLUMNS.keys())
     return _drop_empty_ids(_as_numeric(df))
 
 
@@ -55,7 +54,7 @@ def _drop_empty_ids(df: pd.DataFrame) -> pd.DataFrame:
 
 def _as_numeric(df: pd.DataFrame) -> pd.DataFrame:
     for col in df.columns:
-        if col != "id":
+        if col not in ("id", "name"):
             df[col] = pd.to_numeric(df[col], errors="coerce")
     return df
 
@@ -81,6 +80,12 @@ def main() -> None:
     parser.add_argument("--marks", type=pathlib.Path, default=pathlib.Path("marks.csv"))
     parser.add_argument("--marking", type=pathlib.Path, default=pathlib.Path("marking.xlsx"))
     parser.add_argument("--out", type=pathlib.Path, default=pathlib.Path("grade_correlation.png"))
+    parser.add_argument(
+        "--threshold",
+        type=float,
+        default=20.0,
+        help="marks a student must be off the fitted line to count as an outlier",
+    )
     args = parser.parse_args()
 
     marks = args.folder / args.marks
@@ -107,8 +112,10 @@ def main() -> None:
 
     labels = list(CRITERIA) + ["total"]
     rows = [corr_stats(merged[f"{c}_csv"], merged[f"{c}_xlsx"]) for c in labels]
+    outliers = find_outliers(merged, args.threshold)
 
     print_table(labels, rows)
+    print_outliers(outliers, args.threshold)
 
     fig, axes = plt.subplots(2, 3, figsize=(15, 10))
     rng = np.random.default_rng(42)
@@ -121,6 +128,17 @@ def main() -> None:
             m, b = np.polyfit(x, y, 1)
             xs = np.linspace(x.min(), x.max(), 50)
             ax.plot(xs, m * xs + b, color="crimson", lw=1.5)
+        if label == "total":
+            for _, row in outliers.iterrows():
+                ax.annotate(
+                    row["name"],
+                    (row["total_csv"], row["total_xlsx"]),
+                    textcoords="offset points",
+                    xytext=(0, 6),
+                    fontsize=8,
+                    color="crimson",
+                    ha="center",
+                )
         ax.set_title(f"{label}  (r = {stats['pearson']:.2f}, rho = {stats['spearman']:.2f})")
         ax.set_xlabel("marks.csv")
         ax.set_ylabel("marking.xlsx")
@@ -133,6 +151,33 @@ def main() -> None:
     out = args.folder / args.out
     fig.savefig(out, dpi=150)
     print(f"\nsaved: {out}")
+
+
+def find_outliers(merged: pd.DataFrame, threshold: float) -> pd.DataFrame:
+    sub = merged[["id", "name", "total_csv", "total_xlsx"]].dropna()
+    x = sub["total_csv"].to_numpy(dtype=float)
+    y = sub["total_xlsx"].to_numpy(dtype=float)
+    if x.size < 2:
+        return sub.iloc[0:0]
+    m, b = np.polyfit(x, y, 1)
+    residual = y - (m * x + b)
+    sub = sub.assign(residual=residual)
+    flagged = sub[sub["residual"].abs() >= threshold]
+    return flagged.sort_values("residual", key=np.abs, ascending=False)
+
+
+def print_outliers(flagged: pd.DataFrame, threshold: float) -> None:
+    print(f"\nOutliers: students {threshold:g}+ marks off the fitted line (total)")
+    if flagged.empty:
+        print("  none")
+        return
+    print(f"    {'id':<10}{'name':<30}{'csv':>5}{'xlsx':>6}{'resid':>8}  direction")
+    for _, r in flagged.iterrows():
+        direction = "marking.xlsx higher" if r["residual"] > 0 else "marking.xlsx lower"
+        print(
+            f"    {r['id']:<10}{r['name'][:29]:<30}{r['total_csv']:>5.0f}"
+            f"{r['total_xlsx']:>6.0f}{r['residual']:>+8.1f}  {direction}"
+        )
 
 
 def print_table(labels: list[str], rows: list[dict]) -> None:
