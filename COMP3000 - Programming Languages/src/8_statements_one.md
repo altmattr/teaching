@@ -259,17 +259,33 @@ answer: |
 
 # Exam
 
+## why we need STMT <gift>
+We needed to introduce `STMT` class to use along-side `EXPR`.  Which of the following is the clearest reason we needed to do this?{
+  ~ We needed the E for another purpose
+  ~ statements are not parsed
+  = expressions return a value but statements do not
+  ~ statement can never be like expressions in any way
+}
+
+## why we need Void <gift>
+What return type did we choose for statements and why? (pick the most correct answer){
+  ~ void because statements are like c functions
+  = Void because it needs to be a subtype or Object but also empty
+  ~ Object because it can take any value
+  ~ object because they have methods relate to them
+}
+
 ## uses in a function body <gift>
 In the following code, which lines contain a variable _use_.  Don't
 include variable _declarations_ in your answer
 
-\ttfamily
+```
 var x = 1;\
 fun f(a)\{\
-\vrule width 0pt height 0pt depth 0pt\kern1em return a + 1;\
+   return a + 1;\
 \}\
 print f(x);
-\rmfamily
+```
 {
   ~1 only
   ~2 and 3

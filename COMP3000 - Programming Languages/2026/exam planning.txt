@@ -2,9 +2,9 @@ COMP3000 EXAM PLANNING (2026)
 =============================
 
 Date: 29 September 2026
-Status: IN PROGRESS.  Q1, Q8 and Q15 have been written into the bank, the
-         other 5 new questions below are still drafts, not final wording.
-         No reuses have been moved yet.
+Status: IN PROGRESS.  Q1, Q8, Q15 and Q16 have been written into the bank,
+         the other 4 new questions below are still drafts, not final
+         wording.  No reuses have been moved yet.
 
 
 THE AIM
@@ -46,7 +46,7 @@ Q   2025 question                          Type   Replacement                   
 13  match                                  gift   compiler or interpreter                 2_introduction.md:302          1
 14  variable decls                         gift   landr                                   9_statements_part_two.md:344   1
 15  variable uses                     gift   new: uses in a function body (WRITTEN) 8_statements_one.md:262        1
-16  strange                                essay  new: chained assignment a = b = c = 5   to be written                  3
+16  strange                                gift   new: which loop terminates (WRITTEN)    9_statements_part_two.md:345   1
 17  Which new grammar b                    gift   which works                             6_parser.md:478                1
 18  automarked environment                 gift   new: environment state (text MC)        to be written                  2
 19  anon church 2                          gift   output of closure 2                     12_functions_part_two.md:331   1
@@ -54,23 +54,34 @@ Q   2025 question                          Type   Replacement                   
 21  Function Evaluation and Environment    gift   Closure Behavior                        12_functions_part_two.md:248   1
 22  what type of value b                   gift   callable function 2                     11_functions_part_one.md:424   1
 23  which needs lexical scoping            gift   new: which needs lexical scoping        to be written                  2
+  24  (not sat in 2025)                      gift   new: short circuit side effect (WRITTEN) 10_control_flow.md:275        1
 
 
 TALLY
 -----
-  8 new questions, 3 of them written (Q1, Q8, Q15)
+9 new questions, 5 of them written (Q1, Q8, Q15, Q16, Q24)
   15 reused from the unused set
 
-  4 essays at 3 marks      = 12
+  3 essays at 3 marks      =  9
   2 gifts at 2 marks       =  4
-  17 gifts at 1 mark       = 17
-                              --
-  Total                    = 33 marks across 23 questions
+  19 gifts at 1 mark       = 19
+                               --
+  Total                    = 32 marks across 24 questions
 
-The paper is 3 questions and 3 marks longer than 2025, and all of the
-difference is scanner.  2025 sat 2 scanner questions worth 4 marks (Q2 and
-Q3); this one sits 5 worth 7 (Q2 to Q6).  Week 4 goes from joint lightest
-to joint heaviest, tied with statements at 7 marks a piece.
+The paper is 4 questions and 2 marks longer than 2025.  2025 was 20
+questions worth 30 marks; this is 24 worth 32.  The extra questions are
+all scanner, and the single extra mark is scanner too.  2025 sat 2
+scanner questions worth 4 marks (Q2 and Q3); this one sits 5 worth 7 (Q2
+to Q6).  Week 4 goes from joint lightest to joint heaviest, tied with
+statements at 7 marks a piece.
+
+The paper used to be 33 marks.  It is 31 now because Q16 was written as
+a 1-mark GIFT rather than the 3-mark essay the plan originally sketched,
+which drops essays from 4 to 3 and moves 2 marks from week 9.  This was a
+deliberate choice, not a shortfall to be plugged: the 3-mark chained
+assignment essay was a weaker question, since its answer was the single
+number 15 and could be guessed with no understanding.  Marked down from
+33 to 31, and there is no hole to fill.
 
 Q4, Q5 and Q6 were written for the Exam venue but never sat, so they are
 new to the paper in the only sense that matters to a student.  Nothing
@@ -82,7 +93,7 @@ why they drop in without touching the GIFT tooling.
 
 THE 8 NEW QUESTIONS (DRAFTS)
 ----------------------------
-  Q1, Q8 and Q15 are WRITTEN and in the bank.  The rest are drafts.
+  Q1, Q8, Q15 and Q16 are WRITTEN and in the bank.  The rest are drafts.
 
 Q1. ESSAY, 3 MARKS. Replaces "differences".
 
@@ -186,6 +197,9 @@ Q10. GIFT, 1 MARK. Replaces "which derivation two".
 
 NB: I've adjusted the grammar, check it still makes sense
 NB: I don't think any of those answers actually relate to the string in the question.
+NB: I've decided to go with images as answers, they are in the 6_imgs/2_...
+
+NBB: changes made in source file, nothing else to do
 
   Which of the following is a derivation of the string
   `"Hi Bob Bye Bob "` according to this grammar
@@ -416,43 +430,112 @@ NB: Approved, put this one in
     used above.
 
 
-Q16. ESSAY, 3 MARKS. Replaces "strange".
+Q16. GIFT, 1 MARK. Replaces "strange".
 
-NB: this is the same question - the variation needs to be more. . If you can come up with a MC question instead of an essay - even better!
-  question: |
-    Write some lox code which shows one of the "strange" or "interesting"
-    things you can do because assignment is an expression in our parser.
-    What is the output expected of this code?
+  STATUS: WRITTEN.  In the bank as `which loop terminates <gift>` in the
+  Exam venue of 9_statements_part_two.md:345.  Week 9 builds and renders
+  clean, 2 pages, zero LaTeX errors.
 
-  answer: |
-    ```
-    var a;
-    var b;
-    var c;
-    a = b = c = 5;
-    print a + b + c;
-    ```
-    This prints 15.
+  Which of these `while` loops terminates?
 
-    Assignment is an expression in Lox, so it has a value (whatever was
-    just assigned) and it can appear anywhere an expression can appear,
-    including on the right of another assignment.  So `a = b = c = 5` is
-    not a syntax error, it is three nested assignment expressions.  The
-    innermost `c = 5` evaluates to 5, then `b = (c = 5)` assigns 5 to b
-    and evaluates to 5, then `a = (b = (c = 5))` assigns 5 to a.  All
-    three hold 5, so the sum is 15.
+  \ttfamily
+  {
+    ~while (x = x - 1) print x;
+    ~while (x - 1) print x;
+    =while (x > 0) x = x - 1;
+    ~while (x = 0) print x;
+  }
+  \rmfamily
 
-    In Java none of this would compile.  `a = b = c = 5;` is an error
-    because in Java an assignment is a statement, not an expression, so
-    it has no value to hand to the assignment on its left.  Same rule
-    that makes the classic `while (x = x - 1)` loop compile in C but not
-    in Java.
+  WHY THIS ONE, because the two versions it replaces were both rejected.
 
-  Note: the 2025 version used `while (x = x - 1)`. This one uses chained
-  assignment, so it tests the same idea by a different route.
+  The 2025 exam and the current SSE copy both use `while (x = x - 1)`.
+  That needs two facts at once: assignment is an expression so it can sit
+  in a condition position, AND Lox treats every value as truthy, 0 and
+  negatives included (`free truthyness 2025`, 7_evaluating.md:177).  Two
+  facts is what makes it a good question.
+
+  The first draft of this replacement, chained assignment `a = b = c = 5`,
+  was worse on both counts.  It tests only the single fact that
+  assignment yields a value, so it is not really more than the 2025
+  version, and as an MC it collapses to the answer 15, which is
+  guessable with no understanding at all.  Dropped.
+
+  This question keeps the 2025 material, both facts, but asks which loop
+  terminates instead of asking for code.  All four traced:
+
+    `while (x = x - 1) print x;`      never stops.  The assignment
+        evaluates to x - 1, every integer is truthy, so the condition is
+        never false.  x walks down to negative infinity.
+
+    `while (x - 1) print x;`          never stops either.  x - 1 is 4 on
+        the first pass, then 3, 2, 1, 0, -1 ... and in Lox 0 is TRUTHY,
+        so passing through 0 does not stop it.  The trap for anyone
+        applying C or Python instincts, where 0 is falsey.
+
+    `while (x > 0) x = x - 1;`        terminates.  x > 0 is a real test
+        that eventually goes false.  The only option with no assignment
+        in the condition at all.
+
+    `while (x = 0) print x;`          never stops.  Assigns 0, evaluates
+        to 0, and 0 is truthy.  Same trap as option two, but tests
+        whether the student knows the assignment value is what the
+        condition sees.
+
+  Option two and option four are the pair that does the work.  A student
+  who has silently assumed 0 is falsey gets both wrong, and a student
+  who has not realised assignment produces a value at all tends to pick
+  option two, since it is the only remaining loop with no assignment in
+  the condition that looks like it might loop forever.
+
+  Note the options deliberately avoid `and` and `or`.  The week 10
+  grammar still has `logic_and -> ???` at 10_control_flow.md:45, so the
+  keyword question is open in the course.  Writing an option that
+  depends on short-circuit evaluation would sit badly against a
+  production that has not been decided.
+
+  TOOLING NOTE.  Code in a GIFT option is much fussier than it looks, and
+  I got this wrong twice before it built.  Three separate things bite,
+  all verified against the real tooling rather than reasoned about.
+
+  One: multi-line programs as GIFT options do not work at all.  The
+  escaper at tooling/v2.py:241 rewrites newlines inside backtick spans
+  into a literal backslash-n, so every line collapses into one
+  unreadable run.  Simulated through gift_to_tex:
+
+      \texttt{\textbackslash{}nvar\ x\ \textbackslash{}=\ 5;\textbackslash{}nwhile ...}
+
+  The options here are therefore single line each.  The RAT question
+  `which program` at 9_statements_part_two.md:98 uses multi-line
+  options and is presumably broken the same way; not fixed here.
+
+  Two: even single-line backticks do not render.  The same escaper turns
+  `=` into `\=`, which survives into the PDF as a literal backslash.  The
+  first working build printed `while (x \= x - 1) print x;` to the
+  student, backslash and all.  So no backticks in the options either.
+
+  Three: `\texttt{...}` is out, because its braces collide with the GIFT
+  answer split.  v2.py:247 does `re.split(r"(?<!\\){", item_data)` and
+  needs exactly one unescaped `{` for the answer block.  Four `\texttt{`
+  options means five unescaped braces and the build dies:
+
+      ValueError: too many values to unpack (expected 2)
+
+  What works is switching the font once with `\ttfamily` before the
+  answer block and back with `\rmfamily` after.  Neither takes an
+  argument, so neither costs a brace.  This is the same trick Q15 uses
+  for the same reason, and it is now the house style for GIFT questions
+  that need code.
+
+  Read back out of the built Exam.pdf, all four options survive as code
+  with no stray backslashes and no mangled braces.
 
 
 Q18. GIFT, 2 MARKS. Replaces "automarked environment".
+
+NB: I've decided to go with images for the MC options, they are in 9_imgs/2_right...
+
+NBB: all done in the source file, nothing for you to do now.
 
   Which of the following best describes the state of the `Environment`
   just before line 6 is evaluated?
@@ -592,15 +675,76 @@ be answerable from chapter 3 of the book. The first attempt at Q1 was a
 Java/Lox scoping comparison and was dropped for exactly this reason.
 
 
+Q24. GIFT, 1 MARK. New, no 2025 equivalent.
+
+  STATUS: WRITTEN.  In the bank as `short circuit side effect <gift>` in
+  the Exam venue of 10_control_flow.md, which until now was empty.  Week 10
+  had no Exam question at all, so this is the first one.
+
+  Question:
+    In this program, `boom` is a function which prints the word boom when
+    called.
+
+    `print false and boom();`
+
+    What does this program print?
+
+    Options:
+      = it prints false, and boom is never called
+      ~ it prints false, and boom is called first
+      ~ it prints boom and then false
+      ~ it throws a runtime error, because boom is never defined
+
+  Why this one.  It loads two facts at once.  The first is short-circuiting:
+  `and` does not evaluate its right operand when the left is falsey.  The
+  second, which is the one students actually get wrong, is that `and`
+  returns the *left* operand rather than a boolean, so the output is the
+  value `false` and not something like `nil`.  Both are stated in the book
+  at the-lox-language.md, and `and`/`or` is week 10's own material, so the
+  question is in the right week.
+
+  The last distractor is the one worth the mark.  Students who have only
+  seen undefined variables raise runtime errors tend to assume `boom` gets
+  called and then fails to resolve, rather than recognising it is never
+  reached at all.
+
+  RATIONALE NOTE.  This overlaps with the two RAT questions in this same
+  week (`short-circut` and `how to implement short-circut`), which ask what
+  short-circuiting is and where it is implemented.  I judged that
+  acceptable because those two ask for a definition and a location, while
+  this one requires tracing a program, so it tests application rather than
+  recall.  Deliberately did NOT use `or` with a truthy left operand, which
+  would have made "boom is never called" true for the same reason but read
+  as near-identical to the RAT wording.  Using `and` with a falsey left
+  operand keeps the correct option genuinely different from the others.
+
+  TOOLING.  Written as a plain single-line inline code span, not `\ttfamily`
+  and not a fenced block.  Both of the alternatives were tried and rejected:
+
+    - `\ttfamily` typesets correctly in the PDF but the literal LaTeX ends
+      up in the .gift file, which is the format we actually want.
+    - A single-line fenced block survives the escaper, but only because the
+      code contains no `=`.  `print 1 == 1 or boom();` comes out as
+      `print 1 \=\= 1 or boom();` in both outputs, because v2.py escapes `=`
+      to `\=` inside any backtick span.
+
+  The version in the bank avoids `=` entirely, so the escaper at v2.py has
+  nothing to rewrite and the code span passes through both formats intact.
+  Verified in the built PDF: `print false and boom();` with no stray
+  backslashes.
+
+  Week 10 builds clean, Exam venue is one page, zero LaTeX errors.
+
+
 NOT DONE YET
 ------------
-  * 5 of the 8 new questions are not written into the bank yet.  Q1, Q8
-    and Q15 are done, see above.
+  * 4 of the 9 new questions are not written into the bank yet.  Q1, Q8,
+    Q15, Q16 and Q24 are done, see above.
   * None of the 15 reuses have been moved into the Exam venue.
   * `alternatives to objects` has not been moved out of the SSE venue.
   * No combined exam PDF generated, so the paper has never been assembled
-    end to end.  The three written questions do build on their own: week 3,
-    week 5 and week 8 each typeset clean.
+    end to end.  The four written questions do build on their own: week 3,
+    week 5, week 8 and week 9 each typeset clean.
   * Q10 is still waiting on four images of derivations from you.  The
     grammar in the draft is fine and does derive the target string, but
     the current options are all wrong: they produce "Hi Bye Bob " and one

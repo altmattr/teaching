@@ -325,6 +325,25 @@ Match which variables are in l-value positions, which are in r-value positions a
   =c -> both
 }
 
+## automarked environment <gift>
+Which environment most accurately represents the state of the `Environment` _just before_ line 6 is evaluated?
+```
+  1> var count = 1;
+  2> fun bump(){
+  3>   var count = 10;
+  4>   {
+  5>     var msg = "hi";
+  6>     count = count + 1;
+  7>   }
+  8>   return count;
+  9> }
+```{
+    = <img width="50%" src="9_imgs/2_right.jpg"/>
+    ~ <img width="50%" src="9_imgs/2_wrong_one.jpg"/>
+    ~ <img width="50%" src="9_imgs/2_wrong_two.jpg"/>
+    ~ <img width="50%" src="9_imgs/2_wrong_three.jpg"/>
+}
+
 # Past Exams
 
 ## strange 2025 (in sse as well) <essay>

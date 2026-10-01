@@ -271,6 +271,19 @@ answer: |
     This one turned out quite a bit simpler than the for loop did, it is a very natural fit for syntactic sugar.
 
 # Exam
+
+## short circuit side effect <gift>
+In this program, `boom` is a function which prints the word boom when called.
+
+`print false and boom();`
+
+What does this program print?{
+  =it prints false, and boom is never called
+  ~it prints false, and boom is called first
+  ~it prints boom and then false
+  ~it throws a runtime error, because boom is never defined
+}
+
 # Past Exams
 
 ## Which new grammar b 2025 <gift>

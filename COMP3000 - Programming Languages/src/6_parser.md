@@ -520,6 +520,23 @@ prim -> "1" | "2" | "3" | "4" | "5" | "6" | "7"
     ~It is non-associative
 }
 
+## which derivation <gift>
+Which of the following is a derivation of the string `"Hi Bob Bye Bob "` according to this grammar
+```
+top -> greet;
+greet -> "Hi " greet
+      |  "Bye " greet
+      |  person
+      |  greet greet;
+person -> "Bob " | "Pete";
+```
+{
+    =<img src="6_imgs/2_right.jpeg"/>
+    ~<img src="6_imgs/2_wrong_one.jpeg"/>
+    ~<img src="6_imgs/2_wrong_two.jpeg"/>
+    ~<img src="6_imgs/2_wrong_three.jpeg"/>
+}
+
 # Past Exams
 
 ## definitions 2025 <gift>
