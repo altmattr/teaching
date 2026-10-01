@@ -157,6 +157,51 @@ answer: |
 
 # Exam
 
+## which needs lexical scoping <gift>
+
+Only one of the following programs would have an error if we had not
+  fixed the name resolution to account for lexical scopes.  Which one?{
+    ~```
+    var a = 5;
+    {
+        fun foo(a) {
+            return a + a;
+        }
+        print(foo(1));
+        var b = 2;
+        print(foo(3));
+    }```
+    ~```
+    var a = 5;
+    {
+        fun foo() {
+            return a + a;
+        }
+        print(foo());
+        var b = 2;
+        print(foo());
+    }```
+    ~```
+    var a = 5;
+    {
+        var a = 2;
+        fun foo() {
+            return a + a;
+        }
+        print(foo());
+    }```
+    =```
+    var a = 5;
+    {
+        fun foo() {
+            return a + a;
+        }
+        print(foo());
+        var a = 2;
+        print(foo());
+    }```
+  }
+
 # Past Exams
 
 ## which needs lexical scoping 2025 <gift>
