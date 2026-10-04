@@ -110,25 +110,42 @@ def main() -> None:
     if dropped:
         print(f"excluded {dropped} row(s) with zero total in marking.xlsx")
 
-    labels = list(CRITERIA) + ["total"]
-    rows = [corr_stats(merged[f"{c}_csv"], merged[f"{c}_xlsx"]) for c in labels]
+    criteria_labels = list(CRITERIA)
+    labels = criteria_labels + ["total"]
     outliers = find_outliers(merged, args.threshold)
+    crit_rows = [corr_stats(merged[f"{c}_csv"], merged[f"{c}_xlsx"]) for c in criteria_labels]
+    trimmed = merged[~merged["id"].isin(outliers["id"])]
+    total_row = corr_stats(trimmed["total_csv"], trimmed["total_xlsx"])
+    rows = crit_rows + [total_row]
 
     print_table(labels, rows)
     print_outliers(outliers, args.threshold)
 
+    total_full = merged[["id", "total_csv", "total_xlsx"]].dropna()
+    outlier_ids = set(outliers["id"])
+
     fig, axes = plt.subplots(2, 3, figsize=(15, 10))
     rng = np.random.default_rng(42)
     for ax, label, stats in zip(axes.flat, labels, rows):
-        x = stats["x"].to_numpy()
-        y = stats["y"].to_numpy()
-        x_jitter = x + rng.normal(0, 0.8, size=x.size)
-        ax.scatter(x_jitter, y, s=22, alpha=0.6, edgecolors="none", color="#1f77b4")
-        if stats["n"] >= 2:
-            m, b = np.polyfit(x, y, 1)
-            xs = np.linspace(x.min(), x.max(), 50)
-            ax.plot(xs, m * xs + b, color="crimson", lw=1.5)
+        ax.set_xlim(0, 105)
+        ax.set_ylim(0, 105)
+        ax.grid(alpha=0.3)
         if label == "total":
+            fit_x, fit_y = stats["x"].to_numpy(), stats["y"].to_numpy()
+            if stats["n"] >= 2:
+                m, b = np.polyfit(fit_x, fit_y, 1)
+                xs = np.linspace(0, 100, 50)
+                ax.plot(xs, m * xs + b, color="crimson", lw=1.5)
+            for _, row in total_full.iterrows():
+                jx = row["total_csv"] + rng.normal(0, 0.8)
+                ax.scatter(
+                    jx,
+                    row["total_xlsx"],
+                    s=22,
+                    alpha=0.6,
+                    edgecolors="none",
+                    color="#ff7f0e" if row["id"] in outlier_ids else "#1f77b4",
+                )
             for _, row in outliers.iterrows():
                 ax.annotate(
                     row["name"],
@@ -139,18 +156,52 @@ def main() -> None:
                     color="crimson",
                     ha="center",
                 )
+        else:
+            x = stats["x"].to_numpy()
+            y = stats["y"].to_numpy()
+            x_jitter = x + rng.normal(0, 0.8, size=x.size)
+            ax.scatter(x_jitter, y, s=22, alpha=0.6, edgecolors="none", color="#1f77b4")
+            if stats["n"] >= 2:
+                m, b = np.polyfit(x, y, 1)
+                xs = np.linspace(x.min(), x.max(), 50)
+                ax.plot(xs, m * xs + b, color="crimson", lw=1.5)
         ax.set_title(f"{label}  (r = {stats['pearson']:.2f}, rho = {stats['spearman']:.2f})")
         ax.set_xlabel("marks.csv")
         ax.set_ylabel("marking.xlsx")
-        ax.set_xlim(0, 105)
-        ax.set_ylim(0, 105)
-        ax.grid(alpha=0.3)
 
     fig.suptitle("Correlation between marks.csv and marking.xlsx", fontsize=16)
     fig.tight_layout(rect=(0, 0, 1, 0.97))
     out = args.folder / args.out
     fig.savefig(out, dpi=150)
     print(f"\nsaved: {out}")
+
+    dist_out = args.folder / pathlib.Path("grade_distributions.png")
+    figd, axd = plt.subplots(figsize=(10, 6))
+    bins = np.arange(0, 101, 5)
+    axd.hist(
+        total_full["total_csv"],
+        bins=bins,
+        alpha=0.5,
+        color="#1f77b4",
+        label="marks.csv",
+        edgecolor="white",
+    )
+    axd.hist(
+        total_full["total_xlsx"],
+        bins=bins,
+        alpha=0.5,
+        color="#ff7f0e",
+        label="marking.xlsx",
+        edgecolor="white",
+    )
+    axd.set_xlabel("total grade")
+    axd.set_ylabel("students")
+    axd.set_title("Distribution of total grades")
+    axd.legend()
+    axd.grid(alpha=0.3)
+    figd.tight_layout()
+    figd.savefig(dist_out, dpi=150)
+    print(f"saved: {dist_out}")
 
 
 def find_outliers(merged: pd.DataFrame, threshold: float) -> pd.DataFrame:

@@ -85,11 +85,11 @@ def main() -> None:
             continue
         names = [n for n, _ in res["groups"]]
         data = [g for _, g in res["groups"]]
-        bp = ax.boxplot(data, tick_labels=names, widths=0.5, patch_artist=True)
-        for i, (patch, name) in enumerate(zip(bp["boxes"], names), start=1):
-            grp = [g for n2, g in res["groups"] if n2 == name][0]
-            patch.set_facecolor("#1f77b4" if name == min(names) else "#ff7f0e")
-            ax.scatter([i], [grp.mean()], color="crimson", zorder=5, s=60, marker="D")
+        bp = ax.boxplot(data, tick_labels=names, widths=0.5, patch_artist=True, medianprops=dict(color="black"))
+        for i, g in enumerate(data, start=1):
+            patch = bp["boxes"][i - 1]
+            patch.set_facecolor("#1f77b4")
+            ax.scatter([i], [g.mean()], color="crimson", zorder=5, s=60, marker="D")
         ax.set_title(f"{var}  (F = {res['f']:.2f}, p = {res['p']:.3f})")
         ax.set_ylabel("mark")
         ax.grid(alpha=0.3, axis="y")
