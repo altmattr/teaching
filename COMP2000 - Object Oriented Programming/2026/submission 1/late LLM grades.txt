@@ -1,0 +1,18 @@
+LLM draft grades for the 14 late COMP2000 submissions
+Criteria order: version_control, program_design, generics_exceptions, uniqueness_creativity, log_book. Total = mean (1dp).
+Presented students get creativity = 100. No lateness penalty applies.
+
+45346186 Lachlan Clark       | 100, 100,  84, 100,  84 | 93.6 | public fork, 6 branches; detailed E-R design; solid generics; presented; 7-entry weekly logbook
+47862300 Tarun Raja          | 100, 100, 100, 100,  84 | 96.8 | fork, evolution branch + PR #1, 36% commits; state-machine/genetics design, custom checked exception; bounded generic Optional; 7 detailed log entries
+48200166 James Mcdermott     |  72,  84,  72,  84,   0 | 62.4 | repo, single branch, 100% own commits; entity-component/event architecture; generic Class-token method; logbook is a rant, no entries
+48412953 Denzell Muliana     |  60,  84,  72,  72,  60 | 69.6 | 2 commits (5.12%), no branches; full class/inheritance design; antiphon pheromone extras; 3 thin log entries
+48416916 Brinthikkan Surendran|  60,  60,  60,  72,  60 | 62.4 | repo reachable, little git detail; design file missing; minimal generics/exceptions; football-sim extras; 2 honest log entries
+48430382 Amy Calman          |  60,   0,   0, 100,  60 | 44.0 | presented so creativity 100; worksheet design/ge sections empty; 2 dated log pages
+48766380 Aarya Alhad Tamhane |   0,   0,   0,   0,  72 | 14.4 | no worksheet/design/repo; logbook PDF = 6 weeks genuine reflection
+48870153 Mason Newton        |  60,  84,  72,  72,  60 | 69.6 | repo, 3 commits on main; thorough design PDF (no reading ref); IllegalArgumentException catches; wolf-separation features; logbook admitted retrospective
+48925381 Seokmin Cho          |  84,  84,  72,  84,  72 | 79.2 | fork, feature-branch/PR workflow; custom Container<T> generic class; try/catch IndexOutOfBounds; breeding/sensory features; 6 log entries
+48943606 Huy Tran            | 100, 100, 100,  84,  84 | 93.6 | fork, 3 branches + PRs incl. custom-exception branch; state-pattern design; custom InvalidSettingsException; integrated vaccination feature; 7-week reflective logbook
+49120409 Toufique Rahman Tahsin| 72,  84,  72,  84,  72 | 76.8 | reachable fork, ~7% commits, no branches/PRs; ant-sim design; generics lists + IllegalArgumentExceptions; added Swing GUI; 5 log entries
+49136054 Zeyu Zheng          |  60,  84,  84,  72,  72 | 74.4 | worked on team main directly, no own fork; detailed design + reading ref; thorough file/line generics+exceptions tables; pheromone extras; filled weekly logbook
+49169513 Ryan Ouyang         |  72,  72,  72,  84,  84 | 76.8 | forked repo, single main; CardinalWind strategy design; custom InvalidGridPositionException; runtime wind-control features; 8-entry detailed logbook
+49170279 Prakul Girish       |  60,  84,  60,  72,  60 | 67.2 | repo reachable, ~no gitlog; solid particle-sim strategy design; basic generics, exceptions only Thread.sleep; repelling/strategy features; 4 dated log entries

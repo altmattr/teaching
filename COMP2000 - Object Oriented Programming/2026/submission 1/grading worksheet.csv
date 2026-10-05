@@ -1,0 +1,1782 @@
+﻿Identifier,Full name,ID number,Email address,Status,Grade,Maximum grade,Grade can be changed,Last modified (submission),Last modified (grade),Feedback comments
+Participant 9586321,Courtney Webber,42511860,courtney.webber@students.mq.edu.au,Submitted for grading - 1 day 5 hours late -  - ,71.0,100.00,Yes,"Monday, 14 September 2026, 5:21 PM","Monday, 14 September 2026, 5:21 PM","Consistent commits across the semester (23 commits over 3 weeks), meaningful commit messages, good collaborative workflow, the link isn't a fork of the team repo (95)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code, missing has-a relationships (e.g. the Board and what it holds) (95)
+
+Exceptions thrown and caught, though more explanation and justification is needed, exceptions named in the worksheet aren't in the code, the reasoning for not using them isn't convincing (65)
+
+Full marks for the Week 7 presentation (100)
+
+No log book submitted, please submit the log book as one file, Log book empty (0)"
+Participant 9586290,Anton Chistiakov,42670691,anton.chistiakov@students.mq.edu.au,Submitted for grading -  - ,89.0,100.00,Yes,"Saturday, 12 September 2026, 1:38 PM","Saturday, 12 September 2026, 1:38 PM","Consistent commits throughout semester, good commit messages, good use of branching and PRs (100)
+
+diagram should show connection to Main.java as well, good description of classes, good use of inheritance but could have more (90)
+
+generics need to be explicitly pointed to in 3.1, there are some good uses of generics in Pheromone and through the project but not all are identified, 3.2 should list every instance of exceptions including the custom class, which isn't explained here (75)
+
+creativity given in full for presentation (100)
+
+log books timely but could be more reflective rather than descriptive (80)"
+Participant 9586212,Ryan Destura,45202397,ryan.destura@students.mq.edu.au,Submitted for grading - 4 days 23 hours late -  - ,88.0,100.00,Yes,"Friday, 18 September 2026, 11:36 AM","Friday, 18 September 2026, 11:36 AM","Consistent commits across the semester (31 commits over 6 weeks), meaningful commit messages, no evidence of branching, PRs or other collaborative workflows (85)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, though with a few inconsistencies, some inheritance pairs missing from 2.2 (85)
+
+Typed collections used, and some exception handling and explained in the worksheet, use of both is fairly basic (70)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project, shows learning across the weeks, consistently insightful reflection (100)"
+Participant 9586223,Joo Min Yoon,45292450,joo-min.yoon@students.mq.edu.au,Submitted for grading -  - ,81.0,100.00,Yes,"Sunday, 13 September 2026, 2:11 AM","Sunday, 13 September 2026, 2:11 AM","Commits could be more consistent across the semester rather than concentrated on a few days, no evidence of branching, PRs or other collaborative workflows, the link isn't a fork of the team repo (65)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, though with a few inconsistencies (85)
+
+Generics usage observed but not clearly discussed and exceptions thrown and caught, the worksheet doesn't explain or justify their use (60)
+
+Exceptional creativity (100)
+
+Timely entries, reflections connect to the project, shows learning across the weeks (95)"
+Participant 9586296,Lachlan Clark,45346186,lachlan.clark2@students.mq.edu.au,Submitted for grading - 8 days 5 hours late -  - ,95.2,100.00,Yes,"Monday, 21 September 2026, 5:36 PM","Monday, 21 September 2026, 5:36 PM",
+Participant 9586304,Yu Rim (Christine) Chang,45709041,yu-rim.chang@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586236,Matthew Vassilieff,46351221,matthew.vassilieff@students.mq.edu.au,Submitted for grading - 6 hours 58 mins late -  - ,85.0,100.00,Yes,"Sunday, 13 September 2026, 6:43 PM","Sunday, 13 September 2026, 6:43 PM","Its ok to submit the team repository if you own it, commit messages good, commits consistent throughout semester, extensive use of branching and PR workflow (100)
+
+Diagram should have connections between classes that interact rather than just inheritance and interfaces, inhertiance list is missing JPanel and Exception inheritance, good design (75)
+
+No use of generics, should consider the rubric and use the simulation as a vessel for implementing the required functionality, one idea is to structure the forest to hold a type ? extending Tree, another idea is to use an ArrayList<> for the cell grid, good use of exceptions but would be good to see more try/catch to handle the throws (50)
+
+Creativity given in full for presentation (100)
+
+log book entries reflective and timely (100)"
+Participant 9586324,Alexandra Lowe,46465693,alexandra.lowe1@students.mq.edu.au,Submitted for grading -  - ,56.0,100.00,Yes,"Tuesday, 8 September 2026, 9:32 AM","Wednesday, 2 September 2026, 1:54 PM","Some useful commit and branch activity is demonstrated, though the individual contribution and workflow explanation are limited
+
+the main design ideas are identified, but no separate UML diagram was submitted and several relationships need further development
+
+exception-related code is discussed, though generics are not demonstrated clearly
+
+some individual project ideas are described, but evidence of their implementation is limited
+
+several weeks are recorded in the logbook, although coverage and reflection are uneven."
+Participant 9586218,Riley Mcalister,47089679,riley.mcalister@students.mq.edu.au,Submitted for grading - 1 day 5 hours late -  - ,77.0,100.00,Yes,"Monday, 14 September 2026, 5:32 PM","Sunday, 13 September 2026, 7:00 PM","Commits could be more consistent across the semester rather than concentrated on a few days, mostly meaningful commit messages, though some could be more descriptive, no evidence of branching, PRs or other collaborative workflows (75)
+
+Classes, fields and relationships identified, inheritance identified, diagram mostly matches the code, though with a few inconsistencies, no visibility notation, design file was empty, the diagram in your repository was marked (80)
+
+Own generic class used, and some exception handling and explained in the worksheet, use of both is fairly basic (70)
+
+Substantial improvements to in-class work (e.g. hunting, fleeing and breeding cooldowns) (80)
+
+Timely entries, reflections connect to the project (80)"
+Participant 9586276,Yeeun Baek,47082755,yeeun.baek@students.mq.edu.au,Submitted for grading - 12 hours 53 mins late -  - ,74.0,100.00,Yes,"Monday, 14 September 2026, 12:38 AM","Monday, 14 September 2026, 12:33 AM","The linked repository is a copy rather than a fork, no use of branching or PRs, somewhat consistent commits through the semester,  low percentage of commits (70)
+
+the program has errors (Bus.java L25 should use `getX()` not `getx()`), and the vehicles all move in the same direction, the design however is substantial and uses inheritance throughout, there is a mention of EntityStore, SimulationConfigurationException and TrafficLightController in the text and diagram which is not present in the code, inheritance description is missing JPanel and JComponent inheritance (70)
+
+some listed generics dont exist, particularly related to EntityStore, the listed exception handling doesn't exist, only exception handling is a simple throw in App.java (30)
+
+creativity given in full due to presentation (100)
+
+log book entries are timely and reflective (100)"
+Participant 9586247,Spencer Davis,47076003,spencer.davis@students.mq.edu.au,Submitted for grading -  - ,89.2,100.00,Yes,"Sunday, 13 September 2026, 10:22 AM","Sunday, 13 September 2026, 10:22 AM","Meaningful commits with strong branch, pull-request and integration evidence
+
+class responsibilities, relationships and encapsulation are explained clearly, with minor design inconsistencies
+
+generics and exception handling are identified and justified well
+
+the interactive pixel-physics features demonstrate substantial independent problem-solving
+
+thorough and reflective logbook entries connect weekly learning, project decisions and future improvements."
+Participant 9586251,James Shelton,47104163,james.shelton@students.mq.edu.au,Submitted for grading - 2 days 12 hours late -  - ,98.0,100.00,Yes,"Tuesday, 15 September 2026, 11:56 PM","Tuesday, 15 September 2026, 11:56 PM","Please submit worksheet as a markdown file next time
+
+Consistent commits across the semester, mostly good commit messages, some but minimal evidence of branching, no PRs, good description in worksheet (90)
+
+UML and description good, inheritance identified well, design is substantial (100)
+
+use of generics good and used throughout project, exceptions use is good and used throughout, with a custom exception (100)
+
+creativity given in full due to presentation (100)
+
+log book entries timely and reflective (100)"
+Participant 9586261,Kaifeng Fan,46971661,kaifeng.fan@students.mq.edu.au,Submitted for grading - 2 days 3 hours late -  - ,79.0,100.00,Yes,"Tuesday, 15 September 2026, 2:57 PM","Tuesday, 15 September 2026, 2:56 PM","The team repo was linked rather than your own fork, consistent commits across the semester (36 commits over 7 weeks), mostly meaningful commit messages, though some could be more descriptive, no evidence of branching, PRs or other collaborative workflows (80)
+
+Classes, fields and relationships identified, inheritance partly identified, diagram mostly matches the code, though with a few inconsistencies, some classes missing from the worksheet descriptions, some inheritance pairs missing from 2.2 (75)
+
+Typed collections used, and some exception handling, though more explanation and justification is needed, use of both is fairly basic (65)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial (75)"
+Participant 9586185,Aimaan Ahmad Tahsin,47077476,aimaan.ahmadtahsin@students.mq.edu.au,Submitted for grading - 2 days 10 hours late -  - ,86.4,100.00,Yes,"Tuesday, 15 September 2026, 10:27 PM","Tuesday, 15 September 2026, 10:27 PM","Identifiable feature contributions and an understood collaborative workflow are demonstrated, though the individual commit count is modest and separate branch or pull-request evidence is limited
+
+detailed class responsibilities, inheritance and relationships demonstrate strong design understanding
+
+generics and exception handling are integrated and justified well
+
+the flight-information display and visual features demonstrate substantial independent development
+
+the logbook contains useful weekly learning and project connections, with some descriptive sections."
+Participant 9586338,Rabi Attaii,47180129,rabi.attaii@students.mq.edu.au,Submitted for grading - 2 hours 36 mins late -  - ,80.0,100.00,Yes,"Sunday, 13 September 2026, 2:21 PM","Sunday, 13 September 2026, 2:21 PM","Consistent commits across the semester (5 commits over 2 weeks), mostly meaningful commit messages, though some could be more descriptive, no evidence of branching, PRs or other collaborative workflows (75)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code (95)
+
+Basic Generics usage observed but not clearly discussed and a single custom exception that is thrown and handled, nothing in the body of the catch and explained in the worksheet, use of both is fairly basic, avoid empty or catch-all catch blocks (75)
+
+Unexpected or advanced design features (90)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial (65)"
+Participant 9586412,Mae Haynes,47313234,maple.haynes@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586361,Omid Aakefi,47325631,omid.aakefi@students.mq.edu.au,Submitted for grading - 3 days 11 hours late -  - ,78.0,100.00,Yes,"Wednesday, 16 September 2026, 11:32 PM","Tuesday, 11 August 2026, 9:50 AM","Only one branch/PR used during the project, PR title is only the branch name instead of a meaningful PR title, commit messages good, would expect more commits but they are spread out during the semester, worksheet only has minimal description of version control (80)
+
+ Description does not include Entity, Pheromone, MovementStrategy and PheromoneFollowing but is present in the UML and code, description does not identify all inheritance relationships and does not describe what the different ants override or how the classes are different, the encapsulation comment in 2.4 is good but it is not identified as encapsulation in the text (70)
+
+Missing pheromones List in the description, use of generics is very basic ArrayLists, custom exception is good as is the throw and try/catch associated with it but it would be good to see more exception handling in the code, one example of using exception may be in ensuring ants do not move offscreen, overall fairly basic inclusion of generics and exceptions (60)
+
+creativity is given in full due to presentation in class, however it would be good to see more substantial improvements upon in-class work and advanced features (100)
+
+4/5 logbooks are timely, week 6 is missing, log books should have full sentences rather than dot points, the headings are useful however it would be good to see more reflective writing than reactive and descriptive, connection to project would be good to see in the logbook entries (80)"
+Participant 9586341,Krishay Kumar,47408081,krishay.kumar1@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,"Monday, 3 August 2026, 4:33 PM",
+Participant 9586399,Vitalii Lovchuk,47416963,vitalii.lovchuk1@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,"Monday, 27 July 2026, 3:30 PM",
+Participant 9586374,Addrita Nawal,47323566,addrita.nawal@students.mq.edu.au,Submitted for grading - 6 days 9 hours late -  - ,69.0,100.00,Yes,"Saturday, 19 September 2026, 8:54 PM","Tuesday, 28 July 2026, 11:39 AM","No Git contributions to the project, fork provided (60)
+
+Diagram and description good, inheritance list mostly okay but missing RuntimeException inheritance and could go into more depth, design extensive (85)
+
+A few points missed in generics but overall good, exceptions used well in the  code but are not described in much depth (75)
+
+Overall the project is creative, but the answers to this section do not talk much to the design features and there isnt much evidence of any personal contribution to any of the creative design components of the project (70)
+
+One week missing, some entries timely, could be more reflective (55)"
+Participant 9586248,Joshua Dedeigbo,47275049,joshua.dedeigbo1@students.mq.edu.au,Submitted for grading - 5 hours 57 mins late -  - ,76.0,100.00,Yes,"Sunday, 13 September 2026, 5:42 PM","Sunday, 13 September 2026, 5:42 PM","Very few commits (3), meaningful commit messages, some interaction with branches and pull requests (70)
+
+Classes, fields and relationships identified, inheritance identified, diagram mostly matches the code, though with a few inconsistencies, no visibility notation, some classes missing from the worksheet descriptions (70)
+
+Typed collections used, and exceptions thrown and caught, though more explanation and justification is needed, use of both is fairly basic (65)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial, some weeks missing (75)"
+Participant 9586322,Aditya Patel,47416807,aditya.patel1@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586265,Marc Tubella Goicoechea,47436115,marc.tubellagoicoechea@students.mq.edu.au,Submitted for grading -  - ,80.0,100.00,Yes,"Sunday, 13 September 2026, 11:01 AM","Sunday, 13 September 2026, 11:01 AM","Contributions show a few commits and some interaction with branches and pull requests, commits could do with more meaningful descriptions. Noted that independent research was a part of contribution
+
+Diagram matches, though a few inconsistencies and no visibility notation. Classes listed, inheritance identified with plans for the future
+
+Only covers individual contribution rather than whole project, but generics and exceptions well explained
+
+Full marks for week 7 presentation
+
+Some timely entries and odd formatting, more reflective rather than descriptive writing would be beneficial"
+Participant 9586350,Jia Yu Dong,47422092,jiayu.dong1@students.mq.edu.au,Submitted for grading -  - ,64.0,100.00,Yes,"Saturday, 12 September 2026, 11:20 PM","Saturday, 12 September 2026, 2:56 AM","The repository link could not be opened (it is private, deleted or incorrect), so commits could not be verified (25)
+
+Classes, fields and relationships identified, inheritance partly identified, diagram mostly matches the code, though with a few inconsistencies, no visibility notation, some classes missing from the worksheet descriptions (70)
+
+Typed collections used, and some exception handling, though more explanation and justification is needed, use of both is fairly basic, exceptions named in the worksheet aren't in the code (60)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial (65)"
+Participant 9586307,Brian Cheng,47357681,brian.cheng3@students.mq.edu.au,Submitted for grading - 2 days 23 hours late -  - ,81.0,100.00,Yes,"Wednesday, 16 September 2026, 11:43 AM","Wednesday, 16 September 2026, 11:43 AM","Commits could be more consistent across the semester rather than concentrated on a few days, meaningful commit messages, some interaction with branches and pull requests (80)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, though with a few inconsistencies, some classes missing from the worksheet descriptions (80)
+
+Bounded generics used well, and a custom exception that is thrown and handled and explained in the worksheet, well integrated into the design (80)
+
+Substantial improvements to in-class work (e.g. rendering window, panel and draw loop) (80)
+
+Timely entries, reflections connect to the project, some weeks missing (85)"
+Participant 9586192,Luis Tenorio,47438525,luis.tenorio@students.mq.edu.au,Submitted for grading -  - ,72.0,100.00,Yes,"Sunday, 13 September 2026, 4:46 AM","Sunday, 13 September 2026, 4:46 AM","Consistent commits across the semester (16 commits over 3 weeks), meaningful commit messages, evidence of branching but no PRs, the link isn't a fork of the team repo (75)
+
+Classes, fields and relationships identified, inheritance identified, diagram mostly matches the code, though with a few inconsistencies, some classes missing from the worksheet descriptions (75)
+
+Typed collections used, and no exceptions, exceptions questions left blank (45)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial, some weeks missing (65)"
+Participant 9586305,Brandon Chen,47183152,brandon.chen2@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586353,Daniel Zohar,47572221,daniel.zohar@students.mq.edu.au,Submitted for grading - 22 hours 55 mins late -  - ,91.0,100.00,Yes,"Monday, 14 September 2026, 10:40 AM","Monday, 14 September 2026, 10:40 AM","Commits could be more consistent across the semester rather than concentrated on a few days, meaningful commit messages, good use of branches and PRs, the link isn't a fork of the team repo (95)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code, some inheritance pairs missing from 2.2 (85)
+
+Bounded generics used well, and a custom exception that is thrown and handled and explained in the worksheet, thoughtful use, with choices justified, well integrated into the design (95)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project, some weeks missing (80)"
+Participant 9586214,Ather Nife Toha,47540672,athernife.toha@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586283,Emmanuel Love,47693223,emmanuel.love@students.mq.edu.au,Submitted for grading - 3 days 10 hours late -  - ,92.0,100.00,Yes,"Wednesday, 16 September 2026, 10:15 PM","Wednesday, 16 September 2026, 10:15 PM","Very few commits overall, good use of a PR and good title plus description, would be good to see branching and PR usage when collaborating with others, good use of updating fork with new changes from the original repo, however overall there is a lack of regular commits and collaborative workflows (70)
+
+UML and description are accurate, good use of inheritance in the project and good description, missing FlockPanel extending JPanel and Behaviour relationships, good demonstration of polymorphism and shows understanding (90)
+
+Good use of generics and exceptions and good explanation of these concepts (100)
+
+Full marks for creativity from presentation in class, program itself uses concepts learn in class to a good extent and the heirarchy design and Behaviours are good (100)
+
+all logbooks are timely and present, good reflections on the class activities and project (100)"
+Participant 9586197,Nguyen Phuc An Nong,47549939,nguyenphucan.nong@students.mq.edu.au,Submitted for grading - 3 days 12 hours late -  - ,70.0,100.00,Yes,"Wednesday, 16 September 2026, 11:49 PM","Wednesday, 16 September 2026, 11:49 PM","Consistent commits across the semester (7 commits over 2 weeks), commit messages don't describe the changes made, some interaction with branches and pull requests (75)
+
+No design diagram submitted, some classes missing from the worksheet descriptions (40)
+
+Typed collections used, and a custom exception that is thrown and handled, though more explanation and justification is needed, well integrated into the design (75)
+
+Full marks for the Week 7 presentation (100)
+
+Some timely entries, entries need more discussion, one week missing (60)"
+Participant 9586414,Chris Zhou,47777796,chris.zhou@students.mq.edu.au,Submitted for grading -  - ,77.0,100.00,Yes,"Saturday, 12 September 2026, 4:45 PM","Saturday, 12 September 2026, 4:45 PM","Would be good to have more consistent commits, commit messages are good, good use of PR however it would be good to see evidence of branching and PR workflow that has been completed, not just WIP (80)
+
+Descriptions and diagram match code, good identification of inheritance and polymorphism, would be good to see more complexity in the code design and heirarchy (80)
+
+The identified exceptions are not handled in the code beyond using logic, the expected usage is using try/catch, throwing exception, and making custom exceptions where necessary, there is therefore no exception handling in the code, good use of generics and well-identified (50)
+
+There is some functionality that goes beyond class work, but this is more in design and logic than toward advanced versions of inheritance, generics and exceptions, use of generics is good and goes into more complex aspects of the class work, overall it would be good to see more implemented in the project (75)
+
+log book entries are timely and present with good reflection (100)"
+Participant 9586275,Jordan Hiscox,47870265,jordan.hiscox@students.mq.edu.au,Submitted for grading -  - ,89.0,100.00,Yes,"Wednesday, 9 September 2026, 6:10 PM","Wednesday, 9 September 2026, 6:10 PM","Consistent commits across the semester (16 commits over 3 weeks), meaningful commit messages, good use of PRs, an exemplary history with a full branch, PR and review workflow (100)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code, a complete and precise diagram (100)
+
+Generics usage observed but not clearly discussed and a custom exception that is thrown and handled, though more explanation and justification is needed, the reasoning for not using them isn't convincing (65)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project (80)"
+Participant 9586340,Billy Chen,47879076,billy.chen@students.mq.edu.au,Submitted for grading - 4 days 12 hours late -  - ,83.0,100.00,Yes,"Thursday, 17 September 2026, 11:51 PM","Thursday, 17 September 2026, 11:51 PM","Commits could be more consistent across the semester rather than concentrated on a few days, meaningful commit messages, no evidence of branching, PRs or other collaborative workflows (75)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, though with a few inconsistencies (85)
+
+Typed collections used, and some exception handling, though more explanation and justification is needed, use of both is fairly basic (65)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project, shows learning across the weeks (90)"
+Participant 9586189,Mena Nabeh,47881380,mena.nabeh1@students.mq.edu.au,Submitted for grading - 2 days 22 hours late -  - ,81.0,100.00,Yes,"Wednesday, 16 September 2026, 10:44 AM","Wednesday, 16 September 2026, 10:44 AM","Commits have meaningful comments with discrete changes, no branching or PRs used and issues with not using collaborative version control noted, good explanation of Git usage (80)
+
+UML is good and matches the code and description in the worksheet, would be good to mention entity in the worksheet section on inheritance, polymorphism example with ants is a good identification of how polymorphism can create cleaner code, more examples of polymorphism in the code would be good
+
+Accurately identifies generics and exceptions in the code, however the use of both is basic (65)
+
+the assignment does not appear to have a substantial addition from in-class work and inclusion of elements of the course lacks depth (75)
+
+all logbook entries are timely and have good headings with reflections and connections to the project (100)"
+Participant 9586356,Reina Salmon,47614277,reina.salmon1@students.mq.edu.au,Submitted for grading -  - ,95.0,100.00,Yes,"Saturday, 12 September 2026, 4:15 PM","Saturday, 12 September 2026, 4:15 PM","Commits are consistent across the semester, lack of PRs or branches, it's a good idea to get in the habit of committing often for version control and keeping that separate on a branch to avoid main branch conflicts while developing, commit messages mostly good, repo is provided as a copy rather than a fork (75)
+
+design description and diagram good, inheritance appropriately identified, design is substantial (100)
+
+Good use of generics and exceptions throughout the program (100)
+
+Creativity given in full from presentation (100)
+
+log book entries are timely and reflective (100)"
+Participant 9586359,Spenser Guo,47785721,de.guo@students.mq.edu.au,Submitted for grading - 6 days 4 hours late -  - ,21.0,100.00,Yes,"Saturday, 19 September 2026, 4:04 PM","Saturday, 19 September 2026, 4:04 PM","No URL provided, no evidence of contributions
+
+Diagram has some inaccuracies and lacks detail, no worksheet listing and describing classes
+
+No worksheet identifying generics and exceptions
+
+No worksheet explaining uniqueness and creativity
+
+Some timely entries, some good discussion, though would benefit from more reflective writing and connecting class activities to project"
+Participant 9586231,Gabriel Steel,47719532,gabriel.steel@students.mq.edu.au,Submitted for grading - 3 days 12 hours late -  - ,98.0,100.00,Yes,"Wednesday, 16 September 2026, 11:46 PM","Wednesday, 16 September 2026, 11:32 PM","Consistent commits, good commit messages, good use of PRs and branching, one consideration is to have a teammate review your PR (100)
+
+description in worksheet is true to the code and shows an understanding of the concepts, it would be good to see relationships between classes that go beyond the inheritance heirarchy (eg 'has a' relationships) (90)
+
+Explanation and use of generics and exceptions very good (100)
+
+logbooks all timely and contain reflections and learning (100)"
+Participant 9586289,Anthony Khatchigian,47393203,anthony.khatchigian1@students.mq.edu.au,Submitted for grading - 3 days 7 hours late -  - ,72.0,100.00,Yes,"Wednesday, 16 September 2026, 7:26 PM","Wednesday, 16 September 2026, 7:18 PM","Very few commits (5), meaningful commit messages, no evidence of branching, PRs or other collaborative workflows, the link isn't a fork of the team repo, the contribution estimate is higher than the commit history shows (65)
+
+Classes, fields and relationships identified, inheritance partly identified, diagram mostly matches the code, though with a few inconsistencies, some classes missing from the worksheet descriptions (70)
+
+Typed collections used, and some exception handling, though more explanation and justification is needed, use of both is fairly basic (60)
+
+Some modifications to in-class work (e.g. start menu and AppConstants) (70)
+
+Timely entries, reflections connect to the project, shows learning across the weeks (95)"
+Participant 9586239,Aidan Winter,47596686,aidan.winter@students.mq.edu.au,Submitted for grading - 3 days 13 hours late -  - ,64.0,100.00,Yes,"Thursday, 17 September 2026, 1:13 AM","Thursday, 17 September 2026, 1:13 AM","Very few commits (6), mostly meaningful commit messages, though some could be more descriptive, no evidence of branching, PRs or other collaborative workflows (60)
+
+Classes, fields and relationships identified, inheritance identified, diagram mostly matches the code, though with a few inconsistencies, missing has-a relationships (e.g. Order, Transaction, MarketPanel left out) (70)
+
+Own generic class used, and a custom exception that is thrown and handled and explained in the worksheet, invalid states are handled with if statements rather than exceptions (80)
+
+Some modifications to in-class work (e.g. self-designed stock market simulation) (70)
+
+Some entries present, several weeks missing, entries need more discussion (40)"
+Participant 9586405,Vladimir Balygin,47862505,vladimir.balygin1@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586318,Amelia Winn,47911018,amelia.winn@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586272,Callum Sonter,47862106,callum.sonter@students.mq.edu.au,Submitted for grading -  - ,81.0,100.00,Yes,"Sunday, 13 September 2026, 10:35 AM","Sunday, 13 September 2026, 10:35 AM","The team repo was linked rather than your own fork, commits could be more consistent across the semester rather than concentrated on a few days, mostly consider more meaningful commit messages (more descriptive), PRs or other collaborative workflows (50)
+
+Classes, fields and relationships identified, inheritance identified, diagram mostly matches the code, though with a few inconsistencies (80)
+
+Generics usage observed but not clearly discussedand some exception handling and explained in the worksheet, some good considerations and integration into the design, would be good to explain where you chose not to use them (80)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project (85)"
+Participant 9586386,Akual Malith,47912251,akual.malith@students.mq.edu.au,Submitted for grading -  - ,56.0,100.00,Yes,"Sunday, 13 September 2026, 5:16 AM","Sunday, 13 September 2026, 5:16 AM","Very few commits (5), mostly meaningful commit messages, though some could be more descriptive, no evidence of branching, PRs or other collaborative workflows (60)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, though with a few inconsistencies (85)
+
+Typed collections used, and some exception handling and explained in the worksheet, use of both is fairly basic (60)
+
+Some modifications to in-class work (e.g. Newtonian gravity with softening) (75)
+
+No log book submitted (0)"
+Participant 9586345,Corbin Phillips,47933224,corbin.phillips@students.mq.edu.au,Submitted for grading - 4 days 8 hours late -  - ,58.0,100.00,Yes,"Thursday, 17 September 2026, 7:51 PM","Thursday, 17 September 2026, 7:51 PM","Commits not consistent across semester, very few commits, no use of branching or PRs (65)
+
+Design diagram has food instead of grass, and is missing the connections to Simulation and SimPanel, class descriptions good, inheritance missing SimPanel/JPanel inheritance, overall the project design is very basic and it would be good to see a more complex design utilising heirarchy (65)
+
+Use of generics throughout project good, but the list is missing some unique generics usage in Creature, no exception handling listed (40)
+
+there are minimal creative and unique aspects in the code, would be good to see some complex design features that go beyond class work or look at advanced concepts learnt in class (70)
+
+some log books missing, some timely (50)"
+Participant 9586417,Muhammad Inayat,47965452,muhammad.inayat1@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586302,Md Aynul Islam Rabbi Miah,47646837,mdaynulislam.rabbimiah@students.mq.edu.au,Submitted for grading - 6 days 8 hours late -  - ,44.0,100.00,Yes,"Saturday, 19 September 2026, 8:11 PM","Saturday, 19 September 2026, 8:11 PM","Very few commits (3), meaningful commit messages, no evidence of branching, PRs or other collaborative workflows (60)
+
+Classes, fields and relationships identified, inheritance partly identified, diagram mostly matches the code, though with a few inconsistencies, some classes missing from the worksheet descriptions (70)
+
+Some use of generics, and no exceptions, exceptions named in the worksheet aren't in the code (40)
+
+Little beyond in-class work (50)
+
+No log book submitted (0)"
+Participant 9586198,Tarun Raja,47862300,tarun.raja@students.mq.edu.au,Submitted for grading - 8 days 9 hours late -  - ,96.8,100.00,Yes,"Monday, 21 September 2026, 9:39 PM","Monday, 21 September 2026, 9:39 PM",
+Participant 9586355,Nicholas Fang,47409711,nicholas.fang1@students.mq.edu.au,Submitted for grading - 3 days 2 hours late -  - ,88.0,100.00,Yes,"Wednesday, 16 September 2026, 2:37 PM","Tuesday, 15 September 2026, 12:18 PM","Some consistency with commits across the semester, use of branching, would be good to see the use of PRs and teammate reviewing, more frequent commits rather than large commits would be good to see, commit messages could be more descriptive (75)
+
+Diagram and description good, substantial design, inheritance appropriately identified and implemented (100)
+
+Generics and exceptions used and explained well (100)
+
+Creativity of the project overall is good, and Zombie class is substantial, however lacking advanced design features (85)
+
+log book entries complete and some are timely (80)"
+Participant 9586398,Leon Prince,47980044,leon.prince@students.mq.edu.au,Submitted for grading - 3 days 4 hours late -  - ,79.0,100.00,Yes,"Wednesday, 16 September 2026, 4:35 PM","Wednesday, 16 September 2026, 4:35 PM","The team repo was linked rather than your own fork, very few commits (3), no evidence of branching, PRs or other collaborative workflows (65)
+
+Classes, fields and relationships identified, inheritance partly identified, diagram mostly matches the code, though with a few inconsistencies (75)
+
+Bounded generics used well, and a custom exception that is thrown and handled and explained in the worksheet, well integrated into the design (80)
+
+Some modifications to in-class work (e.g. gravity physics with scaled constant) (75)
+
+Timely entries, reflections connect to the project, shows learning across the weeks, consistently insightful reflection (100)"
+Participant 9586362,Chakris Eungpongpan,48110930,chakris.eungpongpan@students.mq.edu.au,Submitted for grading - 6 days 23 hours late -  - ,61.6,100.00,Yes,"Sunday, 20 September 2026, 11:40 AM","Sunday, 20 September 2026, 11:39 AM","Basic version-control activity is demonstrated, though the individual contribution and workflow explanation are limited
+
+the UML communicates the main structure, but the written design analysis is incomplete
+
+relevant generic and exception concepts are present, though their use and justification need further explanation
+
+some project modifications are evident, but an individual creative extension is not demonstrated clearly
+
+regular signed logbook entries are present, although several are brief or incomplete."
+Participant 9586177,Le Chi Chau,47949910,lechi.chau@students.mq.edu.au,Submitted for grading - 3 days 5 hours late -  - ,77.0,100.00,Yes,"Wednesday, 16 September 2026, 5:38 PM","Wednesday, 16 September 2026, 5:38 PM","Commits are not consistent across the semester, commit messages good, no branching or PR workflow (65)
+
+Main should be connected in the diagram to other classes with a 'has a ' relationship, class descriptions good, inheritance misses JPanel and Exception inheritance (80)
+
+Good use of generics and exceptions, but would be good to see more exception handling in the code (90)
+
+The program is creative and is not a simulation type I have seen yet, the Grid<T extends Entity> is a good use of design concepts (100)
+
+Two weeks missing from log book, not timely (50)"
+Participant 9586378,Anum Anum Taliya,48351741,anum.anumtaliya@students.mq.edu.au,Submitted for grading - 3 days 12 hours late -  - ,69.0,100.00,Yes,"Wednesday, 16 September 2026, 11:54 PM","Wednesday, 16 September 2026, 11:54 PM","Commits could be more consistent across the semester rather than concentrated on a few days, meaningful commit messages, some interaction with branches and pull requests, a branch was linked/submitted rather than your fork (75)
+
+Classes, fields and relationships identified, inheritance partly identified, diagram and descriptions match the code (75)
+
+Typed collections used, and a custom exception that is thrown and handled, though more explanation and justification is needed, use of both is fairly basic (70)
+
+Some modifications to in-class work (e.g. safe zone enforcement, reproduction) (70)
+
+Some timely entries, entries need more discussion, some weeks missing (55)"
+Participant 9586270,Cammilus John Baptist,48322288,cammilus.johnbaptist@students.mq.edu.au,Submitted for grading - 15 hours 25 mins late -  - ,84.0,100.00,Yes,"Monday, 14 September 2026, 3:10 AM","Monday, 14 September 2026, 3:10 AM","Use of branching, one PR, PR title should be descriptive, commits could be more consistent (90)
+
+Diagram and description good, inheritance missing exceptions, design is substantial (90)
+
+Generics and exceptions used well, description does miss some aspects such as the HashMaps (85)
+
+The design is creative and multiple unique design decisions are explained in the text (100)
+
+One week missing, some entries timely, could be more reflective (55)"
+Participant 9586238,James Mcdermott,48200166,james.mcdermott1@students.mq.edu.au,Submitted for grading - 7 days 8 hours late -  - ,64.4,100.00,Yes,"Sunday, 20 September 2026, 8:20 PM","Sunday, 20 September 2026, 8:20 PM",
+Participant 9586319,Elliott Weatherill,48287865,elliott.weatherill@students.mq.edu.au,Submitted for grading -  - ,71.0,100.00,Yes,"Saturday, 12 September 2026, 5:02 PM","Saturday, 12 September 2026, 4:24 AM","The repository link could not be opened (it is private, deleted or incorrect), so commits could not be verified (25)
+
+Classes, fields and relationships identified, inheritance identified, diagram and descriptions match the code (80)
+
+Bounded generics used well, and a custom exception that is thrown and handled, though more explanation and justification is needed, well integrated into the design (80)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial, one week missing (70)"
+Participant 9586263,Samip Khadka,48452165,samip.khadka@students.mq.edu.au,Submitted for grading - 3 days 12 hours late -  - ,80.0,100.00,Yes,"Wednesday, 16 September 2026, 11:50 PM","Wednesday, 16 September 2026, 11:50 PM","Commits could be more consistent across the semester rather than concentrated on a few days, meaningful commit messages, no evidence of branching, PRs or other collaborative workflows, the link isn't a fork of the team repo (70)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code, no visibility notation (85)
+
+Typed collections used, and some exception handling and explained in the worksheet, use of both is fairly basic (65)
+
+Substantial improvements to in-class work (e.g. sprite loading and random plant spawning) (85)
+
+Timely entries, reflections connect to the project, shows learning across the weeks (95)"
+Participant 9586330,Oscar Halliday,48523933,oscar.halliday@students.mq.edu.au,Submitted for grading - 3 days 6 hours late -  - ,86.0,100.00,Yes,"Wednesday, 16 September 2026, 6:04 PM","Wednesday, 16 September 2026, 6:04 PM","Please submit worksheet as a markdown file
+
+commits somewhat consistent,  good commit messages, good use of branching and PR, particularly good use of many smaller commits in PR #1 (100)
+
+Diagram has food instead of grass and is missing Simulation and SimPanel classes, class descriptions good, inheritance list missing JPanel/SimPanel, overall the project could have a more complex design with more classes and heirarchy (65)
+
+Good use of generics, some exceptions included, would be good to have more exception usage and perhaps a custom exception (85)
+
+Overall, the project is fairly simple and it would be good to see something more complex, the two mentioned functions are a good example of unique design choices (80)
+
+log book entries are complete, timely and reflective (100)"
+Participant 9586395,Hala Rawshdeh,48499935,hala.rawshdeh@students.mq.edu.au,Submitted for grading - 1 hour 3 mins late -  - ,87.0,100.00,Yes,"Sunday, 13 September 2026, 12:48 PM","Saturday, 5 September 2026, 2:05 PM","The team repo was linked rather than your own fork, consistent commits across the semester (7 commits over 3 weeks), meaningful commit messages, some interaction with branches and pull requests (85)
+
+Classes, fields and relationships identified, inheritance identified, diagram mostly matches the code, though with a few inconsistencies, no visibility notation, some inheritance pairs missing from 2.2 (80)
+
+Own generic class used, and a custom exception that is thrown and handled and explained in the worksheet, well integrated into the design (80)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project, shows learning across the weeks (90)"
+Participant 9586250,Angus Palmer,48429341,angus.palmer@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586312,Adrian Xian,48512087,adrian.xian@students.mq.edu.au,Submitted for grading - 5 days 14 hours late -  - ,58.0,100.00,Yes,"Saturday, 19 September 2026, 2:02 AM","Saturday, 19 September 2026, 2:02 AM","Commits are not consistent, not many commits, commit messages could be more descriptive, no evidence of branching or PRs (65)
+
+Class list missing some classes eg Team, no diagram provided, some inheritance missing from list, no answer for 2.4 (25)
+
+Generics listed but no description, only one example of try/catch provided (50)
+
+Creativity given in full for presentation (100)
+
+log book entries are timly but lack reflection and content (50)"
+Participant 9586204,Benjamin Gan,48418528,benjamin.gan@students.mq.edu.au,Submitted for grading -  - ,77.0,100.00,Yes,"Saturday, 12 September 2026, 7:23 PM","Saturday, 12 September 2026, 7:23 PM","Can only find one commit, no branching or PRs, commit message is not descriptive (65)
+
+Diagram and descriptions good but some errors in what the classes do, there is a substantial amount of inheritance missing from the list such as Intersection, LightState, JPanel, exceptions (65)
+
+Use of generics and exceptions good but missing a lot of information particularly for exceptions (70)
+
+Creativity given in full for presentation (100)
+
+Log book entries are timely and present but could be more reflective across the weeks (85)"
+Participant 9586370,Joshua Martin,48504009,joshua.martin5@students.mq.edu.au,Submitted for grading - 2 days 11 hours late -  - ,85.0,100.00,Yes,"Tuesday, 15 September 2026, 11:03 PM","Tuesday, 15 September 2026, 11:03 PM","Version control: P (70). Next step: Commit regularly across the submission period rather than in one burst. Program design: HD (90). Next step: Make the diagram complete and precise, with visibility, multiplicities and every relationship. Generics and exceptions: HD (90). Next step: Go beyond the course: design your own generic types or an exception hierarchy that does real work. Uniqueness and creativity: HD+ (100). Log book: CR (75). Next step: Connect each activity to your project in your reflections."
+Participant 9586217,William Aung,48432806,william.aung@students.mq.edu.au,Submitted for grading - 12 hours 37 mins late -  - ,79.0,100.00,Yes,"Monday, 14 September 2026, 12:22 AM","Monday, 14 September 2026, 12:22 AM","Commits could be more consistent across the semester rather than concentrated on a few days, good use of PRs (65)
+
+Classes, fields and relationships identified, inheritance identified well, diagram is very well done and descriptions match the code, a complete and precise diagram (100)
+
+Custom generics not observed throughout the code, and a custom exception that is thrown and handled but design could be improved, though more explanation and justification is needed, avoid empty or catch-all catch blocks (65)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial (65)"
+Participant 9586284,Adam Komadina,48525014,adam.komadina@students.mq.edu.au,Submitted for grading - 5 days 23 hours late -  - ,72.0,100.00,Yes,"Saturday, 19 September 2026, 11:33 AM","Saturday, 19 September 2026, 11:33 AM","Very few commits (1), meaningful commit messages, no evidence of branching, PRs or other collaborative workflows, smaller commits, one per change, would be better than a few large ones (65)
+
+Classes, fields and relationships identified, inheritance partly identified, diagram mostly matches the code, though with a few inconsistencies, no visibility notation, missing has-a relationships (e.g. Simulation class not shown) (75)
+
+Own generic class used, and some exception handling, though more explanation and justification is needed, use of both is fairly basic (65)
+
+Some modifications to in-class work (e.g. first working AWT prototype) (70)
+
+Timely entries, reflections connect to the project, one week missing (85)"
+Participant 9586229,Hiang Loong Tan,48499536,hiangloong.tan@students.mq.edu.au,Submitted for grading -  - ,74.2,100.00,Yes,"Sunday, 13 September 2026, 9:32 AM","Wednesday, 9 September 2026, 7:18 PM","A plausible contribution history and workflow are described, though branches and pull requests could not be verified because the individual repository was inaccessible
+
+the main class responsibilities and relationships are explained with generally sound understanding
+
+the generic tester and exception paths are identified appropriately, with some gaps in depth
+
+the side-gravity feature demonstrates useful independent development
+
+the logbook covers the relevant learning areas, although several entries are more descriptive than reflective."
+Participant 9586415,Ashton Johansen,48526940,ashton.johansen@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586269,Ryan Mckee,48429619,ryan.mckee@students.mq.edu.au,Submitted for grading - 2 days 16 hours late -  - ,82.0,100.00,Yes,"Wednesday, 16 September 2026, 4:02 AM","Wednesday, 16 September 2026, 4:02 AM","Commits could be more consistent across the semester, commit messages ok, some evidence of branching, no PRs, if the main team repo is your own repo you can submit the team link and mention that you own it in the worksheet rather than making a copy (80)
+
+Good class and inheritance description however the diagram doesn't include all classes (70)
+
+Generics use and description is good, would be good to see more exception handling in other files (80)
+
+Creativity given in full for presentation (100)
+
+log book entries timely but are not reflective (75)"
+Participant 9586326,Joel Andrews,48412821,joel.andrews@students.mq.edu.au,Submitted for grading - 11 hours 28 mins late -  - ,89.0,100.00,Yes,"Sunday, 13 September 2026, 11:13 PM","Sunday, 13 September 2026, 11:13 PM","Consistent commits across the semester (32 commits over 4 weeks), meaningful commit messages, good use of branches and PRs, an exemplary history with a full branch, PR and review workflow (100)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code, composition could be appropriately diagrammed (90)
+
+Stated custom generics but not observed, and exceptions thrown and caught and explained in the worksheet, well integrated into the design, would be good to explain where you chose not to use them (80)
+
+Exceptional creativity (100)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial, entries need more discussion (75)"
+Participant 9586406,Aayush Yadav,48468827,aayush.yadav@students.mq.edu.au,Submitted for grading -  - ,84.0,100.00,Yes,"Sunday, 13 September 2026, 10:40 AM","Sunday, 13 September 2026, 10:40 AM","Consistent commits across the semester (10 commits over 2 weeks), mostly meaningful commit messages, though some could be more descriptive, good use of PRs (75)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code, a complete and precise diagram (100)
+
+Some use of generics, and no exceptions, the worksheet doesn't explain or justify their use (60)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project (85)"
+Participant 9586274,Neev Patel,48521558,neev.patel@students.mq.edu.au,Submitted for grading - 1 day 12 hours late -  - ,100.0,100.00,Yes,"Tuesday, 15 September 2026, 12:00 AM","Friday, 11 September 2026, 11:56 AM","Please submit worksheet as a markdown file
+
+Good use of PRs and branches, good commit messages (100)
+
+Design description and diagram good, design substantial, inheritance appropriately identified (100)
+
+Good use of generics and exceptions (100)
+
+creativity given in full from presentation (100)
+
+log book entries are timely and reflective (100)"
+Participant 9586183,Denzell Muliana,48412953,denzell.muliana@students.mq.edu.au,Submitted for grading -  - ,74.4,100.00,Yes,"Monday, 7 September 2026, 12:14 AM","Monday, 7 September 2026, 12:14 AM",
+Participant 9586344,Nathaniel Malek,47404329,nathaniel.malek1@students.mq.edu.au,Submitted for grading - 3 days late -  - ,84.0,100.00,Yes,"Wednesday, 16 September 2026, 12:41 PM","Wednesday, 16 September 2026, 12:41 PM","Commits not consistent across semester, copy rather than a fork provided, commit messages good, use of PRs, no branching (75)
+
+Diagram and descriptions good, inheritance is missing VerticalPitch/JPanel and Exception inheritance (85)
+
+Generics use and descriptions are good, exceptions good with custom exception class (100)
+
+The simulation is interesting and creative, there are some interested implementations, but the worksheet answers should talk more about design choices and implementation (85)
+
+A couple of log book entries missing, log book entries are not reflective and more descriptive (75)"
+Participant 9586220,Brinthikkan Surendran,48416916,brinthikkan.surendran@students.mq.edu.au,Submitted for grading - 7 days 12 hours late -  - ,53.0,100.00,Yes,"Sunday, 20 September 2026, 11:52 PM","Sunday, 20 September 2026, 11:52 PM",
+Participant 9586349,Imrul Ahsan Fahim,48389536,imrulahsan.fahim@students.mq.edu.au,Submitted for grading - 2 days 19 hours late -  - ,65.0,100.00,Yes,"Wednesday, 16 September 2026, 7:44 AM","Wednesday, 16 September 2026, 7:43 AM","Commits could be more consistent across semester, good use of commit messages, no evidence of branching, PRs, or other collaborative workflows (65)
+
+Diagram matches code, descriptions of classes, encapsulation and inheritance good, however the inheritance is extremely basic and would be good to see a more complex implementation using concepts learnt in class (75)
+
+Use of generics and exceptions is only basic and sparse (60)
+
+the program's implementation only uses basic concepts learnt in class and no advanced features, much of what is present could have been done in class (65)
+
+log book entries are not timely but does show overall reflection on the course so far (60)"
+Participant 9586194,Oliver Becchio,48425265,oliver.becchio@students.mq.edu.au,Submitted for grading - 3 days 1 hour late -  - ,76.0,100.00,Yes,"Wednesday, 16 September 2026, 1:15 PM","Wednesday, 16 September 2026, 1:15 PM","Consistent commits across the semester (13 commits over 3 weeks), meaningful commit messages, some interaction with branches and pull requests, the link isn't a fork of the team repo (75)
+
+Classes, fields and relationships identified, inheritance partly identified, diagram mostly matches the code, though with a few inconsistencies, some inheritance pairs missing from 2.2 (70)
+
+Typed collections used, and no exceptions, exceptions named in the worksheet aren't in the code (45)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project, shows learning across the weeks (90)"
+Participant 9586308,Tallen Britten,48272000,tallen.britten@students.mq.edu.au,Submitted for grading - 4 days 8 hours late -  - ,77.0,100.00,Yes,"Thursday, 17 September 2026, 8:17 PM","Thursday, 17 September 2026, 8:17 PM","Commits could be more consistent, commit message good, use of one branch and some merging, no PRs (90)
+
+Diagram has food instead of grass, Simiulation and SimPanel not present in diagram, inheritance list missing SimPanel/JPanel, overall the design could be more complex (65)
+
+Use of generics good, missing some eg line 114 in Creature, use of exceptions good, but could have used more, and would be good to see the use of a custom exception (75)
+
+For creativity, we are looking more for design choices and implementation aligning with the course rather than the graphics aspect, overall the project is fairly simple and would be good to see more creativity and uniquness (70)
+
+log books present and reflective, some are timely (85)"
+Participant 9586369,Jacob Caldwell,48555983,jacob.caldwell@students.mq.edu.au,Submitted for grading - 23 hours late -  - ,68.0,100.00,Yes,"Monday, 14 September 2026, 10:45 AM","Monday, 14 September 2026, 10:45 AM","Consistent commits across the semester (4 commits over 1 weeks), commit messages don't describe the changes made, good use of PRs (60)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code (95)
+
+A custom exception that is thrown and handled, well explained in the worksheet, decent integrated into the design, don't use ""Again, most of it is in my work"" as these questions are designed to demonstrate your understanding of your work, avoid empty or catch-all catch blocks (85)
+
+Exceptional creativity (100)
+
+No log book submitted (0)"
+Participant 9586282,Amy Calman,48430382,amy.calman@students.mq.edu.au,Submitted for grading - 10 days 11 hours late -  - ,45.2,100.00,Yes,"Wednesday, 23 September 2026, 11:29 PM","Wednesday, 23 September 2026, 11:29 PM",
+Participant 9586221,Matthew Drohan,48500836,matthew.drohan@students.mq.edu.au,Submitted for grading - 2 days 8 hours late -  - ,88.0,100.00,Yes,"Tuesday, 15 September 2026, 7:51 PM","Tuesday, 15 September 2026, 7:51 PM","Consistent commits across the semester, good commit messages, minimal evidence for branches and PRs (90)
+
+design description and diagram good, design is substantial, missing custom exception in class list, missing JFrame/JComponent and Exception inheritance in description (80)
+
+use of generics and exceptions is good in the code, but the worksheet only has minimal explanation of both (70)
+
+creativity given in full for presentation (100)
+
+log book entries timely and reflective (100)"
+Participant 9586383,August Hsu,48499625,august.hsu@students.mq.edu.au,Submitted for grading -  - ,83.0,100.00,Yes,"Thursday, 10 September 2026, 5:47 PM","Thursday, 10 September 2026, 5:47 PM","Consistent commits across the semester (28 commits over 5 weeks), meaningful commit messages, good collaborative workflow, an exemplary history with a full branch, a branch was linked/submitted rather than your fork (100)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code (90)
+
+ generics misidentified, and basic some exception handling, more explanation and justification is needed, no reasoning for using provided (55)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial (70)"
+Participant 9586280,Joseph Howe Lumbria,48524719,joseph.lumbria@students.mq.edu.au,Submitted for grading - 3 days 9 hours late -  - ,92.0,100.00,Yes,"Wednesday, 16 September 2026, 9:17 PM","Wednesday, 16 September 2026, 9:17 PM","Consistent commits, some evidence of branching, no PRs, description of some collaborative workflow, would be good to keep the fork up to date (90)
+
+Missing Behaviour relationships, JPanel/FlockPanel relationship, the snippit would be better including the declaration of ax/ay as the snippit as it is doesn't show that ax/ay can't be modified outside of the class, UML good (80)
+
+Missing Predator's use of generics, code overall has good use of generics and exceptions (90)
+
+logbooks are timely and with reflections (100)"
+Participant 9586245,Angus (Gus) Manley,48418188,angus.manley@students.mq.edu.au,Submitted for grading - 5 days 5 hours late -  - ,83.0,100.00,Yes,"Friday, 18 September 2026, 5:23 PM","Friday, 18 September 2026, 5:23 PM","Good use of collaborative git workflows including PRs and reviewing other teammate's PRs, lack of consistency across the semester (95)
+
+program design does lack enough inheritance, UML diagram good, descriptions all good and match code (80)
+
+good amount of exception usage including custom exceptions, generics used throughout the project (100)
+
+creativity given in full from in class presentation (100)
+
+Week 1 log book missing, no log books timely, log books would benefit from more reflective writing and linking to the project (40)"
+Participant 9586181,Luke Whitehead,48523976,luke.whitehead@students.mq.edu.au,Submitted for grading -  - ,68.2,100.00,Yes,"Saturday, 12 September 2026, 6:28 PM","Saturday, 12 September 2026, 6:28 PM","The submitted history demonstrates familiarity with the shared development process, though no individual commits, branches or pull requests are demonstrated
+
+the main classes and relationships are explained with generally sound design understanding
+
+generics and the custom simulation-time exception are identified accurately
+
+relevant project features are discussed, but evidence of an independently developed extension is limited
+
+the logbook records learning across part of the required period, although entries are brief and coverage is incomplete."
+Participant 9586351,Efe Celik,48579262,efe.celik@students.mq.edu.au,Submitted for grading -  - ,83.0,100.00,Yes,"Sunday, 13 September 2026, 2:40 AM","Sunday, 13 September 2026, 2:40 AM","Commits could be more consistent across the semester, no evidence of branching, PRs or other collaborative workflows, the link isn't a fork of the team repo, smaller commits, one per change, would be better than a few large ones (70)
+
+Classes, fields and relationships identified, inheritance identified well, the diagram doesn't match the submitted code (80)
+
+Generics usage observed but not clearly discussedand exceptions thrown and caught and explained in the worksheet, well integrated into the design, would be good to explain where you chose not to use them, avoid empty or catch-all catch blocks (80)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project (85)"
+Participant 9586298,Riya Chauhan,48453404,riya.chauhan1@students.mq.edu.au,Submitted for grading -  - ,72.0,100.00,Yes,"Sunday, 13 September 2026, 4:01 AM","Sunday, 13 September 2026, 4:01 AM","Commits could be more consistent across the semester rather than concentrated on a few days, meaningful commit messages, no evidence of branching, PRs or other collaborative workflows (75)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code, no visibility notation (85)
+
+Own generic class used, and some exception handling and explained in the worksheet, use of both is fairly basic (65)
+
+Some modifications to in-class work (e.g. pathfinding, hunger, lettuce growth) (75)
+
+Some timely entries, entries need more discussion, some weeks missing (60)"
+Participant 9586375,Minying Wu,48516589,minying.wu@students.mq.edu.au,Submitted for grading -  - ,93.2,100.00,Yes,"Sunday, 13 September 2026, 11:21 AM","Sunday, 13 September 2026, 11:21 AM","Extensive and meaningful commits provide strong contribution evidence, though development remained on the main branch without pull-request review
+
+comprehensive class responsibilities, relationships and design decisions are explained exceptionally well
+
+custom bounded generics and multiple exception paths are integrated and justified thoughtfully
+
+the scheduled-event system, service model and interface features demonstrate advanced independent development
+
+thorough and insightful logbook entries connect weekly learning, design evolution and future improvements."
+Participant 9586288,Amrit Magudapathi,48517259,amrit.magudapathi@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586334,Farah Abbas,48560049,farah.abbas@students.mq.edu.au,Submitted for grading -  - ,68.0,100.00,Yes,"Saturday, 12 September 2026, 9:32 PM","Saturday, 12 September 2026, 9:32 PM","Provided a link to branch instead of a fork, a few commits, use of PR, not a lot of detail in worksheet
+
+Diagram has some inaccuracies and lacks detail, classes and inheritance listed and explained
+
+Generic and exceptions listed, could benefit from more explanation and justification
+
+Some good problem-solving discussed in worksheet for uniqueness
+
+Some timely entries, some connection to project, full sentences rather than dot points would be better in future, a few weeks missing"
+Participant 9586234,Jon Walls,48582182,oli.walls@students.mq.edu.au,Submitted for grading - 1 day 9 hours late -  - ,83.0,100.00,Yes,"Monday, 14 September 2026, 9:28 PM","Monday, 14 September 2026, 9:28 PM","Please submit worksheet as a markdown file
+
+The repo appears to be a copy rather than a fork, lack of branching or PRs, mostly good commit messages, recommended to investigate using branching-PR-review-merge process to reduce issues with conflicts (75)
+
+design, diagram and description all good, design is substantial, however inheritance description misses custom exception and graphical components (80)
+
+Good use and description of generics and exceptions throoughout the project (100)
+
+Full marks for creativity for presentation (100)
+
+log books reflective and complete but not timely (60)"
+Participant 9586295,Fahmida Samiha,48007544,fahmida.samiha@students.mq.edu.au,Submitted for grading - 1 day 12 hours late -  - ,83.0,100.00,Yes,"Tuesday, 15 September 2026, 12:23 AM","Tuesday, 15 September 2026, 12:23 AM","Commits not consistent across the semester, use of PRs, no branching, good commit message (80)
+
+There are a few classes not listed, Jungle Oak etc are not included in the inheritance list, the simulation does not seem to do anything when ran, diagram good but main and forest panel should be connected where applicable (70)
+
+One one instance of generics use, some exceptions usage including the custom exception are not identified in the worksheet, some good use of exceptions (65)
+
+creativity given in full for presentation (100)
+
+log books reflective and timely (100)"
+Participant 9586249,Helin (Jenson) Xu,48471046,helin.xu@students.mq.edu.au,Submitted for grading -  - ,88.0,100.00,Yes,"Saturday, 12 September 2026, 9:12 PM","Saturday, 12 September 2026, 9:12 PM","Minimal collaborative workflow, no evidence of PRs or branching, only a small % of commits on the repository, commits could be more consistent, commit messages good (70)
+
+class descriptions could be longer, claim that theres no inheritance heirarchy but CellState does represent such a heirarchy, would be better to have more examples of inheritance in the code, UML good (70)
+
+generics identified through some of the code, exceptions identified, good use of custom exceptions (100)
+
+creativity given in full due to class representation (100)
+
+most log books timely and reflective (100)"
+Participant 9586257,Hai Ha Nguyen,48542202,haiha.nguyen@students.mq.edu.au,Submitted for grading - 2 days 10 hours late -  - ,95.0,100.00,Yes,"Tuesday, 15 September 2026, 10:18 PM","Tuesday, 15 September 2026, 10:18 PM","Consistent commits across the semester (15 commits over 3 weeks), meaningful commit messages, good use of branches and PRs, commits could do with more descriptive messages (95)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code (95)
+
+Generics usage observed but not clearly discussedand exceptions thrown and caught and explained in the worksheet, well integrated into the design, would be good to explain where you chose not to use them (85)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project, shows learning across the weeks, consistently insightful reflection (100)"
+Participant 9586294,Shahriar Hasan,48711454,shahriar.hasan@students.mq.edu.au,Submitted for grading - 2 days 7 hours late -  - ,95.0,100.00,Yes,"Tuesday, 15 September 2026, 6:49 PM","Tuesday, 15 September 2026, 6:49 PM","Consistent use of commits, mostly good commit messages, strong evidence of branching and PRs (100)
+
+ Good description and diagram, good design, accurate inheritance descriptions (100)
+
+Good use of generics and exceptions, however many instances in the code are not mentioned in the worksheet (90)
+
+creativity given in full for presentation (100)
+
+log books timely and complete, but lacking some reflection (85)"
+Participant 9586358,Zahin Rafid,48692255,mohammad.rafid@students.mq.edu.au,Submitted for grading - 3 days 11 hours late -  - ,96.6,100.00,Yes,"Wednesday, 16 September 2026, 11:28 PM","Wednesday, 16 September 2026, 11:28 PM","Consistent and meaningful milestone commits with excellent feature-branch and pull-request use
+
+comprehensive UML evidence, class responsibilities and architectural relationships are explained exceptionally well
+
+bounded generics, reusable abstractions and domain exceptions are integrated and justified thoughtfully
+
+the ecosystem, genetics, spatial-grid and live-interface features demonstrate advanced independent development
+
+extensive and highly reflective logbook entries connect learning, design decisions and future improvements, though the recorded student ID is inconsistent with the submission."
+Participant 9586346,Sameer Chaudhary,48782971,sameer.chaudhary@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586187,Ayaan Ali Khan,48737224,ayaanali.khan@students.mq.edu.au,Submitted for grading - 3 days 4 hours late -  - ,85.0,100.00,Yes,"Wednesday, 16 September 2026, 4:28 PM","Wednesday, 16 September 2026, 4:28 PM","Meaningful contribution, though commits would benefit from more description. Using of branches and PRs
+
+Mostly accurate diagram, though missing a few things. Classes listed and inheritance explained very well
+
+Generics listed and one exception explained, would benefit from more complexity and description
+
+Full marks for week 7 presentation
+
+Mostly timely and consistent entries, full sentences rather than dot points would be better in future. Please submit as one file next time"
+Participant 9586337,Jubril Olaboopo,47161965,jubril.olaboopo@students.mq.edu.au,Submitted for grading - 2 days 13 hours late -  - ,85.0,100.00,Yes,"Wednesday, 16 September 2026, 1:22 AM","Wednesday, 16 September 2026, 1:22 AM","Commits not very consistent, commit messages could be more descriptive, no branching or PRs (65)
+
+Diagram and description good, good identification of inheritance, very complex design (100)
+
+Extensive use of generics and exceptions (100)
+
+The project is very creative and uses a lot of advanced features for this point in the course (100)
+
+log book entries are good but not timely (60)"
+Participant 9586357,Arunima Paul Shrestha,48660736,arunimapaul.shrestha@students.mq.edu.au,Submitted for grading -  - ,86.0,100.00,Yes,"Sunday, 13 September 2026, 11:22 AM","Sunday, 13 September 2026, 11:22 AM","Consistent commits across the semester (21 commits over 3 weeks), meaningful commit messages, good collaborative workflow (90)
+
+Classes, fields and relationships identified, inheritance identified well, the diagram doesn't match the submitted code (80)
+
+Some use of generics, and a custom exception and explained in the worksheet, use of both is fairly basic (75)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project (85)"
+Participant 9586342,Clarence Tan,48798177,clarence.tan@students.mq.edu.au,Submitted for grading - 7 hours 24 mins late -  - ,77.0,100.00,Yes,"Sunday, 13 September 2026, 7:09 PM","Sunday, 13 September 2026, 7:09 PM","Git contribution is small and commits are not consistent across the semester, minimal evidence of branching and no PRs, lack overall of collaborative workflow in your contributions (65)
+
+good descriptions of classes, good heirarchy design, good diagram, would be good to see a connection with Board ('has a'), good identification of inheritance (95)
+
+as described, use of generics across the program but lacks any exceptions, would be good to see more complex use of generics (50)
+
+Overall, there seems to be some additions to the in class work, however the complexity of additions in relation to class topics is limited (75)
+
+log books are mostly timely and have good reflections (100)"
+Participant 9586297,Michael Sexton,48798428,michael.sexton@students.mq.edu.au,Submitted for grading - 15 hours 13 mins late -  - ,66.0,100.00,Yes,"Monday, 14 September 2026, 2:58 AM","Monday, 14 September 2026, 2:58 AM","Commits could be more consistent across the semester rather than concentrated on a few days, commit messages don't describe the changes made, some interaction with branches and pull requests (75)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, though with a few inconsistencies (85)
+
+Generics and exceptions not used in the simulation (0)
+
+Some modifications to in-class work (e.g. map, terrain and goal system) (70)
+
+Timely entries, reflections connect to the project, shows learning across the weeks, consistently insightful reflection (100)"
+Participant 9586200,Florencia Pandiana,48213039,florencia.pandiana@students.mq.edu.au,Submitted for grading - 2 days 10 hours late -  - ,96.0,100.00,Yes,"Tuesday, 15 September 2026, 10:19 PM","Monday, 14 September 2026, 2:14 PM","Consistent commits across the semester (47 commits over 5 weeks), meaningful commit messages, good collaborative workflow, the link isn't a fork of the team repo (95)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code, a complete and precise diagram (100)
+
+Generics usage observed but not clearly discussedand exceptions thrown and caught, but if statements used instead of try-catch in a number of areas and explained in the worksheet, well integrated into the design, would be good to explain where you chose not to use them (85)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project, shows learning across the weeks, consistently insightful reflection (100)"
+Participant 9586191,Julia Anderson,48879770,julia.anderson@students.mq.edu.au,Submitted for grading - 3 days 11 hours late -  - ,88.0,100.00,Yes,"Wednesday, 16 September 2026, 10:53 PM","Wednesday, 16 September 2026, 10:53 PM","Regular commits and a few uses of branches, PRs and merges. Commits and naming convention are meaningful, though could benefit from having some descriptions
+
+Diagram matches, though a few inconsistencies and no visibility notation. Classes listed, inheritance identified
+
+Generic and exceptions listed well with some explanation given
+
+Full marks for week 7 presentation
+
+Timely entries, though more reflective rather than descriptive writing would be beneficial, missing week 7"
+Participant 9586408,Callum Holley,48815861,callum.holley1@students.mq.edu.au,Submitted for grading -  - ,44.0,100.00,Yes,"Saturday, 12 September 2026, 11:19 PM","Saturday, 12 September 2026, 10:45 PM","No repo link provided, assuming main team repo in order to mark remaining rubric items (0)
+
+Diagram good, class description incomplete, inhertiance missing a lot of examples in the code, minimal answer for 2.3 and no answer for 2.4 (30)
+
+Some incorrect explanations in generics, missing a lot of instances of generics use, exceptions descriptions dont exist in some cases and incorrect in others, missing a lot of exception instances (30)
+
+ Creativity given in full for presentation (100)
+
+Log books present but not timely (60)"
+Participant 9586392,Bing (Annita) Liang,48825085,bing.liang2@students.mq.edu.au,Submitted for grading - 51 mins 10 secs late -  - ,73.0,100.00,Yes,"Sunday, 13 September 2026, 12:36 PM","Sunday, 13 September 2026, 12:36 PM","Lack of consistency across the semester (commits only across two days), commit messages could be more descriptive, no PR/branch workflow (65)
+
+Diagram and descriptions match code, inheritance is missing the JPanel inheritance, design could be more complex (80)
+
+Generics use is basic and could be added more throughout the code, good use of custom exception but exceptions could be used more throughout the program (75)
+
+While the program and design features are simple, the use of a lambda is unique (85)
+
+log books reflective and complete, but not timely, (60)"
+Participant 9586291,Aarya Alhad Tamhane,48766380,aaryaalhad.tamhane@students.mq.edu.au,Submitted for grading - 5 hours 6 mins late -  - ,14.0,100.00,Yes,"Sunday, 13 September 2026, 4:51 PM","Sunday, 13 September 2026, 4:51 PM","No worksheet was submitted, so version control could not be assessed (0)
+
+No worksheet was submitted, so program design could not be assessed (0)
+
+No worksheet was submitted, so generics and exceptions could not be assessed (0)
+
+No worksheet was submitted, so uniqueness and creativity could not be assessed (0)
+
+A logbook was submitted, but without a worksheet the submission receives zero overall (0)"
+Participant 9586293,Cedric Lin,49054732,cedric.lin@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586292,Ervin Bandong,49081845,ervin.bandong@students.mq.edu.au,Submitted for grading - 3 hours 44 mins late -  - ,88.0,100.00,Yes,"Sunday, 13 September 2026, 3:29 PM","Sunday, 13 September 2026, 3:29 PM","Consistent commits across the semester (21 commits over 5 weeks), mostly meaningful commit messages, good collaborative workflow, commits could do with more descriptive messages, the link isn't a fork of the team repo (95)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, though with a few inconsistencies (85)
+
+Exceptions thrown and caught listed and explained in the worksheet, use of both is fairly basic, avoid empty catch blocks (75)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project (85)"
+Participant 9586242,Alexander Vissarion,49052829,alexander.vissarion@students.mq.edu.au,Submitted for grading - 2 days 17 hours late -  - ,81.0,100.00,Yes,"Wednesday, 16 September 2026, 5:12 AM","Wednesday, 16 September 2026, 3:57 AM","Consistent commits across the semester (15 commits over 4 weeks), meaningful commit messages, some interaction with branches and pull requests, smaller commits, one per change, would be better than a few large ones (85)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code (90)
+
+Generics usage observed but not clearly discussed and exceptions thrown and caught, though more explanation and justification is needed, invalid states are handled with if statements rather than exceptions (65)
+
+Full marks for the Week 7 presentation (100)
+
+Some timely entries, more reflective rather than descriptive writing would be beneficial (65)"
+Participant 9586184,Manh Duy (David) Nguyen,48571695,manhduy.nguyen@students.mq.edu.au,Submitted for grading -  - ,98.0,100.00,Yes,"Sunday, 13 September 2026, 11:17 AM","Sunday, 13 September 2026, 5:30 AM","Consistent commits across the semester (19 commits over 3 weeks), meaningful commit messages, good use of PRs, the link isn't a fork of the team repo, smaller commits, one per change, would be better than a few large ones (95)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code, a complete and precise diagram (100)
+
+Generics usage observed but not clearly discussedand exceptions thrown and caught and explained in the worksheet, well integrated into the design, thoughtful use, with choices justified, goes beyond the course (100)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project, shows learning across the weeks (95)"
+Participant 9586325,Kevin Zhou,49064509,kevin.zhou@students.mq.edu.au,Submitted for grading - 3 days 11 hours late -  - ,74.0,100.00,Yes,"Wednesday, 16 September 2026, 11:29 PM","Wednesday, 16 September 2026, 11:29 PM","Consistent commits across the semester (18 commits over 2 weeks), meaningful commit messages, good collaborative workflow, the link isn't a fork of the team repo (90)
+
+Classes, fields and relationships identified, inheritance identified, diagram mostly matches the code, though with a few inconsistencies (75)
+
+Custom exception that is thrown and handled and explained in the worksheet, use of both is fairly basic (70)
+
+The logbook is minimal and does not adequatly meet the criteria provided in the rubric. Timely entries, more reflective rather than descriptive writing would be beneficial (60)"
+Participant 9586233,Ahmed Trad,48955035,ahmed.trad@students.mq.edu.au,Submitted for grading - 2 days 7 hours late -  - ,88.0,100.00,Yes,"Tuesday, 15 September 2026, 7:39 PM","Tuesday, 15 September 2026, 7:39 PM","Consistent commits across the semester (16 commits over 5 weeks), meaningful commit messages, evidence of branching but no PRs (85)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, though with a few inconsistencies, some inheritance pairs missing from 2.2 (85)
+
+Typed collections used, and some exception handling and explained in the worksheet, use of both is fairly basic (70)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project, shows learning across the weeks, consistently insightful reflection (100)"
+Participant 9586331,Alexander Batchelor,48952133,alexander.batchelor@students.mq.edu.au,Submitted for grading - 8 hours 6 mins late -  - ,12.0,100.00,Yes,"Sunday, 13 September 2026, 7:51 PM","Sunday, 13 September 2026, 7:51 PM","No code was available to mark: the repository link could not be opened (it is private, deleted or incorrect) and no code was included in the submission. A working graphical simulation is the minimum requirement for this assessment, so every item except the log book scores 0. Timely entries, more reflective rather than descriptive writing would be beneficial (60)"
+Participant 9586314,Tran Khoi Nguyen (Kian) Nguyen,48769266,trankhoinguyen.nguyen@students.mq.edu.au,Submitted for grading - 2 days 9 hours late -  - ,100.0,100.00,Yes,"Tuesday, 15 September 2026, 9:36 PM","Tuesday, 15 September 2026, 9:36 PM","Very good use of collaborative Git, nice work (100)
+
+Good diagram and description, good design, correct identification of inheritance (100)
+
+Good use of generics and exceptions throughout the program (100)
+
+Creativity given in full for presentation (100)
+
+Log book entries are timely and reflective (100)"
+Participant 9586363,Kiel Mendoza De Jesus,49046020,kiel.dejesus@students.mq.edu.au,Submitted for grading -  - ,84.0,100.00,Yes,"Saturday, 12 September 2026, 10:50 PM","Saturday, 12 September 2026, 10:50 PM","Consistent commits across the semester (37 commits over 3 weeks), meaningful commit messages, good collaborative workflow, commits could do with more descriptive messages (95)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, though with a few inconsistencies (85)
+
+Generics are not clearly defined in the program design, some exception handling, though more explanation and justification is needed, use of exceptions could be more thoughfully developed (65)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial (75)"
+Participant 9586391,Harman Singh Harman Singh,48618217,harmansingh.harmansingh1@students.mq.edu.au,Submitted for grading -  - ,66.0,100.00,Yes,"Sunday, 13 September 2026, 12:01 AM","Sunday, 13 September 2026, 12:01 AM","Consistent commits across the semester (9 commits over 2 weeks), commit messages don't describe the changes made (e.g. ""Prototype_HS""), no evidence of branching, PRs or other collaborative workflows, commits could do with more descriptive messages, the link isn't a fork of the team repo (70)
+
+Classes, fields and relationships identified, inheritance partly identified (75)
+
+Generics and exceptions while noted, are not referenced throughout the workbook submission, and therefore usage could not be identified(0)
+
+Full marks for the Week 7 presentation (100)"
+Participant 9586377,Utkarsh Ratti,49009877,utkarsh.ratti@students.mq.edu.au,Submitted for grading - 6 days 7 hours late -  - ,61.0,100.00,Yes,"Saturday, 19 September 2026, 7:21 PM","Saturday, 19 September 2026, 7:21 PM","Very few commits (3), meaningful commit messages, no evidence of branching, PRs or other collaborative workflows, the contribution estimate is higher than the commit history shows (60)
+
+Classes, fields and relationships identified, inheritance partly identified, the diagram doesn't match the submitted code (65)
+
+Own generic class used, and a custom exception that is thrown and handled, though more explanation and justification is needed, well integrated into the design (75)
+
+Little beyond in-class work (50)
+
+Some timely entries, entries need more discussion (55)"
+Participant 9586403,Afia Hossain,48925233,afia.hossain@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586328,Farhan Nur Alam,49014102,farhannur.alam@students.mq.edu.au,Submitted for grading -  - ,73.0,100.00,Yes,"Wednesday, 9 September 2026, 11:44 PM","Wednesday, 9 September 2026, 11:44 PM","Commits commited on one day rather than consistently across the semester, no branching or PR workflow, mostly good commit messages (65)
+
+Diagram and description good, inhertiance identification good, program could be more complex with more heirarchy and inheritance (85)
+
+Generics use and identification good however it would be good to see more examples throughout the code rather than simple examples in one class, good use of exceptions and a custom exception (70)
+
+the program overall is very simple and the simulation does not show much, the treatment of most design concepts is simple, although the custom exception is a good example of uniqueness (75)
+
+log books complete and reflective however only one is timely (70)"
+Participant 9586336,MUHAMMAD FAZAL MUHAMMAD FAZAL,48730726,muhammadfazal.muhammadfazal@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586364,Aanya Chaudhary,48490768,aanya.chaudhary@students.mq.edu.au,Submitted for grading - 39 mins 53 secs late -  - ,90.0,100.00,Yes,"Sunday, 13 September 2026, 12:24 PM","Sunday, 13 September 2026, 12:24 PM","Meaningful commits and naming convention, some interaction with branches and pull requests
+
+Diagram matches, though no visibility notation. Classes listed with good detail, inheritance identified. Though there are some small inconsistencies
+
+Generic and exceptions listed well with some explanation given
+
+Full marks for week 7 presentation
+
+Timely, well-written and thoughtful entries with reflections and connections to project, missing week 7 but was shown to TA, full marks awarded"
+Participant 9586206,Viveka Karthigai Raja,48490911,viveka.karthigairaja@students.mq.edu.au,Submitted for grading - 3 days 11 hours late -  - ,83.0,100.00,Yes,"Wednesday, 16 September 2026, 10:59 PM","Wednesday, 16 September 2026, 8:18 PM","Meaningful commits and contributions, but could benefit from using descriptions. Some use of branches and PRs
+
+Mostly accurate diagram, though missing a few things. Classes listed and inheritance explained well
+
+Generics and exceptions listed and explained, however lacks complexity
+
+Good discussion on implementing a “boss wave” system, simple but shows thoughtfulness about design
+
+Well-structured logbook with project connections and reflections. Decrease in marks only for lack of timeliness"
+Participant 9586354,Miguel Genciana,48900982,miguel.genciana@students.mq.edu.au,Submitted for grading - 1 day 23 hours late -  - ,85.0,100.00,Yes,"Tuesday, 15 September 2026, 11:37 AM","Tuesday, 15 September 2026, 11:37 AM","Consistent commits across the semester (23 commits over 4 weeks), meaningful commit messages, good use of PRs, an exemplary history with a full branch, PR and review workflow, commits could do with more descriptive messages (100)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code (90)
+
+Generics usage observed but not clearly discussed and exceptions thrown and caught, though more explanation and justification is needed, use of both is basic and would benefit from more complexity (65)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial (75)"
+Participant 9586310,Rehaan Sajid Bhajikhada,48950548,rehaansajid.bhajikhada@students.mq.edu.au,Submitted for grading - 2 days 16 hours late -  - ,85.0,100.00,Yes,"Wednesday, 16 September 2026, 3:51 AM","Wednesday, 16 September 2026, 3:51 AM","Consistent commits across the semester (12 commits over 2 weeks), meaningful commit messages, some interaction with branches and pull requests, commits could do with more descriptive messages, the link isn't a fork of the team repo (80)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, though with a few inconsistencies (80)
+
+Generics usage observed but not clearly discussedand exceptions thrown and caught and explained in the worksheet, well integrated into the design, would be good to explain where you chose not to use them, avoid empty or catch-all catch blocks (80)
+
+Exceptional creativity (100)
+
+Timely entries, reflections connect to the project (85)"
+Participant 9586188,Daniel Harvey,48523968,daniel.harvey1@students.mq.edu.au,Submitted for grading - 3 days 12 hours late -  - ,70.0,100.00,Yes,"Wednesday, 16 September 2026, 11:57 PM","Wednesday, 16 September 2026, 11:57 PM","A substantial project history and reasonable contribution are supported by the submitted evidence, though no individual branch or pull-request use is demonstrated
+
+the UML and worksheet explain the main classes, inheritance and encapsulation well
+
+generics and exception handling are identified and justified with appropriate examples
+
+relevant project development is evident, but an individual creative extension is not demonstrated clearly
+
+some weekly logbook activity is present, although several sections are incomplete and reflection is limited."
+Participant 9586190,Bianca Fung,49159097,bianca.fung@students.mq.edu.au,Submitted for grading -  - ,76.0,100.00,Yes,"Sunday, 13 September 2026, 11:43 AM","Sunday, 13 September 2026, 11:43 AM","Link doesn’t seem to be a fork of repo, consistent commits, though could be improved with more description, a few uses of branches and PRs
+
+Diagram has some inaccuracies and lacks detail, additional hierarchy provided, classes listed and inheritance explained well
+
+Generic and exceptions listed, could benefit from more explanation and justification
+
+Some good but simple ideas discussed for uniqueness
+
+Timely entries, though more reflective rather than descriptive writing and connecting class activities to project would be beneficial, missing week 7"
+Participant 9586207,Prakul Girish,49170279,prakul.girish@students.mq.edu.au,Submitted for grading - 3 days 10 hours late -  - ,68.2,100.00,Yes,"Wednesday, 16 September 2026, 9:55 PM","Wednesday, 16 September 2026, 9:55 PM",
+Participant 9586273,Asad Malik,49073117,asad.malik@students.mq.edu.au,Submitted for grading - 10 mins 42 secs late -  - ,85.0,100.00,Yes,"Sunday, 13 September 2026, 11:55 AM","Sunday, 13 September 2026, 11:55 AM","Consistent commits across the semester (9 commits over 4 weeks), meaningful commit messages, good use of branches and PRs (90)
+
+Classes, fields and relationships identified, inheritance partly identified, no visibility notation, missing has-a relationships (e.g. the Board and what it holds) (75)
+
+Generics usage observed but not clearly discussedand exception class created and documented and explained in the worksheet, use of both is fairly basic, avoid empty or catch-all catch blocks (75)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project (85)"
+Participant 9586256,Danielle Wrigley,49062751,danielle.wrigley@students.mq.edu.au,Submitted for grading - 3 days 10 hours late -  - ,91.0,100.00,Yes,"Wednesday, 16 September 2026, 9:56 PM","Wednesday, 16 September 2026, 9:56 PM","Good use of branching, PRs and commits throughout the semester, most commits have appropriate comments however the PR titles and merge commit comment should be updated so that it isn't just the branch name, would also be good to consider getting a teammate to review your code before merging (95)
+
+UML diagram and worksheet matches the code, answers for section 2 of the worksheet are well thought out, and the movement strategy polymorphism is described, however would be good to see more examples of inheritance in the code with a more complex project (95)
+
+ accurately identifies generics and exceptions in the code, however both are basic examples of each (65)
+
+creativity given in full due to presentation in class (100)
+
+log books are complete and timely, with reflections tying into the project (100)"
+Participant 9586258,Aaron Pang,49071378,aaron.pang1@students.mq.edu.au,Submitted for grading - 1 day 5 hours late -  - ,88.4,100.00,Yes,"Monday, 14 September 2026, 5:02 PM","Monday, 14 September 2026, 5:02 PM","Regular and meaningful commits with a dedicated feature branch and clearly explained integration workflow
+
+comprehensive class responsibilities, interfaces and behavioural patterns demonstrate strong design understanding
+
+the generic Patch abstraction and custom exceptions are integrated and justified thoughtfully
+
+state and observer patterns, the day/night cycle and plant behaviours demonstrate advanced independent development
+
+the logbook provides relevant weekly learning and project connections, although reflection is less developed than the technical submission."
+Participant 9586232,Andres Azabache Justiniano,49155105,andres.azabachejustiniano@students.mq.edu.au,Submitted for grading - 6 hours 14 mins late -  - ,89.0,100.00,Yes,"Sunday, 13 September 2026, 5:59 PM","Saturday, 12 September 2026, 3:35 PM","Consistent contributions to the project, good commit messages, evidence of branching, one PR (100)
+
+UML good but should have some relationship between the Board and eg entities ('has a'), descriptions good, good use of inheritance in the code (95)
+
+Only one instance of exception handling, generics throughout code (75)
+
+the project does not extend much from in class work and there is no unique aspect that extends the concepts in class (75)
+
+log books are all timely and reflective (100)"
+Participant 9586300,Edrick Han,49171739,edrick.han@students.mq.edu.au,Submitted for grading - 12 hours 25 mins late -  - ,88.0,100.00,Yes,"Monday, 14 September 2026, 12:10 AM","Monday, 14 September 2026, 12:10 AM",Version control: D (89). Next step: Use branches and pull requests for your own contributions. Program design: HD (100). Generics and exceptions: CR (72). Next step: Integrate generics and exceptions into the design and explain the purpose each serves. Uniqueness and creativity: HD (100). Log book: CR (78). Next step: Connect each activity to your project in your reflections.
+Participant 9586347,Benedict Cheung,49176501,benedict.cheung@students.mq.edu.au,Submitted for grading - 4 days 11 hours late -  - ,74.0,100.00,Yes,"Thursday, 17 September 2026, 10:56 PM","Thursday, 17 September 2026, 10:56 PM","Git commits consistent with good commit messages, branching used but no PR workflow (90)
+
+class descriptions and UML good, inheritance for the states is not identified, there are opportunities in the code to consider inheritance but are not used, would be good to see more heirarchy and inheritance in the project (60)
+
+generics and exceptions questions should include all examples in the project, of which there are many, the reasoning for not using generics is not motivating enough (the project should be a vessel for demonstrating class concepts and should be designed with this in mind) (50)
+
+creativity questions are answered with basic programmng concepts rather than relevant advanced design features, there are some improvements upon in class work (70)
+
+log books are timely and reflective (100)"
+Participant 9586309,Sushant Gurung,49036114,sushant.gurung@students.mq.edu.au,Submitted for grading - 2 days 13 hours late -  - ,92.0,100.00,Yes,"Wednesday, 16 September 2026, 12:51 AM","Wednesday, 16 September 2026, 12:51 AM","Consistent commits, but could benefit from using some more descriptions. Meaningful contributions, and use of branches and PRs
+
+Mostly accurate diagram, though missing a few things. Classes listed and inheritance explained very well
+
+Generics and exceptions listed and explained, however lacks complexity
+
+Full marks for week 7 presentation
+
+Well-written entries with project connections and reflections, though would benefit from just a little bit more reflective writing"
+Participant 9586385,Kavhneel Naicker,48965243,kavhneel.naicker@students.mq.edu.au,Submitted for grading -  - ,65.0,100.00,Yes,"Sunday, 13 September 2026, 12:04 AM","Sunday, 13 September 2026, 12:04 AM","Commits are not consistent across the semester, would be better to see more individual commits with clear descriptions of the contribution in the commit, no use of branching or PRs (65)
+
+Diagram is missing some relationships between classes (ie 'has a' relationship), inhertiance good but it would be good to see a more complex structure for the inheritance and more examples of inheritance or interfaces (80)
+
+Use of generics is basic, one example of exception handling (50)
+
+Looking more for design creativity than graphical implementation, overall could have more complexity and design concepts (70)
+
+log book entries reflective but not timely (60)"
+Participant 9586379,Achint Singh,48880604,achint.singh@students.mq.edu.au,Submitted for grading - 3 days 10 hours late -  - ,87.0,100.00,Yes,"Wednesday, 16 September 2026, 10:39 PM","Wednesday, 16 September 2026, 10:39 PM","Consistent commits across the semester (17 commits over 4 weeks), mostly meaningful commit messages, though some could be more descriptive, evidence of branching but no PRs (85)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code, no visibility notation (85)
+
+Bounded generics used well, and a custom exception that is thrown and handled and explained in the worksheet, thoughtful use, with choices justified (85)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project (80)"
+Participant 9586266,Max Taniegra,49162209,max.taniegra@students.mq.edu.au,Submitted for grading - 1 day 16 hours late -  - ,49.0,100.00,Yes,"Tuesday, 15 September 2026, 3:50 AM","Tuesday, 15 September 2026, 3:50 AM","Forked repo successfully and provided link, but there is no evidence of commits (60)
+
+diagram should connect Board to other class/es (eg 'has a' relationship), classes appropriately described, inheritance is not identified correctly (looking more for, Flower and Grass are children of Plant), last question not answered (65)
+
+basic generics used, no description of exceptions (30)
+
+creativity section not filled in and no commits to show any work (0)
+
+log book entries timely, but could have more reflection (90)"
+Participant 9586416,Cooper Went,49067281,cooper.went@students.mq.edu.au,Submitted for grading - 3 days 12 hours late -  - ,90.0,100.00,Yes,"Wednesday, 16 September 2026, 11:50 PM","Wednesday, 16 September 2026, 11:48 PM","Version control: HD (95). Next step: Make your history exemplary: every change on a branch, through a reviewed PR. Program design: HD (90). Next step: Make the diagram complete and precise, with visibility, multiplicities and every relationship. Generics and exceptions: CR (75). Next step: Integrate generics and exceptions into the design and explain the purpose each serves. Uniqueness and creativity: HD+ (100). Log book: HD (90). Next step: Let your reflections drive visible changes in the project."
+Participant 9586381,Bhaavna Venkatramana Rao,49081977,bhaavna.venkatramanarao@students.mq.edu.au,Submitted for grading - 3 days 11 hours late -  - ,91.0,100.00,Yes,"Wednesday, 16 September 2026, 11:43 PM","Wednesday, 16 September 2026, 11:43 PM","Good use of branching, PRs, most PRs have appropriate titles, good commit messages, would be good to consider getting teammates to review code before merging (100)
+
+Missing entity in the relationships in 2.2, otherwise design description and UML is accurate to the code (90)
+
+good explanation of generics and exceptions in the code, however the use of both is fairly simple in the project (65)
+
+full creativity marks for presenting, however the project does lack complexity (100)
+
+logbooks are timely and with reflections (100)"
+Participant 9586389,Atharv Javagal,48918741,atharv.javagal@students.mq.edu.au,Submitted for grading - 3 days 12 hours late -  - ,91.0,100.00,Yes,"Wednesday, 16 September 2026, 11:52 PM","Wednesday, 16 September 2026, 11:52 PM","Commit message good, consistent commits, good use of branching and PRs (100)
+
+Diagram and descriptions good, main and forestpanel should be connected, inheritance list is missing JPanel and Exception inheritance (85)
+
+Only one use of generics, exceptions used throughout the code and identified, would be good to see more handling of the exceptions through try/catch (70)
+
+creativity given in full for presentation (100)
+
+log book entries reflective and timely (100)"
+Participant 9586203,Harrison Mcluckie,49154788,harrison.mcluckie@students.mq.edu.au,Submitted for grading - 2 days 20 hours late -  - ,80.0,100.00,Yes,"Wednesday, 16 September 2026, 8:32 AM","Wednesday, 16 September 2026, 8:32 AM","Consistent commits across the semester (13 commits over 3 weeks), mostly meaningful commit messages, though some could be more descriptive, some interaction with branches and pull requests (80)
+
+Classes, fields and relationships identified, inheritance partly identified, diagram mostly matches the code, though with a few inconsistencies, no visibility notation (75)
+
+Own generic class used, and a custom exception that is thrown and handled, though more explanation and justification is needed, well integrated into the design (75)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial, some weeks missing (70)"
+Participant 9586178,Mason Newton,48870153,mason.newton@students.mq.edu.au,Submitted for grading - 8 days 11 hours late -  - ,77.6,100.00,Yes,"Monday, 21 September 2026, 10:51 PM","Monday, 21 September 2026, 10:46 PM",
+Participant 9586286,Tengis Chadraabal,48977489,tengis.chadraabal@students.mq.edu.au,Submitted for grading - 3 days 10 hours late -  - ,79.0,100.00,Yes,"Wednesday, 16 September 2026, 10:37 PM","Wednesday, 16 September 2026, 10:37 PM","Consider more consistent commits across the semester (5 commits over 2 weeks), meaningful commit messages, some interaction with branches and pull requests (75)
+
+Classes, fields and relationships identified, inheritance partly identified (75)
+
+A basic version of generics is observed, and a custom exception that is thrown and handled, consider using try catch block rather than if statements both listed and explained in the worksheet, well integrated into the design, would be good to explain where you chose not to use them (80)
+
+Unexpected or advanced design features (90)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial (75)"
+Participant 9586264,Joon Park,49073206,joon.park2@students.mq.edu.au,Submitted for grading -  - ,87.0,100.00,Yes,"Saturday, 12 September 2026, 6:56 PM","Saturday, 12 September 2026, 6:56 PM","Mostly good commit messages but could be more descriptive, commits consistent across the semester, evidence of branching but no PRs, overall good (90)
+
+design is very good, diagram and text descriptions good, inheritance description misses custom exception and JPanel/JFrame (90)
+
+moderately good use of generics, good use of exceptions throughout including custom exception (90)
+
+this project is very creative and well design with complexity and is a good base for further work in A2 (100)
+
+log book entries are complete, could be more reflective, two log book entries are timely (65)"
+Participant 9586215,Elaina Ramsay,49153730,elaina.ramsay@students.mq.edu.au,Submitted for grading - 3 days 4 hours late -  - ,92.0,100.00,Yes,"Wednesday, 16 September 2026, 4:01 PM","Wednesday, 16 September 2026, 4:01 PM","Consistent commits across the semester (30 commits over 3 weeks), meaningful commit messages, good collaborative workflow (95)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, though with a few inconsistencies (85)
+
+Own generic class used, and a custom exception that is thrown and handled, though more explanation and justification is needed, well integrated into the design (80)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project, shows learning across the weeks, consistently insightful reflection (100)"
+Participant 9586201,Marcus Shidiak,49056050,marcus.shidiak@students.mq.edu.au,Submitted for grading -  - ,83.4,100.00,Yes,"Sunday, 13 September 2026, 11:21 AM","Sunday, 13 September 2026, 11:21 AM","Meaningful contributions and a feature-based workflow are supported by the submitted history, though the final repository does not retain the branch or pull-request evidence
+
+detailed class responsibilities and encapsulation demonstrate good design understanding
+
+the generic tester and exception handling are identified appropriately, with some gaps in justification
+
+the GUI and Swing work demonstrate substantial independent learning
+
+complete and detailed logbook entries provide strong reflection and useful project connections across the teaching weeks."
+Participant 9586317,Isaac Lynn,49067265,isaac.lynn@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586409,Terry Nguyen,48915319,terry.nguyen1@students.mq.edu.au,Submitted for grading - 3 days 8 hours late -  - ,73.0,100.00,Yes,"Wednesday, 16 September 2026, 7:54 PM","Wednesday, 16 September 2026, 7:54 PM","Very few commits (4), commit messages don't describe the changes made, no evidence of branching, PRs or other collaborative workflows (65)
+
+Classes, fields and relationships identified, inheritance partly identified, diagram mostly matches the code, though with a few inconsistencies, some inheritance pairs missing from 2.2 (75)
+
+Bounded generics used well, and a custom exception that is thrown and handled, though more explanation and justification is needed, well integrated into the design (75)
+
+Substantial improvements to in-class work (e.g. substepping, circular orbits, meteor impacts) (80)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial, one week missing (70)"
+Participant 9586348,Amanda Ho,49163973,amanda.ho@students.mq.edu.au,Submitted for grading - 3 days 10 hours late -  - ,73.0,100.00,Yes,"Wednesday, 16 September 2026, 10:33 PM","Wednesday, 16 September 2026, 10:33 PM","A modest contribution and consistent shared workflow are supported by the submitted history, though work is retained on the main branch without pull-request evidence
+
+core classes and encapsulation are explained appropriately, with some minor relationship inaccuracies
+
+generics and exceptions are identified accurately, though their justification could be developed further
+
+useful shared enhancements are discussed, but an individual creative extension is not demonstrated clearly
+
+the logbook covers the teaching weeks with useful project observations, although several entries are descriptive."
+Participant 9586393,Ashton Magri,49147226,ashton.magri@students.mq.edu.au,Submitted for grading -  - ,72.4,100.00,Yes,"Sunday, 13 September 2026, 10:27 AM","Sunday, 13 September 2026, 10:27 AM","A modest contribution and understanding of the shared workflow are supported by the submitted history, though individual branch and pull-request use are not demonstrated
+
+class responsibilities and relationships are explained well, but no separate UML diagram was submitted
+
+generics and exception handling are identified and justified in excellent detail
+
+substantial shared enhancements are discussed, though evidence of an individual creative extension is limited
+
+Weeks 1–6 are recorded in the worksheet, although reflection is brief and no separate logbook was submitted."
+Participant 9586320,Timothy Chan,49147633,timothy.chan6@students.mq.edu.au,Submitted for grading - 3 hours 23 mins late -  - ,88.6,100.00,Yes,"Sunday, 13 September 2026, 3:08 PM","Saturday, 12 September 2026, 4:47 PM","Extensive and meaningful commits with strong branch, pull-request and integration evidence
+
+class responsibilities and the navigation-focused design are explained clearly, with only minor modelling limitations
+
+relevant generics and exceptions are identified, though the discussion does not cover the full implementation in depth
+
+navigation and recursive path-finding demonstrate advanced independent development
+
+substantial logbook entries provide useful learning connections and reflection across the teaching weeks."
+Participant 9586306,Aidan Huang,49198033,aidan.huang@students.mq.edu.au,Submitted for grading - 3 days 10 hours late -  - ,68.0,100.00,Yes,"Wednesday, 16 September 2026, 10:32 PM","Wednesday, 16 September 2026, 10:23 PM","Lack of commits and consistency across the semester, commit messages could be more descriptive, no branching or PR workflow (65)
+
+Diagram ok, classes listed but there are some incorrect descriptions, incorrect inheritance with AbstractActor (Player and Ball implement Actor), missing the identification of a lot of inheritance in the program (65)
+
+The generics list is mostly incorrect, MatchEngine is an empty file, RenderEngine does not contain List<Actor>, exception list appears to be incorrect and hypothetical (20)
+
+Creativity given in full for the presentation (100)
+
+Log books complete, timely and somewhat reflective (90)"
+Participant 9586339,Yuvan Gowtham Krishna,49166271,yuvan.gowthamkrishna@students.mq.edu.au,Submitted for grading - 3 days 11 hours late -  - ,84.0,100.00,Yes,"Wednesday, 16 September 2026, 11:08 PM","Wednesday, 16 September 2026, 8:19 PM","Meaningful commits and contributions, but could benefit from using descriptions. Made use of forks and PRs
+
+Mostly accurate diagram, though missing a few things. Classes listed and inheritance explained very well
+
+Generics and exceptions listed and explained well, however lacks complexity
+
+Good discussion about implementing zombies and a bloater’s “explode” ability. Clean code snippet and demonstrates problem-solving
+
+Good logbook with project connections and reflections. Decrease in marks only for lack of timeliness"
+Participant 9586228,Mykhailo Chumak,48983497,mykhailo.chumak@students.mq.edu.au,Submitted for grading -  - ,90.0,100.00,Yes,"Wednesday, 9 September 2026, 8:35 PM","Wednesday, 9 September 2026, 8:35 PM","Meaningful commits and messages, some interaction with branches and pull requests
+
+Diagram matches, though a few inconsistencies and no visibility notation. Classes listed with good detail and inheritance explained well
+
+Generic and exceptions listed well with some explanation given
+
+Full marks for week 7 presentation
+
+Timely and thorough entries with connections to project, though a little bit more reflective writing would be beneficial"
+Participant 9586382,Joshua Mangan,49168312,joshua.mangan1@students.mq.edu.au,Submitted for grading - 10 hours 51 mins late -  - ,89.0,100.00,Yes,"Sunday, 13 September 2026, 10:36 PM","Sunday, 13 September 2026, 10:36 PM","Consistent commits, good commit messages, one PR and evidence of branching (100)
+
+diagram should link Board (consider 'has a' relationships), class descriptions ok, inheritance identified except for JPanel and Board, good use of inheritance in the project (90)
+
+basic use of generics in the code, one example of try/catch, overall lacking implementation here (75)
+
+nice use of a state machine, however overall the project lacks complexity in the course concepts (80)
+
+log books mostly present and timely with reflection (100)"
+Participant 9586211,George Cerovic,48963658,george.cerovic@students.mq.edu.au,Submitted for grading -  - ,86.0,100.00,Yes,"Saturday, 12 September 2026, 9:19 PM","Saturday, 12 September 2026, 9:19 PM","Consistent commits, meaningful with some descriptions, some interaction with branches and pull requests
+
+Diagram matches, though a few inconsistencies and no visibility notation. Classes listed, inheritance explained well
+
+Generic and exceptions listed well with some explanation given
+
+Full marks for week 7 presentation
+
+Mostly timely entries, though could do with writing more. Try to include more reflective writing and connect class activities to project"
+Participant 9586260,Thomas Nagle-Hill,49075330,thomas.naglehill@students.mq.edu.au,Submitted for grading - 2 days 16 hours late -  - ,64.0,100.00,Yes,"Wednesday, 16 September 2026, 4:35 AM","Tuesday, 15 September 2026, 8:28 PM","The team repo was linked rather than your own fork, consistent commits across the semester (47 commits over 4 weeks), evidence of branching but no PRs (0)
+
+Classes, fields and relationships identified, inheritance partly identified (75)
+
+Generics used, and exceptions thrown and not well explained in the worksheet, decent integration into the design, would be good to explain them, avoid empty or catch-all catch blocks (65)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project (80)"
+Participant 9586380,Ansh Verma,48953202,ansh.verma@students.mq.edu.au,Submitted for grading -  - ,13.0,100.00,Yes,"Sunday, 13 September 2026, 10:46 AM","Sunday, 13 September 2026, 10:46 AM","No code was available to mark: the repository link could not be opened (it is private, deleted or incorrect) and no code was included in the submission. A working graphical simulation is the minimum requirement for this assessment, so every item except the log book scores 0. Log book: P (65). Next step: Sign and date entries at the time of each activity."
+Participant 9586299,Lucas Martino,49180312,lucas.martino@students.mq.edu.au,Submitted for grading - 4 days 9 hours late -  - ,49.0,100.00,Yes,"Thursday, 17 September 2026, 9:10 PM","Thursday, 17 September 2026, 9:10 PM","Not many commits, though stated that contribution was mostly planning, some use of branches and PRs
+
+Diagram has some inaccuracies and lacks detail, classes listed and explained well
+
+Generic and exceptions listed, but needs more explanation and justification
+
+Uniqueness questions not answered in worksheet
+
+Some timely entries, though not very thorough, a lot more discussion is required, some weeks missing
+
+Make sure to read the submission criteria. UML diagram should’ve been on its own and logbooks should’ve been one file."
+Participant 9586202,Marija Kaleda,49153110,marija.kaleda@students.mq.edu.au,Submitted for grading - 3 days 12 hours late -  - ,85.0,100.00,Yes,"Wednesday, 16 September 2026, 11:46 PM","Wednesday, 16 September 2026, 11:46 PM","Few and sparodic commits, only minimal evidence of collaborative workflows (70)
+
+UML good but missing some connections ('has a' relationships), missing custom exception in class list, for the table is it possible to render tables in markdown and might be useful in the future to use, missing exception inheritance, some typos and the last sentence is not finished (80)
+
+generics list is good, exceptions is missing some key exceptions used in the code (75)
+
+creativity given in full due to presentation (100)
+
+logbooks timely and reflective (100)"
+Participant 9586400,Nomikos Reisis,49066315,nomikos.reisis@students.mq.edu.au,Submitted for grading - 14 hours 36 mins late -  - ,20.0,100.00,Yes,"Monday, 14 September 2026, 2:21 AM","Monday, 14 September 2026, 2:21 AM","No code was available to mark: the repository link could not be opened (it is private, deleted or incorrect) and no code was included in the submission. A working graphical simulation is the minimum requirement for this assessment, so every item except the log book scores 0. Timely entries, reflections connect to the project, shows learning across the weeks, consistently insightful reflection (100)"
+Participant 9586279,Ryan Ouyang,49169513,chungen.ouyang@students.mq.edu.au,Submitted for grading -  - ,78.0,100.00,Yes,"Sunday, 13 September 2026, 11:42 AM","Sunday, 13 September 2026, 11:36 AM",
+Participant 9586196,Haoqian Yu,48974935,haoqian.yu@students.mq.edu.au,Submitted for grading - 2 days 15 hours late -  - ,83.0,100.00,Yes,"Wednesday, 16 September 2026, 3:08 AM","Wednesday, 16 September 2026, 2:57 AM","Consistent commits across the semester (12 commits over 1 weeks), meaningful commit messages, no evidence of branching, PRs or other collaborative workflows (70)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, though with a few inconsistencies, Child methods should be using some feature of the parent class (80)
+
+Generics used, and exceptions thrown and explained in the worksheet, decent integration into the design, would be good to explain them, avoid empty or catch-all catch blocks (85)
+
+Exceptional creativity (100)
+
+Timely entries, reflections connect to the project (80)"
+Participant 9586208,Auyon Debnath,49016776,auyon.debnath@students.mq.edu.au,Submitted for grading - 3 days 6 hours late -  - ,92.0,100.00,Yes,"Wednesday, 16 September 2026, 5:52 PM","Wednesday, 16 September 2026, 5:48 PM","Very good use of Git, good branching and PR workflow, consistent commits across the semester and good commit messages (100)
+
+Inheritance list missing SimulationPanel/JPanel, design diagram and description good, would be nice to see a more complex design (75)
+
+Good use of generics and exceptions, would be good to see used across the classes rather than concentrated to a few classes (85)
+
+Creativity given in full for presentation (100)
+
+log book entries timely and reflective (100)"
+Participant 9586227,Arpan Debnath,48853046,arpan.debnath@students.mq.edu.au,Submitted for grading - 3 days 12 hours late -  - ,77.0,100.00,Yes,"Thursday, 17 September 2026, 12:20 AM","Thursday, 17 September 2026, 12:20 AM","Commits mostly consistent, commit messages good, some PRs, branching (100)
+
+Diagram good, need to specify all of the rending classes and given individual descriptions, some classes missing eg SoccerPitch, inheritance missing JPanel and Exception inheritance and Actor/Drawable (70)
+
+Generics and exceptions listed correctly, generics use good, could have more exception handling (80)
+
+Some creativity beyond class work (85)
+
+W1 log book entry missing, no log books timely (50)"
+Participant 9586262,Niya Patel,48712167,niya.patel@students.mq.edu.au,Submitted for grading - 11 hours 52 mins late -  - ,54.0,100.00,Yes,"Sunday, 13 September 2026, 11:37 PM","Sunday, 13 September 2026, 11:37 PM","Good collaborative workflow through branching and PRs, commit messages good, commits are concentrated on two days rather than being consistent throughout the semester (90)
+
+missing identification of custom exception, SimulatorView and FieldCanvas as inheritance relationships with Exception, JFrame and JPanel, no diagram included(!!!), good description of classes (30)
+
+basic use of generics, good use of custom exception (70)
+
+overall the project doesn't have any advanced features and could have a more complex design using harder concepts learnt in class (70)
+
+one log book entry is included, but is not timely and missing entries across weeks (10)"
+Participant 9586333,Kunzang Namgyal Bhutia,49033670,kunzangnamgyal.bhutia@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586254,Christopher Kendrick,49229478,christopher.kendrick1@students.mq.edu.au,Submitted for grading - 2 days 20 hours late -  - ,92.0,100.00,Yes,"Wednesday, 16 September 2026, 8:35 AM","Wednesday, 16 September 2026, 8:35 AM","Commits mostly consistent, use of PR and branching, commit messages mostly ok (90)
+
+Diagram good, main and forestpanel should be connected, class descriptions good, inheritance list good (95)
+
+Only one instance of generics used, good use of exceptions and custom exceptions in the program, would be good to add some try/catch to handle the throws (75)
+
+Creativity given in full for presentation (100)
+
+log book entries timely and reflective (100)"
+Participant 9586205,Rafic El Badawi El Najjar,49224484,rafic.elbadawielnajjar@students.mq.edu.au,Submitted for grading -  - ,90.0,100.00,Yes,"Saturday, 12 September 2026, 8:46 PM","Saturday, 12 September 2026, 8:46 PM","Consistent commits across the semester (20 commits over 3 weeks), meaningful commit messages, good use of PRs, an exemplary history with a full branch, PR and review workflow (100)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code (100)
+
+Some generics observed but poorly documented, and a custom exception implemented, consider using it in a trycatch block,, use of both is fairly basic, avoid empty catch blocks, invalid states are handled with if statements rather than exceptions (75)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial (75)"
+Participant 9586199,Mitchell Chiu,49147641,mitchell.chiu@students.mq.edu.au,Submitted for grading -  - ,16.0,100.00,Yes,"Sunday, 13 September 2026, 1:54 AM","Sunday, 13 September 2026, 1:54 AM","No code was available to mark: the repository link could not be opened (it is private, deleted or incorrect) and no code was included in the submission. A working graphical simulation is the minimum requirement for this assessment, so every item except the log book scores 0. Timely entries, reflections connect to the project (80)"
+Participant 9586252,Daksh Arora,49169335,daksh.arora@students.mq.edu.au,Submitted for grading - 3 days 11 hours late -  - ,93.0,100.00,Yes,"Wednesday, 16 September 2026, 10:54 PM","Wednesday, 16 September 2026, 9:29 PM","High contribution and meaningful commits, but could benefit from using some more descriptions.  Use of branches and PRs
+
+Mostly accurate diagram, though missing a few things. Classes listed and inheritance explained very well
+
+Generics and exceptions listed and explained well, however lacks complexity
+
+Full marks for week 7 presentation
+
+Thorough and well-written entries with project connections and reflections, mostly timely entries"
+Participant 9586373,Abbas Dullow,49166778,abbas.dullow@students.mq.edu.au,Submitted for grading - 2 days 9 hours late -  - ,85.0,100.00,Yes,"Tuesday, 15 September 2026, 9:42 PM","Tuesday, 15 September 2026, 9:42 PM","Commit messages mostly ok, commits consistent, use of PRs and branching (100)
+
+Diagram and description good, design good, inheritance missing JPanel (95)
+
+No generics listed, good evidence of exceptions in the wind code but would be good to list the exception handling throughout the program (30)
+
+ creativity given in full for presentation (100), log book entries timely and reflective (100)"
+Participant 9586390,William Brown,49047418,william.brown5@students.mq.edu.au,Submitted for grading - 2 days 23 hours late -  - ,54.0,100.00,Yes,"Wednesday, 16 September 2026, 11:03 AM","Wednesday, 16 September 2026, 11:02 AM","I cannot access the linked repo, using 'williamFork' branch on main repo to mark the other rubric items (0)
+
+Many classes such as Ball and AbstractActor are missing from the diagram, class list is missing many classes as well, missing inheritance around Actor/AbstractActor/etc (60)
+
+Some generics mentioned but missing eg ArrayList<Player> in VerticalPitch and would be good to see more examples of generics beyond the Circle LL, no exceptions listed (40)
+
+Creativity is good (100)
+
+Log book entries are mostly not timely (70)"
+Participant 9586287,Charlie Stratton,49225812,charlie.stratton@students.mq.edu.au,Submitted for grading - 1 day 13 hours late -  - ,84.0,100.00,Yes,"Tuesday, 15 September 2026, 1:23 AM","Tuesday, 15 September 2026, 1:23 AM","Commits could be more consistent throughout the semester (6 commits over 2 weeks), mostly meaningful commit messages, though some could be more descriptive, no evidence of branching, PRs or other collaborative workflows, commits could do with more descriptive messages (75)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code (95)
+
+Some use of generics, and some exception handling and explained in the worksheet, use of both is fairly basic (75)
+
+Exceptional creativity (100)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial (75)"
+Participant 9586253,Yousef Mustafa Abdel Rahim Musleh,48603090,yousefmustafaabdelrahim.musleh@students.mq.edu.au,Submitted for grading -  - ,94.0,100.00,Yes,"Sunday, 13 September 2026, 7:30 AM","Sunday, 13 September 2026, 7:30 AM","Commits could be more consistent across the semester rather than concentrated on a few days, meaningful commit messages, good use of branches and PRs (90)
+
+Classes, fields and relationships identified, inheritance identified well, a complete and precise diagram (95)
+
+Own generic class used, and a custom exception that is thrown and handled and explained in the worksheet, well integrated into the design, would be good to explain where you chose not to use them (85)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project, shows learning across the weeks, consistently insightful reflection (100)"
+Participant 9586213,Christopher Youssef,49223887,christopher.youssef@students.mq.edu.au,Submitted for grading -  - ,66.0,100.00,Yes,"Saturday, 12 September 2026, 10:43 PM","Saturday, 12 September 2026, 10:41 PM","Link unreachable, minimal commits otherwise
+
+Diagram is detailed and extensive, but has some inaccuracies. Classes listed and inheritance identified
+
+Generic and exceptions listed thoroughly, could benefit from more explanation and justification
+
+Advanced techniques with 3D geometry explained
+
+Some timely entries, includes reflective writing and connecting work to project"
+Participant 9586193,Ryan Wilks,49200496,ryan.wilks@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586407,Zixuan Chen,49202553,zixuan.chen3@students.mq.edu.au,Submitted for grading - 3 days 13 hours late -  - ,92.0,100.00,Yes,"Thursday, 17 September 2026, 12:49 AM","Thursday, 17 September 2026, 12:49 AM","Multiple branches, although its not clear if these have been merged into the main branch yet, and there seemed to be some issues with conflicting work with teammates, perhaps consider more communication going forward to ensure you are splitting up tasks, good use of consistent commits and commit message, no PRs (95)
+
+good diagram, good class descriptions, good identification of inheritance, would be good to see more complex design with more examples of inheritance but overall responses are good (85)
+
+Good use of generics throughout code, basic use of exceptions throughout code but would be good to see some more complex implementation such as custom exceptions (90)
+
+Creativity overall good, good explanations and advanced use of some concepts, would be good however to see a more complex design overall as the program is somewhat simple (90)
+
+log books are timely and reflective (100)"
+Participant 9586387,Kittinat Orachunka,49132296,kittinat.orachunka@students.mq.edu.au,Submitted for grading - 3 days late -  - ,72.6,100.00,Yes,"Wednesday, 16 September 2026, 12:38 PM","Wednesday, 16 September 2026, 12:38 PM","An identifiable contribution is supported by the submitted history, though the individual commit history and branch use are limited
+
+detailed class descriptions and UML evidence demonstrate good design understanding
+
+bounded generics and exception handling are explained and justified very well
+
+relevant project modifications are present, but the creativity section provides limited evidence of an individual extension
+
+the available logbook entries contain useful learning, although coverage and reflection are inconsistent."
+Participant 9586222,Judah Jeya Devan,49145053,judah.jeyadevan@students.mq.edu.au,Submitted for grading - 4 days 11 hours late -  - ,78.2,100.00,Yes,"Thursday, 17 September 2026, 11:30 PM","Thursday, 17 September 2026, 11:30 PM","Clear commits support an identifiable contribution, though work is recorded directly on the main branch without an individual branch or pull request
+
+class responsibilities, inheritance and polymorphism are explained well, with minor omissions
+
+generics and exception handling are discussed appropriately with relevant examples
+
+the fire lifecycle and colour-transition work demonstrate strong independent development
+
+the logbook contains useful reflections, although the weekly activity record is incomplete."
+Participant 9586404,Hamza Mughal,48908797,hamza.mughal@students.mq.edu.au,Submitted for grading -  - ,89.4,100.00,Yes,"Saturday, 12 September 2026, 11:41 PM","Saturday, 12 September 2026, 11:41 PM","Consistent commits across the semester, good commit messages, minor evidence of branching but no PRs (95)
+
+design diagram is good and shows complex relationships between components, inheritance identified across the project (100)
+
+use of generics is good with moderate complexity, good use of exceptions across the project including custom exception, could have more complex use of generics (90)
+
+creativity is very good and the developed simulation is complex with a lot of design features, this is a good base to go into A2 with as there may be many opportunities to use later class concepts (100)
+
+log book entries are complete and reflective, but not timely except for one (62)"
+Participant 9586243,Gabriel Ramos,49152203,gabriel.ramos1@students.mq.edu.au,Submitted for grading - 2 days 23 hours late -  - ,90.0,100.00,Yes,"Wednesday, 16 September 2026, 11:17 AM","Wednesday, 16 September 2026, 11:09 AM","Please submit worksheet as a markdown file
+
+Commits consistent, commit messages mostly okay, good use of branching and PRs (90)
+
+Class descriptions and diagram good, main and forestpanel should be connected, inheritance missing JPanel inheritance, design good (95)
+
+Generics only used once, good use of throws and custom exception however would be good to see more handling of the throws using try/catch (70)
+
+creativity given in full for presentation (100)
+
+log book entires timely and reflective (100)"
+Participant 9586225,Kirill Korzunov,49156527,kirill.korzunov@students.mq.edu.au,Submitted for grading -  - ,67.6,100.00,Yes,"Sunday, 13 September 2026, 11:27 AM","Sunday, 13 September 2026, 11:27 AM","An identifiable contribution and descriptive commits are supported by the submitted history, though work is retained on the main branch without clear pull-request evidence
+
+the written class discussion demonstrates sound basic design understanding, but no separate UML diagram was submitted
+
+relevant generics and exceptions are identified, though coverage and justification are limited
+
+an interaction feature was attempted, but no completed independent extension is demonstrated
+
+the logbook covers the teaching weeks honestly and includes useful reflection on difficulties and learning."
+Participant 9586394,Asad Tariq,49171380,asad.tariq@students.mq.edu.au,Submitted for grading -  - ,79.0,100.00,Yes,"Sunday, 13 September 2026, 1:34 AM","Sunday, 13 September 2026, 1:34 AM","A branch has been linked, rather than a fork, which does not match assignment specifications, commits could be more consistent throughout the semester, good commit messages, good use of branching and PRs (50)
+
+design diagram and text match code, exception inheritance is not identified in 2.2, could have more complexity in the inheritance in the program, 2.4 has no accompanying explanation (80)
+
+Listing of generics is good and usage is good, dropFood exception not mentioned in the worksheet but is present in code, catch is not handled when array index out of bounds (75)
+
+creativity given in full due to presentation (100)
+
+most log book entries timely and present with good reflections, however week 1 is missing (90)"
+Participant 9586335,Thomas Fox,49225383,thomas.fox1@students.mq.edu.au,Submitted for grading - 2 days 10 hours late -  - ,82.0,100.00,Yes,"Tuesday, 15 September 2026, 10:03 PM","Tuesday, 15 September 2026, 10:03 PM","Consistent commits across the semester (27 commits over 4 weeks), meaningful commit messages, some interaction with branches and pull requests (85)
+
+Classes, fields and relationships identified, inheritance partly identified (75)
+
+Generics used, and exceptions thrown and not well explained in the worksheet, decent integration into the design, would be good to explain them, avoid empty or catch-all catch blocks (65)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project (85)"
+Participant 9586352,Huy Tran,48943606,huykhoi.tran@students.mq.edu.au,Submitted for grading - 10 days 12 hours late -  - ,98.0,100.00,Yes,"Wednesday, 23 September 2026, 11:54 PM","Wednesday, 23 September 2026, 11:54 PM",
+Participant 9586246,Harrison Kovelis,49154923,harrison.kovelis@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586413,Caridee Chau,49138480,hoilam.chau@students.mq.edu.au,Submitted for grading -  - ,80.0,100.00,Yes,"Sunday, 13 September 2026, 2:24 AM","Sunday, 13 September 2026, 2:24 AM","Consistent commits across the semester (7 commits over 4 weeks), meaningful commit messages, consider using branching or PRs in future builds (80)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code (90)
+
+Generics misidentified, and basic some exception handling, more explanation and justification is needed (70)
+
+Full marks for the Week 7 presentation (100)
+
+Some timely entries, reflections connect to the project (60)"
+Participant 9586371,Abdul Rahman Masood Ali Khan Abdul Rahman Masood Ali Khan,48976962,abdulrahmanmasoodalikhan.abdulrahmanmasoodalikhan@students.mq.edu.au,Submitted for grading - 3 days 11 hours late -  - ,84.0,100.00,Yes,"Wednesday, 16 September 2026, 11:39 PM","Wednesday, 16 September 2026, 11:39 PM","Very few commits (3), commit messages don't describe the changes made, some interaction with branches and pull requests, the contribution estimate is higher than the commit history shows (70)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, though with a few inconsistencies (80)
+
+Bounded generics used well, and a custom exception that is thrown and handled and explained in the worksheet, well integrated into the design (80)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project, shows learning across the weeks, one week missing (90)"
+Participant 9586219,James Turnbull,49162713,james.turnbull@students.mq.edu.au,Submitted for grading - 1 day 16 hours late -  - ,78.0,100.00,Yes,"Tuesday, 15 September 2026, 4:18 AM","Tuesday, 15 September 2026, 4:18 AM","Commits could be more consistent across the semester rather than concentrated on a few days, meaningful commit messages, no evidence of branching, PRs or other collaborative workflows (70)
+
+Classes, fields and relationships identified, inheritance identified, diagram mostly matches the code, though with a few inconsistencies, some inheritance pairs missing from 2.2, design file was empty, the diagram in your repository was marked (85)
+
+Bounded generics used well, and a custom exception that is thrown and handled and explained in the worksheet, thoughtful use, with choices justified (90)
+
+Some modifications to in-class work (e.g. SuperFood and old age death) (70)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial, some weeks missing (75)"
+Participant 9586281,Abir Maya Bhowmick,49125761,abirmaya.bhowmick@students.mq.edu.au,Submitted for grading - 3 days 7 hours late -  - ,81.0,100.00,Yes,"Wednesday, 16 September 2026, 7:38 PM","Wednesday, 16 September 2026, 7:38 PM","Good use of Git, some branching, however would be good to see you make your own PRs for your code (95)
+
+Design good, description and diagram good, inheritance is missing JPanel/SimPanel, 2.4 has a todo on citing the reference material (85)
+
+Creativity given in full for presentation (100)
+
+log book entries timely and reflective (100)"
+Participant 9586343,Thi To Nguyen,48971669,uyen.nguyen3@students.mq.edu.au,Submitted for grading - 9 hours 44 mins late -  - ,82.8,100.00,Yes,"Sunday, 13 September 2026, 9:29 PM","Sunday, 13 September 2026, 9:29 PM","Meaningful individual development with a clearly explained collaborative workflow, though most final evidence is retained on the main branch
+
+detailed class responsibilities and inheritance demonstrate strong design understanding
+
+generic collections and a custom runway exception are identified and justified appropriately
+
+the individual airport layout and route-movement work demonstrate substantial problem-solving, although some planned features remain incomplete
+
+the logbook covers the required topics with useful learning connections and moderate reflection."
+Participant 9586372,Brent Bernardo,49148583,brent.bernardo@students.mq.edu.au,Submitted for grading - 6 hours 23 mins late -  - ,69.0,100.00,Yes,"Sunday, 13 September 2026, 6:08 PM","Sunday, 13 September 2026, 6:08 PM","Good use of branching for the seasons, however it would be better to use more commits, i.e. a commit for each change, rather than large commits, PR was made by a team member for the seasons rather than making your own PR, only two commits in the project at the end rather than throughout, consider updating the fork more often to bring up to date with the group repo (65)
+
+SimulationStats and Resistance doesnt exist in the project but is in UML and description, descriptions seem to be from a later version of the repo than the fork provides, good identification of inheritance relationships however would be good to see more use of inheritance in the program (60)
+
+generics identified in some of the code, however exceptions listed are not in the code and there are no identified examples of exceptions in the code submitted (50)
+
+creativity given in full from presentation (100)
+
+only some log books are timely, some missing from submission, lacking reflection and project connection (70)"
+Participant 9586195,Bryn Lee,49229370,bryn.lee@students.mq.edu.au,Submitted for grading -  - ,77.0,100.00,Yes,"Saturday, 12 September 2026, 11:39 PM","Friday, 11 September 2026, 11:51 PM","Consistent and meaningful commits across the semester (23 commits over 4 weeks), good collaborative workflow, an grate history with two branches (100)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, diagram mostly matches the code, but is broken and poorly formatted, though with a few inconsistencies (70)
+
+ Only basic use of generics and exceptions observed but poorly documented (40)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial, entries need more discussion (75)"
+Participant 9586277,Ryan Abouhussein,49162748,ryan.abouhussein@students.mq.edu.au,Submitted for grading -  - ,78.8,100.00,Yes,"Sunday, 13 September 2026, 5:16 AM","Sunday, 13 September 2026, 5:16 AM","A small but identifiable branch contribution is supported by the submitted Git history, though the individual repository was inaccessible
+
+the main classes, inheritance and polymorphism are explained with generally sound reasoning
+
+the generic tester and exception paths are discussed appropriately, although some exception handling is broad
+
+the clear and brush controls demonstrate relevant independent problem-solving
+
+detailed Weeks 2–7 entries provide strong reflection on learning and design changes."
+Participant 9586259,Samyam Raj (Samyam) Bhatta,49207113,samyamraj.bhatta@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586316,Vikram Singh,49144014,vikram.singh2@students.mq.edu.au,Submitted for grading - 3 days 11 hours late -  - ,71.0,100.00,Yes,"Wednesday, 16 September 2026, 11:17 PM","Wednesday, 16 September 2026, 10:02 PM","Commits across the project need to be more consistent and meaningful (5 commits over 2 weeks), commit messages could be more descriptive, good use of PRs (75)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code but is broken and poorly formatted, though with a few inconsistencies (70)
+
+Only basic use of generics and exceptions observed but poorly documented (40)
+
+Exceptional creativity (100)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial (70)"
+Participant 9586224,Shopithan Ravichandran,49258257,shopithan.ravichandran@students.mq.edu.au,Submitted for grading - 2 days 19 hours late -  - ,85.0,100.00,Yes,"Wednesday, 16 September 2026, 6:50 AM","Wednesday, 16 September 2026, 6:50 AM","Commits could be more consistent across the semester rather than concentrated on a few days, mostly meaningful commit messages, though some are vague (e.g. ""Create sample""), evidence of branching but no PRs, commits could do with more descriptive messages (65)
+
+Classes, fields and relationships identified, inheritance partly identified, diagram mostly matches the code, though with a few inconsistencies (75)
+
+Generics usage observed but not clearly discussedand exceptions thrown and caught and explained in the worksheet, well integrated into the design, thoughtful use, with choices justified, avoid empty or catch-all catch blocks (95)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project, shows learning across the weeks (90)"
+Participant 9586278,Durjoy Paul Apon,49023977,durjoypaul.apon@students.mq.edu.au,Submitted for grading - 9 hours 24 mins late -  - ,85.0,100.00,Yes,"Sunday, 13 September 2026, 9:09 PM","Sunday, 13 September 2026, 9:09 PM","Consistent commits across the semester (13 commits over 3 weeks), meaningful commit messages, no evidence of branching, PRs or other collaborative workflows (80)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, though with a few inconsistencies (85)
+
+Some use of generics, and some basic evidence of exception handling and explained in the worksheet, use of both is fairly basic, invalid states are handled with if statements rather than exceptions (75)
+
+Exceptional creativity (100)
+
+Timely entries, reflections connect to the project (85)"
+Participant 9586411,Sansarin Sermsoontornsil,48827835,sansarin.sermsoontornsil@students.mq.edu.au,Submitted for grading - 3 days 4 hours late -  - ,82.0,100.00,Yes,"Wednesday, 16 September 2026, 4:17 PM","Wednesday, 16 September 2026, 4:17 PM","Commits are somewhat consistent, mostly good commit messages, branching evidence, however no PR workflow (90)
+
+UML missing custom exception classes, missing identification of States as inheritance, lack overall of inheritance, CellImmunity exception doesn't exist (70)
+
+did not identify many uses of generics in the code (eg in SeasonManager), list of exceptions is not complete (eg InvalidSettingsException) (80)
+
+creativity and uniqueness answers good however it would be good to consider unique aspects that extend the concepts in class around inheritance, generics and exceptions (80)
+
+log books mostly timely and present, would be good to see some more reflection particularly relating to the project (90)"
+Participant 9586396,Zeyu Zheng,49136054,zeyu.zheng@students.mq.edu.au,Submitted for grading -  - ,78.2,100.00,Yes,"Thursday, 10 September 2026, 6:32 PM","Thursday, 10 September 2026, 6:29 PM",
+Participant 9586271,Toufique Rahman Tahsin,49120409,toufiquerahman.tahsin@students.mq.edu.au,Submitted for grading - 2 days 15 hours late -  - ,80.0,100.00,Yes,"Wednesday, 16 September 2026, 3:31 AM","Wednesday, 16 September 2026, 3:31 AM",
+Participant 9586216,Nimesh Raj Thapa,48927732,nimeshraj.thapa@students.mq.edu.au,Submitted for grading -  - ,14.0,100.00,Yes,"Thursday, 10 September 2026, 8:55 PM","Thursday, 10 September 2026, 8:15 PM","Your submission does not meet the minimum requirement: a working graphical simulation that compiles and runs using only standard JRE classes. Every item except the log book scores 0. GitHub timely entries for first few weeks, entries are mostly descriptive. Try to reflect on class activities and connect them to the project (70)"
+Participant 9586376,Sri Sharada Kalyanaraman,49233238,srisharada.kalyanaraman@students.mq.edu.au,Submitted for grading - 5 days 5 hours late -  - ,81.0,100.00,Yes,"Friday, 18 September 2026, 4:53 PM","Friday, 18 September 2026, 4:53 PM","Regular and meaningful commits with clear branch and pull-request use
+
+class responsibilities, inheritance and design choices are explained well, with only minor omissions
+
+generics are identified appropriately, though exception coverage and justification are incomplete
+
+weed overcrowding and collision behaviour demonstrate useful independent development
+
+most weeks are present with relevant learning and project connections, although reflection could be developed further."
+Participant 9586186,Sagun Shrestha,60780843,sagun.shrestha1@students.mq.edu.au,Submitted for grading - 3 days 7 hours late -  - ,80.0,100.00,Yes,"Wednesday, 16 September 2026, 7:27 PM","Wednesday, 16 September 2026, 7:27 PM","Commits could be more consistent across the semester rather than concentrated on a few days, commit messages don't describe the changes made, evidence of branching but no PRs (70)
+
+Classes, fields and relationships identified, inheritance identified, diagram mostly matches the code, though with a few inconsistencies, no visibility notation, some classes missing from the worksheet descriptions (70)
+
+Typed collections used, and some exception handling and explained in the worksheet, use of both is fairly basic (65)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project, shows learning across the weeks (95)"
+Participant 9586241,Rumit Maharjan,48930830,rumit.maharjan@students.mq.edu.au,Submitted for grading -  - ,82.0,100.00,Yes,"Sunday, 13 September 2026, 4:35 AM","Sunday, 13 September 2026, 4:35 AM","Commits are not very consistent across the semester and are almost entirely across two days, good use of branch-PR workflow, good commit messages (80)
+
+diagram good, class descriptions good, inheritance description is missing Panel and Exception, design good (80)
+
+Good use of advanced generics but the list does not include variables using these generic classes eg Main.java L9, good use of custom exception (90)
+
+While there isn't a lot going on regarding logic and simulation features, the design features are creative and there is a lot packed into the few classes, overall good design creativity (100)
+
+log books are reflective but are not timely (60)"
+Participant 9586410,Grace Bohra,60779659,grace.bohra@students.mq.edu.au,Submitted for grading - 3 days 21 hours late -  - ,88.0,100.00,Yes,"Thursday, 17 September 2026, 9:10 AM","Thursday, 17 September 2026, 9:10 AM","Meaningful individual commits and a clearly explained collaborative workflow are demonstrated, though the final history does not retain a separate personal branch or pull request
+
+comprehensive UML evidence, class responsibilities, inheritance and polymorphism are explained clearly
+
+generics, validation and custom exception handling are identified and justified well
+
+spatial reproduction, collision avoidance and environmental growth behaviour demonstrate advanced independent problem-solving
+
+complete and thoughtful logbook entries consistently connect weekly concepts, project decisions and future improvements."
+Participant 9586311,Rongrui Guo,48977152,rongrui.guo@students.mq.edu.au,Submitted for grading - 9 hours 27 mins late -  - ,83.0,100.00,Yes,"Sunday, 13 September 2026, 9:12 PM","Sunday, 13 September 2026, 7:49 PM","Commits are not consistent across the semester, commit messages could be more descriptive and focus on one single contribution rather than a whole class, use of one branch and PR, PR title should be descriptive and not the branch name (75)
+
+Diagram and description good, inheritance appropriately identified, design substantial (100)
+
+Generics and exceptions used well and explained (100)
+
+Good explanation, program is creative (100)
+
+Log book entries reflective, but not timely and first two weeks are missing (40)"
+Participant 9586384,Aryan Joshi,60828056,kirtyaryan.joshi@students.mq.edu.au,Submitted for grading - 1 day 8 hours late -  - ,77.0,100.00,Yes,"Monday, 14 September 2026, 8:26 PM","Monday, 14 September 2026, 8:26 PM","Consistent commits across the semester (11 commits over 2 weeks), commit messages don't describe the changes made (e.g. ""test commit""), no evidence of branching, commits could do with more descriptive messages, the link isn't a fork of the team repo, ""too lazy to specify"" (70)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, though with a few inconsistencies (85)
+
+Generics used but not specified, and exceptions thrown and caught, the worksheet doesn't explain or justify their use, avoid empty or catch-all catch blocks (50)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial (80)"
+Participant 9586360,Aurpan Pal,49247891,aurpan.pal@students.mq.edu.au,Submitted for grading - 53 mins 31 secs late -  - ,92.0,100.00,Yes,"Sunday, 13 September 2026, 12:38 PM","Sunday, 13 September 2026, 12:38 PM","Consistent commits across the semester (15 commits over 3 weeks), meaningful commit messages, good use of PRs, commits could do with more descriptive messages, PR titles should describe the change rather than just the branch name (95)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code, a complete and precise diagram (100)
+
+Generics usage observed but not clearly discussedand a custom exception that is thrown and handled and explained in the worksheet, well integrated into the design, thoughtful use, with choices justified (90)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial (75)"
+Participant 9586303,Mejal Maharjan,60830271,mejal.maharjan@students.mq.edu.au,Submitted for grading - 2 days 1 hour late -  - ,87.0,100.00,Yes,"Tuesday, 15 September 2026, 12:59 PM","Tuesday, 15 September 2026, 12:59 PM","Consistent commits across the semester (10 commits over 3 weeks), meaningful commit messages, good collaborative workflow (90)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code (85)
+
+Generics usage observed but not clearly discussedand a custom exception that is thrown and handled and explained in the worksheet, well integrated into the design, would be good to explain where you chose not to use them, avoid empty or catch-all catch blocks (85)
+
+Exceptional creativity (100)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial (75)"
+Participant 9586237,Justin Romald Baroi,60802286,justinromald.baroi@students.mq.edu.au,Submitted for grading - 3 days 12 hours late -  - ,82.0,100.00,Yes,"Wednesday, 16 September 2026, 11:51 PM","Wednesday, 16 September 2026, 9:54 PM","Commits could be more consistent across the semester rather than concentrated on a few days, meaningful commit messages, good use of branches and PRs (80)
+
+Classes, fields and relationships identified, inheritance identified, diagram mostly matches the code, though with a few inconsistencies, some classes missing from the worksheet descriptions (75)
+
+Bounded generics used well, and a custom exception that is thrown and handled and explained in the worksheet, well integrated into the design (80)
+
+Substantial improvements to in-class work (e.g. black hole consumption and gravity loop) (85)
+
+Timely entries, reflections connect to the project, shows learning across the weeks, one week missing (90)"
+Participant 9586401,Tan (Steven ) Nguyen,60903422,tan.nguyen4@students.mq.edu.au,Submitted for grading -  - ,59.0,100.00,Yes,"Saturday, 12 September 2026, 10:52 PM","Saturday, 12 September 2026, 9:19 PM","Consistent commits across the semester (5 commits over 2 weeks), meaningful commit messages, no evidence of branching, PRs or other collaborative workflows, smaller commits, one per change, would be better than a few large ones (70)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, but is broken and poorly formatted, with a few inconsistencies (70)
+
+Generics usage observed but not clearly discussedand some exception handling, though more explanation and justification is needed, the reasoning for not using them isn't convincing (55)
+
+Exceptional creativity (100)
+
+No log book submitted (0)"
+Participant 9586268,Hien Minh Le,49130188,hienminh.le@students.mq.edu.au,Submitted for grading -  - ,86.0,100.00,Yes,"Friday, 11 September 2026, 9:09 PM","Friday, 11 September 2026, 9:09 PM","Commits could be more consistent across the semester rather than concentrated on a few days, meaningful commit messages, some interaction with branches and pull requests, the link isn't a fork of the team repo (80)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code, no visibility notation (85)
+
+Typed collections used, and exceptions thrown and caught and explained in the worksheet, use of both is fairly basic, avoid empty or catch-all catch blocks (65)
+
+Full marks for the Week 7 presentation (100)
+
+Timely entries, reflections connect to the project, shows learning across the weeks, consistently insightful reflection (100)"
+Participant 9586240,Seokmin Cho,48925381,seokmin.cho@students.mq.edu.au,Submitted for grading -  - ,82.0,100.00,Yes,"Sunday, 13 September 2026, 5:24 AM","Sunday, 13 September 2026, 5:24 AM",
+Participant 9586366,Riyash Bhandari Chhetri,60819219,riyash.bhandarichhetri@students.mq.edu.au,Submitted for grading - 2 days 12 hours late -  - ,69.0,100.00,Yes,"Wednesday, 16 September 2026, 12:08 AM","Wednesday, 16 September 2026, 12:08 AM","Very few commits (1), no evidence of branching, PRs or other collaborative workflows, the link isn't a fork of the team repo, smaller commits, one per change, would be better than a few large ones (60)
+
+Classes, fields and relationships identified, little use of inheritance in the design, no visibility notation, would be good to see more inheritance in the design (70)
+
+Exceptions thrown and caught, the worksheet doesn't explain or justify their use, generics are not clearly explained (60)
+
+Unexpected or advanced design features (90)
+
+Some timely entries (65)"
+Participant 9586323,Raphael Kencana,48944866,raphaelreaganrusli.kencana@students.mq.edu.au,Submitted for grading -  - ,81.0,100.00,Yes,"Saturday, 12 September 2026, 9:27 PM","Saturday, 12 September 2026, 9:27 PM","Consistent commits across the semester (7 commits over 4 weeks), meaningful commit messages, consider using branching or PRs in future builds (80)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code (90)
+
+Generics misidentified, and basic some exception handling, more explanation and justification is needed (70)
+
+Full marks for the Week 7 presentation (100)
+
+Some timely entries, reflections connect to the project (65)"
+Participant 9586285,Maanas Govindarajan,60893745,maanas.govindarajan@students.mq.edu.au,Submitted for grading - 5 hours 44 mins late -  - ,64.0,100.00,Yes,"Sunday, 13 September 2026, 5:29 PM","Sunday, 13 September 2026, 5:29 PM","Very few commits (1), no evidence of branching, PRs or other collaborative workflows, the link isn't a fork of the team repo (60)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, though with a few inconsistencies (85)
+
+Own generic class used, and a custom exception that is thrown and handled and explained in the worksheet, well integrated into the design (85)
+
+Little beyond in-class work, few changes of your own (40)
+
+Some timely entries, entries need more discussion (50)"
+Participant 9586301,Marco Antonio Pardim Carvalho,49154419,marco.pardimcarvalho@students.mq.edu.au,Submitted for grading -  - ,75.0,100.00,Yes,"Friday, 11 September 2026, 7:09 PM","Friday, 11 September 2026, 7:09 PM","Commits could be more consistent across the semester rather than concentrated on a few days, good use of PRs (65)
+
+Classes, fields and relationships identified, little use of inheritance in the design (70)
+
+basic Generics usage observed but not clearly discussed and a custom exception that is thrown and handled and explained in the worksheet, use of both is fairly basic (75)
+
+Unexpected or advanced design features (90)
+
+Timely entries, more reflective rather than descriptive writing would be beneficial (75)"
+Participant 9586329,Arjun Sandeep Rao,60846534,arjunsandeep.rao@students.mq.edu.au,Submitted for grading - 12 mins 23 secs late -  - ,75.0,100.00,Yes,"Sunday, 13 September 2026, 11:57 AM","Sunday, 13 September 2026, 11:57 AM","Commits could be more consistent across the semester rather than concentrated on a few days, meaningful commit messages, some interaction with branches and pull requests, the link isn't a fork of the team repo (60)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, though with a few inconsistencies (85)
+
+Own generic class used, and a custom exception that is thrown and handled and explained in the worksheet, thoughtful use, with choices justified (90)
+
+Substantial improvements to in-class work (e.g. strategy and template method patterns) (85)
+
+Some timely entries, entries need more discussion (55)"
+Participant 9586226,Ishrat Ahmed Ssroat,60831979,ishratahmed.ssroat@students.mq.edu.au,Submitted for grading - 3 days 12 hours late -  - ,73.0,100.00,Yes,"Wednesday, 16 September 2026, 11:55 PM","Wednesday, 16 September 2026, 11:55 PM","Commits could be more consistent across the semester rather than concentrated on a few days, good use of branches and PRs, smaller commits, one per change, would be better than a few large ones (65)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, though with a few inconsistencies (85)
+
+no custom generics and exceptions have no try catch identified (30)
+
+Exceptional creativity (100)
+
+Timely entries, reflections connect to the project (85)"
+Participant 9586315,Nicholas Pemberton,60930373,nicholas.pemberton@students.mq.edu.au,Submitted for grading -  - ,89.0,100.00,Yes,"Sunday, 13 September 2026, 11:40 AM","Sunday, 13 September 2026, 10:29 AM","Many commits and use of branches, PRs and merges. Commits are meaningful with a naming convention, though could benefit from having some descriptions
+
+Diagram matches, though a few inconsistencies and no visibility notation. Classes listed with good though only one inheritance relationship identified
+
+Only a few generics and exceptions listed, but explained and justified well
+
+Full marks for week 7 presentation
+
+Timely entries, full sentences rather than dot points would be better in future. Try to include more reflective writing and connect class activities to project"
+Participant 9586180,Conor Grace,60889373,conor.grace@students.mq.edu.au,Submitted for grading - 1 day 9 hours late -  - ,90.0,100.00,Yes,"Monday, 14 September 2026, 9:09 PM","Monday, 14 September 2026, 9:09 PM","Substantial commits, PRs, branching, good commit messages (100)
+
+Extended Exception classes missing from UML and description, project could be designed with more heirarchy and inheritance, such as with the BerserkState (70)
+
+missing some instances of generics in the code, CellImmunityException does not exist at all (80)
+
+creativity given in full from presentation (100)
+
+log books are all timely and reflective (100)"
+Participant 9586365,Raben Kyle Patotoy,60773995,rabenkyle.patotoy@students.mq.edu.au,Submitted for grading - 2 days 21 hours late -  - ,79.2,100.00,Yes,"Wednesday, 16 September 2026, 9:06 AM","Wednesday, 16 September 2026, 9:06 AM","A meaningful taxiway contribution and separate feature branch are demonstrated, though the individual commit history and pull-request evidence are limited
+
+class responsibilities and relationships are explained well in the submitted design
+
+generics and exception handling are identified and justified with suitable examples
+
+taxiway occupancy behaviour demonstrates useful independent problem-solving
+
+a logbook was submitted and credited, though its weekly detail and depth of reflection could not be established fully from the available format."
+Participant 9586267,Shoumik Ghosh,60868848,shoumik.ghosh@students.mq.edu.au,Submitted for grading -  - ,93.0,100.00,Yes,"Sunday, 13 September 2026, 6:15 AM","Sunday, 13 September 2026, 6:15 AM","Consistent commits across the semester (30 commits over 3 weeks), meaningful commit messages, good use of PRs, an exemplary history with a full branch, PR and review workflow, PR titles should describe the change rather than just the branch name (100)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code (95)
+
+Some use of generics, and some exception handling and explained in the worksheet, well integrated into the design, would be good to explain where you chose not to use them (85)
+
+Exceptional creativity (100)
+
+Timely entries, reflections connect to the project (85)"
+Participant 9586230,James Clements,47915943,james.clements1@students.mq.edu.au,Submitted for grading - 3 days 9 hours late -  - ,80.0,100.00,Yes,"Wednesday, 16 September 2026, 9:27 PM","Wednesday, 16 September 2026, 9:27 PM","Consistent and meaningful commits, though could benefit from more descriptions, stated working on main branch
+
+Diagram is mostly accurate but missing a few things, classes listed and inheritance identified, worksheet could benefit from more detail
+
+Generics and exceptions identified, however examples are basic and not explained
+
+Full marks for week 7 presentation
+
+All weeks present, mostly thorough entries, though would be good to have more reflective writing and connecting class activities to project"
+Participant 9586313,Hiroki Oshida,49093703,hiroki.oshida@students.mq.edu.au,Submitted for grading -  - ,62.0,100.00,Yes,"Saturday, 12 September 2026, 7:47 PM","Friday, 11 September 2026, 2:00 PM","The provided link is a copy rather than a fork of the group project, no specific collaboration workflow, contributions to the repository is minimal (3/34 commits) (65)
+
+Behaviour and BirdBehaviour are included in the UML and description but are not in the code, missing relationships from 2.2 including Predator/MovingEntity, FlockPanel/JPanel, Obstacle/Entity (65)
+
+Behaviour and BirdBehaviour are not present in the code, missing use of generics in Predator, missing exception code identification (e.g. Obstacle line 19), use of exceptions and generics basic (60)
+
+the responses to uniqueness and creativity are missing in the provided code, the program is static and does not show a simulation, very minimal additions from the in class work (50)
+
+logbooks timely and reflective (100)"
+Participant 9586210,Zeu Sul,60893303,zeu.sul@students.mq.edu.au,Submitted for grading - 6 hours 58 mins late -  - ,82.0,100.00,Yes,"Sunday, 13 September 2026, 6:43 PM","Sunday, 13 September 2026, 6:43 PM","Consistent commits across the semester (27 commits over 4 weeks), meaningful commit messages, some interaction with branches and pull requests, the link isn't a fork of the team repo, smaller commits, one per change, would be better than a few large ones (85)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code (90)
+
+Generics not used, a custom exception that is thrown and handled, listed and explained in the worksheet, well integrated into the design, would be good to explain where you chose not to use them (80)
+
+Unexpected or advanced design features (90)
+
+Some timely entries, entries need more discussion (65)"
+Participant 9586332,Frank Henry (Henry) Villar,60946245,frankhenry.villar@students.mq.edu.au,Submitted for grading - 55 mins 54 secs late -  - ,80.0,100.00,Yes,"Sunday, 13 September 2026, 12:40 PM","Sunday, 13 September 2026, 12:40 PM","Substantial commits, good use of PRs, good use of issues (100)
+
+Diagram and description good, inheritance good, design good (100)
+
+Generics and exception use is good and explained (100)
+
+Project is creative and explanations are good (100)
+
+no log book provided (0)"
+Participant 9586367,Ali Abdo,60891793,ali.abdo1@students.mq.edu.au,Submitted for grading -  - ,39.0,100.00,Yes,"Sunday, 13 September 2026, 11:37 AM","Sunday, 13 September 2026, 11:37 AM","Commits somewhat consistent, use of multiple PRs, good PR titles, commit messages could be more descriptive (85)
+
+No design file provided, class description okay but some descriptions incorrect, missing inheritance relationships (20)
+
+Missing much of the generics use throughout the code, examples provided for generics are partly incorrect, exceptions missing and provided examples do not exist,  (20)
+
+While the project is creative, the answers in the worksheet do not seem to match the code implementation (70)
+
+no log book provided (0)"
+Participant 9586368,Fardin Ahmed,61123676,fardin.ahmed@students.mq.edu.au,No submission - Assignment is overdue by: 21 days 6 hours -  - ,,100.00,Yes,-,-,
+Participant 9586388,Suraiya Tahsin Ali,60984570,suraiyatahsin.ali@students.mq.edu.au,Submitted for grading - 3 days 8 hours late -  - ,88.0,100.00,Yes,"Wednesday, 16 September 2026, 8:43 PM","Wednesday, 16 September 2026, 8:43 PM","Commits could be more consistent across the semester rather than concentrated on a few days, meaningful commit messages, evidence of branching but no PRs (85)
+
+Classes, fields and relationships identified, inheritance identified well, diagram mostly matches the code, though with a few inconsistencies, some inheritance pairs missing from 2.2 (85)
+
+Own generic class used, and a custom exception that is thrown and handled and explained in the worksheet, thoughtful use, with choices justified (90)
+
+Substantial improvements to in-class work (e.g. observer event log, entity factory) (85)
+
+Timely entries, reflections connect to the project, shows learning across the weeks, one week missing (95)"
+Participant 9586402,Arif Reogir,61207985,arif.reogir@students.mq.edu.au,Submitted for grading - 1 day 11 hours late -  - ,89.2,100.00,Yes,"Monday, 14 September 2026, 10:45 PM","Sunday, 13 September 2026, 2:37 PM","Meaningful individual commits with a separate branch and clearly explained integration workflow
+
+comprehensive class responsibilities, inheritance and interfaces demonstrate strong design understanding
+
+generics and custom exceptions are integrated and justified thoughtfully
+
+gate occupancy and node-based movement provide strong evidence of independent development
+
+detailed and reflective logbook entries consistently connect weekly learning, project decisions and future improvements."
+Participant 9586244,Abyad Razin,61216542,abyad.razin@students.mq.edu.au,Submitted for grading - 3 days late -  - ,74.0,100.00,Yes,"Wednesday, 16 September 2026, 12:44 PM","Wednesday, 16 September 2026, 12:44 PM","Commits not consistent across semester, commit messages good, incremental commits good, no branches or PRs, it can be useful to use branches and PRs in solo projects to check the files changed for each new feature and ensure only good code is introduced into the repository (75)
+
+simulation is nice to watch, good identification of inheritance, answers in the worksheet are good, design overall is simple (85)
+
+good use of generics but would be good to see more throughout the program, good use of exceptions including custome exception (80)
+
+while there is some creativity in the choices in the graphics and simulation, we are looking more for design creativity around inheritance, generics, exceptions, etc, and it is recommended to spend minimal time on the graphics, the handling of assets not loading is good though as I encountered this (70)
+
+log book is reflective but not timely (60)"
+Participant 9586397,Ana Camila Garcia Martinez,61145505,anacamila.garciamartinez@students.mq.edu.au,Submitted for grading -  - ,86.0,100.00,Yes,"Saturday, 12 September 2026, 5:02 PM","Saturday, 12 September 2026, 5:02 PM","Consistent commits across the semester (12 commits over 3 weeks), meaningful commit messages, good use of PRs (95)
+
+Classes, fields and relationships identified, inheritance identified well, diagram and descriptions match the code (80)
+
+Discussion of future use of generics, and a custom exception that is thrown and handled and explained in the worksheet, well integrated into the design, would be good to explain where you chose not to use them (80)
+
+Unexpected or advanced design features (90)
+
+Timely entries, reflections connect to the project (85)"
+Participant 9586179,Lolowa Alabdulwahed,61394599,lolowaabdulazizs.alabdulwahed@students.mq.edu.au,Submitted for grading - 7 hours 8 mins late -  - ,89.0,100.00,Yes,"Sunday, 13 September 2026, 6:53 PM","Sunday, 13 September 2026, 6:53 PM","Not many commits across the semester for the project, commit messages good, good use of PR and branching (75)
+
+Diagram should have main and ForestPanel connected to relevant classes, design and description overall good, inheritance identified well (95)
+
+Only one use of generics, good identification of exceptions however it would be good to have more try/catch to address the throws (75)
+
+Creativity given in full for presentation (100)
+
+log book entries timely and reflective (100)"
+Participant 9586209,Iakov Dergachev,61466131,iakov.dergachev@students.mq.edu.au,Submitted for grading -  - ,88.0,100.00,Yes,"Saturday, 12 September 2026, 8:52 PM","Saturday, 12 September 2026, 8:38 PM","Commits could be more consistent, some evidence of branching, PR for the branch was not made by the individual, commit messages could be more descriptive (80)
+
+Diagram and descriptions good, inheritance descriptions good, good design overall (100)
+
+Generics and exceptions use good, list lacks some description and is missing a few items but overall good (80)
+
+Creativity given in full for presentation (100)
+
+log book entries present and timely, but lack reflections (80)"

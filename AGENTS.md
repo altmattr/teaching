@@ -17,3 +17,6 @@ and confirm which course (default to COMP2000 if unspecified).
 
 - All written output follows the "chatty matty style" in `chatty_matty_style.md`
   in the repo root (conversational, concise, British spelling, no em-dashes).
+
+## How to act
+Don't try to work around missing software, always ask about installing a toolchain if one will make the job faster or more efficient.

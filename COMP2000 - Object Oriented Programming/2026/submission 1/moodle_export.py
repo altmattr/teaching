@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-"""Export graded marks + marker feedback from marking.xlsx to a Moodle import CSV."""
+"""Populate the Moodle grading worksheet with grades + marker feedback from marking.xlsx."""
 import argparse
+import csv
 import pathlib
 
 import pandas as pd
 
-GRADE_ITEM = "Submission 1"
+GRADE_COL = "Grade"
+FEEDBACK_COL = "Feedback comments"
+ID_COL = "ID number"
 
 
 def read_marking(folder: pathlib.Path) -> pd.DataFrame:
@@ -21,7 +24,12 @@ def read_marking(folder: pathlib.Path) -> pd.DataFrame:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--folder", type=pathlib.Path, default=pathlib.Path(__file__).parent)
-    parser.add_argument("--out", type=pathlib.Path, default=pathlib.Path("moodle_import.csv"))
+    parser.add_argument(
+        "--grading-worksheet",
+        type=pathlib.Path,
+        default=pathlib.Path("grading worksheet.csv"),
+        help="Moodle grading worksheet CSV to populate (default: grading worksheet.csv)",
+    )
     args = parser.parse_args()
 
     df = read_marking(args.folder)
@@ -41,17 +49,37 @@ def main() -> None:
         if not bad.empty:
             print(f"  warning: {len(bad)} row(s) with {label}: {list(bad['idnumber'])}")
 
-    export = graded[["idnumber", "email address"]].copy()
-    export[GRADE_ITEM] = graded["grade"].map(lambda v: f"{v:.1f}")
-    export[f"{GRADE_ITEM} feedback"] = graded["feedback"]
+    ws_path = args.folder / args.grading_worksheet
+    rows = list(csv.DictReader(open(ws_path, encoding="utf-8-sig")))
+    fieldnames = list(rows[0].keys())
 
-    export.to_csv(args.folder / args.out, index=False, encoding="utf-8")
-    print(f"wrote: {args.folder / args.out}")
+    by_id = graded.set_index("idnumber")
+    filled = 0
+    unmatched = []
+    for row in rows:
+        sid = row[ID_COL].strip()
+        hit = by_id.loc[sid] if sid in by_id.index else None
+        if hit is None:
+            continue
+        row[GRADE_COL] = f"{hit['grade']:.1f}"
+        row[FEEDBACK_COL] = hit["feedback"]
+        filled += 1
+
+    for sid in by_id.index:
+        if sid not in {r[ID_COL].strip() for r in rows}:
+            unmatched.append(sid)
+
+    with open(ws_path, "w", newline="", encoding="utf-8-sig") as fh:
+        writer = csv.DictWriter(fh, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+    print(f"filled: {filled} row(s) in {ws_path}")
+    if unmatched:
+        print(f"  warning: {len(unmatched)} graded student(s) not found in worksheet: {unmatched}")
+    blank = sum(1 for r in rows if not r[GRADE_COL].strip())
+    print(f"rows left blank: {blank}")
     print(f"grade range: {graded['grade'].min():.1f} - {graded['grade'].max():.1f}")
-    print(
-        f"feedback length: min {graded['feedback'].str.len().min()}, "
-        f"median {int(graded['feedback'].str.len().median())}, max {graded['feedback'].str.len().max()}"
-    )
 
 
 if __name__ == "__main__":

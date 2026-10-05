@@ -7,6 +7,7 @@ each submission folder name.  Only facts a script can prove are recorded here;
 no grades.
 """
 
+import argparse
 import csv
 import os
 import re
@@ -310,6 +311,13 @@ def presented_set():
 
 
 def main():
+    global SUBMISSIONS, OUT
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--submissions-dir", type=Path, default=SUBMISSIONS)
+    parser.add_argument("--out", type=Path, default=OUT)
+    args = parser.parse_args()
+    SUBMISSIONS = args.submissions_dir
+    OUT = args.out if args.out.is_absolute() else BASE / args.out
     if not SUBMISSIONS.is_dir():
         sys.exit(f"no submissions dir at {SUBMISSIONS}")
     presented, emails = presented_set()
