@@ -278,7 +278,6 @@ What return type did we choose for statements and why? (pick the most correct an
 ## uses in a function body <gift>
 In the following code, which lines contain a variable _use_.  Don't
 include variable _declarations_ in your answer
-
 ```
 var x = 1;\
 fun f(a)\{\

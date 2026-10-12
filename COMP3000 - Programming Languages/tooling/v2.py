@@ -87,15 +87,21 @@ def emit(tex_fh, md_fh, tex_str, md_str):
 
 def gift_to_gift(item,question, answers):
     print(f"gift_to_gift: {item}, {question[:10]}..., {[a[:10] for a in answers]}...")
-    return f"::{item}::[markdown]\n{inline_images(question)}{{\n" + "\n".join([inline_images(answer) for answer in answers]) + "\n}\n"
+    if not answers:
+        return f"::{item}::[markdown]\n{inline_images(question)}{{}}\n"
+    return f"::{item}::[markdown]\n{inline_images(question)}{{\n" + "\n".join([inline_images(answer) for answer in answers]) + "\n}}\n"
 
 def gift_to_tex(item, question, answers):
     item_tex = item.replace("_", r"\_")
     question2 = pandoc.write(pandoc.read(question, format='markdown'), format='latex')
-    answers = [pandoc.write(pandoc.read(answer, format='markdown'), format='latex') for answer in answers]
-    return f"\\section{{{item_tex}}}\n"+question2+"\n\\begin{enumerate}\n\\item" + "\n\\item".join(answers) + "\n\\end{enumerate}\n\n"
-
+    if not answers:
+        ans_list = []
+    else:
+        ans_list = [pandoc.write(pandoc.read(answer, format='markdown'), format='latex') for answer in answers]
+    return f"\\section{{{item_tex}}}\n"+question2+"\n\\begin{enumerate}\n\\item" + ("\n\\item".join(ans_list) if ans_list else "") + "\n\\end{enumerate}\n\n"
 def gift_to_md(item, question, answers):
+    if not answers:
+        return f"## {item}\n\n{inline_images(question)}\n\n\n"
     return f"## {item}\n\n{inline_images(question)}\n\n  *" + "\n  *".join(answers) + "\n\n"
 
 def yaml_to_tex(item, item_parsed, isTex=False, with_answers=True):

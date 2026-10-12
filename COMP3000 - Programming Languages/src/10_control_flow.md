@@ -273,11 +273,7 @@ answer: |
 # Exam
 
 ## short circuit side effect <gift>
-In this program, `boom` is a function which prints the word boom when called.
-
-`print false and boom();`
-
-What does this program print?{
+In this program, `boom` is a function which prints the word boom when called. `print false and boom();`.  What does this program print?{
   =it prints false, and boom is never called
   ~it prints false, and boom is called first
   ~it prints boom and then false

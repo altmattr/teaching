@@ -393,6 +393,9 @@ answer: |
 
 # Exam
 
+## lox workarounds gift <gift>
+Pick one thing that Lox, as described in the book "Crafting Interpreters", cannot express, and which you would want in a program you were writing for fun.  Describe two different Lox workarounds for it.  For each workaround, explain what it costs.  Then say which of the two you would rather write yourself, and why.  There is no single right answer here, so make sure your reasons are the kind you could defend to the other person in the group. {}
+
 ## lox workarounds <essay>
 question: |
     Pick one thing that Lox, as described in the book "Crafting Interpreters", cannot express, and which you would want in a program you were writing for fun.  Describe two different Lox workarounds for it.

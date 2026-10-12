@@ -21,7 +21,7 @@ The goal of this week is to use the Java Streams API to process collections of o
 
 \section*{Preparation}
 Attend the lecture in week 9.\par
-Read the following chapters of \textit{Modern Java in Action}
+ead the following chapters of \textit{Modern Java in Action}
 \footnote{Available in the course materials as \textit{Modern Java in Action, 2nd Edition.pdf}}:
 \begin{itemize}
     \item Chapter 4 (Introducing streams)
@@ -40,6 +40,14 @@ Come to class ready to discuss:
 
 Your task this week is to incorporate concepts from the last two weeks into your project.  Use streams and lambdas to refactor parts of your codebase.  Look for loops over collections of entities, calculations of aggregate values (sums, averages, counts), and transformations from one data shape to another.  Replace at least one explicit \texttt{for} or \texttt{while} loop with a stream pipeline.
 
+Here are some suggestions based on what we saw in your first submissions:
+\begin{description}
+\item[You may already have a function which is collecting and filtering].  We saw at least one traffic simulation where we could write a stream version of code which adapts traffic light behaviour based on the queues at each intersection.
+\item[Treat your grid as a stream]  More than a few people are traversing their grids to find something.  If the grid was a stream you could do it with stream operations.  It may or may not be "nicer" but it is a fun exercise fiding out.
+\item[Treat your "characters" as a stream]  Maybe your simulation has multiple cars and perhaps you do collision detection?  That relies on looping over every car - perhaps a stream version would be interesting?
+\item[You already use streams!] At least one person is already using streams.  If that is you, spend the class explaning to your team and/or the class \emph{why your version is better than the alternative}.  Other students will just be trying out the streams but you are ready to make a case for them!
+\end{description}
+
 \subsection*{Reporting}
 
 This is a \emph{simultaneous reporting} style class.  Each team presents the loop they replaced and the stream pipeline they wrote instead.  Discuss the readability, performance, and correctness trade-offs.  Your log book should include the most interesting stream pattern you saw from another team.
@@ -50,15 +58,7 @@ Circulate during the activity and help teams identify loops that are good candid
 
 \section*{Project Guidance}
 
-This is your team's work \emph{between classes}, do it in your own time and have it committed and pushed to your shared repository before you return next week.  Use streams to analyse your simulation state.  For example:
-\begin{itemize}
-\itemsep0em
-\item Average energy across all herbivores: \texttt{entities.stream().filter(e -> e instanceof Herbivore).mapToDouble(Entity::energy).average()}
-\item Population by species: \texttt{entities.stream().collect(Collectors.groupingBy(Entity::species, Collectors.counting()))}
-\item Entities below starvation threshold: \texttt{entities.stream().filter(e -> e.energy() < THRESHOLD).toList()}
-\end{itemize}
-
-Find one explicit loop over entities in your code and replace it with a stream pipeline.  Commit both versions so you can compare them.  Record what you did in your log book.  Anything you add beyond the class activity is the kind of contribution the Uniqueness and Creativity rubric rewards.
+This week's EPIC activity is directly related to your second submission, the discussion today is a starting point and you  should work between classes to expand upon what happened in class.
 
 \section*{Self Study Exercises}
 \begin{enumerate}
