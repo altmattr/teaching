@@ -152,6 +152,33 @@
             font-size: 0.9em;
           }
 
+          .q-image { margin: 0.6em 0; }
+          .q-image img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+          }
+
+          .q-drags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 0.2em 0 0.8em 0;
+          }
+          .q-drag {
+            margin: 0;
+            text-align: center;
+            font-size: 0.65em;
+            max-width: 150px;
+          }
+          .q-drag img {
+            border: 1px solid #eee;
+            border-radius: 3px;
+            display: block;
+          }
+          .q-drag figcaption { margin-top: 2px; }
+
           .answers { list-style: none; padding: 0; }
           .answers li {
             padding: 0.4em 0.6em;
@@ -320,6 +347,27 @@
       <div class="q-text">
         <xsl:value-of select="questiontext/text" disable-output-escaping="yes"/>
       </div>
+
+      <xsl:if test="file">
+        <div class="q-image">
+          <xsl:for-each select="file">
+            <img alt="{@name}" src="data:image/png;base64,{translate(normalize-space(.), ' ', '')}"/>
+          </xsl:for-each>
+        </div>
+      </xsl:if>
+
+      <xsl:if test="drag/file">
+        <div class="q-drags">
+          <xsl:for-each select="drag">
+            <xsl:if test="file">
+              <figure class="q-drag">
+                <img alt="{text}" src="data:image/png;base64,{translate(normalize-space(file), ' ', '')}"/>
+                <figcaption><xsl:value-of select="text"/></figcaption>
+              </figure>
+            </xsl:if>
+          </xsl:for-each>
+        </div>
+      </xsl:if>
 
       <xsl:choose>
         <xsl:when test="@type='multichoice'">
