@@ -1,0 +1,24 @@
+// Example 6: Call in condition / loop (expression position)
+//
+// The call is evaluated for its value - the truthiness of the result
+// decides which branch runs (or whether the loop runs at all).
+//
+// Discussion: here the return value is essential - the call's effect
+// (if any) is secondary. What happens if isPositive had no return
+// statement (implicitly returned nil)? Would the program still make sense?
+//
+// This shows why the distinction matters: same call, different
+// position, different requirements.
+
+fun isPositive(n) { return n > 0; }
+
+if (isPositive(4)) {
+  print("positive");
+}
+
+var i = 3;
+while (isPositive(i)) {
+  print(i);        // prints 3, 2, 1, then i becomes 0, condition fails, loop ends
+  i = i - 1;
+}
+print("done");

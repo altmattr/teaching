@@ -1,0 +1,17 @@
+// Example 3: Side-effect only call (no return statement)
+//
+// log has no return statement, so it implicitly returns nil.
+// The call is in statement position.
+//
+// Discussion: is this call "a statement" because we only care about the
+// effect (printing)? Or is it still an expression (it evaluates to nil)
+// that happens to be discarded?
+//
+// Compare with: what's the difference between a statement and an
+// expression used for effect only?
+
+fun log(msg) {
+  print("[LOG] " + msg);
+}
+
+log("start");   // effect only - does anything about this line need the value?

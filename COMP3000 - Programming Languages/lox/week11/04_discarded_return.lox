@@ -1,0 +1,18 @@
+// Example 4: Discarding a useful return value
+//
+// compute(21) is an expression (it evaluates to 42) but it appears
+// in statement position - the value 42 is thrown away.
+//
+// Discussion: what's the difference between this line and
+// var ignored = compute(21)? What's the difference between this line
+// and print(compute(21))?
+//
+// Is the line a statement because of where it sits, or because of
+// what the call does (side effect vs return value)?
+
+fun compute(n) {
+  return n * 2;
+}
+
+compute(21);   // returns 42 - discarded. Any reason to care?
+print("done");

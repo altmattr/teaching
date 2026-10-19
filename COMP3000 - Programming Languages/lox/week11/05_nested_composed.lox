@@ -1,0 +1,16 @@
+// Example 5: Nested / composed calls (functions as values)
+//
+// Here calls clearly behave as values: they're arguments to other calls,
+// and a function itself can be stored in a variable and called.
+//
+// Discussion: in square(double(3)), double(3) is an expression whose
+// value is passed into square. What would change if we split it up
+// into two lines? Would either line stop being an expression?
+
+fun double(x) { return x * 2; }
+fun square(x) { return x * x; }
+
+print(square(double(3)));   // 36 - double(3) is an expression argument
+
+var f = double;             // functions are values - f holds a function
+print(f(5));                // 10 - calling through a variable

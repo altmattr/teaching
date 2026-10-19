@@ -1,0 +1,25 @@
+// Example 7: The edge case - same call, both effects and value
+//
+// count() does two things: it mutates global_var (side effect) and
+// returns global_var (value). The same function is used in statement
+// position (result discarded) and expression position (result used).
+//
+// Discussion: is count() itself a statement or an expression?
+// Or does that question only make sense for a *use* (an occurrence)
+// of count() in a program, not for count() in isolation?
+//
+// Hint: this is like the statement vs expression gift question:
+// statement -> produce an effect, expression -> produce a value.
+// A function can produce both - so what decides the classification?
+
+var g = 0;
+
+fun count() {
+  g = g + 1;     // side effect
+  return g;      // return value
+}
+
+count();        // statement position: g becomes 1, return value discarded
+count();        // statement position: g becomes 2, return value discarded
+g = count();    // expression position: g becomes 3, and that value is kept
+print(g);       // 3

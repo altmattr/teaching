@@ -1,0 +1,14 @@
+// Example 2: Call in statement position (return value discarded)
+//
+// The call greet("matt") stands alone as a line.
+// It looks like a statement: it produces an effect (prints),
+// and nobody consumes a return value.
+//
+// Discussion: if greet returned a value, would anything change?
+// Could we write print(greet("matt")) instead? What would print show?
+
+fun greet(name) {
+  print("Hello, " + name);
+}
+
+greet("matt");   // statement position - call whose return (nil) is discarded

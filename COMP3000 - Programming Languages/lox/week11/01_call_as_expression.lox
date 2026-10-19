@@ -1,0 +1,16 @@
+// Example 1: Call as an expression (produces a value)
+//
+// The call add(1, 2) sits in a position that expects a value:
+// - as an argument to print
+// - as the right-hand side of an assignment
+//
+// Discussion: is add(1, 2) here a statement or an expression?
+// Why does it matter where it appears?
+
+fun add(a, b) {
+  return a + b;
+}
+
+print(add(1, 2));    // 3 - the call is an expression, print uses its value
+var x = add(1, 2);   // x is bound to 3 - same call, still an expression
+print(x);
